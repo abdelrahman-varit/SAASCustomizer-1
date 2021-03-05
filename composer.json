@@ -111,8 +111,7 @@
         "Webkul\\SocialLogin\\": "packages/Webkul/SocialLogin/src",
         "Webkul\\SAASCustomizer\\": "packages/Webkul/SAASCustomizer/src",
         "Webkul\\SAASSubscription\\": "packages/Webkul/SAASSubscription/src",
-        "Webkul\\StripeConnect\\": "packages/Webkul/StripeConnect/src",
-        "BuyNoir\\StripeConnect\\": "packages/BuyNoir/StripeConnect/src"
+        "Webkul\\StripeConnect\\": "packages/Webkul/StripeConnect/src"
       }
     },
 
