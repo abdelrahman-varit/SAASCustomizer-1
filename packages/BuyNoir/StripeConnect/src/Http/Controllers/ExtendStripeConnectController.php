@@ -9,6 +9,7 @@ use Webkul\StripeConnect\Repositories\StripeCartRepository as StripeCart;
 use Webkul\StripeConnect\Repositories\StripeRepository;
 use Stripe\Stripe as Stripe;
 use Webkul\StripeConnect\Helpers\Helper;
+use BuyNoir\StripeConnect\Helpers\Helper as BuyNoirHelper;
 use Webkul\StripeConnect\Repositories\StripeConnectRepository as StripeConnect;
 use Company;
 
@@ -77,6 +78,7 @@ class ExtendStripeConnectController extends Controller
      * @var object
      */
     protected $helper;
+    protected $buynoir_helper;
 
     /**
      * Stripe Connect Repository Instance holder
@@ -101,10 +103,12 @@ class ExtendStripeConnectController extends Controller
         StripeCart $stripeCart,
         stripeRepository $stripeRepository,
         Helper $helper,
+        BuyNoirHelper $buynoir_helper,
         StripeConnect $stripeConnect
     )
     {
         $this->helper = $helper;
+        $this->buynoir_helper = $buynoir_helper;
 
         $this->orderRepository = $orderRepository;
 
@@ -176,7 +180,7 @@ class ExtendStripeConnectController extends Controller
 
         $paymentMethodId = $decodeStripeToken->attachedCustomer->id;
 
-        $intent = $this->helper->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId, $sellerUser);
+        $intent = $this->buynoir_helper->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId, $sellerUser);
 
         if ( $intent ) {
             return response()->json(['client_secret' => $intent->client_secret]);
