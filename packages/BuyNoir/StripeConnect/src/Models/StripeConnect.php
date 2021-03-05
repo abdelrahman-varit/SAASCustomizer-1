@@ -2,11 +2,13 @@
 
 namespace BuyNoir\StripeConnect\Models;
 
+
+use Illuminate\Database\Eloquent\Model;
 use Webkul\StripeConnect\Contracts\StripeConnect as StripeConnectContract;
 use Webkul\StripeConnect\Models\StripeConnect as StripeConnectModel;
 use Company;
 
-class StripeConnect extends StripeConnectModel implements StripeConnectContract
+class StripeConnect extends Model implements StripeConnectContract
 {
     protected $table = 'stripe_companies';
 
