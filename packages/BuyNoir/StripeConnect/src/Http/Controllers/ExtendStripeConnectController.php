@@ -137,7 +137,7 @@ class ExtendStripeConnectController extends Controller
                 $this->stripeSecretKey = company()->getSuperConfigData('sales.paymentmethods.stripe.test_secret_key');
             }
 
-            dd(stripe::setApiKey($this->stripeSecretKey));
+            stripe::setApiKey($this->stripeSecretKey);
         }
     }
 
