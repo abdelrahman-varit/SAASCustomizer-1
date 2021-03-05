@@ -30,6 +30,9 @@ class Helper {
 
     public function stripePayment($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUserId = '', $sellerUser = '')
     {
+
+        dd($sellerUser);
+        
         $cart   = Cart::getCart();
 
         if ( core()->getConfigData('sales.paymentmethods.stripe.fees') == 'customer' && isset($cart->payment) && $cart->payment->method == 'stripe' ) {
@@ -49,7 +52,7 @@ class Helper {
                         'customer'             => $customerId,
                         'currency'             => $cart->cart_currency_code,
                         'statement_descriptor' => $this->statementDescriptor,
-                        "description"          => $sellerUser,
+                        "description"          => "Cart Id ".Cart::getCart()->id,
                         'receipt_email'        => $cart->customer_email,
                         'transfer_data'        => [
                                   'destination'    => $sellerUserId,
@@ -61,7 +64,7 @@ class Helper {
                         'currency'              => $cart->cart_currency_code,
                         'payment_method_types'  => ['card'],
                         'statement_descriptor'  => $this->statementDescriptor,
-                        "description"           => $sellerUser,
+                        "description"           => "Cart Id ".Cart::getCart()->id,
                         'receipt_email'         => $cart->customer_email,
                         'transfer_data'         => [
                                     'destination'   => $sellerUserId,
@@ -78,7 +81,7 @@ class Helper {
                         'amount'               => round($cart->grand_total, 2) * 100,
                         'customer'             => $customerId,
                         'statement_descriptor' => $this->statementDescriptor,
-                        "description"          => $sellerUser,
+                        "description"          => "Cart Id ".Cart::getCart()->id,
                         'currency'             => $cart->cart_currency_code,
                         'receipt_email'        => $cart->customer_email,
                         'transfer_data'        => [
@@ -91,7 +94,7 @@ class Helper {
                         'currency'              => $cart->cart_currency_code,
                         'payment_method_types'  => ['card'],
                         'statement_descriptor'  => $this->statementDescriptor,
-                        "description"           => $sellerUser,
+                        "description"           => "Cart Id ".Cart::getCart()->id,
                         'receipt_email'         => $cart->customer_email,
                         'transfer_data'         => [
                                     'destination'   => $sellerUserId,
