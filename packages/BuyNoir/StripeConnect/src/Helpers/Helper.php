@@ -28,24 +28,7 @@ class Helper {
 
     }
 
-    /**
-     * Seperate seller according to their product
-     *
-     *
-     * @return array
-     */
-    public function productDetail()
-    {
-        return null;
-    }
-
-     /**
-     * Create payment for stripe
-     *
-     *
-     * @return boolean
-     */
-    public function stripePayment($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUserId = '')
+    public function stripePayment($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUserId = '', $sellerUser = '')
     {
         $cart   = Cart::getCart();
 
@@ -66,7 +49,7 @@ class Helper {
                         'customer'             => $customerId,
                         'currency'             => $cart->cart_currency_code,
                         'statement_descriptor' => $this->statementDescriptor,
-                        "description"          => "Cart Id ".Cart::getCart()->id,
+                        "description"          => $sellerUser,
                         'receipt_email'        => $cart->customer_email,
                         'transfer_data'        => [
                                   'destination'    => $sellerUserId,
@@ -78,7 +61,7 @@ class Helper {
                         'currency'              => $cart->cart_currency_code,
                         'payment_method_types'  => ['card'],
                         'statement_descriptor'  => $this->statementDescriptor,
-                        "description"           => "Cart Id ".Cart::getCart()->id,
+                        "description"           => $sellerUser,
                         'receipt_email'         => $cart->customer_email,
                         'transfer_data'         => [
                                     'destination'   => $sellerUserId,
@@ -95,7 +78,7 @@ class Helper {
                         'amount'               => round($cart->grand_total, 2) * 100,
                         'customer'             => $customerId,
                         'statement_descriptor' => $this->statementDescriptor,
-                        "description"          => "Cart Id ".Cart::getCart()->id,
+                        "description"          => $sellerUser,
                         'currency'             => $cart->cart_currency_code,
                         'receipt_email'        => $cart->customer_email,
                         'transfer_data'        => [
@@ -108,7 +91,7 @@ class Helper {
                         'currency'              => $cart->cart_currency_code,
                         'payment_method_types'  => ['card'],
                         'statement_descriptor'  => $this->statementDescriptor,
-                        "description"           => "Cart Id ".Cart::getCart()->id,
+                        "description"           => $sellerUser,
                         'receipt_email'         => $cart->customer_email,
                         'transfer_data'         => [
                                     'destination'   => $sellerUserId,
@@ -123,12 +106,4 @@ class Helper {
         return $result;
     }
 
-    public function deleteCardIfPaymentNotDone($getCartDecode)
-    {
-        if ( isset($getCartDecode->stripeReturn->last4) ) {
-            $this->stripeRepository->deleteWhere([
-                'last_four' => $getCartDecode->stripeReturn->last4
-            ]);
-        }
-    }
 }
