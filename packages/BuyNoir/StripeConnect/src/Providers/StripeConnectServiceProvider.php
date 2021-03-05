@@ -15,6 +15,7 @@ class StripeConnectServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
         include __DIR__ . '/../Http/routes.php';
+        include __DIR__ . '/../Http/Helpers/Helper.php';
 
         $this->app->concord->registerModel(
             \Webkul\StripeConnect\Contracts\StripeConnect::class, \BuyNoir\StripeConnect\Models\StripeConnect::class
