@@ -28,10 +28,8 @@ class Helper {
 
     }
 
-    public function stripePayment($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUserId = '', $sellerUser = '')
+    public function stripePayment($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUserId = '')
     {
-
-
         $cart   = Cart::getCart();
 
         if ( core()->getConfigData('sales.paymentmethods.stripe.fees') == 'customer' && isset($cart->payment) && $cart->payment->method == 'stripe' ) {
