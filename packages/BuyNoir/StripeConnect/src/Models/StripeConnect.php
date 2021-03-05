@@ -8,7 +8,7 @@ use Webkul\StripeConnect\Contracts\StripeConnect as StripeConnectContract;
 use Webkul\StripeConnect\Models\StripeConnect as StripeConnectModel;
 use Company;
 
-class StripeConnect extends Model implements StripeConnectContract
+class StripeConnect extends StripeConnectMode
 {
     protected $table = 'stripe_companies';
 
