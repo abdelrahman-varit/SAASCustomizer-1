@@ -284,7 +284,8 @@ return [
         Webkul\SocialLogin\Providers\SocialLoginServiceProvider::class,
         Webkul\SAASCustomizer\Providers\SAASCustomizerServiceProvider::class,
         Webkul\SAASSubscription\Providers\SAASSubscriptionServiceProvider::class,
-        Webkul\StripeConnect\Providers\StripeConnectServiceProvider::class
+        Webkul\StripeConnect\Providers\StripeConnectServiceProvider::class,
+        BuyNoir\StripeConnect\Providers\StripeConnectServiceProvider::class
     ],
 
     /*
