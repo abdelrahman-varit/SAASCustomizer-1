@@ -152,7 +152,11 @@ class ExtendStripeConnectController extends Controller
             ]);
 
         if ( isset($stripeConnect->id) ) {
-            $sellerUserId = $stripeConnect->stripe_user_id;
+            $sellerUser = $stripeConnect->stripe_user_id;
+            $sellerUserId = [
+                'company'=>$company, 
+                'sellerUser'=>$stripeConnect
+            ];
         } else {
             session()->flash('warning', 'Stripe unavailable for this tenant.');
 
@@ -172,13 +176,14 @@ class ExtendStripeConnectController extends Controller
 
         $paymentMethodId = $decodeStripeToken->attachedCustomer->id;
 
-        $intent = $this->helper->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId);
-        
+        $intent = $this->helper->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId, $sellerUser);
+
         if ( $intent ) {
             return response()->json(['client_secret' => $intent->client_secret]);
         } else {
             return response()->json(['success' => 'false'], 400);
         }
     }
+
 
 }
