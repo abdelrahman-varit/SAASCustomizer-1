@@ -3,28 +3,54 @@ namespace BuyNoir\StripeConnect\Helpers;
 
 use Webkul\Checkout\Facades\Cart;
 use Webkul\StripeConnect\Repositories\StripeRepository;
-use Webkul\StripeConnect\Helpers\Helper as WebkulStripeConnectHelper;
 use Stripe\PaymentIntent as PaymentIntent;
 
-class Helpers extends WebkulStripeConnectHelper {
+class Helper {
 
-  
-    public function stripePayment($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUser = '')
+    /**
+     * StripeRepository object
+     *
+     * @var array
+     */
+    protected $stripeRepository;
+
+
+    public function __construct(stripeRepository $stripeRepository)
+    {
+        $this->stripeRepository = $stripeRepository;
+
+        if (core()->getConfigData('sales.paymentmethods.stripe.statement_descriptor')) {
+            $this->statementDescriptor = core()->getConfigData('sales.paymentmethods.stripe.statement_descriptor');
+        } else {
+            $this->statementDescriptor = 'Stripe Connect';
+        }
+
+
+    }
+
+    /**
+     * Seperate seller according to their product
+     *
+     *
+     * @return array
+     */
+    public function productDetail()
+    {
+        return null;
+    }
+
+     /**
+     * Create payment for stripe
+     *
+     *
+     * @return boolean
+     */
+    public function stripePayment($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUserId = '')
     {
         $cart   = Cart::getCart();
-        $sellerUserId = "";
-       
-        $sellerUserId = $sellerUser['sellerUser']->stripe_user_id;
-
-        // dd($sellerUser);
-
-        // $str = "{card_id:".Cart::getCart()->id.
-        //     ",company_name:".$sellerUser['company']->name.
-        //     ",domain:".$sellerUser['company']->domain.
-        //     ",company_email:".$sellerUser['company']->email."}";
 
         if ( core()->getConfigData('sales.paymentmethods.stripe.fees') == 'customer' && isset($cart->payment) && $cart->payment->method == 'stripe' ) {
-             
+            
             try {
                 $applicationFee = $cart->base_grand_total;
                 $applicationFee = (0.029 * $applicationFee) + (0.02 * $applicationFee) + 0.3;
@@ -33,14 +59,14 @@ class Helpers extends WebkulStripeConnectHelper {
                     'base_grand_total'  => $cart->base_grand_total + $applicationFee,
                     'grand_total'       => $cart->grand_total + core()->convertPrice($applicationFee),
                 ]);    
-               
+
                 if  ( $customerId != '' ) {
                     $result = PaymentIntent::create([
                         'amount'               => round($cart->grand_total, 2) * 100,
                         'customer'             => $customerId,
                         'currency'             => $cart->cart_currency_code,
                         'statement_descriptor' => $this->statementDescriptor,
-                        "description"          => $sellerUser,
+                        "description"          => "Cart Id ".Cart::getCart()->id,
                         'receipt_email'        => $cart->customer_email,
                         'transfer_data'        => [
                                   'destination'    => $sellerUserId,
@@ -52,7 +78,7 @@ class Helpers extends WebkulStripeConnectHelper {
                         'currency'              => $cart->cart_currency_code,
                         'payment_method_types'  => ['card'],
                         'statement_descriptor'  => $this->statementDescriptor,
-                        "description"           => $sellerUser,
+                        "description"           => "Cart Id ".Cart::getCart()->id,
                         'receipt_email'         => $cart->customer_email,
                         'transfer_data'         => [
                                     'destination'   => $sellerUserId,
@@ -69,7 +95,7 @@ class Helpers extends WebkulStripeConnectHelper {
                         'amount'               => round($cart->grand_total, 2) * 100,
                         'customer'             => $customerId,
                         'statement_descriptor' => $this->statementDescriptor,
-                        "description"          => $sellerUser,
+                        "description"          => "Cart Id ".Cart::getCart()->id,
                         'currency'             => $cart->cart_currency_code,
                         'receipt_email'        => $cart->customer_email,
                         'transfer_data'        => [
@@ -82,7 +108,7 @@ class Helpers extends WebkulStripeConnectHelper {
                         'currency'              => $cart->cart_currency_code,
                         'payment_method_types'  => ['card'],
                         'statement_descriptor'  => $this->statementDescriptor,
-                        "description"           => $sellerUser,
+                        "description"           => "Cart Id ".Cart::getCart()->id,
                         'receipt_email'         => $cart->customer_email,
                         'transfer_data'         => [
                                     'destination'   => $sellerUserId,

@@ -8,9 +8,8 @@ use Webkul\Sales\Repositories\OrderRepository;
 use Webkul\StripeConnect\Repositories\StripeCartRepository as StripeCart;
 use Webkul\StripeConnect\Repositories\StripeRepository;
 use Stripe\Stripe as Stripe;
-use BuyNoir\StripeConnect\Helpers\Helpers;
+use Webkul\StripeConnect\Helpers\Helper;
 use Webkul\StripeConnect\Repositories\StripeConnectRepository as StripeConnect;
-use Webkul\StripeConnect\Http\Controllers\StripeConnectController as WebkulStripeConnect;
 use Company;
 
 /**
@@ -20,9 +19,8 @@ use Company;
  * @author  shaiv roy <shaiv.roy361@webkul.com>
  * @copyright 2019 Webkul Software Pvt Ltd (http://www.webkul.com)
  */
-class ExtendStripeConnectController extends WebkulStripeConnect
+class ExtendStripeConnectController extends Controller
 {
-    private $helpers;
     protected $cart;
 
     protected $order;
@@ -74,6 +72,13 @@ class ExtendStripeConnectController extends WebkulStripeConnect
     protected $invoiceRepository;
 
     /**
+     * Helper object
+     *
+     * @var object
+     */
+    protected $helper;
+
+    /**
      * Stripe Connect Repository Instance holder
     */
     protected $stripeConnect;
@@ -81,15 +86,25 @@ class ExtendStripeConnectController extends WebkulStripeConnect
 
     protected $appName;
 
+    /**
+     * Create a new controller instance.
+     *
+     * @param  Webkul\Attribute\Repositories\OrderRepository  $orderRepository
+     * @param  Webkul\StripeConnect\Repositories\StripeCartRepository  $stripeCart
+     * @param  Webkul\StripeConnect\Repositories\StripeRepository  $stripeRepository
+     * @param  Webkul\StripeConnect\Helpers\Helper  $helper
+     * 
+     * @return void
+     */
     public function __construct(
         OrderRepository $orderRepository,
         StripeCart $stripeCart,
         stripeRepository $stripeRepository,
-        Helpers $helpers,
+        Helper $helper,
         StripeConnect $stripeConnect
     )
     {
-        $this->helpers = $helpers;
+        $this->helper = $helper;
 
         $this->orderRepository = $orderRepository;
 
@@ -123,33 +138,42 @@ class ExtendStripeConnectController extends WebkulStripeConnect
     }
 
 
+    /**
+     * Collect stripe token from client side
+     *
+     * @return json
+    */
     public function collectToken()
     {
         $company    = Company::getCurrent();
+        
         $stripeConnect = $this->stripeConnect->findOneWhere([
             'company_id' => $company->id
             ]);
+
         if ( isset($stripeConnect->id) ) {
-            $sellerUser = [
-                'company'=>$company, 
-                'sellerUser'=>$stripeConnect
-            ];
-            
+            $sellerUserId = $stripeConnect->stripe_user_id;
         } else {
             session()->flash('warning', 'Stripe unavailable for this tenant.');
+
             return redirect()->route('shop.checkout.success');
         }
 
         $stripeId   = '';
-        $payment    = $this->helpers->productDetail();
+        $payment    = $this->helper->productDetail();
+
         $stripeToken = $this->stripeCart->findOneWhere([
             'cart_id'   => Cart::getCart()->id,
         ])->first()->stripe_token;  
+
         $decodeStripeToken = json_decode($stripeToken);
+
         $customerId =  NULL;
+
         $paymentMethodId = $decodeStripeToken->attachedCustomer->id;
-        $intent = $this->helpers->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUser);
-        // dd($intent);
+
+        $intent = $this->helper->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId);
+
         if ( $intent ) {
             return response()->json(['client_secret' => $intent->client_secret]);
         } else {
@@ -157,5 +181,4 @@ class ExtendStripeConnectController extends WebkulStripeConnect
         }
     }
 
-    
 }
