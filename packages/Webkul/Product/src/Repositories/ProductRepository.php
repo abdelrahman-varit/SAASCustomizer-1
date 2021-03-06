@@ -405,7 +405,6 @@ class ProductRepository extends Repository
                 ->orderBy('product_id', 'desc')
                 ->paginate(16);
         } else {
-            dd($term);
             $results = app(ProductFlatRepository::class)->scopeQuery(function ($query) use ($term, $channel, $locale) {
                 return $query->distinct()
                     ->addSelect('product_flat.*')
@@ -418,7 +417,7 @@ class ProductRepository extends Repository
                         $queries = explode('_', $term);
 
                         foreach (array_map('trim', $queries) as $value) {
-                            $subQuery->orWhere('product_flat.name', 'like', '%' . urldecode($value) . '%')
+                            $subQuery->where('product_flat.name', 'like', '%' . urldecode($value) . '%')
                                 ->orWhere('product_flat.short_description', 'like', '%' . urldecode($value) . '%');
                         }
                     })
