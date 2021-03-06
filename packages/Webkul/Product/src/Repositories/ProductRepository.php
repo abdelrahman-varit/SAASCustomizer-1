@@ -419,7 +419,7 @@ class ProductRepository extends Repository
 
 
                     ->where(function ($subQuery) use ($term) {
-                        $queries = explode(' ', $term);
+                        $queries = explode(',', $term);
 
                         foreach (array_map('trim', $queries) as $value) {
                             $subQuery->orWhere('product_flat.name', 'like', '%' . urldecode($value) . '%')
