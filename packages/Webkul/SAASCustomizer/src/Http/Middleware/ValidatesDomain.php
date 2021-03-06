@@ -74,17 +74,13 @@ class ValidatesDomain
         if ($currentURL == $primaryServerNameWithoutProtocol) {
             if (request()->is('company/*') || request()->is('super/*')) {
                 return $next($request);
-            }elseif (request()->is('home/*')) {
-                return $next($request);
-            }else {
-                return redirect()->route('saas.home.index');
+            } else {
+                return redirect()->route('company.create.index');
             }
         } else {
             if ((request()->is('company/*') || request()->is('super/*')) && ! request()->is('company/seed-data')) {
                 throw new \Exception('not_allowed_to_visit_this_section', 400);
-            } elseif (request()->is('home/*')) {
-                throw new \Exception('not_allowed_to_visit_this_section', 400);
-            }else {
+            } else {
                 $company = $this->companyRepository->findWhere(['domain' => $currentURL]);
 
                 if (count($company) == 1) {
