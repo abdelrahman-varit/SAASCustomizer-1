@@ -37,6 +37,8 @@
                 
                 @if( request()->is('company/*') )
                     @include ('saas::companies.layouts.nav-top')
+                @elseif( request()->is('home/*') )
+                    @include ('saas::companies.layouts.nav-top')
                 @endif
 
                 <div class="content-container">
