@@ -83,6 +83,8 @@ class ValidatesDomain
             } else {
                 $company = $this->companyRepository->findWhere(['domain' => $currentURL]);
 
+                dd($company);
+
                 if (count($company) == 1) {
                     return $next($request);
                 } else if (count($company) == 0) {
