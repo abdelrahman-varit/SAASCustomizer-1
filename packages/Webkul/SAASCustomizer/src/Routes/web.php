@@ -215,18 +215,12 @@ Route::group(['middleware' => ['web', 'super-locale']], function () {
 
 Route::group(['middleware' => ['web', 'company-locale']], function () {
     // company registration routes
-
-    Route::get('/home/welcome', 'Webkul\SAASCustomizer\Http\Controllers\Company\HomeController@index')->defaults('_config', [
-            'view' => 'saas::companies.home.index'
-        ])->name('saas.home.index');
-
-
     Route::prefix('company')->group(function() {
 
         //Store front home
-        // Route::get('/home', 'Webkul\SAASCustomizer\Http\Controllers\Company\HomeController@index')->defaults('_config', [
-        //     'view' => 'saas::companies.home.index'
-        // ])->name('saas.home.index');
+        Route::get('/home', 'Webkul\SAASCustomizer\Http\Controllers\Company\HomeController@index')->defaults('_config', [
+            'view' => 'saas::companies.home.index'
+        ])->name('saas.home.index');
 
         Route::get('/register', 'Webkul\SAASCustomizer\Http\Controllers\Company\CompanyController@create')->defaults('_config', [
             'view' => 'saas::companies.auth.register'
