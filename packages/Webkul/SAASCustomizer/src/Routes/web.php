@@ -218,7 +218,7 @@ Route::group(['middleware' => ['web', 'company-locale']], function () {
     Route::prefix('company')->group(function() {
 
         //Store front home
-        Route::get('/home', 'Webkul\SAASCustomizer\Http\Controllers\Company\HomeController@index')->defaults('_config', [
+        Route::get('/', 'Webkul\SAASCustomizer\Http\Controllers\Company\HomeController@index')->defaults('_config', [
             'view' => 'saas::companies.home.index'
         ])->name('saas.home.index');
 
