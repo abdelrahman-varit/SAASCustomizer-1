@@ -83,9 +83,9 @@ class ValidatesDomain
             } else {
                 $company = $this->companyRepository->findWhere(['domain' => $currentURL]);
 
-                // dd($company);
+                // dd($C);
 
-                if ($is_active == 1) {
+                if ($is_active->is_active == 1) {
                 
                     if (count($company) == 1) {
                         return $next($request);
