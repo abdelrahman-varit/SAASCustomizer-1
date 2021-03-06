@@ -121,7 +121,7 @@ class ValidatesDomain
                     }
 
                 }else{
-                    $path = 'sellnoir.com';
+                    $path = 'saas';
 
                     return $this->response($path, 400, 'Store is deactivated!', 'Store Deactivated!');
                 }
