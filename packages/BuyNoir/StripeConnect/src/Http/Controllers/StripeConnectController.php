@@ -3,7 +3,7 @@
 namespace BuyNoir\StripeConnect\Http\Controllers;
 
 // use Webkul\StripeConnect\Http\Controllers\Controller;
-// use Webkul\Checkout\Facades\Cart;
+use Webkul\Checkout\Facades\Cart;
 // use Webkul\Sales\Repositories\OrderRepository;
 // use Webkul\StripeConnect\Repositories\StripeCartRepository as StripeCart;
 // use Webkul\StripeConnect\Repositories\StripeRepository;
