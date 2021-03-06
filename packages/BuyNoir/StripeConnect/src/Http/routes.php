@@ -12,13 +12,13 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
 
      //    Route::post('/save/card', 'BuyNoir\StripeConnect\Http\Controllers\StripeConnectController@saveCard')->name('stripe.save.card');
 
-     //    Route::get('/sendtoken', 'BuyNoir\StripeConnect\Http\Controllers\StripeConnectController@collectToken')->name('stripe.get.token');
+        Route::get('/sendtoken', 'BuyNoir\StripeConnect\Http\Controllers\StripeConnectController@collectToken')->name('stripe.get.token');
 
      //    Route::get('/create/charge', 'BuyNoir\StripeConnect\Http\Controllers\StripeConnectController@createCharge')->name('stripe.make.payment');
 
-        Route::get('/stripe', 'BuyNoir\StripeConnect\Http\Controllers\StripeConnectController@collectCard')->defaults('_config', [
-            'view' => 'stripe_saas::checkout.card'
-        ])->name('stripe.cardcollect');
+        // Route::get('/stripe', 'BuyNoir\StripeConnect\Http\Controllers\StripeConnectController@collectCard')->defaults('_config', [
+        //     'view' => 'stripe_saas::checkout.card'
+        // ])->name('stripe.cardcollect');
 
         // Route::get('/stripe/card/check', 'BuyNoir\StripeConnect\Http\Controllers\StripeConnectController@checkCard')->name('stripe.check.card.unique');
 
