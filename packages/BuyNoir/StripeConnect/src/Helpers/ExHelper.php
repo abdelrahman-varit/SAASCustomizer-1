@@ -5,9 +5,8 @@ use Webkul\Checkout\Facades\Cart;
 // use Webkul\StripeConnect\Repositories\StripeRepository;
 use Stripe\PaymentIntent as PaymentIntent;
 
-use Webkul\StripeConnect\Helpers\Helper;
 
-class ExHelper extends Helper{
+class ExHelper{
 
     /**
      * StripeRepository object

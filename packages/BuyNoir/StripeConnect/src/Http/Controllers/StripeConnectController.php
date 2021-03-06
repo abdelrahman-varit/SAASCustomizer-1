@@ -7,6 +7,7 @@ use Company;
 
 use Webkul\StripeConnect\Http\Controllers\StripeConnectController as BaseController;
 use BuyNoir\StripeConnect\Helpers\ExHelper;
+use Webkul\StripeConnect\Helpers\Helper;
 
 class StripeConnectController extends BaseController
 {
@@ -28,7 +29,10 @@ class StripeConnectController extends BaseController
         }
 
         $stripeId   = '';
-        $payment    = $this->helper->productDetail();
+
+        $helper = new Helper;
+
+        $payment    = $helper->productDetail();
 
         $stripeToken = $this->stripeCart->findOneWhere([
             'cart_id'   => Cart::getCart()->id,
