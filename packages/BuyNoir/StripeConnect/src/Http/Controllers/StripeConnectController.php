@@ -11,7 +11,7 @@ namespace BuyNoir\StripeConnect\Http\Controllers;
 // // use Webkul\StripeConnect\Helpers\Helper;
 // use BuyNoir\StripeConnect\Helpers\ExHelper as Helper;
 // use Webkul\StripeConnect\Repositories\StripeConnectRepository as StripeConnect;
-// use Company;
+use Company;
 
 
 
