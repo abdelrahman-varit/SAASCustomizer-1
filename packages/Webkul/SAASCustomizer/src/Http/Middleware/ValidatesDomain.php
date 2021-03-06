@@ -82,7 +82,9 @@ class ValidatesDomain
         } else {
             if ((request()->is('company/*') || request()->is('super/*')) && ! request()->is('company/seed-data')) {
                 throw new \Exception('not_allowed_to_visit_this_section', 400);
-            } else {
+            } elseif (request()->is('home/*')) {
+                throw new \Exception('not_allowed_to_visit_this_section', 400);
+            }else {
                 $company = $this->companyRepository->findWhere(['domain' => $currentURL]);
 
                 if (count($company) == 1) {
