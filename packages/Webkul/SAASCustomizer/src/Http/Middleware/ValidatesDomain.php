@@ -112,7 +112,7 @@ class ValidatesDomain
                             } else {
                                 $path = 'saas';
 
-                                return $this->response($path, 400, 'Store is deactivated!');
+                                return $this->response($path, 400, trans('saas::app.admin.tenant.exceptions.domain-not-found'), 'domain_not_found');
                                 // throw new \Exception('domain_not_found', 400);
                             }
                         }
@@ -121,9 +121,9 @@ class ValidatesDomain
                     }
 
                 }else{
-                    $path = 'saas';
+                    $path = 'sellnoir.com';
 
-                    return $this->response($path, 400, trans('saas::app.admin.tenant.exceptions.domain-not-found'), 'domain_not_found');
+                    return $this->response($path, 400, 'Store is deactivated!', 'Store Deactivated!');
                 }
 
 
