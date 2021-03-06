@@ -406,23 +406,26 @@ class ProductRepository extends Repository
                 ->paginate(16);
         } else {
             $results = app(ProductFlatRepository::class)->scopeQuery(function ($query) use ($term, $channel, $locale) {
-                $query->distinct()
+                return $query->distinct()
                     ->addSelect('product_flat.*')
                     ->where('product_flat.status', 1)
                     ->where('product_flat.visible_individually', 1)
                     ->where('product_flat.channel', $channel)
                     ->where('product_flat.locale', $locale)
                     ->whereNotNull('product_flat.url_key')
-                    ->where(function ($subQuery) use ($term) {
-                        $queries = explode('_', $term);
+                    ->where('product_flat.name', 'like', '%' . urldecode($value) . '%')
+                    ->orWhere('product_flat.short_description', 'like', '%' . urldecode($value) . '%')
 
-                        foreach (array_map('trim', $queries) as $value) {
-                            $subQuery->orWhere('product_flat.name', 'like', '%' . urldecode($value) . '%')
-                                ->orWhere('product_flat.short_description', 'like', '%' . urldecode($value) . '%');
-                        }
-                    })
+
+                    // ->where(function ($subQuery) use ($term) {
+                    //     $queries = explode('_', $term);
+
+                    //     foreach (array_map('trim', $queries) as $value) {
+                    //         $subQuery->orWhere('product_flat.name', 'like', '%' . urldecode($value) . '%')
+                    //             ->orWhere('product_flat.short_description', 'like', '%' . urldecode($value) . '%');
+                    //     }
+                    // })
                     ->orderBy('product_id', 'desc');
-                dd($query);
             })->paginate(16);
         }
 
