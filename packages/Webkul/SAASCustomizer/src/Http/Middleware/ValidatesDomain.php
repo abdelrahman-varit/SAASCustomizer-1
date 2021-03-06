@@ -123,7 +123,7 @@ class ValidatesDomain
                 }else{
                     $path = 'saas';
 
-                    return $this->response($path, 400, 'Store is deactivated!', 'domain_not_found');
+                    return $this->response($path, 400, 'Store is deactivated!', 'Store Deactivated!');
                 }
 
 
