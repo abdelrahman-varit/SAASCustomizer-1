@@ -64,7 +64,7 @@ class ValidatesDomain
             }
         } else {
             //case where IP validation passes then it should redirect to the main domain
-            return redirect()->route('saas.home.index');
+            return redirect()->route('company.create.index');
         }
 
         if (str_contains($primaryServerNameWithoutProtocol, '/')) {
@@ -75,7 +75,7 @@ class ValidatesDomain
             if (request()->is('company/*') || request()->is('super/*')) {
                 return $next($request);
             } else {
-                return redirect()->route('company.create.index');
+                return redirect()->route('saas.home.index');
             }
         } else {
             if ((request()->is('company/*') || request()->is('super/*')) && ! request()->is('company/seed-data')) {
