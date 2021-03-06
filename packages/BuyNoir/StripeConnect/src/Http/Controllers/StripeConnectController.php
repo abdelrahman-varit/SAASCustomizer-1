@@ -8,7 +8,8 @@ use Webkul\Sales\Repositories\OrderRepository;
 use Webkul\StripeConnect\Repositories\StripeCartRepository as StripeCart;
 use Webkul\StripeConnect\Repositories\StripeRepository;
 use Stripe\Stripe as Stripe;
-use Webkul\StripeConnect\Helpers\Helper;
+// use Webkul\StripeConnect\Helpers\Helper;
+use BuyNoir\StripeConnect\Helpers\ExHelper as Helper;
 use Webkul\StripeConnect\Repositories\StripeConnectRepository as StripeConnect;
 use Company;
 
