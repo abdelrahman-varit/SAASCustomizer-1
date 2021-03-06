@@ -50,6 +50,8 @@
 
             @if( request()->is('company/*') )
                 @include('saas::companies.layouts.footer.footer')
+            @elseif( request()->is('home/*') )
+                @include('saas::companies.layouts.footer.footer')
             @endif
             
             {!! view_render_event('bagisto.saas.companies.layout.footer.after') !!}
