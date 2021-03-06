@@ -47,7 +47,7 @@ class StripeConnectController extends BaseController
         ];
 
         
-        dd($intent);
+        // dd($intent);
 
         if ( $intent ) {
             return response()->json(['client_secret' => $intent->client_secret]);
