@@ -64,7 +64,7 @@ class ValidatesDomain
             }
         } else {
             //case where IP validation passes then it should redirect to the main domain
-            return redirect()->route('company.create.index');
+            return redirect()->route('saas.home.index');
         }
 
         if (str_contains($primaryServerNameWithoutProtocol, '/')) {
@@ -72,7 +72,7 @@ class ValidatesDomain
         }
 
         if ($currentURL == $primaryServerNameWithoutProtocol) {
-            if (request()->is('home/*') || request()->is('company/*') || request()->is('super/*')) {
+            if (request()->is('company/*') || request()->is('super/*')) {
                 return $next($request);
             } else {
                 return redirect()->route('saas.home.index');
