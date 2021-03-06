@@ -2,31 +2,33 @@
 namespace BuyNoir\StripeConnect\Helpers;
 
 use Webkul\Checkout\Facades\Cart;
-use Webkul\StripeConnect\Repositories\StripeRepository;
+// use Webkul\StripeConnect\Repositories\StripeRepository;
 use Stripe\PaymentIntent as PaymentIntent;
 
-class ExHelper {
+use Webkul\StripeConnect\Helpers\Helper;
+
+class ExHelper extends Helper{
 
     /**
      * StripeRepository object
      *
      * @var array
      */
-    protected $stripeRepository;
+    // protected $stripeRepository;
 
 
-    public function __construct(stripeRepository $stripeRepository)
-    {
-        $this->stripeRepository = $stripeRepository;
+    // public function __construct(stripeRepository $stripeRepository)
+    // {
+    //     $this->stripeRepository = $stripeRepository;
 
-        if (core()->getConfigData('sales.paymentmethods.stripe.statement_descriptor')) {
-            $this->statementDescriptor = core()->getConfigData('sales.paymentmethods.stripe.statement_descriptor');
-        } else {
-            $this->statementDescriptor = 'Stripe Connect';
-        }
+    //     if (core()->getConfigData('sales.paymentmethods.stripe.statement_descriptor')) {
+    //         $this->statementDescriptor = core()->getConfigData('sales.paymentmethods.stripe.statement_descriptor');
+    //     } else {
+    //         $this->statementDescriptor = 'Stripe Connect';
+    //     }
 
 
-    }
+    // }
 
     /**
      * Seperate seller according to their product
@@ -34,10 +36,10 @@ class ExHelper {
      *
      * @return array
      */
-    public function productDetail()
-    {
-        return null;
-    }
+    // public function productDetail()
+    // {
+    //     return null;
+    // }
 
      /**
      * Create payment for stripe
@@ -123,12 +125,12 @@ class ExHelper {
         return $result;
     }
 
-    public function deleteCardIfPaymentNotDone($getCartDecode)
-    {
-        if ( isset($getCartDecode->stripeReturn->last4) ) {
-            $this->stripeRepository->deleteWhere([
-                'last_four' => $getCartDecode->stripeReturn->last4
-            ]);
-        }
-    }
+    // public function deleteCardIfPaymentNotDone($getCartDecode)
+    // {
+    //     if ( isset($getCartDecode->stripeReturn->last4) ) {
+    //         $this->stripeRepository->deleteWhere([
+    //             'last_four' => $getCartDecode->stripeReturn->last4
+    //         ]);
+    //     }
+    // }
 }
