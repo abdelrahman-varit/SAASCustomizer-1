@@ -415,6 +415,7 @@ class ProductRepository extends Repository
                     ->whereNotNull('product_flat.url_key')
                     ->where('product_flat.name', 'like', '%' . urldecode($term) . '%')
                     ->orWhere('product_flat.short_description', 'like', '%' . urldecode($term) . '%')
+                    ->orWhere('product_flat.meta_keywords', 'like', '%' . urldecode($term) . '%')
 
 
                     // ->where(function ($subQuery) use ($term) {
