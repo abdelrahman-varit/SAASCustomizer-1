@@ -72,7 +72,7 @@ class ValidatesDomain
         }
 
         if ($currentURL == $primaryServerNameWithoutProtocol) {
-            if (request()->is('company/*') || request()->is('super/*')) {
+            if (request()->is('super/*')) {
                 return $next($request);
             } else {
                 return redirect()->route('saas.home.index');
