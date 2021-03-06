@@ -85,7 +85,7 @@ class ValidatesDomain
 
                 // dd($C);
 
-                if ($company->is_active == 1) {
+                if ($company['is_active'] == 1) {
                 
                     if (count($company) == 1) {
                         return $next($request);
