@@ -2,25 +2,22 @@
 
 namespace BuyNoir\StripeConnect\Http\Controllers;
 
-use Webkul\StripeConnect\Http\Controllers\Controller;
-use Webkul\Checkout\Facades\Cart;
-use Webkul\Sales\Repositories\OrderRepository;
-use Webkul\StripeConnect\Repositories\StripeCartRepository as StripeCart;
-use Webkul\StripeConnect\Repositories\StripeRepository;
-use Stripe\Stripe as Stripe;
-// use Webkul\StripeConnect\Helpers\Helper;
-use BuyNoir\StripeConnect\Helpers\ExHelper as Helper;
-use Webkul\StripeConnect\Repositories\StripeConnectRepository as StripeConnect;
-use Company;
+// use Webkul\StripeConnect\Http\Controllers\Controller;
+// use Webkul\Checkout\Facades\Cart;
+// use Webkul\Sales\Repositories\OrderRepository;
+// use Webkul\StripeConnect\Repositories\StripeCartRepository as StripeCart;
+// use Webkul\StripeConnect\Repositories\StripeRepository;
+// use Stripe\Stripe as Stripe;
+// // use Webkul\StripeConnect\Helpers\Helper;
+// use BuyNoir\StripeConnect\Helpers\ExHelper as Helper;
+// use Webkul\StripeConnect\Repositories\StripeConnectRepository as StripeConnect;
+// use Company;
 
-/**
- * StripeConnect Controller
- *
- * @author  Vivek Sharma <viveksh047@webkul.com> @vivek-webkul
- * @author  shaiv roy <shaiv.roy361@webkul.com>
- * @copyright 2019 Webkul Software Pvt Ltd (http://www.webkul.com)
- */
-class StripeConnectController extends Controller
+
+
+use Webkul\StripeConnect\Http\Controllers\StripeConnectController as BaseController;
+
+class StripeConnectController extends BaseController
 {
     protected $cart;
 
