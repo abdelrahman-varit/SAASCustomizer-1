@@ -406,7 +406,6 @@ class ProductRepository extends Repository
                 ->paginate(16);
         } else {
             $results = app(ProductFlatRepository::class)->scopeQuery(function ($query) use ($term, $channel, $locale) {
-                dd('Hello');
                 return $query->distinct()
                     ->addSelect('product_flat.*')
                     ->where('product_flat.status', 1)
@@ -424,6 +423,10 @@ class ProductRepository extends Repository
                     })
                     ->orderBy('product_id', 'desc');
             })->paginate(16);
+
+            dd($results);
+
+            return $query;
         }
 
         return $results;
