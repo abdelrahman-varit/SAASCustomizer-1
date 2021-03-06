@@ -413,14 +413,19 @@ class ProductRepository extends Repository
                     ->where('product_flat.channel', $channel)
                     ->where('product_flat.locale', $locale)
                     ->whereNotNull('product_flat.url_key')
-                    ->where(function ($subQuery) use ($term) {
-                        $queries = explode('_', $term);
+                    ->orWhere('product_flat.name', 'like', '%' . urldecode($term) . '%')
+                    ->orWhere('product_flat.short_description', 'like', '%' . urldecode($term) . '%')
+                    ->orWhere('product_flat.meta_keywords', 'like', '%' . urldecode($term) . '%')
 
-                        foreach (array_map('trim', $queries) as $value) {
-                            $subQuery->orWhere('product_flat.name', 'like', '%' . urldecode($value) . '%')
-                                ->orWhere('product_flat.short_description', 'like', '%' . urldecode($value) . '%');
-                        }
-                    })
+
+                    // ->where(function ($subQuery) use ($term) {
+                    //     $queries = explode('_', $term);
+
+                    //     foreach (array_map('trim', $queries) as $value) {
+                    //         $subQuery->orWhere('product_flat.name', 'like', '%' . urldecode($value) . '%')
+                    //             ->orWhere('product_flat.short_description', 'like', '%' . urldecode($value) . '%');
+                    //     }
+                    // })
                     ->orderBy('product_id', 'desc');
             })->paginate(16);
         }
