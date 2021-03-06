@@ -120,6 +120,10 @@ class ValidatesDomain
                         return $next($request);
                     }
 
+                }else{
+                    $path = 'saas';
+
+                    return $this->response($path, 400, trans('saas::app.admin.tenant.exceptions.domain-not-found'), 'domain_not_found');
                 }
 
 
