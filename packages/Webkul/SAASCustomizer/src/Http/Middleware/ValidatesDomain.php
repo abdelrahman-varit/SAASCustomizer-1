@@ -83,7 +83,7 @@ class ValidatesDomain
             } else {
                 $company = $this->companyRepository->findWhere(['domain' => $currentURL]);
 
-                dd($company);
+                // dd($company);
 
                 if ($is_active == 1) {
                 
