@@ -37,8 +37,6 @@
                 
                 @if( request()->is('company/*') )
                     @include ('saas::companies.layouts.nav-top')
-                @elseif( request()->is('home/*') )
-                    @include ('saas::companies.layouts.nav-top')
                 @endif
 
                 <div class="content-container">
@@ -49,8 +47,6 @@
             {!! view_render_event('bagisto.saas.companies.layout.footer.before') !!}
 
             @if( request()->is('company/*') )
-                @include('saas::companies.layouts.footer.footer')
-            @elseif( request()->is('home/*') )
                 @include('saas::companies.layouts.footer.footer')
             @endif
             
