@@ -147,19 +147,6 @@
                 }
             });
         </script>
-
-        <script type="text/javascript">
-            var delete = document.querySelectorAll('[title="Delete"]');
-
-            console.log(delete);
-
-            if (delete.clicked == false) {
-                // e.preventDefault();
-                alert('Hello');
-            }else{
-                alert('Not Hello');
-            }
-        </script>
         @stack('scripts')
 
         {!! view_render_event('bagisto.admin.layout.body.after') !!}
