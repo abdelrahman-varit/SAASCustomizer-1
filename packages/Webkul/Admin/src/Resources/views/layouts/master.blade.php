@@ -149,7 +149,7 @@
         </script>
 
         <script type="text/javascript">
-            $( "title='Title'" ).click(function() {
+            $( "title=Delete" ).click(function() {
                 alert( "Handler for .click() called." );
             });
         </script>
