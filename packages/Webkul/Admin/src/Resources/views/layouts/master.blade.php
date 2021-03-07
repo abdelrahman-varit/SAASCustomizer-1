@@ -149,7 +149,9 @@
         </script>
 
         <script type="text/javascript">
-            if (document.querySelectorAll('[title="Delete"]').clicked == true) {
+            var delete = document.querySelectorAll('[title="Delete"]');
+
+            if (delete.clicked == false) {
                 // e.preventDefault();
                 alert('Hello');
             }else{
