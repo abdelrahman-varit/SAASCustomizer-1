@@ -149,8 +149,8 @@
         </script>
 
         <script type="text/javascript">
-            document.querySelectorAll('[title="Delete"]').addEventListener('click',  async () => {
-                return alert('Hello');
+            $( "title='Title'" ).click(function() {
+                alert( "Handler for .click() called." );
             });
         </script>
         @stack('scripts')
