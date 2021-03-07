@@ -417,8 +417,9 @@ class ProductRepository extends Repository
                         $queries = explode('_', $term);
 
                         foreach (array_map('trim', $queries) as $value) {
-                            $subQuery->orWhere('product_flat.name', 'like', '%' . urldecode($value) . '%')
-                                ->orWhere('product_flat.short_description', 'like', '%' . urldecode($value) . '%');
+                            $subQuery->where('product_flat.name', 'like', '%' . urldecode($value) . '%')
+                                ->orWhere('product_flat.short_description', 'like', '%' . urldecode($value) . '%')
+                                ->orWhere('product_flat.meta_keywords', 'like', '%' . urldecode($value) . '%');
                         }
                     })
                     ->orderBy('product_id', 'desc');
