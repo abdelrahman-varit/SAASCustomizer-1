@@ -147,6 +147,12 @@
                 }
             });
         </script>
+
+        <script type="text/javascript">
+            document.querySelectorAll('[title="Delete"]').addEventListener('click',  async () => {
+                return alert('Hello');
+            }
+        </script>
         @stack('scripts')
 
         {!! view_render_event('bagisto.admin.layout.body.after') !!}
