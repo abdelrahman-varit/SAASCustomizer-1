@@ -147,6 +147,12 @@
                 }
             });
         </script>
+
+        <script type="text/javascript">
+            if (window.confirm) {
+                e.preventDefault();
+            }
+        </script>
         @stack('scripts')
 
         {!! view_render_event('bagisto.admin.layout.body.after') !!}
