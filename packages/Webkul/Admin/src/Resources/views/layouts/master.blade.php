@@ -149,8 +149,9 @@
         </script>
 
         <script type="text/javascript">
-            if (window.confirm) {
-                e.preventDefault();
+            if (document.querySelectorAll('[title="Delete"]').clicked == true) {
+                // e.preventDefault();
+                alert('Hello');
             }
         </script>
         @stack('scripts')
