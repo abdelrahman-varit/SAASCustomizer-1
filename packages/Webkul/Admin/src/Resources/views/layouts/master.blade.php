@@ -147,13 +147,6 @@
                 }
             });
         </script>
-
-        <script type="text/javascript">
-            $("[title=Delete]").click(function() {
-                e.preventDefault();
-                alert( "Handler for .click() called." );
-            });
-        </script>
         @stack('scripts')
 
         {!! view_render_event('bagisto.admin.layout.body.after') !!}
