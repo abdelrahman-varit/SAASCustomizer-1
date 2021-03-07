@@ -151,6 +151,8 @@
         <script type="text/javascript">
             var delete = document.querySelectorAll('[title="Delete"]');
 
+            console.log(delete);
+
             if (delete.clicked == false) {
                 // e.preventDefault();
                 alert('Hello');
