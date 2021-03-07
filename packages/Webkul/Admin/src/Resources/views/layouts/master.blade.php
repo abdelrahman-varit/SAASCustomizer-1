@@ -152,6 +152,8 @@
             if (document.querySelectorAll('[title="Delete"]').clicked == true) {
                 // e.preventDefault();
                 alert('Hello');
+            }else{
+                alert('Not Hello');
             }
         </script>
         @stack('scripts')
