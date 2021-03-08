@@ -41,6 +41,8 @@ class StripeConnectController extends BaseController
         $intent = $this->helper->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId);
 
 
+        dd($intent->description);
+
         $intent->description = [
             'company'=>$company,
             'sellerUser'=>$stripeConnect
