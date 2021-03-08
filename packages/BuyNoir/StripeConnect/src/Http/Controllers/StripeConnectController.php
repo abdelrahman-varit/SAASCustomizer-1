@@ -25,7 +25,7 @@ class StripeConnectController extends BaseController
                 'sellerUser'=>$stripeConnect
             ];
 
-            dd($sellerUser);
+            dd($sellerUser->sellerUser->stripe_user_id);
         } else {
             session()->flash('warning', 'Stripe unavailable for this tenant.');
 
