@@ -41,7 +41,9 @@ class ValidatesDomain
         $primaryServerName = config('app.url');
 
         $currentURL = $_SERVER['SERVER_NAME'];
+
         $params['domain'] = $currentURL;
+
         $validator = Validator::make($params, [
             'domain' => 'required|ip'
         ]);
@@ -62,32 +64,26 @@ class ValidatesDomain
             }
         } else {
             //case where IP validation passes then it should redirect to the main domain
-            // return redirect()->route('company.create.index');
-            return redirect()->route('buynoir.home.index');
+            return redirect()->route('company.create.index');
         }
-
 
         if (str_contains($primaryServerNameWithoutProtocol, '/')) {
             $primaryServerNameWithoutProtocol = explode('/', $primaryServerNameWithoutProtocol)[0];
         }
 
         if ($currentURL == $primaryServerNameWithoutProtocol) {
-	   
             if (request()->is('company/*') || request()->is('super/*')) {
                 return $next($request);
             } else {
-                // return redirect()->route('company.create.index');
-                return redirect()->route('buynoir.home.index');
+                return redirect()->route('company.create.index');
             }
         } else {
-		            if ((request()->is('company/*') || request()->is('super/*')) && ! request()->is('company/seed-data')) {
+            if ((request()->is('company/*') || request()->is('super/*')) && ! request()->is('company/seed-data')) {
                 throw new \Exception('not_allowed_to_visit_this_section', 400);
             } else {
                 $company = $this->companyRepository->findWhere(['domain' => $currentURL]);
-		
-                if (count($company) == 1) {
-		    //return redirect()->route('buynoir.home.index');
 
+                if (count($company) == 1) {
                     return $next($request);
                 } else if (count($company) == 0) {
                     $cname = explode("www.", $currentURL);
@@ -99,12 +95,9 @@ class ValidatesDomain
                     }
 
                     if (count($company) == 1) {
-//return redirect()->route('buynoir.home.index');
-
                         return $next($request);
                     } else {
                         $channel = $this->channelRepository->findOneByfield('hostname', $currentURL);
-//return redirect()->route('buynoir.home.index');
 
                         if ( isset($channel->id) ) {
                             return $next($request);
@@ -116,8 +109,6 @@ class ValidatesDomain
                         }
                     }
                 } else {
-//return redirect()->route('buynoir.home.index');
-
                     return $next($request);
                 }
             }
