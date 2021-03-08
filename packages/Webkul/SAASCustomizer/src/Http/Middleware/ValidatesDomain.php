@@ -83,34 +83,51 @@ class ValidatesDomain
             } else {
                 $company = $this->companyRepository->findWhere(['domain' => $currentURL]);
 
-                if (count($company) == 1) {
-                    return $next($request);
-                } else if (count($company) == 0) {
-                    $cname = explode("www.", $currentURL);
-                    
-                    if (count($cname) > 1) {
-                        $company = $this->companyRepository->where('cname', $cname)->orWhere('cname', $currentURL)->get();
-                    } else {
-                        $company = $this->companyRepository->findWhere(['cname' => $currentURL]);
-                    }
 
+                $now_company = $company->first();
+
+
+                // dd($now_company->is_active);
+
+                if ($now_company->is_active == 1) {
+                
                     if (count($company) == 1) {
                         return $next($request);
-                    } else {
-                        $channel = $this->channelRepository->findOneByfield('hostname', $currentURL);
+                    } else if (count($company) == 0) {
+                        $cname = explode("www.", $currentURL);
+                        
+                        if (count($cname) > 1) {
+                            $company = $this->companyRepository->where('cname', $cname)->orWhere('cname', $currentURL)->get();
+                        } else {
+                            $company = $this->companyRepository->findWhere(['cname' => $currentURL]);
+                        }
 
-                        if ( isset($channel->id) ) {
+                        if (count($company) == 1) {
                             return $next($request);
                         } else {
-                            $path = 'saas';
+                            $channel = $this->channelRepository->findOneByfield('hostname', $currentURL);
 
-                            return $this->response($path, 400, trans('saas::app.admin.tenant.exceptions.domain-not-found'), 'domain_not_found');
-                            // throw new \Exception('domain_not_found', 400);
+                            if ( isset($channel->id) ) {
+                                return $next($request);
+                            } else {
+                                $path = 'saas';
+
+                                return $this->response($path, 400, trans('saas::app.admin.tenant.exceptions.domain-not-found'), 'domain_not_found');
+                                // throw new \Exception('domain_not_found', 400);
+                            }
                         }
+                    } else {
+                        return $next($request);
                     }
-                } else {
-                    return $next($request);
+
+                }else{
+                    $path = 'saas';
+
+                    return $this->response($path, 400, 'Store is deactivated!', 'domain_not_found');
                 }
+
+
+
             }
         }
     }
