@@ -87,7 +87,7 @@ class ValidatesDomain
                 $now_company = $company->first();
 
 
-                 dd($now_company->is_active);
+                 dd($now_company);
 
                 if ($now_company->is_active == 1) {
                 
