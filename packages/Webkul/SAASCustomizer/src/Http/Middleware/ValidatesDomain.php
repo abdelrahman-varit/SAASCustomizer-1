@@ -87,9 +87,9 @@ class ValidatesDomain
                 $now_company = $company->first();
 
 
-                 dd($now_company);
+                 //dd($now_company);
 
-                if ($now_company->is_active == 1) {
+                //if ($now_company->is_active == 1) {
                 
                     if (count($company) == 1) {
                         return $next($request);
@@ -120,11 +120,11 @@ class ValidatesDomain
                         return $next($request);
                     }
 
-                }else{
-                    $path = 'saas';
+//                 }else{
+//                     $path = 'saas';
 
-                    return $this->response($path, 400, 'Store is deactivated!', 'domain_not_found');
-                }
+//                     return $this->response($path, 400, 'Store is deactivated!', 'domain_not_found');
+//                 }
 
 
 
