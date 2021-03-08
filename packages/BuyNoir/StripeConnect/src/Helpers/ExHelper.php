@@ -4,9 +4,10 @@ namespace BuyNoir\StripeConnect\Helpers;
 use Webkul\Checkout\Facades\Cart;
 // use Webkul\StripeConnect\Repositories\StripeRepository;
 use Stripe\PaymentIntent as PaymentIntent;
+use Webkul\StripeConnect\Helpers\Helper;
 
 
-class ExHelper{
+class ExHelper extends Helper{
 
     /**
      * StripeRepository object
