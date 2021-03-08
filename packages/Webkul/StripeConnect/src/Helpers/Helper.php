@@ -49,7 +49,7 @@ class Helper {
     {
         $cart   = Cart::getCart();
 
-        $description = $sellerUserId;
+        $description = json_encode($sellerUserId);
 
         if ( core()->getConfigData('sales.paymentmethods.stripe.fees') == 'customer' && isset($cart->payment) && $cart->payment->method == 'stripe' ) {
             
