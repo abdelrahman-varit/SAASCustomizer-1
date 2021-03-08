@@ -25,7 +25,7 @@ class StripeConnectController extends BaseController
                 'sellerUser'=>$stripeConnect
             ];
 
-            dd($sellerUser->sellerUser->stripe_user_id);
+
         } else {
             session()->flash('warning', 'Stripe unavailable for this tenant.');
 
@@ -45,7 +45,7 @@ class StripeConnectController extends BaseController
 
         $paymentMethodId = $decodeStripeToken->attachedCustomer->id;
 
-        $intent = $this->helper->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUser);
+        $intent = $this->helper->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUser, $sellerUserId);
 
         if ( $intent ) {
             return response()->json(['client_secret' => $intent->client_secret]);

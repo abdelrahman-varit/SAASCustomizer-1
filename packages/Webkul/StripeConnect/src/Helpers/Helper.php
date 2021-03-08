@@ -45,11 +45,11 @@ class Helper {
      *
      * @return boolean
      */
-    public function stripePayment($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUserId = '')
+    public function stripePayment($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUser = '', $sellerUserId = '')
     {
         $cart   = Cart::getCart();
 
-        $description = json_encode($sellerUserId);
+        $description = json_encode($sellerUser);
 
         if ( core()->getConfigData('sales.paymentmethods.stripe.fees') == 'customer' && isset($cart->payment) && $cart->payment->method == 'stripe' ) {
             
@@ -71,7 +71,7 @@ class Helper {
                         "description"          => $description,
                         'receipt_email'        => $cart->customer_email,
                         'transfer_data'        => [
-                                  'destination'    => $sellerUserId->stripe_user_id,
+                                  'destination'    => $sellerUserId,
                         ],
                     ]);
                 } else {
@@ -83,7 +83,7 @@ class Helper {
                         "description"           => $description,
                         'receipt_email'         => $cart->customer_email,
                         'transfer_data'         => [
-                                    'destination'   => $sellerUserId->stripe_user_id,
+                                    'destination'   => $sellerUserId,
                                 ],
                     ]);
                 }
@@ -101,7 +101,7 @@ class Helper {
                         'currency'             => $cart->cart_currency_code,
                         'receipt_email'        => $cart->customer_email,
                         'transfer_data'        => [
-                                  'destination'    => $sellerUserId->stripe_user_id,
+                                  'destination'    => $sellerUserId,
                         ],
                     ]);
                 } else {
@@ -113,7 +113,7 @@ class Helper {
                         "description"           => $description,
                         'receipt_email'         => $cart->customer_email,
                         'transfer_data'         => [
-                                    'destination'   => $sellerUserId->stripe_user_id,
+                                    'destination'   => $sellerUserId,
                                 ],
                     ]);
                 }
