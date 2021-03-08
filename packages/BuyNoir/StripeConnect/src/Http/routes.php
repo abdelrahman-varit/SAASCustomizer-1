@@ -28,7 +28,6 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
 
         // Route::get('/payment/cancel', 'BuyNoir\StripeConnect\Http\Controllers\StripeConnectController@paymentCancel')->name('stripe.payment.cancel');
 
-
         
     });
 });
