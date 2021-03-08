@@ -5,12 +5,15 @@ namespace BuyNoir\StripeConnect\Http\Controllers;
 use Webkul\Checkout\Facades\Cart;
 use Company;
 use Webkul\StripeConnect\Http\Controllers\StripeConnectController as BaseController;
+use BuyNoir\StripeConnect\Helpers\ExHelper;
 
 class StripeConnectController extends BaseController
 {
 
     public function collectToken()
     {
+        $exhelper = new ExHelper;
+        dd($exhelper);
         $company    = Company::getCurrent();
         
         $stripeConnect = $this->stripeConnect->findOneWhere([
@@ -19,6 +22,11 @@ class StripeConnectController extends BaseController
 
         if ( isset($stripeConnect->id) ) {
             $sellerUserId = $stripeConnect->stripe_user_id;
+
+            $sellerUser = [
+                'company'=>$company,
+                'sellerUser'=>$stripeConnect
+            ];
         } else {
             session()->flash('warning', 'Stripe unavailable for this tenant.');
 
@@ -38,18 +46,18 @@ class StripeConnectController extends BaseController
 
         $paymentMethodId = $decodeStripeToken->attachedCustomer->id;
 
-        $intent = $this->helper->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId);
+        $intent = $this->helper->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUser);
 
 
-        dd($intent->description);
+        // dd($intent->description);
 
-        $intent->description = [
-            'company'=>$company,
-            'sellerUser'=>$stripeConnect
-        ];
+        // $intent->description = [
+        //     'company'=>$company,
+        //     'sellerUser'=>$stripeConnect
+        // ];
 
         
-        // dd($intent);
+        dd($intent);
 
         if ( $intent ) {
             return response()->json(['client_secret' => $intent->client_secret]);
