@@ -5,17 +5,14 @@ namespace BuyNoir\StripeConnect\Http\Controllers;
 use Webkul\Checkout\Facades\Cart;
 use Company;
 use Webkul\StripeConnect\Http\Controllers\StripeConnectController as BaseController;
-use BuyNoir\StripeConnect\Helpers\ExHelper;
 
 class StripeConnectController extends BaseController
 {
 
     public function collectToken()
     {
-        $exhelper = new ExHelper;
-        dd($exhelper);
         $company    = Company::getCurrent();
-        
+
         $stripeConnect = $this->stripeConnect->findOneWhere([
             'company_id' => $company->id
             ]);
