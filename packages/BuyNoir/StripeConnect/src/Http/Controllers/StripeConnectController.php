@@ -24,6 +24,8 @@ class StripeConnectController extends BaseController
                 'company'=>$company,
                 'sellerUser'=>$stripeConnect
             ];
+
+            dd($sellerUser);
         } else {
             session()->flash('warning', 'Stripe unavailable for this tenant.');
 
