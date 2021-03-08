@@ -45,17 +45,6 @@ class StripeConnectController extends BaseController
 
         $intent = $this->helper->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUser);
 
-
-        // dd($intent->description);
-
-        // $intent->description = [
-        //     'company'=>$company,
-        //     'sellerUser'=>$stripeConnect
-        // ];
-
-        
-        dd($intent);
-
         if ( $intent ) {
             return response()->json(['client_secret' => $intent->client_secret]);
         } else {
