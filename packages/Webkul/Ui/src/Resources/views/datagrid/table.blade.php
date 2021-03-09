@@ -824,32 +824,33 @@
                             })
                             .then((willDelete) => {
                             if (willDelete) {
-                                confirmAlert = "delete";
+                                if (confirmAlert) {
+                                    axios.post(element.getAttribute('data-action'), {
+                                        _token: element.getAttribute('data-token'),
+                                        _method: element.getAttribute('data-method')
+                                    }).then(function (response) {
+                                        this.result = response;
+
+                                        if (response.data.redirect) {
+                                            window.location.href = response.data.redirect;
+                                        } else {
+                                            location.reload();
+                                        }
+                                    }).catch(function (error) {
+                                        location.reload();
+                                    });
+
+                                    e.preventDefault();
+                                } else {
+                                    e.preventDefault();
+                                }
                             } else {
                                 confirmAlert = "";
+                                location.reload();
                             }
                             });
                         //end custom confirm box
-                        if (confirmAlert) {
-                            axios.post(element.getAttribute('data-action'), {
-                                _token: element.getAttribute('data-token'),
-                                _method: element.getAttribute('data-method')
-                            }).then(function (response) {
-                                this.result = response;
-
-                                if (response.data.redirect) {
-                                    window.location.href = response.data.redirect;
-                                } else {
-                                    location.reload();
-                                }
-                            }).catch(function (error) {
-                                location.reload();
-                            });
-
-                            e.preventDefault();
-                        } else {
-                            e.preventDefault();
-                        }
+                        
                     },
 
                     captureColumn: function (id) {
