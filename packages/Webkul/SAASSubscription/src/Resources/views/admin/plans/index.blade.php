@@ -27,8 +27,6 @@
                 @foreach ($plans as $plan)
                     <div class="card">
                         <div class="card-title">
-                            {{$recurringProfile->schedule_description}}
-                            {{$recurringProfile->schedule_description===$plan->name?'=matched=':'='}}
                             {{ $plan->name }}
                         </div>
 
@@ -49,7 +47,7 @@
                                     <li>{!! __('saassubscription::app.admin.plans.allowed-orders', ['count' => '<b>' . $plan->allowed_orders . '</b>']) !!}</li>
                                 </ul>
 
-                                <button class="btn btn-lg btn-primary">
+                                <button class="btn btn-lg btn-primary" {{$recurringProfile->schedule_description===$plan->name?' disabled ':''}}>
                                     {{ __('saassubscription::app.admin.plans.purchase') }}
                                 </button>
                             </form>
