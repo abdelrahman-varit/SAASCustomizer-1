@@ -824,7 +824,7 @@
                             })
                             .then((willDelete) => {
                             if (willDelete) {
-                                if (confirmAlert) {
+                               
                                     axios.post(element.getAttribute('data-action'), {
                                         _token: element.getAttribute('data-token'),
                                         _method: element.getAttribute('data-method')
@@ -841,12 +841,10 @@
                                     });
 
                                     e.preventDefault();
-                                } else {
-                                    e.preventDefault();
-                                }
+                               
                             } else {
                                 confirmAlert = "";
-                                location.reload();
+                                e.preventDefault();
                             }
                             });
                         //end custom confirm box
