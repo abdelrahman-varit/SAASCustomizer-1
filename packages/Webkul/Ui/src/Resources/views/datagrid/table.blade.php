@@ -812,6 +812,7 @@
 
                     doAction: function (e) {
                         var element = e.currentTarget;
+                        var confirmAlert = "";
 
                         //custom confirm box
                         swal({
@@ -823,15 +824,13 @@
                             })
                             .then((willDelete) => {
                             if (willDelete) {
-                                swal("Poof! Your imaginary file has been deleted!", {
-                                icon: "success",
-                                });
+                                confirmAlert = "delete";
                             } else {
-                                swal("Your imaginary file is safe!");
+                                confirmAlert = "";
                             }
                             });
                         //end custom confirm box
-                        if (confirm('{{__('ui::app.datagrid.massaction.delete') }}')) {
+                        if (confirmAlert)) {
                             axios.post(element.getAttribute('data-action'), {
                                 _token: element.getAttribute('data-token'),
                                 _method: element.getAttribute('data-method')
