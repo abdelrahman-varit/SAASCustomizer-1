@@ -27,6 +27,7 @@
                 @foreach ($plans as $plan)
                     <div class="card">
                         <div class="card-title">
+                            {{$recurringProfile->type}}
                             {{ $plan->name }}
                         </div>
 

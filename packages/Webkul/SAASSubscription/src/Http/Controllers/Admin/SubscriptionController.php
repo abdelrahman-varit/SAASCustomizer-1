@@ -70,10 +70,8 @@ class SubscriptionController extends Controller
     public function index()
     {
         $plans = $this->planRepository->all();
-        $company_id = Company::getCurrent()->id;
-        $current_plans = $this->purchasedPlanRep->findOneWhere('company_id',$company_id);
-        dd( $current_plans);;
-        return view($this->_config['view'], compact('plans'));
+        $recurringProfile = $this->subscriptionHelper->getCurrentRecurringProfile();       
+        return view($this->_config['view'], compact('plans','recurringProfile'));
     }
 
     /**
