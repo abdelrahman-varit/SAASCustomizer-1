@@ -33,10 +33,11 @@
             </th>
         </tr>
     @endif
-    <script>
-        function deleteConfirm(){
-            rturn confirm('my sweet alert');
-            //{{ __('ui::app.datagrid.click_on_action') }}
-        }
-    </script>
+
 </thead>
+<script>
+    function deleteConfirm(){
+        rturn confirm('my sweet alert');
+        //{{ __('ui::app.datagrid.click_on_action') }}    
+    }
+</script>
