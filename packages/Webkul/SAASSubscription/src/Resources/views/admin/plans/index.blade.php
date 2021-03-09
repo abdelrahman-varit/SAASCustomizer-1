@@ -27,7 +27,8 @@
                 @foreach ($plans as $plan)
                     <div class="card">
                         <div class="card-title">
-                            {{$recurringProfile->type}}
+                            {{$recurringProfile->schedule_description}}
+                            {{$recurringProfile->schedule_description===$plan->name?'=matched=':'='}}
                             {{ $plan->name }}
                         </div>
 
