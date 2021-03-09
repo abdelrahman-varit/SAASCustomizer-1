@@ -830,7 +830,7 @@
                             }
                             });
                         //end custom confirm box
-                        if (confirmAlert)) {
+                        if (confirmAlert) {
                             axios.post(element.getAttribute('data-action'), {
                                 _token: element.getAttribute('data-token'),
                                 _method: element.getAttribute('data-method')
