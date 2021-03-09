@@ -104,7 +104,7 @@ class RefundController extends Controller
         $this->validate(request(), [
             'refund.items.*' => 'required|numeric|min:0',
         ]);
-
+        $data =[] ;
         $data = request()->all();
 
         if (! $data['refund']['shipping']) {
