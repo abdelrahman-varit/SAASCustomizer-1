@@ -813,6 +813,24 @@
                     doAction: function (e) {
                         var element = e.currentTarget;
 
+                        //custom confirm box
+                        swal({
+                            title: "Are you sure?",
+                            text: "{{__('ui::app.datagrid.massaction.delete') }}",
+                            icon: "warning",
+                            buttons: true,
+                            dangerMode: true,
+                            })
+                            .then((willDelete) => {
+                            if (willDelete) {
+                                swal("Poof! Your imaginary file has been deleted!", {
+                                icon: "success",
+                                });
+                            } else {
+                                swal("Your imaginary file is safe!");
+                            }
+                            });
+                        //end custom confirm box
                         if (confirm('{{__('ui::app.datagrid.massaction.delete') }}')) {
                             axios.post(element.getAttribute('data-action'), {
                                 _token: element.getAttribute('data-token'),
@@ -865,4 +883,5 @@
             });
         </script>
     @endpush
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </div>
