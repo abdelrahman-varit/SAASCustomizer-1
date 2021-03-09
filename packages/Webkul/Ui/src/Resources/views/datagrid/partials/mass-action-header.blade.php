@@ -8,9 +8,11 @@
                         <span class="icon checkbox-dash-icon"></span>
                     </span>
 
-                    <form method="POST" id="mass-action-form" style="display: inline-flex;" action="" onsubmit="return function(){ return confirm('hello world')}">
-                        @csrf()
+                    
 
+                    <form method="POST" id="mass-action-form" style="display: inline-flex;" action="" onsubmit="return confirmDelete()">
+                        @csrf()
+                       
                         <input type="hidden" id="indexes" name="indexes" v-model="dataIds">
 
                         <div class="control-group">

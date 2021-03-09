@@ -881,5 +881,27 @@
             });
         </script>
     @endpush
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+		function confirmDelete(){
+							 //custom confirm box
+                        swal({
+                            title: "Are you sure?",
+                            text: "{{__('ui::app.datagrid.massaction.delete') }}",
+                            icon: "warning",
+                            buttons: true,
+                            dangerMode: true,
+                            })
+                            .then((willDelete) => {
+                            if (willDelete) {
+                               return true;
+                                     
+                               
+                            } else {
+                               return false; 
+                            }
+                            });
+                        //end custom confirm box
+        }
+	</script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </div>
