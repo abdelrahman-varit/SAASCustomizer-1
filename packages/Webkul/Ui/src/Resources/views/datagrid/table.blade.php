@@ -894,12 +894,11 @@
                             .then((willDelete) => {
                             if (willDelete) {
                                return true;
-                                     
-                               
                             } else {
                                return false; 
                             }
                             });
+                            return false;
                         //end custom confirm box
         }
 	</script>
