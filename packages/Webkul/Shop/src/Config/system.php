@@ -15,7 +15,7 @@ return [
             ],
             [
                 'name'          => 'wishlist_option',
-                'title'         => 'shop::app.products.wishlist-options',
+                'title'         => 'shop::app.products.wishlist_options',
                 'type'          => 'boolean',
                 'locale_based'  => true,
                 'channel_based' => true,
