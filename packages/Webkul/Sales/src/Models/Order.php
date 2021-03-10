@@ -19,6 +19,7 @@ class Order extends Model implements OrderContract
     protected $guarded = [
         'id',
         'items',
+        'company_id',
         'shipping_address',
         'billing_address',
         'customer',
