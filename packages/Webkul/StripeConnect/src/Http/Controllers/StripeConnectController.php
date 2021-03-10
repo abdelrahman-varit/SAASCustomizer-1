@@ -115,7 +115,7 @@ class StripeConnectController extends Controller
         $this->stripeConnect = $stripeConnect;
 
         if ( company()->getSuperConfigData('sales.paymentmethods.stripe.active') == 1 ) {
-            $this->appName      = 'Webkul Bagisto Stripe Payment Gateway';
+            $this->appName      = 'BuyNoir Stripe Payment Gateway';
             $this->partner_Id   = 'pp_partner_FLJSvfbQDaJTyY';
 
             Stripe::setApiVersion("2019-12-03");

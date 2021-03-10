@@ -1230,7 +1230,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => ' مدعوم من <a href="https://bagisto.com/" target="_blank"> باغيستو </a> ، مشروع مجتمع بواسطة <a href="https://webkul.com/" target="_blank">Webkul</a>'
+        'copy-right' => ' مدعوم من <a href="https://sellnoir.com/" target="_blank"> باغيستو </a> ، مشروع مجتمع بواسطة <a href="https://sellnoir.com/" target="_blank">SellNoir</a>'
     ],
 
     'admin' => [

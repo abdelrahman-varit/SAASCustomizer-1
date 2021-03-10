@@ -1228,7 +1228,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'Powered by <a href="https://bagisto.com/" target="_blank">Bagisto</a>, A Community Project by <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => 'Powered by <a href="https://sellnoir.com/" target="_blank">SellNoir</a>, A Community Project by <a href="https://sellnoir.com/" target="_blank">sellnoir</a>',
     ],
 
     'admin' => [
@@ -1252,6 +1252,9 @@ return [
         'system' => [
             'catalog' => 'Catalog',
             'products' => 'Products',
+            'homepage' => 'Homepage configuration',
+            'allow-no-of-new-product-homepage' => 'Allowed No of New Product in Homepage',
+            'allow-no-of-featured-product-homepage' => 'Allowed No of Featured Product in Homepage',
             'guest-checkout' => 'Guest Checkout',
             'allow-guest-checkout' => 'Allow Guest Checkout',
             'allow-guest-checkout-hint' => 'Hint: If turned on, this option can be configured for each product specifically.',

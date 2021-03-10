@@ -1227,7 +1227,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'Napędzany przez <a href="https://bagisto.com/" target="_blank">Bagisto</a>, projekt wspólnotowy by <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => 'Napędzany przez <a href="https://sellnoir.com/" target="_blank">SellNoir</a>, projekt wspólnotowy by <a href="https://sellnoir.com/" target="_blank">SellNoir</a>',
     ],
 
     'admin' => [

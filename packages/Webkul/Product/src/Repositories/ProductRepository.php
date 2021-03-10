@@ -317,6 +317,9 @@ class ProductRepository extends Repository
      */
     public function getNewProducts()
     {
+        $new_product_page_count = 
+		core()->getConfigData('catalog.products.homepage.no_of_new_product_homepage')>0
+			?core()->getConfigData('catalog.products.homepage.no_of_new_product_homepage'):8;
         $results = app(ProductFlatRepository::class)->scopeQuery(function ($query) {
             $channel = request()->get('channel') ?: (core()->getCurrentChannelCode() ?: core()->getDefaultChannelCode());
 
@@ -330,7 +333,7 @@ class ProductRepository extends Repository
                 ->where('product_flat.channel', $channel)
                 ->where('product_flat.locale', $locale)
                 ->inRandomOrder();
-        })->paginate(4);
+        })->paginate($new_product_page_count);
 
         return $results;
     }
@@ -342,6 +345,9 @@ class ProductRepository extends Repository
      */
     public function getFeaturedProducts()
     {
+        $features_product_page_count = 
+		core()->getConfigData('catalog.products.homepage.no_of_featured_product_homepage')>0
+			?core()->getConfigData('catalog.products.homepage.no_of_featured_product_homepage'):8;
         $results = app(ProductFlatRepository::class)->scopeQuery(function ($query) {
             $channel = request()->get('channel') ?: (core()->getCurrentChannelCode() ?: core()->getDefaultChannelCode());
 
@@ -355,7 +361,7 @@ class ProductRepository extends Repository
                 ->where('product_flat.channel', $channel)
                 ->where('product_flat.locale', $locale)
                 ->inRandomOrder();
-        })->paginate(4);
+        })->paginate($features_product_page_count);
 
         return $results;
     }

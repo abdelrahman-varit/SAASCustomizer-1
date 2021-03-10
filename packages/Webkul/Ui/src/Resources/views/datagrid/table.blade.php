@@ -898,7 +898,7 @@
                                return false; 
                             }
                             });
-                            return false;
+                             
                         //end custom confirm box
         }
 	</script>

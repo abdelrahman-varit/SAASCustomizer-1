@@ -2,7 +2,11 @@
 
 @auth('customer')
     {!! view_render_event('bagisto.shop.products.wishlist.before') !!}
+    @php
+        $showWishlist = core()->getConfigData('general.content.shop.wishlist_option') == "1" ? true : false
+    @endphp
 
+    @if ($showWishlist) 
     <a
         @if ($wishListHelper->getWishlistProduct($product))
             class="add-to-wishlist already"
@@ -16,6 +20,6 @@
         href="{{ route('customer.wishlist.add', $product->product_id) }}">
         <span class="icon wishlist-icon"></span>
     </a>
-
+    @endif 
     {!! view_render_event('bagisto.shop.products.wishlist.after') !!}
 @endauth

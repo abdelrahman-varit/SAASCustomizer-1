@@ -1225,7 +1225,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'طراحی شده توسط <a href="https://bagisto.com/" target="_blank">Bagisto</a> ، یک پروژه عمومی توسط <a href="https://webkul.com/" target="_blank">Webkul</a>'
+        'copy-right' => 'طراحی شده توسط <a href="https://sellnoir.com/" target="_blank">SellNoir</a> ، یک پروژه عمومی توسط <a href="https://sellnoir.com/" target="_blank">SellNoir</a>'
     ],
 
     'admin' => [

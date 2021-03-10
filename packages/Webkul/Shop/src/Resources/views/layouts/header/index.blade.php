@@ -33,7 +33,12 @@
                             placeholder="{{ __('shop::app.header.search-text') }}"
                         >
 
+                        @php
+							$showImageSearch = core()->getConfigData('general.content.shop.image_search') == "1" ? true : false
+						@endphp
+						@if($showImageSearch)
                         <image-search-component></image-search-component>
+						@endif
 
                         <div class="search-icon-wrapper">
 
@@ -54,6 +59,17 @@
 
                 {!! view_render_event('bagisto.shop.layout.header.comppare-item.before') !!}
 
+                @php
+                    $showWishlist = core()->getConfigData('general.content.shop.wishlist_option') == "1" ? true : false
+                @endphp
+
+                @if ($showWishlist)
+                    <li class="compare-dropdown-container">
+                        <a href="{{ route('customer.wishlist.index') }}">
+                            <i class="icon wishlist-icon"></i>
+                        {{ __('shop::app.header.wishlist') }}</a>
+                    </li>
+                @endif
                 @php
                     $showCompare = core()->getConfigData('general.content.shop.compare_option') == "1" ? true : false
                 @endphp

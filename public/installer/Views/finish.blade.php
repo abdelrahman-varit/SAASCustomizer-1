@@ -16,7 +16,7 @@
             <div class="clearfix">&nbsp;</div>
             <div class="" role="toolbar" aria-label="buttons">
                 <button class="btn btn-primary" onclick="finish()">Launch the admin interface</button>
-                <a href="https://bagisto.com/en/extensions/" class="btn btn-secondary" target="_blank">Bagisto Extensions</a>
+                <a href="https://sellnoir.com/en/extensions/" class="btn btn-secondary" target="_blank">Bagisto Extensions</a>
                 <a href="https://forums.bagisto.com/" class="btn btn-secondary" target="_blank">Bagisto Forums</a>
             </div> 
         </div>
