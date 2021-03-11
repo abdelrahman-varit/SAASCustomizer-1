@@ -96,13 +96,14 @@ class Order
      */
     public function sendNewShipmentMail($shipment)
     {
+        dd($shipment);
         $customerLocale = $this->getLocale($shipment);
         
         try {
             if ($shipment->email_sent) {
                 return;
             }
-            dd($shipment);
+           
             /* email to customer */
             $configKey = 'emails.general.notifications.emails.general.notifications.new-shipment';
              
