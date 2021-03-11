@@ -109,6 +109,7 @@ class Order
             if (core()->getConfigData($configKey)) {
                 $this->prepareMail($customerLocale, new NewShipmentNotification($shipment));
             }
+            dd($shipment);
 
             /* email to admin */
             // $configKey = 'emails.general.notifications.emails.general.notifications.new-inventory-source';

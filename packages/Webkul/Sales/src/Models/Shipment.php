@@ -19,7 +19,7 @@ class Shipment extends Model implements ShipmentContract
      */
     public function order()
     {
-        return $this->belongsTo(OrderProxy::modelClass());
+        return $this->belongsTo(Order::modelClass());
     }
 
     /**
