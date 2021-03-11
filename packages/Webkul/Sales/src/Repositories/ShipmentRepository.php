@@ -157,7 +157,7 @@ class ShipmentRepository extends Repository
 
             $this->orderRepository->updateOrderStatus($order);
 
-            Event::dispatch('sales.shipment.save.after', $shipment);
+            //Event::dispatch('sales.shipment.save.after', $shipment);
         } catch (\Exception $e) {
             DB::rollBack();
 

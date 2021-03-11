@@ -97,7 +97,7 @@ class Order
     public function sendNewShipmentMail($shipment)
     {
         $customerLocale = $this->getLocale($shipment);
-        dd($shipment);
+         
         try {
             if ($shipment->email_sent) {
                 return;
@@ -116,7 +116,7 @@ class Order
                 $this->prepareMail(env('APP_LOCALE'), new NewInventorySourceNotification($shipment));
             }
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            report($e->getMessage());
         }
     }
 
