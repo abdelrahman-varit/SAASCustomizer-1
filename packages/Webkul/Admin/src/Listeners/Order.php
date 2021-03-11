@@ -104,11 +104,11 @@ class Order
             }
 
             /* email to customer */
-            // $configKey = 'emails.general.notifications.emails.general.notifications.new-shipment';
+            $configKey = 'emails.general.notifications.emails.general.notifications.new-shipment';
              
-            // if (core()->getConfigData($configKey)) {
-            //     $this->prepareMail($customerLocale, new NewShipmentNotification($shipment));
-            // }
+            if (core()->getConfigData($configKey)) {
+                $this->prepareMail($customerLocale, new NewShipmentNotification($shipment));
+            }
 
             /* email to admin */
             // $configKey = 'emails.general.notifications.emails.general.notifications.new-inventory-source';
