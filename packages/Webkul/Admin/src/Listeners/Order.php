@@ -102,14 +102,14 @@ class Order
             if ($shipment->email_sent) {
                 return;
             }
-
+            dd($shipment);
             /* email to customer */
             $configKey = 'emails.general.notifications.emails.general.notifications.new-shipment';
              
             if (core()->getConfigData($configKey)) {
                 $this->prepareMail($customerLocale, new NewShipmentNotification($shipment));
             }
-            dd($shipment);
+            
 
             /* email to admin */
             // $configKey = 'emails.general.notifications.emails.general.notifications.new-inventory-source';
