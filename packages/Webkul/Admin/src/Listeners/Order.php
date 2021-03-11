@@ -116,7 +116,7 @@ class Order
                 $this->prepareMail(env('APP_LOCALE'), new NewInventorySourceNotification($shipment));
             }
         } catch (\Exception $e) {
-            report($e->getMessage());
+            report($e);
         }
     }
 
