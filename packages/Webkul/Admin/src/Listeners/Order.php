@@ -97,7 +97,7 @@ class Order
     public function sendNewShipmentMail($shipment)
     {
         $customerLocale = $this->getLocale($shipment);
-
+        dd($shipment);
         try {
             if ($shipment->email_sent) {
                 return;
@@ -105,6 +105,7 @@ class Order
 
             /* email to customer */
             $configKey = 'emails.general.notifications.emails.general.notifications.new-shipment';
+           
             if (core()->getConfigData($configKey)) {
                 $this->prepareMail($customerLocale, new NewShipmentNotification($shipment));
             }
@@ -115,7 +116,7 @@ class Order
                 $this->prepareMail(env('APP_LOCALE'), new NewInventorySourceNotification($shipment));
             }
         } catch (\Exception $e) {
-            report($e);
+            dd($e->getMessage());
         }
     }
 
