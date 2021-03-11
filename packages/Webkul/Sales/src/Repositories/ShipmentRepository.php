@@ -10,6 +10,7 @@ use Webkul\Sales\Contracts\Shipment;
 use Webkul\Sales\Repositories\OrderRepository;
 use Webkul\Sales\Repositories\OrderItemRepository;
 use Webkul\Sales\Repositories\ShipmentItemRepository;
+use Company;
 
 class ShipmentRepository extends Repository
 {
@@ -80,10 +81,11 @@ class ShipmentRepository extends Repository
             Event::dispatch('sales.shipment.save.before', $data);
 
             $order = $this->orderRepository->find($data['order_id']);
-
+            $company = Company::getCurrent(); 
             $shipment = $this->model->create([
                 'order_id'            => $order->id,
                 'total_qty'           => 0,
+                'company_id'           => $company->id,
                 'carrier_title'       => $data['shipment']['carrier_title'],
                 'track_number'        => $data['shipment']['track_number'],
                 'customer_id'         => $order->customer_id,
