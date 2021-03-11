@@ -96,9 +96,8 @@ class Order
      */
     public function sendNewShipmentMail($shipment)
     {
-        dd($shipment);
         $customerLocale = $this->getLocale($shipment);
-        
+        dd($shipment);
         try {
             if ($shipment->email_sent) {
                 return;
