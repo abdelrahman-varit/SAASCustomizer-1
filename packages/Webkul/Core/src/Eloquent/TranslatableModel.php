@@ -47,7 +47,7 @@ class TranslatableModel extends Model
                 return $this->defaultLocale;
             }
 
-            return config('translatable.locale') ?: app()->make('translator')->getLocale();
+            return config('translatable.locale') ?'en': app()->make('translator')->getLocale();
         }
     }
 
