@@ -91,8 +91,7 @@
                             }else{
                                 echo "<script>window.location.href='?page=1';</script>";
                             }
-                        }
-                    @endphp
+                        }            
                     @endphp
 
                     <div class="empty">
