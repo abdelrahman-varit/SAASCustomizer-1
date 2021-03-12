@@ -16,7 +16,6 @@
 
             <div class="account-head mb-15">
                 <span class="account-heading">
-                    <h1>pages: {{$page}}</h1>
                     {{ __('shop::app.customer.account.wishlist.title') }}</span>
                 
                 @if (count($items))
@@ -83,6 +82,15 @@
                         {{ $items->links()  }}
                     </div>
                 @else
+                    @php
+                       	@php
+                        $page = Request::get('page');
+                        if($page>1){
+                            echo "<script>window.location.href='?page=1';</script>";
+                        }
+                    @endphp
+                    @endphp
+
                     <div class="empty">
                         {{ __('customer::app.wishlist.empty') }}
                     </div>
