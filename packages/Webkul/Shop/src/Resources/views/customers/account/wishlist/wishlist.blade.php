@@ -83,7 +83,6 @@
                     </div>
                 @else
                     @php
-                       	@php
                         $page = isset(Request::get('page'))?Request::get('page'):'';
                         if(!empty($page) && $page>1){
                             $page = $page -1;
