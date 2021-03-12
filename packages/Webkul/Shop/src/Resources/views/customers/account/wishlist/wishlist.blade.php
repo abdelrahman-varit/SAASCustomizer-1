@@ -84,9 +84,14 @@
                 @else
                     @php
                        	@php
-                        $page = Request::get('page');
-                        if($page>1){
-                            echo "<script>window.location.href='?page=1';</script>";
+                        $page = isset(Request::get('page'))?Request::get('page'):'';
+                        if(!empty($page) && $page>1){
+                            $page = $page -1;
+                            if($page<1){
+                                echo "<script>window.location.href='./';</script>";
+                            }else{
+                                echo "<script>window.location.href='?page=1';</script>";
+                            }
                         }
                     @endphp
                     @endphp
