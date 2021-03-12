@@ -111,10 +111,10 @@ class Order
             }
             
             /* email to admin */
-            // $configKey = 'emails.general.notifications.emails.general.notifications.new-inventory-source';
-            // if (core()->getConfigData($configKey)) {
-            //     $this->prepareMail(env('APP_LOCALE'), new NewInventorySourceNotification($shipment));
-            // }
+            $configKey = 'emails.general.notifications.emails.general.notifications.new-inventory-source';
+            if (core()->getConfigData($configKey)) {
+                $this->prepareMail(env('APP_LOCALE'), new NewInventorySourceNotification($shipment));
+            }
         } catch (\Exception $e) {
             report($e);
         }

@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Webkul\Sales\Contracts\Shipment;
+
 
 class NewShipmentNotification extends Mailable
 {
@@ -25,7 +25,7 @@ class NewShipmentNotification extends Mailable
      * @param  \Webkul\Sales\Contracts\Shipment  $shipment
      * @return void
      */
-    public function __construct(Shipment $shipment)
+    public function __construct($shipment)
     {
         $this->shipment = $shipment;
     }
