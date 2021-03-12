@@ -39,7 +39,7 @@ return [
         'wishlist' => 'Wishlist',
         'cart' => 'Cart',
         'logout' => 'Logout',
-        'search-text' => 'Search products here'
+        'search-text' => 'Search products'
     ],
 
     'minicart' => [
