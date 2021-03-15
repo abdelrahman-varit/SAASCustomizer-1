@@ -90,7 +90,7 @@
                                 if($page<1){
                                     echo "<script>window.location.href='./';</script>";
                                 }else{
-                                    echo "<script>window.location.href='?page=1';</script>";
+                                    echo "<script>window.location.href='?page=".$page."';</script>";
                                 }
                             }    
                         }

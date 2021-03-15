@@ -285,7 +285,8 @@ return [
         Webkul\SAASCustomizer\Providers\SAASCustomizerServiceProvider::class,
         Webkul\SAASSubscription\Providers\SAASSubscriptionServiceProvider::class,
         Webkul\StripeConnect\Providers\StripeConnectServiceProvider::class,
-        BuyNoir\StripeConnect\Providers\StripeConnectServiceProvider::class
+        BuyNoir\StripeConnect\Providers\StripeConnectServiceProvider::class,
+        BuyNoir\SuperLandPage\Providers\SuperLandPageServiceProvider::class,
     ],
 
     /*
