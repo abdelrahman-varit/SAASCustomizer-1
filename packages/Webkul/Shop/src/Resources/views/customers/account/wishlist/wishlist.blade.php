@@ -83,15 +83,19 @@
                     </div>
                 @else
                     @php
-                        $page = null!== Request::get('page')?Request::get('page'):'';
-                        if(!empty($page) && $page>1){
-                            $page = $page -1;
-                            if($page<1){
-                                echo "<script>window.location.href='./';</script>";
-                            }else{
-                                echo "<script>window.location.href='?page=1';</script>";
-                            }
-                        }            
+                        if(null!== Request::get('page')){
+                            $page =  Request::get('page');
+                            if(!empty($page) && $page>1){
+                                $page = $page -1;
+                                if($page<1){
+                                    echo "<script>window.location.href='./';</script>";
+                                }else{
+                                    echo "<script>window.location.href='?page=1';</script>";
+                                }
+                            }    
+                        }
+                       
+                                
                     @endphp
 
                     <div class="empty">
