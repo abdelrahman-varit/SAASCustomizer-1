@@ -60,7 +60,7 @@ class ProductDataGrid extends DataGrid
         $queryBuilder = DB::table('product_flat')
             ->leftJoin('products', 'product_flat.product_id', '=', 'products.id')
             ->leftJoin('attribute_families', 'products.attribute_family_id', '=', 'attribute_families.id')
-            ->leftJoin('product_inventories', 'product_flat.product_id', '=', 'product_inventories.product_id')
+            ->join('product_inventories', 'product_flat.product_id', '=', 'product_inventories.product_id')
             ->select(
                 'product_flat.locale',
                 'product_flat.channel',
@@ -71,7 +71,7 @@ class ProductDataGrid extends DataGrid
                 'product_flat.status',
                 'product_flat.price',
                 'attribute_families.name as attribute_family',
-                DB::raw('product_inventories.id, sum(product_inventories.qty) as quantity')
+                DB::raw('SUM('. DB::getTablePrefix() . 'product_inventories.qty) as quantity')
             );
 
         $queryBuilder->groupBy('product_flat.product_id', 'product_flat.channel');
