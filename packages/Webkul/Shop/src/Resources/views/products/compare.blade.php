@@ -48,6 +48,8 @@
                             this.$root.addFlashMessages()
                         });
                     } else {
+                        let updatedItems = [this.productId];
+                        let existingItems = this.getStorageValue('compared_product');
 
                         if(existingItems.length>3){
 							 window.flashMessages = [{
@@ -57,8 +59,7 @@
 
                                 this.$root.addFlashMessages()
 						}else{
-                            let updatedItems = [this.productId];
-                            let existingItems = this.getStorageValue('compared_product');
+                          
             
                             if (existingItems) {
                                 if (existingItems.indexOf(this.productId) == -1) {
