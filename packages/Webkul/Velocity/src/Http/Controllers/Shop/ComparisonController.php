@@ -74,7 +74,15 @@ class ComparisonController extends Controller
             'product_flat_id' => $productId,
         ]);
 
-        if (! $compareProduct) {
+        if(count($compareProduct)>3){
+            return response()->json([
+                'status'  => 'success',
+                'label'   => trans('velocity::app.shop.general.alert.success'),
+                'message' => trans('Maximum number of products are added to compare list!'),
+            ], 200);
+        }
+
+        if (! $compareProduct ) {
             // insert new row
 
             $productFlatRepository = app('\Webkul\Product\Models\ProductFlat');
