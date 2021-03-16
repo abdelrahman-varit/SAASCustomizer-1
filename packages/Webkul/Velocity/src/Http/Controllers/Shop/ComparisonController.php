@@ -74,12 +74,24 @@ class ComparisonController extends Controller
             'product_flat_id' => $productId,
         ]);
 
-        if(count($compareProduct)>3){
-            return response()->json([
-                'status'  => 'success',
-                'label'   => trans('velocity::app.shop.general.alert.success'),
-                'message' => trans('Maximum number of products are added to compare list!'),
-            ], 200);
+        if ($customerId) {
+            $productCollection = $this->compareProductsRepository
+                ->leftJoin(
+                    'product_flat',
+                    'velocity_customer_compare_products.product_flat_id',
+                    'product_flat.id'
+                )
+                ->where('customer_id', $customerId)
+                ->get()
+                ->toArray();
+
+            if(count($productCollection)>3){
+                return response()->json([
+                    'status'  => 'warning',
+                    'label'   => trans('velocity::app.shop.general.alert.success'),
+                    'message' => trans('shop::app.customer.compare.maximum_added'),
+                ], 200);
+            }
         }
 
         if (! $compareProduct ) {

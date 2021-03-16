@@ -49,7 +49,7 @@
                                 @switch ($attribute['code'])
                                     @case('name')
                                         <a :href="`${baseUrl}/${product.url_key}`" class="unset remove-decoration active-hover">
-                                            <h3 class="fw6 fs18 mt-0" v-text="product['{{ $attribute['code'] }}']"></h3>
+                                            <h4 class="fw6 fs18 mt-0" v-text="product['{{ $attribute['code'] }}'].length>30?product['{{ $attribute['code'] }}'].substring(0,30)+'...':product['{{ $attribute['code'] }}']"></h4>
                                         </a>
                                         @break
 
