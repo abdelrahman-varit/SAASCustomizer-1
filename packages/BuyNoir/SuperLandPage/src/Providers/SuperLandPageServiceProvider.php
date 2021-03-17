@@ -18,6 +18,7 @@ namespace BuyNoir\SuperLandPage\Providers;
 		  $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
           $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'superlandpage_view');
           $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'superlandpage_lang');
+          $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'saas');
           $this->publishes([
             __DIR__ . '/../Resources/public/assets' => public_path('buynoir/superlandpage/assets'),
         ], 'public');

@@ -287,6 +287,7 @@ return [
         Webkul\StripeConnect\Providers\StripeConnectServiceProvider::class,
         BuyNoir\StripeConnect\Providers\StripeConnectServiceProvider::class,
         BuyNoir\SuperLandPage\Providers\SuperLandPageServiceProvider::class,
+    
     ],
 
     /*

@@ -25,13 +25,18 @@ return [
         ],
     ],
 
-    'admin-default' => 'default',
+    'admin-default' => 'buynoir-admin',
 
     'admin-themes' => [
         'default' => [
             'views_path' => 'resources/admin-themes/default/views',
             'assets_path' => 'public/admin-themes/default/assets',
             'name' => 'Default'
-        ]
+        ],
+        'buynoir-admin' => [
+            'views_path' => 'resources/admin-themes/buynoir-admin/views',
+            'assets_path' => 'public/admin-themes/buynoir-admin/assets',
+            'name' => 'buynoir-admin'
+          ]
     ]
 ];

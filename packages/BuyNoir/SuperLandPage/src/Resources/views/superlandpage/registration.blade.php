@@ -1,4 +1,4 @@
-@extends('superfront_view::superfront.layouts.master')
+@extends('superlandpage_view::superlandpage.layouts.master')
 
 @php
     $channel = company()->getCurrentChannel();
@@ -229,7 +229,7 @@
                                                 </div>
 
                                                 <div class="control-group text-center" :class="[errors.has('step-three.username') ? 'has-error' : '']">
-                                                    <img src="{{ asset('buynoir/superfront/assets/img/congrats.gif') }}" alt="{{ config('app.name') }}" style="height:50vh"/>
+                                                    <img src="{{ asset('buynoir/superlandpage/assets/img/congrats.gif') }}" alt="{{ config('app.name') }}" style="height:50vh"/>
                                                 </div>
 
                                             
@@ -366,9 +366,10 @@
                                               this.createdclicked = true;
                                               var o_this = this;
                                               var storeNameTmp = this.username.split(' ').join(''); 
-                                              console.log("store name::", storeNameTmp)
+                                             
                                               axios.post('{{ route('company.validate.step-three') }}', {
                                                   username: storeNameTmp,
+                                                  name: storeNameTmp,
                                                   productcategory: this.productcategory,
                                               }).then(function (response) {
                                                   o_this.errors.clear();
@@ -395,7 +396,7 @@
                                                   phone_no: this.phone_no,
                                                   password: this.password,
                                                   password_confirmation: this.password_confirmation,
-                                                  name: "BuyNoir-"+this.username,
+                                                  name: this.username,
                                                   productcategory: this.productcategory,
                                                   username: usernameTm,
                                                   elsebusinessStart: this.elsebusinessStart
@@ -414,7 +415,7 @@
                                                     console.log("success registration");
                                                     //this.step_four = false;
                                                     window.location.href = response.data.redirect;
-                                                },5000);
+                                                },3000);
                                                
                                                 
                                               }).catch(function (errors) {

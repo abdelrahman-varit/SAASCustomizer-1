@@ -114,6 +114,7 @@
             "Webkul\\StripeConnect\\": "packages/Webkul/StripeConnect/src",
             "BuyNoir\\StripeConnect\\": "packages/BuyNoir/StripeConnect/src",
             "BuyNoir\\SuperLandPage\\": "packages/BuyNoir/SuperLandPage/src"
+             
         }
     },
 

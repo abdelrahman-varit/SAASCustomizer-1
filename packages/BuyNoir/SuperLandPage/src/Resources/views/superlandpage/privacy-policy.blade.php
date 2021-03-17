@@ -1,4 +1,4 @@
-@extends('superfront_view::superfront.layouts.master')
+@extends('superlandpage_view::superlandpage.layouts.master')
 
 @php
     $channel = company()->getCurrentChannel();

@@ -19,29 +19,29 @@
 
         <title>BuyNoir - The tools your business needs to sell more and grow more.</title>
         <!-- Bootstrap 4.5 -->
-        <link rel="stylesheet" href="{{ asset('buynoir/superfront/assets/css/bootstrap.min.css')}}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('buynoir/superlandpage/assets/css/bootstrap.min.css')}}" type="text/css" />
         <!-- animate -->
-        <link rel="stylesheet" href="{{ asset('buynoir/superfront/assets/css/animate.css')}}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('buynoir/superlandpage/assets/css/animate.css')}}" type="text/css" />
         <!-- Swiper -->
-        <link rel="stylesheet" href="{{ asset('buynoir/superfront/assets/css/swiper.min.css')}}" />
+        <link rel="stylesheet" href="{{ asset('buynoir/superlandpage/assets/css/swiper.min.css')}}" />
         <!-- aos -->
-        <link rel="stylesheet" href="{{ asset('buynoir/superfront/assets/css/aos.css')}}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('buynoir/superlandpage/assets/css/aos.css')}}" type="text/css" />
         <!-- icons -->
-        <link rel="stylesheet" href="{{ asset('buynoir/superfront/assets/css/icons.css')}}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('buynoir/superlandpage/assets/css/icons.css')}}" type="text/css" />
         <!-- main css -->
-        <link rel="stylesheet" href="{{ asset('buynoir/superfront/assets/css/main.css')}}" type="text/css" />
-        <link rel="stylesheet" href="{{ asset('buynoir/superfront/assets/css/superfront-main.css')}}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('buynoir/superlandpage/assets/css/main.css')}}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('buynoir/superlandpage/assets/css/superlandpage-main.css')}}" type="text/css" />
         <!-- normalize -->
-        <link rel="stylesheet" href="{{ asset('buynoir/superfront/assets/css/normalize.css')}}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('buynoir/superlandpage/assets/css/normalize.css')}}" type="text/css" />
       
         <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/webkul/saas/assets/css/tenant.css') }}">
 
         
          <!-- jquery -->
-         <script src="{{ asset('buynoir/superfront/assets/js/jquery-3.5.0.js')}}" type="text/javascript"></script>
+         <script src="{{ asset('buynoir/superlandpage/assets/js/jquery-3.5.0.js')}}" type="text/javascript"></script>
          <!-- jquery-migrate -->
-         <script src="{{ asset('buynoir/superfront/assets/js/jquery-migrate.min.js')}}" type="text/javascript"></script>
+         <script src="{{ asset('buynoir/superlandpage/assets/js/jquery-migrate.min.js')}}" type="text/javascript"></script>
          
         <!-- js for Brwoser -->
         <!--[if lt IE 9]>
@@ -65,7 +65,7 @@
             {{-- @if( request()->is('index') ) --}}
             @if( request()->is('company/*') )
             @else
-             @include ('superfront_view::superfront.nav-top')
+             @include ('superlandpage_view::superlandpage.nav-top')
             @endif
 
 
@@ -73,7 +73,7 @@
             <div class="main-container-wrapper">
                 
                 {{--  @if( request()->is('company/*') )
-                    @include ('superfront_view::superfront.nav-top')
+                    @include ('superlandpage_view::superlandpage.nav-top')
                 @endif  --}}
 
                 <div class="content-container">
@@ -87,7 +87,7 @@
 
             @if( request()->is('company/*') )
             @else
-                @include('superfront_view::superfront.footer')
+                @include('superlandpage_view::superlandpage.footer')
             @endif
                
            
@@ -132,44 +132,44 @@
     
 
         <!-- popper -->
-        <script src="{{ asset('buynoir/superfront/assets/js/popper.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/popper.min.js')}}" type="text/javascript"></script>
         <!-- bootstrap -->
-        <script src="{{ asset('buynoir/superfront/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <!--
         ============
         vendor file
         ============
         -->
         <!-- particles -->
-        <script src="{{ asset('buynoir/superfront/assets/js/vendor/particles.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/particles.min.js')}}" type="text/javascript"></script>
         <!-- TweenMax -->
-        <script src="{{ asset('buynoir/superfront/assets/js/vendor/TweenMax.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/TweenMax.min.js')}}" type="text/javascript"></script>
         <!-- ScrollMagic -->
-        <script src="{{ asset('buynoir/superfront/assets/js/vendor/ScrollMagic.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/ScrollMagic.js')}}" type="text/javascript"></script>
         <!-- animation.gsap -->
-        <script src="{{ asset('buynoir/superfront/assets/js/vendor/animation.gsap.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/animation.gsap.js')}}" type="text/javascript"></script>
         <!-- addIndicators -->
-        <script src="{{ asset('buynoir/superfront/assets/js/vendor/debug.addIndicators.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/debug.addIndicators.min.js')}}" type="text/javascript"></script>
         <!-- Swiper js -->
-        <script src="{{ asset('buynoir/superfront/assets/js/vendor/swiper.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/swiper.min.js')}}" type="text/javascript"></script>
         <!-- countdown -->
-        <script src="{{ asset('buynoir/superfront/assets/js/vendor/countdown.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/countdown.js')}}" type="text/javascript"></script>
         <!-- simpleParallax -->
-        <script src="{{ asset('buynoir/superfront/assets/js/vendor/simpleParallax.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/simpleParallax.min.js')}}" type="text/javascript"></script>
         <!-- waypoints -->
-        <script src="{{ asset('buynoir/superfront/assets/js/vendor/waypoints.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/waypoints.min.js')}}" type="text/javascript"></script>
         <!-- counterup -->
-        <script src="{{ asset('buynoir/superfront/assets/js/vendor/jquery.counterup.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/jquery.counterup.min.js')}}" type="text/javascript"></script>
         <!-- charming -->
-        <script src="{{ asset('buynoir/superfront/assets/js/vendor/charming.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/charming.min.js')}}" type="text/javascript"></script>
         <!-- imagesloaded -->
-        <script src="{{ asset('buynoir/superfront/assets/js/vendor/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/imagesloaded.pkgd.min.js')}}" type="text/javascript"></script>
         <!-- BX-Slider -->
-        <script src="{{ asset('buynoir/superfront/assets/js/vendor/jquery.bxslider.min.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/jquery.bxslider.min.js')}}" type="text/javascript"></script>
         <!-- Aos -->
-        <script src="{{ asset('buynoir/superfront/assets/js/vendor/aos.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/aos.js')}}" type="text/javascript"></script>
         <!-- main file -->
-        <script src="{{ asset('buynoir/superfront/assets/js/main.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('buynoir/superlandpage/assets/js/main.js')}}" type="text/javascript"></script>
 
         <script type="text/javascript" src="{{ asset('vendor/webkul/admin/assets/js/admin.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>

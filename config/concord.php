@@ -25,8 +25,8 @@ return [
         \Webkul\CMS\Providers\ModuleServiceProvider::class,
         \Webkul\Velocity\Providers\ModuleServiceProvider::class,
         \Webkul\SocialLogin\Providers\ModuleServiceProvider::class,
-	\Webkul\SAASCustomizer\Providers\ModuleServiceProvider::class,
-	\Webkul\SAASSubscription\Providers\ModuleServiceProvider::class,
-	\Webkul\StripeConnect\Providers\ModuleServiceProvider::class
+        \Webkul\SAASCustomizer\Providers\ModuleServiceProvider::class,
+        \Webkul\SAASSubscription\Providers\ModuleServiceProvider::class,
+        \Webkul\StripeConnect\Providers\ModuleServiceProvider::class
     ]
 ];

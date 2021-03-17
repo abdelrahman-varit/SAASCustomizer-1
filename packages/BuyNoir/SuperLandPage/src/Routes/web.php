@@ -2,14 +2,14 @@
        
 
     
-        Route::get('/en', 'BuyNoir\SuperFront\Http\Controllers\SuperFrontController@index')
-        ->defaults('_config', ['view' => 'superfront_view::superfront.index'])
+        Route::get('/en', 'BuyNoir\SuperLandPage\Http\Controllers\SuperLandPageController@index')
+        ->defaults('_config', ['view' => 'superlandpage_view::superlandpage.index'])
         ->name('buynoir.home.index');
-        Route::get('/privacy-policy', 'BuyNoir\SuperFront\Http\Controllers\SuperFrontController@privacyPolicy')
-        ->defaults('_config', ['view' => 'superfront_view::superfront.privacy-policy'])
+        Route::get('/privacy-policy', 'BuyNoir\SuperLandPage\Http\Controllers\SuperLandPageController@privacyPolicy')
+        ->defaults('_config', ['view' => 'superlandpage_view::superlandpage.privacy-policy'])
         ->name('buynoir.home.privacypolicy');
-        Route::get('/contact-us', 'BuyNoir\SuperFront\Http\Controllers\SuperFrontController@contactUs')
-        ->defaults('_config', ['view' => 'superfront_view::superfront.contact-us'])
+        Route::get('/contact-us', 'BuyNoir\SuperLandPage\Http\Controllers\SuperLandPageController@contactUs')
+        ->defaults('_config', ['view' => 'superlandpage_view::superlandpage.contact-us'])
         ->name('buynoir.home.contactus');
 
     Route::group(['middleware' => ['web', 'company-locale']], function () {
@@ -17,7 +17,7 @@
 
 
         // Route::any('/index', 'BuyNoir\SuperFront\Http\Controllers\SuperFrontController@index')
-        //             ->defaults('_config', ['view' => 'superfront_view::superfront.shop-index'])
+        //             ->defaults('_config', ['view' => 'superlandpage_view::superlandpage.shop-index'])
         //             ->name('saas.home.index');
 
         // Route::any('/', 'BuyNoir\LandingPage\Http\Controllers\SuperFrontController@index')->defaults('_config', [
@@ -32,7 +32,7 @@
         Route::prefix('company')->group(function() {
 
             Route::get('/register', 'Webkul\SAASCustomizer\Http\Controllers\Company\CompanyController@create')->defaults('_config', [
-                'view' => 'superfront_view::superfront.registration'
+                'view' => 'superlandpage_view::superlandpage.registration'
             ])->name('company.create.index');
 
             //Store front home
