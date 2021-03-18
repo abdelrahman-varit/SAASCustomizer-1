@@ -51,7 +51,7 @@
                         let updatedItems = [this.productId];
                         let existingItems = this.getStorageValue('compared_product');
 
-                        if(existingItems.length>3){
+                        if(existingItems && existingItems.length>3){
 							 window.flashMessages = [{
                                     'type': `alert-warning`,
                                     'message': "{{ __('shop::app.customer.compare.maximum_added') }}"
