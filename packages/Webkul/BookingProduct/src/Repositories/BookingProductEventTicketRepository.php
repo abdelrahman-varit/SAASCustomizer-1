@@ -78,7 +78,9 @@ class BookingProductEventTicketRepository extends Repository
         foreach ($previousTicketIds as $previousTicketId) {
             $this->delete($previousTicketId);
         }
-
-        Event::dispatch('booking_product.booking.event-ticket.save.after', ['tickets' => $savedTickets]);
+        if(!empty($savedTickets)){
+            Event::dispatch('booking_product.booking.event-ticket.save.after', 
+            ['tickets' => $savedTickets]);
+        }
     }
 }
