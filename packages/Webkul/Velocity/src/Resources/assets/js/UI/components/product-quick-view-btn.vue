@@ -1,13 +1,14 @@
 <template>
-    <div
+    <a
+        href="#"
         id="quick-view-btn-container"
         class="quick-view-btn-container"
         @click="openQuickView({event: $event})">
 
-        <span class="rango-zoom-plus"></span>
+        <i class="far fa-eye"></i>
 
-        <button type="button">{{ __('products.quick-view') }}</button>
-    </div>
+        <!-- <button type="button">{{ __('products.quick-view') }}</button> -->
+    </a>
 </template>
 
 <script type="text/javascript">
@@ -18,10 +19,8 @@
             openQuickView: function ({event}) {
                 event.preventDefault();
                 event.stopPropagation();
-
                 this.$root.quickView = true;
                 this.$root.productDetails = this.quickViewDetails;
-
                 $('body').toggleClass('overflow-hidden');
             },
         }

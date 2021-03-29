@@ -26,7 +26,7 @@
 
                         <img
                             v-if="category.category_icon_path"
-                            :src="`${$root.baseUrl}/storage/${category.category_icon_path}`" />
+                            :src="`${$root.baseUrl}/storage/${category.category_icon_path}`" style="width:24px;height:24px" />
                     </div>
 
                     <span class="category-title">{{ category['name'] }}</span>

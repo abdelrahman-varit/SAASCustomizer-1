@@ -1,0 +1,124 @@
+#top{
+
+}
+
+header .logo {
+    height: 45px !important;
+}
+
+.bn-bg-gray{
+    background-color:#dee2e6;
+}
+
+header.bn-bg-gray .content-list ul{
+    background:transparent;
+}
+
+header.bn-header-three{
+    box-shadow:none;
+    padding:5px 0px !important;
+}
+
+.main-content-wrapper .main-category{
+    border-top:none !important;
+}
+
+header #search-form input{
+    border:1px solid #999 !important;
+}
+
+header #search-form .btn-group select{
+    border:1px solid #999 !important;
+}
+
+header #search-form #header-search-icon{
+    background:#333 !important;
+}
+
+.advertisement-four-container img:hover{
+    opacity:0.4;
+}
+
+header .mini-cart-container~.compare-btn .badge-container .badge{
+    background:#aaa !important;
+}
+
+.general-container:hover, .lg-card-container:hover, .product-card-new:hover {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.sticker.new {
+    background-color:#aaa !important;
+}
+
+.product_slide .product_thumb .badge{
+    font-size:14px;
+    top:8px !important;
+    left:auto !important;
+    right:0px;
+    display:block;
+    z-index: 1;
+    font-weight: 600;
+    padding: 5px 10px !important;
+}
+
+.product_slide .product_thumb > a{
+    padding:15px 0px !important;
+}
+
+.product_slide .product_thumb {
+    height:auto !important;
+}
+
+.product_slide .product_actions li a i{
+    font-size:16px !important;
+     padding:8px 0px !important;
+}
+
+.product_slide .product_actions li a{
+    width: 4rem !important;
+    height: 4rem !important;
+}
+
+a.product_cart{
+    font-size:14px !important;
+}
+
+.slider-content{
+        margin-left:150px;
+        font-size:75px;
+        color:#fff;
+        margin-top:10%;
+        font-weight:700;
+}
+
+.show-content .btn{
+    font-size:14px !important;
+    padding:10px !important;
+}
+
+.main-container-wrapper .sticky-header.header-shadow {
+    box-shadow:none !important;
+}
+
+.quick-view-btn-container {
+    left: 0px !important;
+    width:  none !important;
+    bottom:  auto !important;
+    }
+
+.product-card-new .sticker {
+    left:0px !important;
+}
+.footer .footer-content>.row{
+    background: rgb(238, 238, 238) !important;
+    color:#555 !important;
+}
+
+.footer .footer-content .footer-statics .software-description p{
+    color:#666 !important;
+}
+.footer .footer-content>.row .footer-ct-content>div ul li a{
+    color:#666 !important;
+}
