@@ -162,7 +162,7 @@ return [
         'profile'           => 'Profile',
         'wishlist'          => 'Wishlist',
         'all-categories'    => 'All Categories',
-        'search-text'       => 'Search products here',
+        'search-text'       => 'Search products',
         'welcome-message'   => 'Welcome, :customer_name',
         'dropdown-text'     => 'Manage Cart, Orders & Wishlist',
     ],

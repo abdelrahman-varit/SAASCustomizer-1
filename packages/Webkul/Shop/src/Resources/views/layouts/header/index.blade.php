@@ -65,7 +65,7 @@
 
                 @if ($showWishlist)
                     <li class="compare-dropdown-container">
-                        <a href="{{ route('customer.wishlist.index') }}">
+                        <a href="{{ route('customer.wishlist.index') }}" style="color: rgb(36, 36, 36);">
                             <i class="icon wishlist-icon"></i>
                         {{ __('shop::app.header.wishlist') }}</a>
                     </li>

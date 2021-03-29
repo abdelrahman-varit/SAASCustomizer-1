@@ -39,7 +39,7 @@ return [
         'wishlist' => 'Wishlist',
         'cart' => 'Cart',
         'logout' => 'Logout',
-        'search-text' => 'Search products here'
+        'search-text' => 'Search products'
     ],
 
     'minicart' => [
@@ -99,6 +99,7 @@ return [
             'add-tooltip'           => 'Add product to compare list',
             'added'                 => 'Item successfully added to compare list',
             'already_added'         => 'Item already added to compare list',
+            'maximum_added'         => 'Maximum number of producs are added to compare list already',
             'removed'               => 'Item successfully removed from compare list',
             'removed-all'           => 'All items successfully removed from compare list',
             'empty-text'            => "You don't have any items in your compare list",

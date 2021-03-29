@@ -51,10 +51,37 @@
                         let updatedItems = [this.productId];
                         let existingItems = this.getStorageValue('compared_product');
 
-                        if (existingItems) {
-                            if (existingItems.indexOf(this.productId) == -1) {
-                                updatedItems = existingItems.concat(updatedItems);
+                        if(existingItems && existingItems.length>3){
+							 window.flashMessages = [{
+                                    'type': `alert-warning`,
+                                    'message': "{{ __('shop::app.customer.compare.maximum_added') }}"
+                                }];
 
+                                this.$root.addFlashMessages()
+						}else{
+                          
+            
+                            if (existingItems) {
+                                if (existingItems.indexOf(this.productId) == -1) {
+                                    updatedItems = existingItems.concat(updatedItems);
+
+                                    this.setStorageValue('compared_product', updatedItems);
+
+                                    window.flashMessages = [{
+                                        'type': `alert-success`,
+                                        'message': "{{ __('shop::app.customer.compare.added') }}"
+                                    }];
+
+                                    this.$root.addFlashMessages()
+                                } else {
+                                    window.flashMessages = [{
+                                        'type': `alert-success`,
+                                        'message': "{{ __('shop::app.customer.compare.already_added') }}"
+                                    }];
+
+                                    this.$root.addFlashMessages()
+                                }
+                            } else {
                                 this.setStorageValue('compared_product', updatedItems);
 
                                 window.flashMessages = [{
@@ -62,24 +89,8 @@
                                     'message': "{{ __('shop::app.customer.compare.added') }}"
                                 }];
 
-                                this.$root.addFlashMessages()
-                            } else {
-                                window.flashMessages = [{
-                                    'type': `alert-success`,
-                                    'message': "{{ __('shop::app.customer.compare.already_added') }}"
-                                }];
-
-                                this.$root.addFlashMessages()
+                                    this.$root.addFlashMessages()
                             }
-                        } else {
-                            this.setStorageValue('compared_product', updatedItems);
-
-                            window.flashMessages = [{
-                                'type': `alert-success`,
-                                'message': "{{ __('shop::app.customer.compare.added') }}"
-                            }];
-
-                                this.$root.addFlashMessages()
                         }
                     }
 

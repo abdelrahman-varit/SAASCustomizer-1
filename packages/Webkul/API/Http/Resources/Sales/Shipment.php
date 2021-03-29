@@ -19,6 +19,7 @@ class Shipment extends JsonResource
         return [
             'id'               => $this->id,
             'status'           => $this->status,
+            'company_id'           => $this->company_id,
             'total_qty'        => $this->total_qty,
             'total_weight'     => $this->total_weight,
             'carrier_code'     => $this->carrier_code,

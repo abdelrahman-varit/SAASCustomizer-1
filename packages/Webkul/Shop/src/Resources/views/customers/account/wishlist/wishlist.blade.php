@@ -15,8 +15,9 @@
         <div class="account-layout">
 
             <div class="account-head mb-15">
-                <span class="account-heading">{{ __('shop::app.customer.account.wishlist.title') }}</span>
-
+                <span class="account-heading">
+                    {{ __('shop::app.customer.account.wishlist.title') }}</span>
+                
                 @if (count($items))
                     <div class="account-action">
                         <a href="{{ route('customer.wishlist.removeall') }}">{{ __('shop::app.customer.account.wishlist.deleteall') }}</a>
@@ -29,7 +30,7 @@
             {!! view_render_event('bagisto.shop.customers.account.wishlist.list.before', ['wishlist' => $items]) !!}
 
             <div class="account-items-list">
-
+               
                 @if ($items->count())
                     @foreach ($items as $item)
                         <div class="account-item-card mt-15 mb-15">
@@ -81,6 +82,22 @@
                         {{ $items->links()  }}
                     </div>
                 @else
+                    @php
+                        if(null!== Request::get('page')){
+                            $page =  Request::get('page');
+                            if(!empty($page) && $page>1){
+                                $page = $page -1;
+                                if($page<1){
+                                    echo "<script>window.location.href='./';</script>";
+                                }else{
+                                    echo "<script>window.location.href='?page=".$page."';</script>";
+                                }
+                            }    
+                        }
+                       
+                                
+                    @endphp
+
                     <div class="empty">
                         {{ __('customer::app.wishlist.empty') }}
                     </div>

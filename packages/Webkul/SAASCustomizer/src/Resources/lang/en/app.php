@@ -295,6 +295,7 @@ return [
             'cpassword'             => 'Confirm Password',
             'continue'              => 'Continue',
             'step-2'                => 'Step 2',
+            'next'                  => 'Next',
             'personal'              => 'Personal Details',
             'first-name'            => 'First Name',
             'last-name'             => 'Last Name',
