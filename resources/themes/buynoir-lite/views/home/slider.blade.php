@@ -45,7 +45,7 @@
                             class="col-12 no-padding banner-icon"
                             src="{{ asset('/themes/velocity/assets/images/banner.png') }}" />
                          <div class="show-content" >
-                            <div class="container slider-content" v-html="'{{ $textContent }}'"></div>
+                            <div class="container slider-content" v-html="'{{ empty($textContent)?'':$textContent }}'"></div>
                             <a href="#" class="btn px-4 py-2 fw-light btn-dark">Shop Now</a>
                         </div>
                     </slide>
