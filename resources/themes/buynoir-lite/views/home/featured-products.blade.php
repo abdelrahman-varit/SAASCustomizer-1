@@ -14,7 +14,7 @@
                 <card-list-header heading="{{ __('shop::app.home.featured-products') }}">
                 </card-list-header>
 
-                <div class="carousel-products vc-full-screen {{ $direction }}" v-if="!isMobileView">
+                <div class="carousel-products vc-full-screen {{ $direction }} product-card-home" v-if="!isMobileView">
                     <carousel-component
                         slides-per-page="5"
                         navigation-enabled="hide"

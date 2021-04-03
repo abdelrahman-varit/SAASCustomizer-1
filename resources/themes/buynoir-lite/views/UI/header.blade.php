@@ -340,7 +340,7 @@
                                 >
 
                                 <div class="badge-container" v-if="compareCount > 0">
-                                    <span class="badge" v-text="compareCount"></span>
+                                    <span class="badge bg-primary" v-text="compareCount"></span>
                                 </div>
                                 <i class="material-icons">compare_arrows</i>
                             </a>
@@ -348,7 +348,7 @@
 
                         <a class="wishlist-btn unset" :href="`${isCustomer ? '{{ route('customer.wishlist.index') }}' : '{{ route('velocity.product.guest-wishlist') }}'}`">
                             <div class="badge-container" v-if="wishlistCount > 0">
-                                <span class="badge" v-text="wishlistCount"></span>
+                                <span class="badge bg-primary" v-text="wishlistCount"></span>
                             </div>
                             <i class="material-icons">favorite_border</i>
                         </a>

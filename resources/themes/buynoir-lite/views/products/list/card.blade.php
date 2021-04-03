@@ -49,15 +49,15 @@
 
 {!! view_render_event('bagisto.shop.products.list.card.before', ['product' => $product]) !!}
     @if (isset($list) && $list)
-        <div class="col-12 lg-card-container list-card product-card row">
-            <div class="product-image">
+        <div class="col-12 lg-card-container list-card product-card row buynoir-product-card">
+            <div class="product-image p3">
                 <a
                     title="{{ $product->name }}"
                     href="{{ route('shop.productOrCategory.index', $product->url_key) }}">
 
                     <img
                         src="{{ $productBaseImage['medium_image_url'] }}"
-                        :onerror="`this.src='${this.$root.baseUrl}/vendor/webkul/ui/assets/images/product/large-product-placeholder.png'`" />
+                        :onerror="`this.src='${this.$root.baseUrl}/vendor/webkul/ui/assets/images/product/large-product-placeholder.png'`" style="height:240px" />
                     <div class="quick-view-in-list">
                         <product-quick-view-btn :quick-view-details="{{ json_encode($product) }}"></product-quick-view-btn>
                     </div>
@@ -99,7 +99,7 @@
             </div>
         </div>
     @else
-        <div class="card grid-card product-card-new">
+        <div class="card grid-card product-card-new buynoir-product-card">
             <a
                 href="{{ route('shop.productOrCategory.index', $product->url_key) }}"
                 title="{{ $product->name }}"
@@ -122,14 +122,15 @@
                 </div>
             @endif
 
-            <div class="card-body">
+            <div>
                 <div class="product-name col-12 no-padding">
                     <a
                         href="{{ route('shop.productOrCategory.index', $product->url_key) }}"
                         title="{{ $product->name }}"
                         class="unset">
-
-                        <span class="fs16">{{ $product->name }}</span>
+                        <b>
+                            <span class="fs16">{{ $product->name }}</span>
+                        </b>
                     </a>
                 </div>
 
@@ -137,7 +138,7 @@
                     @include ('shop::products.price', ['product' => $product])
                 </div>
 
-                @if ($totalReviews)
+                {{-- @if ($totalReviews)
                     <div class="product-rating col-12 no-padding">
                         <star-ratings ratings="{{ $avgRatings }}"></star-ratings>
                         <span class="align-top">
@@ -148,10 +149,10 @@
                     <div class="product-rating col-12 no-padding">
                         <span class="fs14">{{ __('velocity::app.products.be-first-review') }}</span>
                     </div>
-                @endif
+                @endif --}}
 
                 <div class="cart-wish-wrap no-padding ml0">
-                    @include ('shop::products.add-to-cart', [
+                    @include ('shop::products.add-to-cart-related', [
                         'product'           => $product,
                         'btnText'           => $btnText ?? null,
                         'moveToCart'        => $moveToCart ?? null,

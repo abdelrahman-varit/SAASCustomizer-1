@@ -12,9 +12,9 @@
         :class="`btn btn-link disable-box-shadow ${itemCount == 0 ? 'cursor-not-allowed' : ''}`">
 
         <div class="mini-cart-content">
-            <i class="material-icons-outlined text-down-3">shopping_cart</i>
+            <i class="material-icons-outlined text-down-3">add_shopping_cart</i>
             <span class="badge" v-text="itemCount" v-if="itemCount != 0"></span>
-            <span class="fs18 fw6 cart-text">{{ __('velocity::app.minicart.cart') }}</span>
+            <!--span class="fs18 fw6 cart-text">{{ __('velocity::app.minicart.cart') }}</span-->
         </div>
         <div class="down-arrow-container">
             <span class="rango-arrow-down"></span>
@@ -30,7 +30,7 @@
 
 <script type="text/x-template" id="quantity-changer-template">
     <div :class="`quantity control-group ${errors.has(controlName) ? 'has-error' : ''}`">
-        <label class="required">{{ __('shop::app.products.quantity') }}</label>
+        
         <button type="button" class="decrease" @click="decreaseQty()">-</button>
 
         <input
@@ -57,7 +57,7 @@
         @if ($logo = core()->getCurrentChannel()->logo_url)
             <img class="logo" src="{{ $logo }}" />
         @else
-            <img class="logo" src="{{ asset('themes/velocity/assets/images/logo-text.png') }}" />
+            <img class="logo" src="{{ asset('themes/buynoir-lite/assets/images/logo-text.png') }}" />
         @endif
     </a>
 </script>
@@ -148,9 +148,9 @@
                         @endguest
                         >
 
-                        <i class="material-icons">compare_arrows</i>
+                        <i class="material-icons">swap_horiz</i>
                         <div class="badge-container" v-if="compareCount > 0">
-                            <span class="badge" v-text="compareCount"></span>
+                            <span class="badge bg-secondary" v-text="compareCount"></span>
                         </div>
                         <!--span>{{ __('velocity::app.customer.compare.text') }}</span-->
                     </a>
@@ -159,9 +159,9 @@
 
             {!! view_render_event('bagisto.shop.layout.header.wishlist.before') !!}
                 <a class="wishlist-btn unset" :href="`${isCustomer ? '{{ route('customer.wishlist.index') }}' : '{{ route('velocity.product.guest-wishlist') }}'}`">
-                    <i class="material-icons">favorite_border</i>
+                    <i class="material-icons">checklist</i>
                     <div class="badge-container" v-if="wishlistCount > 0">
-                        <span class="badge" v-text="wishlistCount"></span>
+                        <span class="badge bg-secondary" v-text="wishlistCount"></span>
                     </div>
                     <!--span>{{ __('shop::app.layouts.wishlist') }}</span-->
                 </a>

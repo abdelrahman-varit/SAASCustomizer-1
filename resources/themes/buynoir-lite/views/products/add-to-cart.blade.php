@@ -32,9 +32,7 @@
 
     </ul>
 
-        
-
-         <div class="add-to-cart-btn pl0">
+            <div class="add-to-cart-btn pl0">
             @if (isset($form) && !$form)
                 <button
                     type="submit"
@@ -42,7 +40,7 @@
                     class="btn btn-dark {{ $addToCartBtnClass ?? '' }}">
 
                     @if (! (isset($showCartIcon) && !$showCartIcon))
-                        <i class="material-icons text-down-3">shopping_cart</i>
+                        {{-- <i class="material-icons text-down-3">shopping_cart</i> --}}
                     @endif
 
                     {{ ($product->type == 'booking') ?  __('shop::app.products.book-now') :  __('shop::app.products.add-to-cart') }}
@@ -62,7 +60,7 @@
                         class=" btn btn-dark  {{ $addToCartBtnClass ?? '' }}">
 
                         @if (! (isset($showCartIcon) && !$showCartIcon))
-                            <i class="material-icons text-down-3">shopping_cart</i>
+                            {{-- <i class="material-icons text-down-3">shopping_cart</i> --}}
                         @endif
 
                         <span class="fs14 fw6 text-uppercase text-up-4">

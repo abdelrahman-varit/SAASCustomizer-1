@@ -11,7 +11,7 @@
 
     <div class="carousel-products vc-full-screen">
         <carousel-component
-            slides-per-page="6"
+            slides-per-page="4"
             navigation-enabled="hide"
             pagination-enabled="hide"
             id="related-products-carousel"

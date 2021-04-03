@@ -3,7 +3,7 @@
 <div class="col-12 availability">
     <button
         type="button"
-        class="{{! $product->haveSufficientQuantity(1) ? '' : 'active' }} disable-box-shadow">
+        class="{{! $product->haveSufficientQuantity(1) ? '' : 'active' }} disable-box-shadow btn btn-dark btn-stock">
             @if ( $product->haveSufficientQuantity(1) === true )
                 {{ __('shop::app.products.in-stock') }}
             @elseif ( $product->haveSufficientQuantity(1) > 0 )

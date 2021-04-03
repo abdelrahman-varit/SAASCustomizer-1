@@ -1,5 +1,10 @@
-<a href="{{ route('shop.home.index') }}">
-    <img
-        src="{{ asset('themes/velocity/assets/images/static/logo-text-white.png') }}"
-        class="logo full-img" />
-</a>
+  <a
+        :class="`left ${addClass}`"
+        href="{{ route('shop.home.index') }}">
+
+        @if ($logo = core()->getCurrentChannel()->logo_url)
+            <img class="logo" src="{{ $logo }}" />
+        @else
+            <img class="logo" src="{{ asset('themes/buynoir-lite/assets/images/logo-text.png') }}" />
+        @endif
+    </a>

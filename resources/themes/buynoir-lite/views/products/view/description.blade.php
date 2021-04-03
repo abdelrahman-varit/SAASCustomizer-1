@@ -2,10 +2,9 @@
 
     <accordian :title="'{{ __('shop::app.products.description') }}'" :active="true">
         <div slot="header">
-            <h3 class="no-margin display-inbl">
+            <h2 class="no-margin display-inbl">
                 {{ __('velocity::app.products.details') }}
-            </h3>
-
+            </h2>
             <i class="rango-arrow"></i>
         </div>
 

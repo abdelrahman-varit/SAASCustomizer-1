@@ -20,46 +20,45 @@
 
 @push('scripts')
     <script type="text/x-template" id="wishlist-product-template">
-        <section class="cart-details row no-margin col-12">
-            <h1 class="fw6 col-6">
-                {{ __('shop::app.customer.account.wishlist.title') }}
-            </h1>
+        <section class="cart-details row no-margin ">
+            <div class="container">
+                <div class="col-8 offset-2">
+                <div class="d-flex">
+                    <h1 class="fw6 col-6">
+                        {{ __('shop::app.customer.account.wishlist.title') }}
+                    </h1>
 
-            <div class="col-6" v-if="products.length > 0">
-                <button
-                    class="theme-btn light pull-right"
-                    @click="removeProduct('all')">
-                    {{ __('shop::app.customer.account.wishlist.deleteall') }}
-                </button>
+                    <div class="col-6" v-if="products.length > 0">
+                        <button
+                            class="theme-btn light pull-right"
+                            @click="removeProduct('all')">
+                            {{ __('shop::app.customer.account.wishlist.deleteall') }}
+                        </button>
+                    </div>
+                </div>
+
+                    {!! view_render_event('bagisto.shop.customers.account.guest-customer.view.before') !!}
+
+                    <div class="row products-collection col-12 ml0">
+                        <shimmer-component v-if="!isProductListLoaded && !isMobile()"></shimmer-component>
+
+                        <template v-else-if="isProductListLoaded && products.length > 0">
+                                
+                                    <div
+                                        :key="index"
+                                        v-for="(product, index) in products" class="d-flex row">
+                                        <product-card-wishlist :product="product"></product-card-wishlist>
+                                    </div>
+                            
+                            
+                        </template>
+
+                        <span v-else-if="isProductListLoaded">{{ __('customer::app.wishlist.empty') }}</span>
+                    </div>
+
+                    {!! view_render_event('bagisto.shop.customers.account.guest-customer.view.after') !!}
+                </div>
             </div>
-
-            {!! view_render_event('bagisto.shop.customers.account.guest-customer.view.before') !!}
-
-            <div class="row products-collection col-12 ml0">
-                <shimmer-component v-if="!isProductListLoaded && !isMobile()"></shimmer-component>
-
-                <template v-else-if="isProductListLoaded && products.length > 0">
-                    <carousel-component
-                        slides-per-page="6"
-                        navigation-enabled="hide"
-                        pagination-enabled="hide"
-                        id="wishlist-products-carousel"
-                        locale-direction="{{ core()->getCurrentLocale()->direction == 'rtl' ? 'rtl' : 'ltr' }}"
-                        :slides-count="products.length">
-
-                        <slide
-                            :key="index"
-                            :slot="`slide-${index}`"
-                            v-for="(product, index) in products">
-                            <product-card :product="product"></product-card>
-                        </slide>
-                    </carousel-component>
-                </template>
-
-                <span v-else-if="isProductListLoaded">{{ __('customer::app.wishlist.empty') }}</span>
-            </div>
-
-            {!! view_render_event('bagisto.shop.customers.account.guest-customer.view.after') !!}
         </section>
     </script>
 

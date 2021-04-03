@@ -58,15 +58,16 @@
     <div class="full-content-wrapper" >
         {!! view_render_event('bagisto.shop.home.content.before') !!}
 
-            @if ($velocityMetaData)
+            {{-- @if ($velocityMetaData)
                 {!! DbView::make($velocityMetaData)->field('home_page_content')->render() !!}
-            @else
+            @else --}}
                 @include('shop::home.advertisements.advertisement-four')
                 @include('shop::home.featured-products')
                 @include('shop::home.advertisements.advertisement-three')
                 @include('shop::home.new-products')
+                @include('shop::home.advertisements.advertisement-two')
                
-            @endif
+            {{-- @endif --}}
 
         {{ view_render_event('bagisto.shop.home.content.after') }}
     </div>

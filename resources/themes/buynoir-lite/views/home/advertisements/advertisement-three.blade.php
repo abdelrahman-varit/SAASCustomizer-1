@@ -48,15 +48,20 @@
 @if (! $isRendered)
     <div class="container-fluid advertisement-three-container">
         <div class="row">
-            <a @if (isset($one)) href="{{ $one }}" @endif class="col-lg-6 col-md-12 no-padding">
-                <img src="{{ asset('/themes/velocity/assets/images/headphones.png') }}" class="full-width" />
-            </a>
 
-            <div class="col-lg-6 col-md-12 second-panel">
+            <div class="col-lg-4 col-md-4 second-panel">
+                <a @if (isset($one)) href="{{ $one }}" @endif class="row top-container">
+                    <img src="{{ asset('/themes/velocity/assets/images/headphones.png') }}" class="full-width" />
+                </a>
+            </div>
+
+            <div class="col-lg-4 col-md-4 second-panel">
                 <a @if (isset($two)) href="{{ $two }}" @endif class="row top-container">
                     <img src="{{ asset('/themes/velocity/assets/images/watch.png') }}" class="col-12 pr0" />
                 </a>
-                <a @if (isset($three)) href="{{ $three }}" @endif class="row bottom-container">
+            </div>
+            <div class="col-lg-4 col-md-4 second-panel">
+                <a @if (isset($three)) href="{{ $three }}" @endif class="row top-container">
                     <img src="{{ asset('/themes/velocity/assets/images/kids-2.png') }}" class="col-12 pr0" />
                 </a>
             </div>

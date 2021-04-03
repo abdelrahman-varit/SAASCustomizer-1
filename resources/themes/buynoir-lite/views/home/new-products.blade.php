@@ -26,9 +26,9 @@
                         @endpush
 
                         <div class="row {{ $direction }}">
-                            <div class="col-9 no-padding carousel-products vc-full-screen with-recent-viewed" v-if="!isMobileView">
+                            <div class="col-9 no-padding carousel-products vc-full-screen with-recent-viewed product-card-home" v-if="!isMobileView">
                                 <carousel-component
-                                    slides-per-page="5"
+                                    slides-per-page="4"
                                     navigation-enabled="hide"
                                     pagination-enabled="hide"
                                     id="new-products-carousel"
@@ -74,9 +74,9 @@
                             ])
                         </div>
                     @else
-                        <div class="carousel-products vc-full-screen {{ $direction }}" v-if="!isMobileView">
+                        <div class="carousel-products vc-full-screen {{ $direction }} product-card-home" v-if="!isMobileView">
                             <carousel-component
-                                slides-per-page="6"
+                                slides-per-page="4"
                                 navigation-enabled="hide"
                                 pagination-enabled="hide"
                                 id="new-products-carousel"

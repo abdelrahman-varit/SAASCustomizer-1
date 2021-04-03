@@ -1,7 +1,3 @@
-#top{
-
-}
-
 header .logo {
     height: 45px !important;
 }
@@ -122,3 +118,175 @@ a.product_cart{
 .footer .footer-content>.row .footer-ct-content>div ul li a{
     color:#666 !important;
 }
+
+.product-information .product-name{
+        white-space:nowrap;
+        width:98%;
+        overflow:hidden;
+        text-overflow: ellipsis;
+}
+
+.product-card-new{
+    height:340px;
+}
+
+.advertisement-two-container img{
+    height:450px ;
+}
+
+.VueCarousel-slide img.slider-item-img{
+    height:475px !important;
+}
+
+.VueCarousel-slide .product_thumb > a > img{
+    height:215px !important;
+}
+
+.main-content-wrapper .main-category {
+    padding: 12px 15px !important;
+    border-top: 1px solid #ccc;
+}
+
+nav.sidebar{
+    width:300px !important;
+    margin-left:50px !important;
+    box-shadow:none !important;
+}
+
+nav.sidebar>ul{
+    margin-left:-20px !important;
+}
+
+ 
+
+.footer .footer-content>.row .footer-rt-content h3{
+    color:#555 !important;
+}
+
+.zoomLens{
+    height:300px !important;
+}
+
+.product-detail .magnifier>img {
+    margin-top:0px !important;
+}
+
+.btn-stock{
+    font-size:14px !important;
+    background-color:#555 !important;
+    color:#fff !important;
+}
+
+.product-detail .right>div{
+    border-bottom:0px !important;
+}
+
+.full-description{
+    font-size:16px;
+}
+
+.main-content-wrapper .content-list ul li a{
+    color:#444 !important;
+}
+
+.buynoir-product-card{
+    height:340px !important;
+    width:97% !important;
+}
+
+.product-card-new .product-image-container img {
+    min-height:225px !important;
+    max-height:225px !important; 
+}
+
+.related-product-card-action{
+    margin-left: -20px !important;
+}
+.related-product-card-action > li{
+    display:inline-block;
+}
+
+a.btn-dark, button.btn-dark, input[type=submit]{
+    font-size:14px;
+}
+
+input[type=submit]{
+    font-size:14px;
+    padding:10px;
+}
+
+ul.product-view-detail li{
+    display:inline-block!important;
+}
+ul.product-view-detail li [title='Remove product from wishlist'] i{
+    /* margin-left:12px !important; */
+}
+
+div.product-card-home ul.product_actions li i.isActive{
+    margin-left:12px !important;
+}
+.btn {
+    font-size:14px !important;
+}
+
+#cart-modal-content .small-card-container{
+    border-top:1px solid #dedede;
+}
+
+#cart-modal-content .small-card-container:first-child{
+    border-top:0px;
+}
+
+.mini-cart-product-name{
+    font-family:"Roboto Condensed", sans-serif;
+}
+
+.small-card-container .product-image
+{
+    background-size:cover !important;
+}
+
+.cart-modal-content{
+    border:10px solid #aaa;
+}
+
+div.info h2.product-details-title{
+    font-family: Poppins,sans-serif;
+    font-size:25px;
+}
+
+div.wishlist-body{
+    border-top:1px solid #ccc;
+}
+
+.wishlist-img{
+    width:200px;
+    height:200px;
+    border:1px solid #aaa;
+}
+div.wishlist-btn ul{
+    display:none;
+}
+
+.product-card-home ul.product_actions{
+    margin-left: auto !important;
+    margin-right: -20px !important;
+}
+.compare-product-description{
+    height:200px;
+    flex-wrap:nowarp;
+    overflow:hidden;
+}
+
+.compare-container{
+    overflow-x:scroll;
+}
+table.compare-products div.product-price{
+    text-align:center;
+}
+
+table.compare-products .addtocart{
+    background-color:#aaa !important;
+    border:1px solid #999 !important;
+}
+

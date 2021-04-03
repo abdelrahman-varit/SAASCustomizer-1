@@ -45,7 +45,7 @@
                                 <a href="{{ route('customer.session.index') }}">
                                     <button
                                         type="button"
-                                        class="theme-btn fs14 fw6">
+                                        class="btn btn-secondary fs14 fw6">
 
                                         {{ __('shop::app.header.sign-in') }}
                                     </button>
@@ -56,7 +56,7 @@
                                 <a href="{{ route('customer.register.index') }}">
                                     <button
                                         type="button"
-                                        class="theme-btn fs14 fw6">
+                                        class="btn btn-secondary fs14 fw6">
                                         {{ __('shop::app.header.sign-up') }}
                                     </button>
                                 </a>

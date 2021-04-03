@@ -27,7 +27,7 @@
                         <slide slot="slide-{{ $index }}">
                             <a @if($slider['slider_path']) href="{{ $slider['slider_path'] }}" @endif>
                                 <img
-                                    class="col-12 no-padding banner-icon"
+                                    class="col-12 no-padding banner-icon slider-item-img"
                                     src="{{ url()->to('/') . '/storage/' . $slider['path'] }}" />
 
                                 <div class="show-content" >

@@ -93,10 +93,10 @@
                             </div>
 
                             {{-- right-section --}}
-                            <div class="right col-lg-7">
+                            <div class="right col-lg-6 col-md-6 col-xs-6">
                                 {{-- product-info-section --}}
                                 <div class="row info">
-                                    <h2 class="col-lg-12">{{ $product->name }}</h2>
+                                    <h2 class="col-lg-12 product-details-title">{{ $product->name }}</h2>
 
                                     @if ($total)
                                         <div class="reviews col-lg-12">
@@ -122,7 +122,7 @@
                                         @include ('shop::products.price', ['product' => $product])
                                     </div>
 
-                                    <div class="product-actions">
+                                    {{-- <div class="product-actions">
                                         @include ('shop::products.add-to-cart', [
                                             'form' => false,
                                             'product' => $product,
@@ -130,7 +130,7 @@
                                             'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"
                                                              ? true : false,
                                         ])
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 {!! view_render_event('bagisto.shop.products.view.short_description.before', ['product' => $product]) !!}
@@ -147,15 +147,54 @@
 
 
                                 {!! view_render_event('bagisto.shop.products.view.quantity.before', ['product' => $product]) !!}
-
-                                @if ($product->getTypeInstance()->showQuantityBox())
-                                    <div>
-                                        <quantity-changer></quantity-changer>
+                                <div class="row">
+                                
+                                    @if ($product->getTypeInstance()->showQuantityBox())
+                                        <div class="col-md-3 col-lg-3">
+                                            <div>
+                                                <quantity-changer></quantity-changer>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <input type="hidden" name="quantity" value="1">
+                                    @endif
+                                    
+                                    <div class="col-md-2 col-lg-2 product-actions">
+                                        @include ('shop::products.add-to-cart-product-details', [
+                                            'form' => false,
+                                            'product' => $product,
+                                            'showCartIcon' => false,
+                                            'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"
+                                                            ? true : false,
+                                        ])
+                                       
                                     </div>
-                                @else
-                                    <input type="hidden" name="quantity" value="1">
-                                @endif
+                                    <div class="col-md-5 col-lg-5">
+                                        
+                                            <ul type="none" class="product_actions product-view-detail">
+                                                <compare-component
+                                                    @auth('customer')
+                                                        customer="true"
+                                                    @endif
 
+                                                    @guest('customer')
+                                                        customer="false"
+                                                    @endif
+
+                                                    slug="{{ $product->url_key }}"
+                                                    product-id="{{ $product->id }}"
+                                                    add-tooltip="{{ __('velocity::app.customer.compare.add-tooltip') }}"
+                                                ></compare-component>
+                                                
+                                                
+                                                @if (! (isset($showWishlist) && !$showWishlist))
+                                                    @include('shop::products.wishlist', [
+                                                        'addClass' => $addWishlistClass ?? ''
+                                                    ])
+                                                @endif
+                                            </ul>
+                                    </div>
+                                </div>
                                 {!! view_render_event('bagisto.shop.products.view.quantity.after', ['product' => $product]) !!}
 
                                 @include ('shop::products.view.configurable-options')
@@ -169,18 +208,27 @@
                                 @include ('shop::products.view.attributes', [
                                     'active' => true
                                 ])
-
-                                {{-- product long description --}}
-                                @include ('shop::products.view.description')
+                             
 
                                 {{-- reviews count --}}
                                 @include ('shop::products.view.reviews', ['accordian' => true])
                             </div>
+                           
                         </div>
                     </product-view>
                 </div>
+
+
             </section>
 
+
+            <div class="clearfix"></div>
+            <hr class="hr"/>
+            <div class="col-lg-12 col-md-12">
+                {{-- product long description --}}
+                @include ('shop::products.view.description')
+            </div>
+            
             <div class="related-products">
                 @include('shop::products.view.related-products')
                 @include('shop::products.view.up-sells')
