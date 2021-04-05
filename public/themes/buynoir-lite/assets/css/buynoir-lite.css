@@ -290,3 +290,28 @@ table.compare-products .addtocart{
     border:1px solid #999 !important;
 }
 
+ul.product-view-detail li a i{
+    border:1px solid #888;
+    padding:8px;
+    width:42px;
+    color:#888;
+}
+
+.quantity button, .quantity input[name=quantity]{
+    height:42px !important;
+}
+
+.wishlist-short-desc{
+    height:125px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.cart-content div.quantity input{
+    height:42px;
+}
+
+.cart-header span{
+    text-transform: uppercase;
+}

@@ -15,7 +15,7 @@
                 <div class="address-container row full-width no-margin">
                     <div
                         :key="index"
-                        class="col-lg-6 col-md-12 address-holder pl0"
+                        class="col-lg-8 col-md-12 address-holder pl0"
                         v-for='(addresses, index) in this.allAddress'>
                         <div class="card">
                             <div class="card-body row">
@@ -53,7 +53,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6 col-md-12 address-holder pl0">
+                    <div class="col-lg-8 col-md-12 address-holder pl0">
                         <div class="card">
                             <div
                                 @click="validateFormAfterAction"

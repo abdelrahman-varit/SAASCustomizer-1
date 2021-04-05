@@ -150,7 +150,7 @@
                                 <div class="row">
                                 
                                     @if ($product->getTypeInstance()->showQuantityBox())
-                                        <div class="col-md-3 col-lg-3">
+                                        <div class="col-md-2 col-lg-2">
                                             <div>
                                                 <quantity-changer></quantity-changer>
                                             </div>

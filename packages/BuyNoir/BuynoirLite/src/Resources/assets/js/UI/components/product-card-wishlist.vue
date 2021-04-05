@@ -62,7 +62,7 @@
                             <h2>{{ product.name }}</h2>
                         </a>
                     </div>
-                    <div v-html="product.short_description"></div>
+                    <div v-html="product.short_description" class="wishlist-short-desc"></div>
                 </div>
                 <div class="col-2">
                     <div class="d-flex">
