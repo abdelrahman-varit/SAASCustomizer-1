@@ -10,12 +10,13 @@
                 <i class="rango-arrow"></i>
             </div>
 
-            <div class="payment-methods" slot="body">
+            <div class="payment-methods bg-light p-4" slot="body">
+                <div class="row">
                 @foreach ($paymentMethods as $payment)
 
                     {!! view_render_event('bagisto.shop.checkout.payment-method.before', ['payment' => $payment]) !!}
 
-                    <div class="row col-12">
+                    <div class="col-6 mb-4">
                         <div>
                             <label class="radio-container" style="position: absolute;">
                                 <input
@@ -57,7 +58,7 @@
                     {!! view_render_event('bagisto.shop.checkout.payment-method.after', ['payment' => $payment]) !!}
 
                 @endforeach
-
+                </div>
                 <span class="control-error" v-if="errors.has('payment-form.payment[method]')">
                     @{{ errors.first('payment-form.payment[method]') }}
                 </span>

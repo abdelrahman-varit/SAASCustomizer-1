@@ -22,7 +22,7 @@
     <script type="text/x-template" id="compare-product-template">
         <section class="cart-details row no-margin col-12">
             <div class="container">
-                <div class="col-10 offset-1">
+                <div class="col-12 ">
                     <div class="d-flex">
                         <h1 class="fw6 col-6">
                             {{ __('velocity::app.customer.compare.compare_similar_items') }}

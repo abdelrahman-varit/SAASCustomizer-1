@@ -8,14 +8,21 @@
 
 @section('page-detail-wrapper')
     <div class="reviews-head mb20">
+
+        <div class="col-12 bg-light p-5 mb-3">
+            <span class="account-heading ">
+                {{ __('shop::app.customer.account.review.index.title') }}
+                <sub><i class="material-icons">chevron_right</i></sup>
+            </span>
+        </div>
+
         <span class="back-icon">
             <a href="{{ route('customer.account.index') }}">
                 <i class="icon icon-menu-back"></i>
             </a>
         </span>
 
-        <span class="account-heading">{{ __('shop::app.customer.account.review.index.title') }}</span>
-
+   
         @if (count($reviews) > 1)
             <div class="account-action pull-right">
                 <a href="{{ route('customer.review.deleteall') }}" class="theme-btn light unset">
@@ -40,7 +47,7 @@
                             href="{{ url()->to('/').'/'.$review->product->url_key }}"
                             title="{{ $review->product->name }}"
                             class="col-2 max-sm-img-dimention no-padding">
-                            <img class="media" src="{{ $image['small_image_url'] }}"/>
+                            <img class="media" src="{{ $image['small_image_url'] }}"  class="img-thumbnail"/>
                         </a>
 
                         <div class="col-8">

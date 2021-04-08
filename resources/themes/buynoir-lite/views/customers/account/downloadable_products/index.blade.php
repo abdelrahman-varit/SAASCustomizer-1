@@ -5,14 +5,19 @@
 @endsection
 
 @section('page-detail-wrapper')
-    <div class="account-head mb-10">
-        <span class="back-icon"><a href="{{ route('customer.account.index') }}"><i class="icon icon-menu-back"></i></a></span>
-        <span class="account-heading">
-            {{ __('shop::app.customer.account.downloadable_products.title') }}
+   
+     <div class="col-12 bg-light p-5 mb-3">
+
+        <span class="account-heading ">
+             {{ __('shop::app.customer.account.downloadable_products.title') }}
+            <sub><i class="material-icons">chevron_right</i></sup>
         </span>
 
-        <div class="horizontal-rule"></div>
+       
+
     </div>
+
+
 
     {!! view_render_event('bagisto.shop.customers.account.downloadable_products.list.before') !!}
 

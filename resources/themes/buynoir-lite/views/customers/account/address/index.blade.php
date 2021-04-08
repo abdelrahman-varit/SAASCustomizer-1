@@ -13,10 +13,17 @@
         </a>
     @endif
 
-    <div class="account-head">
-        <span class="back-icon"><a href="{{ route('customer.account.index') }}"><i class="icon icon-menu-back"></i></a></span>
-        <span class="account-heading">{{ __('shop::app.customer.account.address.index.title') }}</span>
+    <div class="col-12 bg-light p-5 mb-3">
+        <span class="account-heading ">
+            {{ __('shop::app.customer.account.address.index.title') }}
+            <sub><i class="material-icons">chevron_right</i></sup>
+        </span>
+    </div>
 
+
+    <div class="account-head col-8">
+        <span class="back-icon"><a href="{{ route('customer.account.index') }}"><i class="icon icon-menu-back"></i></a></span>
+        
         @if (! $addresses->isEmpty())
             <span class="account-action">
                 <a href="{{ route('customer.address.create') }}" class="theme-btn light unset pull-right">
@@ -36,9 +43,10 @@
             @else
                 <div class="address-holder col-12 no-padding">
                     @foreach ($addresses as $address)
-                        <div class="col-lg-4 col-md-12">
-                            <div class="card">
-                                <div class="card-body">
+                        <div class="col-lg-8 col-md-12">
+                            <div class="panel bg-light ">
+                                <div class="panel-heading"></div>
+                                <div class="panel-body">
                                     <h5 class="card-title fw6">{{ $address->first_name }} {{ $address->last_name }}</h5>
 
                                     <ul type="none">
@@ -52,12 +60,12 @@
                                         </li>
                                     </ul>
 
-                                    <a class="card-link" href="{{ route('customer.address.edit', $address->id) }}">
+                                    <a class="card-link btn btn-dark" href="{{ route('customer.address.edit', $address->id) }}">
                                         {{ __('shop::app.customer.account.address.index.edit') }}
                                     </a>
 
                                     <a
-                                        class="card-link"
+                                        class="card-link btn btn-dark"
                                         href="{{ route('address.delete', $address->id) }}"
                                         onclick="deleteAddress('{{ __('shop::app.customer.account.address.index.confirm-delete') }}')">
 

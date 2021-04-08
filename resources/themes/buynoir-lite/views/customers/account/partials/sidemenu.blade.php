@@ -1,9 +1,14 @@
 <div class="customer-sidebar row no-margin no-padding">
-    <div class="account-details col-12">
+    <div class="account-details col-12 bg-light mb-3 border">
         <div class="customer-name col-12 text-uppercase">
             {{ substr(auth('customer')->user()->first_name, 0, 1) }}
         </div>
-        <div class="col-12 customer-name-text text-capitalize text-break">{{ auth('customer')->user()->first_name . ' ' . auth('customer')->user()->last_name}}</div>
+        <div class="col-12 customer-name-text text-capitalize text-break">
+            {{ auth('customer')->user()->first_name . ' ' . auth('customer')->user()->last_name.' '}}
+            <sub><a href="{{ route('customer.profile.edit')}}" >
+                            <i class="material-icons">edit</i>
+            </a></sub>
+        </div>
         <div class="customer-email col-12 text-break">{{ auth('customer')->user()->email }}</div>
     </div>
 
@@ -49,7 +54,7 @@
             @foreach ($subMenuCollection as $index => $subMenuItem)
                 <li class="{{ $menu->getActive($subMenuItem) }}" title="{{ trans($subMenuItem['name']) }}">
                     <a class="unset fw6 full-width" href="{{ $subMenuItem['url'] }}">
-                        <i class="icon {{ $index }} text-down-3"></i>
+                        <i class="material-icons {{ $index }} text-down-3">{{$subMenuItem['icon']}}</i>
                         <span>{{ trans($subMenuItem['name']) }}<span>
                         <i class="rango-arrow-right pull-right text-down-3"></i>
                     </a>

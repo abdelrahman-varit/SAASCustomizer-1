@@ -2,7 +2,7 @@
     <li style='width:50px'>
     <i
         v-if="isCustomer == 'true'"
-        :class="`material-icons ${addClass ? addClass : ''} ${isActive ? 'noActive' : 'isActive'}`"
+        :class="`material-icons ${addClass ? addClass : ''} ${isActive ? 'noActive' : 'isActive'}  ${showBtn?' btn btn-dark':'i-block'}`"
         @mouseover="isActive ? isActive = !isActive : ''"
         @mouseout="active !== '' && !isActive ? isActive = !isActive : ''"
            
@@ -16,7 +16,7 @@
         v-else
         :title="`${isActive ? addTooltip : removeTooltip}`"
         @click="toggleProductWishlist(productId)"
-        :class="` wishlist-icons ${addClass ? addClass : ''}`">
+        :class="` wishlist-icons ${addClass ? addClass : ''} ${showBtn?' btn btn-dark':'else-block'}`">
 
         <i
             @mouseout="! isStateChanged ? isActive = !isActive : isStateChanged = false"
@@ -46,7 +46,8 @@
             'productSlug',
             'moveToWishlist',
             'addTooltip',
-            'removeTooltip'
+            'removeTooltip',
+            'showBtn'
         ],
 
         data: function () {

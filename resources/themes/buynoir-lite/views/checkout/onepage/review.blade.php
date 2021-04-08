@@ -81,7 +81,7 @@
 
                     <div class="row col-12 no-padding">
                         <div class="col-2 max-sm-img-dimention">
-                            <img src="{{ $productBaseImage['medium_image_url'] }}" />
+                            <img src="{{ $productBaseImage['medium_image_url'] }}" class="img-thumbnail"/>
                         </div>
 
                         <div class="col-10 no-padding fs16">
@@ -95,24 +95,29 @@
                             {!! view_render_event('bagisto.shop.checkout.name.after', ['item' => $item]) !!}
 
                             <div class="row col-12">
-                                {!! view_render_event('bagisto.shop.checkout.price.before', ['item' => $item]) !!}
+                                <div class="col-3">
+                                    {!! view_render_event('bagisto.shop.checkout.price.before', ['item' => $item]) !!}
                                         <span class="value">
                                             {{ core()->currency($item->base_price) }}
                                         </span>
-                                {!! view_render_event('bagisto.shop.checkout.price.after', ['item' => $item]) !!}
-
-                                <i class="rango-close text-down-4"></i>
-
-                                {!! view_render_event('bagisto.shop.checkout.quantity.before', ['item' => $item]) !!}
+                                    {!! view_render_event('bagisto.shop.checkout.price.after', ['item' => $item]) !!}
+                                </div>
+                                 <div class="col-2">
+                                    <i class="rango-close text-down-4"></i>
+                                </div>
+                                 <div class="col-3">
+                                    {!! view_render_event('bagisto.shop.checkout.quantity.before', ['item' => $item]) !!}
                                     <span class="value">
                                         {{ $item->quantity }} ({{ __('shop::app.checkout.onepage.quantity') }})
                                     </span>
-                                {!! view_render_event('bagisto.shop.checkout.quantity.after', ['item' => $item]) !!}
-                            </div>
-
-                            <div class="row col-12">
+                                    {!! view_render_event('bagisto.shop.checkout.quantity.after', ['item' => $item]) !!}
+                                </div>
+                                 <div class="col-3">
                                 <b>{{ core()->currency($item->base_total) }}</b>
                             </div>
+                            </div>
+
+                           
 
                             {!! view_render_event('bagisto.shop.checkout.options.before', ['item' => $item]) !!}
 
@@ -166,11 +171,12 @@
                         </div>
                     </div>
 
-                    <slot name="place-order-btn"></slot>
+                    
                 </div>
 
-                <div class="col-lg-6 col-md-12 order-summary-container bottom pt0 offset-lg-2">
-                    <slot name="summary-section"></slot>
+                <div class="col-lg-12 text-right col-md-12 order-summary-container bottom pt0 offset-lg-2">
+                    <slot name="place-order-btn"></slot>
+                    {{-- <slot name="summary-section"></slot> --}}
                 </div>
             </div>
         </div>

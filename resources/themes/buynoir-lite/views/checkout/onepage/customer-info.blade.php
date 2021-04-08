@@ -15,12 +15,12 @@
                 <div class="address-container row full-width no-margin">
                     <div
                         :key="index"
-                        class="col-lg-8 col-md-12 address-holder pl0"
+                        class="col-lg-12 col-md-12 address-holder pl0"
                         v-for='(addresses, index) in this.allAddress'>
                         <div class="card">
-                            <div class="card-body row">
+                            <div class="card-body row bg-light">
 
-                                <div class="col-1">
+                                <div class="col-10 ml-4">
 
                                     <input
                                         type="radio"
@@ -32,33 +32,56 @@
                                         data-vv-as="&quot;{{ __('shop::app.checkout.onepage.billing-address') }}&quot;" />
 
                                     <span class="checkmark"></span>
+                                    <span class="billing-title-span fs20">Select the following address</span> 
                                 </div>
+                                 
 
-                                <div class="col-10">
-                                    <h5 class="card-title fw6">
-                                        @{{ allAddress.first_name }} @{{ allAddress.last_name }},
-                                    </h5>
-
-                                    <ul type="none">
-                                        <li>@{{ addresses.address1 }},</li>
-                                        <li>@{{ addresses.city }},</li>
-                                        <li>@{{ addresses.state }},</li>
-                                        <li>@{{ addresses.country }} @{{ addresses.postcode }}</li>
-                                        <li>
-                                            {{ __('shop::app.customer.account.address.index.contact') }} : @{{ addresses.phone }}
+                                <div class="col-12 mt-3">
+                                     
+                                    <ul type="none" class="billing-address">
+                                        <li class="col-12 mb-2">
+                                            <label>Customer Name</label>
+                                            <div class="border fs16 p-2 " >@{{ allAddress.first_name }} @{{ allAddress.last_name }}</div>
                                         </li>
+                                        <li class="col-12 mb-2">
+                                            <label>Address</label>
+                                            <div class="border fs16 p-2 " >@{{addresses.address1}}</div>
+                                        </li>
+                                        <li class="col-12 mb-2">
+                                            <label>City</label>
+                                            <div class="border fs16 p-2" >@{{addresses.city}}</div>
+                                        </li>
+                                        <li class="col-12 mb-2">
+                                            <label>State</label>
+                                            <div class="border fs16 p-2" >@{{addresses.state}}</div>
+                                        </li>
+                                        <li class="col-12 mb-2">
+                                            <label>Postcode</label>
+                                            <div class="border fs16 p-2" >@{{addresses.postcode}} </div>
+                                        </li>
+                                         
+                                        <li class="col-12 mb-2">
+                                            <label>Country</label>
+                                            <div class="border fs16 p-2 " >@{{addresses.country}} </div>
+                                        </li>
+                                         
+                                        <li class="col-12 fs16">
+                                            <label>{{ __('shop::app.customer.account.address.index.contact') }}</label>
+                                            <div class="border fs16 p-2" >@{{addresses.phone}} </div>
+                                        </li>
+                                         
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-8 col-md-12 address-holder pl0">
+                    <div class="col-lg-8 col-md-12 address-holder ">
                         <div class="card">
                             <div
                                 @click="validateFormAfterAction"
-                                class="card-body add-address-button">
-                                <div class="cursor-pointer" @click="newBillingAddress()">
+                                class="card-body add-address-button btn btn-dark">
+                                <div class="cursor-pointer " @click="newBillingAddress()">
                                     <i class="material-icons">
                                         add_circle_outline
                                     </i>
@@ -109,7 +132,7 @@
             </div>
 
 
-            <div class="col-12 no-padding" slot="body">
+            <div class="col-12 no-padding bg-light p-4" slot="body">
                 @auth('customer')
                     @if(count(auth('customer')->user()->addresses))
                         <a
@@ -222,7 +245,7 @@
                     <i class="rango-arrow"></i>
                 </div>
 
-                <div class="col-12 no-padding" slot="body">
+                <div class="col-12 no-padding bg-light p-4" slot="body">
                     @auth('customer')
                         @if(count(auth('customer')->user()->addresses))
                             <a

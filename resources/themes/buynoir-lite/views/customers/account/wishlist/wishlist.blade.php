@@ -7,9 +7,15 @@
 @endsection
 
 @section('page-detail-wrapper')
-    <div class="account-head">
-        <span class="account-heading">{{ __('shop::app.customer.account.wishlist.title') }}</span>
 
+    <div class="col-12 bg-light p-5 mb-3">
+        <span class="account-heading ">
+             {{ __('shop::app.customer.account.wishlist.title') }}
+            <sub><i class="material-icons">chevron_right</i></sup>
+        </span>
+    </div>
+
+    <div class="account-head">
         @if (count($items))
             <div class="account-action pull-right">
                 <a
@@ -23,7 +29,7 @@
 
     {!! view_render_event('bagisto.shop.customers.account.wishlist.list.before', ['wishlist' => $items]) !!}
 
-    <div class="account-items-list row wishlist-container">
+    <div class="account-items-list row wishlist-container bg-light">
 
         @if ($items->count())
             @foreach ($items as $item)
@@ -32,7 +38,7 @@
                     $moveToCartText = __('shop::app.customer.account.wishlist.move-to-cart');
                 @endphp
 
-                @include ('shop::products.list.card', [
+                @include ('shop::products.list.card-wishlist', [
                     'checkmode'         => true,
                     'moveToCart'        => true,
                     'addToCartForm'     => true,

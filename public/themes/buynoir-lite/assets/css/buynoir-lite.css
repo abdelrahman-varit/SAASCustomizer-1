@@ -315,3 +315,32 @@ ul.product-view-detail li a i{
 .cart-header span{
     text-transform: uppercase;
 }
+
+.shopping-product-desc{
+    height:95px;
+    overflow:hidden;
+}
+
+ul.billing-address li div.fs16{
+    height:35px;
+    margin-bottom:10px !important;
+    padding-left:15px;
+}
+
+
+.billing-title-span{
+    margin-left:5px;
+    margin-bottom:10px;
+}
+
+div.account-table-content div.table{
+    background-color:#eee;
+    padding:20px;
+}
+
+div.account-table-content table thead{
+    background-color:#ccc;
+}
+div.customer-sidebar div.customer-name{
+     background-color:#999 !important;
+}

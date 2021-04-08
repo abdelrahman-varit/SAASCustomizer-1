@@ -42237,7 +42237,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['text', 'active', 'addClass', 'addedText', 'productId', 'removeText', 'isCustomer', 'productSlug', 'moveToWishlist', 'addTooltip', 'removeTooltip'],
+    props: ['text', 'active', 'addClass', 'addedText', 'productId', 'removeText', 'isCustomer', 'productSlug', 'moveToWishlist', 'addTooltip', 'removeTooltip', 'showBtn'],
 
     data: function data() {
         return {
@@ -42314,7 +42314,9 @@ var render = function() {
               "material-icons " +
               (_vm.addClass ? _vm.addClass : "") +
               " " +
-              (_vm.isActive ? "noActive" : "isActive"),
+              (_vm.isActive ? "noActive" : "isActive") +
+              "  " +
+              (_vm.showBtn ? " btn btn-dark" : "i-block"),
             on: {
               mouseover: function($event) {
                 _vm.isActive ? (_vm.isActive = !_vm.isActive) : ""
@@ -42337,7 +42339,11 @@ var render = function() {
       : _c(
           "a",
           {
-            class: " wishlist-icons " + (_vm.addClass ? _vm.addClass : ""),
+            class:
+              " wishlist-icons " +
+              (_vm.addClass ? _vm.addClass : "") +
+              " " +
+              (_vm.showBtn ? " btn btn-dark" : "else-block"),
             attrs: {
               title: "" + (_vm.isActive ? _vm.addTooltip : _vm.removeTooltip)
             },
@@ -44627,6 +44633,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", {
+                    staticClass: "wishlist-short-desc",
                     domProps: {
                       innerHTML: _vm._s(_vm.product.short_description)
                     }

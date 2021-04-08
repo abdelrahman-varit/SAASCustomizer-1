@@ -113,8 +113,8 @@
                             </div>
 
                             <div class="dropdown-list dropdown-container" style="display: none;">
-                                <ul>
-                                    <li>
+                                <div class="row d-flex">
+                                    <div class="col-3">
                                         <div class="control-group">
                                             <select class="filter-column-select control" v-model="filterColumn"
                                                     v-on:click="getColumnOrAlias(filterColumn)">
@@ -128,11 +128,10 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </li>
-
-                                    {{-- suitable for string columns --}}
-                                    <li v-if='stringConditionSelect'>
-                                        <div class="control-group">
+                                    </div>
+                                    <div class="col-3" v-if='stringConditionSelect'>
+                                         
+                                        <div class="control-group" >
                                             <select class="control" v-model="stringCondition">
                                                 <option selected
                                                         disabled>{{ __('ui::app.datagrid.condition') }}</option>
@@ -142,19 +141,18 @@
                                                 <option value="neqs">{{ __('ui::app.datagrid.nequals') }}</option>
                                             </select>
                                         </div>
-                                    </li>
-
-                                    {{-- Response fields based on the type of columns to be filtered --}}
-                                    <li v-if='stringCondition != null'>
+                                    
+                                    </div>
+                                    <div class="col-3" v-if='stringCondition != null'>
+                                         {{-- Response fields based on the type of columns to be filtered --}}
                                         <div class="control-group">
                                             <input type="text" class="control response-string"
-                                                   placeholder="{{ __('ui::app.datagrid.value-here') }}"
-                                                   v-model="stringValue"/>
+                                                placeholder="{{ __('ui::app.datagrid.value-here') }}"
+                                                v-model="stringValue"/>
                                         </div>
-                                    </li>
-
-                                    {{-- suitable for numeric columns --}}
-                                    <li v-if='numberConditionSelect'>
+                                    </div>
+                                     {{-- suitable for numeric columns --}}
+                                    <div class="col-3" v-if='numberConditionSelect'>
                                         <div class="control-group">
                                             <select class="control" v-model="numberCondition">
                                                 <option selected
@@ -167,16 +165,17 @@
                                                 <option value="lte">{{ __('ui::app.datagrid.lesse') }}</option>
                                             </select>
                                         </div>
-                                    </li>
+                                    </div>
 
-                                    <li v-if='numberCondition != null'>
+                                    
+                                   <div class="col-3" v-if='numberCondition != null'>
                                         <div class="control-group">
                                             <input type="text" class="control response-number" v-on:input="filterNumberInput" placeholder="{{ __('ui::app.datagrid.numeric-value-here') }}"  v-model="numberValue"/>
                                         </div>
-                                    </li>
+                                    </div>
 
                                     {{-- suitable for boolean columns --}}
-                                    <li v-if='booleanConditionSelect'>
+                                   <div class="col-3" v-if='booleanConditionSelect'>
                                         <div class="control-group">
                                             <select class="control" v-model="booleanCondition">
                                                 <option selected
@@ -185,9 +184,9 @@
                                                 <option value="neqs">{{ __('ui::app.datagrid.nequals') }}</option>
                                             </select>
                                         </div>
-                                    </li>
+                                    </div>
 
-                                    <li v-if='booleanCondition != null'>
+                                    <div class="col-3" v-if='booleanCondition != null'>
                                         <div class="control-group">
                                             <select class="control" v-model="booleanValue">
                                                 <option selected disabled>{{ __('ui::app.datagrid.value') }}</option>
@@ -195,10 +194,10 @@
                                                 <option value="0">{{ __('ui::app.datagrid.false') }}</option>
                                             </select>
                                         </div>
-                                    </li>
+                                    </div>
 
                                     {{-- suitable for date/time columns --}}
-                                    <li v-if='datetimeConditionSelect'>
+                                    <div class="col-3" v-if='datetimeConditionSelect'>
                                         <div class="control-group">
                                             <select class="control" v-model="datetimeCondition">
                                                 <option selected
@@ -212,16 +211,26 @@
                                                 {{-- <option value="btw">{{ __('ui::app.datagrid.between') }}</option> --}}
                                             </select>
                                         </div>
-                                    </li>
+                                    </div>
 
-                                    <li v-if='datetimeCondition != null'>
+                                    <div class="col-3" v-if='datetimeCondition != null'>
                                         <div class="control-group">
                                             <input class="control" v-model="datetimeValue" type="date">
                                         </div>
-                                    </li>
+                                    </div>
 
-                                    <button class="btn btn-sm btn-primary apply-filter"
+                                    <div class="col-3">
+                                         <button class="btn-lg btn-dark apply-filter px-4"
                                             v-on:click="getResponse">{{ __('ui::app.datagrid.apply') }}</button>
+
+                                    </div>
+                                </div>
+                                <ul>
+                                  
+                                   
+
+                                   
+
                                 </ul>
                             </div>
                         </div>

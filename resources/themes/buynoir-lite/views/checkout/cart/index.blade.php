@@ -38,7 +38,7 @@
 
                 @if ($cart)
                     <div class="cart-details-header col-lg-7 col-md-12 bg-light p-5">
-                        <div class="row cart-header col-12 no-padding">
+                        <div class="row cart-header col-12 no-padding  border-top bg-secondary text-white py-3">
                             <span class="col-7 fw6 fs16 pr0">
                                 {{ __('velocity::app.checkout.items') }}
                             </span>
@@ -103,8 +103,8 @@
                                                     </a>
                                                 </div>
 
-                                                <div v-html="">
-                                                {!!$product->short_description!!}
+                                                <div class="shopping-product-desc mt-2" >
+                                                    {!!$product->short_description!!}
                                                 </div>
 
                                                
@@ -231,7 +231,7 @@
                                     <button
                                         type="submit"
                                         class="btn btn-dark btn-lg light mr15 pull-right unset">
-
+                                        <i class="material-icons">add_shopping_cart</i>
                                         {{ __('shop::app.checkout.cart.update-cart') }}
                                     </button>
                                 {!! view_render_event('bagisto.shop.checkout.cart.controls.after', ['cart' => $cart]) !!}

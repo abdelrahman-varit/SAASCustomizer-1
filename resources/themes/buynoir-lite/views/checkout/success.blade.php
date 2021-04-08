@@ -20,7 +20,7 @@
             {{ view_render_event('bagisto.shop.checkout.continue-shopping.before', ['order' => $order]) }}
 
             <div class="mt15 row-col-12">
-                <a href="{{ route('shop.home.index') }}" class="theme-btn remove-decoration">
+                <a href="{{ route('shop.home.index') }}" class="btn btn-dark btn-lg remove-decoration">
                     {{ __('shop::app.checkout.cart.continue-shopping') }}
                 </a>
             </div>

@@ -253,7 +253,7 @@
         @endauth
 
     @elseif (isset($billing) && $billing)
-        <div :class="`col-12 form-field ${errors.has('address-form.billing[company_name]') ? 'has-error' : ''}`">
+        <div :class="`col-12 form-field ${errors.has('address-form.billing[company_name]') ? 'has-error' : ''} `">
             <label for="billing[company_name]">
                 {{ __('shop::app.checkout.onepage.company-name') }}
             </label>

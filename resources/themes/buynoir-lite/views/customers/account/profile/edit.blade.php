@@ -5,14 +5,21 @@
 @endsection
 
 @section('page-detail-wrapper')
-    <div class="account-head">
-        <a href="{{ route('customer.session.destroy') }}" class="theme-btn light unset pull-right">
+
+    <div class="col-12 bg-light p-5">
+        <span class="account-heading ">
+            {{ __('shop::app.customer.account.profile.index.title') }}
+            <sub><i class="material-icons">chevron_right</i></sup>
+        </span>
+    </div>
+
+
+    <div class="account-head col-10">
+
+        <a href="{{ route('customer.session.destroy') }}" class="btn btn-dark btn-lg mt-3 pull-right">
             {{ __('shop::app.header.logout') }}
         </a>
 
-        <h1 class="account-heading">
-            {{ __('shop::app.customer.account.profile.index.title') }}
-        </h1>
     </div>
 
     {!! view_render_event('bagisto.shop.customers.account.profile.edit.before', ['customer' => $customer]) !!}
@@ -186,7 +193,7 @@
 
                 <button
                     type="submit"
-                    class="theme-btn mb20">
+                    class="btn btn-dark p-3 mb20">
                     {{ __('velocity::app.shop.general.update') }}
                 </button>
             </form>

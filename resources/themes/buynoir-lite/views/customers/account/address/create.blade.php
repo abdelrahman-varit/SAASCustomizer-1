@@ -5,15 +5,18 @@
 @endsection
 
 @section('page-detail-wrapper')
-    <div class="account-head mb-15">
+    <div class="account-head mb-15 bg-light p-4">
         <span class="back-icon"><a href="{{ route('customer.account.index') }}"><i class="icon icon-menu-back"></i></a></span>
-        <span class="account-heading">{{ __('shop::app.customer.account.address.create.title') }}</span>
+        <span class="account-heading">
+            {{ __('shop::app.customer.account.address.create.title') }}
+            <sub><i class="material-icons">chevron_right</i></sub>
+        </span>
         <span></span>
     </div>
 
     {!! view_render_event('bagisto.shop.customers.account.address.create.before') !!}
 
-        <form method="post" action="{{ route('customer.address.store') }}" @submit.prevent="onSubmit">
+        <form method="post" action="{{ route('customer.address.store') }}" @submit.prevent="onSubmit" class="col-7">
 
             <div class="account-table-content">
                 @csrf
@@ -103,7 +106,7 @@
                 {!! view_render_event('bagisto.shop.customers.account.address.create_form_controls.after') !!}
 
                 <div class="button-group">
-                    <button class="theme-btn" type="submit">
+                    <button class="btn btn-dark p-4" type="submit">
                         {{ __('shop::app.customer.account.address.create.submit') }}
                     </button>
                 </div>

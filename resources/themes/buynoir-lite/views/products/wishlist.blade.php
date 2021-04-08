@@ -16,9 +16,10 @@
                 @elseif (isset($itemId) && $itemId)
                     href="{{ route('customer.wishlist.remove', $itemId) }}"
                     title="{{ __('velocity::app.shop.wishlist.remove-wishlist-text') }}"
+                    class="btn btn-dark"
                 @endif>
 
-                <wishlist-component active="{{ !$isWished }}" is-customer="true"></wishlist-component>
+                <wishlist-component active="{{ !$isWished }}" is-customer="true" showBtn="true"></wishlist-component>
 
                 @if (isset($text))
                     {!! $text !!}
@@ -32,6 +33,7 @@
             <wishlist-component
                 active="false"
                 is-customer="false"
+                showBtn='true'
                 text="{{ $text ?? null }}"
                 product-id="{{ $product->id }}"
                 item-id="{{ $item->id ?? null}}"

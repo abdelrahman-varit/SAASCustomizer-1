@@ -17,7 +17,14 @@
 @endpush
 
 @section('page-detail-wrapper')
-    <div class="account-content">
+
+     <div class="col-12 bg-light p-5 mb-4">
+        <span class="account-heading ">
+            {{ __('Order Details') }}
+            <sub><i class="material-icons">chevron_right</i></sup>
+        </span>
+    </div>
+    <div class="account-content bg-light p-4">
         <div class="account-layout">
             <div class="account-head">
                 <span class="back-icon"><a href="{{ route('customer.account.index') }}"><i class="icon icon-menu-back"></i></a></span>
@@ -44,12 +51,8 @@
                         <div class="sale-section">
                             <div class="section-content">
                                 <div class="row col-12">
-                                    <label class="mr20">
-                                        {{ __('shop::app.customer.account.order.view.placed-on') }}
-                                    </label>
-
                                     <span class="value">
-                                        {{ core()->formatDate($order->created_at, 'd M Y') }}
+                                        Order Date: {{ core()->formatDate($order->created_at, 'd M Y') }}
                                     </span>
                                 </div>
                             </div>
@@ -60,7 +63,7 @@
                                 <span>{{ __('shop::app.customer.account.order.view.products-ordered') }}</span>
                             </div>
 
-                            <div class="section-content">
+                            <div class="section-content ">
                                 <div class="table">
                                     <table>
                                         <thead>
