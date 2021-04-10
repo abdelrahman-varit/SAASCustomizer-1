@@ -90,7 +90,7 @@
 
                         @if (core()->getConfigData('catalog.products.review.guest_review') || auth()->guard('customer')->check())
                             <a href="{{ route('shop.reviews.create', ['slug' => $product->url_key ]) }}">
-                                <button type="button" class="theme-btn light">{{ __('velocity::app.products.write-your-review') }}</button>
+                                <button type="button" class="btn btn-light">{{ __('velocity::app.products.write-your-review') }}</button>
                             </a>
                         @endif
                     </div>
@@ -199,7 +199,7 @@
         @if (core()->getConfigData('catalog.products.review.guest_review') || auth()->guard('customer')->check())
             <div class="customer-rating" style="border: none">
                 <a href="{{ route('shop.reviews.create', ['slug' => $product->url_key ]) }}">
-                    <button type="button" class="theme-btn light">{{ __('velocity::app.products.write-your-review') }}</button>
+                    <button type="button" class="btn btn-dark p-3">{{ __('velocity::app.products.write-your-review') }}</button>
                 </a>
             </div>
         @endif

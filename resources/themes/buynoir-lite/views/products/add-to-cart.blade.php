@@ -21,9 +21,11 @@
         @endif
 
         @if (! (isset($showWishlist) && !$showWishlist))
-            @include('shop::products.wishlist', [
-                'addClass' => $addWishlistClass ?? ''
-            ])
+            <li>
+                @include('shop::products.wishlist', [
+                    'addClass' => $addWishlistClass ?? ''
+                ])
+            </li>
         @endif
 
         <li>

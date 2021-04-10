@@ -6,7 +6,7 @@
         :class="`sidebar ${addClass ? addClass : ''}`"
         v-if="slicedCategories && slicedCategories.length > 0">
 
-        <ul type="none">
+        <ul type="none" id="buynoir-submenu-one">
             <li
                 :key="categoryIndex"
                 :id="`category-${category.id}`"
@@ -53,7 +53,7 @@
                             :id="`sidebar-level-${sidebarLevel+categoryIndex}`"
                             @mouseover="remainBar(`sidebar-level-${sidebarLevel+categoryIndex}`)">
 
-                            <ul type="none">
+                            <ul type="none" id="buynoir-submenu-two">
                                 <li
                                     :key="`${subCategoryIndex}-${categoryIndex}`"
                                     v-for="(subCategory, subCategoryIndex) in category.children">
@@ -76,7 +76,7 @@
                                         <span class="category-title">{{ subCategory['name'] }}</span>
                                     </a>
 
-                                    <ul type="none" class="nested">
+                                    <ul type="none" class="nested" id="buynoir-submenu-three">
                                         <li
                                             :key="`${childSubCategoryIndex}-${subCategoryIndex}-${categoryIndex}`"
                                             v-for="(childSubCategory, childSubCategoryIndex) in subCategory.children">
