@@ -7,7 +7,7 @@ use Webkul\SAASSubscription\Http\Controllers\Controller;
 use Webkul\SAASSubscription\Helpers\Subscription;
 // use Webkul\SAASSubscription\Helpers\Paypal;              // Use Steipe's Library
 
-class StriprController extends Controller
+class StripeController extends Controller
 {
     /**
      * Subscription object
