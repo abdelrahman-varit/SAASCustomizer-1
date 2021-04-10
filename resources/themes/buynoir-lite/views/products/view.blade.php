@@ -116,6 +116,7 @@
                                         </div>
                                     @endif
 
+                                    @include ('shop::products.sku', ['product' => $product])
                                     @include ('shop::products.view.stock', ['product' => $product])
 
                                     <div class="col-12 price">

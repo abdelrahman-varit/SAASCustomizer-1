@@ -14,7 +14,7 @@
 
             <img
                 v-else
-                class="vc-small-product-image"
+                class="vc-small-product-image img-thumbnail"
                 src="{{ $images[0]['large_image_url'] }}" />
         </div>
 
