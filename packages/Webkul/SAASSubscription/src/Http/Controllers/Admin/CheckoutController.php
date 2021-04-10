@@ -70,9 +70,12 @@ class CheckoutController extends Controller
 
         session()->put('subscription_cart', $data);
 
-        if ($data['payment_method'] == 'paypal') {
+        $payment_data = request()->all();
+        $payment_method = $payment_data['payment_method'];
+
+        if ($payment_method == 'paypal') {
             return redirect()->route('admin.subscription.paypal.start');
-        }elseif ($data['stripe']) {
+        }elseif ($payment_method == 'stripe') {
             return redirect()->route('admin.subscription.stripe.start');
         }
 
