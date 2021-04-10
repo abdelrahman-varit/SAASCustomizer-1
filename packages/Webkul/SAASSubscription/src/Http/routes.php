@@ -107,6 +107,29 @@ Route::group(['middleware' => ['web', 'super-locale']], function () {
                 ])->name('admin.subscription.paypal.payment');
 
 
+
+
+                // Stripe Payment for tenent purchase
+
+                Route::get('/stripe/start', 'Webkul\SAASSubscription\Http\Controllers\Admin\StripeController@start')
+                        ->defaults('_config', ['redirect' => 'admin.subscription.plan.index'])
+                        ->name('admin.subscription.stripe.start');
+
+                Route::get('/stripe/cancel', 'Webkul\SAASSubscription\Http\Controllers\Admin\StripeController@cancel')
+                        ->defaults('_config', ['redirect' => 'admin.subscription.plan.index'])
+                        ->name('admin.subscription.stripe.cancel');
+
+                Route::get('/stripe/review', 'Webkul\SAASSubscription\Http\Controllers\Admin\StripeController@review')
+                        ->defaults('_config', ['redirect' => 'admin.subscription.plan.index'])
+                        ->name('admin.subscription.stripe.review');
+
+                Route::get('/stripe/payment', 'Webkul\SAASSubscription\Http\Controllers\Admin\StripeController@createProfile')
+                        ->defaults('_config', ['redirect' => 'admin.subscription.plan.index'])
+                        ->name('admin.subscription.stripe.payment');
+
+
+
+
                 Route::get('/invoices', 'Webkul\SAASSubscription\Http\Controllers\Admin\InvoiceController@index')->defaults('_config', [
                     'view' => 'saassubscription::admin.invoices.index'
                 ])->name('admin.subscription.invoice.index');
