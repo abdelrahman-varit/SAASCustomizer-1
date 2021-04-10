@@ -102,7 +102,7 @@
             </div>
         </div>
     @else
-        <div class="card grid-card product-card-new buynoir-product-card d-flex row">
+        <div class="card grid-card product-card-new buynoir-product-card d-flex row bg-light">
             <div class="col-3">
                 <a
                     href="{{ route('shop.productOrCategory.index', $product->url_key) }}"

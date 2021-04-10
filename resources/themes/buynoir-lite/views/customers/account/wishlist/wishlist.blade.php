@@ -15,7 +15,7 @@
         </span>
     </div>
 
-    <div class="account-head">
+    <div class="account-head mb-5">
         @if (count($items))
             <div class="account-action pull-right">
                 <a
@@ -26,10 +26,11 @@
             </div>
         @endif
     </div>
+    <div class="clearfix"></div>
 
     {!! view_render_event('bagisto.shop.customers.account.wishlist.list.before', ['wishlist' => $items]) !!}
 
-    <div class="account-items-list row wishlist-container bg-light">
+    <div class="account-items-list row wishlist-container mt-5">
 
         @if ($items->count())
             @foreach ($items as $item)

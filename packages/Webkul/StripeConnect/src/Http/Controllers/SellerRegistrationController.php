@@ -78,11 +78,14 @@ class SellerRegistrationController extends Controller
             $publishable_key    = $decoded->stripe_publishable_key;
             $stripe_user_id     = $decoded->stripe_user_id;
 
+            $company = Company::getCurrent();
+            $company_id = $company->id;
             $result = $this->stripeConnectRepository->create([
                 'access_token'              => $access_token,
                 'refresh_token'             => $refresh_token,
                 'stripe_publishable_key'    => $publishable_key,
-                'stripe_user_id'            => $stripe_user_id
+                'stripe_user_id'            => $stripe_user_id, 
+                'company_id'                => $company_id
             ]);
 
             if ( $result ) {

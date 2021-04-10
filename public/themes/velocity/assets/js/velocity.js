@@ -41425,7 +41425,7 @@ var render = function() {
         [
           _c(
             "ul",
-            { attrs: { type: "none" } },
+            { attrs: { type: "none", id: "buynoir-submenu-one" } },
             _vm._l(_vm.slicedCategories, function(category, categoryIndex) {
               return _c(
                 "li",
@@ -41563,7 +41563,12 @@ var render = function() {
                               [
                                 _c(
                                   "ul",
-                                  { attrs: { type: "none" } },
+                                  {
+                                    attrs: {
+                                      type: "none",
+                                      id: "buynoir-submenu-two"
+                                    }
+                                  },
                                   _vm._l(category.children, function(
                                     subCategory,
                                     subCategoryIndex
@@ -41656,7 +41661,10 @@ var render = function() {
                                           "ul",
                                           {
                                             staticClass: "nested",
-                                            attrs: { type: "none" }
+                                            attrs: {
+                                              type: "none",
+                                              id: "buynoir-submenu-three"
+                                            }
                                           },
                                           _vm._l(subCategory.children, function(
                                             childSubCategory,
@@ -42235,6 +42243,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['text', 'active', 'addClass', 'addedText', 'productId', 'removeText', 'isCustomer', 'productSlug', 'moveToWishlist', 'addTooltip', 'removeTooltip', 'showBtn'],
@@ -42305,92 +42315,93 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", { staticStyle: { width: "50px" } }, [
-    _vm.isCustomer == "true"
-      ? _c(
-          "i",
-          {
-            class:
-              "material-icons " +
-              (_vm.addClass ? _vm.addClass : "") +
-              " " +
-              (_vm.isActive ? "noActive" : "isActive") +
-              "  " +
-              (_vm.showBtn ? " btn btn-dark" : "i-block"),
-            on: {
-              mouseover: function($event) {
-                _vm.isActive ? (_vm.isActive = !_vm.isActive) : ""
-              },
-              mouseout: function($event) {
-                _vm.active !== "" && !_vm.isActive
-                  ? (_vm.isActive = !_vm.isActive)
-                  : ""
-              }
-            }
-          },
-          [
-            _vm._v(
-              "\n\n    " +
-                _vm._s(_vm.isActive ? "star_border" : "star_purple500") +
-                "\n     \n"
-            )
-          ]
-        )
-      : _c(
-          "a",
-          {
-            class:
-              " wishlist-icons " +
-              (_vm.addClass ? _vm.addClass : "") +
-              " " +
-              (_vm.showBtn ? " btn btn-dark" : "else-block"),
-            attrs: {
-              title: "" + (_vm.isActive ? _vm.addTooltip : _vm.removeTooltip)
+  return _vm.isCustomer == "true"
+    ? _c(
+        "i",
+        {
+          class:
+            "material-icons " +
+            (_vm.addClass ? _vm.addClass : "") +
+            " " +
+            (_vm.isActive ? "noActive" : "isActive") +
+            "  " +
+            (_vm.showBtn ? "  " : "i-block"),
+          staticStyle: { width: "40px" },
+          on: {
+            mouseover: function($event) {
+              _vm.isActive ? (_vm.isActive = !_vm.isActive) : ""
             },
-            on: {
-              click: function($event) {
-                return _vm.toggleProductWishlist(_vm.productId)
-              }
+            mouseout: function($event) {
+              _vm.active !== "" && !_vm.isActive
+                ? (_vm.isActive = !_vm.isActive)
+                : ""
             }
+          }
+        },
+        [
+          _vm._v(
+            "\n\n    " +
+              _vm._s(_vm.isActive ? "star_border" : "star_purple500") +
+              "\n     \n"
+          )
+        ]
+      )
+    : _c(
+        "a",
+        {
+          class:
+            " wishlist-icons " +
+            (_vm.addClass ? _vm.addClass : "") +
+            " " +
+            (_vm.showBtn ? "  " : "else-block"),
+          staticStyle: { width: "40px" },
+          attrs: {
+            title: "" + (_vm.isActive ? _vm.addTooltip : _vm.removeTooltip)
           },
-          [
-            _c(
-              "i",
-              {
-                class:
-                  "material-icons " +
-                  (_vm.addClass ? _vm.addClass : "") +
-                  " " +
-                  (_vm.isActive ? "isActive" : "noActive"),
-                on: {
-                  mouseout: function($event) {
-                    !_vm.isStateChanged
-                      ? (_vm.isActive = !_vm.isActive)
-                      : (_vm.isStateChanged = false)
-                  },
-                  mouseover: function($event) {
-                    !_vm.isStateChanged
-                      ? (_vm.isActive = !_vm.isActive)
-                      : (_vm.isStateChanged = false)
-                  }
+          on: {
+            click: function($event) {
+              return _vm.toggleProductWishlist(_vm.productId)
+            }
+          }
+        },
+        [
+          _c(
+            "i",
+            {
+              class:
+                "material-icons " +
+                (_vm.addClass ? _vm.addClass : "") +
+                " " +
+                (_vm.isActive ? "isActive" : "noActive"),
+              staticStyle: { width: "40px" },
+              on: {
+                mouseout: function($event) {
+                  !_vm.isStateChanged
+                    ? (_vm.isActive = !_vm.isActive)
+                    : (_vm.isStateChanged = false)
+                },
+                mouseover: function($event) {
+                  !_vm.isStateChanged
+                    ? (_vm.isActive = !_vm.isActive)
+                    : (_vm.isStateChanged = false)
                 }
-              },
-              [
-                _vm._v(
-                  "\n\n        " +
-                    _vm._s(_vm.isActive ? "star_purple500" : "star_border") +
-                    "\n        \n    "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("span", {
-              staticStyle: { "vertical-align": "super" },
-              domProps: { innerHTML: _vm._s(_vm.text) }
-            })
-          ]
-        )
-  ])
+              }
+            },
+            [
+              _vm._v(
+                "\n\n        " +
+                  _vm._s(_vm.isActive ? "star_purple500" : "star_border") +
+                  "\n        \n    "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("span", {
+            staticStyle: { "vertical-align": "super" },
+            domProps: { innerHTML: _vm._s(_vm.text) }
+          })
+        ]
+      )
 }
 var staticRenderFns = []
 render._withStripped = true

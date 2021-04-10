@@ -1,11 +1,11 @@
 <template>
-    <li style='width:50px'>
+   
     <i
         v-if="isCustomer == 'true'"
-        :class="`material-icons ${addClass ? addClass : ''} ${isActive ? 'noActive' : 'isActive'}  ${showBtn?' btn btn-dark':'i-block'}`"
+        :class="`material-icons ${addClass ? addClass : ''} ${isActive ? 'noActive' : 'isActive'}  ${showBtn?'  ':'i-block'}`"
         @mouseover="isActive ? isActive = !isActive : ''"
         @mouseout="active !== '' && !isActive ? isActive = !isActive : ''"
-           
+         style='width:40px'  
     >
 
         {{ isActive ? 'star_border' : 'star_purple500' }}
@@ -13,12 +13,14 @@
     </i>
 
     <a
+        style='width:40px'
         v-else
         :title="`${isActive ? addTooltip : removeTooltip}`"
         @click="toggleProductWishlist(productId)"
-        :class="` wishlist-icons ${addClass ? addClass : ''} ${showBtn?' btn btn-dark':'else-block'}`">
+        :class="` wishlist-icons ${addClass ? addClass : ''} ${showBtn?'  ':'else-block'}`">
 
         <i
+            style='width:40px'
             @mouseout="! isStateChanged ? isActive = !isActive : isStateChanged = false"
             @mouseover="! isStateChanged ? isActive = !isActive : isStateChanged = false"
             :class="`material-icons ${addClass ? addClass : ''} ${isActive ? 'isActive' : 'noActive'}`  "
@@ -30,7 +32,7 @@
 
         <span style="vertical-align: super;" v-html="text"></span>
     </a>
-    </li>
+  
 </template>
 
 <script type="text/javascript">

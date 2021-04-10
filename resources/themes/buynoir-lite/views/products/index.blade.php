@@ -101,7 +101,7 @@
                         @if ($category->display_mode == 'description_only')
                             style="width: 100%"
                         @endif>
-
+                    
                         <shimmer-component v-if="isLoading && !isMobile()" shimmer-count="4"></shimmer-component>
 
                         <template v-else-if="products.length > 0">
