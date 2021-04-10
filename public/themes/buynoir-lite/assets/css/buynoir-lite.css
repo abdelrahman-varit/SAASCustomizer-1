@@ -356,8 +356,9 @@ ul#buynoir-submenu-one{
 }
 ul#buynoir-submenu-two{
     margin-left:-70px !important;
-     height:370px;
+    height:370px;
     overflow-y:auto;
+    width:300px !important;
 }
 ul#buynoir-submenu-three{
     margin-left:20px;
