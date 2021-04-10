@@ -61,26 +61,5 @@ return [
                 'validation' => 'required',
             ]
         ]
-    ], [
-        'key' => 'subscription.payment.stripe',
-        'name' => 'saassubscription::app.super-user.config.system.stripe',
-        'sort' => 2,
-        'fields' => [
-            [
-                'name' => 'sandbox_mode',
-                'title' => 'saassubscription::app.super-user.config.system.stripe-sandbox-mode',
-                'type' => 'boolean',
-            ], [
-                'name' => 'merchant_stripe_key',
-                'title' => 'saassubscription::app.super-user.config.system.merchant-stripe-key',
-                'type' => 'text',
-                'validation' => 'required',
-            ], [
-                'name' => 'merchant_stripe_secret',
-                'title' => 'saassubscription::app.super-user.config.system.merchant-stripe-secret',
-                'type' => 'text',
-                'validation' => 'required',
-            ]
-        ]
     ]
 ];
