@@ -14,7 +14,7 @@
     </div>
 
 
-    <div class="account-head col-10">
+    <div class="account-head col-8">
 
         <a href="{{ route('customer.session.destroy') }}" class="btn btn-dark btn-lg mt-3 pull-right">
             {{ __('shop::app.header.logout') }}
@@ -28,7 +28,7 @@
             <form
                 method="POST"
                 @submit.prevent="onSubmit"
-                class="account-table-content"
+                class="account-table-content col-8"
                 action="{{ route('customer.profile.store') }}">
                 @csrf
 
