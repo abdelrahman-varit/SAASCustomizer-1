@@ -17,7 +17,7 @@
                         <span class="rango-view-grid fs24"></span>
                     </a>
                 </div>
-                <div class="rango-view-list-container {{ $viewOption === 'list' ? 'active' : '' }}">
+                <div class="rango-view-list-container {{ $viewOption === 'list' ? 'active' : '' }} btn-light">
                     <a
                         href="{{ $toolbarHelper->getModeUrl('list') }}"
                         class="list-view unset">

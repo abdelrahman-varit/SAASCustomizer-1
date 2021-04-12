@@ -115,7 +115,7 @@
                                 @include('shop::products.list.card-search', ['product' => $productFlat->product])
                           
                         @else
-                            @include('shop::products.list.card', [
+                            @include('shop::products.list.card-search', [
                                 'list' => true,
                                 'product' => $productFlat->product
                             ])

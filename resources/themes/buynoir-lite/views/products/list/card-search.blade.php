@@ -49,22 +49,22 @@
 
 {!! view_render_event('bagisto.shop.products.list.card.before', ['product' => $product]) !!}
     @if (isset($list) && $list)
-        <div class="col-12 lg-card-container list-card product-card row buynoir-product-card">
-            <div class="product-image p3">
+        <div class="col-10 offset-2 lg-card-container list-card product-card row buynoir-product-card-search d-flex row">
+            <div class="product-image p3 col-3">
                 <a
                     title="{{ $product->name }}"
                     href="{{ route('shop.productOrCategory.index', $product->url_key) }}">
 
                     <img
                         src="{{ $productBaseImage['medium_image_url'] }}"
-                        :onerror="`this.src='${this.$root.baseUrl}/vendor/webkul/ui/assets/images/product/large-product-placeholder.png'`" style="height:240px" />
-                    <div class="quick-view-in-list">
+                        :onerror="`this.src='${this.$root.baseUrl}/vendor/webkul/ui/assets/images/product/large-product-placeholder.png'`" style="height:200px" />
+                    <!--div class="quick-view-in-list">
                         <product-quick-view-btn :quick-view-details="{{ json_encode($product) }}"></product-quick-view-btn>
-                    </div>
+                    </div-->
                 </a>
             </div>
 
-            <div class="product-information">
+            <div class="col-3 pl-4">
                 <div>
                     <div class="product-name">
                         <a
@@ -86,8 +86,8 @@
                         </div>
                     @endif
 
-                    <div class="cart-wish-wrap mt5">
-                        @include ('shop::products.add-to-cart', [
+                    <div class="cart-wish-wrap mt5 product-search">
+                        @include ('shop::products.add-to-cart-search', [
                             'addWishlistClass'  => 'pl10',
                             'product'           => $product,
                             'addToCartBtnClass' => 'medium-padding',
@@ -97,7 +97,11 @@
                     </div>
                 </div>
             </div>
+            <div class="col-5">
+                <span class="fs16" style="height:200px;overflow:hidden;">{!!$product->short_description !!}</span>
+            </div>
         </div>
+        <hr class="mt-5 ">
     @else
         <div class="card grid-card col-4 col-md-4 col-lg-4">
             <a
