@@ -108,10 +108,12 @@
                             {{ $results->total() }} {{ __('shop::app.search.found-results') }}
                         </h2>
                     @endif
-
+                <div class="row d-flex">
                     @foreach ($results as $productFlat)
                         @if ($toolbarHelper->getCurrentMode() == 'grid')
-                            @include('shop::products.list.card', ['product' => $productFlat->product])
+                            
+                                @include('shop::products.list.card-search', ['product' => $productFlat->product])
+                          
                         @else
                             @include('shop::products.list.card', [
                                 'list' => true,
@@ -119,7 +121,7 @@
                             ])
                         @endif
                     @endforeach
-
+                </div>
                     @include('ui::datagrid.pagination')
                 @endif
             @endif

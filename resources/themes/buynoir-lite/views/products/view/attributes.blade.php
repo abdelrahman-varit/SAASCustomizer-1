@@ -9,18 +9,17 @@
         <accordian :title="'{{ __('shop::app.products.specification') }}'" :active="'{{ $active }}' == true ? true : false">
             <div slot="header">
                 <h3 class="no-margin display-inbl">
-                    {{ __('velocity::app.products.more-infomation') }}
+                    {{ __('velocity::app.products.more-infomation') }} 
                 </h3>
                 <i class="rango-arrow"></i>
             </div>
 
             <div slot="body">
                 <table class="full-specifications">
-
                     @foreach ($customAttributeValues as $attribute)
                         <tr>
                             @if ($attribute['label'])
-                                <td class='fw6'>{{ $attribute['label'] }}</td>
+                                <td class='fw6'>{{ $attribute['label'] }} </td>
                             @else
                                 <td>{{ $attribute['admin_name'] }}</td>
                             @endif

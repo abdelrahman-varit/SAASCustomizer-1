@@ -64,6 +64,8 @@
                                 @endphp
 
                                 @foreach ($comparableAttributes as $attribute)
+
+                                   
                                     <tr>
                                         <td class="border bg-light">
                                             <span class="fs20">{{ isset($attribute['name']) ? $attribute['name'] : $attribute['admin_name'] }}</span>
@@ -117,6 +119,11 @@
 
                                                 @case('description')
                                                     <div v-html="product.description" title="@{{product.description}}" class="compare-product-description"></div>
+                                                    @break
+
+                                                @case('brand')
+                                                 
+                                                    <div title="@{{product.brand}}" class="compare-product-brand">{{ $attribute['code'] }}</div>
                                                     @break
 
                                                 @default

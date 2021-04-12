@@ -12,7 +12,7 @@
                   $viewOption = $toolbarHelper->getViewOption();
                 @endphp
 
-                <div class="rango-view-grid-container {{ $viewOption === 'grid' ? 'active' : '' }}">
+                <div class="rango-view-grid-container {{ $viewOption === 'grid' ? 'active' : '' }} btn-light">
                     <a href="{{ $toolbarHelper->getModeUrl('grid') }}" class="grid-view unset">
                         <span class="rango-view-grid fs24"></span>
                     </a>
