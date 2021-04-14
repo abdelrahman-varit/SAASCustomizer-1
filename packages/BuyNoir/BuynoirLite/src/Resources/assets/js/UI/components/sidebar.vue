@@ -46,7 +46,7 @@
                     <div
                         @mouseout="toggleSidebar(id, $event, 'mouseout')"
                         @mouseover="remainBar(`sidebar-level-${sidebarLevel+categoryIndex}`)"
-                        :class="`sub-categories sub-category-${sidebarLevel+categoryIndex} cursor-default`">
+                        :class="`sub-categories sub-category-${sidebarLevel+categoryIndex} cursor-default`" style="width:285px">
 
                         <nav
                             class="sidebar"

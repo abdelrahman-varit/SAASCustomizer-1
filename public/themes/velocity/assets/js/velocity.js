@@ -41525,6 +41525,7 @@ var render = function() {
                               "sub-categories sub-category-" +
                               (_vm.sidebarLevel + categoryIndex) +
                               " cursor-default",
+                            staticStyle: { width: "285px" },
                             on: {
                               mouseout: function($event) {
                                 return _vm.toggleSidebar(

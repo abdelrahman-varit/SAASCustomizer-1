@@ -139,8 +139,7 @@
                                 @if ($product->short_description)
                                     <div class="description">
                                         <h3 class="col-lg-12">{{ __('velocity::app.products.short-description') }}</h3>
-
-                                        {!! $product->short_description !!}
+                                        <div class="col-12">{!! $product->short_description !!}</div>
                                     </div>
                                 @endif
 
