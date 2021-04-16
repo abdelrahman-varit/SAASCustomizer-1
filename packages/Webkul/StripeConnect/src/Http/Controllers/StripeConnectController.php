@@ -157,6 +157,22 @@ class StripeConnectController extends Controller
         }
     }
 
+
+    public function redirectPlan()
+    {
+        if ( empty($this->stripeSecretKey)) {
+            session()->flash('error', trans('stripe_saas::app.shop.checkout.total.provide-api-key'));
+
+            return redirect()->route('shop.checkout.cart.index');
+        } else {
+            if ( (core()->getCurrentChannel() && core()->getCurrentChannel()->theme == "velocity")) {
+                return view('stripe_saas::shop.velocity.checkout.card-plan');
+            } else {
+                return view('stripe_saas::shop.default.checkout.card-plan');
+            }
+        }
+    }
+
     /**
      * Save card after payment using new card.
      *

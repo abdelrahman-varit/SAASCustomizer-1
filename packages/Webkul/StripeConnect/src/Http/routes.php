@@ -15,6 +15,8 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
 
         Route::get('/redirect/stripe', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@redirect')->name('stripe.standard.redirect');
 
+        Route::get('/redirect/stripeplan', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@redirectPlan')->name('stripeplan.standard.redirect');
+
         Route::post('/save/card', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@saveCard')->name('stripe.save.card');
 
         Route::get('/sendtoken', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@collectToken')->name('stripe.get.token');
