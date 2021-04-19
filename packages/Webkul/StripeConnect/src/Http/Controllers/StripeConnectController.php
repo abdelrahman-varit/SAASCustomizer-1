@@ -216,13 +216,13 @@ class StripeConnectController extends Controller
 
                 $this->stripeCart->create([
                     // 'cart_id'       => Cart::getCart()->id,
-                    'cart_id'       => session()->get('PayerID'),
+                    'cart_id'       => time(),
                     'stripe_token'  => json_encode($response),
                 ]);
             } else {
                 $this->stripeCart->create([
                     // 'cart_id'       => Cart::getCart()->id,
-                    'cart_id'       => session()->get('PayerID'),
+                    'cart_id'       => time(),
                     'stripe_token'  => json_encode($response),
                 ]);
             }
