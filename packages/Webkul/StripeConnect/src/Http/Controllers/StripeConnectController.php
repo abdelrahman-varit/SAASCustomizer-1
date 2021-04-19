@@ -181,6 +181,7 @@ class StripeConnectController extends Controller
     public function saveCard()
     {
         try {
+            $cart = session()->get('subscription_cart');
             $customerResponse = \Stripe\Customer::create([
                 // 'description'   => 'Customer for ' . Cart::getCart()->customer_email,
                 'description'   => 'Customer for ' . Company::getCurrent()->email,
@@ -214,12 +215,14 @@ class StripeConnectController extends Controller
                 }
 
                 $this->stripeCart->create([
-                    'cart_id'       => Cart::getCart()->id,
+                    // 'cart_id'       => Cart::getCart()->id,
+                    'cart_id'       => session()->get('PayerID'),
                     'stripe_token'  => json_encode($response),
                 ]);
             } else {
                 $this->stripeCart->create([
-                    'cart_id'       => Cart::getCart()->id,
+                    // 'cart_id'       => Cart::getCart()->id,
+                    'cart_id'       => session()->get('PayerID'),
                     'stripe_token'  => json_encode($response),
                 ]);
             }
