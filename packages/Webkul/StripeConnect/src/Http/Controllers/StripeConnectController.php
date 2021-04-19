@@ -182,7 +182,8 @@ class StripeConnectController extends Controller
     {
         try {
             $customerResponse = \Stripe\Customer::create([
-                'description'   => 'Customer for ' . Cart::getCart()->customer_email,
+                // 'description'   => 'Customer for ' . Cart::getCart()->customer_email,
+                'description'   => 'Customer for ' . Company::getCurrent()->email,
                 'source'        => request()->stripetoken, // obtained with Stripe.js
             ]);
 
