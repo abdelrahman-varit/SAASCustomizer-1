@@ -1,6 +1,2 @@
 .env
 /vendor
-/public/storage
-/bootstrap/cache
-/node_modules
-/public/hot
