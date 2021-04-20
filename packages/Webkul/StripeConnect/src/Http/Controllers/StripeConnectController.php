@@ -6,6 +6,7 @@ use Webkul\StripeConnect\Http\Controllers\Controller;
 use Webkul\Checkout\Facades\Cart;
 use Webkul\Sales\Repositories\OrderRepository;
 use Webkul\StripeConnect\Repositories\StripeCartRepository as StripeCart;
+use Webkul\StripeConnect\Repositories\StripePlanCartRepository as StripePlanCart;
 use Webkul\StripeConnect\Repositories\StripeRepository;
 use Stripe\Stripe as Stripe;
 use Webkul\StripeConnect\Helpers\Helper;
@@ -63,6 +64,7 @@ class StripeConnectController extends Controller
      * Stripe Cart Repository Instance holder
      */
     protected $stripeCart;
+    protected $stripePlanCart;
 
      /**
      * InvoiceRepository object
@@ -99,6 +101,7 @@ class StripeConnectController extends Controller
     public function __construct(
         OrderRepository $orderRepository,
         StripeCart $stripeCart,
+        StripePlanCart $stripePlanCart,
         stripeRepository $stripeRepository,
         Helper $helper,
         StripeConnect $stripeConnect
@@ -111,6 +114,8 @@ class StripeConnectController extends Controller
         $this->stripeRepository = $stripeRepository;
 
         $this->stripeCart = $stripeCart;
+
+        $this->stripePlanCart = $stripePlanCart;
 
         $this->stripeConnect = $stripeConnect;
 
@@ -183,7 +188,110 @@ class StripeConnectController extends Controller
         try {
             $cart = session()->get('subscription_cart');
             $customerResponse = \Stripe\Customer::create([
-                // 'description'   => 'Customer for ' . Cart::getCart()->customer_email,
+                'description'   => 'Customer for ' . Cart::getCart()->customer_email,
+                'source'        => request()->stripetoken, // obtained with Stripe.js
+            ]);
+
+            $payment_method     = \Stripe\PaymentMethod::retrieve(request()->paymentMethodId);
+            $attachedCustomer   = $payment_method->attach(['customer' => $customerResponse->id]);
+            $last4              = request()->result['paymentMethod']['card']['last4'];
+
+            $response = [
+                'customerResponse'  => $customerResponse,
+                'attachedCustomer'  => $attachedCustomer,
+            ];
+
+            if ( auth()->guard('customer')->check() ) {
+                $getStripeRepository = $this->stripeRepository->findOneWhere([
+                    'last_four'     => $last4,
+                    'customer_id'   => auth()->guard('customer')->user()->id,
+                ]);
+
+                if ( isset($getStripeRepository) ) {
+                    $getStripeRepository->update(['misc'=> json_encode($response)]);
+                } else {
+                    $result = $this->stripeRepository->create([
+                        'customer_id'   => auth()->guard('customer')->user()->id,
+                        'token'         => request()->stripetoken,
+                        'last_four'     => $last4,
+                        'misc'          => json_encode($response),
+                    ]);
+                }
+
+                $this->stripeCart->create([
+                    'cart_id'       => Cart::getCart()->id,
+                    'stripe_token'  => json_encode($response),
+                ]);
+            } else {
+                $this->stripeCart->create([
+                    'cart_id'       => Cart::getCart()->id,
+                    'stripe_token'  => json_encode($response),
+                ]);
+            }
+
+            return response()->json([
+                'customerId'        => $customerResponse->id,
+                'paymentMethodId'   => request()->paymentMethodId,
+            ]);
+        
+        } catch(\Stripe\Exception\CardException $e) {
+            // Since it's a decline, \Stripe\Exception\CardException will be caught
+            session()->flash('error', $e->getError()->message);
+            
+            return response()->json([
+                'message' => $e->getError()->message,
+            ]);
+        } catch (\Stripe\Exception\RateLimitException $e) {
+            // Too many requests made to the API too quickly
+            session()->flash('error', $e->getError()->message);
+
+            return response()->json([
+                'message' => $e->getError()->message,
+            ]);
+        } catch (\Stripe\Exception\InvalidRequestException $e) {
+            // Invalid parameters were supplied to Stripe's API
+            session()->flash('error', $e->getError()->message);
+        
+            return response()->json([
+                'message' => $e->getError()->message,
+            ]);
+        } catch (\Stripe\Exception\AuthenticationException $e) {
+            // Authentication with Stripe's API failed
+            // (maybe you changed API keys recently)
+            session()->flash('error', $e->getError()->message);
+
+            return response()->json([
+                'message' => $e->getError()->message,
+            ]);
+        } catch (\Stripe\Exception\ApiConnectionException $e) {
+            // Network communication with Stripe failed
+            session()->flash('error', $e->getError()->message);
+
+            return response()->json([
+                'message' => $e->getError()->message,
+            ]);
+        } catch (\Stripe\Exception\ApiErrorException $e) {
+            // Display a very generic error to the user, and maybe send
+            // yourself an email
+            session()->flash('error', $e->getError()->message);
+
+            return response()->json([
+                'message' => $e->getError()->message,
+            ]);
+        } catch (Exception $e) {
+            // Something else happened, completely unrelated to Stripe
+            session()->flash('error', $e->getError()->message);
+
+            return response()->json([
+                'message' => trans('stripe_saas::app.shop.checkout.total.something-went-wrong'),
+            ]);
+        }
+    }
+    public function saveCardPlan()
+    {
+        try {
+            $cart = session()->get('subscription_cart');
+            $customerResponse = \Stripe\Customer::create([
                 'description'   => 'Customer for ' . Company::getCurrent()->email,
                 'source'        => request()->stripetoken, // obtained with Stripe.js
             ]);
@@ -214,17 +322,15 @@ class StripeConnectController extends Controller
                     ]);
                 }
 
-                // $this->stripeCart->create([
-                //     // 'cart_id'       => Cart::getCart()->id,
-                //     'cart_id'       => time(),
-                //     'stripe_token'  => json_encode($response),
-                // ]);
+                $this->stripePlanCart->create([
+                    'customer_id'   => auth()->guard('customer')->user()->id,
+                    'stripe_token'  => json_encode($response),
+                ]);
             } else {
-                // $this->stripeCart->create([
-                //     // 'cart_id'       => Cart::getCart()->id,
-                //     'cart_id'       => time(),
-                //     'stripe_token'  => json_encode($response),
-                // ]);
+                $this->stripePlanCart->create([
+                    'customer_id'   => auth()->guard('customer')->user()->id,
+                    'stripe_token'  => json_encode($response),
+                ]);
             }
 
             return response()->json([
@@ -336,6 +442,51 @@ class StripeConnectController extends Controller
             throw $e;
         }
     }
+    public function savedCardPaymentPlan()
+    {
+        $company = Company::getCurrent();
+
+        try {
+            $stripeConnect = $this->stripeConnect->findOneWhere([
+                'company_id' => $company->id
+            ]);
+    
+            if ( isset($stripeConnect->id) ) {
+                $sellerUserId = $stripeConnect->stripe_user_id;
+            } else {
+                session()->flash('warning', 'Stripe unavailable for this seller');
+    
+                return redirect()->route('shop.checkout.success');
+            }
+
+            $selectedId = request()->savedCardSelectedId;
+
+            $savedCard = $this->stripeRepository->findOneWhere([
+                'id' => $selectedId,
+            ]);
+
+            $miscDecoded = json_decode($savedCard->misc);
+
+            $stripeId           = '';
+            $payment            = $this->helper->productDetail();
+            $customerId         = $miscDecoded->customerResponse->id;
+            $paymentMethodId    = $miscDecoded->attachedCustomer->id;
+
+            $savedCardPayment = $this->helper->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId);
+
+            if ($savedCard) {
+                return response()->json([
+                    'customer_id'       => $miscDecoded->customerResponse->id,
+                    'payment_method_id' => $miscDecoded->attachedCustomer->id,
+                    'savedCardPayment'  => $savedCardPayment,
+                    ]);
+            } else {
+                return response()->json(['sucess' => 'false'],404);
+            }
+        } catch(Exception $e) {
+            throw $e;
+        }
+    }
 
     /**
      * Collect stripe token from client side
@@ -362,6 +513,44 @@ class StripeConnectController extends Controller
         $payment    = $this->helper->productDetail();
 
         $stripeToken = $this->stripeCart->findOneWhere([
+            'cart_id'   => Cart::getCart()->id,
+        ])->first()->stripe_token;  
+
+        $decodeStripeToken = json_decode($stripeToken);
+
+        $customerId =  NULL;
+
+        $paymentMethodId = $decodeStripeToken->attachedCustomer->id;
+
+        $intent = $this->helper->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId);
+
+        if ( $intent ) {
+            return response()->json(['client_secret' => $intent->client_secret]);
+        } else {
+            return response()->json(['success' => 'false'], 400);
+        }
+    }
+
+    public function collectTokenPlan()
+    {
+        $company    = Company::getCurrent();
+        
+        $stripeConnect = $this->stripeConnect->findOneWhere([
+            'company_id' => $company->id
+            ]);
+
+        if ( isset($stripeConnect->id) ) {
+            $sellerUserId = $stripeConnect->stripe_user_id;
+        } else {
+            session()->flash('warning', 'Stripe unavailable for this tenant.');
+
+            return redirect()->route('shop.checkout.success');
+        }
+
+        $stripeId   = '';
+        $payment    = $this->helper->productDetail();
+
+        $stripeToken = $this->stripePlanCart->findOneWhere([
             'cart_id'   => Cart::getCart()->id,
         ])->first()->stripe_token;  
 

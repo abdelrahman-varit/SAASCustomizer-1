@@ -4,7 +4,7 @@
     @if(request()->is('checkout/redirect/stripeplan'))
         <html>
             <head>
-                <title>Stripe Payment</title>
+                <title>Stripe Payment - Buynoir</title>
                 <script src="https://js.stripe.com/v3/"></script>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -146,7 +146,7 @@
                         $.ajax({
                             type: "POST",
 
-                            url : "{{ route('stripe.save.card') }}",
+                            url : "{{ route('stripe.save.cardplan') }}",
 
                             data : {
                                 result:result,
@@ -168,7 +168,7 @@
 
                     function paymentIntent() {
                         $.ajax({
-                            url :"{{ route('stripe.get.token') }}",
+                            url :"{{ route('stripe.get.tokenplan') }}",
                             success:function(response) {
                                 if (response.success != 'false') {
 
@@ -179,7 +179,7 @@
                                             paymentCancel();
                                         } else {
                                             console.log(result);
-                                            saveOrder();
+                                            saveOrderPlan();
                                         }
                                     });
                                 } else {
@@ -200,7 +200,7 @@
                         });
                     }
 
-                    function saveOrder () {
+                    function saveOrderPlan () {
                         $.ajax({
                             url : "{{ route('admin.subscription.stripe.payment') }}",
 
@@ -233,7 +233,7 @@
                                 }
 
                             } else {
-                                
+                                //for success result stripe create payment method id (first step)
                                 if (isUser == 'true') {
                                     isSavedCard = confirm('Do you want to save card for future payment ?');
                                     
@@ -330,7 +330,7 @@
 
                         $.ajax({
                             type: 'POST',
-                            url:'{{ route('stripe.saved.card.payment') }}',
+                            url:'{{ route('stripe.saved.card.paymentplan') }}',
                             data : { _token:_token, savedCardSelectedId:savedCardSelectedId},
                             async: true,
                             success: function(response) {
@@ -357,7 +357,7 @@
                             } else {
                                 if (result.paymentIntent.status === 'succeeded') {
                                     $('.cp-spinner').css({'display': 'block', 'z-index': '12', 'bottom': '600px'});
-                                    saveOrder();
+                                    saveOrderPlan();
                                 }
                             }
                         });

@@ -14,7 +14,7 @@ class StripeConnectServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        include __DIR__ . '/../Http/routes-stripe.php';
+        include __DIR__ . '/../Http/routes-stripe-connect.php';
         
         $this->app->register(EventServiceProvider::class);
         

@@ -18,8 +18,12 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
         Route::get('/redirect/stripeplan', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@redirectPlan')->name('stripeplan.standard.redirect');
 
         Route::post('/save/card', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@saveCard')->name('stripe.save.card');
+        
+        Route::post('/save/cardplan', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@saveCardPlan')->name('stripe.save.cardplan');
 
         Route::get('/sendtoken', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@collectToken')->name('stripe.get.token');
+        
+        Route::get('/sendtokenplan', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@collectTokenPlan')->name('stripe.get.tokenplan');
 
         Route::get('/create/charge', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@createCharge')->name('stripe.make.payment');
 
@@ -32,6 +36,8 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
         Route::get('/stripe/card/delete', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@deleteCard')->name('stripe.delete.saved.cart');
 
         Route::post('/saved/card/payment', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@savedCardPayment')->name('stripe.saved.card.payment');
+
+        Route::post('/saved/card/paymentplan', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@savedCardPaymentPlan')->name('stripe.saved.card.paymentplan');
 
         Route::get('/payment/cancel', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@paymentCancel')->name('stripe.payment.cancel');
     });

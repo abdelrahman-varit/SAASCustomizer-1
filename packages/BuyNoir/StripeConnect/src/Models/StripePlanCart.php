@@ -4,16 +4,16 @@ namespace BuyNoir\StripeConnect\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
-use Webkul\StripeConnect\Contracts\StripeConnect as StripeConnectContract;
+use BuyNoir\StripeConnect\Contracts\StripePlanCart as StripePlanCartContract;
 use Webkul\StripeConnect\Models\StripeConnect as StripeConnectModel;
 use Company;
 
-class StripeConnect extends StripeConnectModel
+class StripePlanCart extends Model implements  StripePlanCartContract
 {
     protected $table = 'stripe_plan_cart';
 
     protected $fillable = [
-        'access_token', 'refresh_token', 'stripe_publishable_key', 'stripe_user_id', 'company_id'
+        'recurring_profile_id', 'stripe_token'
     ];
 
     /**
