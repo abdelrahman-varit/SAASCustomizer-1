@@ -552,7 +552,7 @@ class StripeConnectController extends Controller
         $payment    = $this->helper->productDetail();
 
         $stripeToken = $this->stripePlanCart->findOneWhere([
-            'cart_id'   => Cart::getCart()->id,
+            'company_id' => $company->id,
         ])->first()->stripe_token;  
 
         $decodeStripeToken = json_decode($stripeToken);

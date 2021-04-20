@@ -13,7 +13,7 @@ class StripePlanCart extends Model implements  StripePlanCartContract
     protected $table = 'stripe_plan_cart';
 
     protected $fillable = [
-        'recurring_profile_id', 'stripe_token'
+        'company_id','recurring_profile_id', 'stripe_token'
     ];
 
     /**
@@ -29,7 +29,7 @@ class StripePlanCart extends Model implements  StripePlanCartContract
         if (auth()->guard('super-admin')->check() || ! isset($company->id)) {
             return new \Illuminate\Database\Eloquent\Builder($query);
         } else {
-            return new \Illuminate\Database\Eloquent\Builder($query->where('stripe_companies' . '.company_id', $company->id));
+            return new \Illuminate\Database\Eloquent\Builder($query->where('stripe_plan_cart' . '.company_id', $company->id));
         }
     }
 }
