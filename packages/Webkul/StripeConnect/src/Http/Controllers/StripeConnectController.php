@@ -6,7 +6,7 @@ use Webkul\StripeConnect\Http\Controllers\Controller;
 use Webkul\Checkout\Facades\Cart;
 use Webkul\Sales\Repositories\OrderRepository;
 use Webkul\StripeConnect\Repositories\StripeCartRepository as StripeCart;
-use Webkul\StripeConnect\Repositories\StripePlanCartRepository as StripePlanCart;
+use BuyNoir\StripeConnect\Repositories\StripePlanCartRepository as StripePlanCart;
 use Webkul\StripeConnect\Repositories\StripeRepository;
 use Stripe\Stripe as Stripe;
 use Webkul\StripeConnect\Helpers\Helper;
