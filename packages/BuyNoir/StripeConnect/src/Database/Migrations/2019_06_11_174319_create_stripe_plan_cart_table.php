@@ -15,7 +15,8 @@ class CreateStripePlanCartTable extends Migration
     {
         Schema::create('stripe_plan_cart', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('recurring_profile_id')->unsigned();
+            $table->integer('customer_id')->unsigned();
+            $table->integer('recurring_profile_id')->unsigned()->nullable();
             //$table->foreign('recurring_profile_id')->references('id')->on('saas_subscription_recurring_profiles')->onDelete('cascade');
             $table->json('stripe_token');
             $table->timestamps();
