@@ -291,6 +291,7 @@ class StripeConnectController extends Controller
     {
         try {
             $cart = session()->get('subscription_cart');
+            $company = Company::getCurrent();
             $customerResponse = \Stripe\Customer::create([
                 'description'   => 'Customer for ' . Company::getCurrent()->email,
                 'source'        => request()->stripetoken, // obtained with Stripe.js
@@ -323,12 +324,12 @@ class StripeConnectController extends Controller
                 }
 
                 $this->stripePlanCart->create([
-                    'customer_id'   => auth()->guard('customer')->user()->id,
+                    'customer_id'   => $company->id,
                     'stripe_token'  => json_encode($response),
                 ]);
             } else {
                 $this->stripePlanCart->create([
-                    'customer_id'   => auth()->guard('customer')->user()->id,
+                    'customer_id'   => $company->id,
                     'stripe_token'  => json_encode($response),
                 ]);
             }
