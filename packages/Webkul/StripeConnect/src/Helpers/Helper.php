@@ -4,6 +4,7 @@ namespace Webkul\StripeConnect\Helpers;
 use Webkul\Checkout\Facades\Cart;
 use Webkul\StripeConnect\Repositories\StripeRepository;
 use Stripe\PaymentIntent as PaymentIntent;
+use Company;
 
 class Helper {
 
