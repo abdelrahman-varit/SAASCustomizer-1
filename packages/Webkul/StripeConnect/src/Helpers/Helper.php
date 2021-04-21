@@ -132,8 +132,8 @@ class Helper {
         $company = Company::getCurrent();
         $cart   = Cart::getCart();
         $cart = (Object)session()->get('subscription_cart');
-        $cart->customer_email = $company->email;
-        $cart->cart_currency_code = 'usd';
+        $customer_email = $company->email;
+        $cart_currency_code = 'usd';
         $description = json_encode($sellerUser);
 
        
@@ -144,8 +144,8 @@ class Helper {
                         'customer'             => $customerId,
                         'statement_descriptor' => $this->statementDescriptor,
                         "description"          => $description,
-                        'currency'             => $cart->cart_currency_code,
-                        'receipt_email'        => $cart->customer_email,
+                        'currency'             => $cart_currency_code,
+                        'receipt_email'        => $customer_email,
                         'transfer_data'        => [
                                   'destination'    => $sellerUserId,
                         ],
@@ -153,11 +153,11 @@ class Helper {
                 } else {
                     $result = PaymentIntent::create([
                         'amount'                => round($cart->amount, 2) * 100,
-                        'currency'              => $cart->cart_currency_code,
+                        'currency'              => $cart_currency_code,
                         'payment_method_types'  => ['card'],
                         'statement_descriptor'  => $this->statementDescriptor,
                         "description"           => $description,
-                        'receipt_email'         => $cart->customer_email,
+                        'receipt_email'         => $customer_email,
                         'transfer_data'         => [
                                     'destination'   => $sellerUserId,
                                 ],
