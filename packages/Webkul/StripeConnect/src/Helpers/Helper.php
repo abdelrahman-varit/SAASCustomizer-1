@@ -128,7 +128,7 @@ class Helper {
 
     public function stripePaymentPlan($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUser = '', $sellerUserId = '')
     {
-        $co\mpany = Company::getCurrent();
+        $company = Company::getCurrent();
         $cart   = Cart::getCart();
         $cart = session()->get('subscription_cart');
         $cart->customer_email = $company->email;
