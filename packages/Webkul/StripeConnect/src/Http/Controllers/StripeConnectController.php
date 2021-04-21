@@ -64,6 +64,7 @@ class StripeConnectController extends Controller
      * Stripe Cart Repository Instance holder
      */
     protected $stripeCart;
+
     protected $stripePlanCart;
 
      /**
@@ -287,6 +288,7 @@ class StripeConnectController extends Controller
             ]);
         }
     }
+
     public function saveCardPlan()
     {
         try {
@@ -443,6 +445,7 @@ class StripeConnectController extends Controller
             throw $e;
         }
     }
+
     public function savedCardPaymentPlan()
     {
         $company = Company::getCurrent();
@@ -473,7 +476,7 @@ class StripeConnectController extends Controller
             $customerId         = $miscDecoded->customerResponse->id;
             $paymentMethodId    = $miscDecoded->attachedCustomer->id;
 
-            $savedCardPayment = $this->helper->stripePayment($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId);
+            $savedCardPayment = $this->helper->stripePaymentPlan($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId);
 
             if ($savedCard) {
                 return response()->json([
@@ -540,6 +543,8 @@ class StripeConnectController extends Controller
             'company_id' => $company->id
             ]);
 
+
+
         if ( isset($stripeConnect->id) ) {
             $sellerUserId = $stripeConnect->stripe_user_id;
         } else {
@@ -552,7 +557,7 @@ class StripeConnectController extends Controller
         $payment    = $this->helper->productDetail();
 
         $stripeToken = $this->stripePlanCart->findOneWhere([
-            'company_id' => $company->id,
+            'company_id' => $company->id
         ])->first()->stripe_token;  
 
         $decodeStripeToken = json_decode($stripeToken);

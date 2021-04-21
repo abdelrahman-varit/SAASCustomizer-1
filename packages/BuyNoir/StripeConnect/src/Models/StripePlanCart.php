@@ -5,7 +5,6 @@ namespace BuyNoir\StripeConnect\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use BuyNoir\StripeConnect\Contracts\StripePlanCart as StripePlanCartContract;
-use Webkul\StripeConnect\Models\StripeConnect as StripeConnectModel;
 use Company;
 
 class StripePlanCart extends Model implements  StripePlanCartContract
@@ -29,7 +28,7 @@ class StripePlanCart extends Model implements  StripePlanCartContract
         if (auth()->guard('super-admin')->check() || ! isset($company->id)) {
             return new \Illuminate\Database\Eloquent\Builder($query);
         } else {
-            return new \Illuminate\Database\Eloquent\Builder($query->where('stripe_plan_cart' . '.company_id', $company->id));
+            return new \Illuminate\Database\Eloquent\Builder($query->where('company_id', $company->id));
         }
     }
 }
