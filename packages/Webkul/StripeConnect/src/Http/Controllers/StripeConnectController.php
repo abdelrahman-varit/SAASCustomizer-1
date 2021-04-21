@@ -567,7 +567,7 @@ class StripeConnectController extends Controller
         $paymentMethodId = $decodeStripeToken->attachedCustomer->id;
 
         $intent = $this->helper->stripePaymentPlan($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId);
-
+        
         if ( $intent ) {
             return response()->json(['client_secret' => $intent->client_secret]);
         } else {

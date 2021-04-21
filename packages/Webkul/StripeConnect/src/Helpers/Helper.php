@@ -134,10 +134,10 @@ class Helper {
         $cart = (Object)session()->get('subscription_cart');
         $customer_email = $company->email;
         $cart_currency_code = 'usd';
-        $description = json_encode($sellerUser);
+        $description = json_encode(['pay_id'=>$sellerUser,'domain'=>$company->domain, 'email'=>$customer_email]);
 
-       
-            try {
+
+                 try {
                 if  ( $customerId != '' ) {
                     $result = PaymentIntent::create([
                         'amount'               => round($cart->amount, 2) * 100,
@@ -147,7 +147,7 @@ class Helper {
                         'currency'             => $cart_currency_code,
                         'receipt_email'        => $customer_email,
                         'transfer_data'        => [
-                                  'destination'    => $sellerUserId,
+                                  'destination'    => $sellerUser
                         ],
                     ]);
                 } else {
@@ -159,12 +159,12 @@ class Helper {
                         "description"           => $description,
                         'receipt_email'         => $customer_email,
                         'transfer_data'         => [
-                                    'destination'   => $sellerUserId,
+                                    'destination'   => $sellerUser
                                 ],
                     ]);
                 }
             } catch (\Exception $e) {
-                return $e;
+                return $e->getMessage();
             }   
         
         
