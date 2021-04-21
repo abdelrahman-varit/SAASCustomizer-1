@@ -131,7 +131,7 @@ class Helper {
     {
         $company = Company::getCurrent();
         $cart   = Cart::getCart();
-        $cart = session()->get('subscription_cart');
+        $cart = (Object)session()->get('subscription_cart');
         $cart->customer_email = $company->email;
         $cart->cart_currency_code = 'usd';
         $description = json_encode($sellerUser);
