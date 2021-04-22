@@ -202,7 +202,7 @@
 
                     function saveOrderPlan () {
                         $.ajax({
-                            url : "{{ route('admin.subscription.stripe.payment') }}",
+                            url : "{{ route('admin.subscription.stripe.paymentplan') }}",
 
                             success: function(response) {
                                 window.location.href = response.data.route;

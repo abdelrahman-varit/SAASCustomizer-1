@@ -127,6 +127,10 @@ Route::group(['middleware' => ['web', 'super-locale']], function () {
                         ->defaults('_config', ['redirect' => 'admin.subscription.plan.index'])
                         ->name('admin.subscription.stripe.payment');
 
+                Route::get('/stripe/paymentplan', 'Webkul\SAASSubscription\Http\Controllers\Admin\StripeController@createProfilePlan')
+                        ->defaults('_config', ['redirect' => 'admin.subscription.plan.index'])
+                        ->name('admin.subscription.stripe.paymentplan');
+
 
 
 

@@ -94,47 +94,12 @@ class StripeController extends Controller
              return redirect()->route('admin.subscription.plan.index');
          }
  
-         $nvpdo = "&USER=" . company()->getSuperConfigData('subscription.payment.paypal.user_name')
-                 . "&PWD=" . company()->getSuperConfigData('subscription.payment.paypal.password')
-                 . "&SIGNATURE=" . company()->getSuperConfigData('subscription.payment.paypal.signature')
-                 . "&METHOD=CreateRecurringPaymentsProfile" 
-                 . "&VERSION=108" 
-                 . "&EMAIL=" . urlencode($cart['address']['email'])
-                 . "&FIRSTNAME=" . urlencode($cart['address']['first_name'])
-                 . "&LASTNAME=" . urlencode($cart['address']['last_name'])
-                 . "&STREET=" . urlencode($cart['address']['address1'])
-                 . "&CITY=" . urlencode($cart['address']['city'])
-                 . "&STATE=" . urlencode($cart['address']['state'])
-                 . "&ZIP=" . urlencode($cart['address']['postcode'])
-                 . "&COUNTRYCODE=" . urlencode($cart['address']['country'])
-                 . "&PAYMENTACTION=Sale"
-                 . "&TOKEN=" . session()->get('token')
-                 . "&PAYERID=" . session()->get('PayerID')
-                 . "&PROFILESTARTDATE=" . gmdate("Y-m-d\TH:i:s\Z")
-                 . "&DESC=" . $cart['plan']->name
-                 . "&BILLINGPERIOD=" . ucfirst($cart['period_unit'])
-                 . "&BILLINGFREQUENCY=1"
-                 . "&AUTOBILLOUTAMT=AddToNextBilling"
-                 . "&PROFILEREFERENCE=BookingCommerce"
-                 . "&AMT=" . round($cart['amount'], 2)
-                 . "&CURRENCYCODE=" . config('app.currency')
-                 . "&L_PAYMENTREQUEST_0_ITEMCATEGORYn=Digital" 
-                 . "&L_PAYMENTREQUEST_0_NAMEn=" . $cart['plan']->name 
-                 . "&L_PAYMENTREQUEST_0_AMTn=" . round($cart['amount'], 2)
-                 . "&L_PAYMENTREQUEST_0_QTYn=1"
-                 . "&MAXFAILEDPAYMENTS=2";
-         
-        //  $doEC = $this->paypalHelper->request($nvpdo);
-
-        return response()->json([
-            'data' => [
-                'route' => route("admin.subscription.plan.index"),
-                'success' => true
-            ]
-        ]);
-
- 
-         if ($doEC['ACK'] == "Success") {
+         $doEC = (object)[
+             'PROFILESTATUS'=>'ActiveProfile',
+             'PROFILEID'=>'I-T2HYXXMJTS1T'
+         ]
+     
+        //  if ($doEC['ACK'] == "Success") {
              $this->subscriptionHelper->createRecurringProfile($doEC);
  
              session()->forget('subscription_cart');
@@ -142,10 +107,38 @@ class StripeController extends Controller
              session()->flash('success', trans('saassubscription::app.super-user.plans.profile-created-success'));
  
              return redirect()->route($this->_config['redirect']);
-         } else {
-             session()->flash('error', $doEC['L_LONGMESSAGE0']);
+        //  } else {
+        //      session()->flash('error', $doEC['L_LONGMESSAGE0']);
  
+        //      return redirect()->route('admin.subscription.plan.index');
+        //  }
+     }
+
+     public function createProfilePlan()
+     {
+         $cart = session()->get('subscription_cart');
+ 
+         if (! $cart) {
              return redirect()->route('admin.subscription.plan.index');
          }
+ 
+         $doEC = (object)[
+             'PROFILESTATUS'=>'ActiveProfile',
+             'PROFILEID'=>'I-T2HYXXMJTS1T'
+         ]
+     
+        //  if ($doEC['ACK'] == "Success") {
+             $this->subscriptionHelper->createRecurringProfile($doEC);
+ 
+             session()->forget('subscription_cart');
+ 
+             session()->flash('success', trans('saassubscription::app.super-user.plans.profile-created-success'));
+ 
+             return redirect()->route($this->_config['redirect']);
+        //  } else {
+        //      session()->flash('error', $doEC['L_LONGMESSAGE0']);
+ 
+        //      return redirect()->route('admin.subscription.plan.index');
+        //  }
      }
 }
