@@ -326,12 +326,12 @@ class StripeConnectController extends Controller
                 }
 
                 $this->stripePlanCart->create([
-                    'customer_id'   => $company->id,
+                    'company_id'   => $company->id,
                     'stripe_token'  => json_encode($response),
                 ]);
             } else {
                 $this->stripePlanCart->create([
-                    'customer_id'   => $company->id,
+                    'company_id'   => $company->id,
                     'stripe_token'  => json_encode($response),
                 ]);
             }

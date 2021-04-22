@@ -94,7 +94,7 @@ class StripeController extends Controller
              return redirect()->route('admin.subscription.plan.index');
          }
  
-         $doEC = (object)[
+         $doEC = [
              'PROFILESTATUS'=>'ActiveProfile',
              'PROFILEID'=>'I-T2HYXXMJTS1T'
          ];
@@ -122,7 +122,7 @@ class StripeController extends Controller
              return redirect()->route('admin.subscription.plan.index');
          }
  
-         $doEC = (object)[
+         $doEC = [
              'PROFILESTATUS'=>'ActiveProfile',
              'PROFILEID'=>'I-T2HYXXMJTS1T'
          ];
@@ -134,7 +134,15 @@ class StripeController extends Controller
  
              session()->flash('success', trans('saassubscription::app.super-user.plans.profile-created-success'));
  
-             return redirect()->route($this->_config['redirect']);
+             //return redirect()->route($this->_config['redirect']);
+
+             return response()->json([
+                'data' => [
+                    'route' => route("admin.subscription.plan.index"),
+                    'success' => true
+                ]
+            ]);
+
         //  } else {
         //      session()->flash('error', $doEC['L_LONGMESSAGE0']);
  
