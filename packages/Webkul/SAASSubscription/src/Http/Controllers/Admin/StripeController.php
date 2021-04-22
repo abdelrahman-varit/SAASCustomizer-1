@@ -125,7 +125,7 @@ class StripeController extends Controller
          $doEC = (object)[
              'PROFILESTATUS'=>'ActiveProfile',
              'PROFILEID'=>'I-T2HYXXMJTS1T'
-         ]
+         ];
      
         //  if ($doEC['ACK'] == "Success") {
              $this->subscriptionHelper->createRecurringProfile($doEC);
