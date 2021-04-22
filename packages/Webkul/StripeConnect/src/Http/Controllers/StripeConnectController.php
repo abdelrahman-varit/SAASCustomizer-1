@@ -568,10 +568,10 @@ class StripeConnectController extends Controller
 
         $intent = $this->helper->stripePaymentPlan($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId);
         
-        if ( $intent ) {
+        if ( $intent && !empty($intent->client_secret) ) {
             return response()->json(['client_secret' => $intent->client_secret]);
         } else {
-            return response()->json(['success' => 'false'], 400);
+            return response()->json(['success' => 'false','data'=>$intent], 400);
         }
     }
 
