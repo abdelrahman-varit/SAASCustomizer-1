@@ -200,7 +200,7 @@
 
                 <li class="cart-dropdown-container">
 
-                    @include('shop::checkout.cart.mini-cart')
+                    {{-- @include('shop::checkout.cart.mini-cart') --}}
 
                 </li>
 
