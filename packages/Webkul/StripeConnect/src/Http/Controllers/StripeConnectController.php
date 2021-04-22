@@ -544,7 +544,6 @@ class StripeConnectController extends Controller
             ]);
 
 
-
         if ( isset($stripeConnect->id) ) {
             $sellerUserId = $stripeConnect->stripe_user_id;
         } else {
@@ -569,6 +568,14 @@ class StripeConnectController extends Controller
         $intent = $this->helper->stripePaymentPlan($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId);
         
         if ( $intent && !empty($intent->client_secret) ) {
+            $data = array_merge($data, [
+                'payment_id' => $intent->id,
+                'profile_status'   => 'ActiveProfile',
+                'payment_status'   => 'success',
+            ]);
+    
+            session()->put('subscription_cart', $data);
+
             return response()->json(['client_secret' => $intent->client_secret]);
         } else {
             return response()->json(['success' => 'false','data'=>$intent], 400);

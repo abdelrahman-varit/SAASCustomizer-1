@@ -86,56 +86,54 @@ class StripeController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-     public function createProfile()
-     {
-         $cart = session()->get('subscription_cart');
+    //  public function createProfile()
+    //  {
+    //      $cart = session()->get('subscription_cart');
  
-         if (! $cart) {
-             return redirect()->route('admin.subscription.plan.index');
-         }
+    //      if (! $cart) {
+    //          return redirect()->route('admin.subscription.plan.index');
+    //      }
  
-         $doEC = [
-             'PROFILESTATUS'=>'ActiveProfile',
-             'PROFILEID'=>'I-T2HYXXMJTS1T'
-         ];
+    //      $doEC = [
+    //          'PROFILESTATUS'=>'ActiveProfile',
+    //          'PROFILEID'=>'I-T2HYXXMJTS1T'
+    //      ];
      
-        //  if ($doEC['ACK'] == "Success") {
-             $this->subscriptionHelper->createRecurringProfile($doEC);
+    //     //  if ($doEC['ACK'] == "Success") {
+    //          $this->subscriptionHelper->createRecurringProfile($doEC);
  
-             session()->forget('subscription_cart');
+    //          session()->forget('subscription_cart');
  
-             session()->flash('success', trans('saassubscription::app.super-user.plans.profile-created-success'));
+    //          session()->flash('success', trans('saassubscription::app.super-user.plans.profile-created-success'));
  
-             return redirect()->route($this->_config['redirect']);
-        //  } else {
-        //      session()->flash('error', $doEC['L_LONGMESSAGE0']);
+    //          return redirect()->route($this->_config['redirect']);
+    //     //  } else {
+    //     //      session()->flash('error', $doEC['L_LONGMESSAGE0']);
  
-        //      return redirect()->route('admin.subscription.plan.index');
-        //  }
-     }
+    //     //      return redirect()->route('admin.subscription.plan.index');
+    //     //  }
+    //  }
 
      public function createProfilePlan()
      {
          $cart = session()->get('subscription_cart');
- 
+   
          if (! $cart) {
              return redirect()->route('admin.subscription.plan.index');
          }
  
          $doEC = [
-             'PROFILESTATUS'=>'ActiveProfile',
-             'PROFILEID'=>'I-T2HYXXMJTS1T'
+             'PROFILESTATUS'=>$cart['profile_status'],
+             'PROFILEID'=>$cart['payment_id']
          ];
      
-        //  if ($doEC['ACK'] == "Success") {
+        if ($cart['payment_status']=="success") {
              $this->subscriptionHelper->createRecurringProfile($doEC);
  
              session()->forget('subscription_cart');
  
              session()->flash('success', trans('saassubscription::app.super-user.plans.profile-created-success'));
  
-             //return redirect()->route($this->_config['redirect']);
-
              return response()->json([
                 'data' => [
                     'route' => route("admin.subscription.plan.index"),
@@ -143,10 +141,10 @@ class StripeController extends Controller
                 ]
             ]);
 
-        //  } else {
-        //      session()->flash('error', $doEC['L_LONGMESSAGE0']);
+         } else {
+             session()->flash('error', $doEC['L_LONGMESSAGE0']);
  
-        //      return redirect()->route('admin.subscription.plan.index');
-        //  }
+             return redirect()->route('admin.subscription.plan.index');
+         }
      }
 }
