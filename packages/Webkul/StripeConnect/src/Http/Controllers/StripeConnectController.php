@@ -591,13 +591,13 @@ class StripeConnectController extends Controller
     {      
         $order = $this->orderRepository->create(Cart::prepareDataForOrder());
 
-        dd($order);
-        
         $this->order = $this->orderRepository->findOneWhere([
             'cart_id' => Cart::getCart()->id
         ]);
 
-        $getErr = $this->orderRepository->update(['status' => 'processing'], $this->order->id);
+        // $getErr = 
+
+        dd($this->orderRepository->update(['status' => 'processing'], $this->order->id););
       
         
         $this->invoiceRepository = app('Webkul\Sales\Repositories\InvoiceRepository');
