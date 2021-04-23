@@ -286,10 +286,8 @@ class OrderRepository extends Repository
         $order->status = $status;
         $order->save();
     }
-    public function updateOrderStatusManuallyForStripe($status, $id)
+    public function updateOrderStatusManuallyForStripe($order)
     {
-        $order->status = $status;
-        $order->id = $id;
         dd($order);
         $order->save();
     }
