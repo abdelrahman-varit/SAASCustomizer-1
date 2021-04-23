@@ -128,7 +128,7 @@
 
         <div class="col-lg-7 col-6">
             {!! view_render_event('bagisto.shop.layout.header.cart-item.before') !!}
-                {{@include('shop::checkout.cart.mini-cart')}}
+                @include('shop::checkout.cart.mini-cart')
             {!! view_render_event('bagisto.shop.layout.header.cart-item.after') !!}
 
             @php
