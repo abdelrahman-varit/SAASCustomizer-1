@@ -596,9 +596,14 @@ class StripeConnectController extends Controller
         ]);
 
 
-        $update_status = $this->orderRepository->update([
-            'status' => 'processing'
-        ], $this->order->id);
+        // $update_status = $this->orderRepository->update([
+        //     'status' => 'processing'
+        // ], $this->order->id);
+
+        $update_status = DB::table('orders')
+        ->where('id', $this->order->id)  // find your user by their email
+        ->limit(1)  // optional - to ensure only one record is updated.
+        ->update(array('status' => 'processing'));
 
 
         dd($update_status);
