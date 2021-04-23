@@ -271,7 +271,6 @@ class OrderRepository extends Repository
      */
     public function updateOrderStatus($order)
     {
-        dd($order);
         $status = 'processing';
 
         if ($this->isInCompletedState($order)) {
