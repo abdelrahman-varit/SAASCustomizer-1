@@ -595,7 +595,7 @@ class StripeConnectController extends Controller
             'cart_id' => Cart::getCart()->id
         ]);
 
-        $this->orderRepository->update(['status' => 'processing'], $this->order->id);
+        $this->orderRepository->updateOrderStatus($this->order->id);
         
         $this->invoiceRepository = app('Webkul\Sales\Repositories\InvoiceRepository');
 
