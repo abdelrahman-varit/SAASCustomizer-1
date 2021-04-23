@@ -617,7 +617,7 @@ class StripeConnectController extends Controller
         Cart::deActivateCart();
 
         session()->flash('order', $order);
-
+        dd('we are here...');
         return response()->json([
             'data' => [
                 'route' => route("shop.checkout.success"),
