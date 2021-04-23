@@ -595,8 +595,9 @@ class StripeConnectController extends Controller
             'cart_id' => Cart::getCart()->id
         ]);
 
-        $this->orderRepository->update(['status' => 'processing'], $this->order->id);
-
+        $getErr = $this->orderRepository->update(['status' => 'processing'], $this->order->id);
+      
+        dd($getErr);
         
         $this->invoiceRepository = app('Webkul\Sales\Repositories\InvoiceRepository');
 
@@ -617,7 +618,7 @@ class StripeConnectController extends Controller
         Cart::deActivateCart();
 
         session()->flash('order', $order);
-        dd('we are here...');
+        
         return response()->json([
             'data' => [
                 'route' => route("shop.checkout.success"),
