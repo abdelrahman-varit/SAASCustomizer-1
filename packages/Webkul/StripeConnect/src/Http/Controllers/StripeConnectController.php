@@ -601,8 +601,8 @@ class StripeConnectController extends Controller
         // ], $this->order->id);
 
         $update_status = DB::table('orders')
-        ->where('id', $this->order->id)  // find your user by their email
-        ->limit(1)  // optional - to ensure only one record is updated.
+        ->where('id', $this->order->id)
+        ->limit(1)
         ->update(array('status' => 'processing'));
 
 
