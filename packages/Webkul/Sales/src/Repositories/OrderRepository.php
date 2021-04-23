@@ -288,7 +288,6 @@ class OrderRepository extends Repository
     }
     public function updateOrderStatusManuallyForStripe($order)
     {
-        dd($order);
         $order->save();
     }
 
