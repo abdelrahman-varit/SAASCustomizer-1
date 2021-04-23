@@ -600,7 +600,7 @@ class StripeConnectController extends Controller
 
 
         $order->status = 'processing';
-        $this->orderRepository->updateOrderStatusManuallyForStripe($order);
+        $this->orderRepository->updateOrderStatus($order);
         
 
 
