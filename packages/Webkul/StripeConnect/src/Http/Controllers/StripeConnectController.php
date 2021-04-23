@@ -595,18 +595,16 @@ class StripeConnectController extends Controller
             'cart_id' => Cart::getCart()->id
         ]);
 
-
-
-
-
+        /**
+        * Here we are updating our order status using the updateOrderStatus() method.
+        * This will generate invoice automatically & update the status.
+        * Because a user is paying, that why invoiced must be generate automatically.
+        * Otherwise we have to generate invoice manually.
+        **/
+        //$this->orderRepository->update(['status' => 'processing'], $this->order->id);
         $order->status = 'processing';
         $this->orderRepository->updateOrderStatus($order);
         
-
-
-
-
-
         $this->invoiceRepository = app('Webkul\Sales\Repositories\InvoiceRepository');
 
         if ($this->order->canInvoice()) {

@@ -285,6 +285,7 @@ class OrderRepository extends Repository
 
         $order->status = $status;
         $order->save();
+        
     }
 
     /**
