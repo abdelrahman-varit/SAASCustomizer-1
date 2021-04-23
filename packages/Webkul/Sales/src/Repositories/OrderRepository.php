@@ -286,10 +286,6 @@ class OrderRepository extends Repository
         $order->status = $status;
         $order->save();
     }
-    public function updateOrderStatusManuallyForStripe($order)
-    {
-        $order->save();
-    }
 
     /**
      * @param  \Webkul\Sales\Contracts\Order  $order
