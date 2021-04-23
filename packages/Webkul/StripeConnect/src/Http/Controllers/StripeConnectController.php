@@ -599,9 +599,8 @@ class StripeConnectController extends Controller
 
 
 
-        $order_status = 'processing';
-        $order_id = $order->id;
-        $this->orderRepository->updateOrderStatusManuallyForStripe($order_status, $order_id);
+        $order->status = 'processing';
+        $this->orderRepository->updateOrderStatusManuallyForStripe($order);
         
 
 
