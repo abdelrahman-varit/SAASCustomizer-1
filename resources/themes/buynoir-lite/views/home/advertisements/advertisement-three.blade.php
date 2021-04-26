@@ -20,9 +20,9 @@
         <div class="container advertisement-three-container">
             <div class="row">
 
-                @php
+                {{-- @php
                     dd($advertisementThree);
-                @endphp
+                @endphp --}}
                 @if ( isset($advertisementThree[0]))
                     <div class="col-lg-4 col-md-4 no-padding">
                         <a {{-- @if (isset($one)) href="{{ $one }}" @endif --}} class="row top-container">
