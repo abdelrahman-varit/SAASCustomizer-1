@@ -173,9 +173,9 @@
                         </div>
 
                         <div class="col-6 pull-right">
-                            @if (isset($product->id) && $product->id)
+                            @if (isset($item->id) && $item->id)
                                 <a
-                                    href="{{ route('customer.wishlist.remove', $product->id) }}"
+                                    href="{{ route('customer.wishlist.remove', $item->id) }}"
                                     title="{{ __('velocity::app.shop.wishlist.remove-wishlist-text') }}"
                                     class="btn btn-secondary"
                                 >
