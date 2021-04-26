@@ -20,12 +20,12 @@
         <div class="container advertisement-three-container">
             <div class="row">
 
-                {{-- @php
-                    dd($advertisementThree);
-                @endphp --}}
+                @php
+                    dd($advertisementThree[0]);
+                @endphp
                 @if ( isset($advertisementThree[0]))
                     <div class="col-lg-4 col-md-4 no-padding">
-                        <a {{-- @if (isset($one)) href="{{ $one }}" @endif --}} class="row top-container">
+                        <a @if (isset($one)) href="{{ $one }}" @endif class="row top-container">
                             <img src="{{ asset('/storage/' . $advertisementThree[0]) }}" class="full-width" />
                         </a>
                 @endif
