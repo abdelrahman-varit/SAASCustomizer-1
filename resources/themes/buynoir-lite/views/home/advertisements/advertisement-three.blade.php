@@ -19,27 +19,31 @@
 
         <div class="container advertisement-three-container">
             <div class="row">
-                @if ( isset($advertisementThree[0]))
+
+                @php
+                    dd($advertisementThree);
+                @endphp
+                {{-- @if ( isset($advertisementThree[0]))
                     <div class="col-lg-4 col-md-4 no-padding">
                         <a @if (isset($one)) href="{{ $one }}" @endif class="row top-container">
-                            {{-- <img src="{{ asset('/storage/' . $advertisementThree[0]) }}" class="full-width" /> --}}
+                            <img src="{{ asset('/storage/' . $advertisementThree[0]) }}" class="full-width" />
                         </a>
                 @endif
 
                 <div class="col-lg-4 col-md-4 second-panel">
                     @if ( isset($advertisementThree[1]))
                         <a @if (isset($two)) href="{{ $two }}" @endif class="row top-container">
-                            {{-- <img src="{{ asset('/storage/' . $advertisementThree[1]) }}" class="col-12 pr0" /> --}}
+                            <img src="{{ asset('/storage/' . $advertisementThree[1]) }}" class="col-12 pr0" />
                         </a>
                     @endif
                 </div>
                 <div class="col-lg-4 col-md-4 second-panel">
                     @if ( isset($advertisementThree[2]))
                         <a @if (isset($three)) href="{{ $three }}" @endif class="row bottom-container">
-                            {{-- <img src="{{ asset('/storage/' . $advertisementThree[2]) }}" class="col-12 pr0" /> --}}
+                            <img src="{{ asset('/storage/' . $advertisementThree[2]) }}" class="col-12 pr0" />
                         </a>
                     @endif
-                </div>
+                </div> --}}
             </div>
         </div>
     @endif
