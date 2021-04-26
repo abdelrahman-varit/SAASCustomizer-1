@@ -568,7 +568,7 @@ class StripeConnectController extends Controller
         $intent = $this->helper->stripePaymentPlan($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId);
         
         if ( $intent && !empty($intent->client_secret) ) {
-            $dd($data);
+            $data = session()->get('subscription_cart');
             $data = array_merge($data, [
                 'payment_id'        => $intent->id,
                 'profile_status'    => 'ActiveProfile',
