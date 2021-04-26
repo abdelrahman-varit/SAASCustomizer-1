@@ -538,9 +538,6 @@ class StripeConnectController extends Controller
     public function collectTokenPlan()
     {
         $company    = Company::getCurrent();
-
-        
-        dd($company);
         
         $stripeConnect = $this->stripeConnect->findOneWhere([
             'company_id' => $company->id
@@ -560,7 +557,9 @@ class StripeConnectController extends Controller
 
         $stripeToken = $this->stripePlanCart->findOneWhere([
             'company_id' => $company->id
-        ])->first()->stripe_token;  
+        ])->first()->stripe_token; 
+
+        dd($stripeToken); 
 
         $decodeStripeToken = json_decode($stripeToken);
 
