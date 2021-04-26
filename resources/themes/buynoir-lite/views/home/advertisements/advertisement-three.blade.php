@@ -25,12 +25,24 @@
                             <img src="{{ asset('/storage/' . $advertisementThree[0]) }}" class="full-width" />
                         </a>
                     </div>
+                @else
+                    <div class="col-lg-4 col-md-4 second-panel">
+                        <a @if (isset($one)) href="{{ $one }}" @endif class="row top-container">
+                            <img src="{{ asset('/themes/velocity/assets/images/headphones.png') }}" class="full-width" />
+                        </a>
+                    </div>
                 @endif
 
                 @if ( isset($advertisementThree[1]))
                     <div class="col-lg-4 col-md-4 second-panel">
                         <a @if (isset($two)) href="{{ $two }}" @endif class="row top-container">
                             <img src="{{ asset('/storage/' . $advertisementThree[1]) }}" class="full-width" />
+                        </a>
+                    </div>
+                @else
+                    <div class="col-lg-4 col-md-4 second-panel">
+                        <a @if (isset($two)) href="{{ $two }}" @endif class="row top-container">
+                            <img src="{{ asset('/themes/velocity/assets/images/watch.png') }}" class="col-12 pr0" />
                         </a>
                     </div>
                 @endif
@@ -41,8 +53,14 @@
                             <img src="{{ asset('/storage/' . $advertisementThree[2]) }}" class="full-width" />
                         </a>
                     </div>
+                @else
+                    <div class="col-lg-4 col-md-4 second-panel">
+                        <a @if (isset($three)) href="{{ $three }}" @endif class="row top-container">
+                            <img src="{{ asset('/themes/velocity/assets/images/kids-2.png') }}" class="col-12 pr0" />
+                        </a>
+                    </div>
                 @endif
-                
+
             </div>
         </div>
     @endif
