@@ -124,9 +124,7 @@ class WishlistController extends Controller
     {
         $customerWishlistItems = auth()->guard('customer')->user()->wishlist_items;
 
-
         foreach ($customerWishlistItems as $customerWishlistItem) {
-            dd($customerWishlistItem);
             if ($itemId == $customerWishlistItem->id) {
                 $this->wishlistRepository->delete($itemId);
 
