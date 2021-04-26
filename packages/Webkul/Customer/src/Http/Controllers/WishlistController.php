@@ -124,7 +124,6 @@ class WishlistController extends Controller
     {
         $customerWishlistItems = auth()->guard('customer')->user()->wishlist_items;
 
-        dd($customerWishlistItems);
 
         foreach ($customerWishlistItems as $customerWishlistItem) {
             if ($itemId == $customerWishlistItem->id) {
