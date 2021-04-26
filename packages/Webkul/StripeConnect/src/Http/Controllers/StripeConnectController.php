@@ -538,12 +538,13 @@ class StripeConnectController extends Controller
     public function collectTokenPlan()
     {
         $company    = Company::getCurrent();
+
+        
+        dd($company);
         
         $stripeConnect = $this->stripeConnect->findOneWhere([
             'company_id' => $company->id
             ]);
-
-        dd($stripeConnect);
 
 
         if ( isset($stripeConnect->id) ) {
