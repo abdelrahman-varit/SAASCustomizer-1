@@ -23,9 +23,9 @@
                 @php
                     dd($advertisementThree);
                 @endphp
-                {{-- @if ( isset($advertisementThree[0]))
+                @if ( isset($advertisementThree[0]))
                     <div class="col-lg-4 col-md-4 no-padding">
-                        <a @if (isset($one)) href="{{ $one }}" @endif class="row top-container">
+                        <a {{-- @if (isset($one)) href="{{ $one }}" @endif --}} class="row top-container">
                             <img src="{{ asset('/storage/' . $advertisementThree[0]) }}" class="full-width" />
                         </a>
                 @endif
@@ -43,7 +43,7 @@
                             <img src="{{ asset('/storage/' . $advertisementThree[2]) }}" class="col-12 pr0" />
                         </a>
                     @endif
-                </div> --}}
+                </div>
             </div>
         </div>
     @endif
