@@ -543,6 +543,8 @@ class StripeConnectController extends Controller
             'company_id' => $company->id
             ]);
 
+        dd($stripeConnect);
+
 
         if ( isset($stripeConnect->id) ) {
             $sellerUserId = $stripeConnect->stripe_user_id;
