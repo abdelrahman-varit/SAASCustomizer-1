@@ -19,31 +19,30 @@
 
         <div class="container advertisement-three-container">
             <div class="row">
-
-                @php
-                    dd($advertisementThree[0]);
-                @endphp
                 @if ( isset($advertisementThree[0]))
                     <div class="col-lg-4 col-md-4 no-padding">
                         <a @if (isset($one)) href="{{ $one }}" @endif class="row top-container">
                             <img src="{{ asset('/storage/' . $advertisementThree[0]) }}" class="full-width" />
                         </a>
+                    </div>
                 @endif
 
-                <div class="col-lg-4 col-md-4 second-panel">
-                    @if ( isset($advertisementThree[1]))
+                @if ( isset($advertisementThree[1]))
+                    <div class="col-lg-4 col-md-4 second-panel">
                         <a @if (isset($two)) href="{{ $two }}" @endif class="row top-container">
-                            <img src="{{ asset('/storage/' . $advertisementThree[1]) }}" class="col-12 pr0" />
+                            <img src="{{ asset('/storage/' . $advertisementThree[1]) }}" class="full-width" />
                         </a>
-                    @endif
-                </div>
-                <div class="col-lg-4 col-md-4 second-panel">
-                    @if ( isset($advertisementThree[2]))
+                    </div>
+                @endif
+
+                @if ( isset($advertisementThree[2]))
+                    <div class="col-lg-4 col-md-4 second-panel">
                         <a @if (isset($three)) href="{{ $three }}" @endif class="row bottom-container">
-                            <img src="{{ asset('/storage/' . $advertisementThree[2]) }}" class="col-12 pr0" />
+                            <img src="{{ asset('/storage/' . $advertisementThree[2]) }}" class="full-width" />
                         </a>
-                    @endif
-                </div>
+                    </div>
+                @endif
+                
             </div>
         </div>
     @endif
