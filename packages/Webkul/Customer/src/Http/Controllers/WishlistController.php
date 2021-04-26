@@ -126,14 +126,13 @@ class WishlistController extends Controller
 
 
         foreach ($customerWishlistItems as $customerWishlistItem) {
+            dd($customerWishlistItem);
             if ($itemId == $customerWishlistItem->id) {
                 $this->wishlistRepository->delete($itemId);
 
                 session()->flash('success', trans('customer::app.wishlist.removed'));
 
                 return redirect()->back();
-            }else{
-                dd($customerWishlistItem->id);
             }
         }
 
