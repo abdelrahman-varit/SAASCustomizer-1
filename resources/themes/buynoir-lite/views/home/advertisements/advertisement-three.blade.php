@@ -20,7 +20,7 @@
         <div class="container advertisement-three-container">
             <div class="row">
                 @if ( isset($advertisementThree[0]))
-                    <div class="col-lg-4 col-md-4 no-padding">
+                    <div class="col-lg-4 col-md-4 second-panel">
                         <a @if (isset($one)) href="{{ $one }}" @endif class="row top-container">
                             <img src="{{ asset('/storage/' . $advertisementThree[0]) }}" class="full-width" />
                         </a>
@@ -55,7 +55,7 @@
                     </div>
                 @else
                     <div class="col-lg-4 col-md-4 second-panel">
-                        <a @if (isset($three)) href="{{ $three }}" @endif class="row top-container">
+                        <a @if (isset($three)) href="{{ $three }}" @endif class="row bottom-container">
                             <img src="{{ asset('/themes/velocity/assets/images/kids-2.png') }}" class="col-12 pr0" />
                         </a>
                     </div>
