@@ -133,6 +133,8 @@ class WishlistController extends Controller
                 session()->flash('success', trans('customer::app.wishlist.removed'));
 
                 return redirect()->back();
+            }else{
+                dd($customerWishlistItem->id);
             }
         }
 
