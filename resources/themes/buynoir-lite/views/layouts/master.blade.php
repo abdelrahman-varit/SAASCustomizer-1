@@ -16,39 +16,39 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta http-equiv="content-language" content="{{ app()->getLocale() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="{{ asset('themes/buynoir-lite/assets/css/velocity.css') }}" />
+        <link rel="stylesheet" href="{{ asset('themes/buynoir-lite/assets/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('themes/buynoir-lite/assets/css/google-font.css') }}" />
 
         <link rel="stylesheet" href="{{ asset('themes/buynoir-lite/assets/css/buynoir-lite.css') }}" />
         <link rel="stylesheet" href="{{ asset('themes/buynoir-lite/assets/css/styles.bundle.css') }}" />
-        <link rel="stylesheet" href="{{ asset('themes/buynoir-lite/assets/old-velocity/css/velocity.css') }}" />
-        <link rel="stylesheet" href="{{ asset('themes/buynoir-lite/assets/old-velocity/css/bootstrap.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('themes/buynoir-lite/assets/old-velocity/css/google-font.css') }}" />
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
         @if (core()->getCurrentLocale()->direction == 'rtl')
-            <link href="{{ asset('themes/velocity/assets/css/bootstrap-flipped.css') }}" rel="stylesheet">
+            <link href="{{ asset('themes/buynoir-lite/assets/css/bootstrap-flipped.css') }}" rel="stylesheet">
         @endif
 
         @if ($favicon = core()->getCurrentChannel()->favicon_url)
             <link rel="icon" sizes="16x16" href="{{ $favicon }}" />
         @else
-            <link rel="icon" sizes="16x16" href="{{ asset('/themes/velocity/assets/images/static/v-icon.png') }}" />
+            <link rel="icon" sizes="16x16" href="{{ asset('/themes/buynoir-lite/assets/images/static/v-icon.png') }}" />
         @endif
 
         <script
             type="text/javascript"
-            src="{{ asset('themes/velocity/assets/js/jquery.min.js') }}">
+            src="{{ asset('themes/buynoir-lite/assets/js/jquery.min.js') }}">
         </script>
 
         <script
             type="text/javascript"
             baseUrl="{{ url()->to('/') }}"
-            src="{{ asset('themes/velocity/assets/js/velocity.js') }}">
+            src="{{ asset('themes/buynoir-lite/assets/js/velocity.js') }}">
         </script>
 
         <script
             type="text/javascript"
-            src="{{ asset('themes/velocity/assets/js/jquery.ez-plus.js') }}">
+            src="{{ asset('themes/buynoir-lite/assets/js/jquery.ez-plus.js') }}">
         </script>
 
         @yield('head')
