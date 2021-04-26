@@ -557,9 +557,7 @@ class StripeConnectController extends Controller
 
         $stripeToken = $this->stripePlanCart->findOneWhere([
             'company_id' => $company->id
-        ])->first()->stripe_token; 
-
-        dd($stripeToken); 
+        ])->first()->stripe_token;
 
         $decodeStripeToken = json_decode($stripeToken);
 
@@ -568,6 +566,8 @@ class StripeConnectController extends Controller
         $paymentMethodId = $decodeStripeToken->attachedCustomer->id;
 
         $intent = $this->helper->stripePaymentPlan($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId);
+
+        dd($intent);
         
         if ( $intent && !empty($intent->client_secret) ) {
             $data = array_merge($data, [
