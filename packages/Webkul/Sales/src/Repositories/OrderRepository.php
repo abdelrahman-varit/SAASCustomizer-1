@@ -64,6 +64,8 @@ class OrderRepository extends Repository
     {
         DB::beginTransaction();
 
+        dd('Hello');
+
         try {
             Event::dispatch('checkout.order.save.before', [$data]);
 
