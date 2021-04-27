@@ -12,6 +12,7 @@ use Stripe\Stripe as Stripe;
 use Webkul\StripeConnect\Helpers\Helper;
 use Webkul\StripeConnect\Repositories\StripeConnectRepository as StripeConnect;
 use Company;
+use DB;
 
 /**
  * StripeConnect Controller
