@@ -86,8 +86,6 @@ class OrderRepository extends Repository
 
             $order = $this->model->create(array_merge($data, ['increment_id' => $this->generateIncrementId()]));
 
-            dd($order);
-
             $order->payment()->create($data['payment']);
 
             if (isset($data['shipping_address'])) {
