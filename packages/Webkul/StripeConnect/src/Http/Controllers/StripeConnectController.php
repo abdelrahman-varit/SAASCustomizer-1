@@ -589,15 +589,12 @@ class StripeConnectController extends Controller
      * @return json
     */
     public function createCharge()
-    {   dd('Hello');
+    {      
         $order = $this->orderRepository->create(Cart::prepareDataForOrder());
-        dd($order);
-        $this->order = $this->orderRepository->where([
+
+        $this->order = $this->orderRepository->findOneWhere([
             'cart_id' => Cart::getCart()->id
-        ])->first();
-
-
-        dd($this->order);
+        ]);
 
         /**
         * Here we are updating our order status using the updateOrderStatus() method.
@@ -605,9 +602,9 @@ class StripeConnectController extends Controller
         * Because a user is paying, that why invoiced must be generate automatically.
         * Otherwise we have to generate invoice manually.
         **/
-        $this->orderRepository->update(['status' => 'processing'], $this->order->id);
-        // $order->status = 'processing';
-        // $this->orderRepository->updateOrderStatus($order);
+        //$this->orderRepository->update(['status' => 'processing'], $this->order->id);
+        $order->status = 'processing';
+        $this->orderRepository->updateOrderStatus($order);
         
         $this->invoiceRepository = app('Webkul\Sales\Repositories\InvoiceRepository');
 
