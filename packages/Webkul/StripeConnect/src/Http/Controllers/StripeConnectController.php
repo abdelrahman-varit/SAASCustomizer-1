@@ -597,6 +597,8 @@ class StripeConnectController extends Controller
         // ]);
         $this->order = $order;
 
+        dd($this->order);
+
         /**
         * Here we are updating our order status using the updateOrderStatus() method.
         * This will generate invoice automatically & update the status.
