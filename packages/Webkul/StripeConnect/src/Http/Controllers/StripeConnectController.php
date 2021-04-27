@@ -593,11 +593,11 @@ class StripeConnectController extends Controller
     {
         $order = $this->orderRepository->create(Cart::prepareDataForOrder());
 
-        dd($order);
-
         $this->order = $this->orderRepository->findOneWhere([
             'cart_id' => Cart::getCart()->id
         ]);
+
+        dd($this->order);
 
         $update_status = DB::table('orders')
         ->where('cart_id', Cart::getCart()->id)  // find your user by their email
