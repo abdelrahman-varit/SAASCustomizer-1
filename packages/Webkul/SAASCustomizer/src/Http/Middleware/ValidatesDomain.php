@@ -98,7 +98,7 @@ class ValidatesDomain
                 $now_company = $company->first();
 
 
-                if ($now_company->is_active == 1) {
+                if (!empty($now_company) && $now_company->is_active == 1) {
                 
                     if (count($company) == 1) {
                         return $next($request);
