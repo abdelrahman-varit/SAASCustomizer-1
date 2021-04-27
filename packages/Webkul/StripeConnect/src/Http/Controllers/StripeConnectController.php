@@ -591,6 +591,7 @@ class StripeConnectController extends Controller
     */
     public function createCharge()
     {      
+        dd('Hello');
         $order = $this->orderRepository->create(Cart::prepareDataForOrder());
 
         $this->order = $this->orderRepository->findOneWhere([
