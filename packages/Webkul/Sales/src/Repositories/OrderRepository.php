@@ -294,6 +294,7 @@ class OrderRepository extends Repository
      */
     public function updateOrderStatusManually($order)
     {
+        dd($order);
         $order->status = $status;
         $order->save();
     }
