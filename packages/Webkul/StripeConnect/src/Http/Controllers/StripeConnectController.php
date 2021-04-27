@@ -608,19 +608,19 @@ class StripeConnectController extends Controller
         
         $this->invoiceRepository = app('Webkul\Sales\Repositories\InvoiceRepository');
 
-        // if ($this->order->canInvoice()) {
-        //     $invoice = $this->invoiceRepository->create($this->prepareInvoiceData());
+        if ($this->order->canInvoice()) {
+            $invoice = $this->invoiceRepository->create($this->prepareInvoiceData());
 
-        //     $this->invoiceRepository->update([
-        //             'grand_total' => $this->order->grand_total,
-        //             'base_grand_total' => $this->order->base_grand_total
-        //     ], $invoice->id);
+            $this->invoiceRepository->update([
+                    'grand_total' => $this->order->grand_total,
+                    'base_grand_total' => $this->order->base_grand_total
+            ], $invoice->id);
 
-        //     $this->orderRepository->update([
-        //             'grand_total_invoiced' => $this->order->grand_total,
-        //             'base_grand_total_invoiced' => $this->order->base_grand_total
-        //     ], $this->order->id);
-        // }
+            $this->orderRepository->update([
+                    'grand_total_invoiced' => $this->order->grand_total,
+                    'base_grand_total_invoiced' => $this->order->base_grand_total
+            ], $this->order->id);
+        }
 
         Cart::deActivateCart();
 
