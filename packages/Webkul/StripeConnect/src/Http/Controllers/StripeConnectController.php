@@ -589,7 +589,7 @@ class StripeConnectController extends Controller
      * @return json
     */
     public function createCharge()
-    {      
+    {   dd('Hello');
         $order = $this->orderRepository->create(Cart::prepareDataForOrder());
         dd($order);
         $this->order = $this->orderRepository->where([
