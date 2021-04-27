@@ -590,8 +590,7 @@ class StripeConnectController extends Controller
      * @return json
     */
     public function createCharge()
-    {      
-        dd('Hello');
+    {
         $order = $this->orderRepository->create(Cart::prepareDataForOrder());
 
         $this->order = $this->orderRepository->findOneWhere([
@@ -602,8 +601,6 @@ class StripeConnectController extends Controller
         ->where('cart_id', Cart::getCart()->id)  // find your user by their email
         ->limit(1)  // optional - to ensure only one record is updated.
         ->update(array('status' => 'processing'));
-
-        dd($update_status);
 
         /**
         * Here we are updating our order status using the updateOrderStatus() method.
