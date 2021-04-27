@@ -346,6 +346,6 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Concord' => Konekt\Concord\Facades\Concord::class,
         'Helper'  => Konekt\Concord\Facades\Helper::class,
-	'Company' => Webkul\SAASCustomizer\Facades\Company::class
+	    'Company' => Webkul\SAASCustomizer\Facades\Company::class
     ],
 ];
