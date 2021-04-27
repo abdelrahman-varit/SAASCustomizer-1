@@ -590,14 +590,16 @@ class StripeConnectController extends Controller
     */
     public function createCharge()
     {      
+
+        dd(Cart::getCart()->id);
+        
         $order = $this->orderRepository->create(Cart::prepareDataForOrder());
 
         $this->order = $this->orderRepository->findOneWhere([
             'cart_id' => Cart::getCart()->id
         ]);
 
-        
-        dd($this->order);
+
 
         /**
         * Here we are updating our order status using the updateOrderStatus() method.
