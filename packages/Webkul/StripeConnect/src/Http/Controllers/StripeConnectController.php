@@ -605,6 +605,9 @@ class StripeConnectController extends Controller
         //$this->orderRepository->update(['status' => 'processing'], $this->order->id);
         $this->order->status = 'processing';
         $this->orderRepository->updateOrderStatus($this->order);
+
+        
+        dd('Here');
         
         $this->invoiceRepository = app('Webkul\Sales\Repositories\InvoiceRepository');
 
@@ -626,7 +629,6 @@ class StripeConnectController extends Controller
 
         session()->flash('order', $order);
 
-        dd('Here');
         
         return response()->json([
             'data' => [
