@@ -596,8 +596,6 @@ class StripeConnectController extends Controller
             'cart_id' => Cart::getCart()->id
         ]);
 
-        $UpdateDetails = $this->orderRepository->where('email', $userEmail)->first();
-
         $update_status = DB::table('orders')
         ->where('cart_id', Cart::getCart()->id)  // find your user by their email
         ->limit(1)  // optional - to ensure only one record is updated.
