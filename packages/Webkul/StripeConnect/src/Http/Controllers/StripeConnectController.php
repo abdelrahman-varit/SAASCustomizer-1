@@ -395,6 +395,7 @@ class StripeConnectController extends Controller
         }
     }
 
+
     /**
      * Generate payment using saved card
      *
@@ -492,6 +493,7 @@ class StripeConnectController extends Controller
         }
     }
 
+
     /**
      * Collect stripe token from client side
      *
@@ -583,6 +585,7 @@ class StripeConnectController extends Controller
         }
     }
 
+
     /**
      * Prepares order's
      *
@@ -591,20 +594,13 @@ class StripeConnectController extends Controller
     public function createCharge()
     {      
         $order = $this->orderRepository->create(Cart::prepareDataForOrder());
-        dd($order);
+
         $this->order = $this->orderRepository->findOneWhere([
             'cart_id' => Cart::getCart()->id
         ]);
 
-        /**
-        * Here we are updating our order status using the updateOrderStatus() method.
-        * This will generate invoice automatically & update the status.
-        * Because a user is paying, that why invoiced must be generate automatically.
-        * Otherwise we have to generate invoice manually.
-        **/
-        //$this->orderRepository->update(['status' => 'processing'], $this->order->id);
-        $order->status = 'processing';
-        $this->orderRepository->updateOrderStatus($order);
+        $this->orderRepository->update(['status' => 'processing'], $this->order->id);
+
         
         $this->invoiceRepository = app('Webkul\Sales\Repositories\InvoiceRepository');
 
@@ -625,7 +621,7 @@ class StripeConnectController extends Controller
         Cart::deActivateCart();
 
         session()->flash('order', $order);
-        
+
         return response()->json([
             'data' => [
                 'route' => route("shop.checkout.success"),
