@@ -290,6 +290,16 @@ class OrderRepository extends Repository
 
     /**
      * @param  \Webkul\Sales\Contracts\Order  $order
+     * @return void
+     */
+    public function updateOrderStatusManually($order)
+    {
+        $order->status = $status;
+        $order->save();
+    }
+
+    /**
+     * @param  \Webkul\Sales\Contracts\Order  $order
      * @return mixed
      */
     public function collectTotals($order)

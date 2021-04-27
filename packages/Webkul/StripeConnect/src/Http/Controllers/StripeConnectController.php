@@ -602,9 +602,9 @@ class StripeConnectController extends Controller
         * Because a user is paying, that why invoiced must be generate automatically.
         * Otherwise we have to generate invoice manually.
         **/
-        $this->orderRepository->update(['status' => 'processing'], $this->order->id);
-        // $order->status = 'processing';
-        // $this->orderRepository->updateOrderStatus($order);
+        //$this->orderRepository->update(['status' => 'processing'], $this->order->id);
+        $order->status = 'processing';
+        $this->orderRepository->updateOrderStatusManually($order);
         
         $this->invoiceRepository = app('Webkul\Sales\Repositories\InvoiceRepository');
 
