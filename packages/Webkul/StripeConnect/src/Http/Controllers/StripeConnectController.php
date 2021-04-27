@@ -591,7 +591,7 @@ class StripeConnectController extends Controller
     public function createCharge()
     {      
         $order = $this->orderRepository->create(Cart::prepareDataForOrder());
-
+        dd($order);
         $this->order = $this->orderRepository->where([
             'cart_id' => Cart::getCart()->id
         ])->first();
