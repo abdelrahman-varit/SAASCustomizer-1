@@ -273,8 +273,6 @@ class OrderRepository extends Repository
     {
         $status = 'processing';
 
-        dd($order);
-
         if ($this->isInCompletedState($order)) {
             $status = 'completed';
         }
