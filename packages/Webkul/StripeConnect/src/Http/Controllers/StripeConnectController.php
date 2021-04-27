@@ -12,7 +12,6 @@ use Stripe\Stripe as Stripe;
 use Webkul\StripeConnect\Helpers\Helper;
 use Webkul\StripeConnect\Repositories\StripeConnectRepository as StripeConnect;
 use Company;
-use DB;
 
 /**
  * StripeConnect Controller
@@ -590,19 +589,12 @@ class StripeConnectController extends Controller
      * @return json
     */
     public function createCharge()
-    {
-        $this->order = $this->orderRepository->create(Cart::prepareDataForOrder());
-
-        // $this->order = $this->orderRepository->where([
-        //     'cart_id' => Cart::getCart()->id
-        // ])->first();
-
-        dd($this->order);
-
-        $update_status = DB::table('orders')
-        ->where('cart_id', Cart::getCart()->id)  // find your user by their email
-        ->limit(1)  // optional - to ensure only one record is updated.
-        ->update(array('status' => 'processing'));
+    {      
+        $order = $this->orderRepository->create(Cart::prepareDataForOrder());
+        dd($order);
+        $this->order = $this->orderRepository->findOneWhere([
+            'cart_id' => Cart::getCart()->id
+        ]);
 
         /**
         * Here we are updating our order status using the updateOrderStatus() method.
@@ -610,9 +602,9 @@ class StripeConnectController extends Controller
         * Because a user is paying, that why invoiced must be generate automatically.
         * Otherwise we have to generate invoice manually.
         **/
-        // $this->orderRepository->update(['status' => 'processing'], $this->order->id);
-        // $this->order->status = 'processing';
-        // $this->orderRepository->updateOrderStatus($this->order);
+        //$this->orderRepository->update(['status' => 'processing'], $this->order->id);
+        $order->status = 'processing';
+        $this->orderRepository->updateOrderStatus($order);
         
         $this->invoiceRepository = app('Webkul\Sales\Repositories\InvoiceRepository');
 
