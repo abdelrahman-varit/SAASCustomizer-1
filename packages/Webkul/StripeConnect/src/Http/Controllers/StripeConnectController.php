@@ -592,10 +592,9 @@ class StripeConnectController extends Controller
     {      
         $order = $this->orderRepository->create(Cart::prepareDataForOrder());
 
-        // $this->order = $this->orderRepository->findOneWhere([
-        //     'cart_id' => Cart::getCart()->id
-        // ]);
-        $this->order = $order;
+        $this->order = $this->orderRepository->findOneWhere([
+            'cart_id' => Cart::getCart()->id
+        ]);
 
         dd($this->order);
 
