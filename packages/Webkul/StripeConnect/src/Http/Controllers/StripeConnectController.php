@@ -603,8 +603,8 @@ class StripeConnectController extends Controller
         * Otherwise we have to generate invoice manually.
         **/
         //$this->orderRepository->update(['status' => 'processing'], $this->order->id);
-        $order->status = 'processing';
-        $this->orderRepository->updateOrderStatus($order);
+        $this->order->status = 'processing';
+        $this->orderRepository->updateOrderStatus($this->order);
         
         $this->invoiceRepository = app('Webkul\Sales\Repositories\InvoiceRepository');
 
