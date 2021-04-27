@@ -64,8 +64,6 @@ class OrderRepository extends Repository
     {
         DB::beginTransaction();
 
-        dd('Hello');
-
         try {
             Event::dispatch('checkout.order.save.before', [$data]);
 
@@ -85,6 +83,8 @@ class OrderRepository extends Repository
             }
 
             $data['status'] = 'pending';
+
+            dd($data);
 
             $order = $this->model->create(array_merge($data, ['increment_id' => $this->generateIncrementId()]));
 
