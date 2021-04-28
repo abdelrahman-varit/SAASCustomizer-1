@@ -49,12 +49,12 @@ class Helper {
     public function stripePayment($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUser = '')
     {
         $cart   = Cart::getCart();
-      
+        
         $description = json_encode(['cart_id'=>$cart->id,
                                     'customer_email'=>$cart->customer_email,
                                     'pay_id'=>$sellerUser,
                                     'domain'=>$company->domain, 
-                                    'shop_email'=>$customer_email]);
+                                    'shop_email'=> $company->email]);
 
         $sellerUserId = $sellerUser;
         if ( core()->getConfigData('sales.paymentmethods.stripe.fees') == 'customer' && isset($cart->payment) && $cart->payment->method == 'stripe' ) {
