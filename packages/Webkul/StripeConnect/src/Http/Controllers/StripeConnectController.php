@@ -511,7 +511,6 @@ class StripeConnectController extends Controller
            
         if ( isset($stripeConnect->id) ) {
             $sellerUserId = $stripeConnect->stripe_user_id;
-            dd($sellerUserId);
         } else {
             session()->flash('warning', 'Stripe unavailable for this tenant.');
 
