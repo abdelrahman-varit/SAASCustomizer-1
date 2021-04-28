@@ -12,7 +12,7 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
 
      //    Route::post('/save/card', 'BuyNoir\StripeConnect\Http\Controllers\StripeConnectController@saveCard')->name('stripe.save.card');
 
-        Route::get('/sendtoken', 'BuyNoir\StripeConnect\Http\Controllers\StripeConnectController@collectToken')->name('stripe.get.token');
+    //    Route::get('/sendtoken', 'BuyNoir\StripeConnect\Http\Controllers\StripeConnectController@collectToken')->name('stripe.get.token');
 
      //    Route::get('/create/charge', 'BuyNoir\StripeConnect\Http\Controllers\StripeConnectController@createCharge')->name('stripe.make.payment');
 
