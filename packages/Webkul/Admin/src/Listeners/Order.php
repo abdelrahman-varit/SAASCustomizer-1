@@ -35,7 +35,7 @@ class Order
             /* email to admin */
             $configKey = 'emails.general.notifications.emails.general.notifications.new-admin';
             if (core()->getConfigData($configKey)) {
-                $this->prepareMail(env('APP_LOCALE'), new NewAdminNotification($order));
+                $this->prepareMail('en', new NewAdminNotification($order));
             }
         } catch (\Exception $e) {
             report($e);
