@@ -502,13 +502,16 @@ class StripeConnectController extends Controller
     public function collectToken()
     {
         $company    = Company::getCurrent();
-        
+      
+        $sellerUserId = "";
+
         $stripeConnect = $this->stripeConnect->findOneWhere([
             'company_id' => $company->id
             ]);
-            dd($stripeConnect);
+           
         if ( isset($stripeConnect->id) ) {
             $sellerUserId = $stripeConnect->stripe_user_id;
+            dd($sellerUserId);
         } else {
             session()->flash('warning', 'Stripe unavailable for this tenant.');
 
