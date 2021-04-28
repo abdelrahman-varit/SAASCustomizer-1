@@ -109,10 +109,10 @@ class OrderRepository extends Repository
 
                 $this->downloadableLinkPurchasedRepository->saveLinks($orderItem, 'available');
 
-               //Event::dispatch('checkout.order.orderitem.save.after', $data);
+               Event::dispatch('checkout.order.orderitem.save.after', $data);
             }
 
-            //Event::dispatch('checkout.order.save.after', $order);
+            Event::dispatch('checkout.order.save.after', $order);
         } catch (\Exception $e) {
             DB::rollBack();
 
