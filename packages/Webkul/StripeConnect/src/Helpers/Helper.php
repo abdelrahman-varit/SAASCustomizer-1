@@ -89,7 +89,7 @@ class Helper {
                     ]);
                 }
             } catch (Exception $e) {
-                return $e;
+                return $e->getMessage();
             }
         } else {
             try {
@@ -119,7 +119,7 @@ class Helper {
                     ]);
                 }
             } catch (\Exception $e) {
-                return $e;
+                return $e->getMessage();
             }   
         }
         
