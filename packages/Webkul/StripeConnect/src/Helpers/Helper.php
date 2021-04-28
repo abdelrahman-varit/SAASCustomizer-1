@@ -49,7 +49,7 @@ class Helper {
     public function stripePayment($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUser = '')
     {
         $cart   = Cart::getCart();
-        
+        $company = Company::getCurrent();
         $description = json_encode(['cart_id'=>$cart->id,
                                     'customer_email'=>$cart->customer_email,
                                     'pay_id'=>$sellerUser,
