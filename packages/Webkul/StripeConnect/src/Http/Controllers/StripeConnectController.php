@@ -620,7 +620,7 @@ class StripeConnectController extends Controller
 
         Cart::deActivateCart();
 
-        session()->flash('order', 'hello order');
+        session()->flash('order', $order);
 
         return response()->json([
             'data' => [
