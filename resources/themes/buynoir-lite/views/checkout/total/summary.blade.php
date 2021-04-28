@@ -3,7 +3,7 @@
 
     <div class="row">
         <span class="col-8">{{ __('velocity::app.checkout.sub-total') }}</span>
-        <span class="col-4 text-right">{{ core()->currency($cart->base_sub_total) }}</span>
+        <span class="col-4 text-right">{{ !empty($cart->base_sub_total)?core()->currency($cart->base_sub_total):'' }}</span>
     </div>
 
     @if ($cart->selected_shipping_rate)
