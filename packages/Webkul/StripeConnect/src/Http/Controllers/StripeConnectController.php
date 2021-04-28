@@ -506,7 +506,7 @@ class StripeConnectController extends Controller
         $stripeConnect = $this->stripeConnect->findOneWhere([
             'company_id' => $company->id
             ]);
-
+            dd($stripeConnect);
         if ( isset($stripeConnect->id) ) {
             $sellerUserId = $stripeConnect->stripe_user_id;
         } else {
