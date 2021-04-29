@@ -12,6 +12,7 @@ use Webkul\Admin\Mail\NewShipmentNotification;
 use Webkul\Admin\Mail\OrderCommentNotification;
 use Webkul\Admin\Mail\CancelOrderAdminNotification;
 use Webkul\Admin\Mail\NewInventorySourceNotification;
+use Illuminate\Support\Facades\Log;
 
 class Order
 {
@@ -97,7 +98,7 @@ class Order
     public function sendNewShipmentMail($shipment)
     {
         $customerLocale = $this->getLocale($shipment);
-        
+        Log::info('customerLocale 101',$customerLocale);
         try {
             if ($shipment->email_sent) {
                 return;
@@ -107,13 +108,17 @@ class Order
             $configKey = 'emails.general.notifications.emails.general.notifications.new-shipment';
              
             if (core()->getConfigData($configKey)) {
+                Log::info('NewShipmentNotification before 111');
                 $this->prepareMail($customerLocale, new NewShipmentNotification($shipment));
+                Log::info('NewShipmentNotification after 113');
             }
             
             /* email to admin */
             $configKey = 'emails.general.notifications.emails.general.notifications.new-inventory-source';
             if (core()->getConfigData($configKey)) {
+                Log::info('NewShipmentNotification admin before 119');
                 $this->prepareMail(env('APP_LOCALE'), new NewInventorySourceNotification($shipment));
+                Log::info('NewShipmentNotification admin before 121');
             }
         } catch (\Exception $e) {
             report($e);
