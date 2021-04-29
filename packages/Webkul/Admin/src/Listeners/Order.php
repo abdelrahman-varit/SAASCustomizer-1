@@ -98,11 +98,7 @@ class Order
     public function sendNewShipmentMail($shipment)
     {
         $customerLocale = $this->getLocale($shipment);
-<<<<<<< HEAD
         Log::info('customerLocale 101'.$customerLocale);
-=======
-        Log::info('customerLocale 101',$customerLocale);
->>>>>>> 99ef86fd5aca6cc353cb31e91fa161698884acc8
         try {
             if ($shipment->email_sent) {
                 return;
