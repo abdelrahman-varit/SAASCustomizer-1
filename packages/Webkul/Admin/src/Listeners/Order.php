@@ -108,7 +108,7 @@ class Order
             $configKey = 'emails.general.notifications.emails.general.notifications.new-shipment';
              
             if (core()->getConfigData($configKey)) {
-                
+               Log::info("Line 111 shipment: ",[$shipment]); 
                 $this->prepareMail($customerLocale, new NewShipmentNotification($shipment));
                 Log::info('NewShipmentNotification after 113');
             }
