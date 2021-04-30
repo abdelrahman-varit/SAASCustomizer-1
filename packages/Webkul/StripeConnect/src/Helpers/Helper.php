@@ -4,6 +4,7 @@ namespace Webkul\StripeConnect\Helpers;
 use Webkul\Checkout\Facades\Cart;
 use Webkul\StripeConnect\Repositories\StripeRepository;
 use Stripe\PaymentIntent as PaymentIntent;
+use Company;
 
 class Helper {
 
@@ -45,12 +46,17 @@ class Helper {
      *
      * @return boolean
      */
-    public function stripePayment($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUser = '', $sellerUserId = '')
+    public function stripePayment($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUser = '')
     {
         $cart   = Cart::getCart();
+        $company = Company::getCurrent();
+        $description = json_encode(['cart_id'=>$cart->id,
+                                    'customer_email'=>$cart->customer_email,
+                                    'pay_id'=>$sellerUser,
+                                    'domain'=>$company->domain, 
+                                    'shop_email'=> $company->email]);
 
-        $description = json_encode($sellerUser);
-
+        $sellerUserId = $sellerUser;
         if ( core()->getConfigData('sales.paymentmethods.stripe.fees') == 'customer' && isset($cart->payment) && $cart->payment->method == 'stripe' ) {
             
             try {
@@ -88,7 +94,7 @@ class Helper {
                     ]);
                 }
             } catch (Exception $e) {
-                return $e;
+                return $e->getMessage();
             }
         } else {
             try {
@@ -118,9 +124,54 @@ class Helper {
                     ]);
                 }
             } catch (\Exception $e) {
-                return $e;
+                return $e->getMessage();
             }   
         }
+        
+        return $result;
+    }
+
+
+    public function stripePaymentPlan($payment='', $stripeId = '', $paymentMethodId='', $customerId = '', $sellerUser = '', $sellerUserId = '')
+    {
+        $company = Company::getCurrent();
+        $cart   = Cart::getCart();
+        $cart = (Object)session()->get('subscription_cart');
+        $customer_email = $company->email;
+        $cart_currency_code = 'usd';
+        $description = json_encode(['pay_id'=>$sellerUser,'domain'=>$company->domain, 'email'=>$customer_email]);
+
+
+                 try {
+                if  ( $customerId != '' ) {
+                    $result = PaymentIntent::create([
+                        'amount'               => round($cart->amount, 2) * 100,
+                        'customer'             => $customerId,
+                        'statement_descriptor' => $this->statementDescriptor,
+                        "description"          => $description,
+                        'currency'             => $cart_currency_code,
+                        'receipt_email'        => $customer_email,
+                        'transfer_data'        => [
+                                  'destination'    => $sellerUser
+                        ],
+                    ]);
+                } else {
+                    $result = PaymentIntent::create([
+                        'amount'                => round($cart->amount, 2) * 100,
+                        'currency'              => $cart_currency_code,
+                        'payment_method_types'  => ['card'],
+                        'statement_descriptor'  => $this->statementDescriptor,
+                        "description"           => $description,
+                        'receipt_email'         => $customer_email,
+                        'transfer_data'         => [
+                                    'destination'   => $sellerUser
+                                ],
+                    ]);
+                }
+            } catch (\Exception $e) {
+                return $e->getMessage();
+            }   
+        
         
         return $result;
     }

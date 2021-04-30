@@ -1,13 +1,12 @@
-<style>
+
+<style style="text/css">
     .path-hint {
         border: solid 1px transparent;
         padding: 1px;
     }
-
     .path-hint:hover {
         border: 1px solid red;
     }
-
     .path-hint-tooltip {
         padding: 0px 10px;
         position: absolute;
@@ -16,25 +15,22 @@
         color: #fff;
         font-size: 10px;
     }
-
     .path-hint-tooltip h4 {
         margin-top: 5px;
         margin-bottom: 3px;
         color: #fff;
         font-size: 12px;
     }
-
     .path-hint-tooltip ul li {
         margin-bottom: 3px;
     }
-
     .main-container-wrapper .product-card .product-image img {
         height: auto;
         max-width: 100%;
     }
 </style>
 
-<script>
+<script type="application/javascript">
     window.addEventListener("load", function(event) {
         $('.testing').each(function(index) {
             if ($(this).siblings(':not(.path-hint)').length == 1

@@ -39,7 +39,11 @@
                         ]]);
                     @endphp
 
-                    @foreach ($comparableAttributes as $attribute)
+                   
+
+                    @foreach ($comparableAttributes as $key => $attribute)
+                   
+                 
                         <tr>
                             <td>
                                 <span class="fs16">{{ $attribute['admin_name'] }}</span>
@@ -85,7 +89,7 @@
                                     @case('description')
                                         <span v-html="product.description" class="desc"></span>
                                         @break
-
+                                    
                                     @default
                                         @switch ($attribute['type'])
                                             @case('boolean')

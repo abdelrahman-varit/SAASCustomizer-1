@@ -83,6 +83,11 @@
                             <li>
                                 <a href="{{ route('shop.home.index') }}" target="_blank">{{ __('admin::app.layouts.visit-shop') }}</a>
                             </li>
+
+                            <li>
+                                <a href="{{ route('admin.subscription.plan.overview') }}">{{ trans('saassubscription::app.admin.layouts.subscription') }}</a>
+                            </li>
+
                             <li>
                                 <a href="{{ route('admin.account.edit') }}">{{ __('admin::app.layouts.my-account') }}</a>
                             </li>

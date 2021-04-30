@@ -171,7 +171,7 @@ class PaypalController extends Controller
                 . "&MAXFAILEDPAYMENTS=2";
         
         $doEC = $this->paypalHelper->request($nvpdo);
-
+      
         if ($doEC['ACK'] == "Success") {
             $this->subscriptionHelper->createRecurringProfile($doEC);
 
