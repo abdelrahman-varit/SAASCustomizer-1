@@ -28,3 +28,13 @@
     </div>
 </div>
 @endsection
+
+
+@push('css')
+    <style type="text/css">
+        .order-success-content{
+            text-align: center;
+            padding-top: 70px;
+        }
+    </style>
+@endpush
