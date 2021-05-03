@@ -109,7 +109,9 @@ section.slider-block div.slider-content{
 
 
 
-
+section.slider-block div.slider-content ul.slider-images li img{
+	max-height: 367px;
+}
 
 
 
