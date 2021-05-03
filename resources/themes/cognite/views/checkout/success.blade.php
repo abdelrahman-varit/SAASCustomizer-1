@@ -6,6 +6,8 @@
 
 @section('content-wrapper')
 
+<div class="main-container-wrapper">
+
     <div class="order-success-content" style="min-height: 300px;">
         <h1>{{ __('shop::app.checkout.success.thanks') }}</h1>
 
@@ -24,4 +26,5 @@
         {{ view_render_event('bagisto.shop.checkout.continue-shopping.after', ['order' => $order]) }}
         
     </div>
+</div>
 @endsection

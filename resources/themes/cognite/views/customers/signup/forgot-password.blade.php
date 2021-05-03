@@ -17,6 +17,9 @@
 
 @section('content-wrapper')
 
+
+<div class="main-container-wrapper">
+
 <div class="auth-content">
 
     {!! view_render_event('bagisto.shop.customers.forget_password.before') !!}
@@ -56,6 +59,8 @@
     </form>
 
     {!! view_render_event('bagisto.shop.customers.forget_password.before') !!}
+
+</div>
 
 </div>
 @endsection

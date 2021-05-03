@@ -4,6 +4,9 @@
 @endsection
 @section('content-wrapper')
 
+
+<div class="main-container-wrapper">
+
 <div class="auth-content">
 
     <div class="sign-up-text">
@@ -89,5 +92,7 @@
     </form>
 
     {!! view_render_event('bagisto.shop.customers.signup.after') !!}
+</div>
+
 </div>
 @endsection

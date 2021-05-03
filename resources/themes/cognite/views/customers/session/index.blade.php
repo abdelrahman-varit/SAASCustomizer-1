@@ -6,6 +6,8 @@
 
 @section('content-wrapper')
 
+<div class="main-container-wrapper">
+
     <div class="auth-content">
         <div class="sign-up-text">
             {{ __('shop::app.customer.login-text.no_account') }} - <a href="{{ route('customer.register.index') }}">{{ __('shop::app.customer.login-text.title') }}</a>
@@ -52,6 +54,8 @@
 
         {!! view_render_event('bagisto.shop.customers.login.after') !!}
     </div>
+
+</div>
 
 @stop
 
