@@ -18,7 +18,7 @@
         </a>
     </div>
 
-    <div class="product-information">
+    <div class="product-information text-center">
 
         <div class="product-name">
             <a href="{{ route('shop.productOrCategory.index', $product->url_key) }}" title="{{ $product->name }}">

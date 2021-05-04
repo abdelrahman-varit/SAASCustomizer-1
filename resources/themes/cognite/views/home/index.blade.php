@@ -57,6 +57,7 @@
             @include('shop::home.advertisements.advertisement-three')
             @include('shop::home.new-products')
             @include('shop::home.advertisements.advertisement-two')
+            @include('shop::home.category-products')
         @endif
 
     {{ view_render_event('bagisto.shop.home.content.after') }}

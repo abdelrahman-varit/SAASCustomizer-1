@@ -95,12 +95,12 @@
 
         {!! view_render_event('bagisto.shop.layout.footer.before') !!}
 
-        @include('shop::layouts.footer.footer')
+        @include('shop::layouts.footer.index')
 
         {!! view_render_event('bagisto.shop.layout.footer.after') !!}
 
         @if (core()->getConfigData('general.content.footer.footer_toggle'))
-            <div class="footer">
+            <div class="footer footer-copyright">
                 <p style="text-align: center;">
                     @if (core()->getConfigData('general.content.footer.footer_content'))
                         {{ core()->getConfigData('general.content.footer.footer_content') }}
