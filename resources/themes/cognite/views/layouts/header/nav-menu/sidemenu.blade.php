@@ -43,7 +43,7 @@ foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCateg
 						{{$category->name}}
 
 						@if(count($sub_categories) > 0)
-						<i class="icon arrow-right-icon"></i>
+						<i class="icon arrow-down-icon"></i>
 						@endif
 					</a>
 

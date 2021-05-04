@@ -1,55 +1,64 @@
-<div class="order-summary fs16">
-    <h3 class="fw6">{{ __('velocity::app.checkout.cart.cart-summary') }}</h3>
+<div class="order-summary">
+    <h3>{{ __('shop::app.checkout.total.order-summary') }}</h3>
 
-    <div class="row">
-        <span class="col-8">{{ __('velocity::app.checkout.sub-total') }}</span>
-        <span class="col-4 text-right">{{ !empty($cart->base_sub_total)?core()->currency($cart->base_sub_total):'' }}</span>
+    <div class="item-detail">
+        <label>
+            {{ intval($cart->items_qty) }}
+            {{ __('shop::app.checkout.total.sub-total') }}
+            {{ __('shop::app.checkout.total.price') }} 
+        </label>
+        <label class="right">{{ core()->currency($cart->base_sub_total) }}</label>
     </div>
 
     @if ($cart->selected_shipping_rate)
-        <div class="row">
-            <span class="col-8">{{ __('shop::app.checkout.total.delivery-charges') }}</span>
-            <span class="col-4 text-right">{{ core()->currency($cart->selected_shipping_rate->base_price) }}</span>
+        <div class="item-detail">
+            <label>{{ __('shop::app.checkout.total.delivery-charges') }}</label>
+            <label class="right">{{ core()->currency($cart->selected_shipping_rate->base_price) }}</label>
         </div>
     @endif
 
     @if ($cart->base_tax_total)
         @foreach (Webkul\Tax\Helpers\Tax::getTaxRatesWithAmount($cart, true) as $taxRate => $baseTaxAmount )
-            <div class="row">
-                <span class="col-8" id="taxrate-{{ core()->taxRateAsIdentifier($taxRate) }}">{{ __('shop::app.checkout.total.tax') }} {{ $taxRate }} %</span>
-                <span class="col-4 text-right" id="basetaxamount-{{ core()->taxRateAsIdentifier($taxRate) }}">{{ core()->currency($baseTaxAmount) }}</span>
-            </div>
+        <div class="item-detail">
+            <label id="taxrate-{{ core()->taxRateAsIdentifier($taxRate) }}">{{ __('shop::app.checkout.total.tax') }} {{ $taxRate }} %</label>
+            <label class="right" id="basetaxamount-{{ core()->taxRateAsIdentifier($taxRate) }}">{{ core()->currency($baseTaxAmount) }}</label>
+        </div>
         @endforeach
     @endif
 
-    @if (
-        $cart->base_discount_amount
-        && $cart->base_discount_amount > 0
-    )
-        <div
-            id="discount-detail"
-            class="row">
+    <div class="item-detail" id="discount-detail" @if ($cart->base_discount_amount && $cart->base_discount_amount > 0) style="display: block;" @else style="display: none;" @endif>
+        <label>
+            {{ __('shop::app.checkout.total.disc-amount') }}
+        </label>
+        <label class="right">
+            -{{ core()->currency($cart->base_discount_amount) }}
+        </label>
+    </div>
 
-            <span class="col-8">{{ __('shop::app.checkout.total.disc-amount') }}</span>
-            <span class="col-4 text-right">
-                -{{ core()->currency($cart->base_discount_amount) }}
-            </span>
+    @if ( core()->getConfigData('sales.paymentmethods.stripe.fees') == 'customer' && isset($cart->payment) && $cart->payment->method == 'stripe')
+        <div class="item-detail">
+            @php
+                $applicationFee = $cart->base_grand_total;
+                $applicationFee = (0.029 * $applicationFee) + (0.02 * $applicationFee) + 0.3;
+            @endphp
+
+            <label>
+                {{ __('stripe_saas::app.shop.checkout.total.transaction-fee') }}
+            </label>
+
+            <label class="right">{{ core()->currency($applicationFee) }}</label>
         </div>
     @endif
 
-    <div class="payable-amount row" id="grand-total-detail">
-        <span class="col-8">{{ __('shop::app.checkout.total.grand-total') }}</span>
-        <span class="col-4 text-right fw6" id="grand-total-amount-detail">
-            {{ core()->currency($cart->base_grand_total) }}
-        </span>
-    </div>
 
-    <div class="row">
-        <a
-            href="{{ route('shop.checkout.onepage.index') }}"
-            class="btn btn-dark py-3 text-uppercase col-12 remove-decoration fw6 text-center">
-            <sub><i class="material-icons">add_shopping_cart</i></sub>
-            {{ __('velocity::app.checkout.proceed') }}
-        </a>
+    <div class="payable-amount" id="grand-total-detail">
+        <label>{{ __('shop::app.checkout.total.grand-total') }}</label>
+        <label class="right" id="grand-total-amount-detail">
+            @if (core()->getConfigData('sales.paymentmethods.stripe.fees') == 'customer' && isset($cart->payment) && $cart->payment->method == 'stripe')
+                {{ core()->currency($cart->base_grand_total + $applicationFee) }}
+            @else
+                {{ core()->currency($cart->base_grand_total) }}
+            @endif
+        </label>
     </div>
 </div>

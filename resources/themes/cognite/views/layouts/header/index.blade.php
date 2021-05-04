@@ -13,6 +13,27 @@
         <div class="main-container-wrapper">
             <div class="header-top">
                 <div class="left-content">
+
+                    @php
+                        $localeImage = null;
+                    @endphp
+        
+                    @foreach (core()->getCurrentChannel()->locales as $locale)
+                        @if ($locale->code == app()->getLocale())
+                            @php
+                                $localeImage = $locale->locale_image;
+                            @endphp
+                        @endif
+                    @endforeach
+        
+                    <div class="col-2 locale-img">
+                        @if ($localeImage)
+                            <img src="{{ asset('/storage/' . $localeImage) }}" onerror="this.src = '{{ asset($localeImage) }}'" height="30" />
+                        @elseif (app()->getLocale() == 'en')
+                            <img src="{{ asset('/themes/congnite/assets/images/icons/en.png') }}" />
+                        @endif
+                    </div>
+                    
                     <ul class="left-content-menu">
 
 
@@ -21,9 +42,9 @@
                         @if (core()->getCurrentChannel()->locales->count() > 1)
                             <li class="locale-switcher">
                                 <span class="dropdown-toggle">
-                                    @if(core()->getCurrentLocale()->locale_image != null)
-                                        <img src="/storage/{{ core()->getCurrentLocale()->locale_image }}" class="mr-2 lazyloaded"> 
-                                    @endif
+                                    {{-- @if(core()->getCurrentLocale()->locale_image != null)
+                                        <img src="/storage/{{ core()->getCurrentLocale()->locale_image }}" class="mr-2 lazyloaded" style="height:25px;width:25px"> 
+                                    @endif --}}
                                     {{ core()->getCurrentLocale()->name }} 
 
                                     <i class="icon arrow-down-icon"></i>
@@ -34,16 +55,16 @@
                                         <li>
                                             @if (isset($serachQuery))
                                                 <a href="?{{ $serachQuery }}&locale={{ $locale->code }}" class="dropdown-item">
-                                                    @if(core()->getCurrentLocale()->locale_image != null)
+                                                    {{-- @if(core()->getCurrentLocale()->locale_image != null)
                                                         <img src="/storage/{{ $locale->locale_image }}" class="mr-2 lazyloaded"> 
-                                                    @endif
+                                                    @endif --}}
                                                     {{ $locale->name }}
                                                 </a>
                                             @else
                                                 <a href="?locale={{ $locale->code }}" class="dropdown-item">
-                                                    @if($locale->locale_image != null)
+                                                    {{-- @if($locale->locale_image != null)
                                                         <img src="/storage/{{ $locale->locale_image }}" class="mr-2 lazyloaded"> 
-                                                    @endif
+                                                    @endif --}}
                                                     {{ $locale->name }}
                                                 </a>
                                             @endif
@@ -99,7 +120,7 @@
 
                         <li>
                             <span class="dropdown-toggle">
-                                <i class="icon account-icon"></i>
+                                <i class="icon account-icons"></i>
 
                                 <span class="name">{{ __('shop::app.header.account') }}</span>
 
@@ -120,11 +141,11 @@
                                         </div>
 
                                         <div style="margin-top: 15px;">
-                                            <a class="btn btn-primary btn-md" href="{{ route('customer.session.index') }}" style="color: #ffffff">
+                                            <a class="btn btn-dark btn-md" href="{{ route('customer.session.index') }}" style="color: #ffffff">
                                                 {{ __('shop::app.header.sign-in') }}
                                             </a>
 
-                                            <a class="btn btn-primary btn-md" href="{{ route('customer.register.index') }}" style="float: right; color: #ffffff">
+                                            <a class="btn btn-dark btn-md" href="{{ route('customer.register.index') }}" style="float: right; color: #ffffff">
                                                 {{ __('shop::app.header.sign-up') }}
                                             </a>
                                         </div>
@@ -236,8 +257,8 @@
                         @if ($showWishlist)
                             <li class="compare-dropdown-container">
                                 <a href="{{ route('customer.wishlist.index') }}" style="color: rgb(36, 36, 36);">
-                                    <i class="icon wishlist-icon"></i>
-                                {{ __('shop::app.header.wishlist') }}</a>
+                                    <div><i class="icon wishlist-icons"></i></div>
+                                    <div>{{ __('shop::app.header.wishlist') }}</div></a>
                             </li>
                         @endif
                         @php
@@ -257,11 +278,15 @@
                                     style="color: #242424;"
                                     >
 
-                                    <i class="icon compare-icon"></i>
-                                    <span class="name">
+                                    <div>
+                                        <i class="icon compare-icons"></i>
+                                        <span class="count">
+                                            <span id="compare-items-count">0</span>
+                                        </span>
+                                    </div>
+                                    <div><span class="name">
                                         {{ __('shop::app.customer.compare.text') }}
-                                        <span class="count">(<span id="compare-items-count"></span>)<span class="count">
-                                    </span>
+                                    </span></div>
                                 </a>
                             </li>
                         @endif

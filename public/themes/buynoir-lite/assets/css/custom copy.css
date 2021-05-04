@@ -1,0 +1,123 @@
+nav#top {
+    font-size: 13px;
+    border-bottom: 1px solid #ccc;
+}
+
+.container {
+    width: 1140px;
+    margin: 0px auto;
+}
+
+.topbar-locale-currency {
+    display: flex;
+    flex-direction: row;
+}
+
+.topbar-locale-currency .topbar-locale {
+    display: flex;
+    flex-direction: row;
+}
+
+.topbar-locale-currency .topbar-locale .locale-switcher {
+    border: 0px;
+    margin-left: 30px;
+}
+
+.locale-icon {
+    display: inline-block;
+}
+
+.locale-img img {
+    width: auto;
+    height: 25px;
+}
+
+.login-dropdown {
+    box-shadow: none !important;
+}
+
+li.cart-dropdown-container {
+    text-align: right;
+    padding-right: 0px;
+}
+
+.account-modal {
+    position: absolute;
+    background-color: bisque;
+    right: 0px;
+    top: 25px;
+    z-index: 99999;
+}
+
+
+/*** header header top logo search box ***/
+
+.welcome-content {
+    cursor: pointer;
+}
+
+#navbarNav>ul.buynoir-navbar-nav {
+    margin: 0px auto;
+}
+
+#navbarNav>ul.buynoir-navbar-nav>li.nav-item {
+    list-style: none;
+    display: inline-block;
+}
+
+#navbarNav>ul.buynoir-navbar-nav>li.nav-item>a.nav-link {
+    color: #000;
+}
+
+
+/*** mini cart, wishlist, compare **/
+
+#mini-cart-dropdown::after {
+    display: none !important;
+}
+
+
+/* slider css */
+
+.slider-control {}
+
+div.slider-content div.slider-control .dark-left-icon {
+    height: 25px !important;
+    width: 25px !important;
+    border-radius: 50%;
+}
+
+div.slider-content div.slider-control .light-right-icon {
+    height: 25px !important;
+    width: 25px !important;
+    border-radius: 50%;
+}
+
+section.slider-block div.slider-content div.slider-control {
+    text-align: center;
+    position: relative;
+}
+
+
+/* Product card */
+
+.product-card {
+    height: 280px !important;
+    margin-bottom: 30px;
+}
+
+.product-card .product-image img {
+    height: 200px !important;
+    width: 97% !important;
+}
+
+
+/* Footer */
+
+div.footer {
+    background-color: bisque;
+}
+
+section.navbar-menu {
+    background-color: bisque;
+}

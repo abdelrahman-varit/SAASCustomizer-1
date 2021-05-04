@@ -17,34 +17,37 @@
             $isRendered = true;
         @endphp
 
-        <div class="container-fluid advertisement-two-container">
+        <section class="container-fluid advertisement-two-container">
             <div class="row">
-                @if ( isset($advertisementTwo[0]))
-                    <a class="col-lg-9 col-md-12 no-padding">
-                        <img src="{{ asset('/storage/' . $advertisementTwo[0]) }}" />
-                    </a>
-                @endif
-                
-                @if ( isset($advertisementTwo[1]))
-                    <a class="col-lg-3 col-md-12 pr0">
-                        <img src="{{ asset('/storage/' . $advertisementTwo[1]) }}" />
-                    </a>
-                @endif
+                <div class="container d-flex">
+                    @if ( isset($advertisementTwo[0]))
+                        
+                            <img src="{{ asset('/storage/' . $advertisementTwo[0]) }}" class="col-9" />
+                     
+                    @endif
+                    
+                    @if ( isset($advertisementTwo[1]))
+                        
+                            <img src="{{ asset('/storage/' . $advertisementTwo[1]) }}" class="col-3" />
+                    
+                    @endif
+                </div>
             </div>
-        </div>
+        </section>
     @endif
 @endif
 
 @if (! $isRendered)
-    <div class="container-fluid advertisement-two-container">
-        <div class="row">
-            <a class="col-lg-9 col-md-12 no-padding">
-                <img src="{{ asset('/themes/velocity/assets/images/toster.png') }}" />
-            </a>
-
-            <a class="col-lg-3 col-md-12 pr0">
-                <img src="{{ asset('/themes/velocity/assets/images/trimmer.png') }}" />
-            </a>
+    <section class="container-fluid advertisement-two-container">
+        <div class="container">
+            <div class="row d-flex">
+               
+                    <img src="{{ asset('/themes/velocity/assets/images/toster.png') }}" class="col-9" />
+              
+ 
+                    <img src="{{ asset('/themes/velocity/assets/images/trimmer.png') }}" class="col-3" />
+          
+            </div>
         </div>
-    </div>
+    </section>
 @endif

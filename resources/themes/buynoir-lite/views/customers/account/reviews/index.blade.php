@@ -1,127 +1,82 @@
 @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
 
-@extends('shop::customers.account.index')
+@extends('shop::layouts.master')
 
 @section('page_title')
     {{ __('shop::app.customer.account.review.index.page-title') }}
 @endsection
 
-@section('page-detail-wrapper')
-    <div class="reviews-head mb20">
+@section('content-wrapper')
+    <div class="account-content">
+        @include('shop::customers.account.partials.sidemenu')
 
-        <div class="col-12 bg-light p-5 mb-3">
-            <span class="account-heading ">
-                {{ __('shop::app.customer.account.review.index.title') }}
-                <sub><i class="material-icons">chevron_right</i></sup>
-            </span>
-        </div>
+        <div class="account-layout">
 
-        <span class="back-icon">
-            <a href="{{ route('customer.account.index') }}">
-                <i class="icon icon-menu-back"></i>
-            </a>
-        </span>
+            <div class="account-head">
+                <span class="back-icon"><a href="{{ route('customer.profile.index') }}"><i class="icon icon-menu-back"></i></a></span>
 
-   
-        @if (count($reviews) > 1)
-            <div class="account-action pull-right">
-                <a href="{{ route('customer.review.deleteall') }}" class="theme-btn light unset">
-                    {{ __('shop::app.customer.account.wishlist.deleteall') }}
-                </a>
+                <span class="account-heading">{{ __('shop::app.customer.account.review.index.title') }}</span>
+
+                @if (count($reviews) > 1)
+                    <div class="account-action">
+                        <a href="{{ route('customer.review.deleteall') }}">{{ __('shop::app.customer.account.wishlist.deleteall') }}</a>
+                    </div>
+                @endif
+
+                <span></span>
+                <div class="horizontal-rule"></div>
             </div>
-        @endif
-    </div>
 
-    {!! view_render_event('bagisto.shop.customers.account.reviews.list.before', ['reviews' => $reviews]) !!}
+            {!! view_render_event('bagisto.shop.customers.account.reviews.list.before', ['reviews' => $reviews]) !!}
 
-    <div class="reviews-container">
-        @if (! $reviews->isEmpty())
-            @foreach ($reviews as $review)
-                <div class="row col-12 fs16">
-                    <div class="col-12 row">
-                        @php
-                            $image = $productImageHelper->getProductBaseImage($review->product);
-                        @endphp
-
-                        <a
-                            href="{{ url()->to('/').'/'.$review->product->url_key }}"
-                            title="{{ $review->product->name }}"
-                            class="col-2 max-sm-img-dimention no-padding">
-                            <img class="media" src="{{ $image['small_image_url'] }}"  class="img-thumbnail"/>
-                        </a>
-
-                        <div class="col-8">
-                            <div class="product-name">
-                                <a
-                                    class="remove-decoration"
-                                    href="{{ url()->to('/').'/'.$review->product->url_key }}"
-                                    title="{{ $review->product->name }}">
-                                    {{$review->product->name}}
+            <div class="account-items-list">
+                @if (! $reviews->isEmpty())
+                    @foreach ($reviews as $review)
+                        <div class="account-item-card mt-15 mb-15">
+                            <div class="media-info">
+                                <?php $image = $productImageHelper->getProductBaseImage($review->product); ?>
+                                <a href="{{ route('shop.productOrCategory.index', $review->product->url_key) }}" title="{{ $review->product->name }}">
+                                    <img class="media" src="{{ $image['small_image_url'] }}"/>
                                 </a>
+
+                                <div class="info">
+                                    <div class="product-name">
+                                        <a href="{{ route('shop.productOrCategory.index', $review->product->url_key) }}" title="{{ $review->product->name }}">
+                                            {{$review->product->name}}
+                                        </a>
+                                    </div>
+
+                                    <div class="stars mt-10">
+                                        @for($i=0 ; $i < $review->rating ; $i++)
+                                            <span class="icon star-icon"></span>
+                                        @endfor
+                                    </div>
+
+                                    <div class="mt-10">
+                                        {{ $review->comment }}
+                                    </div>
+                                </div>
                             </div>
 
-                            <star-ratings ratings="{{ $review->rating }}"></star-ratings>
-
-                            <h2 class="fw6">{{ $review->title }}</h2>
-
-                            <p>{{ $review->comment }}</p>
+                            <div class="operations">
+                                <a class="mb-50" href="{{ route('customer.review.delete', $review->id) }}"><span class="icon trash-icon"></span></a>
+                            </div>
                         </div>
+                        <div class="horizontal-rule mb-10 mt-10"></div>
+                    @endforeach
 
-                        <div class="col-2">
-                            <a class="unset" href="{{ route('customer.review.delete', $review->id) }}">
-                                <span class="rango-delete fs24"></span>
-                                <span class="align-vertical-top">{{ __('shop::app.checkout.cart.remove') }}</span>
-                            </a>
-                        </div>
+                    <div class="bottom-toolbar">
+                        {{ $reviews->links()  }}
                     </div>
-                </div>
-            @endforeach
+                @else
+                    <div class="empty mt-15">
+                        {{ __('customer::app.reviews.empty') }}
+                    </div>
+                @endif
 
-            <div class="bottom-toolbar">
-                {{ $reviews->links()  }}
             </div>
-            {{-- <load-more-btn></load-more-btn> --}}
-        @else
-            <div class="fs16">
-                {{ __('customer::app.reviews.empty') }}
-            </div>
-        @endif
 
-    </div>
-
-    {!! view_render_event('bagisto.shop.customers.account.reviews.list.after', ['reviews' => $reviews]) !!}
-@endsection
-
-@push('scripts')
-    <script type="text/x-template" id="load-more-template">
-        <div class="col-12 row justify-content-center">
-            <button type="button" class="theme-btn light" @click="loadNextPage">Load More</button>
+            {!! view_render_event('bagisto.shop.customers.account.reviews.list.after', ['reviews' => $reviews]) !!}
         </div>
-    </script>
-
-    <script type="text/javascript">
-        (() => {
-            Vue.component('load-more-btn', {
-                template: '#load-more-template',
-
-                methods: {
-                    'loadNextPage': function () {
-                        let splitedParamsObject = {};
-
-                        let searchedString = window.location.search;
-                        searchedString = searchedString.replace('?', '');
-
-                        let splitedParams = searchedString.split('&');
-
-                        splitedParams.forEach(value => {
-                            let splitedValue = value.split('=');
-                            splitedParamsObject[splitedValue[0]] = splitedValue[1];
-                        });
-
-                        splitedParamsObject[page]
-                    }
-                }
-            })
-        })()
-    </script>
-@endpush
+    </div>
+@endsection

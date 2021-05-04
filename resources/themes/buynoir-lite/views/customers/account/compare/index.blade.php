@@ -1,25 +1,29 @@
-@extends('shop::customers.account.index')
+@extends('shop::layouts.master')
 
-@include('velocity::guest.compare.compare-products')
+@include('shop::guest.compare.compare-products')
 
 @section('page_title')
-    {{ __('velocity::app.customer.compare.compare_similar_items') }}
+    {{ __('shop::app.customer.compare.compare_similar_items') }}
 @endsection
 
-@push('css')
-    <style>
-        .compare-products .col, .compare-products .col-2 {
-            max-width: 25%;
-        }
-    </style>
-@endpush
+@section('content-wrapper')
 
-@section('page-detail-wrapper')
-     <div class="col-12 bg-light p-5 mb-3">
-        <span class="account-heading ">
-             {{ __('Compare ') }}
-            <sub><i class="material-icons">chevron_right</i></sup>
-        </span>
+    <div class="account-content">
+        @include('shop::customers.account.partials.sidemenu')
+
+        <div class="account-layout">
+            {!! view_render_event('bagisto.shop.customers.account.comparison.list.before') !!}
+
+            <div class="account-items-list">
+                <div class="account-table-content">
+                    <compare-product></compare-product>
+                </div>
+            </div>
+
+            {!! view_render_event('bagisto.shop.customers.account.comparison.list.after') !!}
+
+        </div>
+
     </div>
-    <compare-product></compare-product>
+
 @endsection
