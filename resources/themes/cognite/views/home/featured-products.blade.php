@@ -4,10 +4,11 @@
     <section class="featured-products">
 
         <div class="featured-heading">
-            {{ __('shop::app.home.featured-products') }}<br/>
-
-            <span class="featured-seperator" style="color:lightgrey;">_____</span>
+            <div class="col-3">{{ __('shop::app.home.featured-products') }}</div>
+            <div class="col-7"><hr></div>
+            <div class="col-2"><a class="btn-dark" href="/">More -></a></div>
         </div>
+
 
         <div class="featured-grid product-grid-4">
 
