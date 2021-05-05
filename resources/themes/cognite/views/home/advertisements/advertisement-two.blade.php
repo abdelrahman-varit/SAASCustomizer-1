@@ -42,11 +42,11 @@
     <div class="main-container-wrapper">
         <div class="container-fluid advertisement-two-container">
             <div class="row">
-                <a class="col-lg-9 col-md-12 no-padding">
+                <a class="col-6 col-md-12 no-padding">
                     <img src="{{ asset('/themes/velocity/assets/images/toster.png') }}" style="flex: 1;" />
                 </a>
 
-                <a class="col-lg-3 col-md-12 pr0">
+                <a class="col-6 col-md-12 pr0">
                     <img src="{{ asset('/themes/velocity/assets/images/trimmer.png') }}" style="flex: 1;" />
                 </a>
             </div>
@@ -60,11 +60,6 @@
     <style type="text/css">
         .advertisement-two-container{
             overflow: hidden;
-        }
-
-        .advertisement-two-container img{
-            width: 100%;
-            height: 250px;
         }
     </style>
 @endpush
