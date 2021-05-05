@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body {
     /* background-color: #f2f3f8; */
     font-family: 'Lato', sans-serif;
@@ -111,7 +110,7 @@ ul.locale li img {
 
 .header .header-top div.left-content ul.search-container li.search-group .search-field {
     width: 400px;
-    margin-left: 100px;
+    margin-left: 20px;
     height: 45px;
     border: 1px solid #e1e1e1;
 }
@@ -126,6 +125,16 @@ ul.locale li img {
     padding: 8px 20px;
     background-color: #e1e1e1;
     cursor: pointer;
+}
+
+
+.middle-bar .header-top div.left-content ul.search-container {
+    margin-left:15%;
+}
+
+
+.middle-bar .header-top div.left-content ul.search-container select{
+    border:0px;
 }
 
 @media (max-width: 720px) {
@@ -413,8 +422,16 @@ div.footer .footer-statics .col-lg-4 {
 
 .card-quick-icon {
     position: absolute;
-    top: 100px;
-    right: 0px;
+    top: 170px;
+    right: 10px;
+    display: none;
+    padding:10px 0px;
+    background-color: #FAE3DB;
+    border-radius: 5px;
+}
+
+.product-card:hover .card-quick-icon{
+    display: block;
 }
 
 .subscribe-btn {
@@ -423,5 +440,3 @@ div.footer .footer-statics .col-lg-4 {
     font-size: 12px;
     margin-top: 10px;
 }
-=======
->>>>>>> 33b2feeafe19a742fda5651b0cc793e449d4a70a

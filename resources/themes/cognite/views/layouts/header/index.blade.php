@@ -28,9 +28,9 @@
         
                     <div class="col-2 locale-img">
                         @if ($localeImage)
-                            <img src="{{ asset('/storage/' . $localeImage) }}" onerror="this.src = '{{ asset($localeImage) }}'" height="30" />
+                            <img src="{{ asset('/storage/' . $localeImage) }}" onerror="this.src = '/themes/congnite/assets/images/icons/en.png'" height="13" />
                         @elseif (app()->getLocale() == 'en')
-                            <img src="{{ asset('/themes/congnite/assets/images/icons/en.png') }}" />
+                            <img src="{{ asset('/themes/congnite/assets/images/icons/en.png') }}" height="13" />
                         @endif
                     </div>
                     
@@ -42,9 +42,7 @@
                         @if (core()->getCurrentChannel()->locales->count() > 1)
                             <li class="locale-switcher">
                                 <span class="dropdown-toggle">
-                                    {{-- @if(core()->getCurrentLocale()->locale_image != null)
-                                        <img src="/storage/{{ core()->getCurrentLocale()->locale_image }}" class="mr-2 lazyloaded" style="height:25px;width:25px"> 
-                                    @endif --}}
+                                   
                                     {{ core()->getCurrentLocale()->name }} 
 
                                     <i class="icon arrow-down-icon"></i>
@@ -55,16 +53,11 @@
                                         <li>
                                             @if (isset($serachQuery))
                                                 <a href="?{{ $serachQuery }}&locale={{ $locale->code }}" class="dropdown-item">
-                                                    {{-- @if(core()->getCurrentLocale()->locale_image != null)
-                                                        <img src="/storage/{{ $locale->locale_image }}" class="mr-2 lazyloaded"> 
-                                                    @endif --}}
-                                                    {{ $locale->name }}
+                                                   
                                                 </a>
                                             @else
                                                 <a href="?locale={{ $locale->code }}" class="dropdown-item">
-                                                    {{-- @if($locale->locale_image != null)
-                                                        <img src="/storage/{{ $locale->locale_image }}" class="mr-2 lazyloaded"> 
-                                                    @endif --}}
+                                                   
                                                     {{ $locale->name }}
                                                 </a>
                                             @endif
@@ -217,23 +210,23 @@
                             <form role="search" action="{{ route('shop.search.index') }}" method="GET" style="display: inherit;">
                                 
                                 
-            	@php
+                                @php
 
-                    $categories = [];
+                                    $categories = [];
 
-                    foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id) as $category) {
-                        if ($category->slug)
-                            array_push($categories, $category);
-                    }
+                                    foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id) as $category) {
+                                        if ($category->slug)
+                                            array_push($categories, $category);
+                                    }
 
-                @endphp
+                                @endphp
 
                
                         
                                 <select>
                                     <option>All Categories</option>
                                     @foreach($categories as $category)
-                                        <option>{{$category->name}}</option>
+                                        <option value="{{$category->slug}}">{{$category->name}}</option>
                                     @endforeach
                                 </select>
                                 <input

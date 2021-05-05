@@ -20,7 +20,11 @@
         href="{{ route('customer.wishlist.add', $product->product_id) }}">
         <i class="icon wishlist-icons"></i>
     </a>
-    @else
+    
+    @endif 
+    {!! view_render_event('bagisto.shop.products.wishlist.after') !!}
+@endauth
+@guest('customer')
     <a
         @if ($wishListHelper->getWishlistProduct($product))
             class="add-to-wishlist already"
@@ -34,6 +38,4 @@
         href="{{ route('customer.wishlist.add', $product->product_id) }}">
         <i class="icon wishlist-icons"></i>
     </a>
-    @endif 
-    {!! view_render_event('bagisto.shop.products.wishlist.after') !!}
-@endauth
+@endguest
