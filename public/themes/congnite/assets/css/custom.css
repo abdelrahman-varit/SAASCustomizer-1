@@ -7,7 +7,7 @@ hr{
     height: 1px;
     width: 100%;
     border: 0;
-    background: #ccc;
+    background: #e1e1e1;
 }
 
 .nav-container .all-category-list {
@@ -25,7 +25,7 @@ hr{
 }
 
 .main-container-wrapper {
-    background-color: #fff;
+    /*background-color: #fff;*/
     /*padding: 0px 0 15px 0;*/
 }
 
@@ -36,6 +36,11 @@ hr{
 
 .header .header-top {
     margin-bottom: 0;
+}
+
+.header .header-top div.right-content .right-content-menu>li .la-user{
+    font-size: 20px;
+    float: left;
 }
 
 .header .header-bottom .nav a {
@@ -74,8 +79,8 @@ ul.locale li img {
 
 .top-bar {
     border-bottom: 1px solid #e1e1e1;
-    padding-bottom: 5px;
-    padding-top: 10px;
+    padding-bottom: 7px;
+    padding-top: 8px;
     font-size: 13px;
 }
 
@@ -122,9 +127,18 @@ ul.locale li img {
 }
 
 .header .header-top div.left-content ul.search-container li.search-group .search-icon-wrapper button {
-    padding: 8px 20px;
-    background-color: #e1e1e1;
+    padding: 10px 20px;
+    background-color: #000;
     cursor: pointer;
+    overflow: hidden;
+    border-radius: 0px 2px 2px 0px;
+}
+
+.header .header-top div.left-content ul.search-container li.search-group .search-icon-wrapper .la-search{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    font-size: 24px;
+    color: #fff;
 }
 
 
@@ -254,6 +268,20 @@ i.compare-icons {
     margin-top: -5px;
 }
 
+.footer {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.footer .row{
+        place-content: flex-start;
+}
+
+.footer .row ul{
+    margin-right: 30px;
+
+}
+
 div.footer {
     background-image: url("../images/footer-bg.jpg");
     font-size: 13px;
@@ -265,12 +293,13 @@ div.footer .footer-statics {
     display: flex;
     flex-direction: row;
     padding-top: 30px;
+    padding-bottom: 30px;
     align-items: baseline;
 }
 
 div.footer .footer-statics .col-lg-4 {
     flex: 4;
-    height: 250px;
+    min-height: 250px;
     margin-top: 30px;
     padding: 0px 60px;
 }
@@ -289,10 +318,10 @@ div.footer .footer-statics .col-lg-4 {
 }
 
 .method-sticker {
-    border: 1px solid #aaa;
+    border: 1px solid #111;
     padding: 5px 10px;
     display: inline-block;
-    margin: 5px;
+    margin: 4px ​2px;
     font-size: 12px;
 }
 
@@ -303,30 +332,50 @@ div.footer .footer-statics .col-lg-4 {
 
 .footer-ct-content ul li {
     list-style-image: url("../images/icons/arrow-right.png");
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .footer-ct-content ul li a {
     color: #333;
 }
 
+.software-description{
+    flex: 3;
+    margin-right: 50px;
+}
+
 .software-description .logo {
-    height: 40px;
+    height: 50px;
     vertical-align: top;
-    margin-top: -10px;
+    margin-top: -20px;
+    margin-bottom: 6px;
+}
+
+.footer-ct-content{
+    flex: 5;
+    margin-right: 50px;
+}
+
+.footer-rt-content{
+    flex: 4;
 }
 
 .border-bottom {
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid #d3927c;
 }
 
 .border-bottom {
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 .footer-copyright {
     background-image: none !important;
     background-color: #000;
+    color: #fff;
+    font-size: 13px;
+}
+
+.footer-copyright a{
     color: #fff;
 }
 
@@ -344,6 +393,11 @@ div.footer .footer-statics .col-lg-4 {
     flex-wrap: nowrap;
     flex-direction: row;
     gap: 20px;
+}
+
+
+.advertisement-four-container{
+    margin-top: 60px;
 }
 
 .advertisement-four-container .row {
@@ -391,6 +445,25 @@ div.footer .footer-statics .col-lg-4 {
     background: none !important;
 }
 
+.main-container-wrapper section.featured-products{
+    margin-top: 80px;
+}
+
+.main-container-wrapper section.featured-products .featured-heading {
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.main-container-wrapper .product-grid-3, .main-container-wrapper .product-grid-4 {
+    grid-template-columns: repeat(auto-fill,minmax(270px,1fr));
+}
+
+.main-container-wrapper .product-grid-4 {
+    grid-column-gap: 0px;
+    grid-row-gap: 20px;
+}
+
 .featured-heading {
     display: inline-flex;
     flex-direction: row;
@@ -426,10 +499,10 @@ div.footer .footer-statics .col-lg-4 {
 
 .card-quick-icon {
     position: absolute;
-    top: 170px;
+    top: 155px;
     right: 10px;
     display: none;
-    padding:10px 0px;
+    padding: 16px 0px;
     background-color: #FAE3DB;
     border-radius: 5px;
 }

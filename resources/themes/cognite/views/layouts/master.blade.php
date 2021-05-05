@@ -12,10 +12,20 @@
     <meta http-equiv="content-language" content="{{ app()->getLocale() }}">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     {{-- <link rel="stylesheet" href="{{ bagisto_asset('css/shop.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('themes/congnite/assets/css/shop.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
+
     <link rel="stylesheet" href="{{ asset('themes/congnite/assets/css/custom.css') }}">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+    crossorigin="anonymous"></script>
 
     @if ($favicon = core()->getCurrentChannel()->favicon_url)
         <link rel="icon" sizes="16x16" href="{{ $favicon }}" />
@@ -138,10 +148,18 @@
         @endif
     </script>
 
-    <script type="text/javascript" src="{{ bagisto_asset('js/shop.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('themes/congnite/assets/js/shop.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
 
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+
+    
     @stack('scripts')
+
 
     {!! view_render_event('bagisto.shop.layout.body.after') !!}
 

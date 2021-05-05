@@ -1,5 +1,5 @@
-<div class="col-lg-4 col-md-12 col-sm-12 software-description">
-    <div class="logo border-bottom">
+<div class="software-description">
+    <div class="border-bottom">
         <a
             :class="`left`"
             href="{{ route('shop.home.index') }}">
