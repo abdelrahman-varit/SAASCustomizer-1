@@ -1,6 +1,6 @@
 <div class="slider-area">
 	<div class="main-container-wrapper" style="display: flex;">
-		<div class="left-content" style="flex: 0 0 25%;">
+		<div class="left-content">
 			@include('shop::layouts.header.nav-menu.sidemenu')
 		</div>
 

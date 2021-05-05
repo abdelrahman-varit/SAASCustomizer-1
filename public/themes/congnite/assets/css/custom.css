@@ -105,6 +105,7 @@ ul.locale li img {
 
 .header .header-top div.left-content ul.logo-container li img {
     max-width: 121px;
+    height: 41px;
     max-height: max-content;
 }
 
@@ -157,6 +158,8 @@ section.product-detail div.layouter .form-container .details {
 
 .slider-area .left-content {
     /* overflow-y: scroll; */
+    margin-right: 20px;
+    flex: 0 0 25%;
 }
 
 .slider-area .left-content .category-second-list {
