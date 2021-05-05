@@ -168,7 +168,7 @@ section.product-detail div.layouter .form-container .details {
 
 .btn-dark {
     background-color: #000;
-    color: #eee;
+    color: #eee !important;
     padding: 7px;
     font-size: 12px;
 }
