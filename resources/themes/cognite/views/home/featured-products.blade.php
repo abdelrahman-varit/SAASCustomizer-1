@@ -1,6 +1,6 @@
 
 @if (app('Webkul\Product\Repositories\ProductRepository')->getFeaturedProducts()->count())
-<div class="main-container-wrapper" style="margin-top: 10vh;">
+<div class="main-container-wrapper">
     <section class="featured-products">
 
         <div class="featured-heading">

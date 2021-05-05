@@ -38,6 +38,11 @@ hr{
     margin-bottom: 0;
 }
 
+.header .header-top div.right-content .right-content-menu>li .la-user{
+    font-size: 20px;
+    float: left;
+}
+
 .header .header-bottom .nav a {
     padding: .8em .5em .8em .5em !important
 }
@@ -74,8 +79,8 @@ ul.locale li img {
 
 .top-bar {
     border-bottom: 1px solid #e1e1e1;
-    padding-bottom: 5px;
-    padding-top: 10px;
+    padding-bottom: 7px;
+    padding-top: 8px;
     font-size: 13px;
 }
 
@@ -122,9 +127,18 @@ ul.locale li img {
 }
 
 .header .header-top div.left-content ul.search-container li.search-group .search-icon-wrapper button {
-    padding: 8px 20px;
-    background-color: #e1e1e1;
+    padding: 10px 20px;
+    background-color: #000;
     cursor: pointer;
+    overflow: hidden;
+    border-radius: 0px 2px 2px 0px;
+}
+
+.header .header-top div.left-content ul.search-container li.search-group .search-icon-wrapper .la-search{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    font-size: 24px;
+    color: #fff;
 }
 
 
@@ -373,7 +387,7 @@ div.footer .footer-statics .col-lg-4 {
 
 
 .advertisement-four-container{
-    margin-top: 50px;
+    margin-top: 80px;
 }
 
 .advertisement-four-container .row {
@@ -422,7 +436,7 @@ div.footer .footer-statics .col-lg-4 {
 }
 
 .main-container-wrapper section.featured-products{
-    margin-top: 73px;
+    margin-top: 80px;
 }
 
 .main-container-wrapper section.featured-products .featured-heading {

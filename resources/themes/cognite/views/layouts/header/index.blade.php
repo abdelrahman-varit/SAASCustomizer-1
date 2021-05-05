@@ -45,7 +45,8 @@
                                    
                                     {{ core()->getCurrentLocale()->name }} 
 
-                                    <i class="icon arrow-down-icon"></i>
+                                    {{-- <i class="icon arrow-down-icon"></i> --}}
+                                    <i class="las la-angle-down"></i>
                                 </span>
 
                                 <ul class="dropdown-list locale">
@@ -78,7 +79,9 @@
                                 <span class="dropdown-toggle">
                                     {{ core()->getCurrentCurrencyCode() }}
 
-                                    <i class="icon arrow-down-icon"></i>
+                                    {{-- <i class="icon arrow-down-icon"></i> --}}
+
+                                    <i class="las la-angle-down"></i>
                                 </span>
 
                                 <ul class="dropdown-list currency">
@@ -113,11 +116,14 @@
 
                         <li>
                             <span class="dropdown-toggle">
-                                <i class="icon account-icons"></i>
+                                {{-- <i class="icon account-icons"></i> --}}
+                                <i class="las la-user"></i>
 
                                 <span class="name">{{ __('shop::app.header.account') }}</span>
 
-                                <i class="icon arrow-down-icon"></i>
+                                {{-- <i class="icon arrow-down-icon"></i> --}}
+
+                                    <i class="las la-angle-down"></i>
                             </span>
 
                             @guest('customer')
@@ -248,7 +254,8 @@
                                 <div class="search-icon-wrapper">
 
                                     <button class="" class="background: none;">
-                                        <i class="icon icon-search"></i>
+                                        {{-- <i class="icon icon-search"></i> --}}
+                                        <i class="las la-search"></i>
                                     </button>
                                 </div>
                             </form>

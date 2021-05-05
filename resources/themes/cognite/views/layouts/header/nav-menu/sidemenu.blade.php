@@ -34,7 +34,8 @@
 					@if(count($sub_categories) > 0)
 						
 							<li class="expandable">
-			                    <i class="icon arrow-right-icon"></i>
+			                    {{-- <i class="icon arrow-right-icon"></i> --}}
+			                    <i class="las la-angle-right"></i>
 			                    <span>{{$category->name}}</span>
 			                    <ul class="class-two" id="class-two">
 			                    	@foreach($sub_categories as $sub_category)
@@ -90,10 +91,11 @@
 			border-bottom: 0;
 		}
 
-		.arrow-right-icon{
+		#sidenav .category_content .la-angle-right{
 			float: right;
 			position: relative;
 			top: 13px;
+			right: 10px;
 		}
 		#sidenav .category_content .class-one li span{
 			padding: 12px 15px 12px 20px;;
