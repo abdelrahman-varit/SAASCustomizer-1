@@ -154,6 +154,7 @@ section.slider-block div.slider-content ul.slider-images li img {
 .main-container-wrapper .product-card {
     background: #fff;
     border: 1px solid #e1e1e1;
+    margin-bottom: 15px;
 }
 
 section.product-detail div.layouter .form-container .details {
@@ -255,6 +256,9 @@ i.compare-icons {
 
 div.footer {
     background-image: url("../images/footer-bg.jpg");
+    font-size: 13px;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
 }
 
 div.footer .footer-statics {
@@ -268,7 +272,7 @@ div.footer .footer-statics .col-lg-4 {
     flex: 4;
     height: 250px;
     margin-top: 30px;
-    padding-left: 20px;
+    padding: 0px 60px;
 }
 
 .footer-rt-conten {
@@ -439,4 +443,13 @@ div.footer .footer-statics .col-lg-4 {
     padding: 7px 10px;
     font-size: 12px;
     margin-top: 10px;
+}
+
+.featured-heading{
+    margin-top: 60px !important;
+    margin-bottom: 40px !important;
+}
+
+.main-container-wrapper .product-car{
+    margin-bottom: 20px;
 }
