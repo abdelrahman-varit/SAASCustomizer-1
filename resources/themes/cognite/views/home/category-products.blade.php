@@ -11,9 +11,7 @@
         <div class="featured-heading">
             <div class="col-3">{{$category->name}}</div>
             <div class="col-7"><hr></div>
-            <div class="col-2">
-                <a class="btn-dark" href="/">More -></a>
-            </div>
+            <div class="col-2"><a class="btn-dark" href="/">Shop More</a></div>
         </div>
 
         <div class="product-grid-4">
