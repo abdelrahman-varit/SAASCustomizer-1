@@ -255,7 +255,7 @@ div.footer .footer-statics .col-lg-4 {
     flex: 4;
     height: 250px;
     margin-top: 30px;
-    padding-left: 50px;
+    padding-left: 20px;
 }
 
 .footer-rt-conten {
@@ -286,6 +286,7 @@ div.footer .footer-statics .col-lg-4 {
 
 .footer-ct-content ul li {
     list-style-image: url("../images/icons/arrow-right.png");
+    margin-top: 10px;
 }
 
 .footer-ct-content ul li a {
