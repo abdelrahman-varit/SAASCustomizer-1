@@ -321,7 +321,7 @@ div.footer .footer-statics .col-lg-4 {
     border: 1px solid #111;
     padding: 5px 10px;
     display: inline-block;
-    margin: 4px ​2px;
+    margin: 4px 2px;
     font-size: 12px;
 }
 
@@ -505,6 +505,10 @@ div.footer .footer-statics .col-lg-4 {
     padding: 16px 0px;
     background-color: #FAE3DB;
     border-radius: 5px;
+}
+
+.card-quick-icon li{
+    padding: 10px 0;
 }
 
 .product-card:hover .card-quick-icon{
