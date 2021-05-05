@@ -18,7 +18,7 @@
         id="wishlist-changer"
         style="margin-right: 15px;"
         href="{{ route('customer.wishlist.add', $product->product_id) }}">
-        <span class="icon wishlist-icon"></span>
+        <i class="icon wishlist-icons"></i>
     </a>
     @endif 
     {!! view_render_event('bagisto.shop.products.wishlist.after') !!}
