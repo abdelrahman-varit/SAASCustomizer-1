@@ -590,7 +590,6 @@
     max-width: 440px;
     z-index: 9;
     margin-top: -16px;
-    /*overflow-y: scroll;*/
 }
 
 /*.mm-wrapper_opening .mm-menu_offcanvas.mm-menu_opened~.mm-slideout {
