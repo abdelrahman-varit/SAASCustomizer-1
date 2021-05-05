@@ -450,6 +450,15 @@ div.footer .footer-statics .col-lg-4 {
     margin-bottom: 30px;
 }
 
+.main-container-wrapper .product-grid-3, .main-container-wrapper .product-grid-4 {
+    grid-template-columns: repeat(auto-fill,minmax(270px,1fr));
+}
+
+.main-container-wrapper .product-grid-4 {
+    grid-column-gap: 0px;
+    grid-row-gap: 20px;
+}
+
 .featured-heading {
     display: inline-flex;
     flex-direction: row;
