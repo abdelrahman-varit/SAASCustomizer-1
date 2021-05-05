@@ -15,7 +15,7 @@
 
     <div class="shipment-option">
         <div class="mb5 col-12">
-            <h3>{{ __('velocity::app.home.shipping-methods') }}</h3>
+            <h4 style="margin-bottom: 5px;">{{ __('velocity::app.home.shipping-methods') }}</h4>
         </div>
 
         <div class="shipping-methods col-12">
