@@ -1,379 +1,207 @@
-<?php
+<div id="sidenav">
+            
+        <nav id="sidemenu" class="mm-menu mm-menu_offcanvas mm-menu_opened">
+            <ul>
 
-$categories = [];
+            	{{-- <li>
+                    <span>About us</span>
+                    <ul>
+                        <li><a href="#about/history">History</a></li>
+                        <li>
+                            <span>The team</span>
+                            <ul>
+                                <li>
+                                    <a href="#about/team/management">Management</a>
+                                </li>
+                                <li>
+                                    <a href="#about/team/sales">Sales</a>
+                                </li>
+                                <li>
+                                    <a href="#about/team/development">Development</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#about/address">Our address</a></li>
+                    </ul>
+                </li> --}}
 
-foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id) as $category) {
-    if ($category->slug)
-        array_push($categories, $category);
-}
+            	@php
 
-?>
+					$categories = [];
 
-<div class="nav-container">
-    <nav class="all-category-nav">
-      <label class="open-menu-all" for="open-menu-all">
-        <input class="input-menu-all" id="open-menu-all" type="checkbox" name="menu-open" checked />
-        <span class="all-navigator"><i class="fas fa-bars"></i> <span>All category</span> <i class="fas fa-angle-down"></i>
-          <i class="fas fa-angle-up"></i>
-        </span>
+					foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id) as $category) {
+					    if ($category->slug)
+					        array_push($categories, $category);
+					}
 
-        <ul class="all-category-list">
+				@endphp
 
-        	@foreach($categories as $category)
-        		{{-- {{dd($category->name)}} --}}
-        		
-        			{{-- <li class="all-category-list-item">
-        				<a href="{{$category->slug}}" class="all-category-list-link">{{$category->name}}</a>
-        			</li>
- --}}
+				@foreach($categories as $category)
+					@if(count($categories) > 0)
+						@php
 
- 				<?php
+							$sub_categories = [];
 
-						$sub_categories = [];
+							foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree($category->id) as $sub_category) {
+							    if ($sub_category->slug)
+							        array_push($sub_categories, $sub_category);
+							}
 
-						foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree($category->id) as $sub_category) {
-						    if ($sub_category->slug)
-						        array_push($sub_categories, $sub_category);
-						}
-
-					?>
-
-        		<li class="all-category-list-item">
-        			<a href="{{$category->slug}}" class="all-category-list-link">
-						{{$category->name}}
-
-						@if(count($sub_categories) > 0)
-						<i class="icon arrow-down-icon"></i>
-						@endif
-					</a>
+						@endphp
 
 					
-
-					@if(count($sub_categories) > 0)
-						<div class="category-second-list">
-
+						@if(count($sub_categories) > 0)
 							
-							<ul class="category-second-list-ul">
-								@foreach($sub_categories as $sub_category)
-									<li class="category-second-item"><a href="https://www.cupcom.com.br/">{{$sub_category->name}}</a></li>
-								@endforeach
-							</ul>
+								<li>
+				                    <span>{{$category->name}}</span>
+				                    <ul>
+				                    	@foreach($sub_categories as $sub_category)
+				                        	<li><a href="{{$sub_category->slug}}">{{$sub_category->name}}</a></li>
+				                        @endforeach
+				                    </ul>
+				                </li>
+				            
+			            @else
+			            	<li><a href="{{$category->slug}}">{{$category->name}}</a></li>
+						@endif
 
-						</div>
 					@endif
-				</li>
-
-        		
+				@endforeach
 
 
-	          
+            </ul>
+        </nav>
+    </div>
 
-          	@endforeach
-
-        </ul>
-      </label>
-
-    </nav>
-</div>
 
 
 @push('css')
-
+	<link type="text/css" rel="stylesheet" href="{{asset('themes/congnite/assets/css/demo.css')}}" />
+	<link type="text/css" rel="stylesheet" href="{{asset('themes/congnite/assets/css/mmenu.css')}}" />
 	<style type="text/css">
-		.container .nav-content .nav-content-list {
-		  align-items: center;
-		  display: flex;
-		  justify-content: space-between;
-		  padding: 0 15px;
+
+		.side_navigation_wrapper{
+			width: 90%;
+			background-color: #e1e1e1;
 		}
-		.container .nav-content .nav-content-list .nav-content-item {
-		  align-items: center;
-		  display: flex;
-		  height: 40px;
-		  margin: 0 5px;
-		  position: relative;
-		  transition: 100ms all linear 0s;
+		.sideham{
+			font-size:17px;
+			cursor:pointer;
+			width: 100%;
+			padding: 13px 17px;
+			background-color: #000;
+			color: #fff;
 		}
-		@media (max-width: 991px) {
-		  .container .nav-content .nav-content-list .nav-content-item {
-		    padding: 0 5px;
-		  }
-		}
-		.container .nav-content .nav-content-list .nav-content-item .item-arrow {
-		  margin-left: 5px;
-		  position: relative;
-		  top: -3px;
-		}
-		@media (max-width: 768px) {
-		  .container .nav-content .nav-content-list .nav-content-item .item-arrow {
-		    display: none;
-		  }
-		}
-		.container .nav-content .nav-content-list .nav-content-item .open-menu-login-account {
-		  align-items: center;
-		  cursor: pointer;
-		  display: flex;
-		  position: relative;
-		}
-		.container .nav-content .nav-content-list .nav-content-item .input-menu {
-		  display: none;
-		}
-		.container .nav-content .nav-content-list .nav-content-item .input-menu:checked ~ .login-list {
-		  display: block;
-		}
-		.container .nav-content .nav-content-list .nav-content-item .login-list {
-		  background: #fff;
-		  border-bottom: 3px solid #545bc4;
-		  border-radius: 3px;
-		  /*box-shadow: 2px 9px 49px -17px rgba(0, 0, 0, 0.3);*/
-		  display: none;
-		  overflow: hidden;
-		  position: absolute;
-		  right: 0;
-		  top: 28px;
-		  transition: 100ms all linear 0s;
-		  width: 200px;
-		  z-index: 10;
-		}
-		.container .nav-content .nav-content-list .nav-content-item .login-list .login-list-item {
-		  padding: 15px 20px;
-		}
-		.container .nav-content .nav-content-list .nav-content-item .login-list .login-list-item:hover {
-		  background: #545bc4;
-		}
-		.container .nav-content .nav-content-list .nav-content-item .login-list .login-list-item:hover a {
-		  color: #000;
-		}
-		.container .nav-content .nav-content-list .nav-content-item:nth-child(2):hover .fas {
-		  color: #e74c3c;
-		}
-		.container .nav-content .nav-content-list .nav-content-item:hover .fas {
-		  color: #545bc4;
-		}
-		.container .nav-content .nav-content-list .account-login .login-text {
-		  align-items: end;
-		  display: flex;
-		  flex-direction: column;
-		  font-size: 13px;
-		  margin-left: 5px;
-		}
-		@media (max-width: 991px) {
-		  .container .nav-content .nav-content-list .account-login .login-text {
-		    display: none;
-		  }
-		}
-		.container .nav-content .nav-content-list .account-login .login-text strong {
-		  display: block;
-		}
-		.container .nav-content .nav-content-list .nav-content-link {
-		  border-radius: 3px;
-		  font-size: 13px;
-		  padding: 10px 15px;
-		  transition: 100ms all linear 0s;
-		}
-		@media (max-width: 991px) {
-		  .container .nav-content .nav-content-list .nav-content-link {
-		    padding: 0;
-		  }
+		.sidenav {
+			height: 320px;
+			width: 100%;
+			position: relative;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			overflow-x: hidden;
+			transition: 0.5s;
+			padding-top: 15px;
+			padding-bottom: 15px;
 		}
 
-		.nav-container {
-		  align-items: center;
-		  display: flex;
-		  margin: 0 auto;
-		  max-width: 1300px;
-		  width: 100%;
+		.sidenav::-webkit-scrollbar-track
+		{
+			/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+			border-radius: 10px;
+			background-color: #F5F5F5;
+			border: 1px solid #ccc;
 		}
-		.nav-container .nav-row {
-		  align-items: center;
-		  display: flex;
-		  height: 40px;
-		  justify-content: space-between;
-		  margin: 0;
-		  padding: 0;
+
+		.sidenav::-webkit-scrollbar
+		{
+			width: 10px;
+			background-color: #F5F5F5;
 		}
-		@media (max-width: 991px) {
-		  .nav-container .nav-row {
-		    display: none;
-		  }
+
+		.sidenav::-webkit-scrollbar-thumb
+		{
+			border-radius: 10px;
+			/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
+			background-color: #bbb;
+			height: 20vh;
 		}
-		.nav-container .nav-row .nav-row-list {
-		  flex: auto;
+
+
+		.sidenav ul{
+			/*width: 90%;
+			overflow-y: scroll;*/
 		}
-		.nav-container .nav-row .nav-row-list .nav-row-list-link {
-		  align-items: center;
-		  display: flex;
-		  height: 40px;
-		  justify-content: center;
-		  transition: 100ms all linear 0s;
+
+		.sidenav .category-icon{
+			height: 17px;
+		    width: 17px;
+		    float: left;
+		    margin-right: 7px;
+		    margin-top: 1px;
 		}
-		.nav-container .nav-row .nav-row-list .nav-row-list-link:hover {
-		  background: #e1e1e1;
-		  color: #000;
-		  width: 100%;
+
+		.sidenav a {
+			padding: 10px 10px 10px 18px;
+			text-decoration: none;
+			font-size: 15px;
+			color: #000;
+			display: block;
+			transition: 0.3s;
+			border-bottom: 1px solid #ccc;
 		}
-		.nav-container .featured-category {
-		  flex: auto;
-		  margin: 0 15px 0 0;
+
+		.sidenav a:last:child {
+			border-bottom: 0;
 		}
-		@media (max-width: 991px) {
-		  .nav-container .featured-category {
-		    display: none;
-		  }
+
+		.sidenav a:hover {
+			background-color: #f1f1f1;
 		}
-		.nav-container .all-navigator {
-		  align-items: center;
-		  background: #000;
-		  color: #fff;
-		  display: flex;
-		  height: 40px;
-		  padding: 0 25px;
-		  width: 100%;
+
+
+		.sidenav .arrow-down-icon{
+			position: absolute;
+		    right: 20px;
+		    margin-top: 6px;
 		}
-		@media (max-width: 991px) {
-		  .nav-container .all-navigator {
-		    margin-right: 0;
-		  }
+
+		#category-second-list{
+			display: none;
+			background-color: #fff;
 		}
-		.nav-container .all-navigator .fa-angle-up,
-		.nav-container .all-navigator .fa-angle-down {
-		  position: absolute;
-		  right: 25px;
+
+		#category-second-list .category-second-item{
+			margin-left: 25px;
 		}
-		.nav-container .all-navigator .fa-angle-up {
-		  display: none;
-		}
-		.nav-container .all-navigator .fas {
-		  font-size: 13px;
-		  margin-right: 0;
-		}
-		.nav-container .all-navigator span {
-		  margin-left: 15px;
-		}
-		.nav-container .all-category-nav {
-		  cursor: pointer;
-		  max-width: 300px;
-		  position: relative;
-		  width: 100%;
-		}
-		@media (max-width: 991px) {
-		  .nav-container .all-category-nav {
-		    max-width: 100%;
-		  }
-		}
-		.nav-container .all-category-nav .open-menu-all {
-		  align-items: center;
-		  cursor: pointer;
-		  display: flex;
-		  position: relative;
-		}
-		.nav-container .all-category-nav .input-menu-all {
-		  display: none;
-		}
-		.nav-container .all-category-nav .input-menu-all:checked ~ .all-category-list {
-		  display: block;
-		}
-		.nav-container .all-category-nav .input-menu-all:checked + .all-navigator .fa-angle-down {
-		  display: none;
-		}
-		.nav-container .all-category-nav .input-menu-all:checked + .all-navigator .fa-angle-up {
-		  display: block;
-		}
-		.nav-container .all-category-list {
-		  background: #fff;
-		  color: #000;
-		  border-bottom: 3px solid #e1e1e1;
-		  /*box-shadow: 2px 9px 49px -17px rgba(0, 0, 0, 0.3);*/
-		  display: none;
-		  height: auto;
-		  min-height: 327px;
-		  padding: 15px 0;
-		  position: absolute;
-		  top: 40px;
-		  width: 100%;
-		  z-index: 90;
-		  font-size: 14px;
-		}
-		@media (max-width: 991px) {
-		  .nav-container .all-category-list {
-		    min-width: 100%;
-		  }
-		}
-		.nav-container .all-category-list-item:hover {
-		  display: block;
-		  background: #e1e1e1;
-		}
-		.nav-container .all-category-list-item:hover .category-second-list {
-		  left: 100%;
-		  opacity: 1;
-		  visibility: visible;
-		}
-		.nav-container .all-category-list-item:hover .all-category-list-link {
-		  color: #000;
-		}
-		.nav-container .all-category-list-link {
-		  align-items: center;
-		  display: flex;
-		  justify-content: space-between;
-		  padding: 15px;
-		  transition: 100ms all linear 0s;
-		  color: #000;
-		}
-		.nav-container .category-second-list {
-		  background: #fff;
-		  border-bottom: 3px solid #545bc4;
-		  /*box-shadow: inset 44px -1px 88px -59px rgba(0, 0, 0, 0.37);*/
-		  display: flex;
-		  height: 322px;
-		  left: 80%;
-		  min-height: 297px;
-		  min-width: 400px;
-		  opacity: 0;
-		  position: absolute;
-		  top: 0;
-		  transition: 100ms all linear 0s;
-		  visibility: hidden;
-		  width: auto;
-		}
-		@media (max-width: 991px) {
-		  .nav-container .category-second-list {
-		    display: none;
-		  }
-		}
-		.nav-container .category-second-list .img-product-menu img {
-		  max-width: 180px;
-		}
-		.nav-container .category-second-list-ul {
-		  display: flex;
-		  flex-direction: column;
-		  min-width: 400px;
-		  padding: 0 15px;
-		}
-		.nav-container .category-second-item a {
-		  align-items: center;
-		  display: flex;
-		  justify-content: space-between;
-		  padding: 15px;
-		  color: #000;
-		}
-		.nav-container .category-second-item:hover {
-		  background: #e1e1e1;
-		}
-		.nav-container .category-second-item:hover a {
-		  color: #000;
-		}
+
 	</style>
 
 @endpush
 
 @push('scripts')
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="{{asset('themes/congnite/assets/js/mmenu.polyfills.js')}}"></script>
+	<script type="text/javascript" src="{{asset('themes/congnite/assets/js/mmenu.js')}}"></script>
 	<script type="text/javascript">
-		$('.sub-menu ul').hide();
-		$(".sub-menu a").click(function () {
-			$(this).parent(".sub-menu").children("ul").slideToggle("100");
-			$(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
-		});
+
+		// new Mmenu(document.querySelector('#sidemenu'));
+  //       document.addEventListener(
+  //           "DOMContentLoaded", () => {
+  //               new Mmenu( "#sidemenu", {
+  //                  "slidingSubmenus": false
+  //               });
+  //           }
+  //       );
+
+        document.addEventListener(
+                "DOMContentLoaded", () => {
+                    new Mmenu( "#sidemenu", {
+                       "slidingSubmenus": false
+                    });
+                }
+            );
+		
 	</script>
 
 @endpush
