@@ -283,7 +283,6 @@ i.compare-icons {
 
 div.footer {
     background-image: url("../images/footer-bg.jpg");
-    color: #fff;
 }
 
 div.footer .footer-statics {
@@ -367,6 +366,11 @@ div.footer .footer-statics .col-lg-4 {
 .footer-copyright {
     background-image: none !important;
     background-color: #000;
+    color: #fff;
+    font-size: 13px;
+}
+
+.footer-copyright a{
     color: #fff;
 }
 
