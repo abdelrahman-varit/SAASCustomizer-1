@@ -503,6 +503,10 @@ div.footer .footer-statics .col-lg-4 {
     border-radius: 5px;
 }
 
+.card-quick-icon li{
+    padding: 10px 0;
+}
+
 .product-card:hover .card-quick-icon{
     display: block;
 }
