@@ -495,10 +495,10 @@ div.footer .footer-statics .col-lg-4 {
 
 .card-quick-icon {
     position: absolute;
-    top: 170px;
+    top: 155px;
     right: 10px;
     display: none;
-    padding:10px 0px;
+    padding: 16px 0px;
     background-color: #FAE3DB;
     border-radius: 5px;
 }
