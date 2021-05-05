@@ -3,7 +3,7 @@
 @php
     $slug = $category;
     $category = app('Webkul\Category\Repositories\CategoryRepository')->findBySlugOrFail($slug);
-    $products = app('Webkul\Product\Repositories\ProductRepository')->getAll($category->id);
+    $products = app('Webkul\Product\Repositories\ProductRepository')->getAll($category->id)->limit(8);
 @endphp
 <div class="main-container-wrapper" style="margin-top: 10vh;">
     <section class="featured-products">
