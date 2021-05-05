@@ -345,6 +345,13 @@ div.footer .footer-statics .col-lg-4 {
     height: 300px;
 }
 
+.advertisement-two-container .row {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 20px;
+}
+
 .advertisement-two-container img{
     height: 400px;
 }
