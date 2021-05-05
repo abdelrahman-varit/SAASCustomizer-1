@@ -21,15 +21,19 @@
             <div class="container-fluid advertisement-two-container">
                 <div class="row">
                     @if ( isset($advertisementTwo[0]))
-                        <a class="col-lg-9 col-md-12 no-padding">
+                    <div class="col-6">
+                        <a @if (isset($one)) href="{{ $one }}" @endif>
                             <img src="{{ asset('/storage/' . $advertisementTwo[0]) }}" style="flex: 1;" />
                         </a>
+                    </div>
                     @endif
                     
                     @if ( isset($advertisementTwo[1]))
-                        <a class="col-lg-3 col-md-12 pr0">
+                    <div class="col-6">
+                        <a @if (isset($two)) href="{{ $two }}" @endif>
                             <img src="{{ asset('/storage/' . $advertisementTwo[1]) }}" style="flex: 1;" />
                         </a>
+                    </div>
                     @endif
                 </div>
             </div>
