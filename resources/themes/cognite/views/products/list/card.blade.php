@@ -30,7 +30,7 @@
 
         @include ('shop::products.price', ['product' => $product])
 
-        {{-- @include('shop::products.add-buttons', ['product' => $product]) --}}
+        @include('shop::products.add-buttons', ['product' => $product])
     </div>
 
 </div>
