@@ -585,11 +585,11 @@
 
 .mm-menu_offcanvas {
     width: 297px;
-    height: 367px;
+    height: 365px;
     min-width: 240px;
     max-width: 440px;
     z-index: 9;
-    /*overflow-y: scroll;*/
+    margin-top: -16px;
 }
 
 /*.mm-wrapper_opening .mm-menu_offcanvas.mm-menu_opened~.mm-slideout {

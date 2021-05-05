@@ -20,7 +20,7 @@
 
         
 
-        {{-- <i class="icon arrow-down-icon"></i> --}}
+        <i class="icon arrow-down-icon"></i>
     </div>
 
     <div class="dropdown-list" style="display: none; top: 52px; right: 0px;">
