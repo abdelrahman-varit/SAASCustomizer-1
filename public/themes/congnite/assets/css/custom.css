@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 body {
     /* background-color: #f2f3f8; */
+    font-family: 'Lato', sans-serif;
 }
 
 hr{
@@ -104,6 +105,7 @@ ul.locale li img {
 
 .header .header-top div.left-content ul.logo-container li img {
     max-width: 121px;
+    height: 41px;
     max-height: max-content;
 }
 
@@ -156,6 +158,8 @@ section.product-detail div.layouter .form-container .details {
 
 .slider-area .left-content {
     /* overflow-y: scroll; */
+    margin-right: 20px;
+    flex: 0 0 25%;
 }
 
 .slider-area .left-content .category-second-list {
@@ -255,7 +259,7 @@ div.footer .footer-statics .col-lg-4 {
     flex: 4;
     height: 250px;
     margin-top: 30px;
-    padding-left: 50px;
+    padding-left: 20px;
 }
 
 .footer-rt-conten {
@@ -286,6 +290,7 @@ div.footer .footer-statics .col-lg-4 {
 
 .footer-ct-content ul li {
     list-style-image: url("../images/icons/arrow-right.png");
+    margin-top: 10px;
 }
 
 .footer-ct-content ul li a {

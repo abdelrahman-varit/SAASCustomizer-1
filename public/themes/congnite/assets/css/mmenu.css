@@ -575,8 +575,8 @@
 
 .mm-menu_offcanvas {
     position: absolute;
-    left: 40px;
-    top: 204px;
+    left: 15px;
+    top: 184px;
 }
 
 .mm-menu_offcanvas:not(.mm-menu_opened) {
@@ -589,7 +589,6 @@
     min-width: 240px;
     max-width: 440px;
     z-index: 9;
-    margin-top: -16px;
 }
 
 /*.mm-wrapper_opening .mm-menu_offcanvas.mm-menu_opened~.mm-slideout {
