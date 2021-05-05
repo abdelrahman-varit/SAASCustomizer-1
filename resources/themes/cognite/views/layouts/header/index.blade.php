@@ -215,6 +215,27 @@
                     <ul class="search-container">
                         <li class="search-group">
                             <form role="search" action="{{ route('shop.search.index') }}" method="GET" style="display: inherit;">
+                                
+                                
+            	@php
+
+                    $categories = [];
+
+                    foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree(core()->getCurrentChannel()->root_category_id) as $category) {
+                        if ($category->slug)
+                            array_push($categories, $category);
+                    }
+
+                @endphp
+
+               
+                        
+                                <select>
+                                    <option>All Categories</option>
+                                    @foreach($categories as $category)
+                                        <option>{{$category->name}}</option>
+                                    @endforeach
+                                </select>
                                 <input
                                     required
                                     name="term"
