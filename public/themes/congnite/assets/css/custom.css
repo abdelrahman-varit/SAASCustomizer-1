@@ -7,7 +7,7 @@ hr{
     height: 1px;
     width: 100%;
     border: 0;
-    background: #ccc;
+    background: #e1e1e1;
 }
 
 .nav-container .all-category-list {
@@ -253,6 +253,20 @@ i.compare-icons {
     margin-top: -5px;
 }
 
+.footer {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.footer .row{
+        place-content: flex-start;
+}
+
+.footer .row ul{
+    margin-right: 30px;
+
+}
+
 div.footer {
     background-image: url("../images/footer-bg.jpg");
 }
@@ -266,7 +280,7 @@ div.footer .footer-statics {
 
 div.footer .footer-statics .col-lg-4 {
     flex: 4;
-    height: 250px;
+    min-height: 250px;
     margin-top: 30px;
     padding-left: 20px;
 }
@@ -299,21 +313,36 @@ div.footer .footer-statics .col-lg-4 {
 
 .footer-ct-content ul li {
     list-style-image: url("../images/icons/arrow-right.png");
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .footer-ct-content ul li a {
     color: #333;
 }
 
+.software-description{
+    flex: 3;
+    margin-right: 50px;
+}
+
 .software-description .logo {
-    height: 40px;
+    height: 50px;
     vertical-align: top;
-    margin-top: -10px;
+    margin-top: -20px;
+    margin-bottom: 6px;
+}
+
+.footer-ct-content{
+    flex: 5;
+    margin-right: 50px;
+}
+
+.footer-rt-content{
+    flex: 4;
 }
 
 .border-bottom {
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid #d3927c;
 }
 
 .border-bottom {
@@ -340,6 +369,11 @@ div.footer .footer-statics .col-lg-4 {
     flex-wrap: nowrap;
     flex-direction: row;
     gap: 20px;
+}
+
+
+.advertisement-four-container{
+    margin-top: 50px;
 }
 
 .advertisement-four-container .row {
@@ -385,6 +419,16 @@ div.footer .footer-statics .col-lg-4 {
 .main-container-wrapper .product-card,
 .main-container-wrapper .product-card .product-image {
     background: none !important;
+}
+
+.main-container-wrapper section.featured-products{
+    margin-top: 73px;
+}
+
+.main-container-wrapper section.featured-products .featured-heading {
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-bottom: 30px;
 }
 
 .featured-heading {

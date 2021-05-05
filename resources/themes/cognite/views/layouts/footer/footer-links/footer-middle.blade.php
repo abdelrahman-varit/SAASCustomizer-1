@@ -1,4 +1,4 @@
-<div class="col-lg-4 col-md-12 col-sm-12 footer-ct-content">
+<div class="footer-ct-content">
     <div class="mb5 col-12 clearfix border-bottom">
         <h2>Quick Links</h2>
     </div>
@@ -15,7 +15,7 @@
                     <li><a href="https://sellnoir.com/about-us/company-profile/">Contact Us </a></li>
                 </ul>
             </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 no-padding" style="padding-left:30px;">
+            <div class="col-lg-6 col-md-12 col-sm-12 no-padding">
                 <ul type="none">
                     <li><a href="https://sellnoir.com/about-us/company-profile/"> Order and Returns </a></li>
                     <li><a href="https://sellnoir.com/about-us/company-profile/"> Payment Policy </a></li>

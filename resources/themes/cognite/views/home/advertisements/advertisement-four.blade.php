@@ -44,13 +44,13 @@
                     @endif
                 </div>
 
-                <div class="col-3">
+                {{-- <div class="col-3">
                 @if ( isset($advertisementFour[3]))
                     <a @if (isset($four)) href="{{ $four }}" @endif >
                         <img class="col-12 four-last-img" src="{{ asset('/storage/' . $advertisementFour[3]) }}" />
                     </a>
                 @endif
-                </div>
+                </div> --}}
             </div>
         </div>
     @endif
@@ -75,11 +75,11 @@
                     <img class="col-12 offers-ct-bottom" src="{{ asset('/themes/velocity/assets/images/deals.png') }}" />
                 </a>
             </div>
-            <div class="col-3" >
+            {{-- <div class="col-3" >
                 <a @if (isset($four)) href="{{ $four }}" @endif >
                     <img class="col-12 four-last-img" src="{{ asset('/themes/velocity/assets/images/kids.png') }}" />
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endif

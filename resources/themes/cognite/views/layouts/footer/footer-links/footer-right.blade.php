@@ -1,4 +1,4 @@
-<div class="col-lg-4 col-md-12 col-sm-12 footer-rt-content" style="padding-left:30px;">
+<div class="footer-rt-content">
     <div class="payment-option">
         <div class="mb5 col-12 clearfix border-bottom">
             <h2>{{ __('velocity::app.home.payment-methods') }}</h2>
