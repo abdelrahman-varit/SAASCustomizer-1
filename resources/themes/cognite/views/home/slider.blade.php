@@ -72,6 +72,10 @@
                 	height: 400px;
                 }
 
+                .slick-slide img {
+				    width: 100%;
+				}
+
 				.slick-dots li button:before{
 					content: '';
 					height: 10px;
