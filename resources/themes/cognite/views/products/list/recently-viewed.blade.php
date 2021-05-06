@@ -14,7 +14,7 @@
 
 @push('scripts')
     <script type="text/x-template" id="recently-viewed-template">
-        <div :class="`${addClass} recently-viewed`" style="margin-left:auto;">
+        <div :class="`${addClass} recently-viewed`">
 
 
 
