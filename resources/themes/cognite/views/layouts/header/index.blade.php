@@ -40,7 +40,7 @@
 
                         {!! view_render_event('bagisto.shop.layout.header.locale-item.before') !!}
 
-                        @if (core()->getCurrentChannel()->locales->count() > 1)
+                        @if (core()->getCurrentChannel()->locales->count() > 0)
                             <li class="locale-switcher">
                                 <span class="dropdown-toggle">
                                    
@@ -75,7 +75,7 @@
 
                         {!! view_render_event('bagisto.shop.layout.header.currency-item.before') !!}
 
-                        @if (core()->getCurrentChannel()->currencies->count() > 1)
+                        @if (core()->getCurrentChannel()->currencies->count() > 0)
                             <li class="currency-switcher">
                                 <span class="dropdown-toggle">
                                     {{ core()->getCurrentCurrencyCode() }}
