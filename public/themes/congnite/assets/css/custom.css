@@ -49,8 +49,8 @@ hr{
 }
 
 .locale-img img {
-    height: 15px;
-    width: auto;
+    height: 13px;
+    width: 20px;
     margin: 5px 5px auto 0px;
 }
 
@@ -346,9 +346,9 @@ div.footer .footer-statics .col-lg-4 {
 }
 
 .software-description .logo {
-    height: 50px;
+    height: 35px;
     vertical-align: top;
-    margin-top: -20px;
+    margin-top: -5px;
     margin-bottom: 6px;
 }
 
