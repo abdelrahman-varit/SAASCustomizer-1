@@ -197,10 +197,10 @@
                                     'id' => 'image_3',
                                     'url' => asset('/themes/congnite/assets/images/banner/advertise-1-3.jpg'),
                                 ];
-                                $images[4][] = [
+                                <!-- $images[4][] = [
                                     'id' => 'image_4',
                                     'url' => asset('/themes/congnite/assets/images/banner/advertise-1-4.jpg'),
-                                ];
+                                ]; -->
                             @endphp
                         
                             <image-wrapper
