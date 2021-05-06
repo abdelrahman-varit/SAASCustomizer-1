@@ -537,3 +537,12 @@ div.footer .footer-statics .col-lg-4 {
     height: 225px !important;
     width:225px !important;
 }
+
+.featured-heading .col-5{
+    flex:0 0 25%;
+    text-align: left;
+}
+
+.featured-heading .col-7{
+    flex:0 0 70%;
+}
