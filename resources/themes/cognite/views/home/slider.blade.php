@@ -76,6 +76,12 @@
 				    width: 100%;
 				}
 
+				.slick-dots li {
+				    width: 17px;
+				    height: 20px;
+				    margin: 0 0px;
+				}
+
 				.slick-dots li button:before{
 					content: '';
 					height: 10px;
@@ -92,6 +98,8 @@
 				    border-radius: 10px;
 				    margin: 4px 0px 0px 5px;
 				}
+
+
 
 
 				.slick-dots li.slick-active button:before{
