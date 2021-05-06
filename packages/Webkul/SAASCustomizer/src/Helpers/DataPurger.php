@@ -14,6 +14,7 @@ use Webkul\Attribute\Repositories\AttributeGroupRepository;
 use Webkul\Customer\Repositories\CustomerGroupRepository;
 use Webkul\CMS\Repositories\CmsRepository;
 use Webkul\Velocity\Repositories\VelocityMetadataRepository;
+use Webkul\Velocity\Repositories\ContentRepository;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
@@ -90,6 +91,8 @@ class DataPurger
      */
     protected $velocityMetadataRepository;
 
+    protected $contentRepository;
+
     public function __construct(
         CategoryRepository $categoryRepository,
         InventorySourceRepository $inventorySourceRepository,
@@ -102,7 +105,8 @@ class DataPurger
         AttributeGroupRepository $attributeGroupRepository,
         CustomerGroupRepository $customerGroupRepository,
         CmsRepository $cmsRepository,
-        velocityMetadataRepository $velocityMetadataRepository
+        velocityMetadataRepository $velocityMetadataRepository,
+        ContentRepository $contentRepository
     )
     {
         $this->categoryRepository = $categoryRepository;
@@ -128,6 +132,8 @@ class DataPurger
         $this->cmsRepository = $cmsRepository;
 
         $this->velocityMetadataRepository = $velocityMetadataRepository;
+
+        $this->contentRepository = $contentRepository;
     }
 
     /**
@@ -250,6 +256,21 @@ class DataPurger
         Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
 
         $subCategory3 = $this->categoryRepository->create($data3);
+
+        $content = [
+        "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8"
+        "locale" => "all"
+        "title" => "About us"
+        "position" => "6"
+        "status" => "1"
+        "content_type" => "category"
+        "en" => array:2 [▼
+            "page_link" => "aboutus"
+            "link_target" => "0"
+            ]
+        ];
+              $this->contentRepository->create($params);
+
 
         return $rootCategory;
     }
