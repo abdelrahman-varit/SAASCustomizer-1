@@ -301,7 +301,7 @@
                 if (existingViewed.indexOf(currentProductId) == -1) {
                     existingViewed.push(currentProductId);
 
-                    if (existingViewed.length > 3)
+                    if (existingViewed.length > 4)
                         existingViewed = existingViewed.slice(Math.max(existingViewed.length - 4, 1));
 
                     window.localStorage.setItem('recentlyViewed', JSON.stringify(existingViewed));
