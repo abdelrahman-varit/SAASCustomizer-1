@@ -37,7 +37,7 @@
 
     <meta property="og:url" content="{{ route('shop.productOrCategory.index', $product->url_key) }}" />
 @stop
-
+ 
 @section('content-wrapper')
 
     {!! view_render_event('bagisto.shop.products.view.before', ['product' => $product]) !!}
@@ -287,6 +287,37 @@
                     }
                 }
             }
+
+            //recentlyViewed
+            let currentProductId = '{{ $product->url_key }}';
+                let existingViewed = window.localStorage.getItem('recentlyViewed');
+
+                if (! existingViewed) {
+                    existingViewed = [];
+                } else {
+                    existingViewed = JSON.parse(existingViewed);
+                }
+ 
+                if (existingViewed.indexOf(currentProductId) == -1) {
+                    existingViewed.push(currentProductId);
+
+                    if (existingViewed.length > 3)
+                        existingViewed = existingViewed.slice(Math.max(existingViewed.length - 4, 1));
+
+                    window.localStorage.setItem('recentlyViewed', JSON.stringify(existingViewed));
+                } else {
+                    var uniqueNames = [];
+
+                    $.each(existingViewed, function(i, el){
+                        if ($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
+                    });
+
+                    uniqueNames.push(currentProductId);
+
+                    uniqueNames.splice(uniqueNames.indexOf(currentProductId), 1);
+
+                    window.localStorage.setItem('recentlyViewed', JSON.stringify(uniqueNames));
+                }
         };
     </script>
 @endpush
