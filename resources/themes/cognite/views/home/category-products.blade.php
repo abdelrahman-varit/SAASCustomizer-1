@@ -4,7 +4,6 @@
     $slug = empty($category)?0:$category;
     $category = app('Webkul\Category\Repositories\CategoryRepository')->findBySlugOrFail($slug);
     $products = app('Webkul\Product\Repositories\ProductRepository')->getAll($category->id)->take(8);
-    // dd($product);
 @endphp
 <div class="main-container-wrapper">
     <section class="featured-products">

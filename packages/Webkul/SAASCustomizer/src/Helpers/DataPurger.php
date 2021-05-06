@@ -209,6 +209,23 @@ class DataPurger
             'company_id'        => $companyRepository->id
         ];
 
+        $rootCategory = $this->categoryRepository->create($data);
+
+        $data = [
+            'position'          => '1',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Simple Product',
+            'slug'              => 'simple-product',
+            'description'       => 'Simple Product',
+            'meta_title'        => '',
+            'meta_description'  => '',
+            'meta_keywords'     => '',
+            'locale'            => 'all',
+            'company_id'        => $companyRepository->id
+        ];
+
         Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
 
         return $this->categoryRepository->create($data);
