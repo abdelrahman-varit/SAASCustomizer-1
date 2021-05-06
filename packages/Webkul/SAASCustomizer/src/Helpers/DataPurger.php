@@ -258,14 +258,14 @@ class DataPurger
         $subCategory3 = $this->categoryRepository->create($data3);
 
         $content = [
-        "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8"
-        "locale" => "all"
-        "title" => "About us"
-        "position" => "6"
-        "status" => "1"
-        "content_type" => "category"
-        "en" => array:2 [▼
-            "page_link" => "aboutus"
+        "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+        "locale" => "all",
+        "title" => "About us",
+        "position" => "6",
+        "status" => "1",
+        "content_type" => "category",
+        "en" => [
+            "page_link" => "aboutus",
             "link_target" => "0"
             ]
         ];
