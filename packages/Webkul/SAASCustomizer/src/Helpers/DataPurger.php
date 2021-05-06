@@ -259,8 +259,8 @@ class DataPurger
         $data = [
             'company_id'        => $companyRepository->id,
             'code'              => $companyRepository->username,
-            'name'              => 'Default Channel',
-            'description'       => 'Default Channel',
+            'name'              => 'BuyNoir Channel',
+            'description'       => 'BuyNoir Channel',
             'inventory_sources' => [
                 0               => $inventorySourceRepository->id
             ],
@@ -277,7 +277,7 @@ class DataPurger
             'theme'             => 'congnite',
             'home_page_content' => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'cloths'])@include('shop::home.recent-products')</p>",
 
-            'footer_content' => '<div class="list-container"><span class="list-heading">Quick Links</span><ul class="list-group"><li><a href="@php echo route(\'shop.cms.page\', \'about-us\') @endphp">BuyNoir About Us</a></li><li><a href="@php echo route(\'shop.cms.page\', \'return-policy\') @endphp">Return Policy</a></li><li><a href="@php echo route(\'shop.cms.page\', \'refund-policy\') @endphp">Refund Policy</a></li><li><a href="@php echo route(\'shop.cms.page\', \'terms-conditions\') @endphp">Terms and conditions</a></li><li><a href="@php echo route(\'shop.cms.page\', \'terms-of-use\') @endphp">Terms of Use</a></li><li><a href="@php echo route(\'shop.cms.page\', \'contact-us\') @endphp">Contact Us</a></li></ul></div><div class="list-container"><span class="list-heading">Connect With Us</span><ul class="list-group"><li><a href="#"><span class="icon icon-facebook"></span>Facebook </a></li><li><a href="#"><span class="icon icon-twitter"></span> Twitter </a></li><li><a href="#"><span class="icon icon-instagram"></span> Instagram </a></li><li><a href="#"> <span class="icon icon-google-plus"></span>Google+ </a></li><li><a href="#"> <span class="icon icon-linkedin"></span>LinkedIn </a></li></ul></div>',
+            'footer_content' => '<div class="list-container"><span class="list-heading">Other Links</span><ul class="list-group"><li><a href="@php echo route(\'shop.cms.page\', \'about-us\') @endphp">BuyNoir About Us</a></li><li><a href="@php echo route(\'shop.cms.page\', \'return-policy\') @endphp">Return Policy</a></li><li><a href="@php echo route(\'shop.cms.page\', \'refund-policy\') @endphp">Refund Policy</a></li><li><a href="@php echo route(\'shop.cms.page\', \'terms-conditions\') @endphp">Terms and conditions</a></li><li><a href="@php echo route(\'shop.cms.page\', \'terms-of-use\') @endphp">Terms of Use</a></li><li><a href="@php echo route(\'shop.cms.page\', \'contact-us\') @endphp">Contact Us</a></li></ul></div><div class="list-container"><span class="list-heading">Connect With Us</span><ul class="list-group"><li><a href="#"><span class="icon icon-facebook"></span>Facebook </a></li><li><a href="#"><span class="icon icon-twitter"></span> Twitter </a></li><li><a href="#"><span class="icon icon-instagram"></span> Instagram </a></li><li><a href="#"> <span class="icon icon-google-plus"></span>Google+ </a></li><li><a href="#"> <span class="icon icon-linkedin"></span>LinkedIn </a></li></ul></div>',
             'home_seo' => json_encode([
                 'meta_title'        => "BuyNoir Channel",
                 'meta_description'  => "BuyNoir Channel Description",
@@ -827,11 +827,11 @@ class DataPurger
             'company_id'            => $companyRepository->id,
             'locale'                => $localeRepository->code,
             'channel'               => $companyRepository->username,
-            'home_page_content'     => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.product-policy') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')</p>",
+            'home_page_content'     => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'cloths'])@include('shop::home.recent-products')</p>",
 
             'footer_left_content'   => trans('velocity::app.admin.meta-data.footer-left-raw-content'),
 
-            'footer_middle_content' => '<div class="col-lg-6 col-md-12 col-sm-12 no-padding"><ul type="none"><li><a href="https://sellnoir.com/about-us/company-profile/">About Us</a></li><li><a href="https://sellnoir.com/about-us/company-profile/">Customer Service</a></li><li><a href="https://sellnoir.com/about-us/company-profile/">What&rsquo;s New</a></li><li><a href="https://sellnoir.com/about-us/company-profile/">Contact Us </a></li></ul></div><div class="col-lg-6 col-md-12 col-sm-12 no-padding"><ul type="none"><li><a href="https://sellnoir.com/about-us/company-profile/"> Order and Returns </a></li><li><a href="https://sellnoir.com/about-us/company-profile/"> Payment Policy </a></li><li><a href="https://sellnoir.com/about-us/company-profile/"> Shipping Policy</a></li><li><a href="https://sellnoir.com/about-us/company-profile/"> Privacy and Cookies Policy </a></li></ul></div>',
+            'footer_middle_content' => '<div class="col-lg-6 col-md-12 col-sm-12 no-padding"><ul type="none"><li><a href="https://sellnoir.com/about-us">About Us</a></li><li><a href="https://sellnoir.com/about-us">Customer Service</a></li><li><a href="https://sellnoir.com/about-us/company-profile/">What&rsquo;s New</a></li><li><a href="https://sellnoir.com/about-us/company-profile/">Contact Us </a></li></ul></div><div class="col-lg-6 col-md-12 col-sm-12 no-padding"><ul type="none"><li><a href="https://sellnoir.com/about-us"> Order and Returns </a></li><li><a href="https://sellnoir.com/about-us/company-profile/"> Payment Policy </a></li><li><a href="https://sellnoir.com/about-us/company-profile/"> Shipping Policy</a></li><li><a href="https://sellnoir.com/about-us"> Privacy and Cookies Policy </a></li></ul></div>',
 
             'slider'                => 1,
 
@@ -888,9 +888,9 @@ class DataPurger
             'general'  => [
                 'general'   => [
                     'email_setting' => [
-                        'general.general.email_setting.sender_name' => 'Bagisto Shop',
+                        'general.general.email_setting.sender_name' => 'BuyNoir Shop',
                         'general.general.email_setting.shop_email_from' => $companyRepository->username . '@bagshop.com',
-                        'general.general.email_setting.admin_name' => 'Bagisto Admin',
+                        'general.general.email_setting.admin_name' => 'BuyNoir Admin',
                         'general.general.email_setting.admin_email' => $companyRepository->username . '@bagadmin.com',
                     ]
                 ],
