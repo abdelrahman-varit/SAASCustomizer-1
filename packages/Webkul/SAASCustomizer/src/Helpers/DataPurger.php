@@ -269,7 +269,7 @@ class DataPurger
             "link_target" => "0"
             ]
         ];
-              $this->contentRepository->create($params);
+              $this->contentRepository->create($content);
 
 
         return $rootCategory;
