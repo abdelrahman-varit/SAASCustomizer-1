@@ -257,21 +257,78 @@ class DataPurger
 
         $subCategory3 = $this->categoryRepository->create($data3);
 
-        $content = [
+        $content1 = [
         "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
         "locale" => "all",
-        "title" => "About us",
-        "position" => "6",
+        "title" => "Home",
+        "position" => "1",
         "status" => "1",
         "content_type" => "category",
         "en" => [
-            "page_link" => "aboutus",
+            "page_link" => "/",
             "link_target" => "0"
             ]
         ];
-              $this->contentRepository->create($content);
+        $this->contentRepository->create($content1);
+        
+        $content2 = [
+        "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+        "locale" => "all",
+        "title" => "Flash Deals",
+        "position" => "2",
+        "status" => "1",
+        "content_type" => "category",
+        "en" => [
+            "page_link" => "/flash-deals",
+            "link_target" => "0"
+            ]
+        ];
+        $this->contentRepository->create($content2);
 
+        $content3 = [
+            "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+            "locale" => "all",
+            "title" => "Blog",
+            "position" => "3",
+            "status" => "1",
+            "content_type" => "category",
+            "en" => [
+                "page_link" => "/blog",
+                "link_target" => "0"
+                ]
+            ];
+            $this->contentRepository->create($content3);
 
+            $content4 = [
+                "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+                "locale" => "all",
+                "title" => "All Brands",
+                "position" => "4",
+                "status" => "1",
+                "content_type" => "category",
+                "en" => [
+                    "page_link" => "/all-brands",
+                    "link_target" => "0"
+                    ]
+                ];
+                $this->contentRepository->create($content4);
+
+                
+                $content5 = [
+                    "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+                    "locale" => "all",
+                    "title" => "Shop Kids & Girls",
+                    "position" => "5",
+                    "status" => "1",
+                    "content_type" => "category",
+                    "en" => [
+                        "page_link" => "/shop-kids-girls",
+                        "link_target" => "0"
+                        ]
+                    ];
+                    $this->contentRepository->create($content5);
+
+                    
         return $rootCategory;
     }
 
