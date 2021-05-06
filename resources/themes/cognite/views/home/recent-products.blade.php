@@ -9,7 +9,7 @@
 
         <div class="product-grid-4">
             @include ('shop::products.list.recently-viewed', [
-                'quantity'          => 4,
+                'quantity'          => 5,
                 'addClass'          => '',
             ])
         </div>
