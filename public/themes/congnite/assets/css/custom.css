@@ -169,7 +169,7 @@ section.slider-block div.slider-content ul.slider-images li img {
 .main-container-wrapper .product-card {
     background: #fff;
     border: 1px solid #e1e1e1;
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
 }
 
 section.product-detail div.layouter .form-container .details {
@@ -398,7 +398,7 @@ div.footer .footer-statics .col-lg-4 {
 
 
 .advertisement-four-container{
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
 .advertisement-four-container .row {
@@ -448,7 +448,7 @@ div.footer .footer-statics .col-lg-4 {
 }
 
 .main-container-wrapper section.featured-products{
-    margin-top: 80px;
+    margin-top: 40px;
 }
 
 .main-container-wrapper section.featured-products .featured-heading {
@@ -463,13 +463,13 @@ div.footer .footer-statics .col-lg-4 {
 
 .main-container-wrapper .product-grid-4 {
     grid-column-gap: 20px;
-    grid-row-gap: 15px;
+    grid-row-gap: 30px;
 }
 
 .featured-heading {
     display: inline-flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 5px;
 }
 
 .featured-heading .col-3 {
@@ -525,7 +525,7 @@ div.footer .footer-statics .col-lg-4 {
 }
 
 .featured-heading{
-    margin-top: 60px !important;
+    /*margin-top: 60px !important;*/
     margin-bottom: 40px !important;
 }
 

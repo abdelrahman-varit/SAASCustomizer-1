@@ -91,6 +91,14 @@
 			border-bottom: 0;
 		}
 
+		#sidenav .category_content .class-one li.active{
+			background-color: #FAE3DB;
+		}
+
+		#sidenav .category_content .class-one li.expandable ul{
+			background-color: #fff;
+		}
+
 		#sidenav .category_content .la-angle-right{
 			float: right;
 			position: relative;
@@ -98,7 +106,7 @@
 			right: 10px;
 		}
 		#sidenav .category_content .class-one li span{
-			padding: 12px 15px 12px 20px;;
+			padding: 12px 15px 12px 20px;
 			display: block;
 		}
 		#sidenav .category_content .class-one li a{
@@ -108,7 +116,7 @@
 			color: #000;
 		}
 		#sidenav .category_content .class-one li:hover{
-			background-color: #fff;
+			background-color: #FAE3DB;
 		}
 
 
@@ -160,6 +168,7 @@
 	$(document).ready(function(){
 		$('li.expandable').click(function() {
 		    $(this).children('ul').toggle();
+		    $(this).toggleClass("active");
 		    return false;
 		});
 	});

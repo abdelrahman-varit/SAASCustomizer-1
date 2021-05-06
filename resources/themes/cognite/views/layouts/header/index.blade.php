@@ -1,5 +1,6 @@
 <?php
     $term = request()->input('term');
+    $cat = request()->input('cat');
 
     if (! is_null($term)) {
         $serachQuery = 'term='.request()->input('term');
@@ -229,10 +230,10 @@
 
                
                         
-                                <select>
+                                <select name="cat">
                                     <option>All Categories</option>
                                     @foreach($categories as $category)
-                                        <option value="{{$category->slug}}">{{$category->name}}</option>
+                                        <option value="{{$category->slug}}" @if($cat == $category->slug) selected @endif>{{$category->name}}</option>
                                     @endforeach
                                 </select>
                                 <input

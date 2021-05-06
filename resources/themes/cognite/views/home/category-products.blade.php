@@ -6,7 +6,7 @@
     $products = app('Webkul\Product\Repositories\ProductRepository')->getAll($category->id)->take(8);
     // dd($product);
 @endphp
-<div class="main-container-wrapper" style="margin-top: 10vh;">
+<div class="main-container-wrapper">
     <section class="featured-products">
 
         <div class="featured-heading">

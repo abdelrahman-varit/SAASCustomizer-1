@@ -1,3 +1,5 @@
+@if($velocityMetaData->product_policy != null)
+
 <div class="main-container-wrapper">
 <div class="container-fluid product-policy-container no-padding" style="margin-bottom: 10vh;">
 
@@ -5,6 +7,8 @@
 
 </div>
 </div>
+
+@endif
 
 
 @push('css')
