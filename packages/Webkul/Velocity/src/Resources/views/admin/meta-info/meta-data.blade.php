@@ -198,7 +198,7 @@
                                     'url' => asset('/themes/congnite/assets/images/banner/advertise-1-3.jpg'),
                                 ];
                                 $images[4][] = [
-                                    'id' => 'image_2',
+                                    'id' => 'image_4',
                                     'url' => asset('/themes/congnite/assets/images/banner/advertise-1-2.jpg'),
                                 ];
                             @endphp
