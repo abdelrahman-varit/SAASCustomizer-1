@@ -1,2 +1,7 @@
 .env
 /vendor
+/public/storage
+/public/hot
+/resources/themes/buynoir-lite
+/resources/themes/buynoir-lite-bootstrap
+/resources/themes/buynoir-lite-velocity

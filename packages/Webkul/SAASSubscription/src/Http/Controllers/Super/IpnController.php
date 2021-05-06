@@ -58,6 +58,6 @@ class IpnController extends Controller
 
         $this->ipnHelper->processIpnRequest($data);
 
-        dd($data);
+        
     }
 }

@@ -61,7 +61,7 @@ class CheckoutController extends Controller
 
         $data = array_merge($data, [
             'plan'             => $plan,
-            'type'             => 'paypal',
+            'type'             => $data['payment_method'],
             'cycle_expired_on' => Carbon::now(),
             'amount'           => $data['period_unit'] == 'month'
                                   ? $plan->monthly_amount
@@ -70,6 +70,15 @@ class CheckoutController extends Controller
 
         session()->put('subscription_cart', $data);
 
-        return redirect()->route('admin.subscription.paypal.start');
+        $payment_data = request()->all();
+        $payment_method = $payment_data['payment_method'];
+
+        if ($payment_method == 'paypal') {
+            return redirect()->route('admin.subscription.paypal.start');
+        }elseif ($payment_method == 'stripe') {
+            return redirect()->route('admin.subscription.stripe.start');
+        }
+
+        
     }
 }

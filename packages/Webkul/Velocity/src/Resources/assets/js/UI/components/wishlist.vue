@@ -1,4 +1,5 @@
 <template>
+    <li>
     <i
         v-if="isCustomer == 'true'"
         :class="`material-icons ${addClass ? addClass : ''}`"
@@ -12,7 +13,7 @@
         v-else
         :title="`${isActive ? addTooltip : removeTooltip}`"
         @click="toggleProductWishlist(productId)"
-        :class="`unset wishlist-icon ${addClass ? addClass : ''} text-right`">
+        :class="` wishlist-icons ${addClass ? addClass : ''}`">
 
         <i
             @mouseout="! isStateChanged ? isActive = !isActive : isStateChanged = false"
@@ -24,6 +25,7 @@
 
         <span style="vertical-align: super;" v-html="text"></span>
     </a>
+    </li>
 </template>
 
 <script type="text/javascript">

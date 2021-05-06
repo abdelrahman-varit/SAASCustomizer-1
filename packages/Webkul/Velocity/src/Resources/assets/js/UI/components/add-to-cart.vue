@@ -3,7 +3,7 @@
         <button
             type="submit"
             :disabled="isButtonEnable == 'false' || isButtonEnable == false"
-            :class="`btn btn-add-to-cart ${addClassToBtn}`">
+            :class="`btn ${addClassToBtn}`">
 
             <i class="material-icons text-down-3" v-if="showCartIcon">shopping_cart</i>
 

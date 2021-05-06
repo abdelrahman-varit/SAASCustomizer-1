@@ -14,12 +14,17 @@ class StripeConnectServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        include __DIR__ . '/../Http/routes.php';
+        include __DIR__ . '/../Http/routes-plan-buynoir.php';
         // include __DIR__ . '/../Helpers/Helper.php';
 
         $this->app->concord->registerModel(
             \Webkul\StripeConnect\Contracts\StripeConnect::class, \BuyNoir\StripeConnect\Models\StripeConnect::class
         );
+
+        $this->app->register(ModuleServiceProvider::class);
+
+        
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**

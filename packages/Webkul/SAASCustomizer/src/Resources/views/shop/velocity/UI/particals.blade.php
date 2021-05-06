@@ -195,7 +195,7 @@
     </div>
 </script>
 
-<script type="text/javascript">
+<script type="application/javascript">
     (() => {
         Vue.component('cart-btn', {
             template: '#cart-btn-template',

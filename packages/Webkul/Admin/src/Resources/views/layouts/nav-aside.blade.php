@@ -19,9 +19,8 @@
         @else
             @foreach ($config->items as $key => $item)
                 <li class="{{ $item['key'] == request()->route('slug') ? 'active' : '' }}">
-                    <a href="{{ route('admin.configuration.index', $item['key']) }}">
+                    <a href="{{ route('admin.configuration.index', $item['key']) }}"  {{ ($item['name']=="settings-title") ? 'title="'.trans($item['name']).'"' : '' }}>
                         {{ isset($item['name']) ? trans($item['name']) : '' }}
-
                         @if ($item['key'] == request()->route('slug'))
                             <i class="angle-right-icon"></i>
                         @endif

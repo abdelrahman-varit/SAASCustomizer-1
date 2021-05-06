@@ -47,6 +47,14 @@
                     <div class="section-content">
 
                         <div class="control-group">
+                            <label for="plan">Payment Method</label>
+                            <select class="control" id="payment_method" name="payment_method">
+                                <option value="paypal">Paypal</option>
+                                <option value="stripe">Stripe</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
                             <label for="plan">{{ __('saassubscription::app.admin.checkout.plan') }}</label>
                             <select class="control" id="plan" name="plan" v-model="plan">
                                 <option v-for="plan in plans[period_unit]" :value="plan.id">@{{ plan.label }}</option>
