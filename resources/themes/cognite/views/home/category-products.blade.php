@@ -1,4 +1,4 @@
-@if (app('Webkul\Product\Repositories\ProductRepository')->getAll()->count())
+@if (app('Webkul\Product\Repositories\ProductRepository')->getAll()->count()>0)
 
 @php
 
@@ -39,7 +39,7 @@
                     <div class="col-9"><hr></div>
                 </div>
 
-                <div class="product-grid-4">
+                <div class="product-grid-4" style="text-align: center;">
                     Please check the spelling of the category.
                 </div>
             </section>
