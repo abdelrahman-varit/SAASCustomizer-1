@@ -13,7 +13,7 @@
 
             @foreach (app('Webkul\Velocity\Repositories\Product\ProductRepository')->getNewProducts(8) as $productFlat)
 
-                @include ('shop::products.list.card', ['product' => $productFlat])
+                <!-- @include ('shop::products.list.card', ['product' => $productFlat]) -->
 
             @endforeach
 
