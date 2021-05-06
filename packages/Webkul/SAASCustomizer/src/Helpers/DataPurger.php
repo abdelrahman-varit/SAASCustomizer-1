@@ -211,24 +211,47 @@ class DataPurger
 
         $rootCategory = $this->categoryRepository->create($data);
 
-        $data = [
-            'position'          => '1',
+        $data2 = [
+            'position'          => '2',
             'image'             => NULL,
             'status'            => '1',
             'parent_id'         => $rootCategory->id,
             'name'              => 'Simple Product',
-            'slug'              => 'simple-product',
+            'slug'              => 'simple-product-'.$companyRepository->id,
             'description'       => 'Simple Product',
             'meta_title'        => '',
             'meta_description'  => '',
             'meta_keywords'     => '',
             'locale'            => 'all',
+            'attributes'        => '37',
             'company_id'        => $companyRepository->id
         ];
 
         Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
 
-        return $this->categoryRepository->create($data);
+        $subCategory2 = $this->categoryRepository->create($data2);
+
+        $data3 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Configurable Product',
+            'slug'              => 'configurable-product-'.$companyRepository->id,
+            'description'       => 'Configurable Product',
+            'meta_title'        => '',
+            'meta_description'  => '',
+            'meta_keywords'     => '',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory3 = $this->categoryRepository->create($data3);
+
+        return $rootCategory;
     }
 
     /**
