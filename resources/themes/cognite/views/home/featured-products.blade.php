@@ -6,7 +6,7 @@
         <div class="featured-heading">
             <div class="col-3">{{ __('shop::app.home.featured-products') }}</div>
             <div class="col-9"><hr></div>
-            {{-- <div class="col-2"><a class="btn-dark" href="/">More -></a></div> --}}
+           
         </div>
 
 
@@ -14,7 +14,7 @@
 
             @foreach (app('Webkul\Velocity\Repositories\Product\ProductRepository')->getFeaturedProducts(8) as $productFlat)
 
-                <!-- @include ('shop::products.list.card', ['product' => $productFlat]) -->
+                @include ('shop::products.list.card', ['product' => $productFlat])
 
             @endforeach
 
