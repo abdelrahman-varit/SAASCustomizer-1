@@ -990,18 +990,18 @@ class DataPurger
             'footer_middle_content' => 
                 '<div class="col-lg-6 col-md-12 col-sm-12 no-padding">
                     <ul type="none">
-                        <li><a href="{{url()->to('/')}}/page/about-us">About Us</a></li>
-                        <li><a href="{{url()->to('/')}}/page/customer-service">Customer Service</a></li>
-                        <li><a href="{{url()->to('/')}}/page/whats-new/">What&rsquo;s New</a></li>
-                        <li><a href="{{url()->to('/')}}/page/contact-us">Contact Us </a></li>
+                        <li><a href="/page/about-us">About Us</a></li>
+                        <li><a href="/page/customer-service">Customer Service</a></li>
+                        <li><a href="/page/whats-new/">What&rsquo;s New</a></li>
+                        <li><a href="/page/contact-us">Contact Us </a></li>
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 no-padding">
                     <ul type="none">
-                        <li><a href="{{url()->to('/')}}/page/order-and-returns"> Order and Returns </a></li>
-                        <li><a href="{{url()->to('/')}}/page/payment-policy"> Payment Policy </a></li>
-                        <li><a href="{{url()->to('/')}}/page/shipping-policy"> Shipping Policy</a></li>
-                        <li><a href="{{url()->to('/')}}/page/privacy-and-cookies-policy"> Privacy and Cookies Policy </a></li>
+                        <li><a href="/page/order-and-returns"> Order and Returns </a></li>
+                        <li><a href="/page/payment-policy"> Payment Policy </a></li>
+                        <li><a href="/page/shipping-policy"> Shipping Policy</a></li>
+                        <li><a href="/page/privacy-and-cookies-policy"> Privacy and Cookies Policy </a></li>
                     </ul>
                 </div>',
 
