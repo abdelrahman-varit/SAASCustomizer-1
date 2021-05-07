@@ -332,17 +332,18 @@ class DataPurger
         //         $this->contentRepository->create($content5);
 
 
-        //         //config setting for wishlist
+                //config setting for wishlist
                         
-        //         $now = Carbon::now();
-        //         DB::table('core_config')->insert([
-        //             [    'code'         => 'general.content.shop.wishlist_option',
-        //                 'value'        => '1',
-        //                 'channel_code' => 'default',
-        //                 'locale_code'  => 'en',
-        //                 'created_at'   => $now,
-        //                 'updated_at'   => $now ]
-        //             ]);
+                $now = Carbon::now();
+                DB::table('core_config')->insert([
+                    [    'code'        => 'general.content.shop.wishlist_option',
+                        'company_id'   => '1',
+                        'value'        => '1',
+                        'channel_code' => $companyRepository->domain,
+                        'locale_code'  => 'all',
+                        'created_at'   => $now,
+                        'updated_at'   => $now ]
+                    ]);
 
         return $rootCategory;
     }
