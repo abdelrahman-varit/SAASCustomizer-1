@@ -267,12 +267,12 @@ class DataPurger
     public function prepareConfigDataWishlist(){
         $now = Carbon::now();
         DB::table('core_config')->insert([
-                'code'         => 'general.content.shop.wishlist_option',
+            [    'code'         => 'general.content.shop.wishlist_option',
                 'value'        => '1',
                 'channel_code' => 'default',
                 'locale_code'  => 'en',
                 'created_at'   => $now,
-                'updated_at'   => $now,
+                'updated_at'   => $now]
             ]);
     }
 
