@@ -339,7 +339,7 @@ class DataPurger
                     [    'code'        => 'general.content.shop.wishlist_option',
                         'company_id'   => $companyRepository->id,
                         'value'        => '1',
-                        'channel_code' => $companyRepository->domain,
+                        'channel_code' => $companyRepository->username,
                         'locale_code'  => 'all',
                         'created_at'   => $now,
                         'updated_at'   => $now ]
