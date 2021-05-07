@@ -337,7 +337,7 @@ class DataPurger
                 $now = Carbon::now();
                 DB::table('core_config')->insert([
                     [    'code'        => 'general.content.shop.wishlist_option',
-                        'company_id'   => '1',
+                        'company_id'   => $companyRepository->id,
                         'value'        => '1',
                         'channel_code' => $companyRepository->domain,
                         'locale_code'  => 'all',
