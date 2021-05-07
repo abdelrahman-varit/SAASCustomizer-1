@@ -257,26 +257,9 @@ class DataPurger
 
         $subCategory3 = $this->categoryRepository->create($data3);
 
-                        
-        return $rootCategory;
-    }
 
-    /**
-     * Prepares data for a default inventory
-     */
-    public function prepareConfigDataWishlist(){
-        $now = Carbon::now();
-        DB::table('core_config')->insert([
-            [    'code'         => 'general.content.shop.wishlist_option',
-                'value'        => '1',
-                'channel_code' => 'default',
-                'locale_code'  => 'en',
-                'created_at'   => $now,
-                'updated_at'   => $now]
-            ]);
-    }
+        //header content purge
 
-    public function prepareHeaderContentData(){
         $content1 = [
             "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
             "locale" => "all",
@@ -334,22 +317,41 @@ class DataPurger
                     $this->contentRepository->create($content4);
     
                     
-                    $content5 = [
-                        "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
-                        "locale" => "all",
-                        "title" => "Shop Kids & Girls",
-                        "position" => "5",
-                        "status" => "1",
-                        "content_type" => "category",
-                        "en" => [
-                            "page_link" => "/shop-kids-girls",
-                            "link_target" => "0"
-                            ]
-                        ];
+                $content5 = [
+                    "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+                    "locale" => "all",
+                    "title" => "Shop Kids & Girls",
+                    "position" => "5",
+                    "status" => "1",
+                    "content_type" => "category",
+                    "en" => [
+                        "page_link" => "/shop-kids-girls",
+                        "link_target" => "0"
+                        ]
+                    ];
                 $this->contentRepository->create($content5);
-    
-    
+
+
+                //config setting for wishlist
+                        
+                $now = Carbon::now();
+                DB::table('core_config')->insert([
+                    [    'code'         => 'general.content.shop.wishlist_option',
+                        'value'        => '1',
+                        'channel_code' => 'default',
+                        'locale_code'  => 'en',
+                        'created_at'   => $now,
+                        'updated_at'   => $now ]
+                    ]);
+
+        return $rootCategory;
     }
+
+    /**
+     * Prepares data for a default inventory
+     */
+  
+ 
 
     public function prepareInventoryData()
     {
@@ -389,10 +391,6 @@ class DataPurger
         $categoryRepository = $this->prepareCategoryData();
 
         $inventorySourceRepository = $this->prepareInventoryData();
-
-        $configDataRepository = $this->prepareConfigDataWishlist();
-        
-        $headerContentRepository = $this->prepareHeaderContentData();
 
         $data = [
             'company_id'        => $companyRepository->id,
