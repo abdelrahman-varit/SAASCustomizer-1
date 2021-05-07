@@ -1,14 +1,14 @@
 @if (app('Webkul\Product\Repositories\ProductRepository')->getAll()->count()>0)
 
-@php
+    @php
 
-    $slug = empty($category)?0:$category;
-    $category = app('Webkul\Category\Repositories\CategoryRepository')->findBySlugOrFail($slug);
-    if ($category != null) {
-        $products = app('Webkul\Product\Repositories\ProductRepository')->getAll($category->id)->take(8);
-    }
-    
-@endphp
+        $slug = empty($category)?0:$category;
+        $category = app('Webkul\Category\Repositories\CategoryRepository')->findBySlugOrFail($slug);
+        if ($category != null) {
+            $products = app('Webkul\Product\Repositories\ProductRepository')->getAll($category->id)->take(8);
+        }
+        
+    @endphp
 
     @if($category != null)
     <div class="main-container-wrapper">
@@ -47,55 +47,55 @@
     @endif
 
 @else
-<div class="main-container-wrapper">
-    <section class="featured-products">
+    <div class="main-container-wrapper">
+        <section class="featured-products">
 
-        <div class="featured-heading">
-            <div class="col-3">{{ __('Kids Products') }}</div>
-            <div class="col-9"><hr></div>
-        </div>
+            <div class="featured-heading">
+                <div class="col-3">{{ __('Kids Products') }}</div>
+                <div class="col-9"><hr></div>
+            </div>
 
 
-        <div class="featured-grid product-grid-4">
-            
-            @for($i=1;$i<9;$i++)
-            
-                <div class="product-card">
+            <div class="featured-grid product-grid-4">
+                
+                @for($i=1;$i<9;$i++)
+                
+                    <div class="product-card">
 
-                        <div class="sticker new">
-                            {{ __('Demo') }}
-                        </div>
-            
+                            <div class="sticker new">
+                                {{ __('Demo') }}
+                            </div>
+                
 
-                    <div class="product-image">
-                        <a href="/" title="Demo product">
-                            <img src="{{ asset('/themes/congnite/assets/images/product/catproduct-0'.$i.'.jpg') }}" onerror="this.src='{{ asset('/themes/congnite/assets/images/product/featured-01.jpg') }}'"/>
-                        </a>
-                    </div>
-
-                    <div class="product-information text-center">
-
-                        <div class="product-name">
+                        <div class="product-image">
                             <a href="/" title="Demo product">
-                                <span>
-                                    Demo Product 0{{$i}}
-                                </span>
+                                <img src="{{ asset('/themes/congnite/assets/images/product/catproduct-0'.$i.'.jpg') }}" onerror="this.src='{{ asset('/themes/congnite/assets/images/product/featured-01.jpg') }}'"/>
                             </a>
                         </div>
 
-                        <div class="product-price text-danger">
-                            $25.00
+                        <div class="product-information text-center">
+
+                            <div class="product-name">
+                                <a href="/" title="Demo product">
+                                    <span>
+                                        Demo Product 0{{$i}}
+                                    </span>
+                                </a>
+                            </div>
+
+                            <div class="product-price text-danger">
+                                $25.00
+                            </div>
+
                         </div>
 
-                    </div>
+                        </div>
 
-                    </div>
+                @endfor
 
-            @endfor
+            </div> 
 
-        </div> 
+        </section>
 
-    </section>
-
-</div>
+    </div>
 @endif
