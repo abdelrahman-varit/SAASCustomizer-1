@@ -265,9 +265,9 @@ class DataPurger
      * Prepares data for a default inventory
      */
     public function prepareConfigDataWishlist(){
+        $now = Carbon::now();
         DB::table('core_config')->insert([
-            
-                'code'         => 'general.content.shop.compare_option',
+                'code'         => 'general.content.shop.wishlist_option',
                 'value'        => '1',
                 'channel_code' => 'default',
                 'locale_code'  => 'en',
@@ -390,9 +390,9 @@ class DataPurger
 
         $inventorySourceRepository = $this->prepareInventoryData();
 
-        $inventorySourceRepository = $this->prepareConfigDataWishlist();
+        $configDataRepository = $this->prepareConfigDataWishlist();
         
-        $inventorySourceRepository = $this->prepareHeaderContentData();
+        $headerContentRepository = $this->prepareHeaderContentData();
 
         $data = [
             'company_id'        => $companyRepository->id,
