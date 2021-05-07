@@ -266,14 +266,14 @@ class DataPurger
      */
     public function prepareConfigDataWishlist(){
         DB::table('core_config')->insert([
-            [
+            
                 'code'         => 'general.content.shop.compare_option',
                 'value'        => '1',
                 'channel_code' => 'default',
                 'locale_code'  => 'en',
                 'created_at'   => $now,
                 'updated_at'   => $now,
-            ]]);
+            ]);
     }
 
     public function prepareHeaderContentData(){
@@ -289,7 +289,7 @@ class DataPurger
                 "link_target" => "0"
                 ]
             ];
-            //$this->contentRepository->create($content1);
+            $this->contentRepository->create($content1);
             
             $content2 = [
             "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
@@ -303,7 +303,7 @@ class DataPurger
                 "link_target" => "0"
                 ]
             ];
-            //$this->contentRepository->create($content2);
+            $this->contentRepository->create($content2);
     
             $content3 = [
                 "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
@@ -317,7 +317,7 @@ class DataPurger
                     "link_target" => "0"
                     ]
                 ];
-                //$this->contentRepository->create($content3);
+                $this->contentRepository->create($content3);
     
                 $content4 = [
                     "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
@@ -331,7 +331,7 @@ class DataPurger
                         "link_target" => "0"
                         ]
                     ];
-                    //$this->contentRepository->create($content4);
+                    $this->contentRepository->create($content4);
     
                     
                     $content5 = [
@@ -346,7 +346,7 @@ class DataPurger
                             "link_target" => "0"
                             ]
                         ];
-                $this->contentRepository->create([$content1,$content2,$content3,$content4,$content5]);
+                $this->contentRepository->create($content5);
     
     
     }
