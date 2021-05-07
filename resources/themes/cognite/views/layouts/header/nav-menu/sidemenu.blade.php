@@ -61,19 +61,23 @@
 @push('css')
 	<style type="text/css">
 
-		#sidenav{
+		#sidenav {
 			background-color: #f2f2f2;
 			width: 100%;
 			height: 400px;
+			max-height: 400px;
 			overflow: hidden;
-			display: grid;
+			display: inline-flex;
+			flex-direction: column;
 		}
-		#sidenav .category_heading{
+
+		#sidenav .category_heading {
 			background-color: #000;
 			color: #fff;
 			padding: 15px;
 			font-weight: bold;
 			font-size: 18px;
+			max-height: 50px;
 		}
 		#sidenav .category_content{
 			background-color: #f2f2f2;
@@ -155,6 +159,8 @@
 		    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
 		    background-color: #999;
 		}
+
+		
 
 
 	</style>

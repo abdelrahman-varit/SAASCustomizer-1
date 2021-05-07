@@ -13,14 +13,19 @@
 
                 <div class="main_slider">
 
-                	@foreach($sliderData as $slider)
+					@if(count($sliderData)<1)
+						<div>
+							<img src="{{ asset('/themes/congnite/assets/images/banner/banner-01.jpg')  }}">
+						</div>
+					@else
+						@foreach($sliderData as $slider)
 
-                		<div>
-	                        <img src="{{ Storage::url($slider['path']) }}">
-	                    </div>
+							<div>
+								<img src="{{ Storage::url($slider['path']) }}">
+							</div>
 
-                	@endforeach
-	                    
+						@endforeach
+	                @endif
 
                     
                 </div>

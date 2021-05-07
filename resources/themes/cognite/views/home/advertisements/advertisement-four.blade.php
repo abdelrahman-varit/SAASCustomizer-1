@@ -24,6 +24,12 @@
                     <a @if (isset($one)) href="{{ $one }}" @endif >
                         <img class="col-12" src="{{ asset('/storage/' . $advertisementFour[0]) }}" />
                     </a>
+
+                @else
+                    <a @if (isset($one)) href="{{ $one }}" @endif >
+                        <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-1-1.jpg') }}" />
+                    </a>
+
                 @endif
                 </div>
 
@@ -32,6 +38,11 @@
                         <a @if (isset($two)) href="{{ $two }}" @endif>
                             <img class="col-12 offers-ct-top" src="{{ asset('/storage/' . $advertisementFour[1]) }}" />
                         </a>
+                    @else
+                        <a @if (isset($one)) href="{{ $one }}" @endif >
+                        <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-1-2.jpg') }}" />
+                        </a>
+
                     @endif
                 </div>
 
@@ -41,16 +52,15 @@
                         <a @if (isset($three)) href="{{ $three }}" @endif >
                             <img class="col-12 offers-ct-bottom" src="{{ asset('/storage/' . $advertisementFour[2]) }}" />
                         </a>
+                    @else
+                        <a @if (isset($one)) href="{{ $one }}" @endif >
+                        <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-1-3.jpg') }}" />
+                        </a>
+
                     @endif
                 </div>
 
-                {{-- <div class="col-3">
-                @if ( isset($advertisementFour[3]))
-                    <a @if (isset($four)) href="{{ $four }}" @endif >
-                        <img class="col-12 four-last-img" src="{{ asset('/storage/' . $advertisementFour[3]) }}" />
-                    </a>
-                @endif
-                </div> --}}
+               
             </div>
         </div>
     @endif
@@ -61,25 +71,20 @@
         <div class="row">
             <div class="col-3">
                 <a @if (isset($one)) href="{{ $one }}" @endif style="flex: 1;">
-                    <img class="col-12" src="{{ asset('/themes/velocity/assets/images/big-sale-banner.png') }}" />
+                <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-1-1.jpg') }}" />
                 </a>
             </div>
             <div class="col-3">
                 <a @if (isset($two)) href="{{ $two }}" @endif >
-                    <img class="col-12 offers-ct-top" src="{{ asset('/themes/velocity/assets/images/seasons.png') }}" />
+                <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-1-2.jpg') }}" />
                 </a>
             </div>
 
             <div class="col-3" >
                 <a @if (isset($three)) href="{{ $three }}" @endif >
-                    <img class="col-12 offers-ct-bottom" src="{{ asset('/themes/velocity/assets/images/deals.png') }}" />
+                <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-1-3.jpg') }}" />
                 </a>
             </div>
-            {{-- <div class="col-3" >
-                <a @if (isset($four)) href="{{ $four }}" @endif >
-                    <img class="col-12 four-last-img" src="{{ asset('/themes/velocity/assets/images/kids.png') }}" />
-                </a>
-            </div> --}}
         </div>
     </div>
 @endif

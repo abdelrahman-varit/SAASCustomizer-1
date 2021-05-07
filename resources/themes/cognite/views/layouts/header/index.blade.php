@@ -40,7 +40,7 @@
 
                         {!! view_render_event('bagisto.shop.layout.header.locale-item.before') !!}
 
-                        @if (core()->getCurrentChannel()->locales->count() > 1)
+                        @if (core()->getCurrentChannel()->locales->count() > 0)
                             <li class="locale-switcher">
                                 <span class="dropdown-toggle">
                                    
@@ -75,7 +75,7 @@
 
                         {!! view_render_event('bagisto.shop.layout.header.currency-item.before') !!}
 
-                        @if (core()->getCurrentChannel()->currencies->count() > 1)
+                        @if (core()->getCurrentChannel()->currencies->count() > 0)
                             <li class="currency-switcher">
                                 <span class="dropdown-toggle">
                                     {{ core()->getCurrentCurrencyCode() }}
@@ -206,7 +206,7 @@
                                 @if ($logo = core()->getCurrentChannel()->logo_url)
                                     <img class="logo" src="{{ $logo }}" />
                                 @else
-                                    <img class="logo" src="{{ bagisto_asset('images/logo.svg') }}" />
+                                    <img class="logo" src="{{asset('/themes/congnite/assets/images/logo.svg') }}" />
                                 @endif
                             </a>
                         </li>
@@ -276,7 +276,7 @@
                             $showWishlist = core()->getConfigData('general.content.shop.wishlist_option') == "1" ? true : false
                         @endphp
 
-                        @if ($showWishlist)
+                        
                             <li class="compare-dropdown-container">
                                 <a href="{{ route('customer.wishlist.index') }}" style="color: rgb(36, 36, 36);">
                                     <div>
@@ -287,7 +287,7 @@
                                     </div>
                                     <div>{{ __('shop::app.header.wishlist') }}</div></a>
                             </li>
-                        @endif
+                     
                         @php
                             $showCompare = core()->getConfigData('general.content.shop.compare_option') == "1" ? true : false
                         @endphp

@@ -14,6 +14,7 @@ use Webkul\Attribute\Repositories\AttributeGroupRepository;
 use Webkul\Customer\Repositories\CustomerGroupRepository;
 use Webkul\CMS\Repositories\CmsRepository;
 use Webkul\Velocity\Repositories\VelocityMetadataRepository;
+use Webkul\Velocity\Repositories\ContentRepository;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
@@ -90,6 +91,8 @@ class DataPurger
      */
     protected $velocityMetadataRepository;
 
+    protected $contentRepository;
+
     public function __construct(
         CategoryRepository $categoryRepository,
         InventorySourceRepository $inventorySourceRepository,
@@ -102,7 +105,8 @@ class DataPurger
         AttributeGroupRepository $attributeGroupRepository,
         CustomerGroupRepository $customerGroupRepository,
         CmsRepository $cmsRepository,
-        velocityMetadataRepository $velocityMetadataRepository
+        velocityMetadataRepository $velocityMetadataRepository,
+        ContentRepository $contentRepository
     )
     {
         $this->categoryRepository = $categoryRepository;
@@ -128,6 +132,8 @@ class DataPurger
         $this->cmsRepository = $cmsRepository;
 
         $this->velocityMetadataRepository = $velocityMetadataRepository;
+
+        $this->contentRepository = $contentRepository;
     }
 
     /**
@@ -209,14 +215,145 @@ class DataPurger
             'company_id'        => $companyRepository->id
         ];
 
+        $rootCategory = $this->categoryRepository->create($data);
+
+        $data2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Simple Product',
+            'slug'              => 'simple-product-'.$companyRepository->id,
+            'description'       => 'Simple Product',
+            'meta_title'        => '',
+            'meta_description'  => '',
+            'meta_keywords'     => '',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
         Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
 
-        return $this->categoryRepository->create($data);
+        $subCategory2 = $this->categoryRepository->create($data2);
+
+        $data3 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Configurable Product',
+            'slug'              => 'configurable-product-'.$companyRepository->id,
+            'description'       => 'Configurable Product',
+            'meta_title'        => '',
+            'meta_description'  => '',
+            'meta_keywords'     => '',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory3 = $this->categoryRepository->create($data3);
+
+
+        //header content purge
+
+        // $content1 = [
+        //     "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+        //     "locale" => "all",
+        //     "title" => "Home",
+        //     "position" => "1",
+        //     "status" => "1",
+        //     "content_type" => "category",
+        //     "en" => [
+        //         "page_link" => "/",
+        //         "link_target" => "0"
+        //         ]
+        //     ];
+        //     $this->contentRepository->create($content1);
+            
+        //     $content2 = [
+        //     "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+        //     "locale" => "all",
+        //     "title" => "Flash Deals",
+        //     "position" => "2",
+        //     "status" => "1",
+        //     "content_type" => "category",
+        //     "en" => [
+        //         "page_link" => "/flash-deals",
+        //         "link_target" => "0"
+        //         ]
+        //     ];
+        //     $this->contentRepository->create($content2);
+    
+        //     $content3 = [
+        //         "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+        //         "locale" => "all",
+        //         "title" => "Blog",
+        //         "position" => "3",
+        //         "status" => "1",
+        //         "content_type" => "category",
+        //         "en" => [
+        //             "page_link" => "/blog",
+        //             "link_target" => "0"
+        //             ]
+        //         ];
+        //         $this->contentRepository->create($content3);
+    
+        //         $content4 = [
+        //             "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+        //             "locale" => "all",
+        //             "title" => "All Brands",
+        //             "position" => "4",
+        //             "status" => "1",
+        //             "content_type" => "category",
+        //             "en" => [
+        //                 "page_link" => "/all-brands",
+        //                 "link_target" => "0"
+        //                 ]
+        //             ];
+        //             $this->contentRepository->create($content4);
+    
+                    
+        //         $content5 = [
+        //             "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+        //             "locale" => "all",
+        //             "title" => "Shop Kids & Girls",
+        //             "position" => "5",
+        //             "status" => "1",
+        //             "content_type" => "category",
+        //             "en" => [
+        //                 "page_link" => "/shop-kids-girls",
+        //                 "link_target" => "0"
+        //                 ]
+        //             ];
+        //         $this->contentRepository->create($content5);
+
+
+                //config setting for wishlist
+                        
+                $now = Carbon::now();
+                DB::table('core_config')->insert([
+                    [    'code'        => 'general.content.shop.wishlist_option',
+                        'company_id'   => '1',
+                        'value'        => '1',
+                        'channel_code' => $companyRepository->domain,
+                        'locale_code'  => 'all',
+                        'created_at'   => $now,
+                        'updated_at'   => $now ]
+                    ]);
+
+        return $rootCategory;
     }
 
     /**
      * Prepares data for a default inventory
      */
+  
+ 
+
     public function prepareInventoryData()
     {
         $companyRepository = Company::getCurrent();
@@ -259,8 +396,8 @@ class DataPurger
         $data = [
             'company_id'        => $companyRepository->id,
             'code'              => $companyRepository->username,
-            'name'              => 'Default Channel',
-            'description'       => 'Default Channel',
+            'name'              => 'BuyNoir Channel',
+            'description'       => 'BuyNoir Channel',
             'inventory_sources' => [
                 0               => $inventorySourceRepository->id
             ],
@@ -274,14 +411,33 @@ class DataPurger
                 0               => $currencyRepository->id
             ],
             'base_currency_id'  => $currencyRepository->id,
-            'theme'             => 'default',
-            'home_page_content' => '<p>@include("shop::home.slider") @include("shop::home.featured-products") @include("shop::home.new-products")</p><div class="banner-container"><div class="left-banner"><img src="https://s3-ap-southeast-1.amazonaws.com/cdn.uvdesk.com/website/1/201902045c581f9494b8a1.png" /></div><div class="right-banner"><img src="https://s3-ap-southeast-1.amazonaws.com/cdn.uvdesk.com/website/1/201902045c581fb045cf02.png" /> <img src="https://s3-ap-southeast-1.amazonaws.com/cdn.uvdesk.com/website/1/201902045c581fc352d803.png" /></div></div>',
+            'theme'             => 'cognite',
+            'home_page_content' => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'simple-product-".$companyRepository->id."'])@include('shop::home.recent-products')</p>",
 
-            'footer_content' => '<div class="list-container"><span class="list-heading">Quick Links</span><ul class="list-group"><li><a href="@php echo route(\'shop.cms.page\', \'about-us\') @endphp">About Us</a></li><li><a href="@php echo route(\'shop.cms.page\', \'return-policy\') @endphp">Return Policy</a></li><li><a href="@php echo route(\'shop.cms.page\', \'refund-policy\') @endphp">Refund Policy</a></li><li><a href="@php echo route(\'shop.cms.page\', \'terms-conditions\') @endphp">Terms and conditions</a></li><li><a href="@php echo route(\'shop.cms.page\', \'terms-of-use\') @endphp">Terms of Use</a></li><li><a href="@php echo route(\'shop.cms.page\', \'contact-us\') @endphp">Contact Us</a></li></ul></div><div class="list-container"><span class="list-heading">Connect With Us</span><ul class="list-group"><li><a href="#"><span class="icon icon-facebook"></span>Facebook </a></li><li><a href="#"><span class="icon icon-twitter"></span> Twitter </a></li><li><a href="#"><span class="icon icon-instagram"></span> Instagram </a></li><li><a href="#"> <span class="icon icon-google-plus"></span>Google+ </a></li><li><a href="#"> <span class="icon icon-linkedin"></span>LinkedIn </a></li></ul></div>',
+            'footer_content' => 
+            '<div class="list-container">
+                <span class="list-heading">Other Links</span>
+                <ul class="list-group">
+                    <li><a href="@php echo route(\'shop.cms.page\', \'about-us\') @endphp">BuyNoir About Us</a></li>
+                    <li><a href="@php echo route(\'shop.cms.page\', \'return-policy\') @endphp">Return Policy</a></li>
+                    <li><a href="@php echo route(\'shop.cms.page\', \'refund-policy\') @endphp">Refund Policy</a></li>
+                    <li><a href="@php echo route(\'shop.cms.page\', \'terms-conditions\') @endphp">Terms and conditions</a></li>
+                    <li><a href="@php echo route(\'shop.cms.page\', \'terms-of-use\') @endphp">Terms of Use</a></li>
+                    <li><a href="@php echo route(\'shop.cms.page\', \'contact-us\') @endphp">Contact Us</a>
+                    </li></ul></div>
+
+                    <div class="list-container">
+                        <span class="list-heading">Connect With Us</span>
+                        <ul class="list-group">
+                        <li><a href="#"><span class="icon icon-facebook"></span>Facebook </a></li>
+                        <li><a href="#"><span class="icon icon-twitter"></span> Twitter </a></li>
+                        <li><a href="#"><span class="icon icon-instagram"></span> Instagram </a></li>
+                        <li><a href="#"> <span class="icon icon-google-plus"></span>Google+ </a></li>
+                        <li><a href="#"> <span class="icon icon-linkedin"></span>LinkedIn </a></li></ul></div>',
             'home_seo' => json_encode([
-                'meta_title'        => "Default Channel",
-                'meta_description'  => "Default Channel Description",
-                'meta_keywords'     => "Default Channel"
+                'meta_title'        => "BuyNoir Channel",
+                'meta_description'  => "BuyNoir Channel Description",
+                'meta_keywords'     => "BuyNoir Channel"
             ]),
         ];
         
@@ -827,11 +983,27 @@ class DataPurger
             'company_id'            => $companyRepository->id,
             'locale'                => $localeRepository->code,
             'channel'               => $companyRepository->username,
-            'home_page_content'     => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.product-policy') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')</p>",
+            'home_page_content'     => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'simple-product-".$companyRepository->id."'])@include('shop::home.recent-products')</p>",
 
             'footer_left_content'   => trans('velocity::app.admin.meta-data.footer-left-raw-content'),
 
-            'footer_middle_content' => '<div class="col-lg-6 col-md-12 col-sm-12 no-padding"><ul type="none"><li><a href="https://sellnoir.com/about-us/company-profile/">About Us</a></li><li><a href="https://sellnoir.com/about-us/company-profile/">Customer Service</a></li><li><a href="https://sellnoir.com/about-us/company-profile/">What&rsquo;s New</a></li><li><a href="https://sellnoir.com/about-us/company-profile/">Contact Us </a></li></ul></div><div class="col-lg-6 col-md-12 col-sm-12 no-padding"><ul type="none"><li><a href="https://sellnoir.com/about-us/company-profile/"> Order and Returns </a></li><li><a href="https://sellnoir.com/about-us/company-profile/"> Payment Policy </a></li><li><a href="https://sellnoir.com/about-us/company-profile/"> Shipping Policy</a></li><li><a href="https://sellnoir.com/about-us/company-profile/"> Privacy and Cookies Policy </a></li></ul></div>',
+            'footer_middle_content' => 
+                '<div class="col-lg-6 col-md-12 col-sm-12 no-padding">
+                    <ul type="none">
+                        <li><a href="https://sellnoir.com/page/about-us">About Us</a></li>
+                        <li><a href="https://sellnoir.com/page/customer-service">Customer Service</a></li>
+                        <li><a href="https://sellnoir.com/page/whats-new/">What&rsquo;s New</a></li>
+                        <li><a href="https://sellnoir.com/page/contact-us">Contact Us </a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 no-padding">
+                    <ul type="none">
+                        <li><a href="https://sellnoir.com/page/order-and-returns"> Order and Returns </a></li>
+                        <li><a href="https://sellnoir.com/page/payment-policy"> Payment Policy </a></li>
+                        <li><a href="https://sellnoir.com/page/shipping-policy"> Shipping Policy</a></li>
+                        <li><a href="https://sellnoir.com/page/privacy-and-cookies-policy"> Privacy and Cookies Policy </a></li>
+                    </ul>
+                </div>',
 
             'slider'                => 1,
 
@@ -888,9 +1060,9 @@ class DataPurger
             'general'  => [
                 'general'   => [
                     'email_setting' => [
-                        'general.general.email_setting.sender_name' => 'Bagisto Shop',
+                        'general.general.email_setting.sender_name' => 'BuyNoir Shop',
                         'general.general.email_setting.shop_email_from' => $companyRepository->username . '@bagshop.com',
-                        'general.general.email_setting.admin_name' => 'Bagisto Admin',
+                        'general.general.email_setting.admin_name' => 'BuyNoir Admin',
                         'general.general.email_setting.admin_email' => $companyRepository->username . '@bagadmin.com',
                     ]
                 ],
