@@ -276,7 +276,7 @@
                             $showWishlist = core()->getConfigData('general.content.shop.wishlist_option') == "1" ? true : false
                         @endphp
 
-                        
+                        @if($showWishlist)
                             <li class="compare-dropdown-container">
                                 <a href="{{ route('customer.wishlist.index') }}" style="color: rgb(36, 36, 36);">
                                     <div>
@@ -287,7 +287,7 @@
                                     </div>
                                     <div><span class="name">{{ __('shop::app.header.wishlist') }}</span></div></a>
                             </li>
-                     
+                        @endif
                         @php
                             $showCompare = core()->getConfigData('general.content.shop.compare_option') == "1" ? true : false
                         @endphp

@@ -260,76 +260,76 @@ class DataPurger
 
         //header content purge
 
-        // $content1 = [
-        //     "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
-        //     "locale" => "all",
-        //     "title" => "Home",
-        //     "position" => "1",
-        //     "status" => "1",
-        //     "content_type" => "category",
-        //     "en" => [
-        //         "page_link" => "/",
-        //         "link_target" => "0"
-        //         ]
-        //     ];
-        //     $this->contentRepository->create($content1);
+        $content1 = [
+            "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+            "locale" => "all",
+            "title" => "Home",
+            "position" => "1",
+            "status" => "1",
+            "content_type" => "category",
+            "en" => [
+                "page_link" => "/",
+                "link_target" => "0"
+                ]
+            ];
+            $this->contentRepository->create($content1);
             
-        //     $content2 = [
-        //     "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
-        //     "locale" => "all",
-        //     "title" => "Flash Deals",
-        //     "position" => "2",
-        //     "status" => "1",
-        //     "content_type" => "category",
-        //     "en" => [
-        //         "page_link" => "/flash-deals",
-        //         "link_target" => "0"
-        //         ]
-        //     ];
-        //     $this->contentRepository->create($content2);
+            $content2 = [
+            "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+            "locale" => "all",
+            "title" => "Flash Deals",
+            "position" => "2",
+            "status" => "1",
+            "content_type" => "category",
+            "en" => [
+                "page_link" => "/flash-deals",
+                "link_target" => "0"
+                ]
+            ];
+            $this->contentRepository->create($content2);
     
-        //     $content3 = [
-        //         "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
-        //         "locale" => "all",
-        //         "title" => "Blog",
-        //         "position" => "3",
-        //         "status" => "1",
-        //         "content_type" => "category",
-        //         "en" => [
-        //             "page_link" => "/blog",
-        //             "link_target" => "0"
-        //             ]
-        //         ];
-        //         $this->contentRepository->create($content3);
+            $content3 = [
+                "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+                "locale" => "all",
+                "title" => "Blog",
+                "position" => "3",
+                "status" => "1",
+                "content_type" => "category",
+                "en" => [
+                    "page_link" => "/blog",
+                    "link_target" => "0"
+                    ]
+                ];
+                $this->contentRepository->create($content3);
     
-        //         $content4 = [
-        //             "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
-        //             "locale" => "all",
-        //             "title" => "All Brands",
-        //             "position" => "4",
-        //             "status" => "1",
-        //             "content_type" => "category",
-        //             "en" => [
-        //                 "page_link" => "/all-brands",
-        //                 "link_target" => "0"
-        //                 ]
-        //             ];
-        //             $this->contentRepository->create($content4);
+                $content4 = [
+                    "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+                    "locale" => "all",
+                    "title" => "All Brands",
+                    "position" => "4",
+                    "status" => "1",
+                    "content_type" => "category",
+                    "en" => [
+                        "page_link" => "/all-brands",
+                        "link_target" => "0"
+                        ]
+                    ];
+                    $this->contentRepository->create($content4);
     
                     
-        //         $content5 = [
-        //             "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
-        //             "locale" => "all",
-        //             "title" => "Shop Kids & Girls",
-        //             "position" => "5",
-        //             "status" => "1",
-        //             "content_type" => "category",
-        //             "en" => [
-        //                 "page_link" => "/shop-kids-girls",
-        //                 "link_target" => "0"
-        //                 ]
-        //             ];
-        //         $this->contentRepository->create($content5);
+                $content5 = [
+                    "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+                    "locale" => "all",
+                    "title" => "Shop Kids & Girls",
+                    "position" => "5",
+                    "status" => "1",
+                    "content_type" => "category",
+                    "en" => [
+                        "page_link" => "/shop-kids-girls",
+                        "link_target" => "0"
+                        ]
+                    ];
+                $this->contentRepository->create($content5);
 
 
                 //config setting for wishlist
@@ -337,10 +337,10 @@ class DataPurger
                 $now = Carbon::now();
                 DB::table('core_config')->insert([
                     [    'code'        => 'general.content.shop.wishlist_option',
-                        'company_id'   => '1',
+                        'company_id'   => $companyRepository->id,
                         'value'        => '1',
-                        'channel_code' => $companyRepository->domain,
-                        'locale_code'  => 'all',
+                        'channel_code' => $companyRepository->username,
+                        'locale_code'  => 'en',
                         'created_at'   => $now,
                         'updated_at'   => $now ]
                     ]);
@@ -990,18 +990,18 @@ class DataPurger
             'footer_middle_content' => 
                 '<div class="col-lg-6 col-md-12 col-sm-12 no-padding">
                     <ul type="none">
-                        <li><a href="https://sellnoir.com/page/about-us">About Us</a></li>
-                        <li><a href="https://sellnoir.com/page/customer-service">Customer Service</a></li>
-                        <li><a href="https://sellnoir.com/page/whats-new/">What&rsquo;s New</a></li>
-                        <li><a href="https://sellnoir.com/page/contact-us">Contact Us </a></li>
+                        <li><a href="/page/about-us">About Us</a></li>
+                        <li><a href="/page/customer-service">Customer Service</a></li>
+                        <li><a href="/page/whats-new/">What&rsquo;s New</a></li>
+                        <li><a href="/page/contact-us">Contact Us </a></li>
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 no-padding">
                     <ul type="none">
-                        <li><a href="https://sellnoir.com/page/order-and-returns"> Order and Returns </a></li>
-                        <li><a href="https://sellnoir.com/page/payment-policy"> Payment Policy </a></li>
-                        <li><a href="https://sellnoir.com/page/shipping-policy"> Shipping Policy</a></li>
-                        <li><a href="https://sellnoir.com/page/privacy-and-cookies-policy"> Privacy and Cookies Policy </a></li>
+                        <li><a href="/page/order-and-returns"> Order and Returns </a></li>
+                        <li><a href="/page/payment-policy"> Payment Policy </a></li>
+                        <li><a href="/page/shipping-policy"> Shipping Policy</a></li>
+                        <li><a href="/page/privacy-and-cookies-policy"> Privacy and Cookies Policy </a></li>
                     </ul>
                 </div>',
 
