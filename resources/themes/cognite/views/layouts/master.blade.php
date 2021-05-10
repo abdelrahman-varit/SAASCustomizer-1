@@ -50,8 +50,6 @@
         {!! core()->getConfigData('general.content.custom_scripts.custom_css') !!}
     </style>
 
-
-
     <style>
         .no-js #loader { display: none;  }
         .js #loader { display: block; position: absolute; left: 100px; top: 0; }
@@ -62,12 +60,34 @@
             width: 100%;
             height: 100%;
             z-index: 9999;
-            @if ($logo = core()->getCurrentChannel()->logo_url)
-                background: url({{ $logo }}) center no-repeat #fff;
-            @else
-                <img class="logo" src="{{ bagisto_asset('images/logo.svg') }}" />
-                background: url({{ bagisto_asset('images/logo.svg') }}) center no-repeat #fff;
-            @endif
+            background-color: white;
+        }
+        .se-pre-con-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .se-pre-con-logo {
+            max-width: 173px;
+            height: auto;
+            -webkit-transform: scale(1);
+            -moz-transform: scale(1);
+            transform: scale(1);
+	        animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(0.9);
+            }
+            70% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(0.9);
+            }
         }
     </style>
 
@@ -76,7 +96,15 @@
 
 <body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif style="scroll-behavior: smooth;">
 
-    <div class="se-pre-con"></div>
+    <div class="se-pre-con">
+        <div class="se-pre-con-inner">
+            @if ($logo = core()->getCurrentChannel()->logo_url)                
+                <img class="se-pre-con-logo" src="{{ $logo }}" />
+            @else
+                <img class="se-pre-con-logo" src="{{ bagisto_asset('images/logo.svg') }}" />
+            @endif
+        </div>
+    </div>
 
     {!! view_render_event('bagisto.shop.layout.body.before') !!}
 
