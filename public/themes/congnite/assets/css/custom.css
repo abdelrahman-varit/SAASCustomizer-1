@@ -27,7 +27,7 @@ hr {
 .main-container-wrapper {
 	/*background-color: #fff;*/
 	/*padding: 0px 0 15px 0;*/
-	width: 1140px !important;
+	max-width: 1140px;
 }
 
 .header {
@@ -45,7 +45,8 @@ hr {
 }
 
 .header .header-bottom .nav a {
-	padding: 0.8em 0.5em 0.8em 0.5em !important;
+	padding: 0.8em 0.5em;
+	display: block;
 }
 
 .locale-img img {
@@ -63,15 +64,11 @@ ul.locale li img {
 	border-top: 0;
 	border-bottom: 0;
 	background-color: #fae3db;
+	height: auto;
 }
 
 .header .header-bottom .main-container-wrapper {
 	background-color: #fae3db;
-}
-
-.header .header-bottom ul.nav {
-	margin: 0px auto;
-	display: inline-block;
 }
 
 .header .header-bottom .main-container-wrapper {
@@ -102,6 +99,7 @@ ul.locale li img {
 	display: block;
 	width: 100%;
 	padding: 10px;
+	color: black;
 }
 
 .middle-bar {
@@ -109,9 +107,7 @@ ul.locale li img {
 }
 
 .header .header-top div.left-content ul.logo-container li img {
-	max-width: 121px;
-	height: 41px;
-	max-height: max-content;
+	display: block;
 }
 
 .header
@@ -124,6 +120,11 @@ ul.locale li img {
 	margin-left: 20px;
 	height: 45px;
 	border: 1px solid #e1e1e1;
+}
+
+.header .search-responsive .search-content {
+	padding-right: 1rem;
+	padding-left: 1rem;
 }
 
 .header
@@ -266,16 +267,17 @@ i.compare-icons {
 	width: 20px;
 }
 
-.middle-bar ul.right-content-menu {
-	margin-left: auto;
+.header .middle-bar div.right-content ul.right-content-menu li {
 	margin-right: 20px;
 }
 
-.middle-bar ul.right-content-menu li {
+.header .header-top div.right-content .right-content-menu > li {
 	text-align: center;
 	font-size: 12px;
-	border-right: 0px !important;
-	margin-right: 5px;
+	border-right: 0px;
+	margin-right: 0;
+	padding-top: 6px;
+	padding-right: 9px;
 }
 
 .middle-bar ul.right-content-menu li span.count {
@@ -303,17 +305,15 @@ i.compare-icons {
 
 div.footer {
 	background-image: url("../images/footer-bg.jpg");
-	font-size: 13px;
-	padding-left: 5% !important;
-	padding-right: 5% !important;
+	font-size: 14px;
+	font-weight: 300;
 }
 
 div.footer .footer-statics {
-	display: flex;
-	flex-direction: row;
-	padding-top: 30px;
-	padding-bottom: 30px;
-	align-items: baseline;
+	flex-direction: column;
+	align-items: unset;
+	padding-top: 60px;
+	padding-bottom: 60px;
 }
 
 div.footer .footer-statics .col-lg-4 {
@@ -341,7 +341,6 @@ div.footer .footer-statics .col-lg-4 {
 	padding: 5px 10px;
 	display: inline-block;
 	margin: 4px 2px;
-	font-size: 12px;
 }
 
 .payment-methods .method-sticker:first-child {
@@ -359,31 +358,30 @@ div.footer .footer-statics .col-lg-4 {
 }
 
 .software-description {
-	flex: 3;
-	margin-right: 50px;
 }
 
 .software-description .logo {
-<<<<<<< HEAD
-	height: 50px;
-	vertical-align: top;
-	margin-top: -20px;
-	margin-bottom: 6px;
-=======
-    height: 35px;
-    vertical-align: top;
-    margin-top: -5px;
-    margin-bottom: 6px;
->>>>>>> 45e972a1e3b0f1da1d3891b6e3748e58c92bb46b
+	max-width: 180px;
 }
 
 .footer-ct-content {
-	flex: 5;
-	margin-right: 50px;
+}
+
+.footer-ct-content h2 {
+	color: black;
+	margin-top: 15px;
 }
 
 .footer-rt-content {
-	flex: 4;
+}
+
+.footer-rt-content h2 {
+	color: black;
+	margin-top: 15px;
+}
+
+.footer-rt-content .shipment-option h4 {
+	color: black;
 }
 
 .border-bottom {
@@ -568,31 +566,22 @@ div.footer .footer-statics .col-lg-4 {
 	text-align: left;
 }
 
-<<<<<<< HEAD
 .featured-heading .col-7 {
 	flex: 0 0 70%;
 }
-=======
-.featured-heading .col-7{
-    flex:0 0 70%;
+
+.header .header-top div.right-content {
+	display: flex;
+	align-items: center;
+	flex: 1;
+	justify-content: flex-end;
 }
 
-#sidenav {
-    background-color: #f2f2f2;
-    width: 100%;
-    height: 400px;
-    max-height: 400px;
-    overflow: hidden;
-    display: inline-flex;
-    flex-direction: column;
+.header .header-top div.right-content .search-box {
+	padding-top: 3px;
+	margin-right: 20px;
 }
 
-#sidenav .category_heading {
-    background-color: #000;
-    color: #fff;
-    padding: 15px;
-    font-weight: bold;
-    font-size: 18px;
-    max-height: 50px;
+.header .header-top div.right-content .menu-box {
+	padding-top: 4px;
 }
->>>>>>> 45e972a1e3b0f1da1d3891b6e3748e58c92bb46b

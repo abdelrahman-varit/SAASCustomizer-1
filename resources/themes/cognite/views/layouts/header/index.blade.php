@@ -131,7 +131,7 @@
                                 <ul class="dropdown-list account guest">
                                     <li>
                                         <div>
-                                            <label style="color: #9e9e9e; font-weight: 700; text-transform: uppercase; font-size: 15px;">
+                                            <label style="color: black; font-weight: 700; text-transform: uppercase; font-size: 14px;">
                                                 {{ __('shop::app.header.title') }}
                                             </label>
                                         </div>
@@ -285,7 +285,7 @@
                                             <span id="wishlist-items-count">0</span>
                                         </span>
                                     </div>
-                                    <div>{{ __('shop::app.header.wishlist') }}</div></a>
+                                    <div><span class="name">{{ __('shop::app.header.wishlist') }}</span></div></a>
                             </li>
                      
                         @php

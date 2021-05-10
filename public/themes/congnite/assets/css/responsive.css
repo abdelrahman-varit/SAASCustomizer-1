@@ -1,15 +1,36 @@
 @media (min-width: 576px) {
-
 }
 
 @media (min-width: 768px) {
-
 }
 
 @media (min-width: 992px) {
-
+	.header .header-bottom ul.nav {
+		margin: 0px auto;
+		display: inline-block;
+	}
+	div.footer .footer-statics {
+		flex-direction: row;
+	}
+	.software-description {
+		flex: 3;
+		padding-right: 50px;
+	}
+	.footer-ct-content {
+		flex: 5;
+		padding-right: 50px;
+	}
+	.footer-rt-content {
+		flex: 4;
+	}
+	.middle-bar ul.right-content-menu {
+		margin-left: auto;
+		margin-right: 16px;
+	}
+	.header .middle-bar div.right-content ul.right-content-menu li {
+		margin-right: 20px;
+	}
 }
 
-@media (min-width: 1200px) {
-
+@media (min-width: 1140px) {
 }
