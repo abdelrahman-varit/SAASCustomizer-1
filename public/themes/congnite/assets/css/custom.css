@@ -585,3 +585,15 @@ div.footer .footer-statics .col-lg-4 {
 .header .header-top div.right-content .menu-box {
 	padding-top: 4px;
 }
+
+#scrollTop {
+	position: fixed;
+	bottom: 50px;
+	right: 0;
+	z-index: 1;
+	background: #fae3db;
+	padding: 10px;
+	line-height: 0;
+	cursor: pointer;
+	display: none;
+}
