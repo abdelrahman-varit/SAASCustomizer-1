@@ -43,7 +43,7 @@ return [
     ],
 
     'minicart' => [
-        'view-cart' => 'View Shopping Cart',
+        'view-cart' => 'View Cart',
         'checkout' => 'Checkout',
         'cart' => 'Cart',
         'zero' => '0'
