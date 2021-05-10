@@ -12,7 +12,7 @@
 
     <product-gallery></product-gallery>
 
-    @include ('shop::products.view.product-add')
+    
 
 </div>
 
@@ -21,9 +21,15 @@
 @push('scripts')
 
     <script type="text/x-template" id="product-gallery-template">
-        <div>
-
-            <ul class="thumb-list">
+        <div class="bn-img-gallery-panel">
+            <div class="product-hero-image" id="product-hero-image">
+                <img :src="currentLargeImageUrl" id="pro-img" :data-image="currentOriginalImageUrl"/>
+                @auth('customer')
+                    <a @if ($wishListHelper->getWishlistProduct($product)) class="add-to-wishlist already" @else class="add-to-wishlist" @endif href="{{ route('customer.wishlist.add', $product->product_id) }}">
+                    </a>
+                @endauth
+            </div>
+            <ul class="thumb-list bn-thumb-list">
                 <li class="gallery-control top" @click="moveThumbs('top')" v-if="(thumbs.length > 4) && this.is_move.up">
                     <span class="overlay"></span>
                     <i class="icon arrow-up-white-icon"></i>
@@ -38,16 +44,6 @@
                     <i class="icon arrow-down-white-icon"></i>
                 </li>
             </ul>
-
-            <div class="product-hero-image" id="product-hero-image">
-                <img :src="currentLargeImageUrl" id="pro-img" :data-image="currentOriginalImageUrl"/>
-
-                @auth('customer')
-                    <a @if ($wishListHelper->getWishlistProduct($product)) class="add-to-wishlist already" @else class="add-to-wishlist" @endif href="{{ route('customer.wishlist.add', $product->product_id) }}">
-                    </a>
-                @endauth
-            </div>
-
         </div>
     </script>
 

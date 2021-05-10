@@ -42,7 +42,7 @@
 
     {!! view_render_event('bagisto.shop.products.view.before', ['product' => $product]) !!}
 
-    <div class="main-container-wrapper">
+    <div class="main-container-wrapper bn-product-details">
         <section class="product-detail">
 
             <div class="layouter">
@@ -60,28 +60,91 @@
                                 <span>{{ $product->name }}</span>
                             </div>
 
-                            @include ('shop::products.review', ['product' => $product])
+                            <div class="product-ratings">
+                                <img src="{{asset('/themes/congnite/assets/images/icons/rating-red.png')}}" style="height:13px;width:13px"/>
+                                <img src="{{asset('/themes/congnite/assets/images/icons/rating-red.png')}}" style="height:13px;width:13px"/>
+                                <img src="{{asset('/themes/congnite/assets/images/icons/rating-red.png')}}" style="height:13px;width:13px"/>
+                                <img src="{{asset('/themes/congnite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
+                                <img src="{{asset('/themes/congnite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
+                            </div>
 
-                            @include ('shop::products.price', ['product' => $product])
+                            <div class="short-description">
+                                {!! $product->short_description !!}
+                            </div>
 
-                            @include ('shop::products.view.stock', ['product' => $product])
+                            <div class="others-information" style="margin-top:30px">
+                                <div class="others-information-row" >
+                                    @include ('shop::products.view.brand')                                     
+                                </div>
+
+                                <div class="others-information-row" >
+                                    <div class="other-info-title" >Availability :</div>
+                                    <div  class="other-info-value" >
+                                        @include ('shop::products.view.stock', ['product' => $product])
+                                    </div>
+                                </div>  
+                                
+                                <div class="others-information-row" >
+                                    <div class="other-info-title" >Effective Price :</div>
+                                    <div  class="other-info-value" >
+                                        @include ('shop::products.price', ['product' => $product])
+                                    </div>
+                                </div>
+
+                                <div class="others-information-row" >
+                                    <div class="other-info-title" >Material :</div>
+                                    <div  class="other-info-value" >Wood</div>
+                                </div>
+
+                                <div class="others-information-row" style="display:flex;flex-direction:row;gap:30px;margin-top:25px;">
+                                    <div class="other-info-title" >{{ __('shop::app.products.quantity') }} :</div>
+                                    <div  class="other-info-value" >
+                                        @if ($product->getTypeInstance()->showQuantityBox())
+                                            <quantity-changer></quantity-changer>
+                                        @else
+                                            <input type="hidden" name="quantity" value="1">
+                                        @endif
+                                    </div>
+                                </div> 
+                                
+                                <div class="others-information-row" >
+                                    <div class="other-info-title" >Subtotal :</div>
+                                    <div  class="other-info-value" id="subtotal-value" > 
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="bn-product-details-btn-container add-to-buttons">
+                                   
+                                    @include ('shop::products.view.product-add')
+
+                                </div>
+
+                                <div class="" style="display:flex;flex-direction:row;gap:30px;margin-top:25px;">
+                                    <div class="other-info-title" >Share with us :</div>
+                                    <div  class="other-info-value"  style="flex:0 0 70%;gap:30px;">
+                                    <img src="{{asset('/themes/congnite/assets/images/facebook-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/>
+                                    <img src="{{asset('/themes/congnite/assets/images/linkedin-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/>
+                                    <img src="{{asset('/themes/congnite/assets/images/twitter-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/>
+                                    <img src="{{asset('/themes/congnite/assets/images/pinterest-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                           
 
                             {!! view_render_event('bagisto.shop.products.view.short_description.before', ['product' => $product]) !!}
 
-                            <div class="description">
-                                {!! $product->short_description !!}
-                            </div>
+                             
 
                             {!! view_render_event('bagisto.shop.products.view.short_description.after', ['product' => $product]) !!}
 
 
                             {!! view_render_event('bagisto.shop.products.view.quantity.before', ['product' => $product]) !!}
 
-                            @if ($product->getTypeInstance()->showQuantityBox())
-                                <quantity-changer></quantity-changer>
-                            @else
-                                <input type="hidden" name="quantity" value="1">
-                            @endif
+                          
 
                             {!! view_render_event('bagisto.shop.products.view.quantity.after', ['product' => $product]) !!}
 
@@ -95,27 +158,45 @@
 
                             {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
 
-                            <accordian :title="'{{ __('shop::app.products.description') }}'" :active="true">
-                                <div slot="header">
-                                    {{ __('shop::app.products.description') }}
-                                    <i class="icon expand-icon right"></i>
-                                </div>
-
-                                <div slot="body">
-                                    <div class="full-description">
-                                        {!! $product->description !!}
-                                    </div>
-                                </div>
-                            </accordian>
-
                             {!! view_render_event('bagisto.shop.products.view.description.after', ['product' => $product]) !!}
 
-                            @include ('shop::products.view.attributes')
+                            
 
-                            @include ('shop::products.view.reviews')
+                            
                         </div>
                     </div>
                 </product-view>
+
+                <div class="bn-tab-panel">
+                    <div class="tab">
+                        <button class="tablinks active" onclick="openCity(event, 'description')" type="button">Description</button>
+                        <button class="tablinks" onclick="openCity(event, 'more_info')"  type="button">More Info</button>
+                        <button class="tablinks" onclick="openCity(event, 'tags')"  type="button">Tags</button>
+                        <button class="tablinks" onclick="openCity(event, 'reviews')"  type="button">Reviews</button>
+                    </div>
+
+                    <div id="description" class="tabcontent" style="display: block;">
+                        {!! $product->description !!}
+                    </div>
+
+                    <div id="more_info" class="tabcontent">
+                        <p>{!! $product->short_description !!}</p> 
+                    </div>
+
+                    <div id="tags" class="tabcontent">
+                        <p>Tags list</p>
+                    </div>
+
+                    <div id="reviews" class="tabcontent">
+                        @include ('shop::products.view.reviews')
+
+                        @include ('shop::products.review', ['product' => $product])
+
+                            
+                    </div>
+                </div><!-- end bn-tab-panel -->
+
+
             </div>
 
             @include ('shop::products.view.related-products')
@@ -130,6 +211,24 @@
 
 @push('scripts')
 
+
+    <script>
+        function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+        }
+    </script>
+
+
     <script type="text/x-template" id="product-view-template">
         <form method="POST" id="product-form" action="{{ route('cart.add', $product->product_id) }}" @click="onSubmit($event)">
 
@@ -142,7 +241,6 @@
 
     <script type="text/x-template" id="quantity-changer-template">
         <div class="quantity control-group" :class="[errors.has(controlName) ? 'has-error' : '']">
-            <label class="required">{{ __('shop::app.products.quantity') }}</label>
 
             <button type="button" class="decrease" @click="decreaseQty()">-</button>
 
@@ -237,12 +335,22 @@
                         this.qty = parseInt(this.qty) - 1;
 
                     this.$emit('onQtyUpdated', this.qty)
+                    var productPrice = document.getElementById('product-price').innerHTML ;
+                    productPrice = productPrice.substr(1,productPrice.length) ;
+                    var totalPrice = this.qty * productPrice; 
+                    document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                     
                 },
 
                 increaseQty: function() {
                     this.qty = parseInt(this.qty) + 1;
 
                     this.$emit('onQtyUpdated', this.qty)
+                    var productPrice = document.getElementById('product-price').innerHTML ;
+                    productPrice = productPrice.substr(1,productPrice.length) ;
+                    var totalPrice = this.qty * productPrice; 
+                    document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                     
                 }
             }
         });
@@ -318,6 +426,12 @@
 
                     window.localStorage.setItem('recentlyViewed', JSON.stringify(uniqueNames));
                 }
+
+                var productPrice = document.getElementById('product-price').innerHTML ;
+                productPrice = productPrice.substr(1,productPrice.length) ;
+                var totalPrice = 1 * productPrice; 
+                document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+              
         };
     </script>
 @endpush
