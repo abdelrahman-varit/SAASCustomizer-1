@@ -10,12 +10,12 @@
             <a class="cart-link" href="{{ route('shop.checkout.cart.index') }}">
                 <span class="icon cart-icon"></span>
             </a>
-            <span class="name">
+            <span>
                 <span class="count"> {{ $cart->items->count() }}</span>
             </span>
         </div>
         <div>
-            {{ __('shop::app.header.cart') }}
+            <span class="name">{{ __('shop::app.header.cart') }}</span>
         </div>
 
         
@@ -26,18 +26,6 @@
     <div class="dropdown-list" style="display: none; top: 52px; right: 0px;">
         <div class="dropdown-container">
             <div class="dropdown-cart">
-                <div class="dropdown-header">
-                    <p class="heading">
-                        {{ __('shop::app.checkout.cart.cart-subtotal') }} -
-
-                        {!! view_render_event('bagisto.shop.checkout.cart-mini.subtotal.before', ['cart' => $cart]) !!}
-
-                        <b>{{ core()->currency($cart->base_sub_total) }}</b>
-
-                        {!! view_render_event('bagisto.shop.checkout.cart-mini.subtotal.after', ['cart' => $cart]) !!}
-                    </p>
-                </div>
-
                 <div class="dropdown-content">
                     @foreach ($items as $item)
 
@@ -91,9 +79,20 @@
                 </div>
 
                 <div class="dropdown-footer">
-                    <a href="{{ route('shop.checkout.cart.index') }}">{{ __('shop::app.minicart.view-cart') }}</a>
+                    <p class="heading">
+                        {{ __('shop::app.checkout.cart.cart-subtotal') }} -
 
-                    <a class="btn btn-primary btn-lg" style="color: white;" href="{{ route('shop.checkout.onepage.index') }}">{{ __('shop::app.minicart.checkout') }}</a>
+                        {!! view_render_event('bagisto.shop.checkout.cart-mini.subtotal.before', ['cart' => $cart]) !!}
+
+                        <b>{{ core()->currency($cart->base_sub_total) }}</b>
+
+                        {!! view_render_event('bagisto.shop.checkout.cart-mini.subtotal.after', ['cart' => $cart]) !!}
+                    </p>                
+                </div>
+
+                <div class="dropdown-footer">
+                    <a class="btn btn-secondary btn-lg text-black" href="{{ route('shop.checkout.onepage.index') }}"><i class="las la-check-circle"></i> &nbsp; {{ __('shop::app.minicart.checkout') }}</a>
+                    <a class="btn btn-black btn-lg" href="{{ route('shop.checkout.cart.index') }}"><i class="las la-shopping-cart"></i> &nbsp; {{ __('shop::app.minicart.view-cart') }}</a>                    
                 </div>
             </div>
         </div>

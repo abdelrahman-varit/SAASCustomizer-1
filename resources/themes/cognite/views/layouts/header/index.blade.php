@@ -131,13 +131,13 @@
                                 <ul class="dropdown-list account guest">
                                     <li>
                                         <div>
-                                            <label style="color: #9e9e9e; font-weight: 700; text-transform: uppercase; font-size: 15px;">
+                                            <label style="color: black; font-weight: 700; text-transform: uppercase; font-size: 16px;">
                                                 {{ __('shop::app.header.title') }}
                                             </label>
                                         </div>
 
                                         <div style="margin-top: 5px;">
-                                            <span style="font-size: 12px;">{{ __('shop::app.header.dropdown-text') }}</span>
+                                            <span style="font-size: 14px;">{{ __('shop::app.header.dropdown-text') }}</span>
                                         </div>
 
                                         <div style="margin-top: 15px;">
@@ -200,6 +200,7 @@
             <div class="header-top">
 
                 <div class="left-content">
+                    <span class="menu-box"><span class="icon icon-menu" id="hammenu"></span></span>
                     <ul class="logo-container">
                         <li>
                             <a href="{{ route('shop.home.index') }}">
@@ -285,7 +286,7 @@
                                             <span id="wishlist-items-count">0</span>
                                         </span>
                                     </div>
-                                    <div>{{ __('shop::app.header.wishlist') }}</div></a>
+                                    <div><span class="name">{{ __('shop::app.header.wishlist') }}</span></div></a>
                             </li>
                         @endif
                         @php
@@ -429,8 +430,6 @@
                         {!! view_render_event('bagisto.shop.layout.header.cart-item.after') !!}
 
                     </ul>
-
-                    <span class="menu-box" ><span class="icon icon-menu" id="hammenu"></span>
                 </div>
 
             </div>
