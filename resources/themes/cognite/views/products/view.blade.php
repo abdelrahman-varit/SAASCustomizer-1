@@ -430,7 +430,7 @@
                 var productPrice = document.getElementById('product-price').innerHTML ;
                 productPrice = productPrice.substr(1,productPrice.length) ;
                 var totalPrice = 1 * productPrice; 
-                document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                document.getElementById('subtotal-value').innerHTML = productPrice;
               
         };
     </script>
