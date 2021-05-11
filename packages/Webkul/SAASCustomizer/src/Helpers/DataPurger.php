@@ -15,6 +15,7 @@ use Webkul\Customer\Repositories\CustomerGroupRepository;
 use Webkul\CMS\Repositories\CmsRepository;
 use Webkul\Velocity\Repositories\VelocityMetadataRepository;
 use Webkul\Velocity\Repositories\ContentRepository;
+use Webkul\Product\Repositories\ProductRepository;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
@@ -93,6 +94,18 @@ class DataPurger
 
     protected $contentRepository;
 
+    /**
+     * ProductRepository object
+     *
+     * @var \Webkul\Product\Repositories\ProductRepository
+     */
+    protected $productRepository;
+
+
+    protected $attributeFamilyData;
+
+
+
     public function __construct(
         CategoryRepository $categoryRepository,
         InventorySourceRepository $inventorySourceRepository,
@@ -106,7 +119,8 @@ class DataPurger
         CustomerGroupRepository $customerGroupRepository,
         CmsRepository $cmsRepository,
         velocityMetadataRepository $velocityMetadataRepository,
-        ContentRepository $contentRepository
+        ContentRepository $contentRepository,
+        ProductRepository $productRepository
     )
     {
         $this->categoryRepository = $categoryRepository;
@@ -134,6 +148,9 @@ class DataPurger
         $this->velocityMetadataRepository = $velocityMetadataRepository;
 
         $this->contentRepository = $contentRepository;
+
+        $this->productRepository = $productRepository;
+        
     }
 
     /**
@@ -217,46 +234,7 @@ class DataPurger
 
         $rootCategory = $this->categoryRepository->create($data);
 
-        $data2 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $rootCategory->id,
-            'name'              => 'Simple Product',
-            'slug'              => 'simple-product-'.$companyRepository->id,
-            'description'       => 'Simple Product',
-            'meta_title'        => '',
-            'meta_description'  => '',
-            'meta_keywords'     => '',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
-
-        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
-
-        $subCategory2 = $this->categoryRepository->create($data2);
-
-        $data3 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $rootCategory->id,
-            'name'              => 'Configurable Product',
-            'slug'              => 'configurable-product-'.$companyRepository->id,
-            'description'       => 'Configurable Product',
-            'meta_title'        => '',
-            'meta_description'  => '',
-            'meta_keywords'     => '',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
-
-        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
-
-        $subCategory3 = $this->categoryRepository->create($data3);
-
+        
 
         //header content purge
 
@@ -354,6 +332,622 @@ class DataPurger
   
  
 
+    public function prepareDemoCategoryData($rootCategory){
+
+        $companyRepository = Company::getCurrent();
+
+        $data1 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareDemoCategoryData() created for data2 - company " . $companyRepository->domain . ".");
+
+        $subCategory1 = $this->categoryRepository->create($data1);
+
+        $data1_1 = [
+            'position'          => '1',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory1->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory1_1 = $this->categoryRepository->create($data1_1);
+
+        $data1_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory1->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory1_2 = $this->categoryRepository->create($data1_2);
+
+
+        $data2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Men',
+            'slug'              => 'men-product-'.$companyRepository->id,
+            'description'       => 'Men Product',
+            'meta_title'        => 'Men Product',
+            'meta_description'  => 'Men product',
+            'meta_keywords'     => 'men products',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory2 = $this->categoryRepository->create($data2);
+
+        $data2_1 = [
+            'position'          => '1',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory2->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory2_1 = $this->categoryRepository->create($data2_1);
+
+        $data2_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory2->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory2_2 = $this->categoryRepository->create($data2_2);
+        
+        $data3 = [
+            'position'          => '3',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Women',
+            'slug'              => 'women-product-'.$companyRepository->id,
+            'description'       => 'Women Product',
+            'meta_title'        => 'Women Product',
+            'meta_description'  => 'Women Product',
+            'meta_keywords'     => 'Women Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory3 = $this->categoryRepository->create($data3);
+    
+        
+        $data3_1 = [
+            'position'          => '1',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory3->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory3_1 = $this->categoryRepository->create($data3_1);
+
+        $data3_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory3->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory3_2 = $this->categoryRepository->create($data3_2);
+
+        $data4 = [
+            'position'          => '4',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Kids',
+            'slug'              => 'kids-product-'.$companyRepository->id,
+            'description'       => 'Kids Product',
+            'meta_title'        => 'Kids Product',
+            'meta_description'  => 'Kids Product',
+            'meta_keywords'     => 'Kids Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory4 = $this->categoryRepository->create($data4);
+    
+        
+        $data4_1 = [
+            'position'          => '1',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory4->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory4_1 = $this->categoryRepository->create($data4_1);
+
+        $data4_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory4->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory4_2 = $this->categoryRepository->create($data4_2);   
+    
+        $data5 = [
+            'position'          => '5',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Video Games',
+            'slug'              => 'video-games-'.$companyRepository->id,
+            'description'       => 'Video Games',
+            'meta_title'        => 'Video Games',
+            'meta_description'  => 'Video Games',
+            'meta_keywords'     => 'Video Games',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory5 = $this->categoryRepository->create($data5);
+ 
+        $data5_1 = [
+            'position'          => '1',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory5->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory5_1 = $this->categoryRepository->create($data5_1);
+
+        $data5_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory5->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory5_2 = $this->categoryRepository->create($data5_2);
+    
+        $data6 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Electronics',
+            'slug'              => 'electronics-product-'.$companyRepository->id,
+            'description'       => 'Electronics Product',
+            'meta_title'        => 'Electronics',
+            'meta_description'  => 'Electronics',
+            'meta_keywords'     => 'Electronics',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory6 = $this->categoryRepository->create($data6);
+        
+        $data6_1 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory6->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory6_1 = $this->categoryRepository->create($data6_1);
+
+        $data6_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory6->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory6_2 = $this->categoryRepository->create($data6_2);
+
+        $data7 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Furnitures',
+            'slug'              => 'furnitures-'.$companyRepository->id,
+            'description'       => 'Furnitures Product',
+            'meta_title'        => 'Furnitures Product',
+            'meta_description'  => 'Furnitures Product',
+            'meta_keywords'     => 'Furnitures Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory7 = $this->categoryRepository->create($data7);
+            
+        $data7_1 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory7->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory7_1 = $this->categoryRepository->create($data7_1);
+
+        $data7_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory7->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory7_2 = $this->categoryRepository->create($data7_2);
+
+        $data8 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Mobile',
+            'slug'              => 'mobile-'.$companyRepository->id,
+            'description'       => 'Mobile & Accessorries',
+            'meta_title'        => 'Mobile & Accessorries',
+            'meta_description'  => 'Mobile & Accessorries',
+            'meta_keywords'     => 'Mobile & Accessorries',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory8 = $this->categoryRepository->create($data8);
+        
+        
+        $data8_1 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory8->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory8_1 = $this->categoryRepository->create($data8_1);
+
+        $data8_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory8->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory8_2 = $this->categoryRepository->create($data8_2);
+
+        $data9 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Watch & Wallet',
+            'slug'              => 'watch-product-'.$companyRepository->id,
+            'description'       => 'Watch & Wallet Product',
+            'meta_title'        => 'Watch & Wallet Product',
+            'meta_description'  => 'Watch & Wallet Product',
+            'meta_keywords'     => 'Watch & Wallet Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory9 = $this->categoryRepository->create($data9);
+        
+        $data9_1 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory9->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory9_1 = $this->categoryRepository->create($data9_1);
+
+        $data9_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory9->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory9_2 = $this->categoryRepository->create($data9_2);
+
+        $data10 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Shoes & Belt',
+            'slug'              => 'shoes-belth-product-'.$companyRepository->id,
+            'description'       => 'Shoes & Belt Product',
+            'meta_title'        => 'Shoes & Belt Product',
+            'meta_description'  => 'Shoes & Belt Product',
+            'meta_keywords'     => 'Shoes & Belt Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory10 = $this->categoryRepository->create($data10);
+
+        $data10_1 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory10->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory10_1 = $this->categoryRepository->create($data10_1);
+
+        $data10_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory10->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory10_2 = $this->categoryRepository->create($data10_2);
+
+        $categories = [
+            [
+                'category'  =>$subCategory1,
+                'sub1'      =>$subCategory1_1,
+                'sub2'      =>$subCategory1_2,
+            ], [
+                'category'  =>$subCategory2,
+                'sub1'      =>$subCategory2_1,
+                'sub2'      =>$subCategory2_2,
+            ], [
+                'category'  =>$subCategory3,
+                'sub1'      =>$subCategory3_1,
+                'sub2'      =>$subCategory3_2,
+            ],[
+                'category'  =>$subCategory4,
+                'sub1'      =>$subCategory4_1,
+                'sub2'      =>$subCategory4_2,
+            ],[
+                'category'  =>$subCategory5,
+                'sub1'      =>$subCategory5_1,
+                'sub2'      =>$subCategory5_2,
+            ],[
+                'category'  =>$subCategory6,
+                'sub1'      =>$subCategory6_1,
+                'sub2'      =>$subCategory6_2,
+            ],[
+                'category'  =>$subCategory7,
+                'sub1'      =>$subCategory7_1,
+                'sub2'      =>$subCategory7_2,
+            ],[
+                'category'  =>$subCategory8,
+                'sub1'      =>$subCategory8_1,
+                'sub2'      =>$subCategory8_2,
+            ],[
+                'category'  =>$subCategory9,
+                'sub1'      =>$subCategory9_1,
+                'sub2'      =>$subCategory9_2,
+            ],[
+                'category'  =>$subCategory10,
+                'sub1'      =>$subCategory10_1,
+                'sub2'      =>$subCategory10_2,
+            ],
+        ];
+
+        return  $categories;
+
+    }
+
     public function prepareInventoryData()
     {
         $companyRepository = Company::getCurrent();
@@ -378,6 +972,60 @@ class DataPurger
         return $this->inventorySourceRepository->create($data);
     }
 
+
+    public function prepareDemoProductData($categoryList, $inventoryList){
+
+        $companyRepository = Company::getCurrent();
+        $inventory_id = $inventoryList->id;
+        if(empty($this->attributeFamilyData)){
+            Log::info("Info:- prepareDemoProductData() not created for company " . $companyRepository->domain . ".");
+            return "prepareDemoProducctData";
+        }
+        $data1=[
+            "_token" => "CgWmt7sEZ4LpKI9ujkkaSYb6qoiMEkhvjEGNUdt3",
+            "type" => "simple",
+            "attribute_family_id" => $this->attributeFamilyData->id,
+            "sku" => "simple-".time()
+        ];
+
+        $product1 = $this->productRepository->create($data1);
+
+        $product1_edit = [
+            "channel" => $companyRepository->username,
+            "locale" => "en",
+            "_token" => "NHDCnq9VpYkHaZl9YDCqSexnHyA6u6uXSGHKrnZm",
+            "_method" => "PUT",
+            "sku" => "temporary-sku-aae171",
+            "name" => "Chair Model-03F",
+            "url_key" => "fakhrul-islam5a11q",
+            "new" => "1",
+            "featured" => "1",
+            "visible_individually" => "1",
+            "status" => "1",
+            "color" => "10",
+            "size" => "15",
+            "guest_checkout" => "1",
+            "short_description" => "
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p>
+                ",
+            "description" => "
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>    
+            ",
+            "meta_title" => "",
+            "meta_keywords" => "",
+            "meta_description" => "",
+            "price" => "350.0000",
+            "weight" => "2",
+            "inventories" => [ 2 => "100"],
+            "images" => [441 => ""],
+            "categories" => [0 => $categoryList[0]['category']->id, 1 => $categoryList[0]['sub1']->id, 2 => $categoryList[0]['sub2']->id],
+            "channels" => [0 => $companyRepository->id]
+        ];
+
+        $product1 = $this->productRepository->update($product1_edit, $product1->id);
+
+    }
+
     /**
      * Prepares a default channel
      */
@@ -391,7 +1039,13 @@ class DataPurger
 
         $categoryRepository = $this->prepareCategoryData();
 
+        $demoCategoryRepository = $this->prepareDemoCategoryData($categoryRepository);
+
         $inventorySourceRepository = $this->prepareInventoryData();
+
+        $this->attributeFamilyData  = $this->prepareAttributeFamilyData();
+
+        $productRepo = $this->prepareDemoProductData($demoCategoryRepository, $inventorySourceRepository );
 
         $data = [
             'company_id'        => $companyRepository->id,
@@ -615,7 +1269,7 @@ class DataPurger
 
         Log::info("Info:- prepareAttributeData() created for company " . $companyRepository->domain . ".");
 
-        $this->prepareAttributeFamilyData();
+        //prepare attributeFamilyData() move into prepareChannelData(){}
 
         $this->prepareAttributeGroupData();
 
