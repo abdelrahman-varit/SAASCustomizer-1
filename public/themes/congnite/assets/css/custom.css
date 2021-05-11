@@ -44,7 +44,7 @@ hr {
 
 .header {
 	margin-top: 0;
-	margin-bottom: 0;
+	margin-bottom: 20px;
 	background-color: #fff;
 }
 
@@ -399,13 +399,7 @@ div.footer .footer-statics .col-lg-4 {
 
 .advertisement-three-container .row {
 	display: flex;
-	flex-direction: row;
-}
-
-.advertisement-three-container .row {
-	display: inline-flex;
-	flex-wrap: nowrap;
-	flex-direction: row;
+	flex-direction: column;
 	gap: 20px;
 }
 
@@ -413,10 +407,9 @@ div.footer .footer-statics .col-lg-4 {
 	margin-top: 30px;
 }
 
-.advertisement-four-container .row {
-	display: inline-flex;
-	flex-wrap: nowrap;
-	flex-direction: row;
+.advertisement-four-container {
+	display: flex;
+	flex-direction: column;
 	gap: 20px;
 }
 
@@ -449,14 +442,10 @@ div.footer .footer-statics .col-lg-4 {
 	color: coral !important;
 }
 
-.main-container-wrapper .product-card .product-image img {
-	height: 400px;
-}
-
 .main-container-wrapper .product-card,
 .main-container-wrapper .product-card .product-image {
 	background: none !important;
-	width: 255px !important;
+	width: 100%;
 }
 
 .main-container-wrapper section.featured-products {
@@ -466,33 +455,28 @@ div.footer .footer-statics .col-lg-4 {
 .main-container-wrapper section.featured-products .featured-heading {
 	text-transform: capitalize;
 	font-weight: bold;
+	align-items: center;
 	margin-bottom: 30px;
 }
 
 .main-container-wrapper .product-grid-3,
 .main-container-wrapper .product-grid-4 {
-	grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
-}
-
-.main-container-wrapper .product-grid-4 {
-	grid-column-gap: 20px;
-	grid-row-gap: 30px;
+	gap: 35px;
 }
 
 .featured-heading {
 	display: inline-flex;
 	flex-direction: row;
-	gap: 5px;
+	gap: 30px;
 }
 
 .featured-heading .col-3 {
-	flex: 0 0 20%;
 	text-align: left;
 	font-size: 20px;
 }
 
 .featured-heading .col-9 {
-	flex: 0 0 75%;
+	flex: 1;
 }
 
 .featured-heading .col-7 {
@@ -547,8 +531,6 @@ div.footer .footer-statics .col-lg-4 {
 }
 
 .main-container-wrapper .product-card .product-image img {
-	height: 225px !important;
-	width: 225px !important;
 }
 
 .featured-heading .col-5 {
@@ -798,6 +780,12 @@ div.footer .footer-statics .col-lg-4 {
 	border: 0px;
 	margin-top: 10px;
 	margin-right: 10px;
+	text-align: center;
+}
+
+.bn-product-details-btn-container .btn i {
+	font-size: 24px;
+	vertical-align: bottom;
 }
 
 /* Style the tab */
@@ -972,6 +960,7 @@ section.product-detail
 
 .cart-item-list .single-item:first-child {
 	display: none;
+	padding-bottom: 0;
 }
 
 .cart-item-list .single-item .item-footer {
@@ -979,7 +968,7 @@ section.product-detail
 	padding-right: 15px;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
+	align-items: center;
 	gap: 15px;
 }
 
@@ -1008,7 +997,7 @@ section.product-detail
 .cart-item-list .item .item-details {
 	flex-direction: column;
 	gap: 15px;
-	align-items: flex-start;
+	align-items: center;
 }
 
 .cart-item-list .item .item-details .item-title {
@@ -1044,7 +1033,7 @@ section.product-detail
 }
 
 .cart-item-list .item .item-image {
-	margin: 0 auto 0 0 !important;
+	margin: 0 !important;
 	padding: 10px;
 	border: 1px solid #d7d7d7;
 }
@@ -1122,6 +1111,7 @@ section.cart .title {
 section.cart .cart-content .left-side .misc-controls {
 	position: static;
 	margin-top: 0px;
+	display: flex;
 }
 
 section.cart .cart-content .right-side {
@@ -1201,4 +1191,161 @@ section.cart .cart-content .right-side {
 
 .control-group {
 	color: black;
+}
+
+.main-container-wrapper .product-card div.product-image img {
+	height: 100%;
+	width: 100%;
+}
+
+.pagination .page-item {
+	border: 1px solid #d7d7d7;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	color: black;
+}
+
+.pagination .page-item.active {
+	background: black;
+	color: #fff;
+	border-color: black;
+}
+
+.main .top-toolbar .pager select {
+	border-radius: 0;
+	background: white;
+	border: 1px solid #d7d7d7;
+	color: black;
+}
+
+.category-description > div {
+	overflow: hidden;
+	background-color: #fae3db;
+	padding: 15px;
+	margin-bottom: 30px;
+}
+
+.category-description > div > p {
+	display: none;
+}
+
+.category-description .uv-ticket-main-rt {
+	width: auto !important;
+	padding: 0 !important;
+	margin: 15px ​0 0 0 !important;
+}
+
+.category-description .message {
+	padding: 0;
+	margin: 0;
+}
+
+.category-description .uv-ticket-member-name {
+	font-weight: bold;
+	color: black;
+}
+
+.category-container .filter-content {
+}
+
+.main .category-container .layered-filter-wrapper .filter-title,
+.main .category-container .responsive-layred-filter .filter-title {
+	color: black;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.main
+	.category-container
+	.layered-filter-wrapper
+	.filter-attributes
+	.filter-attributes-item
+	.filter-attributes-title,
+.main
+	.category-container
+	.responsive-layred-filter
+	.filter-attributes
+	.filter-attributes-item
+	.filter-attributes-title {
+	color: black;
+	font-weight: 300;
+	font-size: 18px;
+}
+
+.vue-slider .vue-slider-dot-handle {
+	background-color: red;
+}
+.vue-slider .vue-slider-rail {
+	background-color: #d7d7d7;
+}
+
+.main
+	.category-container
+	.layered-filter-wrapper
+	.filter-attributes
+	.filter-attributes-item
+	.filter-attributes-title
+	.remove-filter-link,
+.main
+	.category-container
+	.responsive-layred-filter
+	.filter-attributes
+	.filter-attributes-item
+	.filter-attributes-title
+	.remove-filter-link {
+	font-weight: 400;
+	color: red;
+	margin-right: 5px;
+	font-size: 14px;
+}
+.main
+	.category-container
+	.layered-filter-wrapper
+	.filter-attributes
+	.filter-attributes-item,
+.main
+	.category-container
+	.responsive-layred-filter
+	.filter-attributes
+	.filter-attributes-item {
+	border-bottom-color: #d7d7d7;
+}
+
+.btn.btn-primary {
+	background: black;
+}
+
+a:active,
+a:focus,
+a:hover,
+a:link,
+a:visited {
+	color: black;
+}
+
+.checkout-process .col-main .step-content .address-summary {
+	gap: 20px;
+}
+
+.checkout-process .col-main .step-content .address-summary div.billing-address {
+	flex: 1;
+	margin: 0;
+}
+
+.checkout-process
+	.col-main
+	.step-content
+	.address-summary
+	div.shipping-address {
+	flex: 1;
+	margin: 0;
+}
+
+#checkout-place-order-button {
+	width: 100%;
+	background: #fae3db;
+	color: black;
+	font-weight: bold;
+	font-size: 20px;
 }
