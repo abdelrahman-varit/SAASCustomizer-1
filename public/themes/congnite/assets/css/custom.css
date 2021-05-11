@@ -1134,3 +1134,71 @@ section.cart .cart-content .right-side {
 	float: left;
 	width: 100%;
 }
+
+.control-group .control {
+	border: 1px solid #e1e1e1;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	height: 40px;
+}
+
+.control-group .control-error {
+	margin-top: 0;
+	font-size: 80%;
+}
+
+.control-group label {
+	color: #000000;
+}
+
+.checkout-process .col-right > div {
+	padding: 15px;
+	border: 1px solid #d7d7d7;
+}
+
+.checkout-process {
+	color: black;
+}
+
+.checkout-process .btn {
+	background: black;
+	color: white;
+}
+
+.control-group .control:focus {
+	border-color: black;
+}
+
+.checkout-process .col-main ul.checkout-steps li.active {
+	color: black;
+	font-weight: bold;
+}
+
+.radio-container .checkmark {
+	border-color: black;
+}
+
+.radio-container .checkmark:after {
+	background: black;
+}
+
+.checkout-process .cart-item-list .item {
+	border-bottom: 1px solid #d7d7d7;
+}
+
+.cart-item-list .item .item-details .row {
+	flex-direction: column;
+	align-items: start;
+}
+.checkout-process .col-main .step-content .cart-item-list .item .row .title {
+	margin-bottom: 5px;
+}
+
+.checkout-process .col-main ul.checkout-steps li.active .decorator {
+	border-color: #bd1d1f;
+}
+
+.control-group {
+	color: black;
+}
