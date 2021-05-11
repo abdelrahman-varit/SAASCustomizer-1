@@ -538,9 +538,9 @@
                                             self.$root.addFlashMessages();
                                         };
 
-                                        local/Storage.searched_image_url = self.uploaded_image_url;
+                                        localStorage.searched_image_url = self.uploaded_image_url;
 
-                                        queryString = local/Storage.searched_terms = analysedResult.join('_');
+                                        queryString = localStorage.searched_terms = analysedResult.join('_');
 
                                         self.$root.hideLoader();
 
@@ -588,12 +588,12 @@
                         ]);
                 @endphp
 
-                let comparedItems = JSON.parse(local/Storage.getItem('compared_product'));
+                let comparedItems = JSON.parse(localStorage.getItem('compared_product'));
                 $('#compare-items-count').html({{ $compareCount }});
             @endauth
 
             @guest('customer')
-                let comparedItems = JSON.parse(local/Storage.getItem('compared_product'));
+                let comparedItems = JSON.parse(localStorage.getItem('compared_product'));
                 $('#compare-items-count').html(comparedItems ? comparedItems.length : 0);
             @endguest
 

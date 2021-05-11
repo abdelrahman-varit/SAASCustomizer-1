@@ -746,3 +746,139 @@ div.footer .footer-statics .col-lg-4 {
 .header .header-bottom ul.nav {
 	display: inline-block;
 }
+
+#sidenav .category_heading {
+	background-color: #000;
+	color: #fff;
+	padding: 15px;
+	font-weight: bold;
+	font-size: 18px;
+	max-height: 50px;
+}
+
+/*** product details page ***/
+.bn-product-details {
+	font-family: "lato";
+}
+
+.bn-product-details-btn-container {
+	display: flex;
+	flex-direction: row;
+	gap: 15px;
+	margin-top: 15px;
+}
+
+.bn-icon-wishlist {
+	background-image: url("/themes/congnite/assets/images/icons/wishlist-icon.png");
+	background-position: left;
+	height: 15px;
+	width: 17px;
+	margin-right: 5px;
+	background-size: 90%;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+
+.btn {
+	padding: 10px;
+	border: 0px;
+	box-shadow: none;
+	font-size: 13px;
+}
+
+.btn-bn {
+	background-color: #fae3db;
+	color: #000;
+}
+.btn-light {
+	background-color: #ccc;
+	color: #000;
+}
+
+.bn-product-details-btn-container button {
+	flex: 0 0 30%;
+	padding: 10px;
+	border: 0px;
+}
+
+/* Style the tab */
+.tab {
+	overflow: hidden;
+	border-bottom: 1px solid #eee;
+	/* background-color: #f1f1f1; */
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+	background: transparent;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+	border-bottom: 1px solid #bbb;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+	background-color: #eee;
+}
+
+/* Style the tab content */
+.tabcontent {
+	display: none;
+	padding: 30px 12px;
+	border: 0px solid #ccc;
+	border-top: none;
+	margin-bottom: 40px;
+}
+
+section.product-detail div.layouter .form-container .details .quantity {
+	border-top: 0px;
+	padding-top: 0px;
+	margin-top: -10px;
+}
+
+.bn-thumb-list {
+	margin-top: 10px;
+}
+
+.bn-thumb-list li {
+	display: inline-flex;
+	flex-direction: row;
+	gap: 15px;
+}
+
+.bn-img-gallery-panel {
+	flex-direction: column !important;
+	max-height: 625px;
+	margin-top: 20px;
+	padding: 0px 50px;
+}
+
+.recently-viewed {
+	margin-left: auto !important;
+}
+
+/** product details **/
+.other-info-title {
+	flex: 0 0 30%;
+}
+
+.other-info-value {
+	flex: 0 0 70%;
+}
+
+.others-information-row {
+	display: flex;
+	flex-direction: row;
+	gap: 30px;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
