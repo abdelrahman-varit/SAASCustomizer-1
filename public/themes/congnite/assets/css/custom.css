@@ -8,6 +8,15 @@ body {
 	letter-spacing: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: inherit;
+}
+
 hr {
 	height: 1px;
 	width: 100%;
@@ -191,10 +200,6 @@ section.slider-block div.slider-content ul.slider-images li img {
 	background: #fff;
 	border: 1px solid #e1e1e1;
 	/*margin-bottom: 15px;*/
-}
-
-section.product-detail div.layouter .form-container .details {
-	margin-top: 20px;
 }
 
 .account-content {
@@ -756,15 +761,8 @@ div.footer .footer-statics .col-lg-4 {
 	max-height: 50px;
 }
 
-/*** product details page ***/
-.bn-product-details {
-	font-family: "lato";
-}
-
 .bn-product-details-btn-container {
-	display: flex;
-	flex-direction: row;
-	gap: 15px;
+	display: block !important;
 	margin-top: 15px;
 }
 
@@ -780,10 +778,9 @@ div.footer .footer-statics .col-lg-4 {
 }
 
 .btn {
-	padding: 10px;
+	padding: 10px 15px;
 	border: 0px;
 	box-shadow: none;
-	font-size: 13px;
 }
 
 .btn-bn {
@@ -792,13 +789,15 @@ div.footer .footer-statics .col-lg-4 {
 }
 .btn-light {
 	background-color: #ccc;
-	color: #000;
+	color: #000 !important;
 }
 
-.bn-product-details-btn-container button {
-	flex: 0 0 30%;
+.bn-product-details-btn-container .btn {
+	min-width: 135px;
 	padding: 10px;
 	border: 0px;
+	margin-top: 10px;
+	margin-right: 10px;
 }
 
 /* Style the tab */
@@ -815,19 +814,20 @@ div.footer .footer-statics .col-lg-4 {
 	border: none;
 	outline: none;
 	cursor: pointer;
-	padding: 14px 16px;
+	padding: 12px 20px;
 	transition: 0.3s;
-	font-size: 17px;
+	font-size: 18px;
+	border-bottom: 1px solid transparent;
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-	border-bottom: 1px solid #bbb;
+	border-bottom-color: #ccc;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-	background-color: #eee;
+	border-bottom-color: #000;
 }
 
 /* Style the tab content */
@@ -842,7 +842,7 @@ div.footer .footer-statics .col-lg-4 {
 section.product-detail div.layouter .form-container .details .quantity {
 	border-top: 0px;
 	padding-top: 0px;
-	margin-top: -10px;
+	margin-bottom: 0;
 }
 
 .bn-thumb-list {
@@ -858,8 +858,6 @@ section.product-detail div.layouter .form-container .details .quantity {
 .bn-img-gallery-panel {
 	flex-direction: column !important;
 	max-height: 625px;
-	margin-top: 20px;
-	padding: 0px 50px;
 }
 
 .recently-viewed {
@@ -869,6 +867,7 @@ section.product-detail div.layouter .form-container .details .quantity {
 /** product details **/
 .other-info-title {
 	flex: 0 0 30%;
+	font-weight: bold;
 }
 
 .other-info-value {
@@ -879,6 +878,87 @@ section.product-detail div.layouter .form-container .details .quantity {
 	display: flex;
 	flex-direction: row;
 	gap: 30px;
-	margin-bottom: 15px;
-	margin-top: 15px;
+	align-items: center;
+}
+
+section.product-detail
+	div.layouter
+	.form-container
+	div.product-image-group
+	div
+	.product-hero-image {
+	background-color: transparent;
+	border: 1px solid #cccccc;
+}
+
+section.product-detail
+	div.layouter
+	.form-container
+	div.product-image-group
+	div
+	.thumb-list
+	.thumb-frame {
+	border: 1px solid #cccccc;
+}
+
+section.product-detail
+	div.layouter
+	.form-container
+	div.product-image-group
+	div
+	.thumb-list
+	.thumb-frame.active {
+	border-color: #fae3da;
+}
+
+section.product-detail {
+	color: black;
+	font-weight: 300;
+}
+
+section.product-detail div.layouter .form-container .details .product-heading {
+	color: black;
+	font-size: 2rem;
+	line-height: 1.2;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+section.product-detail div.layouter .form-container .details .product-price {
+	margin-bottom: 0;
+}
+
+section.product-detail div.layouter .form-container .details .stock-status {
+	margin-bottom: 0;
+}
+
+div.others-information-row {
+	margin-top: 15px !important;
+}
+
+.others-information-row .quantity.control-group {
+	vertical-align: top;
+	color: black;
+}
+
+.others-information-row #subtotal-value {
+	font-weight: bold;
+}
+
+.others-information-row .other-info-title {
+	padding-bottom: 0 !important;
+}
+
+.bn-tab-panel {
+	margin-top: 40px;
+}
+
+section.product-detail
+	div.layouter
+	.form-container
+	div.product-image-group
+	div
+	.product-hero-image
+	img {
+	max-height: 475px;
 }
