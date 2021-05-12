@@ -68,6 +68,31 @@
 		grid-template-columns: auto auto;
 		gap: 15px;
 	}
+	.account-content .account-layout .account-table-content table tbody tr td {
+		max-width: 100%;
+	}
+	.account-content .account-layout .account-table-content table td div {
+		top: auto;
+		left: auto;
+	}
+
+	.account-item-card .media-info .info {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.account-item-card,
+	.account-item-card .media-info {
+		flex-direction: column;
+		gap: 15px;
+	}
+	.review-list {
+		flex-direction: column;
+	}
+	section.review .review-layouter .product-info .product-name,
+	section.review .review-layouter .product-info .product-price {
+		max-width: 100%;
+	}
 }
 
 @media (max-width: 991.98px) {
@@ -96,6 +121,10 @@
 	}
 	.checkout-process .col-right > div {
 		display: none;
+	}
+	.account-layout .datagrid-filters {
+		flex-direction: column;
+		gap: 15px;
 	}
 }
 
@@ -135,6 +164,9 @@
 	}
 	.header {
 		margin-bottom: 0;
+	}
+	.account-layout .table table tr {
+		text-align: center;
 	}
 }
 

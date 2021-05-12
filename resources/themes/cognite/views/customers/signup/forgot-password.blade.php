@@ -42,15 +42,15 @@
 
             {!! view_render_event('bagisto.shop.customers.forget_password_form_controls.before') !!}
 
-            <div class="button-group">
+            <div class="control-group">
                 <button type="submit" class="btn btn-lg btn-primary">
                     {{ __('shop::app.customer.forgot-password.submit') }}
                 </button>
             </div>
 
-            <div class="control-group" style="margin-bottom: 0px;">
+            <div class="control-group" style="text-align: center; margin-top: 25px; font-weight: bold">
                 <a href="{{ route('customer.session.index') }}">
-                    <i class="icon primary-back-icon"></i>
+                <i class="las la-arrow-left"></i>
                     {{ __('shop::app.customer.reset-password.back-link-title') }}
                 </a>
             </div>

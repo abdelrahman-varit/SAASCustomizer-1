@@ -1,3 +1,6 @@
+
+
+
 @extends('shop::layouts.master')
 
 @section('page_title')
