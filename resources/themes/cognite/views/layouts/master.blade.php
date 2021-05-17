@@ -66,6 +66,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
+            text-align: center;
             -webkit-transform: translate(-50%, -50%);
             -moz-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
@@ -73,20 +74,17 @@
         .se-pre-con-logo {
             max-width: 173px;
             height: auto;
-            -webkit-transform: scale(1);
-            -moz-transform: scale(1);
-            transform: scale(1);
 	        animation: pulse 2s infinite;
         }
         @keyframes pulse {
             0% {
-                transform: scale(0.9);
+                width: 90%;
             }
             70% {
-                transform: scale(1);
+                width: 100%;
             }
             100% {
-                transform: scale(0.9);
+                width: 90%;
             }
         }
     </style>

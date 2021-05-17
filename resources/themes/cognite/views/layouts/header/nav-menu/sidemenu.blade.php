@@ -186,7 +186,7 @@
 		$('li.expandable').click(function() {
 		    $(this).children('ul').toggle();
 		    $(this).toggleClass("active");
-		    return false;
+		    // return false;
 		});
 
 		$("#sidenav .category_heading .all_cat_btn a").click(function(e) {

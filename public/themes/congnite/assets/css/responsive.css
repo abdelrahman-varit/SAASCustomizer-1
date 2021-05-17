@@ -35,6 +35,7 @@
 	.header .header-top div.right-content .search-box {
 		display: block;
 	}
+	div.advertisement-three-container img,
 	div.advertisement-four-container img {
 		height: auto;
 	}
@@ -93,6 +94,13 @@
 	section.review .review-layouter .product-info .product-price {
 		max-width: 100%;
 	}
+	.recetly-viewed-products-wrapper {
+		grid-template-columns: auto auto;
+		gap: 15px !important;
+	}
+	.image-search-container .icon.camera-icon {
+		top: 4px;
+	}
 }
 
 @media (max-width: 991.98px) {
@@ -132,6 +140,7 @@
 }
 
 @media (min-width: 576px) {
+	.advertisement-three-container,
 	.advertisement-four-container {
 		flex-direction: row;
 	}
@@ -167,6 +176,14 @@
 	}
 	.account-layout .table table tr {
 		text-align: center;
+	}
+	.recetly-viewed-products-wrapper {
+		grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+		gap: 35px !important;
+	}
+	.main-container-wrapper
+		section.featured-products.recently-viewed-products-container {
+		margin-top: -20px;
 	}
 }
 

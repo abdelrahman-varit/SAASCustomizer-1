@@ -16,9 +16,6 @@
     <script type="text/x-template" id="recently-viewed-template">
         <div :class="`${addClass} recently-viewed`">
 
-
-
-
             <div :class="`recetly-viewed-products-wrapper ${addClassWrapper}`" style="display:inline-flex;gap:20px">
                 <div
                     :key="Math.random()"
