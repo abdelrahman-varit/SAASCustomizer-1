@@ -99,7 +99,7 @@
             @if ($logo = core()->getCurrentChannel()->logo_url)                
                 <img class="se-pre-con-logo" src="{{ $logo }}" />
             @else
-                <img class="se-pre-con-logo" src="{{ bagisto_asset('images/logo.svg') }}" />
+                <img class="se-pre-con-logo" src="{{ asset('themes/congnite/assets/images/logo.svg') }}" />
             @endif
         </div>
     </div>

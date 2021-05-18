@@ -63,14 +63,14 @@ hr {
 }
 
 .locale-img img {
-	height: 15px;
-	width: auto;
+	height: auto;
+	width: 20px;
 	margin: 5px 5px auto 0px;
 }
 
 ul.locale li img {
-	height: 15px;
-	width: auto;
+	height: auto;
+	width: 20px;
 }
 
 .header .header-bottom {
@@ -402,7 +402,7 @@ div.footer-copyright a {
 }
 
 .text-danger {
-	color: coral !important;
+	color: #cb1a1c !important;
 }
 
 .main-container-wrapper .product-card,
@@ -1131,7 +1131,6 @@ section.cart .cart-content .right-side {
 }
 
 .main-container-wrapper .product-card div.product-image img {
-	height: 100%;
 	width: 100%;
 }
 
@@ -1161,10 +1160,6 @@ section.cart .cart-content .right-side {
 	background-color: #fae3db;
 	padding: 15px;
 	margin-bottom: 30px;
-}
-
-.category-description > div > p {
-	display: none;
 }
 
 .category-description .uv-ticket-main-rt {
@@ -1284,7 +1279,7 @@ a:visited {
 
 #checkout-place-order-button {
 	width: 100%;
-	background: #fae3db;
+	background: #cccccc;
 	color: black;
 	font-weight: bold;
 	font-size: 20px;
@@ -1453,6 +1448,32 @@ a:visited {
 
 .compare-products .product-price {
 	margin: 0;
+	color: #cb1a1c !important;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-column-gap: 10px;
+}
+
+.compare-products .product-price .regular-price {
+	text-align: left;
+}
+
+.compare-products .product-price .special-price {
+	text-align: right;
+}
+
+.compare-products .product-price .sale {
+	grid-column-start: 1;
+	grid-column-end: -1;
+}
+
+.compare-products .product-price .final-price {
+	text-align: left;
+}
+
+.compare-products .product-price .price-label {
+	margin: 0;
+	text-align: right;
 }
 
 .compare-products .desc p:last-child {
@@ -1490,6 +1511,7 @@ a:visited {
 	padding: 0;
 	margin-top: -1.4%;
 	position: relative;
+	overflow-x: auto !important;
 }
 
 .comparison-component:before {
@@ -1660,6 +1682,11 @@ a:visited {
 
 .guest-compare-products .compare-products {
 	width: 100%;
+}
+
+.compare-products > span {
+	padding: 15px;
+	display: table-cell;
 }
 
 .review-list {
@@ -1906,4 +1933,56 @@ section.review .review-layouter {
 	.box-title {
 	color: black;
 	font-weight: bold;
+}
+
+section.product-detail
+	div.layouter
+	.form-container
+	.details
+	.grouped-product-container
+	.grouped-product-list
+	ul
+	li
+	.name
+	.product-price {
+	color: #cb1a1c !important;
+}
+
+section.product-detail div.layouter .form-container .details .product-price {
+	color: #cb1a1c !important;
+}
+
+section.review .review-layouter .product-info .product-price .special-price {
+	margin-left: 10px;
+}
+
+.checkout-process
+	.col-main
+	.step-content
+	.order-description
+	.decorator
+	.icon.payment-icon {
+	width: 32px;
+}
+
+.checkout-process .col-main .step-content .order-description .decorator {
+	margin-right: 10px;
+}
+
+.cp-spinner {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	margin: 0;
+	background: rgba(255, 255, 255, 0.5);
+	z-index: 999;
+}
+
+.cp-round:after,
+.cp-round:before {
+	top: 50%;
+	left: 50%;
+	margin-top: -24px;
+	margin-left: -24px;
 }
