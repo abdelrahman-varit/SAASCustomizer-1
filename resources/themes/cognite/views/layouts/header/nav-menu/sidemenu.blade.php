@@ -20,7 +20,7 @@
 			@foreach($categories as $category)
 				@if(count($categories) > 0)
 					@php
-
+					 
 						$sub_categories = [];
 
 						foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree($category->id) as $sub_category) {
@@ -39,13 +39,13 @@
 			                    <span>{{$category->name}}</span>
 			                    <ul class="class-two" id="class-two">
 			                    	@foreach($sub_categories as $sub_category)
-			                        	<li><a href="{{$sub_category->slug}}">{{$sub_category->name}}</a></li>
+			                        	<li><a href="/{{$sub_category->url_path}}">{{$sub_category->name}}</a></li>
 			                        @endforeach
 			                    </ul>
 			                </li>
 			            
 		            @else
-		            	<li><a href="{{$category->slug}}">{{$category->name}}</a></li>
+		            	<li><a href="/{{$category->url_path}}">{{$category->name}}</a></li>
 					@endif
 
 				@endif

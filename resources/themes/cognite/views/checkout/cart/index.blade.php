@@ -80,12 +80,14 @@
                                             @if ($item->product->getTypeInstance()->showQuantityBox() === true)
                                                 <quantity-changer
                                                     :control-name="'qty[{{$item->id}}]'"
+                                                    :productid="'{{$item->id}}'"
                                                     quantity="{{$item->quantity}}">
                                                 </quantity-changer>
                                             @endif
 
                                             <span class="remove">
                                                 <a href="{{ route('shop.checkout.cart.remove', $item->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.remove-link') }}</a></span>
+                                                <a href="#" onclick="removeCart('{{$item->id}}')">{{ __('shop::app.checkout.cart.remove-link') }}</a></span>
 
                                             @auth('customer')
                                                 <span class="towishlist">
@@ -179,7 +181,7 @@
 
                 <button type="button" class="decrease" @click="decreaseQty()">-</button>
 
-                <input :name="controlName" class="control" :value="qty" v-validate="'required|numeric|min_value:1'" data-vv-as="&quot;{{ __('shop::app.products.quantity') }}&quot;" readonly>
+                <input :name="controlName" id="qty-box" :data-product-id="productid" class="control" :value="qty" v-validate="'required|numeric|min_value:1'" data-vv-as="&quot;{{ __('shop::app.products.quantity') }}&quot;" readonly>
 
                 <button type="button" class="increase" @click="increaseQty()">+</button>
 
@@ -199,7 +201,7 @@
                     type: String,
                     default: 'quantity'
                 },
-
+                productid:"",
                 quantity: {
                     type: [Number, String],
                     default: 1
@@ -224,14 +226,57 @@
                 decreaseQty: function() {
                     if (this.qty > 1)
                         this.qty = parseInt(this.qty) - 1;
-
+                    var loader = document.getElementById('animated-loader');
+                    loader.style.display = "block";
                     this.$emit('onQtyUpdated', this.qty)
+                    var qtyBox = document.getElementById('qty-box');
+                    var productID = qtyBox.getAttribute('data-product-id');
+                    
+                    var data = {
+                        _token: "{{csrf_token()}}",
+                        is_ajax:1,
+                        qty:this.qty,
+                        product:productID
+                    };
+               
+                    this.$http.post('{{route("shop.checkout.cart.update")}}',data).then(response=>{
+                        console.log(response.data);
+                        if(response.data.status=="success"){
+                            var cart = response.data.data;
+                            document.getElementById('summary-item-qty').innerHTML =  parseInt(cart.items_qty);
+                            document.getElementById('summary-sub-total').innerHTML = "$" + parseFloat(cart.base_sub_total).toFixed(2);
+                            document.getElementById('grand-total-amount-detail').innerHTML = "$" + parseFloat(cart.base_grand_total).toFixed(2);
+                        }
+                        loader.style.display = "none";
+                    });
                 },
 
                 increaseQty: function() {
                     this.qty = parseInt(this.qty) + 1;
 
                     this.$emit('onQtyUpdated', this.qty)
+                    var qtyBox = document.getElementById('qty-box');
+                    var productID = qtyBox.getAttribute('data-product-id');
+                    var loader = document.getElementById('animated-loader');
+                    loader.style.display = "block";
+                    var data = {
+                        _token: "{{csrf_token()}}",
+                        is_ajax:1,
+                        qty:this.qty,
+                        product:productID
+                    };
+               
+                    this.$http.post('{{route("shop.checkout.cart.update")}}',data).then(response=>{
+                        console.log(response.data);
+                        if(response.data.status=="success"){
+                            var cart = response.data.data;
+                            document.getElementById('summary-item-qty').innerHTML = parseInt(cart.items_qty);
+                            document.getElementById('summary-sub-total').innerHTML = "$" + parseFloat(cart.base_sub_total).toFixed(2);
+                            document.getElementById('grand-total-amount-detail').innerHTML = "$" + parseFloat(cart.base_grand_total).toFixed(2);
+                        }
+                        loader.style.display = "none";
+
+                    });
                 }
             }
         });
@@ -239,6 +284,19 @@
         function removeLink(message) {
             if (!confirm(message))
             event.preventDefault();
+        }
+
+        function removeCart(itemid) {
+            if (!confirm('Do you want to remove from cart')){
+                event.preventDefault();
+                return false;
+            }else{
+                this.$http.get("{{ route('shop.checkout.cart.remove', "+itemid+") }}").then(response=>{
+                    console.log(response.data);
+                }).catch(error=>{
+                    console.log(error);
+                });
+            }
         }
 
         function updateCartQunatity(operation, index) {
