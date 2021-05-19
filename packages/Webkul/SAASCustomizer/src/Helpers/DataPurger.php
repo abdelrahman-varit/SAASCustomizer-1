@@ -1043,8 +1043,7 @@ class DataPurger
 
 
 
-        $data1 = array(
-
+        $data_one = array(
             "channel" => $companyRepository->username,
             "locale" => "en",
             "_token" => csrf_token(),
@@ -1109,7 +1108,7 @@ class DataPurger
             }
         }
 
-        $product1_update = $this->productRepository->update($data1, $product1_id);
+        $product1_update = $this->productRepository->update($data_one, $product1_id);
         
 
 
