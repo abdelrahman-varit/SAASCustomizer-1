@@ -16,7 +16,6 @@ use Webkul\CMS\Repositories\CmsRepository;
 use Webkul\Velocity\Repositories\VelocityMetadataRepository;
 use Webkul\Velocity\Repositories\ContentRepository;
 use Webkul\Product\Repositories\ProductRepository;
-// use Webkul\Product\Repositories\ProductFlatRepository;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
@@ -996,12 +995,15 @@ class DataPurger
 
         $product1_id = $product1_create->id;
 
-        $product1_edit = [
-            "channel"           => $companyRepository->username,
-            "sku"               => $product1_create->sku,
-        ];
-
-        $product1_update = $this->productRepository->update($product1_edit,$product1_id);
+        $product1_update = DB::table('product_flat')
+        ->where('product_id', $product1_id)
+        ->limit(1)
+        ->update(
+            array(
+                'channel'   => $companyRepository->username,
+                'sku'       => $product1_create->sku,
+            )
+        );
 
     }
 
