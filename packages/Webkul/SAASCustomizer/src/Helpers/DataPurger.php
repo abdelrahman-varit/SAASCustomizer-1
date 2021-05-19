@@ -1617,6 +1617,41 @@ class DataPurger
             ]
         ]);
 
+
+
+
+
+        // New Pages according to design
+
+        DB::table('cms_pages')->insert([
+            [
+                'company_id' => $companyRepository->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]
+        ]);
+
+        $cmsRepository = DB::table('cms_pages')->where('company_id', $companyRepository->id)->orderBy('id', 'desc')->limit(1)->get()->first();
+
+        DB::table('cms_page_translations')->insert([
+            [
+                'locale' => $localeRepository->code,
+                'cms_page_id' => $cmsRepository->id,
+                'company_id' => $companyRepository->id,
+                'url_key' => 'customer-service',
+                'html_content' => '<div class="static-container">
+                                   <div class="mb-5">Customer Service page content</div>
+                                   </div>',
+                'page_title' => 'Customer Service',
+                'meta_title' => 'Customer Service',
+                'meta_description' => '',
+                'meta_keywords' => 'customer,service'
+            ]
+        ]);
+
+
+
+
         Log::info("Info:- prepareCMSPagesData() created for company " . $companyRepository->domain . ".");
 
         return true;
