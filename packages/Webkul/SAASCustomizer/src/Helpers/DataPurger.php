@@ -1087,7 +1087,7 @@ class DataPurger
 
         $multiselectAttributeCodes = array();
 
-        $productAttributes = $this->productRepository->findOrFail($id);
+        $productAttributes = $this->productRepository->findOrFail($product_id);
 
         foreach ($productAttributes->attribute_family->attribute_groups as $attributeGroup) {
             $customAttributes = $productAttributes->getEditableAttributes($attributeGroup);
