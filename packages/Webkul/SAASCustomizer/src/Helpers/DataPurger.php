@@ -992,6 +992,8 @@ class DataPurger
 
         $product1_create = $this->productRepository->create($data1);
 
+        dd($product1_create);
+
         $product1_edit = [
             "channel"           => $companyRepository->username,
             "locale"            => "en",
