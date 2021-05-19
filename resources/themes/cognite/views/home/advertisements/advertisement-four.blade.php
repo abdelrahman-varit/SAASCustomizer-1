@@ -17,9 +17,8 @@
             $isRendered = true;
         @endphp
 
-        <div class="main-container-wrapper advertisement-four-container" style="display: flex;">
-            <div class="row">
-                <div class="col-3">
+        <div class="main-container-wrapper advertisement-four-container">
+        <div class="col-3">
                 @if ( isset($advertisementFour[0]))
                     <a @if (isset($one)) href="{{ $one }}" @endif >
                         <img class="col-12" src="{{ asset('/storage/' . $advertisementFour[0]) }}" />
@@ -59,17 +58,13 @@
 
                     @endif
                 </div>
-
-               
-            </div>
         </div>
     @endif
 @endif
 
 @if (! $isRendered)
-    <div class="main-container-wrapper advertisement-four-container" style="display: flex;">
-        <div class="row">
-            <div class="col-3">
+    <div class="main-container-wrapper advertisement-four-container">
+    <div class="col-3">
                 <a @if (isset($one)) href="{{ $one }}" @endif style="flex: 1;">
                 <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-1-1.jpg') }}" />
                 </a>
@@ -85,7 +80,6 @@
                 <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-1-3.jpg') }}" />
                 </a>
             </div>
-        </div>
     </div>
 @endif
 

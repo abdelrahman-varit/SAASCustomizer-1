@@ -17,55 +17,52 @@
             $isRendered = true;
         @endphp
 
-        <div class="main-container-wrapper advertisement-four-container" style="display: flex;">
-            <div class="row">
-                <div class="col-4">
-                @if ( isset($advertisementThree[0]))
-                    <a @if (isset($one)) href="{{ $one }}" @endif >
-                        <img class="col-12" src="{{ asset('/storage/' . $advertisementThree[0]) }}" />
+        <div class="main-container-wrapper advertisement-three-container">
+            <div class="col-4">
+            @if ( isset($advertisementThree[0]))
+                <a @if (isset($one)) href="{{ $one }}" @endif >
+                    <img class="col-12" src="{{ asset('/storage/' . $advertisementThree[0]) }}" />
+                </a>
+            @else
+                <a @if (isset($one)) href="{{ $one }}" @endif >
+                    <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-2-1.jpg') }}" />
+                </a>
+            @endif
+            </div>
+
+            <div class="col-4">
+                @if ( isset($advertisementThree[1]))
+                    <a @if (isset($two)) href="{{ $two }}" @endif>
+                        <img class="col-12 offers-ct-top" src="{{ asset('/storage/' . $advertisementThree[1]) }}" />
                     </a>
                 @else
                     <a @if (isset($one)) href="{{ $one }}" @endif >
-                        <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-2-1.jpg') }}" />
+                        <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-2-2.jpg') }}" />
                     </a>
+
                 @endif
-                </div>
+            </div>
 
-                <div class="col-4">
-                    @if ( isset($advertisementThree[1]))
-                        <a @if (isset($two)) href="{{ $two }}" @endif>
-                            <img class="col-12 offers-ct-top" src="{{ asset('/storage/' . $advertisementThree[1]) }}" />
-                        </a>
-                    @else
-                        <a @if (isset($one)) href="{{ $one }}" @endif >
-                            <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-2-2.jpg') }}" />
-                        </a>
+            <div class="col-4">
 
-                    @endif
-                </div>
+                @if ( isset($advertisementThree[2]))
+                    <a @if (isset($three)) href="{{ $three }}" @endif >
+                        <img class="col-12 offers-ct-bottom" src="{{ asset('/storage/' . $advertisementThree[2]) }}" />
+                    </a>
+                @else
+                    <a @if (isset($one)) href="{{ $one }}" @endif >
+                        <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-2-3.jpg') }}" />
+                    </a>
 
-                <div class="col-4">
-
-                    @if ( isset($advertisementThree[2]))
-                        <a @if (isset($three)) href="{{ $three }}" @endif >
-                            <img class="col-12 offers-ct-bottom" src="{{ asset('/storage/' . $advertisementThree[2]) }}" />
-                        </a>
-                    @else
-                        <a @if (isset($one)) href="{{ $one }}" @endif >
-                            <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-2-3.jpg') }}" />
-                        </a>
-
-                    @endif
-                </div>
+                @endif
             </div>
         </div>
     @endif
 @endif
 
 @if (! $isRendered)
-    <div class="main-container-wrapper advertisement-three-container" style="display: flex;">
-        <div class="row">
-            <div class="col-4">
+    <div class="main-container-wrapper advertisement-three-container">
+        <div class="col-4">
                 <a @if (isset($one)) href="{{ $one }}" @endif style="flex: 1;">
                 <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-2-1.jpg') }}" />
                 </a>
@@ -81,7 +78,6 @@
                 <img class="col-12" src="{{ asset('/themes/congnite/assets/images/banner/advertise-2-3.jpg') }}" />
                 </a>
             </div>
-        </div>
     </div>
 @endif
 

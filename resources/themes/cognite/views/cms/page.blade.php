@@ -14,6 +14,9 @@
 
 @section('content-wrapper')
 <div class="main-container-wrapper">
+    <div class="page-content">
+    <h2 class="page-title">{{ $page->page_title }}</h2>
     {!! DbView::make($page)->field('html_content')->render() !!}
+    </div>
 </div>
 @endsection

@@ -15,9 +15,9 @@
         <section class="featured-products">
 
             <div class="featured-heading">
-                <div class="col-3">{{$category->name}}</div>
-                <div class="col-7"><hr></div>
-                <div class="col-2"><a class="btn-dark" href="/{{$slug}}">Shop More</a></div>
+                <div class="col-3 ftitle">{{$category->name}}</div>
+                <div class="col-7 fline"><hr></div>
+                <div class="col-2 fbtn"><a class="btn-dark" href="/{{$slug}}">Shop More <i class="las la-arrow-right"></i></a></div>
             </div>
 
             <div class="product-grid-4">
