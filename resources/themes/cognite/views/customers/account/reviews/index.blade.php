@@ -32,9 +32,8 @@
 
             <div class="account-items-list">
                 @if (! $reviews->isEmpty())
-                    <div class="review-list">
                     @foreach ($reviews as $review)
-                        <div class="account-item-card">
+                        <div class="account-item-card mt-15 mb-15">
                             <div class="media-info">
                                 <?php $image = $productImageHelper->getProductBaseImage($review->product); ?>
                                 <a href="{{ route('shop.productOrCategory.index', $review->product->url_key) }}" title="{{ $review->product->name }}">
@@ -48,7 +47,7 @@
                                         </a>
                                     </div>
 
-                                    <div class="stars mt-5">
+                                    <div class="stars mt-10">
                                         @for($i=0 ; $i < $review->rating ; $i++)
                                             <span class="icon star-icon"></span>
                                         @endfor
@@ -64,8 +63,8 @@
                                 <a class="mb-50" href="{{ route('customer.review.delete', $review->id) }}"><span class="icon trash-icon"></span></a>
                             </div>
                         </div>
+                        <div class="horizontal-rule mb-10 mt-10"></div>
                     @endforeach
-                    </div>
 
                     <div class="bottom-toolbar">
                         {{ $reviews->links()  }}

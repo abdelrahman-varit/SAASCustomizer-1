@@ -68,7 +68,7 @@ class CartController extends Controller
     {
         try {
             $result = Cart::addProduct($id, request()->all());
-
+            
             if ($this->onFailureAddingToCart($result)) {
                 return redirect()->back();
             }
@@ -84,6 +84,12 @@ class CartController extends Controller
                     Event::dispatch('shop.item.buy-now', $id);
 
                     return redirect()->route('shop.checkout.onepage.index');
+                }
+
+                if(request()->get('is_ajax')){
+                    return response()->json([
+                        'data'=>cart()->getCart() 
+                    ]);
                 }
             }
         } catch(\Exception $e) {
@@ -114,6 +120,13 @@ class CartController extends Controller
             session()->flash('success', trans('shop::app.checkout.cart.item.success-remove'));
         }
 
+        if(request()->get('is_ajax')){
+            return response()->json([
+                'status'=>'success',
+                'data'=>cart()->getCart() 
+            ]);
+        }
+
         return redirect()->back();
     }
 
@@ -125,12 +138,31 @@ class CartController extends Controller
     public function updateBeforeCheckout()
     {
         try {
-            $result = Cart::updateItems(request()->all());
-
+            $is_ajax = request()->get('is_ajax');
+            if($is_ajax){
+                $product_id = request()->get('product');
+                $qty = request()->get('qty');
+                $data = [
+                    "qty"=>[
+                        $product_id => $qty
+                    ]
+                ];
+                $result = Cart::updateItems($data);
+                return response()->json([
+                    'status'=>'success',
+                    'data'=>Cart::getCart()
+                ]);
+            }else{
+                $result = Cart::updateItems(request()->all());
+                
+            }
+            
+            
             if ($result) {
                 session()->flash('success', trans('shop::app.checkout.cart.quantity.success'));
             }
         } catch(\Exception $e) {
+            dd($e->getMessage());
             session()->flash('error', trans($e->getMessage()));
         }
 

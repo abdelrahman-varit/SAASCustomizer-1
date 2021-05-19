@@ -1,7 +1,6 @@
 <div id="sidenav">
     <div class="category_heading">
-    	<div class="all_cat_title">All Categories</div>
-		<div class="all_cat_btn"><a href="#"><i class="las la-bars"></i></a></div>
+    	All Categories
     </div>
  	
  	<div class="category_content">
@@ -21,7 +20,7 @@
 			@foreach($categories as $category)
 				@if(count($categories) > 0)
 					@php
-
+					 
 						$sub_categories = [];
 
 						foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree($category->id) as $sub_category) {
@@ -40,13 +39,13 @@
 			                    <span>{{$category->name}}</span>
 			                    <ul class="class-two" id="class-two">
 			                    	@foreach($sub_categories as $sub_category)
-			                        	<li><a href="{{$sub_category->slug}}">{{$sub_category->name}}</a></li>
+			                        	<li><a href="/{{$sub_category->url_path}}">{{$sub_category->name}}</a></li>
 			                        @endforeach
 			                    </ul>
 			                </li>
 			            
 		            @else
-		            	<li><a href="{{$category->slug}}">{{$category->name}}</a></li>
+		            	<li><a href="/{{$category->url_path}}">{{$category->name}}</a></li>
 					@endif
 
 				@endif
@@ -79,16 +78,6 @@
 			font-weight: bold;
 			font-size: 18px;
 			max-height: 50px;
-			display: flex;
-    		align-items: center;
-		}
-
-		#sidenav .category_heading .all_cat_title{
-			flex: 1;
-		}
-
-		#sidenav .category_heading .all_cat_btn a{
-			color: white;
 		}
 		#sidenav .category_content{
 			background-color: #f2f2f2;
@@ -186,12 +175,7 @@
 		$('li.expandable').click(function() {
 		    $(this).children('ul').toggle();
 		    $(this).toggleClass("active");
-		    // return false;
-		});
-
-		$("#sidenav .category_heading .all_cat_btn a").click(function(e) {
-			e.preventDefault();
-			$("#sidenav").toggleClass("collapse");
+		    return false;
 		});
 	});
 

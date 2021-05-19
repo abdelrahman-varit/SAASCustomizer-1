@@ -3,11 +3,11 @@
 
     <div class="item-detail">
         <label>
-            {{ intval($cart->items_qty) }}
+            <span id='summary-item-qty'>{{ intval($cart->items_qty) }}</span>
             {{ __('shop::app.checkout.total.sub-total') }}
             {{ __('shop::app.checkout.total.price') }}
         </label>
-        <label class="right">{{ core()->currency($cart->base_sub_total) }}</label>
+        <label class="right" id="summary-sub-total">{{ core()->currency($cart->base_sub_total) }}</label>
     </div>
 
     @if ($cart->selected_shipping_rate)

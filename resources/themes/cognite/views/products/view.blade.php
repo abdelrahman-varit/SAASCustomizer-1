@@ -120,13 +120,13 @@
 
                                 </div>
 
-                                <div class="" style="align-items:center;display:flex;flex-direction:row;gap:30px;margin-top:25px;">
+                                <div class="" style="display:flex;flex-direction:row;gap:30px;margin-top:25px;">
                                     <div class="other-info-title" >Share with us :</div>
                                     <div  class="other-info-value"  style="flex:0 0 70%;gap:30px;">
-                                    <a href="#"><img src="{{asset('/themes/congnite/assets/images/facebook-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/></a> &nbsp; 
-                                    <a href="#"><img src="{{asset('/themes/congnite/assets/images/linkedin-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/></a> &nbsp; 
-                                    <a href="#"><img src="{{asset('/themes/congnite/assets/images/twitter-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/></a> &nbsp; 
-                                    <a href="#"><img src="{{asset('/themes/congnite/assets/images/pinterest-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/></a> &nbsp; 
+                                    <img src="{{asset('/themes/congnite/assets/images/facebook-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/>
+                                    <img src="{{asset('/themes/congnite/assets/images/linkedin-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/>
+                                    <img src="{{asset('/themes/congnite/assets/images/twitter-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/>
+                                    <img src="{{asset('/themes/congnite/assets/images/pinterest-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/>
                                     </div>
                                 </div>
 
