@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
 use DB;
-use Faker\Generator as Faker;
 use Company;
 
 /**
@@ -982,68 +981,46 @@ class DataPurger
             Log::info("Info:- prepareDemoProductData() not created for company " . $companyRepository->domain . ".");
             return "prepareDemoProducctData";
         }
-        // $data1=[
-        //     "_token" => "CgWmt7sEZ4LpKI9ujkkaSYb6qoiMEkhvjEGNUdt3",
-        //     "type" => "simple",
-        //     "attribute_family_id" => $this->attributeFamilyData->id,
-        //     "sku" => time().$companyRepository->id,
-        // ];
+        $data1=[
+            "_token" => "CgWmt7sEZ4LpKI9ujkkaSYb6qoiMEkhvjEGNUdt3",
+            "type" => "simple",
+            "attribute_family_id" => $this->attributeFamilyData->id,
+            "sku" => time().$companyRepository->id,
+        ];
 
-        // $product1 = $this->productRepository->create($data1);
+        $product1 = $this->productRepository->create($data1);
 
-        // $product1_edit = [
-        //     "channel" => $companyRepository->username,
-        //     "locale" => "en",
-        //     "_token" => csrf_token(),
-        //     "_method" => "PUT",
-        //     "name" => "Trademil Model-03F",
-        //     "url_key" => "trademil-03f-".time().'-'.$companyRepository->id,
-        //     "new" => 1,
-        //     "featured" => 1,
-        //     "visible_individually" => 1,
-        //     "status" => 1,
-        //     "color" => 10,
-        //     "size" => 15,
-        //     "guest_checkout" => 1,
-        //     "short_description" => "
-        //         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
-        //         ",
-        //     "description" => "
-        //         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries    
-        //     ",
-        //     "meta_title" => "Trademil Model-03F",
-        //     "meta_keywords" => "Trademil Model-03F",
-        //     "meta_description" => "Trademil Model-03F",
-        //     "price" => 350,
-        //     "weight" => 2,
-        //     "inventories" => [ $inventoryList->id => "100"],
-        //     "categories" => [0 => $categoryList[0]['category']->id, 1 => $categoryList[0]['sub1']->id, 2 => $categoryList[0]['sub2']->id],
-        //     "channels" => [0 => $channelData->id]
-        // ];
+        $product1_edit = [
+            "channel" => $companyRepository->username,
+            "locale" => "en",
+            "_token" => csrf_token(),
+            "_method" => "PUT",
+            "name" => "Trademil Model-03F",
+            "url_key" => "trademil-03f-".time().'-'.$companyRepository->id,
+            "new" => 1,
+            "featured" => 1,
+            "visible_individually" => 1,
+            "status" => 1,
+            "color" => 10,
+            "size" => 15,
+            "guest_checkout" => 1,
+            "short_description" => "
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
+                ",
+            "description" => "
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries    
+            ",
+            "meta_title" => "Trademil Model-03F",
+            "meta_keywords" => "Trademil Model-03F",
+            "meta_description" => "Trademil Model-03F",
+            "price" => 350,
+            "weight" => 2,
+            "inventories" => [ $inventoryList->id => "100"],
+            "categories" => [0 => $categoryList[0]['category']->id, 1 => $categoryList[0]['sub1']->id, 2 => $categoryList[0]['sub2']->id],
+            "channels" => [0 => $channelData->id]
+        ];
 
-        // $product1 = $this->productRepository->update($product1_edit, $product1->product_id);
-
-
-
-        factory(\Webkul\Product\Models\Product::class, $count)->create()->each(function ($product) {
-            $faker = \Faker\Factory::create();
-
-            $productType = $faker->randomElement(['simple' , 'configurable']);
-
-            $product->update(['type' => $productType]);
-
-            if ($product->type == 'simple') {
-                factory(\Webkul\Product\Models\ProductFlat::class)->create(['product_id' => $product]);
-
-                factory(\Webkul\Product\Models\ProductInventory::class)->create(
-                        [
-                            'product_id' => $product->id, 
-                            'inventories' => [$inventoryList->id => "100"],
-                            'channels' => [0 => $channelData->id],
-                            "categories" => [0 => $categoryList[0]['category']->id, 1 => $categoryList[0]['sub1']->id, 2 => $categoryList[0]['sub2']->id],
-                        ]);
-            }
-        });
+        $product1 = $this->productRepository->update($product1_edit, $product1->product_id);
 
     }
 
