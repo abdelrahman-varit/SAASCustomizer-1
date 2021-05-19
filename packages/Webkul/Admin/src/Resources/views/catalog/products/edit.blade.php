@@ -1,3 +1,4 @@
+{{dd('Hello')}}
 @extends('admin::layouts.content')
 
 @section('page_title')
