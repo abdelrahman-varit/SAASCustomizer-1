@@ -998,7 +998,6 @@ class DataPurger
         $product1_id = $product1_create->id;
 
         $data1 = array(
-
             "channel" => $companyRepository->username,
             "locale" => "en",
             "_token" => csrf_token(),
@@ -1033,32 +1032,7 @@ class DataPurger
             "channels" => [0 => $channelData->id]
         );
 
-        $multiselectAttributeCodes = array();
-
-        $productAttributes = $this->productRepository->findOrFail($product1_id);
-
-        foreach ($productAttributes->attribute_family->attribute_groups as $attributeGroup) {
-            $customAttributes = $productAttributes->getEditableAttributes($attributeGroup);
-
-            if (count($customAttributes)) {
-                foreach ($customAttributes as $attribute) {
-                    if ($attribute->type == 'multiselect') {
-                        array_push($multiselectAttributeCodes, $attribute->code);
-                    }
-                }
-            }
-        }
-
-        if (count($multiselectAttributeCodes)) {
-            foreach ($multiselectAttributeCodes as $multiselectAttributeCode) {
-                if (! isset($data1[$multiselectAttributeCode])) {
-                    $data1[$multiselectAttributeCode] = array();
-                }
-            }
-        }
-        // dd($data1);
-
-        $product1_update = $this->productRepository->update($data1, 547);
+        $product1_update = $this->productRepository->update($data1, $product1_create->id);
         
 
 
