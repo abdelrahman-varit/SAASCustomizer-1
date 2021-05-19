@@ -1056,9 +1056,8 @@ class DataPurger
                 }
             }
         }
-        // dd($data1);
 
-        $product1_update = $this->productRepository->update($data1, 547);
+        $product1_update = $this->productRepository->update($data1, $productAttributes->id);
         
 
 
