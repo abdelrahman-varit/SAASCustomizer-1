@@ -1024,7 +1024,7 @@ class DataPurger
         // $product1 = $this->productRepository->update($product1_edit, $product1->product_id);
 
 
-
+        $count = 10;
         factory(\Webkul\Product\Models\Product::class, $count)->create()->each(function ($product) {
             $faker = \Faker\Factory::create();
 
