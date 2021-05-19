@@ -1810,8 +1810,9 @@ section.review .review-layouter .product-info .product-price .special-price {
 
 .cp-round:after,
 .cp-round:before {
-    top: 50%;
-    left: 50%;
-    margin-top: -24px;
-    margin-left: -24px;
+	top: 50%;
+	left: 50%;
+	margin-top: -24px;
+	margin-left: -24px;
 }
+
