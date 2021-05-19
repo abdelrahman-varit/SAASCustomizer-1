@@ -1024,26 +1024,18 @@ class DataPurger
         );
 
         $product1_inventory_update = DB::table('product_inventories')
-        ->where('product_id', $product1_id)
-        ->limit(1)
-        ->update(
-            array(
+        ->insert([
                 "qty"                   => 100,
                 "product_id"            => $product1_id,
                 "inventory_source_id"   => $inventory_id,
                 'company_id'            => $companyRepository->id
-            )
-        );
+        ]);
 
         $product1_category_update = DB::table('product_categories')
-        ->where('product_id', $product1_id)
-        ->limit(1)
-        ->update(
-            array(
+        ->insert([
                 "product_id"            => $product1_id,
                 "category_id"           => $categoryList[0]['category']->id
-            )
-        );
+            ]);
 
     }
 
