@@ -422,7 +422,7 @@ class Bundle extends AbstractType
             $priceHtml .= '<span class="regular-price">' . $prices['from']['regular_price']['formated_price'] . '</span>'
                         . '<span class="special-price">' . $prices['from']['final_price']['formated_price'] . '</span>';
         } else {
-            $priceHtml .= '<span>' . $prices['from']['regular_price']['formated_price'] . '</span>';
+            $priceHtml .= '<span class="product-price">' . $prices['from']['regular_price']['formated_price'] . '</span>';
         }
 
 
@@ -435,7 +435,7 @@ class Bundle extends AbstractType
                 $priceHtml .= '<span class="regular-price">' . $prices['to']['regular_price']['formated_price'] . '</span>'
                             . '<span class="special-price">' . $prices['to']['final_price']['formated_price'] . '</span>';
             } else {
-                $priceHtml .= '<span>' . $prices['to']['regular_price']['formated_price'] . '</span>';
+                $priceHtml .= '<span class="product-price">' . $prices['to']['regular_price']['formated_price'] . '</span>';
             }
         }
 

@@ -699,7 +699,7 @@ abstract class AbstractType
                 . '<span class="regular-price">' . core()->currency($this->product->price) . '</span>'
                 . '<span class="special-price">' . core()->currency($this->getSpecialPrice()) . '</span>';
         } else {
-            $html = '<span>' . core()->currency($this->product->price) . '</span>';
+            $html = '<span id="product-price">' . core()->currency($this->product->price) . '</span>';
         }
 
         return $html;

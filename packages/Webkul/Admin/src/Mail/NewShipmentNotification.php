@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-
+use Illuminate\Support\Facades\Log;
 
 class NewShipmentNotification extends Mailable
 {
@@ -37,8 +37,9 @@ class NewShipmentNotification extends Mailable
      */
     public function build()
     {
+        Log::info('we are here shipment .. 40', [$this->shipment]);
         $order = $this->shipment->order;
-
+        Log::info('we are here order .. 42', [$order]);
         return $this->from(core()->getSenderEmailDetails()['email'], core()->getSenderEmailDetails()['name'])
                     ->to($order->customer_email, $order->customer_full_name)
                     ->subject(trans('shop::app.mail.shipment.subject', ['order_id' => $order->increment_id]))

@@ -63,7 +63,8 @@ return [
         'reviews' => 'Reviews',
         'newsletter-subscriptions' => 'Newsletter Subscriptions',
         'configure' => 'Configure',
-        'settings' => 'Settings',
+        'settings' => 'Business Oper.',
+        'settings-title' => 'Business Operation',
         'locales' => 'Locales',
         'currencies' => 'Currencies',
         'exchange-rates' => 'Exchange Rates',
@@ -77,7 +78,7 @@ return [
         'tax-rates' => 'Tax Rates',
         'promotions' => 'Promotions',
         'discount' => 'Discount',
-        'cms' => 'CMS'
+        'cms' => 'Web Pages'
     ],
 
     'acl' => [

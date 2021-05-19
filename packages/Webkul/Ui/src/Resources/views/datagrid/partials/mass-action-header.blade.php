@@ -10,7 +10,7 @@
 
                     
 
-                    <form method="POST" id="mass-action-form" style="display: inline-flex;" action="" onsubmit="return confirmDelete()">
+                    <form method="POST" id="mass-action-form" style="display: inline-flex;" action="" onsubmit="event.preventDefault(); return confirmDelete(this)">
                         @csrf()
                        
                         <input type="hidden" id="indexes" name="indexes" v-model="dataIds">
