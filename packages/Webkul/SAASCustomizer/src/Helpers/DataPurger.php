@@ -16,6 +16,7 @@ use Webkul\CMS\Repositories\CmsRepository;
 use Webkul\Velocity\Repositories\VelocityMetadataRepository;
 use Webkul\Velocity\Repositories\ContentRepository;
 use Webkul\Product\Repositories\ProductRepository;
+use Webkul\Product\Repositories\ProductFlatRepository;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
@@ -100,6 +101,7 @@ class DataPurger
      * @var \Webkul\Product\Repositories\ProductRepository
      */
     protected $productRepository;
+    protected $productFlatRepository;
 
 
     protected $attributeFamilyData;
@@ -120,7 +122,8 @@ class DataPurger
         CmsRepository $cmsRepository,
         velocityMetadataRepository $velocityMetadataRepository,
         ContentRepository $contentRepository,
-        ProductRepository $productRepository
+        ProductRepository $productRepository,
+        ProductFlatRepository $productFlatRepository
     )
     {
         $this->categoryRepository = $categoryRepository;
@@ -150,6 +153,8 @@ class DataPurger
         $this->contentRepository = $contentRepository;
 
         $this->productRepository = $productRepository;
+
+        $this->productFlatRepository = $productFlatRepository;
         
     }
 
@@ -998,8 +1003,8 @@ class DataPurger
             "channel"           => $companyRepository->username,
             "sku"               => $product1_create->sku,
         ];
-        
-        $product1_update = $this->productRepository->update($product1_edit, $product1_id);
+
+        $product1_update = $this->productFlatRepository->update($product1_edit, $product1_id);
 
     }
 
