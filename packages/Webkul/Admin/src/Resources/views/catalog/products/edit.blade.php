@@ -13,9 +13,6 @@
 
         <form method="POST" action="" @submit.prevent="onSubmit" enctype="multipart/form-data">
 
-
-                {{dd($product)}}
-                
             <div class="page-header">
 
                 <div class="page-title">
