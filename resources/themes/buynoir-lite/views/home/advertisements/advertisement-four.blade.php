@@ -17,34 +17,48 @@
             $isRendered = true;
         @endphp
 
-        <div class="container-fluid advertisement-four-container">
-            <div class="row">
+        <section class="container-fluid advertisement-four-container mt-2">
+            <div class="container">
+                <div class="d-flex row">
                  
-                    <div class="col-4">
+                    <div class="col-3">
                         @if ( isset($advertisementFour[0]))
-                            <a @if (isset($one)) href="{{ $one }}" @endif class="row top-container">
+                            <a @if (isset($one)) href="{{ $one }}" @endif class="top-container">
                                 <img class="col-12" src="{{ asset('/storage/' . $advertisementFour[0]) }}" style="height:200px"/>
                             </a>
                         @endif
                     </div>
-                    <div class="col-4 ">
+                    
+                    <div class="col-3 ">
                         @if ( isset($advertisementFour[1]))
-                            <a @if (isset($two)) href="{{ $two }}" @endif class="row top-container">
+                            <a @if (isset($two)) href="{{ $two }}" @endif class="top-container">
                                 <img class="col-12 " src="{{ asset('/storage/' . $advertisementFour[1]) }}" style="height:200px"/>
                             </a>
                         @endif
                     </div>
-                    <div class="col-4">
+
+                    <div class="col-3">
                         @if ( isset($advertisementFour[2]))
-                            <a @if (isset($three)) href="{{ $three }}" @endif class="row top-container">
+                            <a @if (isset($three)) href="{{ $three }}" @endif class=" top-container">
                                 <img class="col-12 offers-ct-bottom" src="{{ asset('/storage/' . $advertisementFour[2]) }}" style="height:200px"/>
                             </a>
                         @endif
                     </div>
                    
+                    <div class="col-3">
+                        @if ( isset($advertisementFour[3]))
+                            <a @if (isset($three)) href="{{ $three }}" @endif class=" top-container">
+                                <img class="col-12 offers-ct-bottom" src="{{ asset('/storage/' . $advertisementFour[2]) }}" style="height:200px"/>
+                            </a>
+                        @else
+                        <img class="col-12" src="{{ asset('vendor/webkul/ui/assets/images/product/meduim-product-placeholder.png') }}" style="height:200px;" />
+                        @endif
+                    </div>
+                   
                 </div>
+            </div>
             
-        </div>
+        </section>
     @endif
 @endif
 

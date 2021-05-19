@@ -1,23 +1,5 @@
 @extends('shop::layouts.master')
 
-@inject ('reviewHelper', 'Webkul\Product\Helpers\Review')
-@inject ('customHelper', 'Webkul\Velocity\Helpers\Helper')
-@inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
-
-@php
-    $total = $reviewHelper->getTotalReviews($product);
-
-    $avgRatings = $reviewHelper->getAverageRating($product);
-    $avgStarRating = round($avgRatings);
-
-    $productImages = [];
-    $images = $productImageHelper->getGalleryImages($product);
-
-    foreach ($images as $key => $image) {
-        array_push($productImages, $image['medium_image_url']);
-    }
-@endphp
-
 @section('page_title')
     {{ trim($product->meta_title) != "" ? $product->meta_title : $product->name }}
 @stop
@@ -56,282 +38,217 @@
     <meta property="og:url" content="{{ route('shop.productOrCategory.index', $product->url_key) }}" />
 @stop
 
-@push('css')
-    <style type="text/css">
-        .related-products {
-            width: 100%;
-        }
+@section('content-wrapper')
 
-        .recently-viewed {
-            margin-top: 20px;
-        }
-
-        .store-meta-images > .recently-viewed:first-child {
-            margin-top: 0px;
-        }
-
-        .main-content-wrapper {
-            margin-bottom: 0px;
-        }
-    </style>
-@endpush
-
-@section('full-content-wrapper')
     {!! view_render_event('bagisto.shop.products.view.before', ['product' => $product]) !!}
-        <div class="row no-margin">
-            <section class="col-12 product-detail">
-                <div class="layouter">
-                    <product-view>
-                        <div class="form-container">
-                            @csrf()
 
-                            <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+    <section class="product-detail">
 
-                            {{-- product-gallery --}}
-                            <div class="left col-lg-5">
-                                @include ('shop::products.view.gallery')
-                            </div>
+        <div class="layouter">
+            <product-view>
+                <div class="form-container">
+                    @csrf()
 
-                            {{-- right-section --}}
-                            <div class="right col-lg-6 col-md-6 col-xs-6">
-                                {{-- product-info-section --}}
-                                <div class="row info">
-                                    <h2 class="col-lg-12 product-details-title">{{ $product->name }}</h2>
+                    <input type="hidden" name="product_id" value="{{ $product->product_id }}">
 
-                                    @if ($total)
-                                        <div class="reviews col-lg-12">
-                                            <star-ratings
-                                                push-class="mr5"
-                                                :ratings="{{ $avgStarRating }}"
-                                            ></star-ratings>
+                    @include ('shop::products.view.gallery')
 
-                                            <div class="reviews">
-                                                <span>
-                                                    {{ __('shop::app.reviews.ratingreviews', [
-                                                        'rating' => $avgRatings,
-                                                        'review' => $total])
-                                                    }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    @endif
+                    <div class="details">
 
-                                    @include ('shop::products.sku', ['product' => $product])
-                                    @include ('shop::products.view.stock', ['product' => $product])
-
-                                    <div class="col-12 price">
-                                        @include ('shop::products.price', ['product' => $product])
-                                    </div>
-
-                                    {{-- <div class="product-actions">
-                                        @include ('shop::products.add-to-cart', [
-                                            'form' => false,
-                                            'product' => $product,
-                                            'showCartIcon' => false,
-                                            'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"
-                                                             ? true : false,
-                                        ])
-                                    </div> --}}
-                                </div>
-
-                                {!! view_render_event('bagisto.shop.products.view.short_description.before', ['product' => $product]) !!}
-
-                                @if ($product->short_description)
-                                    <div class="description">
-                                        <h3 class="col-lg-12">{{ __('velocity::app.products.short-description') }}</h3>
-                                        <div class="col-12">{!! $product->short_description !!}</div>
-                                    </div>
-                                @endif
-
-                                {!! view_render_event('bagisto.shop.products.view.short_description.after', ['product' => $product]) !!}
-
-
-                                {!! view_render_event('bagisto.shop.products.view.quantity.before', ['product' => $product]) !!}
-                                <div class="row">
-                                
-                                    @if ($product->getTypeInstance()->showQuantityBox())
-                                        <div class="col-md-2 col-lg-2">
-                                            <div>
-                                                <quantity-changer></quantity-changer>
-                                            </div>
-                                        </div>
-                                    @else
-                                        <input type="hidden" name="quantity" value="1">
-                                    @endif
-                                    
-                                    <div class="col-md-2 col-lg-2 product-actions">
-                                        @include ('shop::products.add-to-cart-product-details', [
-                                            'form' => false,
-                                            'product' => $product,
-                                            'showCartIcon' => false,
-                                            'showCompare' => core()->getConfigData('general.content.shop.compare_option') == "1"
-                                                            ? true : false,
-                                        ])
-                                       
-                                    </div>
-                                    <div class="col-md-5 col-lg-5">
-                                        
-                                            <ul type="none" class="product_actions product-view-detail">
-                                                <compare-component
-                                                    @auth('customer')
-                                                        customer="true"
-                                                    @endif
-
-                                                    @guest('customer')
-                                                        customer="false"
-                                                    @endif
-
-                                                    slug="{{ $product->url_key }}"
-                                                    product-id="{{ $product->id }}"
-                                                    add-tooltip="{{ __('velocity::app.customer.compare.add-tooltip') }}"
-                                                ></compare-component>
-                                                
-                                                
-                                                @if (! (isset($showWishlist) && !$showWishlist))
-                                                    @include('shop::products.wishlist', [
-                                                        'addClass' => $addWishlistClass ?? ''
-                                                    ])
-                                                @endif
-                                            </ul>
-                                    </div>
-                                </div>
-                                {!! view_render_event('bagisto.shop.products.view.quantity.after', ['product' => $product]) !!}
-
-                                @include ('shop::products.view.configurable-options')
-
-                                @include ('shop::products.view.downloadable')
-
-                                @include ('shop::products.view.grouped-products')
-
-                                @include ('shop::products.view.bundle-options')
-
-                                @include ('shop::products.view.attributes', [
-                                    'active' => true
-                                ])
-                             
-
-                                {{-- reviews count --}}
-                                @include ('shop::products.view.reviews', ['accordian' => true])
-                            </div>
-                           
+                        <div class="product-heading">
+                            <span>{{ $product->name }}</span>
                         </div>
-                    </product-view>
-                </div>
+
+                        @include ('shop::products.review', ['product' => $product])
+
+                        @include ('shop::products.price', ['product' => $product])
+
+                        @include ('shop::products.view.stock', ['product' => $product])
+
+                        {!! view_render_event('bagisto.shop.products.view.short_description.before', ['product' => $product]) !!}
+
+                        <div class="description">
+                            {!! $product->short_description !!}
+                        </div>
+
+                        {!! view_render_event('bagisto.shop.products.view.short_description.after', ['product' => $product]) !!}
 
 
-            </section>
+                        {!! view_render_event('bagisto.shop.products.view.quantity.before', ['product' => $product]) !!}
 
-
-            <div class="clearfix"></div>
-            <hr class="hr"/>
-            <div class="col-lg-12 col-md-12">
-                {{-- product long description --}}
-                @include ('shop::products.view.description')
-            </div>
-            
-            <div class="related-products">
-                @include('shop::products.view.related-products')
-                @include('shop::products.view.up-sells')
-            </div>
-
-            <div class="store-meta-images col-3">
-                @if(
-                    isset($velocityMetaData['product_view_images'])
-                    && $velocityMetaData['product_view_images']
-                )
-                    @foreach (json_decode($velocityMetaData['product_view_images'], true) as $image)
-                        @if ($image && $image !== '')
-                            <img src="{{ url()->to('/') }}/storage/{{ $image }}" />
+                        @if ($product->getTypeInstance()->showQuantityBox())
+                            <quantity-changer></quantity-changer>
+                        @else
+                            <input type="hidden" name="quantity" value="1">
                         @endif
-                    @endforeach
-                @endif
-            </div>
+
+                        {!! view_render_event('bagisto.shop.products.view.quantity.after', ['product' => $product]) !!}
+
+                        @include ('shop::products.view.configurable-options')
+
+                        @include ('shop::products.view.downloadable')
+
+                        @include ('shop::products.view.grouped-products')
+
+                        @include ('shop::products.view.bundle-options')
+
+                        {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
+
+                        <accordian :title="'{{ __('shop::app.products.description') }}'" :active="true">
+                            <div slot="header">
+                                {{ __('shop::app.products.description') }}
+                                <i class="icon expand-icon right"></i>
+                            </div>
+
+                            <div slot="body">
+                                <div class="full-description">
+                                    {!! $product->description !!}
+                                </div>
+                            </div>
+                        </accordian>
+
+                        {!! view_render_event('bagisto.shop.products.view.description.after', ['product' => $product]) !!}
+
+                        @include ('shop::products.view.attributes')
+
+                        @include ('shop::products.view.reviews')
+                    </div>
+                </div>
+            </product-view>
         </div>
+
+        @include ('shop::products.view.related-products')
+
+        @include ('shop::products.view.up-sells')
+
+    </section>
+
     {!! view_render_event('bagisto.shop.products.view.after', ['product' => $product]) !!}
 @endsection
 
 @push('scripts')
-    <script type='text/javascript' src='https://unpkg.com/spritespin@4.1.0/release/spritespin.js'></script>
 
     <script type="text/x-template" id="product-view-template">
-        <form
-            method="POST"
-            id="product-form"
-            @click="onSubmit($event)"
-            action="{{ route('cart.add', $product->product_id) }}">
+        <form method="POST" id="product-form" action="{{ route('cart.add', $product->product_id) }}" @click="onSubmit($event)">
 
             <input type="hidden" name="is_buy_now" v-model="is_buy_now">
 
-            <slot v-if="slot"></slot>
-
-            <div v-else>
-                <div class="spritespin"></div>
-            </div>
+            <slot></slot>
 
         </form>
     </script>
 
+    <script type="text/x-template" id="quantity-changer-template">
+        <div class="quantity control-group" :class="[errors.has(controlName) ? 'has-error' : '']">
+            <label class="required">{{ __('shop::app.products.quantity') }}</label>
+
+            <button type="button" class="decrease" @click="decreaseQty()">-</button>
+
+            <input :name="controlName" class="control" :value="qty" :v-validate="validations" data-vv-as="&quot;{{ __('shop::app.products.quantity') }}&quot;" readonly>
+
+            <button type="button" class="increase" @click="increaseQty()">+</button>
+
+            <span class="control-error" v-if="errors.has(controlName)">@{{ errors.first(controlName) }}</span>
+        </div>
+    </script>
+
     <script>
+
         Vue.component('product-view', {
-            inject: ['$validator'],
+
             template: '#product-view-template',
-            data: function () {
+
+            inject: ['$validator'],
+
+            data: function() {
                 return {
-                    slot: true,
                     is_buy_now: 0,
                 }
             },
 
-            mounted: function () {
-                let currentProductId = '{{ $product->url_key }}';
-                let existingViewed = window.localStorage.getItem('recentlyViewed');
-
-                if (! existingViewed) {
-                    existingViewed = [];
-                } else {
-                    existingViewed = JSON.parse(existingViewed);
-                }
-
-                if (existingViewed.indexOf(currentProductId) == -1) {
-                    existingViewed.push(currentProductId);
-
-                    if (existingViewed.length > 3)
-                        existingViewed = existingViewed.slice(Math.max(existingViewed.length - 4, 1));
-
-                    window.localStorage.setItem('recentlyViewed', JSON.stringify(existingViewed));
-                } else {
-                    var uniqueNames = [];
-
-                    $.each(existingViewed, function(i, el){
-                        if ($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
-                    });
-
-                    uniqueNames.push(currentProductId);
-
-                    uniqueNames.splice(uniqueNames.indexOf(currentProductId), 1);
-
-                    window.localStorage.setItem('recentlyViewed', JSON.stringify(uniqueNames));
-                }
-            },
-
             methods: {
-                onSubmit: function(event) {
-                    if (event.target.getAttribute('type') != 'submit')
+                onSubmit: function(e) {
+                    if (e.target.getAttribute('type') != 'submit')
                         return;
 
-                    event.preventDefault();
+                    e.preventDefault();
 
-                    this.$validator.validateAll().then(result => {
+                    var this_this = this;
+
+                    this.$validator.validateAll().then(function (result) {
                         if (result) {
-                            this.is_buy_now = event.target.classList.contains('buynow') ? 1 : 0;
+                            this_this.is_buy_now = e.target.classList.contains('buynow') ? 1 : 0;
 
                             setTimeout(function() {
                                 document.getElementById('product-form').submit();
                             }, 0);
                         }
                     });
-                },
+                }
             }
+        });
+
+        Vue.component('quantity-changer', {
+            template: '#quantity-changer-template',
+
+            inject: ['$validator'],
+
+            props: {
+                controlName: {
+                    type: String,
+                    default: 'quantity'
+                },
+
+                quantity: {
+                    type: [Number, String],
+                    default: 1
+                },
+
+                minQuantity: {
+                    type: [Number, String],
+                    default: 1
+                },
+
+                validations: {
+                    type: String,
+                    default: 'required|numeric|min_value:1'
+                }
+            },
+
+            data: function() {
+                return {
+                    qty: this.quantity
+                }
+            },
+
+            watch: {
+                quantity: function (val) {
+                    this.qty = val;
+
+                    this.$emit('onQtyUpdated', this.qty)
+                }
+            },
+
+            methods: {
+                decreaseQty: function() {
+                    if (this.qty > this.minQuantity)
+                        this.qty = parseInt(this.qty) - 1;
+
+                    this.$emit('onQtyUpdated', this.qty)
+                },
+
+                increaseQty: function() {
+                    this.qty = parseInt(this.qty) + 1;
+
+                    this.$emit('onQtyUpdated', this.qty)
+                }
+            }
+        });
+
+        $(document).ready(function() {
+            var addTOButton = document.getElementsByClassName('add-to-buttons')[0];
+            document.getElementById('loader').style.display="none";
+            addTOButton.style.display="flex";
         });
 
         window.onload = function() {
@@ -340,7 +257,8 @@
             var productHeroImage = document.getElementsByClassName('product-hero-image')[0];
 
             if (thumbList && productHeroImage) {
-                for (let i=0; i < thumbFrame.length ; i++) {
+
+                for(let i=0; i < thumbFrame.length ; i++) {
                     thumbFrame[i].style.height = (productHeroImage.offsetHeight/4) + "px";
                     thumbFrame[i].style.width = (productHeroImage.offsetHeight/4)+ "px";
                 }

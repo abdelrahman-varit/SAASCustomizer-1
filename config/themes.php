@@ -30,6 +30,15 @@ return [
             'name' => 'Buynoir-lite',
             'parent' => 'default'
         ],
+
+        
+
+        'cognite' => [
+            'views_path' => 'resources/themes/cognite/views',
+            'assets_path' => 'public/themes/cognite/assets',
+            'name' => 'Cognite',
+            'parent' => 'default'
+        ],
     ],
 
     'admin-default' => 'buynoir-admin',

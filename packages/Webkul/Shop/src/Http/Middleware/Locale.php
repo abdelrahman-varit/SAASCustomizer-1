@@ -41,6 +41,7 @@ class Locale
             if ($locale = session()->get('locale')) {
                 app()->setLocale($locale);
             } else {
+                //dd(core()->getDefaultChannel());
                 app()->setLocale(core()->getDefaultChannel()->default_locale->code);
             }
         }

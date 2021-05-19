@@ -1,6 +1,3 @@
-@inject ('toolbarHelper', 'Webkul\Product\Helpers\Toolbar')
-@inject ('productRepository', 'Webkul\Product\Repositories\ProductRepository')
-
 @extends('shop::layouts.master')
 
 @section('page_title')
@@ -8,8 +5,9 @@
 @stop
 
 @section('seo')
-    <meta name="description" content="{{ $category->meta_description }}" />
-    <meta name="keywords" content="{{ $category->meta_keywords }}" />
+    <meta name="description" content="{{ trim($category->meta_description) != "" ? $category->meta_description : \Illuminate\Support\Str::limit(strip_tags($category->description), 120, '') }}"/>
+
+    <meta name="keywords" content="{{ $category->meta_keywords }}"/>
 
     @if (core()->getConfigData('catalog.rich_snippets.categories.enable'))
         <script type="application/ld+json">
@@ -18,163 +16,120 @@
     @endif
 @stop
 
-@push('css')
-    <style type="text/css">
-        .product-price span:first-child, .product-price span:last-child {
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        @media only screen and (max-width: 992px) {
-            .main-content-wrapper .vc-header {
-                box-shadow: unset;
-            }
-        }
-    </style>
-@endpush
-
-@php
-    $isProductsDisplayMode = in_array(
-        $category->display_mode, [
-            null,
-            'products_only',
-            'products_and_description'
-        ]
-    );
-
-    $isDescriptionDisplayMode = in_array(
-        $category->display_mode, [
-            null,
-            'description_only',
-            'products_and_description'
-        ]
-    );
-
-    $products = $productRepository->getAll($category->id);
-@endphp
-
 @section('content-wrapper')
-    <category-component></category-component>
-@stop
+    @inject ('productRepository', 'Webkul\Product\Repositories\ProductRepository')
 
-@push('scripts')
-    <script type="text/x-template" id="category-template">
-        <section class="row col-12 velocity-divide-page category-page-wrapper">
-            {!! view_render_event('bagisto.shop.productOrCategory.index.before', ['category' => $category]) !!}
-    
+    <div class="main">
+        {!! view_render_event('bagisto.shop.products.index.before', ['category' => $category]) !!}
+
+        <div class="category-container">
+
             @if (in_array($category->display_mode, [null, 'products_only', 'products_and_description']))
                 @include ('shop::products.list.layered-navigation')
             @endif
-    
-            <div class="category-container right">
-                <div class="row remove-padding-margin">
-                    <div class="pl0 col-12">
-                        <h1 class="fw6 mb10">{{ $category->name }}</h1>
-    
-                        @if ($isDescriptionDisplayMode)
-                            @if ($category->description)
-                                <div class="category-description">
-                                    {!! $category->description !!}
-                                </div>
-                            @endif
-                        @endif
-                    </div>
-    
-                    <div class="col-12 no-padding">
-                        <div class="hero-image">
-                            @if (!is_null($category->image))
-                                <img class="logo" src="{{ $category->image_url }}" />
-                            @endif
-                        </div>
-                    </div>
+
+            <div class="category-block" @if ($category->display_mode == 'description_only') style="width: 100%" @endif>
+                <div class="hero-image mb-35">
+                    @if (!is_null($category->image))
+                        <img class="logo" src="{{ $category->image_url }}" />
+                    @endif
                 </div>
 
-                @if ($isProductsDisplayMode)
-                    <div class="filters-container">
-                        <template v-if="products.length >= 0">
-                            @include ('shop::products.list.toolbar')
-                        </template>
-                    </div>
-        
-                    <div
-                        class="category-block"
-                        @if ($category->display_mode == 'description_only')
-                            style="width: 100%"
-                        @endif>
-                    
-                        <shimmer-component v-if="isLoading && !isMobile()" shimmer-count="4"></shimmer-component>
-
-                        <template v-else-if="products.length > 0">
-                            @if ($toolbarHelper->getCurrentMode() == 'grid')
-                                <div class="row col-12 remove-padding-margin">
-                                    <product-card
-                                        :key="index"
-                                        :product="product"
-                                        v-for="(product, index) in products">
-                                    </product-card>
-                                </div>
-                            @else
-                                <div class="product-list">
-                                    <product-card
-                                        list=true
-                                        :key="index"
-                                        :product="product"
-                                        v-for="(product, index) in products">
-                                    </product-card>
-                                </div>
-                            @endif
-
-                            {!! view_render_event('bagisto.shop.productOrCategory.index.pagination.before', ['category' => $category]) !!}
-
-                            <div class="bottom-toolbar">
-                                {{ $products->appends(request()->input())->links() }}
-                            </div>
-
-                            {!! view_render_event('bagisto.shop.productOrCategory.index.pagination.after', ['category' => $category]) !!}
-                        </template>
-
-                        <div class="product-list empty" v-else>
-                            <h2>{{ __('shop::app.products.whoops') }}</h2>
-                            <p>{{ __('shop::app.products.empty') }}</p>
+                @if (in_array($category->display_mode, [null, 'description_only', 'products_and_description']))
+                    @if ($category->description)
+                        <div class="category-description">
+                            {!! $category->description !!}
                         </div>
-                    </div>
+                    @endif
+                @endif
+
+                @if (in_array($category->display_mode, [null, 'products_only', 'products_and_description']))
+                    <?php $products = $productRepository->getAll($category->id); ?>
+
+                    @include ('shop::products.list.toolbar')
+
+                    @if ($products->count())
+
+                        @inject ('toolbarHelper', 'Webkul\Product\Helpers\Toolbar')
+
+                        @if ($toolbarHelper->getCurrentMode() == 'grid')
+                            <div class="product-grid-3">
+                                @foreach ($products as $productFlat)
+
+                                    @include ('shop::products.list.card', ['product' => $productFlat])
+
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="product-list">
+                                @foreach ($products as $productFlat)
+
+                                    @include ('shop::products.list.card', ['product' => $productFlat])
+
+                                @endforeach
+                            </div>
+                        @endif
+
+                        {!! view_render_event('bagisto.shop.products.index.pagination.before', ['category' => $category]) !!}
+
+                        <div class="bottom-toolbar">
+                            {{ $products->appends(request()->input())->links() }}
+                        </div>
+
+                        {!! view_render_event('bagisto.shop.products.index.pagination.after', ['category' => $category]) !!}
+
+                    @else
+
+                        <div class="product-list empty">
+                            <h2>{{ __('shop::app.products.whoops') }}</h2>
+
+                            <p>
+                                {{ __('shop::app.products.empty') }}
+                            </p>
+                        </div>
+
+                    @endif
                 @endif
             </div>
-    
-            {!! view_render_event('bagisto.shop.productOrCategory.index.after', ['category' => $category]) !!}
-        </section>
-    </script>
+        </div>
 
+        {!! view_render_event('bagisto.shop.products.index.after', ['category' => $category]) !!}
+    </div>
+@stop
+
+@push('scripts')
     <script>
-        Vue.component('category-component', {
-            template: '#category-template',
-
-            data: function () {
-                return {
-                    'products': [],
-                    'isLoading': true,
-                    'paginationHTML': '',
+        $(document).ready(function() {
+            $('.responsive-layred-filter').css('display','none');
+            $(".sort-icon, .filter-icon").on('click', function(e){
+                var currentElement = $(e.currentTarget);
+                if (currentElement.hasClass('sort-icon')) {
+                    currentElement.removeClass('sort-icon');
+                    currentElement.addClass('icon-menu-close-adj');
+                    currentElement.next().removeClass();
+                    currentElement.next().addClass('icon filter-icon');
+                    $('.responsive-layred-filter').css('display','none');
+                    $('.pager').css('display','flex');
+                    $('.pager').css('justify-content','space-between');
+                } else if (currentElement.hasClass('filter-icon')) {
+                    currentElement.removeClass('filter-icon');
+                    currentElement.addClass('icon-menu-close-adj');
+                    currentElement.prev().removeClass();
+                    currentElement.prev().addClass('icon sort-icon');
+                    $('.pager').css('display','none');
+                    $('.responsive-layred-filter').css('display','block');
+                    $('.responsive-layred-filter').css('margin-top','10px');
+                } else {
+                    currentElement.removeClass('icon-menu-close-adj');
+                    $('.responsive-layred-filter').css('display','none');
+                    $('.pager').css('display','none');
+                    if ($(this).index() == 0) {
+                        currentElement.addClass('sort-icon');
+                    } else {
+                        currentElement.addClass('filter-icon');
+                    }
                 }
-            },
-
-            created: function () {
-                this.getCategoryProducts();
-            },
-
-            methods: {
-                'getCategoryProducts': function () {
-                    this.$http.get(`${this.$root.baseUrl}/category-products/{{ $category->id }}${window.location.search}`)
-                    .then(response => {
-                        this.isLoading = false;
-                        this.products = response.data.products.data;
-                        this.paginationHTML = response.data.paginationHTML;
-                    })
-                    .catch(error => {
-                        this.isLoading = false;
-                        console.log(this.__('error.something_went_wrong'));
-                    })
-                }
-            }
-        })
+            });
+        });
     </script>
 @endpush

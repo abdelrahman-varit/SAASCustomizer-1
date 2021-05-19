@@ -5,114 +5,53 @@
 @endsection
 
 @section('content-wrapper')
-    <div class="auth-content form-container">
+
+    <div class="auth-content">
+        <div class="sign-up-text">
+            {{ __('shop::app.customer.login-text.no_account') }} - <a href="{{ route('customer.register.index') }}">{{ __('shop::app.customer.login-text.title') }}</a>
+        </div>
 
         {!! view_render_event('bagisto.shop.customers.login.before') !!}
 
-            <div class="container">
-                <div class="col-lg-12 col-md-12  ">
-                    <div class="heading">
-                        <h2 class="fs24 fw6">
-                            {{ __('velocity::app.customer.login-form.customer-login')}}
-                        </h2>
+        <form method="POST" action="{{ route('customer.session.create') }}" @submit.prevent="onSubmit">
+            {{ csrf_field() }}
+            <div class="login-form">
+                <div class="login-text">{{ __('shop::app.customer.login-form.title') }}</div>
 
-                        <a href="{{ route('customer.register.index') }}" class="btn-new-customer">
-                            <button type="button" class="btn btn-secondary">
-                                {{ __('velocity::app.customer.login-form.sign-up')}}
-                            </button>
-                        </a>
-                    </div>
+                {!! view_render_event('bagisto.shop.customers.login_form_controls.before') !!}
 
-                    <div class="body col-12 bg-light">
-                        <div class="form-header">
-                            <h3 class="fw6">
-                                <sub><i class="material-icons">people</i></sub>
-                                {{ __('velocity::app.customer.login-form.registered-user')}}
-                            </h3>
+                <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">
+                    <label for="email" class="required">{{ __('shop::app.customer.login-form.email') }}</label>
+                    <input type="text" class="control" name="email" v-validate="'required|email'" value="{{ old('email') }}" data-vv-as="&quot;{{ __('shop::app.customer.login-form.email') }}&quot;">
+                    <span class="control-error" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
+                </div>
 
-                            <p class="fs16">
-                                {{ __('velocity::app.customer.login-form.form-login-text')}}
-                            </p>
-                        </div>
+                <div class="control-group" :class="[errors.has('password') ? 'has-error' : '']">
+                    <label for="password" class="required">{{ __('shop::app.customer.login-form.password') }}</label>
+                    <input type="password" v-validate="'required|min:6'" class="control" id="password" name="password" data-vv-as="&quot;{{ __('admin::app.users.sessions.password') }}&quot;" value=""/>
+                    <span class="control-error" v-if="errors.has('password')">@{{ errors.first('password') }}</span>
+                </div>
 
-                        <form
-                            method="POST"
-                            class="row"
-                            action="{{ route('customer.session.create') }}"
-                            @submit.prevent="onSubmit">
+                {!! view_render_event('bagisto.shop.customers.login_form_controls.after') !!}
 
-                            {{ csrf_field() }}
-                            <div class="col-6">
-                                {!! view_render_event('bagisto.shop.customers.login_form_controls.before') !!}
-                            </div>
-                            <div class="col-6">
-                            
-                                <div class="social-link-seperator">
-                                    <span>{{ __('sociallogin::app.shop.customer.login-form.or') }}</span>
-                                </div>
-                                <div class="form-group" :class="[errors.has('email') ? 'has-error' : '']">
-                                    <label for="email" class="mandatory label-style">
-                                        {{ __('shop::app.customer.login-form.email') }}
-                                    </label>
+                <div class="forgot-password-link">
+                    <a href="{{ route('customer.forgot-password.create') }}">{{ __('shop::app.customer.login-form.forgot_pass') }}</a>
 
-                                    <input
-                                        type="text"
-                                        class="form-style"
-                                        name="email"
-                                        placeholder="Email"
-                                        v-validate="'required|email'"
-                                        value="{{ old('email') }}"
-                                        data-vv-as="&quot;{{ __('shop::app.customer.login-form.email') }}&quot;" />
-
-                                    <span class="control-error" v-if="errors.has('email')">
-                                        @{{ errors.first('email') }}
-                                    </span>
-                                </div>
-                                
-
-                               
-
-
-                                <div class="form-group" :class="[errors.has('password') ? 'has-error' : '']">
-                                    <label for="password" class="mandatory label-style">
-                                        {{ __('shop::app.customer.login-form.password') }}
-                                    </label>
-
-                                    <input
-                                        type="password"
-                                        class="form-style"
-                                        name="password"
-                                        placeholder="Password"
-                                        v-validate="'required'"
-                                        value="{{ old('password') }}"
-                                        data-vv-as="&quot;{{ __('shop::app.customer.login-form.password') }}&quot;" />
-
-                                    <span class="control-error" v-if="errors.has('password')">
-                                        @{{ errors.first('password') }}
-                                    </span>
-
-                                    <a href="{{ route('customer.forgot-password.create') }}" class="pull-right text-muted">
-                                        {{ __('shop::app.customer.login-form.forgot_pass') }}
-                                    </a>
-
-                                    <div class="mt10">
-                                        @if (Cookie::has('enable-resend'))
-                                            @if (Cookie::get('enable-resend') == true)
-                                                <a href="{{ route('customer.resend.verification-email', Cookie::get('email-for-resend')) }}">{{ __('shop::app.customer.login-form.resend-verification') }}</a>
-                                            @endif
-                                        @endif
-                                    </div>
-                                </div>
-
-                                {!! view_render_event('bagisto.shop.customers.login_form_controls.after') !!}
-
-                                <input class="btn btn-dark btn-lg" type="submit" value="{{ __('shop::app.customer.login-form.button_title') }}">
-                            </div>
-                        </form>
+                    <div class="mt-10">
+                        @if (Cookie::has('enable-resend'))
+                            @if (Cookie::get('enable-resend') == true)
+                                <a href="{{ route('customer.resend.verification-email', Cookie::get('email-for-resend')) }}">{{ __('shop::app.customer.login-form.resend-verification') }}</a>
+                            @endif
+                        @endif
                     </div>
                 </div>
+
+                <input class="btn btn-primary btn-lg" type="submit" value="{{ __('shop::app.customer.login-form.button_title') }}">
             </div>
+        </form>
 
         {!! view_render_event('bagisto.shop.customers.login.after') !!}
     </div>
-@endsection
+
+@stop
+

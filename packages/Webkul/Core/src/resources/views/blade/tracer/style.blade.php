@@ -25,8 +25,8 @@
         margin-bottom: 3px;
     }
     .main-container-wrapper .product-card .product-image img {
-        height: auto;
-        max-width: 100%;
+        height: 265px;
+        width: 265px;
     }
 </style>
 

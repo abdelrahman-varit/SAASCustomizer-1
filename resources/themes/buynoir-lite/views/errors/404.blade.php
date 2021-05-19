@@ -4,51 +4,37 @@
     {{ __('admin::app.error.404.page-title') }}
 @stop
 
-@section('body-header')
-@endsection
+@section('content-wrapper')
 
-@section('full-content-wrapper')
-    <div class="error-page row text-center">
-        <div class="col-6">
-            <div
-                class="col-12 bg-image broken-image"
-            ></div>
+    <div class="error-container" style="width: 100%; display: flex; justify-content: center;">
 
-            <div class="col-12 fs24">
-                {{ __('velocity::app.error.page-lost-short') }}
-            </div>
+        <div class="wrapper" style="display: flex; height: 60vh; width: 100%;
+            justify-content: start; align-items: center;">
 
-            <p class="col-12 fs20">
-                {{ __('velocity::app.error.page-lost-description') }}
-            </p>
-        </div>
+            <div class="error-box"  style="width: 50%">
 
-        <div class="col-6">
-            <div class="row">
-
-                @if ($logo = core()->getCurrentChannel()->logo_url)
-                    <div
-                        class="col-12 velocity-icon bg-image"
-                        style="background-image: url('{{ $logo }}')"
-                    ></div>
-                @else
-                    <div class="col-12 velocity-icon bg-image"></div>
-                @endif
-            </div>
-
-            <a class="row remove-decoration" href="{{ route('shop.home.index') }}">
-                <div class="col-12">
-                    <span class="custom-circle">></span>
+                <div class="error-title" style="font-size: 100px;color: #5E5E5E">
+                    {{ __('admin::app.error.404.name') }}
                 </div>
 
-                <span class="col-12 fs16">
-                    {{ __('velocity::app.error.go-to-home') }}
-                </span>
-            </a>
+                <div class="error-messgae" style="font-size: 24px;color: #5E5E5E; margin-top: 40px">
+                    {{ __('admin::app.error.404.title') }}
+                </div>
+
+                <div class="error-description" style="margin-top: 20px;margin-bottom: 20px;color: #242424">
+                    {{ __('admin::app.error.404.message') }}
+                </div>
+
+                <a href="{{ route('shop.home.index') }}">
+                    {{ __('admin::app.error.go-to-home') }}
+                </a>
+
+            </div>
+
+            <div class="error-graphic icon-404" style="margin-left: 10% ;"></div>
+
         </div>
+
     </div>
 
 @endsection
-
-@section('footer')
-@show

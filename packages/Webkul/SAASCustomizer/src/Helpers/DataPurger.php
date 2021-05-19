@@ -14,6 +14,8 @@ use Webkul\Attribute\Repositories\AttributeGroupRepository;
 use Webkul\Customer\Repositories\CustomerGroupRepository;
 use Webkul\CMS\Repositories\CmsRepository;
 use Webkul\Velocity\Repositories\VelocityMetadataRepository;
+use Webkul\Velocity\Repositories\ContentRepository;
+use Webkul\Product\Repositories\ProductRepository;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
@@ -90,6 +92,20 @@ class DataPurger
      */
     protected $velocityMetadataRepository;
 
+    protected $contentRepository;
+
+    /**
+     * ProductRepository object
+     *
+     * @var \Webkul\Product\Repositories\ProductRepository
+     */
+    protected $productRepository;
+
+
+    protected $attributeFamilyData;
+
+
+
     public function __construct(
         CategoryRepository $categoryRepository,
         InventorySourceRepository $inventorySourceRepository,
@@ -102,7 +118,9 @@ class DataPurger
         AttributeGroupRepository $attributeGroupRepository,
         CustomerGroupRepository $customerGroupRepository,
         CmsRepository $cmsRepository,
-        velocityMetadataRepository $velocityMetadataRepository
+        velocityMetadataRepository $velocityMetadataRepository,
+        ContentRepository $contentRepository,
+        ProductRepository $productRepository
     )
     {
         $this->categoryRepository = $categoryRepository;
@@ -128,6 +146,11 @@ class DataPurger
         $this->cmsRepository = $cmsRepository;
 
         $this->velocityMetadataRepository = $velocityMetadataRepository;
+
+        $this->contentRepository = $contentRepository;
+
+        $this->productRepository = $productRepository;
+        
     }
 
     /**
@@ -209,14 +232,722 @@ class DataPurger
             'company_id'        => $companyRepository->id
         ];
 
-        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+        $rootCategory = $this->categoryRepository->create($data);
 
-        return $this->categoryRepository->create($data);
+        
+
+        //header content purge
+
+        $content1 = [
+            "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+            "locale" => "all",
+            "title" => "Home",
+            "position" => "1",
+            "status" => "1",
+            "content_type" => "category",
+            "en" => [
+                "page_link" => "/",
+                "link_target" => "0"
+                ]
+            ];
+            $this->contentRepository->create($content1);
+            
+            $content2 = [
+            "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+            "locale" => "all",
+            "title" => "Flash Deals",
+            "position" => "2",
+            "status" => "1",
+            "content_type" => "category",
+            "en" => [
+                "page_link" => "/flash-deals",
+                "link_target" => "0"
+                ]
+            ];
+            $this->contentRepository->create($content2);
+    
+            $content3 = [
+                "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+                "locale" => "all",
+                "title" => "Blog",
+                "position" => "3",
+                "status" => "1",
+                "content_type" => "category",
+                "en" => [
+                    "page_link" => "/blog",
+                    "link_target" => "0"
+                    ]
+                ];
+                $this->contentRepository->create($content3);
+    
+                $content4 = [
+                    "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+                    "locale" => "all",
+                    "title" => "All Brands",
+                    "position" => "4",
+                    "status" => "1",
+                    "content_type" => "category",
+                    "en" => [
+                        "page_link" => "/all-brands",
+                        "link_target" => "0"
+                        ]
+                    ];
+                    $this->contentRepository->create($content4);
+    
+                    
+                $content5 = [
+                    "_token" => "JuuGJx2KRaQtfacnzpDUnP9beFIelth5CiBcSEH8",
+                    "locale" => "all",
+                    "title" => "Shop Kids & Girls",
+                    "position" => "5",
+                    "status" => "1",
+                    "content_type" => "category",
+                    "en" => [
+                        "page_link" => "/shop-kids-girls",
+                        "link_target" => "0"
+                        ]
+                    ];
+                $this->contentRepository->create($content5);
+
+
+                //config setting for wishlist
+                        
+                $now = Carbon::now();
+                DB::table('core_config')->insert([
+                    [    'code'        => 'general.content.shop.wishlist_option',
+                        'company_id'   => $companyRepository->id,
+                        'value'        => '1',
+                        'channel_code' => $companyRepository->username,
+                        'locale_code'  => 'en',
+                        'created_at'   => $now,
+                        'updated_at'   => $now ]
+                    ]);
+
+        return $rootCategory;
     }
 
     /**
      * Prepares data for a default inventory
      */
+  
+ 
+
+    public function prepareDemoCategoryData($rootCategory){
+
+        $companyRepository = Company::getCurrent();
+
+        $data1 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Fitness World',
+            'slug'              => 'fitness-world-'.$companyRepository->id,
+            'description'       => 'Fitness Product',
+            'meta_title'        => 'Fitness Product',
+            'meta_description'  => 'Fitness Product',
+            'meta_keywords'     => 'Fitness Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareDemoCategoryData() created for data2 - company " . $companyRepository->domain . ".");
+
+        $subCategory1 = $this->categoryRepository->create($data1);
+
+        $data1_1 = [
+            'position'          => '1',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory1->id,
+            'name'              => 'Trademil',
+            'slug'              => 'trademil-'.$companyRepository->id,
+            'description'       => 'Trademil',
+            'meta_title'        => 'Trademil',
+            'meta_description'  => 'Trademil',
+            'meta_keywords'     => 'Trademil',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory1_1 = $this->categoryRepository->create($data1_1);
+
+        $data1_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory1->id,
+            'name'              => 'Exercise Bike',
+            'slug'              => 'exercise-bike-'.$companyRepository->id,
+            'description'       => 'Exercise Bike',
+            'meta_title'        => 'Exercise Bike',
+            'meta_description'  => 'Exercise Bike',
+            'meta_keywords'     => 'Exercise Bike',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory1_2 = $this->categoryRepository->create($data1_2);
+
+
+        $data2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Food & Beverages',
+            'slug'              => 'food-beverages-'.$companyRepository->id,
+            'description'       => 'Food & Beverages',
+            'meta_title'        => 'Food & Beverages',
+            'meta_description'  => 'Food & Beverages',
+            'meta_keywords'     => 'Food & Beverages',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory2 = $this->categoryRepository->create($data2);
+
+        $data2_1 = [
+            'position'          => '1',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory2->id,
+            'name'              => 'Soft Drinks',
+            'slug'              => 'soft-drinks-'.$companyRepository->id,
+            'description'       => 'Soft Drinks',
+            'meta_title'        => 'Soft Drinks',
+            'meta_description'  => 'Soft Drinks',
+            'meta_keywords'     => 'Soft Drinks',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory2_1 = $this->categoryRepository->create($data2_1);
+
+        $data2_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory2->id,
+            'name'              => 'Bakery & Pastry',
+            'slug'              => 'bakery-pastry-'.$companyRepository->id,
+            'description'       => 'Bakery & Pastry',
+            'meta_title'        => 'Bakery & Pastry',
+            'meta_description'  => 'Bakery & Pastry',
+            'meta_keywords'     => 'Bakery & Pastry',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory2_2 = $this->categoryRepository->create($data2_2);
+        
+        $data3 = [
+            'position'          => '3',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Women',
+            'slug'              => 'women-product-'.$companyRepository->id,
+            'description'       => 'Women Product',
+            'meta_title'        => 'Women Product',
+            'meta_description'  => 'Women Product',
+            'meta_keywords'     => 'Women Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory3 = $this->categoryRepository->create($data3);
+    
+        
+        $data3_1 = [
+            'position'          => '1',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory3->id,
+            'name'              => 'Jwellary',
+            'slug'              => 'jwellary-'.$companyRepository->id,
+            'description'       => 'Jwellary',
+            'meta_title'        => 'Jwellary',
+            'meta_description'  => 'Jwellary',
+            'meta_keywords'     => 'Jwellary',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory3_1 = $this->categoryRepository->create($data3_1);
+
+        $data3_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory3->id,
+            'name'              => 'Cosmetics',
+            'slug'              => 'cosmetics-'.$companyRepository->id,
+            'description'       => 'Cosmetics',
+            'meta_title'        => 'Cosmetics',
+            'meta_description'  => 'Cosmetics',
+            'meta_keywords'     => 'Cosmetics',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory3_2 = $this->categoryRepository->create($data3_2);
+
+        $data4 = [
+            'position'          => '4',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Kids',
+            'slug'              => 'kids-product-'.$companyRepository->id,
+            'description'       => 'Kids Product',
+            'meta_title'        => 'Kids Product',
+            'meta_description'  => 'Kids Product',
+            'meta_keywords'     => 'Kids Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory4 = $this->categoryRepository->create($data4);
+    
+        
+        $data4_1 = [
+            'position'          => '1',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory4->id,
+            'name'              => 'Baby Cloths',
+            'slug'              => 'baby-cloths-'.$companyRepository->id,
+            'description'       => 'Baby Cloths',
+            'meta_title'        => 'Baby Cloths',
+            'meta_description'  => 'Baby Cloths',
+            'meta_keywords'     => 'Baby Cloths',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory4_1 = $this->categoryRepository->create($data4_1);
+
+        $data4_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory4->id,
+            'name'              => 'Toys',
+            'slug'              => 'toys-'.$companyRepository->id,
+            'description'       => 'Toys',
+            'meta_title'        => 'Toys',
+            'meta_description'  => 'Toys',
+            'meta_keywords'     => 'Toys',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory4_2 = $this->categoryRepository->create($data4_2);   
+    
+        $data5 = [
+            'position'          => '5',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Video Games',
+            'slug'              => 'video-games-'.$companyRepository->id,
+            'description'       => 'Video Games',
+            'meta_title'        => 'Video Games',
+            'meta_description'  => 'Video Games',
+            'meta_keywords'     => 'Video Games',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory5 = $this->categoryRepository->create($data5);
+ 
+        $data5_1 = [
+            'position'          => '1',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory5->id,
+            'name'              => 'Actions & Advancers',
+            'slug'              => 'actions-advacners-'.$companyRepository->id,
+            'description'       => 'Actions & Advancers',
+            'meta_title'        => 'Actions & Advancers',
+            'meta_description'  => 'Actions & Advancers',
+            'meta_keywords'     => 'Actions & Advancers',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory5_1 = $this->categoryRepository->create($data5_1);
+
+        $data5_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory5->id,
+            'name'              => 'Puzzle Games',
+            'slug'              => 'puzzle-games-'.$companyRepository->id,
+            'description'       => 'Puzzle Games',
+            'meta_title'        => 'Puzzle Games',
+            'meta_description'  => 'Puzzle Games',
+            'meta_keywords'     => 'Puzzle Games',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory5_2 = $this->categoryRepository->create($data5_2);
+    
+        $data6 = [
+            'position'          => '6',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Electronics',
+            'slug'              => 'electronics-product-'.$companyRepository->id,
+            'description'       => 'Electronics Product',
+            'meta_title'        => 'Electronics',
+            'meta_description'  => 'Electronics',
+            'meta_keywords'     => 'Electronics',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory6 = $this->categoryRepository->create($data6);
+        
+        $data6_1 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory6->id,
+            'name'              => 'TV & Monitors',
+            'slug'              => 'tv-monitors-'.$companyRepository->id,
+            'description'       => 'TV & Monitors',
+            'meta_title'        => 'TV & Monitors',
+            'meta_description'  => 'TV & Monitors',
+            'meta_keywords'     => 'TV & Monitors',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory6_1 = $this->categoryRepository->create($data6_1);
+
+        $data6_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory6->id,
+            'name'              => 'Freeze & Airconditions',
+            'slug'              => 'freeze-airconditions-'.$companyRepository->id,
+            'description'       => 'Freeze & Airconditions',
+            'meta_title'        => 'Freeze & Airconditions',
+            'meta_description'  => 'Freeze & Airconditions',
+            'meta_keywords'     => 'Freeze & Airconditions',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory6_2 = $this->categoryRepository->create($data6_2);
+
+        $data7 = [
+            'position'          => '7',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Furnitures',
+            'slug'              => 'furnitures-'.$companyRepository->id,
+            'description'       => 'Furnitures Product',
+            'meta_title'        => 'Furnitures Product',
+            'meta_description'  => 'Furnitures Product',
+            'meta_keywords'     => 'Furnitures Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory7 = $this->categoryRepository->create($data7);
+            
+        $data7_1 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory7->id,
+            'name'              => 'Wood Furnitures',
+            'slug'              => 'wood-furnitures-'.$companyRepository->id,
+            'description'       => 'Wood Furnitures',
+            'meta_title'        => 'Wood Furnitures',
+            'meta_description'  => 'Wood Furnitures',
+            'meta_keywords'     => 'Wood Furnitures',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory7_1 = $this->categoryRepository->create($data7_1);
+
+        $data7_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory7->id,
+            'name'              => 'Plastic Board Furnitures',
+            'slug'              => 'plastic-board-furnitures-'.$companyRepository->id,
+            'description'       => 'Plastic Board Furnitures',
+            'meta_title'        => 'Plastic Board Furnitures',
+            'meta_description'  => 'Plastic Board Furnitures',
+            'meta_keywords'     => 'Plastic Board Furnitures',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory7_2 = $this->categoryRepository->create($data7_2);
+
+        $data8 = [
+            'position'          => '8',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Mobile',
+            'slug'              => 'mobile-'.$companyRepository->id,
+            'description'       => 'Mobile & Accessorries',
+            'meta_title'        => 'Mobile & Accessorries',
+            'meta_description'  => 'Mobile & Accessorries',
+            'meta_keywords'     => 'Mobile & Accessorries',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory8 = $this->categoryRepository->create($data8);
+        
+        
+        $data8_1 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory8->id,
+            'name'              => 'Android Mobile',
+            'slug'              => 'android-mobile-'.$companyRepository->id,
+            'description'       => 'Android Mobile',
+            'meta_title'        => 'Android Mobile',
+            'meta_description'  => 'Android Mobile',
+            'meta_keywords'     => 'Android Mobile',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory8_1 = $this->categoryRepository->create($data8_1);
+
+        $data8_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory8->id,
+            'name'              => 'iPhone & Mac Laptop',
+            'slug'              => 'iphone-mac-laptop-'.$companyRepository->id,
+            'description'       => 'iPhone & Mac Laptop',
+            'meta_title'        => 'iPhone & Mac Laptop',
+            'meta_description'  => 'iPhone & Mac Laptop',
+            'meta_keywords'     => 'iPhone & Mac Laptop',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory8_2 = $this->categoryRepository->create($data8_2);
+
+        $data9 = [
+            'position'          => '9',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Watch & Wallet',
+            'slug'              => 'watch-product-'.$companyRepository->id,
+            'description'       => 'Watch & Wallet Product',
+            'meta_title'        => 'Watch & Wallet Product',
+            'meta_description'  => 'Watch & Wallet Product',
+            'meta_keywords'     => 'Watch & Wallet Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory9 = $this->categoryRepository->create($data9);
+        
+        $data9_1 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory9->id,
+            'name'              => 'Hand Watches',
+            'slug'              => 'hand-watches-'.$companyRepository->id,
+            'description'       => 'Hand Watches',
+            'meta_title'        => 'Hand Watches',
+            'meta_description'  => 'Hand Watches',
+            'meta_keywords'     => 'Hand Watches',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory9_1 = $this->categoryRepository->create($data9_1);
+
+        $data9_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory9->id,
+            'name'              => 'Wallet & Parts',
+            'slug'              => 'wallet-parts-'.$companyRepository->id,
+            'description'       => 'Wallet & Parts',
+            'meta_title'        => 'Wallet & Parts',
+            'meta_description'  => 'Wallet & Parts',
+            'meta_keywords'     => 'Wallet & Parts',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory9_2 = $this->categoryRepository->create($data9_2);
+
+        $data10 = [
+            'position'          => '10',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $rootCategory->id,
+            'name'              => 'Shoes & Belt',
+            'slug'              => 'shoes-belt-product-'.$companyRepository->id,
+            'description'       => 'Shoes & Belt Product',
+            'meta_title'        => 'Shoes & Belt Product',
+            'meta_description'  => 'Shoes & Belt Product',
+            'meta_keywords'     => 'Shoes & Belt Product',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+
+        $subCategory10 = $this->categoryRepository->create($data10);
+
+        $data10_1 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory10->id,
+            'name'              => 'Ladies Shoes',
+            'slug'              => 'ladies-shoes-'.$companyRepository->id,
+            'description'       => 'Ladies Shoes',
+            'meta_title'        => 'Ladies Shoes',
+            'meta_description'  => 'Ladies Shoes',
+            'meta_keywords'     => 'Ladies Shoes',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory10_1 = $this->categoryRepository->create($data10_1);
+
+        $data10_2 = [
+            'position'          => '2',
+            'image'             => NULL,
+            'status'            => '1',
+            'parent_id'         => $subCategory10->id,
+            'name'              => 'Leather Belts',
+            'slug'              => 'leather-belts-'.$companyRepository->id,
+            'description'       => 'Leather Belts',
+            'meta_title'        => 'Leather Belts',
+            'meta_description'  => 'Leather Belts',
+            'meta_keywords'     => 'Leather Belts',
+            'locale'            => 'all',
+            'attributes'        => '37',
+            'company_id'        => $companyRepository->id
+        ];
+
+        $subCategory10_2 = $this->categoryRepository->create($data10_2);
+
+        $categories = [
+            [
+                'category'  =>$subCategory1,
+                'sub1'      =>$subCategory1_1,
+                'sub2'      =>$subCategory1_2,
+            ], [
+                'category'  =>$subCategory2,
+                'sub1'      =>$subCategory2_1,
+                'sub2'      =>$subCategory2_2,
+            ], [
+                'category'  =>$subCategory3,
+                'sub1'      =>$subCategory3_1,
+                'sub2'      =>$subCategory3_2,
+            ],[
+                'category'  =>$subCategory4,
+                'sub1'      =>$subCategory4_1,
+                'sub2'      =>$subCategory4_2,
+            ],[
+                'category'  =>$subCategory5,
+                'sub1'      =>$subCategory5_1,
+                'sub2'      =>$subCategory5_2,
+            ],[
+                'category'  =>$subCategory6,
+                'sub1'      =>$subCategory6_1,
+                'sub2'      =>$subCategory6_2,
+            ],[
+                'category'  =>$subCategory7,
+                'sub1'      =>$subCategory7_1,
+                'sub2'      =>$subCategory7_2,
+            ],[
+                'category'  =>$subCategory8,
+                'sub1'      =>$subCategory8_1,
+                'sub2'      =>$subCategory8_2,
+            ],[
+                'category'  =>$subCategory9,
+                'sub1'      =>$subCategory9_1,
+                'sub2'      =>$subCategory9_2,
+            ],[
+                'category'  =>$subCategory10,
+                'sub1'      =>$subCategory10_1,
+                'sub2'      =>$subCategory10_2,
+            ],
+        ];
+
+        return  $categories;
+
+    }
+
     public function prepareInventoryData()
     {
         $companyRepository = Company::getCurrent();
@@ -241,6 +972,58 @@ class DataPurger
         return $this->inventorySourceRepository->create($data);
     }
 
+
+    public function prepareDemoProductData($categoryList, $inventoryList, $channelData){
+
+        $companyRepository = Company::getCurrent();
+        $inventory_id = $inventoryList->id;
+        if(empty($this->attributeFamilyData)){
+            Log::info("Info:- prepareDemoProductData() not created for company " . $companyRepository->domain . ".");
+            return "prepareDemoProducctData";
+        }
+        $data1=[
+            "_token" => "CgWmt7sEZ4LpKI9ujkkaSYb6qoiMEkhvjEGNUdt3",
+            "type" => "simple",
+            "attribute_family_id" => $this->attributeFamilyData->id,
+            "sku" => time().$companyRepository->id,
+        ];
+
+        $product1 = $this->productRepository->create($data1);
+
+        $product1_edit = [
+            "channel" => $companyRepository->username,
+            "locale" => "en",
+            "_token" => csrf_token(),
+            "_method" => "PUT",
+            "name" => "Trademil Model-03F",
+            "url_key" => "trademil-03f-".time().'-'.$companyRepository->id,
+            "new" => 1,
+            "featured" => 1,
+            "visible_individually" => 1,
+            "status" => 1,
+            "color" => 10,
+            "size" => 15,
+            "guest_checkout" => 1,
+            "short_description" => "
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
+                ",
+            "description" => "
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries    
+            ",
+            "meta_title" => "Trademil Model-03F",
+            "meta_keywords" => "Trademil Model-03F",
+            "meta_description" => "Trademil Model-03F",
+            "price" => 350,
+            "weight" => 2,
+            "inventories" => [ $inventoryList->id => "100"],
+            "categories" => [0 => $categoryList[0]['category']->id, 1 => $categoryList[0]['sub1']->id, 2 => $categoryList[0]['sub2']->id],
+            "channels" => [0 => $channelData->id]
+        ];
+
+        $product1 = $this->productRepository->update($product1_edit, $product1->product_id);
+
+    }
+
     /**
      * Prepares a default channel
      */
@@ -254,13 +1037,18 @@ class DataPurger
 
         $categoryRepository = $this->prepareCategoryData();
 
+        $demoCategoryRepository = $this->prepareDemoCategoryData($categoryRepository);
+
         $inventorySourceRepository = $this->prepareInventoryData();
 
+        $this->attributeFamilyData  = $this->prepareAttributeFamilyData();
+
+        
         $data = [
             'company_id'        => $companyRepository->id,
             'code'              => $companyRepository->username,
-            'name'              => 'Default Channel',
-            'description'       => 'Default Channel',
+            'name'              => 'BuyNoir Channel',
+            'description'       => 'BuyNoir Channel',
             'inventory_sources' => [
                 0               => $inventorySourceRepository->id
             ],
@@ -274,14 +1062,33 @@ class DataPurger
                 0               => $currencyRepository->id
             ],
             'base_currency_id'  => $currencyRepository->id,
-            'theme'             => 'default',
-            'home_page_content' => '<p>@include("shop::home.slider") @include("shop::home.featured-products") @include("shop::home.new-products")</p><div class="banner-container"><div class="left-banner"><img src="https://s3-ap-southeast-1.amazonaws.com/cdn.uvdesk.com/website/1/201902045c581f9494b8a1.png" /></div><div class="right-banner"><img src="https://s3-ap-southeast-1.amazonaws.com/cdn.uvdesk.com/website/1/201902045c581fb045cf02.png" /> <img src="https://s3-ap-southeast-1.amazonaws.com/cdn.uvdesk.com/website/1/201902045c581fc352d803.png" /></div></div>',
+            'theme'             => 'cognite',
+            'home_page_content' => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'simple-product-".$companyRepository->id."'])@include('shop::home.recent-products')</p>",
 
-            'footer_content' => '<div class="list-container"><span class="list-heading">Quick Links</span><ul class="list-group"><li><a href="@php echo route(\'shop.cms.page\', \'about-us\') @endphp">About Us</a></li><li><a href="@php echo route(\'shop.cms.page\', \'return-policy\') @endphp">Return Policy</a></li><li><a href="@php echo route(\'shop.cms.page\', \'refund-policy\') @endphp">Refund Policy</a></li><li><a href="@php echo route(\'shop.cms.page\', \'terms-conditions\') @endphp">Terms and conditions</a></li><li><a href="@php echo route(\'shop.cms.page\', \'terms-of-use\') @endphp">Terms of Use</a></li><li><a href="@php echo route(\'shop.cms.page\', \'contact-us\') @endphp">Contact Us</a></li></ul></div><div class="list-container"><span class="list-heading">Connect With Us</span><ul class="list-group"><li><a href="#"><span class="icon icon-facebook"></span>Facebook </a></li><li><a href="#"><span class="icon icon-twitter"></span> Twitter </a></li><li><a href="#"><span class="icon icon-instagram"></span> Instagram </a></li><li><a href="#"> <span class="icon icon-google-plus"></span>Google+ </a></li><li><a href="#"> <span class="icon icon-linkedin"></span>LinkedIn </a></li></ul></div>',
+            'footer_content' => 
+            '<div class="list-container">
+                <span class="list-heading">Other Links</span>
+                <ul class="list-group">
+                    <li><a href="@php echo route(\'shop.cms.page\', \'about-us\') @endphp">BuyNoir About Us</a></li>
+                    <li><a href="@php echo route(\'shop.cms.page\', \'return-policy\') @endphp">Return Policy</a></li>
+                    <li><a href="@php echo route(\'shop.cms.page\', \'refund-policy\') @endphp">Refund Policy</a></li>
+                    <li><a href="@php echo route(\'shop.cms.page\', \'terms-conditions\') @endphp">Terms and conditions</a></li>
+                    <li><a href="@php echo route(\'shop.cms.page\', \'terms-of-use\') @endphp">Terms of Use</a></li>
+                    <li><a href="@php echo route(\'shop.cms.page\', \'contact-us\') @endphp">Contact Us</a>
+                    </li></ul></div>
+
+                    <div class="list-container">
+                        <span class="list-heading">Connect With Us</span>
+                        <ul class="list-group">
+                        <li><a href="#"><span class="icon icon-facebook"></span>Facebook </a></li>
+                        <li><a href="#"><span class="icon icon-twitter"></span> Twitter </a></li>
+                        <li><a href="#"><span class="icon icon-instagram"></span> Instagram </a></li>
+                        <li><a href="#"> <span class="icon icon-google-plus"></span>Google+ </a></li>
+                        <li><a href="#"> <span class="icon icon-linkedin"></span>LinkedIn </a></li></ul></div>',
             'home_seo' => json_encode([
-                'meta_title'        => "Default Channel",
-                'meta_description'  => "Default Channel Description",
-                'meta_keywords'     => "Default Channel"
+                'meta_title'        => "BuyNoir Channel",
+                'meta_description'  => "BuyNoir Channel Description",
+                'meta_keywords'     => "BuyNoir Channel"
             ]),
         ];
         
@@ -291,6 +1098,9 @@ class DataPurger
             $companyRepository->channel_id = $channelRepository->id;
             $companyRepository->save();
         }
+
+        $productRepo = $this->prepareDemoProductData($demoCategoryRepository, $inventorySourceRepository,  $channelRepository);
+
 
         Log::info("Info:- prepareChannelData() created for company " . $companyRepository->domain . ".");
 
@@ -459,7 +1269,7 @@ class DataPurger
 
         Log::info("Info:- prepareAttributeData() created for company " . $companyRepository->domain . ".");
 
-        $this->prepareAttributeFamilyData();
+        //prepare attributeFamilyData() move into prepareChannelData(){}
 
         $this->prepareAttributeGroupData();
 
@@ -827,11 +1637,27 @@ class DataPurger
             'company_id'            => $companyRepository->id,
             'locale'                => $localeRepository->code,
             'channel'               => $companyRepository->username,
-            'home_page_content'     => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.product-policy') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')</p>",
+            'home_page_content'     => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'simple-product-".$companyRepository->id."'])@include('shop::home.recent-products')</p>",
 
             'footer_left_content'   => trans('velocity::app.admin.meta-data.footer-left-raw-content'),
 
-            'footer_middle_content' => '<div class="col-lg-6 col-md-12 col-sm-12 no-padding"><ul type="none"><li><a href="https://sellnoir.com/about-us/company-profile/">About Us</a></li><li><a href="https://sellnoir.com/about-us/company-profile/">Customer Service</a></li><li><a href="https://sellnoir.com/about-us/company-profile/">What&rsquo;s New</a></li><li><a href="https://sellnoir.com/about-us/company-profile/">Contact Us </a></li></ul></div><div class="col-lg-6 col-md-12 col-sm-12 no-padding"><ul type="none"><li><a href="https://sellnoir.com/about-us/company-profile/"> Order and Returns </a></li><li><a href="https://sellnoir.com/about-us/company-profile/"> Payment Policy </a></li><li><a href="https://sellnoir.com/about-us/company-profile/"> Shipping Policy</a></li><li><a href="https://sellnoir.com/about-us/company-profile/"> Privacy and Cookies Policy </a></li></ul></div>',
+            'footer_middle_content' => 
+                '<div class="col-lg-6 col-md-12 col-sm-12 no-padding">
+                    <ul type="none">
+                        <li><a href="/page/about-us">About Us</a></li>
+                        <li><a href="/page/customer-service">Customer Service</a></li>
+                        <li><a href="/page/whats-new/">What&rsquo;s New</a></li>
+                        <li><a href="/page/contact-us">Contact Us </a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 no-padding">
+                    <ul type="none">
+                        <li><a href="/page/order-and-returns"> Order and Returns </a></li>
+                        <li><a href="/page/payment-policy"> Payment Policy </a></li>
+                        <li><a href="/page/shipping-policy"> Shipping Policy</a></li>
+                        <li><a href="/page/privacy-and-cookies-policy"> Privacy and Cookies Policy </a></li>
+                    </ul>
+                </div>',
 
             'slider'                => 1,
 
@@ -888,9 +1714,9 @@ class DataPurger
             'general'  => [
                 'general'   => [
                     'email_setting' => [
-                        'general.general.email_setting.sender_name' => 'Bagisto Shop',
+                        'general.general.email_setting.sender_name' => 'BuyNoir Shop',
                         'general.general.email_setting.shop_email_from' => $companyRepository->username . '@bagshop.com',
-                        'general.general.email_setting.admin_name' => 'Bagisto Admin',
+                        'general.general.email_setting.admin_name' => 'BuyNoir Admin',
                         'general.general.email_setting.admin_email' => $companyRepository->username . '@bagadmin.com',
                     ]
                 ],

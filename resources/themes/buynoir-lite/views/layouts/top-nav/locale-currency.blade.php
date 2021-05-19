@@ -22,11 +22,12 @@
     } else {
         $searchQuery = false;
     }
-@endphp
 
+@endphp
+<div class="topbar-locale">
 {!! view_render_event('bagisto.shop.layout.header.locale.before') !!}
-    <div class="pull-left">
-        <div class="dropdown">
+   
+       
             @php
                 $localeImage = null;
             @endphp
@@ -39,16 +40,16 @@
                 @endif
             @endforeach
 
-            <div class="locale-icon">
+            <div class="col-2 locale-img">
                 @if ($localeImage)
-                    <img src="{{ asset('/storage/' . $localeImage) }}" onerror="this.src = '{{ asset($localeImage) }}'" />
+                    <img src="{{ asset('/storage/' . $localeImage) }}" onerror="this.src = '{{ asset($localeImage) }}'" height="30" />
                 @elseif (app()->getLocale() == 'en')
-                    <img src="{{ asset('/themes/velocity/assets/images/flags/en.png') }}" />
+                    <img src="{{ asset('/themes/cognite/assets/images/icons/en.png') }}" />
                 @endif
             </div>
 
             <select
-                class="btn btn-link dropdown-toggle control locale-switcher styled-select"
+                class="col-4 dropdown-toggle locale-switcher border-0"
                 onchange="window.location.href = this.value"
                 @if (count(core()->getCurrentChannel()->locales) == 1)
                     disabled="disabled"
@@ -67,21 +68,20 @@
                 @endforeach
             </select>
 
-            <div class="select-icon-container">
+            <div class="select-icon-container col-2">
                 <span class="select-icon rango-arrow-down"></span>
             </div>
-        </div>
-    </div>
+        
+  
 
 {!! view_render_event('bagisto.shop.layout.header.locale.after') !!}
 
 {!! view_render_event('bagisto.shop.layout.header.currency-item.before') !!}
 
     @if (core()->getCurrentChannel()->currencies->count() > 1)
-        <div class="pull-left">
-            <div class="dropdown">
+               <i class="icon icon-currency"></i>
                <select
-                    class="btn btn-link dropdown-toggle control locale-switcher styled-select"
+                    class="col-3 dropdown-toggle locale-switcher"
                     onchange="window.location.href = this.value">
                     @foreach (core()->getCurrentChannel()->currencies as $currency)
                         @if (isset($searchQuery) && $searchQuery)
@@ -93,11 +93,12 @@
 
                 </select>
 
-                <div class="select-icon-container">
+                <div class="col select-icon-container col-1">
                     <span class="select-icon rango-arrow-down"></span>
                 </div>
-            </div>
-        </div>
+          
     @endif
+
+</div>
 
 {!! view_render_event('bagisto.shop.layout.header.currency-item.after') !!}

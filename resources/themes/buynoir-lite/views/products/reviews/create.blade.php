@@ -1,5 +1,3 @@
-@inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
-
 @extends('shop::layouts.master')
 
 @section('page_title')
@@ -8,94 +6,113 @@
 
 @section('content-wrapper')
 
-    <div class="container">
-        <section class="row review-page-container">
-            @include ('shop::products.view.small-view', ['product' => $product])
+    <section class="review">
 
-            <div class="col-lg-6 col-md-12">
-                <div class="row customer-rating col-12 remove-padding-margin">
-                    <h2 class="full-width">
-                        {{ __('shop::app.reviews.write-review') }}
-                    </h2>
+        <div class="review-layouter mb-20">
+            <div class="product-info">
+                @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
 
-                    <form
-                        method="POST"
-                        class="review-form"
-                        @submit.prevent="onSubmit"
-                        action="{{ route('shop.reviews.store', $product->product_id ) }}">
+                <?php $productBaseImage = $productImageHelper->getProductBaseImage($product); ?>
 
-                        @csrf
-
-                        <div :class="`${errors.has('rating') ? 'has-error' : ''}`">
-                            <label for="title" class="required">
-                                {{ __('admin::app.customers.reviews.rating') }}
-                            </label>
-                            <star-ratings ratings="5" size="24" editable="true"></star-ratings>
-                            <span :class="`control-error ${errors.has('rating') ? '' : 'hide'}`" v-if="errors.has('rating')">
-                                @{{ errors.first('rating') }}
-                            </span>
-                        </div>
-
-                        <div :class="`${errors.has('title') ? 'has-error' : ''}`">
-                            <label for="title" class="required">
-                                {{ __('shop::app.reviews.title') }}
-                            </label>
-                            <input
-                                type="text"
-                                name="title"
-                                class="control"
-                                v-validate="'required'"
-                                value="{{ old('title') }}" />
-
-                            <span :class="`control-error ${errors.has('title') ? '' : 'hide'}`">
-                                @{{ errors.first('title') }}
-                            </span>
-                        </div>
-
-                        @if (core()->getConfigData('catalog.products.review.guest_review') && ! auth()->guard('customer')->user())
-                            <div :class="`${errors.has('name') ? 'has-error' : ''}`">
-                                <label for="title" class="required">
-                                    {{ __('shop::app.reviews.name') }}
-                                </label>
-                                <input  type="text" class="control" name="name" v-validate="'required'" value="{{ old('name') }}">
-                                <span :class="`control-error ${errors.has('name') ? '' : 'hide'}`">
-                                    @{{ errors.first('name') }}
-                                </span>
-                            </div>
-                        @endif
-
-                        <div :class="`${errors.has('comment') ? 'has-error' : ''}`">
-                            <label for="comment" class="required">
-                                {{ __('admin::app.customers.reviews.comment') }}
-                            </label>
-                            <textarea
-                                type="text"
-                                class="control"
-                                name="comment"
-                                v-validate="'required'"
-                                value="{{ old('comment') }}">
-                            </textarea>
-                            <span :class="`control-error ${errors.has('comment') ? '' : 'hide'}`">
-                                @{{ errors.first('comment') }}
-                            </span>
-                        </div>
-
-                        <div class="submit-btn">
-                            <button
-                                type="submit"
-                                class="theme-btn fs16">
-                                {{ __('velocity::app.products.submit-review') }}
-                            </button>
-                        </div>
-                    </form>
+                <div class="product-image">
+                    <a href="{{ route('shop.productOrCategory.index', $product->url_key) }}" title="{{ $product->name }}">
+                        <img src="{{ $productBaseImage['medium_image_url'] }}" />
+                    </a>
                 </div>
+
+                <div class="product-name mt-20">
+                    <a href="{{ route('shop.productOrCategory.index', $product->url_key) }}" title="{{ $product->name }}">
+                        <span>{{ $product->name }}</span>
+                    </a>
+                </div>
+
+                @include('shop::products.price')
+
             </div>
-            @if ($showRecentlyViewed)
-                @include ('shop::products.list.recently-viewed', [
-                    'addClass' => 'col-lg-3 col-md-12'
-                ])
-            @endif
-        </section>
-    </div>
+
+            <div class="review-form">
+                <form method="POST" action="{{ route('shop.reviews.store', $product->product_id ) }}" @submit.prevent="onSubmit">
+                    @csrf
+
+                    <div class="heading mt-10 mb-25">
+                        <span>{{ __('shop::app.reviews.write-review') }}</span>
+                    </div>
+
+                    <div class="control-group" :class="[errors.has('rating') ? 'has-error' : '']">
+                        <label for="title" class="required">
+                            {{ __('admin::app.customers.reviews.rating') }}
+                        </label>
+
+                        <div class="stars">
+                            <span class="star star-5" for="star-5" onclick="calculateRating(id)" id="1"></span>
+                            <span class="star star-4" for="star-4" onclick="calculateRating(id)" id="2"></span>
+                            <span class="star star-3" for="star-3" onclick="calculateRating(id)" id="3"></span>
+                            <span class="star star-2" for="star-2" onclick="calculateRating(id)" id="4"></span>
+                            <span class="star star-1" for="star-1" onclick="calculateRating(id)" id="5"></span>
+                        </div>
+
+                        <input type="hidden" id="rating" name="rating" v-validate="'required'">
+
+                        <div class="control-error" v-if="errors.has('rating')">@{{ errors.first('rating') }}</div>
+                    </div>
+
+                    <div class="control-group" :class="[errors.has('title') ? 'has-error' : '']">
+                        <label for="title" class="required">
+                            {{ __('shop::app.reviews.title') }}
+                        </label>
+                        <input  type="text" class="control" name="title" v-validate="'required'" value="{{ old('title') }}">
+                        <span class="control-error" v-if="errors.has('title')">@{{ errors.first('title') }}</span>
+                    </div>
+
+                    @if (core()->getConfigData('catalog.products.review.guest_review') && ! auth()->guard('customer')->user())
+                        <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
+                            <label for="title" class="required">
+                                {{ __('shop::app.reviews.name') }}
+                            </label>
+                            <input  type="text" class="control" name="name" v-validate="'required'" value="{{ old('name') }}">
+                            <span class="control-error" v-if="errors.has('name')">@{{ errors.first('name') }}</span>
+                        </div>
+                    @endif
+
+                    <div class="control-group" :class="[errors.has('comment') ? 'has-error' : '']">
+                        <label for="comment" class="required">
+                            {{ __('admin::app.customers.reviews.comment') }}
+                        </label>
+                        <textarea type="text" class="control" name="comment" v-validate="'required'" value="{{ old('comment') }}">
+                        </textarea>
+                        <span class="control-error" v-if="errors.has('comment')">@{{ errors.first('comment') }}</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-lg btn-primary">
+                        {{ __('shop::app.reviews.submit') }}
+                    </button>
+
+                </form>
+            </div>
+        </div>
+
+    </section>
 
 @endsection
+
+
+@push('scripts')
+
+    <script>
+
+        function calculateRating(id) {
+            var a = document.getElementById(id);
+            document.getElementById("rating").value = id;
+
+            for (let i=1 ; i <= 5 ; i++) {
+                if (id >= i) {
+                    document.getElementById(i).style.color="#242424";
+                } else {
+                    document.getElementById(i).style.color="#d4d4d4";
+                }
+            }
+        }
+
+    </script>
+
+@endpush

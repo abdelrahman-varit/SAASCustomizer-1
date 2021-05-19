@@ -1,8 +1,5 @@
 @extends('shop::layouts.master')
 
-@inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
-@inject ('productRatingHelper', 'Webkul\Product\Helpers\Review')
-
 @php
     $channel = core()->getCurrentChannel();
 
@@ -40,37 +37,11 @@
     @endif
 @endsection
 
-@push('css')
-    <style type="text/css">
-        .product-price span:first-child, .product-price span:last-child {
-            font-size: 18px;
-            font-weight: 600;
-        }
-    </style>
-@endpush
-
 @section('content-wrapper')
-    @include('shop::home.slider')
-@endsection
+    {!! view_render_event('bagisto.shop.home.content.before') !!}
 
-@section('full-content-wrapper')
+    {!! DbView::make($channel)->field('home_page_content')->with(['sliderData' => $sliderData])->render() !!}
 
-    <div class="full-content-wrapper" >
-        {!! view_render_event('bagisto.shop.home.content.before') !!}
-
-            {{-- @if ($velocityMetaData)
-                {!! DbView::make($velocityMetaData)->field('home_page_content')->render() !!}
-            @else --}}
-                @include('shop::home.advertisements.advertisement-four')
-                @include('shop::home.featured-products')
-                @include('shop::home.advertisements.advertisement-three')
-                @include('shop::home.new-products')
-                @include('shop::home.advertisements.advertisement-two')
-               
-            {{-- @endif --}}
-
-        {{ view_render_event('bagisto.shop.home.content.after') }}
-    </div>
+    {{ view_render_event('bagisto.shop.home.content.after') }}
 
 @endsection
-
