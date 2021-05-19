@@ -1449,31 +1449,29 @@ a:visited {
 .compare-products .product-price {
 	margin: 0;
 	color: #cb1a1c !important;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-column-gap: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .compare-products .product-price .regular-price {
-	text-align: left;
+	padding-left: 10px;
 }
 
 .compare-products .product-price .special-price {
-	text-align: right;
 }
 
 .compare-products .product-price .sale {
-	grid-column-start: 1;
-	grid-column-end: -1;
+	flex: 1 1 100%;
 }
 
 .compare-products .product-price .final-price {
-	text-align: left;
 }
 
 .compare-products .product-price .price-label {
 	margin: 0;
-	text-align: right;
+	font-weight: bold;
+	flex: 1 1 100%;
 }
 
 .compare-products .desc p:last-child {
