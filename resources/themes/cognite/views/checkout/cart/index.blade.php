@@ -86,8 +86,8 @@
                                             @endif
 
                                             <span class="remove">
-                                                {{-- <a href="{{ route('shop.checkout.cart.remove', $item->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.remove-link') }}</a></span> --}}
-                                                <a href="" onclick="removeCart('{{$item->id}}',this)" style="margin-left:10px;">{{ __('shop::app.checkout.cart.remove-link') }}</a></span>
+                                                <a href="{{ route('shop.checkout.cart.remove', $item->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.remove-link') }}</a></span>
+                                                <a href="#" onclick="removeCart('{{$item->id}}',this)">{{ __('shop::app.checkout.cart.remove-link') }}</a></span>
 
                                             @auth('customer')
                                                 <span class="towishlist">
@@ -120,7 +120,7 @@
 
                             <div>
                                 @if ($cart->hasProductsWithQuantityBox())
-                                <button type="submit" class="btn btn-lg btn-primary" id="update_cart_button" style="display:none">
+                                <button type="submit" class="btn btn-lg btn-primary" id="update_cart_button">
                                     {{ __('shop::app.checkout.cart.update-cart') }}
                                 </button>
                                 @endif
