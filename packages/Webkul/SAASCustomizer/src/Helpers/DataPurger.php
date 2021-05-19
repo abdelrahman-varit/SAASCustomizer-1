@@ -984,6 +984,16 @@ class DataPurger
             return "prepareDemoProducctData";
         }
 
+        $channel_inventory_sources_update = DB::table('channel_inventory_sources')
+        ->insert([
+                "channel_id"            => $channelData->id,
+                "inventory_source_id"   => $inventory_id,
+        ]);
+
+
+
+        
+
         $data1=[
             "_token"                => "CgWmt7sEZ4LpKI9ujkkaSYb6qoiMEkhvjEGNUdt3",
             "type"                  => "simple",
@@ -1045,11 +1055,7 @@ class DataPurger
                 "category_id"           => $categoryList[0]['category']->id
             ]);
 
-        $product1_channel_inventory_sources_update = DB::table('channel_inventory_sources')
-        ->insert([
-                "channel_id"            => $channelData->id,
-                "inventory_source_id"   => $inventory_id,
-            ]);
+        
 
 
 
