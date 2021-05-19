@@ -190,8 +190,6 @@ class ProductController extends Controller
     {
         $product = $this->productRepository->with(['variants', 'variants.inventories'])->findOrFail($id);
 
-        dd($product);
-
         $categories = $this->categoryRepository->getCategoryTree();
 
         $inventorySources = $this->inventorySourceRepository->findWhere(['status' => 1]);
