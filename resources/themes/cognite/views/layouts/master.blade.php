@@ -66,7 +66,6 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            text-align: center;
             -webkit-transform: translate(-50%, -50%);
             -moz-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
@@ -74,17 +73,20 @@
         .se-pre-con-logo {
             max-width: 173px;
             height: auto;
+            -webkit-transform: scale(1);
+            -moz-transform: scale(1);
+            transform: scale(1);
 	        animation: pulse 2s infinite;
         }
         @keyframes pulse {
             0% {
-                width: 90%;
+                transform: scale(0.9);
             }
             70% {
-                width: 100%;
+                transform: scale(1);
             }
             100% {
-                width: 90%;
+                transform: scale(0.9);
             }
         }
     </style>
@@ -99,7 +101,7 @@
             @if ($logo = core()->getCurrentChannel()->logo_url)                
                 <img class="se-pre-con-logo" src="{{ $logo }}" />
             @else
-                <img class="se-pre-con-logo" src="{{ asset('themes/congnite/assets/images/logo.svg') }}" />
+                <img class="se-pre-con-logo" src="{{ bagisto_asset('images/logo.svg') }}" />
             @endif
         </div>
     </div>

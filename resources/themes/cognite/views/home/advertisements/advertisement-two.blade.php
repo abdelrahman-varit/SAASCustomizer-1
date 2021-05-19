@@ -17,8 +17,9 @@
             $isRendered = true;
         @endphp
 
-        <div class="main-container-wrapper advertisement-three-container">
-        <div class="col-4">
+        <div class="main-container-wrapper advertisement-four-container" style="display: flex;">
+            <div class="row">
+                <div class="col-4">
                 @if ( isset($advertisementTwo[0]))
                     <a @if (isset($one)) href="{{ $one }}" @endif >
                         <img class="col-12" src="{{ asset('/storage/' . $advertisementTwo[0]) }}" />
@@ -57,6 +58,7 @@
 
                     @endif
                 </div>
+            </div>
         </div>
     @endif
 @endif

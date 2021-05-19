@@ -1,7 +1,6 @@
 <div id="sidenav">
     <div class="category_heading">
-    	<div class="all_cat_title">All Categories</div>
-		<div class="all_cat_btn"><a href="#"><i class="las la-bars"></i></a></div>
+    	All Categories
     </div>
  	
  	<div class="category_content">
@@ -79,16 +78,6 @@
 			font-weight: bold;
 			font-size: 18px;
 			max-height: 50px;
-			display: flex;
-    		align-items: center;
-		}
-
-		#sidenav .category_heading .all_cat_title{
-			flex: 1;
-		}
-
-		#sidenav .category_heading .all_cat_btn a{
-			color: white;
 		}
 		#sidenav .category_content{
 			background-color: #f2f2f2;
@@ -186,12 +175,7 @@
 		$('li.expandable').click(function() {
 		    $(this).children('ul').toggle();
 		    $(this).toggleClass("active");
-		    // return false;
-		});
-
-		$("#sidenav .category_heading .all_cat_btn a").click(function(e) {
-			e.preventDefault();
-			$("#sidenav").toggleClass("collapse");
+		    return false;
 		});
 	});
 
