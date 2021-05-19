@@ -1019,12 +1019,29 @@ class DataPurger
                 "meta_keywords"         => "Trademil Model-03F",
                 "meta_description"      => "Trademil Model-03F",
                 "price"                 => 350,
-                "weight"                => 2,
-                "inventories"           => [$inventoryList->id => "100"],
-                "categories"            => [
-                                            0 => $categoryList[0]['category']->id, 
-                                            1 => $categoryList[0]['sub1']->id, 
-                                            2 => $categoryList[0]['sub2']->id],
+                "weight"                => 2
+            )
+        );
+
+        $product1_inventory_update = DB::table('product_inventories')
+        ->where('product_id', $product1_id)
+        ->limit(1)
+        ->update(
+            array(
+                "qty"                   => 100,
+                "product_id"            => $product1_id,
+                "inventory_source_id"   => $inventory_id,
+                'company_id'            => $companyRepository->id
+            )
+        );
+
+        $product1_category_update = DB::table('product_categories')
+        ->where('product_id', $product1_id)
+        ->limit(1)
+        ->update(
+            array(
+                "product_id"            => $product1_id,
+                "category_id"           => $categoryList[0]['category']->id
             )
         );
 
