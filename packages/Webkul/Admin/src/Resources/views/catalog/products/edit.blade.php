@@ -13,6 +13,9 @@
 
         <form method="POST" action="" @submit.prevent="onSubmit" enctype="multipart/form-data">
 
+
+                {{dd($product)}}
+                
             <div class="page-header">
 
                 <div class="page-title">
@@ -59,8 +62,6 @@
 
             <div class="page-content">
                 @csrf()
-
-                {{dd($product)}}
 
                 <input name="_method" type="hidden" value="PUT">
 
