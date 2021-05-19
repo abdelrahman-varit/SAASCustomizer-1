@@ -209,6 +209,8 @@ class ProductController extends Controller
     {
         $data = request()->all();
 
+        dd($data);
+
         $multiselectAttributeCodes = array();
 
         $productAttributes = $this->productRepository->findOrFail($id);
