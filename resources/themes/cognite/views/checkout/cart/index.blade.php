@@ -87,7 +87,7 @@
 
                                             <span class="remove">
                                                 <a href="{{ route('shop.checkout.cart.remove', $item->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.remove-link') }}</a></span>
-                                                <a href="#" onclick="removeCart('{{$item->id}}')">{{ __('shop::app.checkout.cart.remove-link') }}</a></span>
+                                                <a href="#" onclick="removeCart('{{$item->id}}',this)">{{ __('shop::app.checkout.cart.remove-link') }}</a></span>
 
                                             @auth('customer')
                                                 <span class="towishlist">
@@ -179,11 +179,11 @@
             <div class="wrap">
                 <label>{{ __('shop::app.products.quantity') }}</label>
 
-                <button type="button" class="decrease" @click="decreaseQty()">-</button>
+                <button type="button" class="decrease" @click="decreaseQty(productid)">-</button>
 
                 <input :name="controlName" id="qty-box" :data-product-id="productid" class="control" :value="qty" v-validate="'required|numeric|min_value:1'" data-vv-as="&quot;{{ __('shop::app.products.quantity') }}&quot;" readonly>
 
-                <button type="button" class="increase" @click="increaseQty()">+</button>
+                <button type="button" class="increase" @click="increaseQty(productid)">+</button>
 
                 <span class="control-error" v-if="errors.has(controlName)">@{{ errors.first(controlName) }}</span>
             </div>
@@ -223,7 +223,7 @@
             },
 
             methods: {
-                decreaseQty: function() {
+                decreaseQty: function(productIDs) {
                     if (this.qty > 1)
                         this.qty = parseInt(this.qty) - 1;
                     var loader = document.getElementById('animated-loader');
@@ -236,7 +236,7 @@
                         _token: "{{csrf_token()}}",
                         is_ajax:1,
                         qty:this.qty,
-                        product:productID
+                        product:productIDs
                     };
                
                     this.$http.post('{{route("shop.checkout.cart.update")}}',data).then(response=>{
@@ -251,7 +251,7 @@
                     });
                 },
 
-                increaseQty: function() {
+                increaseQty: function(productIDs) {
                     this.qty = parseInt(this.qty) + 1;
 
                     this.$emit('onQtyUpdated', this.qty)
@@ -263,7 +263,7 @@
                         _token: "{{csrf_token()}}",
                         is_ajax:1,
                         qty:this.qty,
-                        product:productID
+                        product:productIDs
                     };
                
                     this.$http.post('{{route("shop.checkout.cart.update")}}',data).then(response=>{
@@ -276,6 +276,9 @@
                         }
                         loader.style.display = "none";
 
+                    }).catch(error=>{
+                        console.log(error);
+                        loader.style.display = "none";
                     });
                 }
             }
@@ -286,15 +289,33 @@
             event.preventDefault();
         }
 
-        function removeCart(itemid) {
+        function removeCart(itemid, currentElement) {
             if (!confirm('Do you want to remove from cart')){
                 event.preventDefault();
                 return false;
             }else{
-                this.$http.get("{{ route('shop.checkout.cart.remove', "+itemid+") }}").then(response=>{
-                    console.log(response.data);
+                var loader = document.getElementById('animated-loader');
+                loader.style.display = "block";
+                fetch("/checkout/cart/remove/"+itemid+"?is_ajax=1").then(response=>response.json()).then(data=>{
+                    console.log(data);
+                    if(data.status=="success"){
+                        var cart = data.data;
+                        if(cart){
+                            document.getElementById('summary-item-qty').innerHTML = parseInt(cart.items_qty);
+                            document.getElementById('summary-sub-total').innerHTML = "$" + parseFloat(cart.base_sub_total).toFixed(2);
+                            document.getElementById('grand-total-amount-detail').innerHTML = "$" + parseFloat(cart.base_grand_total).toFixed(2);
+                            var curEl = currentElement.parentElement.parentElement.parentElement;
+                            if(curEl){
+                                curEl.remove();
+                            }
+                        }else{
+                            location.reload();
+                        }
+                    }
+                    loader.style.display = "none";
                 }).catch(error=>{
                     console.log(error);
+                    loader.style.display = "none";
                 });
             }
         }
