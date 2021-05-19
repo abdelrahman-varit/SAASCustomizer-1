@@ -1043,7 +1043,8 @@ class DataPurger
 
 
 
-        $data_one = array(
+        $data = array(
+
             "channel" => $companyRepository->username,
             "locale" => "en",
             "_token" => csrf_token(),
@@ -1077,11 +1078,10 @@ class DataPurger
                 $inventory_id => "100"
             ],
             "categories" => [
-                0 => $categoryList[0]['category']->id
-            ],
-            "channels" => [
-                0 => $channelData
-            ]
+                                0 => $categoryList[0]['category']->id, 
+                                1 => $categoryList[0]['sub1']->id, 
+                                2 => $categoryList[0]['sub2']->id],
+            "channels" => [0 => $channelData->id]
         );
 
         $multiselectAttributeCodes = array();
@@ -1108,7 +1108,7 @@ class DataPurger
             }
         }
 
-        $product1_update = $this->productRepository->update($data_one, $product1_id);
+        $product = $this->productRepository->update($data, $productAttributes->id);
         
 
 
