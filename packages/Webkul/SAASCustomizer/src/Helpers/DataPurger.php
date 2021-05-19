@@ -1004,7 +1004,7 @@ class DataPurger
             "sku"               => $product1_create->sku,
         ];
 
-        $product1_update = $this->productFlatRepository->update($product1_edit, $product1_id);
+        $product1_update = $this->productFlatRepository->update($product1_edit,$product1_id);
 
     }
 
