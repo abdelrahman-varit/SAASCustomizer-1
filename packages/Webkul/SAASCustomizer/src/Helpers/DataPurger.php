@@ -1623,6 +1623,7 @@ class DataPurger
 
         // New Pages according to design
 
+        // Customer Service
         DB::table('cms_pages')->insert([
             [
                 'company_id' => $companyRepository->id,
@@ -1646,6 +1647,146 @@ class DataPurger
                 'meta_title' => 'Customer Service',
                 'meta_description' => '',
                 'meta_keywords' => 'customer,service'
+            ]
+        ]);
+
+
+        // Whats New
+        DB::table('cms_pages')->insert([
+            [
+                'company_id' => $companyRepository->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]
+        ]);
+
+        $cmsRepository = DB::table('cms_pages')->where('company_id', $companyRepository->id)->orderBy('id', 'desc')->limit(1)->get()->first();
+
+        DB::table('cms_page_translations')->insert([
+            [
+                'locale' => $localeRepository->code,
+                'cms_page_id' => $cmsRepository->id,
+                'company_id' => $companyRepository->id,
+                'url_key' => 'whats-new',
+                'html_content' => '<div class="static-container">
+                                   <div class="mb-5">Whats New page content</div>
+                                   </div>',
+                'page_title' => 'Whats New',
+                'meta_title' => 'Whats New',
+                'meta_description' => '',
+                'meta_keywords' => 'Whats,New'
+            ]
+        ]);
+
+
+        // Order and Returns
+        DB::table('cms_pages')->insert([
+            [
+                'company_id' => $companyRepository->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]
+        ]);
+
+        $cmsRepository = DB::table('cms_pages')->where('company_id', $companyRepository->id)->orderBy('id', 'desc')->limit(1)->get()->first();
+
+        DB::table('cms_page_translations')->insert([
+            [
+                'locale' => $localeRepository->code,
+                'cms_page_id' => $cmsRepository->id,
+                'company_id' => $companyRepository->id,
+                'url_key' => 'order-and-returns',
+                'html_content' => '<div class="static-container">
+                                   <div class="mb-5">Order and Returns page content</div>
+                                   </div>',
+                'page_title' => 'Order and Returns',
+                'meta_title' => 'Order and Returns',
+                'meta_description' => '',
+                'meta_keywords' => 'Order, Returns'
+            ]
+        ]);
+
+
+        // Payment Policy
+        DB::table('cms_pages')->insert([
+            [
+                'company_id' => $companyRepository->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]
+        ]);
+
+        $cmsRepository = DB::table('cms_pages')->where('company_id', $companyRepository->id)->orderBy('id', 'desc')->limit(1)->get()->first();
+
+        DB::table('cms_page_translations')->insert([
+            [
+                'locale' => $localeRepository->code,
+                'cms_page_id' => $cmsRepository->id,
+                'company_id' => $companyRepository->id,
+                'url_key' => 'payment-policy',
+                'html_content' => '<div class="static-container">
+                                   <div class="mb-5">Payment Policy page content</div>
+                                   </div>',
+                'page_title' => 'Payment Policy',
+                'meta_title' => 'Payment Policy',
+                'meta_description' => '',
+                'meta_keywords' => 'Payment Policy'
+            ]
+        ]);
+
+
+        // Shipping Policy
+        DB::table('cms_pages')->insert([
+            [
+                'company_id' => $companyRepository->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]
+        ]);
+
+        $cmsRepository = DB::table('cms_pages')->where('company_id', $companyRepository->id)->orderBy('id', 'desc')->limit(1)->get()->first();
+
+        DB::table('cms_page_translations')->insert([
+            [
+                'locale' => $localeRepository->code,
+                'cms_page_id' => $cmsRepository->id,
+                'company_id' => $companyRepository->id,
+                'url_key' => 'shipping-policy',
+                'html_content' => '<div class="static-container">
+                                   <div class="mb-5">Shipping Policy page content</div>
+                                   </div>',
+                'page_title' => 'Shipping Policy',
+                'meta_title' => 'Shipping Policy',
+                'meta_description' => '',
+                'meta_keywords' => 'Shipping Policy'
+            ]
+        ]);
+
+
+        // Privacy and Cookies Policy
+        DB::table('cms_pages')->insert([
+            [
+                'company_id' => $companyRepository->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]
+        ]);
+
+        $cmsRepository = DB::table('cms_pages')->where('company_id', $companyRepository->id)->orderBy('id', 'desc')->limit(1)->get()->first();
+
+        DB::table('cms_page_translations')->insert([
+            [
+                'locale' => $localeRepository->code,
+                'cms_page_id' => $cmsRepository->id,
+                'company_id' => $companyRepository->id,
+                'url_key' => 'privacy-and-cookies-policy',
+                'html_content' => '<div class="static-container">
+                                   <div class="mb-5">Privacy and Cookies Policy page content</div>
+                                   </div>',
+                'page_title' => 'Privacy and Cookies Policy',
+                'meta_title' => 'Privacy and Cookies Policy',
+                'meta_description' => '',
+                'meta_keywords' => 'Privacy and Cookies Policy'
             ]
         ]);
 
