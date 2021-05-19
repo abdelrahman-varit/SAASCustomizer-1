@@ -3,9 +3,8 @@
     <section class="featured-products">
 
         <div class="featured-heading">
-            <div class="col-3">{{ __('shop::app.home.new-products') }}</div>
-            <div class="col-9"><hr></div>
-          
+            <div class="col-3 ftitle">{{ __('shop::app.home.new-products') }}</div>
+            <div class="col-9 fline"><hr></div>          
         </div>
 
 
@@ -27,8 +26,8 @@
     <section class="featured-products">
 
         <div class="featured-heading">
-            <div class="col-3">{{ __('shop::app.home.new-products') }}</div>
-            <div class="col-9"><hr></div>
+            <div class="col-3 ftitle">{{ __('shop::app.home.new-products') }}</div>
+            <div class="col-9 fline"><hr></div>
         </div>
 
 

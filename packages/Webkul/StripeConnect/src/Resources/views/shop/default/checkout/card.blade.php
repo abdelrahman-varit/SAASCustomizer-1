@@ -23,9 +23,26 @@
                         margin-left: -50px;
                         margin-top: -50px;
                       }
-                        .badge.badge-md {
-                            padding: 13px 10px;
-                        }
+                    .badge.badge-md {
+                        padding: 13px 10px;
+                    }                        
+                    .cp-spinner {
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        margin: 0;
+                        background: rgba(255, 255, 255, 0.5);
+                        z-index: 999;
+                    }
+
+                    .cp-round:after,
+                    .cp-round:before {
+                        top: 50%;
+                        left: 50%;
+                        margin-top: -24px;
+                        margin-left: -24px;
+                    }
                 </style>
             </head>
 
