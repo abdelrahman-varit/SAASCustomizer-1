@@ -38,7 +38,9 @@
                     @if (in_array($category->display_mode, [null, 'description_only', 'products_and_description']))
                         @if ($category->description)
                             <div class="category-description">
-                                {!! $category->description !!}
+                                <div>
+                                    {!! $category->description !!}
+                                </div>
                             </div>
                         @endif
                     @endif
