@@ -989,31 +989,8 @@ class DataPurger
             "type"                  => "simple",
             "attribute_family_id"   => $this->attributeFamilyData->id,
             "sku"                   => time().$companyRepository->id,
-
-            "name"                  => "Trademil Model-03F",
-            "url_key"               => "trademil-03f-".time().'-'.$companyRepository->id,
-            "new"                   => 1,
-            "featured"              => 1,
-            "visible_individually"  => 1,
-            "status"                => 1,
-            "color"                 => 10,
-            "size"                  => 15,
-            "guest_checkout"        => 1,
-            "short_description"     => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
-                ",
-            "description"           => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries    
-            ",
-            "meta_title"            => "Trademil Model-03F",
-            "meta_keywords"         => "Trademil Model-03F",
-            "meta_description"      => "Trademil Model-03F",
-            "price"                 => 350,
-            "weight"                => 2,
-            "inventories"           => [$inventoryList->id => "100"],
-            "categories"            => [
-                                        0 => $categoryList[0]['category']->id, 
-                                        1 => $categoryList[0]['sub1']->id, 
-                                        2 => $categoryList[0]['sub2']->id],
-                                    ];
+        ];
+            
 
         $product1_create = $this->productRepository->create($data1);
 
@@ -1024,8 +1001,31 @@ class DataPurger
         ->limit(1)
         ->update(
             array(
-                'channel'   => $companyRepository->username,
-                'sku'       => $product1_create->sku,
+                'channel'               => $companyRepository->username,
+                'sku'                   => $product1_create->sku,
+                "name"                  => "Trademil Model-03F",
+                "url_key"               => "trademil-03f-".time().'-'.$companyRepository->id,
+                "new"                   => 1,
+                "featured"              => 1,
+                "visible_individually"  => 1,
+                "status"                => 1,
+                "color"                 => 10,
+                "size"                  => 15,
+                "guest_checkout"        => 1,
+                "short_description"     => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
+                    ",
+                "description"           => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries    
+                ",
+                "meta_title"            => "Trademil Model-03F",
+                "meta_keywords"         => "Trademil Model-03F",
+                "meta_description"      => "Trademil Model-03F",
+                "price"                 => 350,
+                "weight"                => 2,
+                "inventories"           => [$inventoryList->id => "100"],
+                "categories"            => [
+                                            0 => $categoryList[0]['category']->id, 
+                                            1 => $categoryList[0]['sub1']->id, 
+                                            2 => $categoryList[0]['sub2']->id],
             )
         );
 
