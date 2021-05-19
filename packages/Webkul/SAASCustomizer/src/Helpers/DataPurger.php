@@ -1033,14 +1033,17 @@ class DataPurger
             $product->update(['type' => $productType]);
 
             if ($product->type == 'simple') {
-                factory(\Webkul\Product\Models\ProductFlat::class)->create(['product_id' => $product]);
+                factory(\Webkul\Product\Models\ProductFlat::class)->create(
+                    [
+                        'product_id'    => $product,
+                        'inventories'   => [$inventoryList->id => "100"],
+                        'channels'      => [0 => $channelData->id],
+                        'categories'    => [0 => $categoryList[0]['category']->id, 1 => $categoryList[0]['sub1']->id, 2 => $categoryList[0]['sub2']->id],
+                    ]);
 
                 factory(\Webkul\Product\Models\ProductInventory::class)->create(
                         [
-                            'product_id' => $product->id, 
-                            'inventories' => [$inventoryList->id => "100"],
-                            'channels' => [0 => $channelData->id],
-                            "categories" => [0 => $categoryList[0]['category']->id, 1 => $categoryList[0]['sub1']->id, 2 => $categoryList[0]['sub2']->id],
+                            'product_id' => $product->id
                         ]);
             }
         });
