@@ -992,7 +992,7 @@ class DataPurger
 
         $product1_create = $this->productRepository->create($data1);
 
-        dd($product1_create->id);
+        $product1_id = $product1_create->id;
 
         $product1_edit = [
             "channel"           => $companyRepository->username,
@@ -1025,7 +1025,8 @@ class DataPurger
             "channels"          => [0 => $channelData->id]
         ];
 
-        $product1_update = $this->productRepository->update($product1_edit, $product1_create->id);
+        dd($product1_id);
+        $product1_update = $this->productRepository->update($product1_edit, $product1_id);
 
     }
 
