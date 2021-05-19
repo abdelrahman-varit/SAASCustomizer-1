@@ -75,7 +75,7 @@
                                 </div>
 
                                 <div class="item-remove">
-                                    <button type="button" class="" onclick="removeCartItem({{$item->id}}, this)">x</button>
+                                    <button type="button" class="" onclick="removeCartItem({{$item->id}}, this)"><i class="las la-times"></i></button>
                                 </div>
 
                             </div>
