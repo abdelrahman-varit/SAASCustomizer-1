@@ -1043,7 +1043,7 @@ class DataPurger
 
 
 
-        $data = array(
+        $data1 = array(
 
             "channel" => $companyRepository->username,
             "locale" => "en",
@@ -1109,7 +1109,7 @@ class DataPurger
             }
         }
 
-        $product = $this->productRepository->update($data, $id);
+        $product1_update = $this->productRepository->update($data1, $product1_id);
         
 
 
