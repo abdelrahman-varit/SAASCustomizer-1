@@ -60,6 +60,8 @@
             <div class="page-content">
                 @csrf()
 
+                {{dd($product)}}
+
                 <input name="_method" type="hidden" value="PUT">
 
                 @foreach ($product->attribute_family->attribute_groups as $index => $attributeGroup)
