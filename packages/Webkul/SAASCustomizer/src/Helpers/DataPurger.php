@@ -984,15 +984,6 @@ class DataPurger
             return "prepareDemoProducctData";
         }
 
-        $channel_inventory_sources_update = DB::table('channel_inventory_sources')
-        ->insert([
-                "channel_id"            => $channelData->id,
-                "inventory_source_id"   => $inventory_id,
-        ]);
-
-
-
-        
 
         $data1=[
             "_token"                => "CgWmt7sEZ4LpKI9ujkkaSYb6qoiMEkhvjEGNUdt3",
@@ -1019,8 +1010,6 @@ class DataPurger
                 "featured"              => 1,
                 "visible_individually"  => 1,
                 "status"                => 1,
-                "color"                 => 10,
-                "color_label"           => 'Red',
                 "size"                  => 15,
                 "short_description"     => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
                     ",
@@ -1036,8 +1025,6 @@ class DataPurger
                 'width'                 => 0,
                 'height'                => 0,
                 'depth'                 => 0,
-                'size'                  => 0,
-                'size_label'                 => 'S'
             )
         );
 
