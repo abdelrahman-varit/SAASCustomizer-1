@@ -7,5 +7,9 @@
 @endsection
 
 @section('content-wrapper')
-    <compare-product></compare-product>
+    <div class="main-container-wrapper">
+        <div class="guest-compare-products">
+            <compare-product></compare-product>
+        </div>
+    </div>
 @endsection

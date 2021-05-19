@@ -5,9 +5,18 @@
 	.header .header-top div.right-content .search-box {
 		margin-right: 15px;
 	}
+	section.product-detail div.layouter {
+		margin-top: 0;
+	}
+	section.product-detail div.layouter .form-container .details {
+		margin-top: 30px;
+	}
 }
 
 @media (max-width: 767.98px) {
+	.middle-bar {
+		border-bottom: 1px solid #e1e1e1;
+	}
 	div#sidenav {
 		height: auto;
 	}
@@ -26,23 +35,155 @@
 	.header .header-top div.right-content .search-box {
 		display: block;
 	}
+	div.advertisement-three-container img,
 	div.advertisement-four-container img {
 		height: auto;
+	}
+	section.product-detail
+		div.layouter
+		.form-container
+		div.product-image-group
+		div
+		.thumb-list {
+		height: auto !important;
+	}
+	section.cart .cart-content .left-side .cart-item-list .item {
+		flex-direction: column;
+		gap: 5px;
+	}
+	div.slick-slide img {
+		height: auto;
+	}
+	#sidenav .category_content {
+		display: none;
+	}
+	#sidenav.collapse .category_content {
+		display: block;
+	}
+	#sidenav .category_heading .all_cat_btn a {
+		display: block;
+	}
+
+	.main-container-wrapper .product-grid-3,
+	.main-container-wrapper .product-grid-4 {
+		grid-template-columns: auto auto;
+		gap: 15px;
+	}
+	.account-content .account-layout .account-table-content table tbody tr td {
+		max-width: 100%;
+	}
+	.account-content .account-layout .account-table-content table td div {
+		top: auto;
+		left: auto;
+	}
+
+	.account-item-card .media-info .info {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.account-item-card,
+	.account-item-card .media-info {
+		flex-direction: column;
+		gap: 15px;
+	}
+	.review-list {
+		flex-direction: column;
+	}
+	section.review .review-layouter .product-info .product-name,
+	section.review .review-layouter .product-info .product-price {
+		max-width: 100%;
+	}
+	.recetly-viewed-products-wrapper {
+		grid-template-columns: auto auto;
+		gap: 15px !important;
+	}
+	.image-search-container .icon.camera-icon {
+		top: 4px;
 	}
 }
 
 @media (max-width: 991.98px) {
+	.checkout-process .col-right {
+		width: 100%;
+		padding: 0;
+		display: block;
+	}
+	.checkout-process .col-main {
+		width: 100%;
+		margin: 0;
+	}
+	.checkout-process .order-description .pull-left {
+		width: 100% !important;
+	}
+
+	.checkout-process .order-description .pull-right {
+		width: 100% !important;
+		margin-top: 50px;
+	}
+	.checkout-process .cart-item-list .item {
+		flex-direction: column;
+	}
+	.checkout-process .cart-item-list .item .item-details {
+		gap: 10px;
+	}
+	.checkout-process .col-right > div {
+		display: none;
+	}
+	.account-layout .datagrid-filters {
+		flex-direction: column;
+		gap: 15px;
+	}
 }
 
 @media (max-width: 1139.98px) {
 }
 
 @media (min-width: 576px) {
+	.advertisement-three-container,
+	.advertisement-four-container {
+		flex-direction: row;
+	}
 }
 
 @media (min-width: 768px) {
 	.header .header-top div.left-content .menu-box {
 		display: none;
+	}
+	.cart-item-list .single-item:first-child {
+		display: block;
+	}
+	.cart-item-list .item .item-details {
+		flex-direction: row;
+		gap: 30px;
+		align-items: center;
+	}
+	.cart-item-list .single-item .item-footer {
+		flex-direction: row;
+		align-items: center;
+	}
+	#sidenav .category_heading .all_cat_btn a {
+		display: none;
+	}
+	.cart-item-list .item .item-details {
+		align-items: flex-start;
+	}
+	.cart-item-list .single-item .item-footer {
+		align-items: flex-start;
+	}
+	.header {
+		margin-bottom: 0;
+	}
+	.account-layout .table table tr {
+		text-align: center;
+	}
+	.recetly-viewed-products-wrapper {
+		grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+		gap: 35px !important;
+	}
+	.main-container-wrapper
+		section.featured-products.recently-viewed-products-container {
+		margin-top: -20px;
 	}
 }
 
@@ -92,6 +233,33 @@
 	}
 	.header .header-bottom {
 		display: block;
+	}
+
+	.order-summary-wrapper {
+		margin-top: 15px;
+	}
+
+	section.cart .cart-content .left-side {
+		width: 67%;
+	}
+	section.cart .cart-content .right-side {
+		width: 33%;
+		padding-left: 30px;
+	}
+	.checkout-process .col-right {
+		width: 33%;
+		margin-top: 30px;
+	}
+	.checkout-process .col-main {
+		margin-right: 0;
+		width: 67%;
+	}
+	.checkout-process .order-description .pull-left {
+		width: 50% !important;
+	}
+
+	.checkout-process .order-description .pull-right {
+		width: 50% !important;
 	}
 }
 
