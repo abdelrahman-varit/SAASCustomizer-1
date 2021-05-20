@@ -780,9 +780,13 @@ section.product-detail div.layouter .form-container .details .quantity {
 	gap: 15px;
 }
 
-.bn-img-gallery-panel {
-	flex-direction: column !important;
-	max-height: 625px;
+section.product-detail
+	div.layouter
+	.form-container
+	div.product-image-group
+	div {
+	cursor: default;
+	flex-direction: column;
 }
 
 .recently-viewed {
@@ -812,8 +816,25 @@ section.product-detail
 	div.product-image-group
 	div
 	.product-hero-image {
-	background-color: transparent;
-	border: 1px solid #cccccc;
+	max-height: fit-content;
+	height: 400px;
+	overflow: hidden;
+	background-color: #f9f9f9;
+}
+
+section.product-detail
+	div.layouter
+	.form-container
+	div.product-image-group
+	div
+	.product-hero-image::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border: 1px solid #ccc;
 }
 
 section.product-detail
@@ -826,6 +847,7 @@ section.product-detail
 	border: 1px solid #cccccc;
 	padding: 5px;
 	background-color: transparent;
+	cursor: pointer;
 }
 
 section.product-detail
@@ -835,7 +857,7 @@ section.product-detail
 	div
 	.thumb-list
 	.thumb-frame.active {
-	border-color: #fae3da;
+	border-color: black;
 }
 
 section.product-detail {
@@ -890,7 +912,9 @@ section.product-detail
 	div
 	.product-hero-image
 	img {
-	max-height: 475px;
+	width: auto !important;
+	max-height: 398px;
+	max-width: calc(100% - 2px);
 }
 
 .cart-item-list .single-item {
@@ -2036,4 +2060,50 @@ div.advertisement-three-container img,
 div.advertisement-four-container img {
 	max-width: 100%;
 	height: 100%;
+}
+
+section.product-detail
+	div.layouter
+	.form-container
+	div.product-image-group
+	div
+	.thumb-list {
+	max-width: 100%;
+	width: 100% !important;
+	flex-direction: row;
+	height: auto !important;
+	margin: 10px 0 0 0;
+	overflow-x: auto;
+}
+
+section.product-detail
+	div.layouter
+	.form-container
+	div.product-image-group
+	div
+	.thumb-list
+	.thumb-frame
+	img {
+	width: auto;
+}
+
+section.product-detail
+	div.layouter
+	.form-container
+	div.product-image-group
+	div
+	.thumb-list
+	.gallery-control {
+	display: none;
+}
+
+section.product-detail
+	div.layouter
+	.form-container
+	div.product-image-group
+	div
+	.thumb-list
+	.thumb-frame
+	+ .thumb-frame {
+	margin-left: 10px;
 }
