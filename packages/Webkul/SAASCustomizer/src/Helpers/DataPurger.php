@@ -124,11 +124,11 @@ class DataPurger
         AttributeGroupRepository $attributeGroupRepository,
         CustomerGroupRepository $customerGroupRepository,
         CmsRepository $cmsRepository,
-        velocityMetadataRepository $velocityMetadataRepository,
+        VelocityMetadataRepository $velocityMetadataRepository,
         ContentRepository $contentRepository,
         ProductRepository $productRepository,
         ProductInventoryRepository $productInventoryRepository,
-        ProductAttributeValue $productAttributeValue
+        ProductAttributeValue $productAttributeValue,
     )
     {
         $this->categoryRepository = $categoryRepository;
