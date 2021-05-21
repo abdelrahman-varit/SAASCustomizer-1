@@ -402,7 +402,7 @@ class ProductDataGrid extends DataGrid
                 if (is_null($value->quantity)) {
                     return 0;
                 } else {
-                    return dd($value->quantity);
+                    return $value->quantity;
                 }
             },
         ]);
