@@ -16,7 +16,6 @@ use Webkul\CMS\Repositories\CmsRepository;
 use Webkul\Velocity\Repositories\VelocityMetadataRepository;
 use Webkul\Velocity\Repositories\ContentRepository;
 use Webkul\Product\Repositories\ProductRepository;
-use Webkul\Product\Models\ProductFlat;
 use Webkul\Product\Repositories\ProductFlatRepository as ProductFlat;
 use Webkul\Product\Repositories\ProductInventoryRepository;
 
