@@ -16,6 +16,7 @@ use Webkul\CMS\Repositories\CmsRepository;
 use Webkul\Velocity\Repositories\VelocityMetadataRepository;
 use Webkul\Velocity\Repositories\ContentRepository;
 use Webkul\Product\Repositories\ProductRepository;
+use Webkul\Product\Repositories\ProductFlatRepository;
 use Webkul\Product\Repositories\ProductInventoryRepository;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
@@ -101,6 +102,7 @@ class DataPurger
      * @var \Webkul\Product\Repositories\ProductRepository
      */
     protected $productRepository;
+    protected $productFlatRepository;
     protected $productInventoryRepository;
 
 
@@ -123,6 +125,7 @@ class DataPurger
         velocityMetadataRepository $velocityMetadataRepository,
         ContentRepository $contentRepository,
         ProductRepository $productRepository,
+        ProductFlatRepository $productFlatRepository,
         ProductInventoryRepository $productInventoryRepository
     )
     {
@@ -153,6 +156,7 @@ class DataPurger
         $this->contentRepository = $contentRepository;
 
         $this->productRepository = $productRepository;
+        $this->productFlatRepository = $productFlatRepository;
         $this->productInventoryRepository = $productInventoryRepository;
         
     }
@@ -1006,10 +1010,10 @@ class DataPurger
             "price"            => 500,
         ]);
 
-        $product1_update = $this->productRepository->update(
+        $product1_update = $this->productFlatRepository->where('product_id', $product1_create->id)->first();
+
+        $product1_update = $this->productFlatRepository->update(
             [
-                "_token" => csrf_token(),
-                "_method" => "PUT",
                 "sku" => $product1_create->sku,
             ],$product1_create->id
         );
