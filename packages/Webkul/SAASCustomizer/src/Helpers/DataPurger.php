@@ -16,7 +16,7 @@ use Webkul\CMS\Repositories\CmsRepository;
 use Webkul\Velocity\Repositories\VelocityMetadataRepository;
 use Webkul\Velocity\Repositories\ContentRepository;
 use Webkul\Product\Repositories\ProductRepository;
-use Webkul\Product\Repositories\ProductFlatRepository;
+use Webkul\Product\Models\ProductFlat;
 use Webkul\Product\Repositories\ProductInventoryRepository;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
@@ -1010,7 +1010,7 @@ class DataPurger
             "price"            => 500,
         ]);
 
-        $product1_update = $this->productFlatRepository->where('product_id', $product1_create->id)->first();
+        $product1_update = ProductFlat::where('product_id', $product1_create->id)->first();
 
         $product1_update = $this->productFlatRepository->update(
             [
