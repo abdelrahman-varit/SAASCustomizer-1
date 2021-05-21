@@ -1039,9 +1039,9 @@ class DataPurger
             'locale' => 'en',
         ];
 
-        $this->productAttributeValue->createAttributeValue($data);
+        $this->productAttributeValue->createAttributeValue($data1);
 
-        $this->productFlat->create($data);
+        $this->productFlat->create($data1);
 
 
 
