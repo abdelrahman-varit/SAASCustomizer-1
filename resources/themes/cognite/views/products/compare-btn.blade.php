@@ -4,10 +4,10 @@
 
     <script type="text/x-template" id="compare-component-template">
         <a
-            class="unset text-right"
+            class="unset text-right btn"
             title="{{  __('shop::app.customer.compare.add-tooltip') }}"
             @click="addProductToCompare"
-            style="cursor: pointer">
+            style="cursor: pointer; min-width: auto">
             <i class="icon compare-icons"></i>
             
         </a>

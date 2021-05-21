@@ -2094,3 +2094,23 @@ section.product-detail
 	+ .thumb-frame {
 	margin-left: 10px;
 }
+
+section.product-detail
+	div.layouter
+	.form-container
+	.details
+	.product-ratings
+	.review-info
+	.number {
+	display: none;
+}
+section.product-detail
+	div.layouter
+	.form-container
+	.details
+	.product-ratings
+	.review-info
+	.stars {
+	display: inline-block;
+	vertical-align: middle;
+}
