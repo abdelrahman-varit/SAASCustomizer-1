@@ -92,18 +92,11 @@
 		}
 		#sidenav .category_content{
 			background-color: #f2f2f2;
-			padding: 0px 10px 10px 0;
-			margin-right: 10px;
-			margin-top: 15px;
-			margin-bottom: 15px;
 			overflow-y: auto;
 		}
 		#sidenav .category_content .class-one li{
 			border-bottom: 1px solid #ccc;
 			width: 100%;
-		}
-		#sidenav .category_content .class-one li:last-child{
-			border-bottom: 0;
 		}
 
 		#sidenav .category_content .class-one li.active{
@@ -117,12 +110,13 @@
 		#sidenav .category_content .la-angle-right{
 			float: right;
 			position: relative;
-			top: 13px;
+			top: 16px;
 			right: 10px;
 		}
 		#sidenav .category_content .class-one li span{
 			padding: 12px 15px 12px 20px;
 			display: block;
+			cursor: pointer;
 		}
 		#sidenav .category_content .class-one li a{
 			width: 100%;

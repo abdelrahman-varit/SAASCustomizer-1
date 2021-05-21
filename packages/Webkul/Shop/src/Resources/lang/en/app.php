@@ -108,7 +108,7 @@ return [
         ],
 
         'signup-text' => [
-            'account_exists' => 'Already have an account',
+            'account_exists' => 'Already have an account?',
             'title' => 'Sign In'
         ],
 
@@ -140,7 +140,7 @@ return [
         ],
 
         'login-text' => [
-            'no_account' => 'Do not have account',
+            'no_account' => 'Do not have account?',
             'title' => 'Sign Up',
         ],
 
@@ -163,7 +163,7 @@ return [
             'title' => 'Recover Password',
             'email' => 'Email',
             'submit' => 'Send Password Reset Email',
-            'page_title' => 'Forgot your password ?'
+            'page_title' => 'Forgot your password?'
         ],
 
         'reset-password' => [
