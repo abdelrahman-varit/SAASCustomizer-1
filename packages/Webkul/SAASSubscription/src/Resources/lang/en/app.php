@@ -163,7 +163,7 @@ return [
         ],
 
         'plans' => [
-            'title' => 'Subcription Plans',
+            'title' => 'Subscription Plans',
             'allowed-products' => ':count Product(s)',
             'allowed-categories' => ':count Category(s)',
             'allowed-attributes' => ':count Attribute(s)',
