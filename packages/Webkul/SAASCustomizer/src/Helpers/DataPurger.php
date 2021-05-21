@@ -102,7 +102,6 @@ class DataPurger
      * @var \Webkul\Product\Repositories\ProductRepository
      */
     protected $productRepository;
-    protected $productFlatRepository;
     protected $productInventoryRepository;
 
 
@@ -125,7 +124,6 @@ class DataPurger
         velocityMetadataRepository $velocityMetadataRepository,
         ContentRepository $contentRepository,
         ProductRepository $productRepository,
-        ProductFlatRepository $productFlatRepository,
         ProductInventoryRepository $productInventoryRepository
     )
     {
@@ -156,7 +154,6 @@ class DataPurger
         $this->contentRepository = $contentRepository;
 
         $this->productRepository = $productRepository;
-        $this->productFlatRepository = $productFlatRepository;
         $this->productInventoryRepository = $productInventoryRepository;
         
     }
@@ -1002,12 +999,12 @@ class DataPurger
 
         $product1_create = $this->productRepository->create($data1);
         $product1_inventory_create = $this->productInventoryRepository->create([
-            'qty'                 => 150,
-            'product_id'          => $product1_create->id,
-            'inventory_source_id' => $inventorySourceId,
-            'vendor_id'           => 0,
-            "channels"            => [0 => $channelData->id],
-            "price"            => 500,
+            'qty'                   => 150,
+            'product_id'            => $product1_create->id,
+            'inventory_source_id'   => $inventorySourceId,
+            'vendor_id'             => 0,
+            "channels"              => [0 => $channelData->id],
+            "price"                 => 500,
         ]);
 
         $product1_update = ProductFlat::where('product_id', $product1_create->id)->first();
