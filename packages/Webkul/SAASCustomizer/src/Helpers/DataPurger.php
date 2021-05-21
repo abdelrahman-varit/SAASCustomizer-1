@@ -16,6 +16,7 @@ use Webkul\CMS\Repositories\CmsRepository;
 use Webkul\Velocity\Repositories\VelocityMetadataRepository;
 use Webkul\Velocity\Repositories\ContentRepository;
 use Webkul\Product\Repositories\ProductRepository;
+use Webkul\Product\Repositories\ProductInventoryRepository;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
@@ -100,7 +101,7 @@ class DataPurger
      * @var \Webkul\Product\Repositories\ProductRepository
      */
     protected $productRepository;
-    // protected $productFlatRepository;
+    protected $productInventoryRepository;
 
 
     protected $attributeFamilyData;
@@ -121,7 +122,8 @@ class DataPurger
         CmsRepository $cmsRepository,
         velocityMetadataRepository $velocityMetadataRepository,
         ContentRepository $contentRepository,
-        ProductRepository $productRepository
+        ProductRepository $productRepository,
+        ProductInventoryRepository $productInventoryRepository
     )
     {
         $this->categoryRepository = $categoryRepository;
@@ -151,6 +153,7 @@ class DataPurger
         $this->contentRepository = $contentRepository;
 
         $this->productRepository = $productRepository;
+        $this->productInventoryRepository = $productInventoryRepository;
         
     }
 
@@ -977,7 +980,7 @@ class DataPurger
     public function prepareDemoProductData($categoryList, $inventoryList, $channelData){
 
         $companyRepository = Company::getCurrent();
-        $inventory_id = $inventoryList->id;
+        $inventorySourceId = $inventoryList->id;
 
         if(empty($this->attributeFamilyData)){
             Log::info("Info:- prepareDemoProductData() not created for company " . $companyRepository->domain . ".");
@@ -994,6 +997,12 @@ class DataPurger
             
 
         $product1_create = $this->productRepository->create($data1);
+        $product1_inventory_create = $this->productInventoryRepository->create(
+            'qty'                 => 150,
+            'product_id'          => $product1_create->id,
+            'inventory_source_id' => $inventorySourceId,
+            'vendor_id'           => 0,
+        );
 
         dd($product1_create);
 
