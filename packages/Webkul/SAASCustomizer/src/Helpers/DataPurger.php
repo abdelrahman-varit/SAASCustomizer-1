@@ -1138,7 +1138,7 @@ class DataPurger
             ],
             'base_currency_id'  => $currencyRepository->id,
             'theme'             => 'cognite',
-            'home_page_content' => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'fitness-world-".$companyRepository->id."'])@include('shop::home.recent-products')</p>",
+            'home_page_content' => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'fitness-world'])@include('shop::home.recent-products')</p>",
 
             'footer_content' => 
             '<div class="list-container">
@@ -1888,7 +1888,7 @@ class DataPurger
             'company_id'            => $companyRepository->id,
             'locale'                => $localeRepository->code,
             'channel'               => $companyRepository->username,
-            'home_page_content'     => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'fitness-world-".$companyRepository->id."'])@include('shop::home.recent-products')</p>",
+            'home_page_content'     => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'fitness-world'])@include('shop::home.recent-products')</p>",
 
             'footer_left_content'   => trans('velocity::app.admin.meta-data.footer-left-raw-content'),
 
