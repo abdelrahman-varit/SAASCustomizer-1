@@ -1021,40 +1021,8 @@ class DataPurger
 
 
 
-        $data = [
-            'product_id' => $product1_create->id,
-            'sku' => $product1_create->sku,
-            'name' => 'Demo Product One',
-            'url_key' => 'demo-product-one'.'-' . rand(1,9999999).'-'.$companyRepository->id,
-            'new' => 1,
-            'featured' => 1,
-            'visible_individually' => 1,
-            'min_price' => 100,
-            'max_price' => 100,
-            'parent_id' => '',
-            'status' => 1,
-            'color' => 1,
-            'price' => 100,
-            'width' => null,
-            'height' =>null,
-            'depth' => null,
-            'meta_title' => '',
-            'meta_keywords' => '',
-            'meta_description' => '',
-            'weight' => null,
-            'color_label' => 'Red',
-            'size' => null,
-            'size_label' => null,
-            'short_description' => '<p>lorem</p>',
-            'description' => '<p>lorem</p>',
-            'channel' => $companyRepository->username,
-            'locale' => 'en',
-            'special_price' => null,
-            'special_price_from' => null,
-            'special_price_to' => null,
-        ];
-
-        $this->productAttributeValue->createAttributeValue($data);
+        $product1_get_all_attribute = $this->attributeRepository->where('company_id', $companyRepository->id)->get();
+        dd($product1_get_all_attribute);
 
 
 
