@@ -1006,6 +1006,10 @@ class DataPurger
             "channels"              => [0 => $channelData->id],
             "price"                 => 500,
         ]);
+        $product1_category_create = $this->categoryRepository->create([
+            'product_id'            => $product1_create->id,
+            'category_id'        => $categoryList[0]->id,
+        ]);
 
         $product1_update = ProductFlat::where('product_id', $product1_create->id)->first();
         $product1_update->sku = $product1_create->sku;
