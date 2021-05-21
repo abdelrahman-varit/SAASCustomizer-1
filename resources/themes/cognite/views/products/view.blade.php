@@ -61,11 +61,42 @@
                             </div>
 
                             <div class="product-ratings">
-                                <img src="{{asset('/themes/congnite/assets/images/icons/rating-red.png')}}" style="height:13px;width:13px"/>
-                                <img src="{{asset('/themes/congnite/assets/images/icons/rating-red.png')}}" style="height:13px;width:13px"/>
-                                <img src="{{asset('/themes/congnite/assets/images/icons/rating-red.png')}}" style="height:13px;width:13px"/>
+                                @inject ('reviewHelper', 'Webkul\Product\Helpers\Review')
+                                @if ($total = $reviewHelper->getTotalReviews($product))
+                                <div class="review-info">
+
+                                    <span class="number">
+                                        {{ $reviewHelper->getAverageRating($product) }}
+                                    </span>
+                    
+                                    <span class="stars">
+                                        @for ($i = 1; $i <= 5; $i++)
+                    
+                                          @if($i <= round($reviewHelper->getAverageRating($product)))
+                                            <span class="icon star-icon"></span>
+                                          @else
+                                            <span class="icon star-icon-blank"></span>
+                                          @endif
+                    
+                                        @endfor
+                                    </span>
+                    
+                                    <div class="total-reviews">
+                                        {{ __('shop::app.products.total-reviews', ['total' => $total]) }}
+                                    </div>
+                    
+                                </div>
+                                @else
                                 <img src="{{asset('/themes/congnite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
                                 <img src="{{asset('/themes/congnite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
+                                <img src="{{asset('/themes/congnite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
+                                <img src="{{asset('/themes/congnite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
+                                <img src="{{asset('/themes/congnite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
+                                <div class="total-reviews">
+                                    {{ __('shop::app.products.total-reviews', ['total' => $total]) }}
+                                </div>
+                                @endif
+                            
                             </div>
 
                             <div class="short-description">
@@ -107,6 +138,30 @@
                                     </div>
                                 </div> 
                                 
+                                {!! view_render_event('bagisto.shop.products.view.short_description.before', ['product' => $product]) !!}
+
+
+                                {!! view_render_event('bagisto.shop.products.view.short_description.after', ['product' => $product]) !!}
+
+
+                                {!! view_render_event('bagisto.shop.products.view.quantity.before', ['product' => $product]) !!}
+
+                            
+
+                                {!! view_render_event('bagisto.shop.products.view.quantity.after', ['product' => $product]) !!}
+
+
+                                @include ('shop::products.view.configurable-options')
+
+                                @include ('shop::products.view.downloadable')
+    
+                                @include ('shop::products.view.grouped-products')
+    
+                                @include ('shop::products.view.bundle-options')
+    
+                                
+                               
+                                
                                 <div class="others-information-row" >
                                     <div class="other-info-title" >Subtotal :</div>
                                     <div  class="other-info-value" id="subtotal-value" > 
@@ -120,7 +175,13 @@
 
                                 </div>
 
-                                <div class="" style="align-items:center;display:flex;flex-direction:row;gap:30px;margin-top:25px;">
+                                {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
+    
+                                {!! view_render_event('bagisto.shop.products.view.description.after', ['product' => $product]) !!}
+
+                                
+
+                                {{-- <div class="" style="align-items:center;display:flex;flex-direction:row;gap:30px;margin-top:25px;">
                                     <div class="other-info-title" >Share with us :</div>
                                     <div  class="other-info-value"  style="flex:0 0 70%;gap:30px;">
                                     <a href="#"><img src="{{asset('/themes/congnite/assets/images/facebook-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/></a> &nbsp; 
@@ -128,41 +189,10 @@
                                     <a href="#"><img src="{{asset('/themes/congnite/assets/images/twitter-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/></a> &nbsp; 
                                     <a href="#"><img src="{{asset('/themes/congnite/assets/images/pinterest-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/></a> &nbsp; 
                                     </div>
-                                </div>
+                                </div> --}}
 
                             </div>
 
-
-                           
-
-                            {!! view_render_event('bagisto.shop.products.view.short_description.before', ['product' => $product]) !!}
-
-                             
-
-                            {!! view_render_event('bagisto.shop.products.view.short_description.after', ['product' => $product]) !!}
-
-
-                            {!! view_render_event('bagisto.shop.products.view.quantity.before', ['product' => $product]) !!}
-
-                          
-
-                            {!! view_render_event('bagisto.shop.products.view.quantity.after', ['product' => $product]) !!}
-
-                            @include ('shop::products.view.configurable-options')
-
-                            @include ('shop::products.view.downloadable')
-
-                            @include ('shop::products.view.grouped-products')
-
-                            @include ('shop::products.view.bundle-options')
-
-                            {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
-
-                            {!! view_render_event('bagisto.shop.products.view.description.after', ['product' => $product]) !!}
-
-                            
-
-                            
                         </div>
                     </div>
                 </product-view>
@@ -171,7 +201,7 @@
                     <div class="tab">
                         <button class="tablinks active" onclick="openCity(event, 'description')" type="button">Description</button>
                         <button class="tablinks" onclick="openCity(event, 'more_info')"  type="button">More Info</button>
-                        <button class="tablinks" onclick="openCity(event, 'tags')"  type="button">Tags</button>
+                        {{-- <button class="tablinks" onclick="openCity(event, 'tags')"  type="button">Tags</button> --}}
                         <button class="tablinks" onclick="openCity(event, 'reviews')"  type="button">Reviews</button>
                     </div>
 
@@ -183,9 +213,9 @@
                         <p>{!! $product->short_description !!}</p> 
                     </div>
 
-                    <div id="tags" class="tabcontent">
+                    {{-- <div id="tags" class="tabcontent">
                         <p>Tags list</p>
-                    </div>
+                    </div> --}}
 
                     <div id="reviews" class="tabcontent">
                         @include ('shop::products.view.reviews')
@@ -335,10 +365,22 @@
                         this.qty = parseInt(this.qty) - 1;
 
                     this.$emit('onQtyUpdated', this.qty)
-                    var productPrice = document.getElementById('product-price').innerHTML ;
-                    productPrice = productPrice.substr(1,productPrice.length) ;
-                    var totalPrice = this.qty * productPrice; 
-                    document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                    var product_type = "{{$product->type}}";
+                    if(product_type=="simple"){
+                        var productPrice = document.getElementById('product-price').innerHTML ;
+                        productPrice = productPrice.substr(1,productPrice.length) ;
+                        var totalPrice = this.qty * productPrice; 
+                        document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                    }
+
+                    if(product_type=="bundle"){
+                        var priceDiv = document.getElementsByClassName('bundle-price')[0];
+                        console.log(priceDiv);
+                        var productPrice = priceDiv.innerHTML.substr(1,priceDiv.innerHTML.length) ;
+                        productPrice = productPrice.substr(1,productPrice.length) ;
+                        var totalPrice = this.qty * productPrice; 
+                        document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                    }
                      
                 },
 
@@ -346,10 +388,23 @@
                     this.qty = parseInt(this.qty) + 1;
 
                     this.$emit('onQtyUpdated', this.qty)
-                    var productPrice = document.getElementById('product-price').innerHTML ;
-                    productPrice = productPrice.substr(1,productPrice.length) ;
-                    var totalPrice = this.qty * productPrice; 
-                    document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                    var product_type = "{{$product->type}}";
+                    if(product_type=="simple"){
+                        var productPrice = document.getElementById('product-price').innerHTML ;
+                        console.log(priceDiv);
+                        productPrice = productPrice.substr(1,productPrice.length) ;
+                        var totalPrice = this.qty * productPrice; 
+                        document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                    }
+
+                    if(product_type=="bundle"){
+                        var priceDiv = document.getElementsByClassName('bundle-price')[0];
+                        console.log(priceDiv);
+                        var productPrice = priceDiv.innerHTML.substr(1,priceDiv.innerHTML.length) ;
+                        productPrice = productPrice.substr(1,productPrice.length) ;
+                        var totalPrice = this.qty * productPrice; 
+                        document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                    }
                      
                 }
             }
@@ -427,10 +482,16 @@
                     window.localStorage.setItem('recentlyViewed', JSON.stringify(uniqueNames));
                 }
 
-                var productPrice = document.getElementById('product-price').innerHTML ;
-                productPrice = productPrice.substr(1,productPrice.length) ;
-                var totalPrice = 1 * productPrice; 
-                document.getElementById('subtotal-value').innerHTML = productPrice;
+                var product_type = "{{$product->type}}";
+                if(product_type=="simple"){
+                    var productPriceDiv = document.getElementById('product-price') ;
+                    var productPrice = productPriceDiv.innerHTML ;
+                    productPrice = productPrice.substr(1,productPrice.length) ;
+                    var totalPrice = 1 * productPrice; 
+                    document.getElementById('subtotal-value').innerHTML = "$"+productPrice;
+                
+                }
+                
               
         };
     </script>
