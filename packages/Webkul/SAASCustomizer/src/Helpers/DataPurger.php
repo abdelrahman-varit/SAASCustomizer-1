@@ -20,7 +20,7 @@ use Webkul\Product\Repositories\ProductFlatRepository as ProductFlat;
 use Webkul\Product\Repositories\ProductInventoryRepository;
 
 use Webkul\Product\Models\ProductAttributeValue;
-use Webkul\SAASCustomizer\Repositories\AttributeValueRepository;
+use Webkul\DataFaker\Repositories\AttributeValueRepository;
 
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
