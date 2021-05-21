@@ -1024,7 +1024,7 @@ class DataPurger
             'product_id' => $product1_create->id,
             'sku' => $product1_create->sku,
             'name' => 'Demo Product One',
-            'url_key' => 'demo-product-one'.'-' . rand(1,9999999).'-'.$companyRepository->id;,
+            'url_key' => 'demo-product-one'.'-' . rand(1,9999999).'-'.$companyRepository->id,
             'new' => 1,
             'featured' => 1,
             'visible_individually' => 1,
