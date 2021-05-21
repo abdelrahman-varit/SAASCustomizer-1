@@ -1006,6 +1006,7 @@ class DataPurger
             "channels"              => [0 => $channelData->id],
             "price"                 => 500,
         ]);
+        dd($categoryList[0]['category']->id);
         $product1_category_create = $this->categoryRepository->create([
             'product_id'            => $product1_create->id,
             'category_id'           => $categoryList[0]['category']->id,
