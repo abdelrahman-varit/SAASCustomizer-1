@@ -997,12 +997,12 @@ class DataPurger
             
 
         $product1_create = $this->productRepository->create($data1);
-        $product1_inventory_create = $this->productInventoryRepository->create(
+        $product1_inventory_create = $this->productInventoryRepository->create([
             'qty'                 => 150,
             'product_id'          => $product1_create->id,
             'inventory_source_id' => $inventorySourceId,
             'vendor_id'           => 0,
-        );
+        ]);
 
         dd($product1_create);
 
