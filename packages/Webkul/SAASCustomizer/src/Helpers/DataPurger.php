@@ -1031,7 +1031,7 @@ class DataPurger
             'meta_keywords' => '',
             'meta_description' => '',
             'weight' => 1,
-            'color_label' => 'Red'
+            'color_label' => 'Red',
             'size' => 6,
             'size_label' => 'S',
             'short_description' => '<p>Short Description</p>',
