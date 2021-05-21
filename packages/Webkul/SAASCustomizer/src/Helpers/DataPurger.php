@@ -1009,9 +1009,19 @@ class DataPurger
 
         $product1_update = ProductFlat::where('product_id', $product1_create->id)->first();
         $product1_update->sku = $product1_create->sku;
+        $product1_update->name = 'Demo Product One';
+        $product1_update->url_key = 'Demo-Product-One-'.$companyRepository->id;
+        $product1_update->short_description = 'lorem';
+        $product1_update->description = 'lorem';
+        $product1_update->new = 1;
+        $product1_update->featured = 1;
+        $product1_update->status = 1;
+        $product1_update->visible_individually = 1;
+        $product1_update->price = 100;
+        $product1_update->min_price = 100;
+        $product1_update->max_price = 100;
+        $product1_update->weight = 1;
         $product1_update->save();
-
-
 
     }
 
