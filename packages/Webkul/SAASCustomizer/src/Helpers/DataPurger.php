@@ -1884,6 +1884,7 @@ class DataPurger
             'company_id'    => $companyRepository->id
         ]);
         
+        
         $data = [
             'company_id'            => $companyRepository->id,
             'locale'                => $localeRepository->code,
