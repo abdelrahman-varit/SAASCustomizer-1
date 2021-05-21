@@ -128,7 +128,7 @@ class DataPurger
         ContentRepository $contentRepository,
         ProductRepository $productRepository,
         ProductInventoryRepository $productInventoryRepository,
-        ProductAttributeValue $productAttributeValue,
+        ProductAttributeValue $productAttributeValue
     )
     {
         $this->categoryRepository = $categoryRepository;
