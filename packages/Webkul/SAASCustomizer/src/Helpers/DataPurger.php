@@ -20,6 +20,7 @@ use Webkul\Product\Models\ProductFlat;
 use Webkul\Product\Repositories\ProductInventoryRepository;
 
 use Webkul\Product\Models\ProductAttributeValue;
+use Webkul\SAASCustomizer\Repositories\AttributeValueRepository
 
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
@@ -128,7 +129,7 @@ class DataPurger
         ContentRepository $contentRepository,
         ProductRepository $productRepository,
         ProductInventoryRepository $productInventoryRepository,
-        ProductAttributeValue $productAttributeValue
+        AttributeValueRepository $productAttributeValue
     )
     {
         $this->categoryRepository = $categoryRepository;
