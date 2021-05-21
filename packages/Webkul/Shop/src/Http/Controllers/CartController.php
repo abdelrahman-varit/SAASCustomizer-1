@@ -67,9 +67,14 @@ class CartController extends Controller
     public function add($id)
     {
         try {
+            //dd(request()->all());
             $result = Cart::addProduct($id, request()->all());
-            
             if ($this->onFailureAddingToCart($result)) {
+                if(request()->get('is_ajax')){
+                    return response()->json([
+                        'data'=>cart()->getCart() 
+                    ]);
+                }
                 return redirect()->back();
             }
 
@@ -100,7 +105,20 @@ class CartController extends Controller
             Log::error('Shop CartController: ' . $e->getMessage(),
                 ['product_id' => $id, 'cart_id' => cart()->getCart() ?? 0]);
 
+                if(request()->get('is_ajax')){
+                    return response()->json([
+                        'status'=>'error',
+                        'data'=>cart()->getCart(),
+                        'message'=> $e->getMessage()
+                    ]);
+                }
+
             return redirect()->route('shop.productOrCategory.index', $product->url_key);
+        }
+        if(request()->get('is_ajax')){
+            return response()->json([
+                'data'=>cart()->getCart() 
+            ]);
         }
 
         return redirect()->back();
