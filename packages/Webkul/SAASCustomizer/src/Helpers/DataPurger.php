@@ -1021,7 +1021,7 @@ class DataPurger
 
 
 
-        $product1_get_all_attribute = $this->attributeRepository->where('company_id', $companyRepository->id)->get();
+        $product1_get_all_attribute = DB::table('attributes')->where('company_id', $companyRepository->id)->get();
         dd($product1_get_all_attribute);
 
 
