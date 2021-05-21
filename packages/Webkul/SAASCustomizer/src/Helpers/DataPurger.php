@@ -1016,13 +1016,13 @@ class DataPurger
             ->insert([
                 'product_id' => $product1_create->id, 
                 'category_id' => $categoryList[0]['category']->id
-            ]); 
+        ]); 
 
 
 
 
         $product1_get_all_attribute = DB::table('attributes')->where('company_id', $companyRepository->id)->get();
-        dd($product1_get_all_attribute);
+        dd($companyRepository->id);
 
 
 
