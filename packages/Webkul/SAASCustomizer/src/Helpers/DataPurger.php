@@ -18,6 +18,9 @@ use Webkul\Velocity\Repositories\ContentRepository;
 use Webkul\Product\Repositories\ProductRepository;
 use Webkul\Product\Models\ProductFlat;
 use Webkul\Product\Repositories\ProductInventoryRepository;
+
+use Webkul\Product\Models\ProductAttributeValue;
+
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
@@ -103,7 +106,7 @@ class DataPurger
      */
     protected $productRepository;
     protected $productInventoryRepository;
-
+    protected $productAttributeValue;
 
     protected $attributeFamilyData;
 
@@ -125,6 +128,7 @@ class DataPurger
         ContentRepository $contentRepository,
         ProductRepository $productRepository,
         ProductInventoryRepository $productInventoryRepository
+        ProductAttributeValue $productAttributeValue
     )
     {
         $this->categoryRepository = $categoryRepository;
@@ -155,6 +159,7 @@ class DataPurger
 
         $this->productRepository = $productRepository;
         $this->productInventoryRepository = $productInventoryRepository;
+        $this->productAttributeValue = $productAttributeValue;
         
     }
 
@@ -1012,10 +1017,65 @@ class DataPurger
                 'category_id' => $categoryList[0]['category']->id
             ]); 
 
+
+
+
+        $data = [
+            'product_id' => $product1_create->id,
+            'sku' => $product1_create->sku,
+            'name' => 'Demo Product One',
+            'url_key' => 'demo-product-one'.'-' . rand(1,9999999).'-'.$companyRepository->id;,
+            'new' => 1,
+            'featured' => 1,
+            'visible_individually' => 1,
+            'min_price' => 100,
+            'max_price' => 100,
+            'parent_id' => '',
+            'status' => 1,
+            'color' => 1,
+            'price' => 100,
+            'width' => null,
+            'height' =>null,
+            'depth' => null,
+            'meta_title' => '',
+            'meta_keywords' => '',
+            'meta_description' => '',
+            'weight' => null,
+            'color_label' => 'Red',
+            'size' => null,
+            'size_label' => null,
+            'short_description' => '<p>lorem</p>',
+            'description' => '<p>lorem</p>',
+            'channel' => $companyRepository->username,
+            'locale' => 'en',
+            'special_price' => null,
+            'special_price_from' => null,
+            'special_price_to' => null,
+        ];
+
+        $this->productAttributeValue->createAttributeValue($data);
+
+
+
+        // $product1_attribute_create = DB::table('product_attribute_values')
+        //     ->insert([
+        //         'locale' => 'en', 
+        //         'channel' => $companyRepository->username,
+        //         'text_value' => null,
+        //         'boolean_value' => null,
+        //         'integer_value' => null,
+        //         'datetime_value' => null,
+        //         'date_value' => null,
+        //         'json_value' => null,
+        //         'product_id' => $product1_create->id,
+        //         'attribute_id' => 
+        //         'company_id' => $companyRepository->id
+        //     ]);
+
         $product1_update = ProductFlat::where('product_id', $product1_create->id)->first();
         $product1_update->sku = $product1_create->sku;
         $product1_update->name = 'Demo Product One';
-        $product1_update->url_key = 'Demo-Product-One'.'-' . rand(1,9999999).'-'.$companyRepository->id;
+        $product1_update->url_key = 'demo-product-one'.'-' . rand(1,9999999).'-'.$companyRepository->id;
         $product1_update->short_description = '<p>lorem</p>';
         $product1_update->description = '<p>lorem</p>';
         $product1_update->new = 1;
@@ -1838,7 +1898,7 @@ class DataPurger
             'company_id'            => $companyRepository->id,
             'locale'                => $localeRepository->code,
             'channel'               => $companyRepository->username,
-            'home_page_content'     => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'simple-product-".$companyRepository->id."'])@include('shop::home.recent-products')</p>",
+            'home_page_content'     => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'fitness-world-".$companyRepository->id."'])@include('shop::home.recent-products')</p>",
 
             'footer_left_content'   => trans('velocity::app.admin.meta-data.footer-left-raw-content'),
 
