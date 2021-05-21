@@ -80,14 +80,3 @@
         </div>
     </div>
 @endif
-
-
-
-@push('css')
-    <style type="text/css">
-        .advertisement-three-container img{
-            width: 100%;
-            height: 250px;
-        }
-    </style>
-@endpush
