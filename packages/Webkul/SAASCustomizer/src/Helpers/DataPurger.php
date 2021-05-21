@@ -1014,17 +1014,38 @@ class DataPurger
         $product1_update = ProductFlat::where('product_id', $product1_create->id)->first();
         $product1_update->sku = $product1_create->sku;
         $product1_update->name = 'Demo Product One';
-        $product1_update->url_key = 'Demo-Product-One-'.$companyRepository->id;
-        $product1_update->short_description = 'lorem';
-        $product1_update->description = 'lorem';
+        $product1_update->url_key = 'Demo-Product-One'.'-' . rand(1,9999999).'-'.$companyRepository->id;
+        $product1_update->short_description = '<p>lorem</p>';
+        $product1_update->description = '<p>lorem</p>';
         $product1_update->new = 1;
         $product1_update->featured = 1;
         $product1_update->status = 1;
         $product1_update->visible_individually = 1;
+
         $product1_update->price = 100;
         $product1_update->min_price = 100;
         $product1_update->max_price = 100;
-        $product1_update->weight = 1;
+        $product1_update->special_price = 100;
+        $product1_update->special_price_from = 100;
+        $product1_update->special_price_to = 100;
+
+        $product1_update->weight = rand(1,2);
+        $product1_update->width = rand(1,2);
+        $product1_update->height = rand(1,2);
+        $product1_update->depth = rand(1,2);
+
+        $product1_update->color = 1;
+        $product1_update->color_label = 'Red';
+
+        $product1_update->size = 6;
+        $product1_update->size_label = 'S';
+
+        $product1_update->meta_title = '';
+        $product1_update->meta_keywords = '';
+        $product1_update->meta_description = '';
+
+        $product1_update->channel = $channelData->id;
+
         $product1_update->save();
 
     }
