@@ -16,6 +16,12 @@ use Webkul\CMS\Repositories\CmsRepository;
 use Webkul\Velocity\Repositories\VelocityMetadataRepository;
 use Webkul\Velocity\Repositories\ContentRepository;
 use Webkul\Product\Repositories\ProductRepository;
+use Webkul\Product\Repositories\ProductFlatRepository as ProductFlat;
+use Webkul\Product\Repositories\ProductInventoryRepository;
+
+use Webkul\Product\Models\ProductAttributeValue;
+use Webkul\SAASCustomizer\Repositories\AttributeValueRepository;
+
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
@@ -100,7 +106,9 @@ class DataPurger
      * @var \Webkul\Product\Repositories\ProductRepository
      */
     protected $productRepository;
-
+    protected $productFlat;
+    protected $productInventoryRepository;
+    protected $productAttributeValue;
 
     protected $attributeFamilyData;
 
@@ -118,9 +126,12 @@ class DataPurger
         AttributeGroupRepository $attributeGroupRepository,
         CustomerGroupRepository $customerGroupRepository,
         CmsRepository $cmsRepository,
-        velocityMetadataRepository $velocityMetadataRepository,
+        VelocityMetadataRepository $velocityMetadataRepository,
         ContentRepository $contentRepository,
-        ProductRepository $productRepository
+        ProductRepository $productRepository,
+        ProductFlat $productFlat,
+        ProductInventoryRepository $productInventoryRepository,
+        AttributeValueRepository $productAttributeValue
     )
     {
         $this->categoryRepository = $categoryRepository;
@@ -150,6 +161,9 @@ class DataPurger
         $this->contentRepository = $contentRepository;
 
         $this->productRepository = $productRepository;
+        $this->productFlat = $productFlat;
+        $this->productInventoryRepository = $productInventoryRepository;
+        $this->productAttributeValue = $productAttributeValue;
         
     }
 
@@ -342,7 +356,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $rootCategory->id,
             'name'              => 'Fitness World',
-            'slug'              => 'fitness-world-'.$companyRepository->id,
+            'slug'              => 'fitness-world',
             'description'       => 'Fitness Product',
             'meta_title'        => 'Fitness Product',
             'meta_description'  => 'Fitness Product',
@@ -362,7 +376,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory1->id,
             'name'              => 'Trademil',
-            'slug'              => 'trademil-'.$companyRepository->id,
+            'slug'              => 'trademil',
             'description'       => 'Trademil',
             'meta_title'        => 'Trademil',
             'meta_description'  => 'Trademil',
@@ -380,7 +394,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory1->id,
             'name'              => 'Exercise Bike',
-            'slug'              => 'exercise-bike-'.$companyRepository->id,
+            'slug'              => 'exercise-bike',
             'description'       => 'Exercise Bike',
             'meta_title'        => 'Exercise Bike',
             'meta_description'  => 'Exercise Bike',
@@ -399,7 +413,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $rootCategory->id,
             'name'              => 'Food & Beverages',
-            'slug'              => 'food-beverages-'.$companyRepository->id,
+            'slug'              => 'food-beverages',
             'description'       => 'Food & Beverages',
             'meta_title'        => 'Food & Beverages',
             'meta_description'  => 'Food & Beverages',
@@ -419,7 +433,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory2->id,
             'name'              => 'Soft Drinks',
-            'slug'              => 'soft-drinks-'.$companyRepository->id,
+            'slug'              => 'soft-drinks',
             'description'       => 'Soft Drinks',
             'meta_title'        => 'Soft Drinks',
             'meta_description'  => 'Soft Drinks',
@@ -437,7 +451,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory2->id,
             'name'              => 'Bakery & Pastry',
-            'slug'              => 'bakery-pastry-'.$companyRepository->id,
+            'slug'              => 'bakery-pastry',
             'description'       => 'Bakery & Pastry',
             'meta_title'        => 'Bakery & Pastry',
             'meta_description'  => 'Bakery & Pastry',
@@ -455,7 +469,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $rootCategory->id,
             'name'              => 'Women',
-            'slug'              => 'women-product-'.$companyRepository->id,
+            'slug'              => 'women-product',
             'description'       => 'Women Product',
             'meta_title'        => 'Women Product',
             'meta_description'  => 'Women Product',
@@ -476,7 +490,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory3->id,
             'name'              => 'Jwellary',
-            'slug'              => 'jwellary-'.$companyRepository->id,
+            'slug'              => 'jwellary',
             'description'       => 'Jwellary',
             'meta_title'        => 'Jwellary',
             'meta_description'  => 'Jwellary',
@@ -494,7 +508,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory3->id,
             'name'              => 'Cosmetics',
-            'slug'              => 'cosmetics-'.$companyRepository->id,
+            'slug'              => 'cosmetics',
             'description'       => 'Cosmetics',
             'meta_title'        => 'Cosmetics',
             'meta_description'  => 'Cosmetics',
@@ -512,7 +526,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $rootCategory->id,
             'name'              => 'Kids',
-            'slug'              => 'kids-product-'.$companyRepository->id,
+            'slug'              => 'kids-product',
             'description'       => 'Kids Product',
             'meta_title'        => 'Kids Product',
             'meta_description'  => 'Kids Product',
@@ -533,7 +547,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory4->id,
             'name'              => 'Baby Cloths',
-            'slug'              => 'baby-cloths-'.$companyRepository->id,
+            'slug'              => 'baby-cloths',
             'description'       => 'Baby Cloths',
             'meta_title'        => 'Baby Cloths',
             'meta_description'  => 'Baby Cloths',
@@ -551,7 +565,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory4->id,
             'name'              => 'Toys',
-            'slug'              => 'toys-'.$companyRepository->id,
+            'slug'              => 'toys',
             'description'       => 'Toys',
             'meta_title'        => 'Toys',
             'meta_description'  => 'Toys',
@@ -569,7 +583,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $rootCategory->id,
             'name'              => 'Video Games',
-            'slug'              => 'video-games-'.$companyRepository->id,
+            'slug'              => 'video-games',
             'description'       => 'Video Games',
             'meta_title'        => 'Video Games',
             'meta_description'  => 'Video Games',
@@ -589,7 +603,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory5->id,
             'name'              => 'Actions & Advancers',
-            'slug'              => 'actions-advacners-'.$companyRepository->id,
+            'slug'              => 'actions-advacners',
             'description'       => 'Actions & Advancers',
             'meta_title'        => 'Actions & Advancers',
             'meta_description'  => 'Actions & Advancers',
@@ -607,7 +621,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory5->id,
             'name'              => 'Puzzle Games',
-            'slug'              => 'puzzle-games-'.$companyRepository->id,
+            'slug'              => 'puzzle-games',
             'description'       => 'Puzzle Games',
             'meta_title'        => 'Puzzle Games',
             'meta_description'  => 'Puzzle Games',
@@ -625,7 +639,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $rootCategory->id,
             'name'              => 'Electronics',
-            'slug'              => 'electronics-product-'.$companyRepository->id,
+            'slug'              => 'electronics-product',
             'description'       => 'Electronics Product',
             'meta_title'        => 'Electronics',
             'meta_description'  => 'Electronics',
@@ -645,7 +659,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory6->id,
             'name'              => 'TV & Monitors',
-            'slug'              => 'tv-monitors-'.$companyRepository->id,
+            'slug'              => 'tv-monitors',
             'description'       => 'TV & Monitors',
             'meta_title'        => 'TV & Monitors',
             'meta_description'  => 'TV & Monitors',
@@ -663,7 +677,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory6->id,
             'name'              => 'Freeze & Airconditions',
-            'slug'              => 'freeze-airconditions-'.$companyRepository->id,
+            'slug'              => 'freeze-airconditions',
             'description'       => 'Freeze & Airconditions',
             'meta_title'        => 'Freeze & Airconditions',
             'meta_description'  => 'Freeze & Airconditions',
@@ -681,7 +695,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $rootCategory->id,
             'name'              => 'Furnitures',
-            'slug'              => 'furnitures-'.$companyRepository->id,
+            'slug'              => 'furnitures',
             'description'       => 'Furnitures Product',
             'meta_title'        => 'Furnitures Product',
             'meta_description'  => 'Furnitures Product',
@@ -701,7 +715,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory7->id,
             'name'              => 'Wood Furnitures',
-            'slug'              => 'wood-furnitures-'.$companyRepository->id,
+            'slug'              => 'wood-furnitures',
             'description'       => 'Wood Furnitures',
             'meta_title'        => 'Wood Furnitures',
             'meta_description'  => 'Wood Furnitures',
@@ -719,7 +733,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory7->id,
             'name'              => 'Plastic Board Furnitures',
-            'slug'              => 'plastic-board-furnitures-'.$companyRepository->id,
+            'slug'              => 'plastic-board-furnitures',
             'description'       => 'Plastic Board Furnitures',
             'meta_title'        => 'Plastic Board Furnitures',
             'meta_description'  => 'Plastic Board Furnitures',
@@ -737,7 +751,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $rootCategory->id,
             'name'              => 'Mobile',
-            'slug'              => 'mobile-'.$companyRepository->id,
+            'slug'              => 'mobile',
             'description'       => 'Mobile & Accessorries',
             'meta_title'        => 'Mobile & Accessorries',
             'meta_description'  => 'Mobile & Accessorries',
@@ -758,7 +772,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory8->id,
             'name'              => 'Android Mobile',
-            'slug'              => 'android-mobile-'.$companyRepository->id,
+            'slug'              => 'android-mobile',
             'description'       => 'Android Mobile',
             'meta_title'        => 'Android Mobile',
             'meta_description'  => 'Android Mobile',
@@ -776,7 +790,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory8->id,
             'name'              => 'iPhone & Mac Laptop',
-            'slug'              => 'iphone-mac-laptop-'.$companyRepository->id,
+            'slug'              => 'iphone-mac-laptop',
             'description'       => 'iPhone & Mac Laptop',
             'meta_title'        => 'iPhone & Mac Laptop',
             'meta_description'  => 'iPhone & Mac Laptop',
@@ -794,7 +808,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $rootCategory->id,
             'name'              => 'Watch & Wallet',
-            'slug'              => 'watch-product-'.$companyRepository->id,
+            'slug'              => 'watch-product',
             'description'       => 'Watch & Wallet Product',
             'meta_title'        => 'Watch & Wallet Product',
             'meta_description'  => 'Watch & Wallet Product',
@@ -814,7 +828,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory9->id,
             'name'              => 'Hand Watches',
-            'slug'              => 'hand-watches-'.$companyRepository->id,
+            'slug'              => 'hand-watches',
             'description'       => 'Hand Watches',
             'meta_title'        => 'Hand Watches',
             'meta_description'  => 'Hand Watches',
@@ -832,7 +846,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory9->id,
             'name'              => 'Wallet & Parts',
-            'slug'              => 'wallet-parts-'.$companyRepository->id,
+            'slug'              => 'wallet-parts',
             'description'       => 'Wallet & Parts',
             'meta_title'        => 'Wallet & Parts',
             'meta_description'  => 'Wallet & Parts',
@@ -850,7 +864,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $rootCategory->id,
             'name'              => 'Shoes & Belt',
-            'slug'              => 'shoes-belt-product-'.$companyRepository->id,
+            'slug'              => 'shoes-belt-product',
             'description'       => 'Shoes & Belt Product',
             'meta_title'        => 'Shoes & Belt Product',
             'meta_description'  => 'Shoes & Belt Product',
@@ -870,7 +884,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory10->id,
             'name'              => 'Ladies Shoes',
-            'slug'              => 'ladies-shoes-'.$companyRepository->id,
+            'slug'              => 'ladies-shoes',
             'description'       => 'Ladies Shoes',
             'meta_title'        => 'Ladies Shoes',
             'meta_description'  => 'Ladies Shoes',
@@ -888,7 +902,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory10->id,
             'name'              => 'Leather Belts',
-            'slug'              => 'leather-belts-'.$companyRepository->id,
+            'slug'              => 'leather-belts',
             'description'       => 'Leather Belts',
             'meta_title'        => 'Leather Belts',
             'meta_description'  => 'Leather Belts',
@@ -976,51 +990,112 @@ class DataPurger
     public function prepareDemoProductData($categoryList, $inventoryList, $channelData){
 
         $companyRepository = Company::getCurrent();
-        $inventory_id = $inventoryList->id;
+        $inventorySourceId = $inventoryList->id;
+
         if(empty($this->attributeFamilyData)){
             Log::info("Info:- prepareDemoProductData() not created for company " . $companyRepository->domain . ".");
             return "prepareDemoProducctData";
         }
-        $data1=[
-            "_token" => "CgWmt7sEZ4LpKI9ujkkaSYb6qoiMEkhvjEGNUdt3",
-            "type" => "simple",
-            "attribute_family_id" => $this->attributeFamilyData->id,
-            "sku" => time().$companyRepository->id,
-        ];
 
-        $product1 = $this->productRepository->create($data1);
 
-        $product1_edit = [
-            "channel" => $companyRepository->username,
-            "locale" => "en",
-            "_token" => csrf_token(),
-            "_method" => "PUT",
-            "name" => "Trademil Model-03F",
-            "url_key" => "trademil-03f-".time().'-'.$companyRepository->id,
-            "new" => 1,
-            "featured" => 1,
-            "visible_individually" => 1,
-            "status" => 1,
-            "color" => 10,
-            "size" => 15,
-            "guest_checkout" => 1,
-            "short_description" => "
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
-                ",
-            "description" => "
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries    
-            ",
-            "meta_title" => "Trademil Model-03F",
-            "meta_keywords" => "Trademil Model-03F",
-            "meta_description" => "Trademil Model-03F",
-            "price" => 350,
-            "weight" => 2,
-            "inventories" => [ $inventoryList->id => "100"],
-            "categories" => [0 => $categoryList[0]['category']->id, 1 => $categoryList[0]['sub1']->id, 2 => $categoryList[0]['sub2']->id],
-            "channels" => [0 => $channelData->id]
-        ];
+        // $data1=[
+        //     "_token"                => "CgWmt7sEZ4LpKI9ujkkaSYb6qoiMEkhvjEGNUdt3",
+        //     "type"                  => "simple",
+        //     "attribute_family_id"   => $this->attributeFamilyData->id,
+        //     "sku"                   => time().$companyRepository->id,
+        // ];
+            
 
-        $product1 = $this->productRepository->update($product1_edit, $product1->product_id);
+        // $product1_create = $this->productRepository->create($data1);
+
+        // $data1 = [
+        //     'product_id' => $product1_create->id,
+        //     'sku' => $product1_create->sku,
+        //     'name' => 'Pro One',
+        //     'url_key' => 'pro-one'. '-' . rand(1,9999999).'-'.$companyRepository->id,
+        //     'new' => 1,
+        //     'featured' => 1,
+        //     'visible_individually' => 1,
+        //     'min_price' => 100,
+        //     'max_price' => 100,
+        //     'status' => 1,
+        //     'color' => 1,
+        //     'price' => 100,
+        //     'special_price' => 0,
+        //     'special_price_from' => null,
+        //     'special_price_to' => null,
+        //     'width' => 1,
+        //     'height' => 1,
+        //     'depth' => 1,
+        //     'meta_title' => '',
+        //     'meta_keywords' => '',
+        //     'meta_description' => '',
+        //     'weight' => 1,
+        //     'color_label' => 'Red',
+        //     'size' => 6,
+        //     'size_label' => 'S',
+        //     'short_description' => '<p>Short Description</p>',
+        //     'description' => '<p>Description</p>',
+        //     'channel' => $channelData->id,
+        //     'locale' => 'en',
+        // ];
+
+        // $this->productAttributeValue->createAttributeValue($data1);
+
+        // $this->productFlat->create($data1);
+
+
+
+        // $product1_inventory_create = $this->productInventoryRepository->create([
+        //     'qty'                   => 150,
+        //     'product_id'            => $product1_create->id,
+        //     'inventory_source_id'   => $inventorySourceId,
+        //     'vendor_id'             => 0,
+        //     "channels"              => [0 => $channelData->id],
+        //     "price"                 => 500,
+        // ]);
+        // $product1_category_create = DB::table('product_categories')
+        //     ->insert([
+        //         'product_id' => $product1_create->id, 
+        //         'category_id' => $categoryList[0]['category']->id
+        // ]); 
+
+
+        // $product1_update = ProductFlat::where('product_id', $product1_create->id)->first();
+        // $product1_update->sku = $product1_create->sku;
+        // $product1_update->name = 'Demo Product One';
+        // $product1_update->url_key = 'demo-product-one'.'-' . rand(1,9999999).'-'.$companyRepository->id;
+        // $product1_update->short_description = '<p>lorem</p>';
+        // $product1_update->description = '<p>lorem</p>';
+        // $product1_update->new = 1;
+        // $product1_update->featured = 1;
+        // $product1_update->status = 1;
+        // $product1_update->visible_individually = 1;
+
+        // $product1_update->price = 100;
+        // $product1_update->min_price = 100;
+        // $product1_update->max_price = 100;
+        // $product1_update->special_price = 100;
+        // $product1_update->special_price_from = 100;
+        // $product1_update->special_price_to = 100;
+
+        // $product1_update->weight = rand(1,2);
+        // $product1_update->width = rand(1,2);
+        // $product1_update->height = rand(1,2);
+        // $product1_update->depth = rand(1,2);
+
+        // $product1_update->color = 1;
+        // $product1_update->color_label = 'Red';
+
+        // $product1_update->size = 6;
+        // $product1_update->size_label = 'S';
+
+        // $product1_update->meta_title = '';
+        // $product1_update->meta_keywords = '';
+        // $product1_update->meta_description = '';
+
+        // $product1_update->save();
+
 
     }
 
@@ -1063,7 +1138,7 @@ class DataPurger
             ],
             'base_currency_id'  => $currencyRepository->id,
             'theme'             => 'cognite',
-            'home_page_content' => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'simple-product-".$companyRepository->id."'])@include('shop::home.recent-products')</p>",
+            'home_page_content' => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'fitness-world-".$companyRepository->id."'])@include('shop::home.recent-products')</p>",
 
             'footer_content' => 
             '<div class="list-container">
@@ -1813,7 +1888,7 @@ class DataPurger
             'company_id'            => $companyRepository->id,
             'locale'                => $localeRepository->code,
             'channel'               => $companyRepository->username,
-            'home_page_content'     => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'simple-product-".$companyRepository->id."'])@include('shop::home.recent-products')</p>",
+            'home_page_content'     => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.category-products', ['category' => 'fitness-world-".$companyRepository->id."'])@include('shop::home.recent-products')</p>",
 
             'footer_left_content'   => trans('velocity::app.admin.meta-data.footer-left-raw-content'),
 
