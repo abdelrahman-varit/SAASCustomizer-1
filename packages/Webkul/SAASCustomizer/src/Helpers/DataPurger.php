@@ -1006,7 +1006,7 @@ class DataPurger
             "channels"              => [0 => $channelData->id],
             "price"                 => 500,
         ]);
-        $product1_category_create = DB::table('users')
+        $product1_category_create = DB::table('product_categories')
             ->insert([
                 'product_id' => $product1_create->id, 
                 'category_id' => $categoryList[0]['category']->id
