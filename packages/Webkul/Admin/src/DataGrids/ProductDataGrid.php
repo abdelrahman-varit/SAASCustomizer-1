@@ -300,7 +300,8 @@ class ProductDataGrid extends DataGrid
                 'product_flat.status',
                 'product_flat.price',
                 'attribute_families.name as attribute_family',
-                DB::raw('SUM(DISTINCT ' . DB::getTablePrefix() . 'product_inventories.qty) as quantity')
+                // DB::raw('SUM(DISTINCT ' . DB::getTablePrefix() . 'product_inventories.qty) as quantity')
+                DB::raw('(select sum(qty) as quantity from' . DB::getTablePrefix() . 'product_inventories where product_inventories.product_id=product_flat.product_id) as quantity')
             );
 
         $queryBuilder->groupBy('product_flat.product_id', 'product_flat.channel');
