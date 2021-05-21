@@ -190,9 +190,6 @@
 	.cart-item-list .item .item-details {
 		align-items: center;
 	}
-	.cart-item-list .single-item .item-footer {
-		align-items: flex-start;
-	}
 	.header {
 		margin-bottom: 0;
 	}
