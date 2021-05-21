@@ -127,7 +127,7 @@ class DataPurger
         velocityMetadataRepository $velocityMetadataRepository,
         ContentRepository $contentRepository,
         ProductRepository $productRepository,
-        ProductInventoryRepository $productInventoryRepository
+        ProductInventoryRepository $productInventoryRepository,
         ProductAttributeValue $productAttributeValue
     )
     {
