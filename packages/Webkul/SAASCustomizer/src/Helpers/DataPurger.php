@@ -17,6 +17,7 @@ use Webkul\Velocity\Repositories\VelocityMetadataRepository;
 use Webkul\Velocity\Repositories\ContentRepository;
 use Webkul\Product\Repositories\ProductRepository;
 use Webkul\Product\Models\ProductFlat;
+use Webkul\Product\Repositories\ProductFlatRepository as ProductFlat;
 use Webkul\Product\Repositories\ProductInventoryRepository;
 
 use Webkul\Product\Models\ProductAttributeValue;
@@ -106,6 +107,7 @@ class DataPurger
      * @var \Webkul\Product\Repositories\ProductRepository
      */
     protected $productRepository;
+    protected $productFlat;
     protected $productInventoryRepository;
     protected $productAttributeValue;
 
@@ -128,6 +130,7 @@ class DataPurger
         VelocityMetadataRepository $velocityMetadataRepository,
         ContentRepository $contentRepository,
         ProductRepository $productRepository,
+        ProductFlat $productFlat,
         ProductInventoryRepository $productInventoryRepository,
         AttributeValueRepository $productAttributeValue
     )
@@ -159,6 +162,7 @@ class DataPurger
         $this->contentRepository = $contentRepository;
 
         $this->productRepository = $productRepository;
+        $this->productFlat = $productFlat;
         $this->productInventoryRepository = $productInventoryRepository;
         $this->productAttributeValue = $productAttributeValue;
         
@@ -1004,77 +1008,94 @@ class DataPurger
             
 
         $product1_create = $this->productRepository->create($data1);
-        $product1_inventory_create = $this->productInventoryRepository->create([
-            'qty'                   => 150,
-            'product_id'            => $product1_create->id,
-            'inventory_source_id'   => $inventorySourceId,
-            'vendor_id'             => 0,
-            "channels"              => [0 => $channelData->id],
-            "price"                 => 500,
-        ]);
-        $product1_category_create = DB::table('product_categories')
-            ->insert([
-                'product_id' => $product1_create->id, 
-                'category_id' => $categoryList[0]['category']->id
-        ]); 
+
+        $data1 = [
+            'sku' => $product1_create->sku,
+            'name' => 'Pro One',
+            'url_key' => 'pro-one'. '-' . rand(1,9999999).'-'.$companyRepository->id,
+            'new' => 1,
+            'featured' => 1,
+            'visible_individually' => 1,
+            'min_price' => 100,
+            'max_price' => 100,
+            'status' => 1,
+            'color' => 1,
+            'price' => 100,
+            'special_price' => 0,
+            'special_price_from' => null,
+            'special_price_to' => null,
+            'width' => 1,
+            'height' => 1,
+            'depth' => 1,
+            'meta_title' => '',
+            'meta_keywords' => '',
+            'meta_description' => '',
+            'weight' => 1,
+            'color_label' => 'Red'
+            'size' => 6,
+            'size_label' => 'S',
+            'short_description' => '<p>Short Description</p>',
+            'description' => '<p>Description</p>',
+            'channel' => $channelData->id,
+            'locale' => 'en',
+        ];
+
+        $this->productAttributeValue->createAttributeValue($data);
+
+        $this->productFlat->create($data);
 
 
 
-
-        $product1_get_all_attribute = DB::table('attributes')->where('company_id', $companyRepository->id)->get();
-        dd($companyRepository->id);
-
-
-
-        // $product1_attribute_create = DB::table('product_attribute_values')
+        // $product1_inventory_create = $this->productInventoryRepository->create([
+        //     'qty'                   => 150,
+        //     'product_id'            => $product1_create->id,
+        //     'inventory_source_id'   => $inventorySourceId,
+        //     'vendor_id'             => 0,
+        //     "channels"              => [0 => $channelData->id],
+        //     "price"                 => 500,
+        // ]);
+        // $product1_category_create = DB::table('product_categories')
         //     ->insert([
-        //         'locale' => 'en', 
-        //         'channel' => $companyRepository->username,
-        //         'text_value' => null,
-        //         'boolean_value' => null,
-        //         'integer_value' => null,
-        //         'datetime_value' => null,
-        //         'date_value' => null,
-        //         'json_value' => null,
-        //         'product_id' => $product1_create->id,
-        //         'attribute_id' => 
-        //         'company_id' => $companyRepository->id
-        //     ]);
+        //         'product_id' => $product1_create->id, 
+        //         'category_id' => $categoryList[0]['category']->id
+        // ]); 
 
-        $product1_update = ProductFlat::where('product_id', $product1_create->id)->first();
-        $product1_update->sku = $product1_create->sku;
-        $product1_update->name = 'Demo Product One';
-        $product1_update->url_key = 'demo-product-one'.'-' . rand(1,9999999).'-'.$companyRepository->id;
-        $product1_update->short_description = '<p>lorem</p>';
-        $product1_update->description = '<p>lorem</p>';
-        $product1_update->new = 1;
-        $product1_update->featured = 1;
-        $product1_update->status = 1;
-        $product1_update->visible_individually = 1;
 
-        $product1_update->price = 100;
-        $product1_update->min_price = 100;
-        $product1_update->max_price = 100;
-        $product1_update->special_price = 100;
-        $product1_update->special_price_from = 100;
-        $product1_update->special_price_to = 100;
+        // $product1_update = ProductFlat::where('product_id', $product1_create->id)->first();
+        // $product1_update->sku = $product1_create->sku;
+        // $product1_update->name = 'Demo Product One';
+        // $product1_update->url_key = 'demo-product-one'.'-' . rand(1,9999999).'-'.$companyRepository->id;
+        // $product1_update->short_description = '<p>lorem</p>';
+        // $product1_update->description = '<p>lorem</p>';
+        // $product1_update->new = 1;
+        // $product1_update->featured = 1;
+        // $product1_update->status = 1;
+        // $product1_update->visible_individually = 1;
 
-        $product1_update->weight = rand(1,2);
-        $product1_update->width = rand(1,2);
-        $product1_update->height = rand(1,2);
-        $product1_update->depth = rand(1,2);
+        // $product1_update->price = 100;
+        // $product1_update->min_price = 100;
+        // $product1_update->max_price = 100;
+        // $product1_update->special_price = 100;
+        // $product1_update->special_price_from = 100;
+        // $product1_update->special_price_to = 100;
 
-        $product1_update->color = 1;
-        $product1_update->color_label = 'Red';
+        // $product1_update->weight = rand(1,2);
+        // $product1_update->width = rand(1,2);
+        // $product1_update->height = rand(1,2);
+        // $product1_update->depth = rand(1,2);
 
-        $product1_update->size = 6;
-        $product1_update->size_label = 'S';
+        // $product1_update->color = 1;
+        // $product1_update->color_label = 'Red';
 
-        $product1_update->meta_title = '';
-        $product1_update->meta_keywords = '';
-        $product1_update->meta_description = '';
+        // $product1_update->size = 6;
+        // $product1_update->size_label = 'S';
 
-        $product1_update->save();
+        // $product1_update->meta_title = '';
+        // $product1_update->meta_keywords = '';
+        // $product1_update->meta_description = '';
+
+        // $product1_update->save();
+
 
     }
 
