@@ -1006,44 +1006,13 @@ class DataPurger
             "price"            => 500,
         ]);
 
-        dd($product1_inventory_create);
-
-        // $product1_update = $this->productRepository->update(
-        //     [
-        //         "channel" => $companyRepository->username,
-        //         "locale" => "en",
-        //         "_token" => csrf_token(),
-        //         "_method" => "PUT",
-        //         "sku" => $product1_create->sku,
-        //         "name" => "Trademil Model-03F",
-        //         "url_key" => "trademil-03f-".time().'-'.$companyRepository->id,
-        //         "tax_category_id" => "",
-        //         "new" => "1",
-        //         "featured" => "1",
-        //         "visible_individually" => "1",
-        //         "status" => "1",
-        //         "color" => "",
-        //         "size" => "",
-        //         "guest_checkout" => "1",
-        //         "short_description" => "<p>aa</p>",
-        //         "description" => "<p>aa</p>",
-        //         "meta_title" => "",
-        //         "meta_keywords" => "",
-        //         "meta_description" => "",
-        //         "price" => "1200",
-        //         "cost" => "",
-        //         "special_price" => "",
-        //         "special_price_from" => "",
-        //         "special_price_to" => "",
-        //         "width" => "",
-        //         "height" => "",
-        //         "depth" => "",
-        //         "weight" => "100",
-        //         "inventories" => [$inventory_id => "100"],
-        //         "categories" => [0 => $categoryList[0]['category']->id],
-        //         "channels" => [0 => $channelData->id]
-        //     ],$product1_create->id
-        // );
+        $product1_update = $this->productRepository->update(
+            [
+                "_token" => csrf_token(),
+                "_method" => "PUT",
+                "sku" => $product1_create->sku,
+            ],$product1_create->id
+        );
         
 
 
