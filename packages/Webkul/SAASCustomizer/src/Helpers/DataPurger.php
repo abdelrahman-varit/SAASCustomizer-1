@@ -1006,11 +1006,11 @@ class DataPurger
             "channels"              => [0 => $channelData->id],
             "price"                 => 500,
         ]);
-        dd($categoryList[0]['category']->id);
-        $product1_category_create = $this->categoryRepository->create([
-            'product_id'            => $product1_create->id,
-            'category_id'           => $categoryList[0]['category']->id,
-        ]);
+        $product1_category_create = DB::table('users')
+            ->insert([
+                'product_id' => $product1_create->id, 
+                'category_id' => $categoryList[0]['category']->id
+            ]); 
 
         $product1_update = ProductFlat::where('product_id', $product1_create->id)->first();
         $product1_update->sku = $product1_create->sku;
@@ -1044,8 +1044,6 @@ class DataPurger
         $product1_update->meta_title = '';
         $product1_update->meta_keywords = '';
         $product1_update->meta_description = '';
-
-        $product1_update->channel = $channelData->id;
 
         $product1_update->save();
 
