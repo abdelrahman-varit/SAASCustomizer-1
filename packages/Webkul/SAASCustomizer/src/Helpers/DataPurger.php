@@ -1009,7 +1009,7 @@ class DataPurger
 
         $product1_update = ProductFlat::where('product_id', $product1_create->id)->first();
         $product1_update->sku = $product1_create->sku;
-        $UpdateDetails->save();
+        $product1_update->save();
 
 
 
