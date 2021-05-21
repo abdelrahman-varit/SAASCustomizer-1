@@ -394,7 +394,7 @@ class DataPurger
             'status'            => '1',
             'parent_id'         => $subCategory1->id,
             'name'              => 'Exercise Bike',
-            'slug'              => 'exercise-bike'
+            'slug'              => 'exercise-bike',
             'description'       => 'Exercise Bike',
             'meta_title'        => 'Exercise Bike',
             'meta_description'  => 'Exercise Bike',
