@@ -1008,7 +1008,7 @@ class DataPurger
         ]);
         $product1_category_create = $this->categoryRepository->create([
             'product_id'            => $product1_create->id,
-            'category_id'           => [0 => $categoryList[0]['category']->id],
+            'category_id'           => $categoryList[0]['category']->id,
         ]);
 
         $product1_update = ProductFlat::where('product_id', $product1_create->id)->first();
