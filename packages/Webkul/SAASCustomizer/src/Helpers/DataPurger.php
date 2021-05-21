@@ -20,7 +20,7 @@ use Webkul\Product\Repositories\ProductFlatRepository as ProductFlat;
 use Webkul\Product\Repositories\ProductInventoryRepository;
 
 use Webkul\Product\Models\ProductAttributeValue;
-use Webkul\DataFaker\Repositories\AttributeValueRepository;
+use Webkul\SAASCustomizer\Repositories\AttributeValueRepository;
 
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
@@ -1009,6 +1009,7 @@ class DataPurger
         $product1_create = $this->productRepository->create($data1);
 
         $data1 = [
+            'product_id' => $product1_create->id,
             'sku' => $product1_create->sku,
             'name' => 'Pro One',
             'url_key' => 'pro-one'. '-' . rand(1,9999999).'-'.$companyRepository->id,
