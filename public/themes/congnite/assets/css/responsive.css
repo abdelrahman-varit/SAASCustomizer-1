@@ -166,6 +166,14 @@
 }
 
 @media (min-width: 576px) {
+	section.product-detail
+		div.layouter
+		.form-container
+		div.product-image-group
+		div
+		.product-hero-image {
+		height: 400px;
+	}
 }
 
 @media (min-width: 768px) {
@@ -189,9 +197,6 @@
 	}
 	.cart-item-list .item .item-details {
 		align-items: center;
-	}
-	.cart-item-list .single-item .item-footer {
-		align-items: flex-start;
 	}
 	.header {
 		margin-bottom: 0;

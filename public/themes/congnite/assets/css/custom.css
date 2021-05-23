@@ -707,12 +707,12 @@ div.footer-copyright a {
 }
 
 .bn-product-details-btn-container .btn {
-	min-width: 135px;
-	padding: 10px;
+	min-width: 110px;
 	border: 0px;
-	margin-top: 10px;
-	margin-right: 10px;
+	margin-top: 5px;
+	margin-right: 5px !important;
 	text-align: center;
+	padding: 8px 18px !important;
 }
 
 .bn-product-details-btn-container .btn i {
@@ -801,7 +801,6 @@ section.product-detail
 .others-information-row {
 	display: flex;
 	flex-direction: row;
-	gap: 30px;
 	align-items: center;
 }
 
@@ -812,7 +811,6 @@ section.product-detail
 	div
 	.product-hero-image {
 	max-height: fit-content;
-	height: 400px;
 	overflow: hidden;
 	background-color: #f9f9f9;
 }
@@ -886,6 +884,7 @@ div.others-information-row {
 .others-information-row .quantity.control-group {
 	vertical-align: top;
 	color: black;
+	width: auto;
 }
 
 .others-information-row #subtotal-value {
@@ -1142,6 +1141,12 @@ section.cart .cart-content .right-side {
 }
 .checkout-process .col-main .step-content .cart-item-list .item .row .title {
 	margin-bottom: 5px;
+	text-align: center;
+}
+.checkout-process .col-main .step-content .cart-item-list .item .row .value {
+	text-align: center;
+	display: block;
+	width: 100%;
 }
 
 .checkout-process .col-main ul.checkout-steps li.active .decorator {

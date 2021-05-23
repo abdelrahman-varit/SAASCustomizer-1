@@ -114,14 +114,14 @@
                                         @auth('customer')
                                             <span class="towishlist">
                                                 @if ($item->parent_id != 'null' ||$item->parent_id != null)
-                                                    <a href="{{ route('shop.movetowishlist', $item->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.move-to-wishlist') }}</a>
+                                                    <a class="btn btn-sm btn-dark" href="{{ route('shop.movetowishlist', $item->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.move-to-wishlist') }}</a>
                                                 @else
-                                                    <a href="{{ route('shop.movetowishlist', $item->child->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.move-to-wishlist') }}</a>
+                                                    <a class="btn btn-sm btn-dark" href="{{ route('shop.movetowishlist', $item->child->id) }}" onclick="removeLink('{{ __('shop::app.checkout.cart.cart-remove-action') }}')">{{ __('shop::app.checkout.cart.move-to-wishlist') }}</a>
                                                 @endif
                                             </span>
                                         @endauth
                                         <span class="remove">
-                                            <a href="#" onclick="removeCart('{{$item->id}}',this)"><i class="las la-pencil-alt"></i></a>
+                                            <a href="#" onclick="removeCart('{{$item->id}}',this)"><i class="las la-times"></i></a>
                                         </span>
                                     </div>
                                 </div>
