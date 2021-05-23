@@ -127,7 +127,7 @@
                                     <div  class="other-info-value" >Wood</div>
                                 </div>
 
-                                <div class="others-information-row" style="display:flex;flex-direction:row;gap:30px;margin-top:25px;">
+                                <div class="others-information-row">
                                     <div class="other-info-title" >{{ __('shop::app.products.quantity') }} :</div>
                                     <div  class="other-info-value" >
                                         @if ($product->getTypeInstance()->showQuantityBox())

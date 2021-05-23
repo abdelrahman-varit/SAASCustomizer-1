@@ -801,7 +801,6 @@ section.product-detail
 .others-information-row {
 	display: flex;
 	flex-direction: row;
-	gap: 30px;
 	align-items: center;
 }
 
@@ -812,7 +811,6 @@ section.product-detail
 	div
 	.product-hero-image {
 	max-height: fit-content;
-	height: 400px;
 	overflow: hidden;
 	background-color: #f9f9f9;
 }
@@ -886,6 +884,7 @@ div.others-information-row {
 .others-information-row .quantity.control-group {
 	vertical-align: top;
 	color: black;
+	width: auto;
 }
 
 .others-information-row #subtotal-value {
