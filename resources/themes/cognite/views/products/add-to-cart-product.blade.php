@@ -168,7 +168,7 @@
                                             carts.forEach(item => {
                                                 content+=`<div class="item">
                                                                 <div class="item-image">
-                                                                    <img src="http://storebd.sellnoir.devs/cache/small/product/95/ntviGp7larfpr3Njhb35yIOT4VunggQ41n388iGw.jpeg">
+                                                                    <img src="${item.product.images[0].url}" alt="product image">
                                                                 </div> 
                                                                 <div class="item-details">
                                                                     <div class="item-name">${item.name}</div> 

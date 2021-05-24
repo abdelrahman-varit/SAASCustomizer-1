@@ -391,7 +391,6 @@
                     var product_type = "{{$product->type}}";
                     if(product_type=="simple"){
                         var productPrice = document.getElementById('product-price').innerHTML ;
-                        console.log(priceDiv);
                         productPrice = productPrice.substr(1,productPrice.length) ;
                         var totalPrice = this.qty * productPrice; 
                         document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
