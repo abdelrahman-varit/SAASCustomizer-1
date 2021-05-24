@@ -179,11 +179,11 @@
                                     
                                     if(data.data){
                                         var carts = data.data.items;
-                                        var images = images;
+                                       
                                         var content = "";
                                         currentCart.parentElement.parentElement.remove();
                                         
-                                        if(carts && carts.length>0){
+                                        if(data.data && carts.length>0){
                                             document.getElementById("lbl-cart-count").innerHTML = carts.length;
                                             console.log('cart count: ', carts.length)
                                             carts.forEach(item => {
