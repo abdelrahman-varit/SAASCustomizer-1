@@ -799,9 +799,9 @@ section.product-detail
 }
 
 .others-information-row {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
+	display: grid;
+	grid-template-columns: minmax(auto, 1fr) 1fr;
+	grid-gap: 30px;
 }
 
 section.product-detail
@@ -1910,6 +1910,8 @@ section.review .review-layouter {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
+	padding: 2px 10px;
+	font-size: 12px;
 }
 
 .main-container-wrapper .product-card .sticker.new {
@@ -2118,4 +2120,50 @@ section.product-detail
 	.stars {
 	display: inline-block;
 	vertical-align: middle;
+}
+
+section.product-detail div.layouter .form-container .details {
+	width: 100%;
+}
+
+section.product-detail div.layouter .form-container div.product-image-group {
+	width: 100%;
+	margin: 0;
+	height: auto;
+	max-width: none;
+}
+
+.control-group .control-error {
+	color: #cb1a1c;
+}
+
+.product-detail .control-group {
+	width: auto;
+}
+
+section.product-detail
+	div.layouter
+	.form-container
+	.details
+	.downloadable-container
+	.sample-list {
+	margin-top: 15px;
+}
+
+section.product-detail
+	div.layouter
+	.form-container
+	.details
+	.downloadable-container
+	.link-list {
+	margin-bottom: 0;
+}
+
+section.product-detail
+	div.layouter
+	.form-container
+	.details
+	.grouped-product-container
+	.grouped-product-list {
+	margin-top: 15px;
 }
