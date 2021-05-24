@@ -97,19 +97,9 @@
 	.image-search-container .icon.camera-icon {
 		top: 4px;
 	}
-	section.product-detail div.layouter .form-container div.product-image-group {
-		margin-right: 0;
-		max-width: none;
-		width: 100%;
-		position: unset;
-		height: auto;
-	}
 	section.product-detail div.layouter .form-container .details {
 		width: 100%;
 		margin-top: 20px;
-	}
-	section.product-detail div.layouter .form-container {
-		flex-direction: column;
 	}
 	section.product-detail
 		div.layouter
@@ -126,6 +116,15 @@
 	.advertisement-three-container img,
 	.advertisement-four-container img {
 		max-height: 300px;
+	}
+	section.product-detail div.layouter .form-container {
+		flex-direction: column;
+	}
+	section.product-detail div.layouter .form-container div.product-image-group {
+		position: static;
+	}
+	.main-container-wrapper .product-card div.product-image img {
+		height: auto;
 	}
 }
 
@@ -226,10 +225,6 @@
 		-moz-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
 	}
-	section.product-detail div.layouter .form-container div.product-image-group {
-		max-width: 335px;
-		width: 100%;
-	}
 	.advertisement-two-container,
 	.advertisement-three-container,
 	.advertisement-four-container {
@@ -239,6 +234,14 @@
 	.advertisement-three-container img,
 	.advertisement-four-container img {
 		height: 250px;
+	}
+	section.product-detail div.layouter .form-container {
+		display: grid;
+		grid-gap: 30px;
+		grid-template-columns: 300px 1fr;
+	}
+	.others-information-row {
+		grid-template-columns: minmax(auto, 200px) 1fr;
 	}
 }
 
@@ -316,11 +319,8 @@
 	.checkout-process .order-description .pull-right {
 		width: 50% !important;
 	}
-	section.product-detail div.layouter .form-container div.product-image-group {
-		max-width: 400px;
-	}
-	section.product-detail div.layouter .form-container .details {
-		width: 54%;
+	section.product-detail div.layouter .form-container {
+		grid-template-columns: 400px 1fr;
 	}
 }
 
@@ -333,7 +333,7 @@
 		.search-field {
 		width: 400px;
 	}
-	section.product-detail div.layouter .form-container div.product-image-group {
-		max-width: 480px;
+	section.product-detail div.layouter .form-container {
+		grid-template-columns: 480px 1fr;
 	}
 }
