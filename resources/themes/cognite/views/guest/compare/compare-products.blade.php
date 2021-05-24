@@ -71,9 +71,12 @@
                                         @break
 
                                     @case('addToCartHtml')
+                                        <!-- <form method="POST" id="product-form" @action="`/checkout/cart/add/${product->product_id}`" >
+                                                <input type="hidden" name="is_buy_now" value="0">
+                                                <div v-html="product.addToCartHtml"></div>
+                                        </form> -->
                                         <div class="action">
-                                            <div v-html="product.defaultAddToCart"></div>
-
+                                            
                                             <span class="icon white-cross-sm-icon remove-product" @click="removeProductCompare(product.id)"></span>
                                         </div>
                                         @break
@@ -130,6 +133,8 @@
                             </td>
                         </tr>
                     @endforeach
+
+                   
                 </template>
 
                 <span v-else-if="isProductListLoaded && products.length == 0">

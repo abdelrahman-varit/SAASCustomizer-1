@@ -219,9 +219,11 @@
                                             </div>`;
                                             document.getElementById('bn-mini-cart-grandTotal').innerHTML = "$0.00";
                                             document.getElementById("lbl-cart-count").innerHTML = cartCount;
-                                        }
+                                        }  
                                     }
                                    
+                                    window.flashMessages = [{'type': 'alert-success', 'message': "Product is removed to cart successfully!" }];
+
                                     if(animated){
                                         animated.style.display="none";
                                     }

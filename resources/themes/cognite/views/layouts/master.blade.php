@@ -166,6 +166,7 @@
 
         @if ($success = session('success'))
             window.flashMessages = [{'type': 'alert-success', 'message': "{{ $success }}" }];
+            
         @elseif ($warning = session('warning'))
             window.flashMessages = [{'type': 'alert-warning', 'message': "{{ $warning }}" }];
         @elseif ($error = session('error'))
