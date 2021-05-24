@@ -11,7 +11,9 @@
 
 @if ($product->type == 'booking')
 
-    $bookingProduct = app('\Webkul\BookingProduct\Repositories\BookingProductRepository')->findOneByField('product_id', $product->product_id);
+   @php 
+    $bookingProduct = app('\Webkul\BookingProduct\Repositories\BookingProductRepository')->findOneByField('product_id', $product->product_id); 
+   @endphp
 
 @endif
 
@@ -23,7 +25,7 @@
         var data = {};
         var booking_type = "";
         if(product_type=="booking"){
-            booking_type = "{{$bookingProduct->type}}";
+            booking_type = "{{isset($bookingProduct)?$bookingProduct->type:''}}";
             if(booking_type=="default" || booking_type=="appointment"){
                 bookingData.date = document.getElementsByName('booking[date]')[0].value;
                 bookingData.slot = document.getElementsByName('booking[slot]')[0].value;
