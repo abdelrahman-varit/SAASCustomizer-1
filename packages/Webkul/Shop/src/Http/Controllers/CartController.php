@@ -7,6 +7,7 @@ use Webkul\Customer\Repositories\WishlistRepository;
 use Webkul\Product\Repositories\ProductRepository;
 use Webkul\Checkout\Contracts\Cart as CartModel;
 use Illuminate\Support\Facades\Event;
+use Webkul\Product\Helpers\ProductImage;
 use Cart;
 
 class CartController extends Controller
@@ -91,9 +92,19 @@ class CartController extends Controller
                     return redirect()->route('shop.checkout.onepage.index');
                 }
 
+                
                 if(request()->get('is_ajax')){
+                    $cart_list = cart()->getCart();
+                    foreach($cart_list->items as $item){
+                        $images = $item->product->getTypeInstance()->getBaseImage($item);
+                    }
+
+                    // $product_ids = cart()->getCart()->items->first()->id;
+                    // $images = $item->product->getTypeInstance()->getBaseImage($item);
+                    // dd($images); 
                     return response()->json([
-                        'data'=>cart()->getCart() 
+                        'data'=>$cart_list,
+                        'cart_list'=>$cart_list,
                     ]);
                 }
             }
