@@ -12,7 +12,7 @@
 @if ($product->type == 'booking')
 
     @if ($bookingProduct = app('\Webkul\BookingProduct\Repositories\BookingProductRepository')->findOneByField('product_id', $product->product_id))
-        <div>{{$bookingProduct->type}}</div>
+        
     @endif
 @endif
 
