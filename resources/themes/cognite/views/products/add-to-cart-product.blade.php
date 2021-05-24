@@ -11,9 +11,8 @@
 
 @if ($product->type == 'booking')
 
-    @if ($bookingProduct = app('\Webkul\BookingProduct\Repositories\BookingProductRepository')->findOneByField('product_id', $product->product_id))
-        
-    @endif
+    $bookingProduct = app('\Webkul\BookingProduct\Repositories\BookingProductRepository')->findOneByField('product_id', $product->product_id);
+
 @endif
 
 <script>
