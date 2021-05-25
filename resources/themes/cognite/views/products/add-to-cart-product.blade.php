@@ -5,9 +5,17 @@
 </button>
  
 
-{{-- <button type="submit" class="btn btn-lg btn-primary addtocart" {{ ! $product->isSaleable() ? 'disabled' : '' }}>
+<!-- <button type="submit" class="btn btn-lg btn-primary addtocart" {{ ! $product->isSaleable() ? 'disabled' : '' }}>
     {{ ($product->type == 'booking') ?  __('shop::app.products.book-now') :  __('shop::app.products.add-to-cart') }}
-</button> --}}
+</button>  -->
+
+@if ($product->type == 'booking')
+
+   @php 
+    $bookingProduct = app('\Webkul\BookingProduct\Repositories\BookingProductRepository')->findOneByField('product_id', $product->product_id); 
+   @endphp
+
+@endif
 
 <script>
     function addTocartAjax(){
@@ -15,28 +23,130 @@
         var product_type = "{{$product->type}}";
         var bookingData = {date:'', slot:''};
         var data = {};
-
+        var booking_type = "";
         if(product_type=="booking"){
-            bookingData.date = document.getElementsByName('booking[date]')[0].value;
-            bookingData.slot = document.getElementsByName('booking[slot]')[0].value;
-            data = {
-            '_token' : "{{csrf_token()}}",
-            'is_buy_now' : "0",  
-            'product_id' : "{{$product->product_id}}",
-            'quantity' : document.getElementsByName("quantity")[0].value,
-            'booking':{
-                'date':bookingData.date,
-                'slot':bookingData.slot
-            },
-            'is_ajax':"1"
-            };
+            booking_type = "{{isset($bookingProduct)?$bookingProduct->type:''}}";
+            if(booking_type=="default" || booking_type=="appointment"){
+                bookingData.date = document.getElementsByName('booking[date]')[0].value;
+                bookingData.slot = document.getElementsByName('booking[slot]')[0].value;
+                data = {
+                '_token' : "{{csrf_token()}}",
+                'is_buy_now' : "0",  
+                'product_id' : "{{$product->product_id}}",
+                'quantity' : document.getElementsByName("quantity")[0].value,
+                'booking':{
+                    'date':bookingData.date,
+                    'slot':bookingData.slot
+                },
+                'is_ajax':"1"
+                };
 
-            if(!bookingData.date || !bookingData.slot){
-                alert("please select date & time slot for booking");
-                return false;
+                if(!bookingData.date || !bookingData.slot){
+                    alert("please select date & time slot for booking");
+                    return false;
+                }
+            }else if(booking_type=="event"){
+                var qty = {};
+
+                var allQty = document.querySelectorAll("[name^='booking[qty]']");
+                
+                var qtyName = allQty[0].name.split('[')[2].split(']')[0];
+                var qtyValue = allQty[0].value;
+                qty[qtyName]=qtyValue;
+                
+
+                data = {
+                '_token' : "{{csrf_token()}}",
+                'is_buy_now' : "0",  
+                'product_id' : "{{$product->product_id}}",
+                'quantity' : document.getElementsByName("quantity")[0].value,
+                'booking':{
+                    'qty':qty
+                },
+                'is_ajax':"1"
+                };
+
+                if(!qty){
+                    alert("please select data for booking");
+                    return false;
+                }
+            }else if(booking_type=="table"){
+                bookingData.date = document.getElementsByName('booking[date]')[0].value;
+                bookingData.slot = document.getElementsByName('booking[slot]')[0].value;
+                bookingData.note = document.getElementsByName('booking[note]')[0].value;
+                data = {
+                '_token' : "{{csrf_token()}}",
+                'is_buy_now' : "0",  
+                'product_id' : "{{$product->product_id}}",
+                'quantity' : document.getElementsByName("quantity")[0].value,
+                'booking':{
+                    'date':bookingData.date,
+                    'slot':bookingData.slot,
+                    'note':bookingData.note,
+                },
+                'is_ajax':"1"
+                };
+
+                if(!bookingData.date || !bookingData.slot){
+                    alert("please select date & time slot for booking");
+                    return false;
+                }
+            }else if(booking_type=="rental"){
+                var bookingDataTmp = {};
+                if(document.getElementsByName('booking[renting_type]')[0].checked){
+                    bookingDataTmp.renting_type = document.getElementsByName('booking[renting_type]')[0].value;
+                }else if(document.getElementsByName('booking[renting_type]')[1].checked){
+                    bookingDataTmp.renting_type = document.getElementsByName('booking[renting_type]')[1].value;
+                }
+                
+                 if(bookingDataTmp.renting_type=="daily"){
+                    bookingDataTmp.date_from = document.getElementsByName('booking[date_from]')[0].value;
+                    bookingDataTmp.date_to = document.getElementsByName('booking[date_to]')[0].value;
+                    if(!bookingDataTmp.date_from || !bookingDataTmp.date_to){
+                    alert("please select date & time slot for booking");
+                        return false;
+                    }
+                      
+                    data = {
+                    '_token' : "{{csrf_token()}}",
+                    'is_buy_now' : "0",  
+                    'product_id' : "{{$product->product_id}}",
+                    'quantity' : document.getElementsByName("quantity")[0].value,
+                    'booking':bookingDataTmp,
+                    'is_ajax':"1"
+                    };
+
+                 }else if(bookingDataTmp.renting_type=="hourly"){
+                    bookingDataTmp.date = document.getElementsByName('booking[date]')[0].value;
+                    bookingDataTmp.slot = {    
+                        from:document.getElementsByName('booking[slot][from]')[0].value,
+                        to:document.getElementsByName('booking[slot][to]')[0].value
+                        };
+                    if(!bookingDataTmp.slot){
+                        alert("please select date & time slot for booking");
+                        return false;
+                    }
+
+                            
+                        data = {
+                        '_token' : "{{csrf_token()}}",
+                        'is_buy_now' : "0",  
+                        'product_id' : "{{$product->product_id}}",
+                        'quantity' : document.getElementsByName("quantity")[0].value,
+                        'booking':bookingDataTmp,
+                        'is_ajax':"1"
+                        };
+
+                 }
+
+               
+             
+                
             }
+            
 
         }
+        
         
         if(product_type=="grouped"){
             var qty = {};
@@ -189,6 +299,8 @@
                                             if(data.data.grand_total){
                                                 document.getElementById("bn-mini-cart-grandTotal").innerHTML = "$"+parseFloat(data.data.grand_total).toFixed(2);
                                             }
+
+                                            
                                         }else{
                                             document.getElementById("bn-mini-carts").innerHTML = `<div class="item">
                                                 <div class="item-details">
@@ -200,6 +312,9 @@
                                         }
 
                                     }
+
+                                    window.flashMessages = [{'type': 'alert-success', 'message': "Product is added to cart successfully!" }];
+
                                     if(animated){
                                         animated.style.display="none";
                                     }

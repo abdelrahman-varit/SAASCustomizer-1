@@ -122,10 +122,10 @@
                                     </div>
                                 </div>
 
-                                <div class="others-information-row" >
+                                <!-- <div class="others-information-row" >
                                     <div class="other-info-title" >Material :</div>
                                     <div  class="other-info-value" >Wood</div>
-                                </div>
+                                </div> -->
 
                                 <div class="others-information-row">
                                     <div class="other-info-title" >{{ __('shop::app.products.quantity') }} :</div>
@@ -162,7 +162,7 @@
                                 
                                
                                 
-                                <div class="others-information-row" >
+                                <div class="others-information-row" style="display:none" >
                                     <div class="other-info-title" >Subtotal :</div>
                                     <div  class="other-info-value" id="subtotal-value" > 
                                         

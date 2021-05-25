@@ -117,9 +117,13 @@ class CartController extends Controller
                 ['product_id' => $id, 'cart_id' => cart()->getCart() ?? 0]);
 
                 if(request()->get('is_ajax')){
+                    $cart_list = cart()->getCart();
+                    foreach($cart_list->items as $item){
+                        $images = $item->product->getTypeInstance()->getBaseImage($item);
+                    }
                     return response()->json([
                         'status'=>'error',
-                        'data'=>cart()->getCart(),
+                        'data'=>$cart_list,
                         'message'=> $e->getMessage()
                     ]);
                 }
@@ -149,10 +153,23 @@ class CartController extends Controller
             session()->flash('success', trans('shop::app.checkout.cart.item.success-remove'));
         }
 
+           
         if(request()->get('is_ajax')){
+            $cart_list = cart()->getCart();
+            if(!empty($cart_list)){
+                foreach($cart_list->items as $item){
+                    $images = $item->product->getTypeInstance()->getBaseImage($item);
+                }
+            }
+           
+
+            // $product_ids = cart()->getCart()->items->first()->id;
+            // $images = $item->product->getTypeInstance()->getBaseImage($item);
+            // dd($images); 
             return response()->json([
                 'status'=>'success',
-                'data'=>cart()->getCart() 
+                'data'=>$cart_list,
+                'cart_list'=>$cart_list,
             ]);
         }
 
