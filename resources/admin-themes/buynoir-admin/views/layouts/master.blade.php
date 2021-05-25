@@ -17,6 +17,9 @@
         <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/admin.css') }}">
         <link rel="stylesheet" href="{{ asset('buynoir/shopadmin/css/shop-admin.css') }}">
 
+        <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/custom.css') }}">
+        <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/responsive.css') }}">
+
         @yield('head')
 
         @yield('css')
