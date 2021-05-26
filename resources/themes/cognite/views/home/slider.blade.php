@@ -24,7 +24,7 @@
 								@if(empty($slider['slider_path']))
 									<img src="{{ Storage::url($slider['path']) }}">
 								@else
-									<a href="{{url()->to('/')}}/{{$slider['slider_path']}}">
+									<a href="{{$slider['slider_path']}}">
 										<img src="{{ Storage::url($slider['path']) }}">
 									</a>
 								@endif
