@@ -24,40 +24,38 @@
 
             @csrf
 
-            <div class="page-header">
+            <div class="page-header force-responsive-breakable">
                 <div class="page-title">
                     <h1>{{ __('velocity::app.admin.meta-data.title') }}</h1>
                 </div>
-
-                <input type="hidden" name="locale" value="{{ $locale }}" />
-                <input type="hidden" name="channel" value="{{ $channel }}" />
-
-                <div class="control-group">
-                    <select class="control" id="channel-switcher" onChange="window.location.href = this.value">
-                        @foreach (core()->getAllChannels() as $ch)
-
-                            <option value="{{ route('velocity.admin.meta-data') . '?channel=' . $ch->code . '&locale=' . $locale }}" {{ ($ch->code) == $channel ? 'selected' : '' }}>
-                                {{ $ch->name }}
-                            </option>
-
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="control-group">
-                    <select class="control" id="locale-switcher" onChange="window.location.href = this.value">
-                        @foreach (core()->getAllLocales() as $localeModel)
-
-                            <option value="{{ route('velocity.admin.meta-data') . '?locale=' . $localeModel->code . '&channel=' . $channel }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
-                                {{ $localeModel->name }}
-                            </option>
-
-                        @endforeach
-                    </select>
-                </div>
-
                 <div class="page-action">
-                    <button type="submit" class="btn btn-lg btn-primary">
+                    <input type="hidden" name="locale" value="{{ $locale }}" />
+                    <input type="hidden" name="channel" value="{{ $channel }}" />
+
+                    <div class="control-group">
+                        <select class="control" id="channel-switcher" onChange="window.location.href = this.value">
+                            @foreach (core()->getAllChannels() as $ch)
+
+                                <option value="{{ route('velocity.admin.meta-data') . '?channel=' . $ch->code . '&locale=' . $locale }}" {{ ($ch->code) == $channel ? 'selected' : '' }}>
+                                    {{ $ch->name }}
+                                </option>
+
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <select class="control" id="locale-switcher" onChange="window.location.href = this.value">
+                            @foreach (core()->getAllLocales() as $localeModel)
+
+                                <option value="{{ route('velocity.admin.meta-data') . '?locale=' . $localeModel->code . '&channel=' . $channel }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
+                                    {{ $localeModel->name }}
+                                </option>
+
+                            @endforeach
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-primary action_last_btn">
                         {{ __('velocity::app.admin.meta-data.update-meta-data') }}
                     </button>
                 </div>
