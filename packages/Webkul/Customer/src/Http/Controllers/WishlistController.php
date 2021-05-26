@@ -60,6 +60,17 @@ class WishlistController extends Controller
         $wishlistItems = $this->wishlistRepository->getCustomerWhishlist();
 
         return view($this->_config['view'])->with('items', $wishlistItems);
+    }    
+    
+    
+    public function wishlistCount()
+    {
+        $wishlistItems = $this->wishlistRepository->getCustomerWhishlist();
+
+        return response()->json([
+            'status'=>'success',
+            'wishlistCount'=>count($wishlistItems)
+        ]);
     }
 
     /**

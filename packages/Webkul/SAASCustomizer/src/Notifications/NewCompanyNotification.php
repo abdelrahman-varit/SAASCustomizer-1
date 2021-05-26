@@ -46,8 +46,8 @@ class NewCompanyNotification extends Mailable
      */
     public function build()
     {
-        return $this->to($this->agent->email)
-                ->subject('New Company Registered')
+        return $this->to($this->company->email)
+                ->subject('New Company Registered with BuyNoir')
                 ->view('saas::emails.new-company')->with('company', $this->company);
     }
 }
