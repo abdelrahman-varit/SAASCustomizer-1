@@ -66,4 +66,12 @@ class WishlistRepository extends Repository
             'customer_id' => auth()->guard('customer')->user()->id,
         ])->paginate(5);
     }
+    
+    public function getCustomerWhishlistAll()
+    {
+        return $this->model->where([
+            'channel_id'  => core()->getCurrentChannel()->id,
+            'customer_id' => auth()->guard('customer')->user()->id,
+        ])->paginate();
+    }
 }

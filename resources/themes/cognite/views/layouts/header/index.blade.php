@@ -29,9 +29,9 @@
         
                     <div class="col-2 locale-img">
                         @if ($localeImage)
-                            <img src="{{ asset('/storage/' . $localeImage) }}" onerror="this.src = '/themes/congnite/assets/images/icons/en.png'" height="13" />
+                            <img src="{{ asset('/storage/' . $localeImage) }}" onerror="this.src = '/themes/cognite/assets/images/icons/en.png'" height="13" />
                         @elseif (app()->getLocale() == 'en')
-                            <img src="{{ asset('/themes/congnite/assets/images/icons/en.png') }}" height="13" />
+                            <img src="{{ asset('/themes/cognite/assets/images/icons/en.png') }}" height="13" />
                         @endif
                     </div>
                     
@@ -207,7 +207,7 @@
                                 @if ($logo = core()->getCurrentChannel()->logo_url)
                                     <img class="logo" src="{{ $logo }}" />
                                 @else
-                                    <img class="logo" src="{{asset('/themes/congnite/assets/images/logo.svg') }}" />
+                                    <img class="logo" src="{{asset('/themes/cognite/assets/images/logo.svg') }}" />
                                 @endif
                             </a>
                         </li>
