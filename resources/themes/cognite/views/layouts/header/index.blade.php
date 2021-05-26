@@ -590,6 +590,15 @@
 
                 let comparedItems = JSON.parse(localStorage.getItem('compared_product'));
                 $('#compare-items-count').html({{ $compareCount }});
+
+                fetch("{{route('customer.wishlist.count')}}").then(response=>response.json()).then(data=>{
+                   
+                    if(data.status=="success"){
+                        $('#wishlist-items-count').html(data.wishlistCount);
+                    }
+                }).catch(error=>{
+                    console.log('Errors on wishlist fetch: ',error);
+                })
             @endauth
 
             @guest('customer')
