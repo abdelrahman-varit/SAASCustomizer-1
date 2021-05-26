@@ -76,3 +76,36 @@ table.table thead tr {
 .page-header {
 	border-bottom: 1px solid hsla(0, 0%, 63.5%, 0.2);
 }
+
+.content-container .content .page-header {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.content-container .content .page-header .page-title,
+.content-container .content .page-header .page-action {
+	float: none;
+}
+
+.export-import .export-icon,
+.export-import .import-icon {
+	top: 3px;
+}
+.export-import .export-icon + span,
+.export-import .import-icon + span {
+	top: -8px;
+	position: relative;
+}
+
+.content-container .content .page-header .page-action .btn {
+	vertical-align: bottom;
+}
+
+.datagrid-filters {
+	gap: 15px;
+	flex-wrap: wrap;
+	display: flex;
+}

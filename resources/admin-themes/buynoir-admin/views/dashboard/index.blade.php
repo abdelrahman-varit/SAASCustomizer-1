@@ -7,7 +7,7 @@
 @section('content-wrapper')
 
     <div class="content full-page dashboard">
-        <div class="page-header">
+        <div class="page-header force-responsive-breakable">
             <div class="page-title">
                 <h1>{{ __('admin::app.dashboard.title') }}</h1>
             </div>
