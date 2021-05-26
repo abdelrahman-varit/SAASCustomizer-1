@@ -11,42 +11,43 @@
 
         <form method="POST" action="" @submit.prevent="onSubmit" enctype="multipart/form-data">
 
-            <div class="page-header">
+            <div class="page-header force-responsive-breakable">
 
                 <div class="page-title">
                     <h1>
                         {{ __('admin::app.configuration.title') }}
                     </h1>
-
-                    <div class="control-group">
-                        <select class="control" id="channel-switcher" name="channel">
-                            @foreach (core()->getAllChannels() as $channelModel)
-
-                                <option value="{{ $channelModel->code }}" {{ ($channelModel->code) == $channel ? 'selected' : '' }}>
-                                    {{ $channelModel->name }}
-                                </option>
-
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="control-group">
-                        <select class="control" id="locale-switcher" name="locale">
-                            @foreach (core()->getAllLocales() as $localeModel)
-
-                                <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
-                                    {{ $localeModel->name }}
-                                </option>
-
-                            @endforeach
-                        </select>
-                    </div>
                 </div>
 
                 <div class="page-action">
-                    <button type="submit" class="btn btn-lg btn-primary">
-                        {{ __('admin::app.configuration.save-btn-title') }}
-                    </button>
+                    <div class="action-list">
+                        <div class="control-group">
+                            <select class="control" id="channel-switcher" name="channel">
+                                @foreach (core()->getAllChannels() as $channelModel)
+
+                                    <option value="{{ $channelModel->code }}" {{ ($channelModel->code) == $channel ? 'selected' : '' }}>
+                                        {{ $channelModel->name }}
+                                    </option>
+
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <select class="control" id="locale-switcher" name="locale">
+                                @foreach (core()->getAllLocales() as $localeModel)
+
+                                    <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
+                                        {{ $localeModel->name }}
+                                    </option>
+
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-primary action_last_btn">
+                            {{ __('admin::app.configuration.save-btn-title') }}
+                        </button>
+                    </div>
                 </div>
             </div>
 

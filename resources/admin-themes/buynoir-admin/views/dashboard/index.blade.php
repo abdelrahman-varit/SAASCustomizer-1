@@ -7,7 +7,7 @@
 @section('content-wrapper')
 
     <div class="content full-page dashboard">
-        <div class="page-header">
+        <div class="page-header force-responsive-breakable">
             <div class="page-title">
                 <h1>{{ __('admin::app.dashboard.title') }}</h1>
             </div>
@@ -367,7 +367,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 
     <script type="text/x-template" id="date-filter-template">
-        <div>
+        <div class="action-list">
             <div class="control-group date">
                 <date @onChange="applyFilter('start', $event)" hide-remove-button="1"><input type="text" class="control" id="start_date" value="{{ $startDate->format('Y-m-d') }}" placeholder="{{ __('admin::app.dashboard.from') }}" v-model="start"/></date>
             </div>
