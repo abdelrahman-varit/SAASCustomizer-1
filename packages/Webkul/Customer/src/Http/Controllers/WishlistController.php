@@ -65,7 +65,7 @@ class WishlistController extends Controller
     
     public function wishlistCount()
     {
-        $wishlistItems = $this->wishlistRepository->getCustomerWhishlist();
+        $wishlistItems = $this->wishlistRepository->getCustomerWhishlistAll();
 
         return response()->json([
             'status'=>'success',

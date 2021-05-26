@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     {{-- <link rel="stylesheet" href="{{ bagisto_asset('css/shop.css') }}"> --}}
-    <link rel="stylesheet" href="{{ asset('themes/congnite/assets/css/shop.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/shop.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('themes/congnite/assets/css/custom.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/congnite/assets/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/responsive.css') }}">
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"
     integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
@@ -101,7 +101,7 @@
             @if ($logo = core()->getCurrentChannel()->logo_url)                
                 <img class="se-pre-con-logo" src="{{ $logo }}" />
             @else
-                <img class="se-pre-con-logo" src="{{ asset('themes/congnite/assets/images/logo.svg') }}" />
+                <img class="se-pre-con-logo" src="{{ asset('themes/cognite/assets/images/logo.svg') }}" />
             @endif
         </div>
     </div>
@@ -110,7 +110,7 @@
 
     <div id="app">
         <flash-wrapper ref='flashes'></flash-wrapper>
-
+        
         {{-- <div class="main-container-wrapper"> --}}
 
             {!! view_render_event('bagisto.shop.layout.header.before') !!}
@@ -186,7 +186,7 @@
     </script>
 
 
-    <script type="text/javascript" src="{{ asset('themes/congnite/assets/js/shop.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('themes/cognite/assets/js/shop.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
 
 
@@ -205,7 +205,7 @@
     </script>
 
 
-    <script type="text/javascript" src="{{ asset('themes/congnite/assets/js/scripts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('themes/cognite/assets/js/scripts.js') }}"></script>
 
     <script>
         $(window).on('load', function () {
