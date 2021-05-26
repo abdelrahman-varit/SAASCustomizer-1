@@ -20,32 +20,34 @@
                 </div>
 
                 <div class="page-action">
-                    <div class="control-group">
-                        <select class="control" id="channel-switcher" name="channel">
-                            @foreach (core()->getAllChannels() as $channelModel)
+                    <div class="action-list">
+                        <div class="control-group">
+                            <select class="control" id="channel-switcher" name="channel">
+                                @foreach (core()->getAllChannels() as $channelModel)
 
-                                <option value="{{ $channelModel->code }}" {{ ($channelModel->code) == $channel ? 'selected' : '' }}>
-                                    {{ $channelModel->name }}
-                                </option>
+                                    <option value="{{ $channelModel->code }}" {{ ($channelModel->code) == $channel ? 'selected' : '' }}>
+                                        {{ $channelModel->name }}
+                                    </option>
 
-                            @endforeach
-                        </select>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <select class="control" id="locale-switcher" name="locale">
+                                @foreach (core()->getAllLocales() as $localeModel)
+
+                                    <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
+                                        {{ $localeModel->name }}
+                                    </option>
+
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-primary action_last_btn">
+                            {{ __('admin::app.configuration.save-btn-title') }}
+                        </button>
                     </div>
-
-                    <div class="control-group">
-                        <select class="control" id="locale-switcher" name="locale">
-                            @foreach (core()->getAllLocales() as $localeModel)
-
-                                <option value="{{ $localeModel->code }}" {{ ($localeModel->code) == $locale ? 'selected' : '' }}>
-                                    {{ $localeModel->name }}
-                                </option>
-
-                            @endforeach
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-lg btn-primary action_last_btn">
-                        {{ __('admin::app.configuration.save-btn-title') }}
-                    </button>
                 </div>
             </div>
 

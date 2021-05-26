@@ -7,6 +7,16 @@
 	.content-container .content .page-header .page-action {
 		float: none;
 	}
+	.content-container
+		.content
+		.page-header.force-responsive-breakable
+		.page-title,
+	.content-container
+		.content
+		.page-header.force-responsive-breakable
+		.page-action {
+		width: 100%;
+	}
 	.content-container .content .page-header .control-group {
 		margin-left: 0;
 		width: 100%;
@@ -72,7 +82,7 @@
 		.content
 		.page-header
 		.page-action
-		> div:not(.btn, .export-import) {
+		> div:not(.btn, .export-import, .action-list) {
 		display: block;
 	}
 	.content-container .content .page-header .control-group {
@@ -80,6 +90,30 @@
 	}
 	.action_last_btn {
 		margin-top: 10px;
+	}
+	.content-container .content .page-header .page-action .action-list {
+		display: flex;
+		gap: 15px;
+		align-items: center;
+	}
+	.content-container
+		.content
+		.page-header
+		.page-action
+		.action-list
+		.action_last_btn {
+		width: 100%;
+		margin-top: 0;
+	}
+
+	.content-container
+		.content
+		.page-header
+		.page-action
+		.action-list
+		.control-group
+		+ .control-group {
+		margin-top: 0;
 	}
 }
 
