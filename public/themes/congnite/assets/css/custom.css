@@ -2167,3 +2167,7 @@ section.product-detail
 	.grouped-product-list {
 	margin-top: 15px;
 }
+
+.downloadable-product-table a {
+	color: blue;
+}

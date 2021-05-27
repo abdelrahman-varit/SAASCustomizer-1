@@ -23,7 +23,7 @@
             {!! view_render_event('bagisto.shop.customers.account.downloadable_products.list.before') !!}
 
             <div class="account-items-list">
-                <div class="account-table-content">
+                <div class="account-table-content downloadable-product-table">
 
                     {!! app('Webkul\Shop\DataGrids\DownloadableProductDataGrid')->render() !!}
 
