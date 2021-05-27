@@ -82,7 +82,7 @@ class ValidatesDomain
                 throw new \Exception('not_allowed_to_visit_this_section', 400);
             } else {
                 $company = $this->companyRepository->findWhere(['domain' => $currentURL]);
-
+                
                 if (count($company) == 1) {
                     return $next($request);
                 } else if (count($company) == 0) {
@@ -97,6 +97,11 @@ class ValidatesDomain
 
                 $now_company = $company->first();
 
+                if(empty($now_company) ){
+                    $path = 'saas';
+
+                            return $this->response($path, 400, trans('saas::app.admin.tenant.exceptions.domain-not-found'), 'domain_not_found');
+                }
 
                 if (!empty($now_company) && $now_company->is_active == 1) {
                 

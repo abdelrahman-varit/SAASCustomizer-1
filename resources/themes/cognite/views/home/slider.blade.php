@@ -5,23 +5,29 @@
 		</div>
 
 		<div class="right-content" style="flex: 1; overflow: hidden;">
-			{{-- <section class="slider-block">
+			<!-- <section class="slider-block">
 			    <image-slider :slides='@json($sliderData)' public_path="{{ url()->to('/') }}"></image-slider>
-			</section> --}}
-
+			</section> -->
+		 
 			<section class="slider-block">
 
                 <div class="main_slider">
 
 					@if(count($sliderData)<1)
 						<div>
-							<img src="{{ asset('/themes/congnite/assets/images/banner/banner-01.jpg')  }}">
+							<img src="{{ asset('/themes/cognite/assets/images/banner/banner-01.jpg')  }}">
 						</div>
 					@else
 						@foreach($sliderData as $slider)
-
+							 
 							<div>
-								<img src="{{ Storage::url($slider['path']) }}">
+								@if(empty($slider['slider_path']))
+									<img src="{{ Storage::url($slider['path']) }}">
+								@else
+									<a href="{{$slider['slider_path']}}">
+										<img src="{{ Storage::url($slider['path']) }}">
+									</a>
+								@endif
 							</div>
 
 						@endforeach
@@ -44,10 +50,10 @@
                     $('.main_slider').slick({
                         dots            : true,
                         arrows          : false,
-                        speed           : 300,
+                        speed           : 400,
                         slidesToShow    : 1,
-                        autoplay        : false,
-                        autoplaySpeed   : 2000,
+                        autoplay        : true,
+                        autoplaySpeed   : 3000,
                     });
                 });
 
