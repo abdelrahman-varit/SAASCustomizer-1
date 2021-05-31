@@ -1,7 +1,7 @@
 @php
     $attributeRepository = app('\Webkul\Attribute\Repositories\AttributeFamilyRepository');
     $comparableAttributes = $attributeRepository->getComparableAttributesBelongsToFamily();
-
+   
     $locale = request()->get('locale') ?: app()->getLocale();
     
     $attributeOptionTranslations = DB::table('attribute_option_translations')->where('locale', $locale)->get()->toJson();
@@ -71,10 +71,15 @@
                                         @break
 
                                     @case('addToCartHtml')
-                                        <!-- <form method="POST" id="product-form" @action="`/checkout/cart/add/${product->product_id}`" >
+                                        <form method="POST" id="product-form" :action="`${baseUrl}/checkout/cart/add/${product.product_id}`" >
+                                                {{csrf_field()}}
                                                 <input type="hidden" name="is_buy_now" value="0">
+                                                <input type="hidden" name="is_compare" value="1">
+                                                <input type="hidden" name="product_id" :value="product.product_id">
+                                                <input type="hidden" name="quantity" value="1">
+                                                <slot></slot>
                                                 <div v-html="product.addToCartHtml"></div>
-                                        </form> -->
+                                        </form>
                                         <div class="action">
                                             
                                             <span class="icon white-cross-sm-icon remove-product" @click="removeProductCompare(product.id)"></span>
@@ -184,7 +189,8 @@
                         };
                     }
 
-                    if (this.isCustomer || (! this.isCustomer && items != "")) {
+                    // if (this.isCustomer || (! this.isCustomer && items != "")) {
+                    if ( items != "") {
                         this.$http.get(url, data)
                         .then(response => {
                             this.isProductListLoaded = true;
@@ -194,6 +200,8 @@
                             }
 
                             this.products = response.data.products;
+                            console.log('products data: ',data);
+                            console.log('products list: ',this.products);
                         })
                         .catch(error => {
                             this.isProductListLoaded = true;

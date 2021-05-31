@@ -1,5 +1,6 @@
 @inject('subscriptionHelper', 'Webkul\SAASSubscription\Helpers\Subscription')
 
+<?php //dd($subscriptionHelper->isServiceStopped());?>
 @if ($subscriptionHelper->isServiceStopped())
 
     @if (! in_array(request()->route()->getName(), [

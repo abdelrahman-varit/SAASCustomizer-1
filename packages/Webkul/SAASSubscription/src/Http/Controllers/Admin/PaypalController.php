@@ -110,7 +110,7 @@ class PaypalController extends Controller
         
         $getEC = $this->paypalHelper->request($nvps);
 
-        if ($getEC['ACK'] == 'Success') {
+        if (isset($getEC['ACK']) && $getEC['ACK'] == 'Success') {
             $paypalmode = company()->getSuperConfigData('subscription.payment.paypal.sandbox_mode')
                           ? '.sandbox'
                           : '';
