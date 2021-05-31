@@ -115,6 +115,9 @@
 		+ .control-group {
 		margin-top: 0;
 	}
+	.dashboard .sale-stock {
+		grid-template-columns: 1fr;
+	}
 }
 
 @media (max-width: 991.98px) {

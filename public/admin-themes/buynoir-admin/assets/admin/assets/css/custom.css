@@ -109,3 +109,7 @@ table.table thead tr {
 	flex-wrap: wrap;
 	display: flex;
 }
+
+.alert-wrapper {
+	z-index: 200;
+}
