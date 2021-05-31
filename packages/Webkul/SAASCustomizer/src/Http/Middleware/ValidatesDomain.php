@@ -79,6 +79,9 @@ class ValidatesDomain
             }
         } else {
             if ((request()->is('company/*') || request()->is('super/*')) && ! request()->is('company/seed-data')) {
+                $path = 'saas';
+
+                            return $this->response($path, 400, trans('saas::app.admin.tenant.exceptions.domain-not-found'), 'domain_not_found');
                 throw new \Exception('not_allowed_to_visit_this_section', 400);
             } else {
                 $company = $this->companyRepository->findWhere(['domain' => $currentURL]);

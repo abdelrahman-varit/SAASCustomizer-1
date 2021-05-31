@@ -223,6 +223,7 @@ class ShopController extends Controller
 
             $response = [
                 'status'   => 'success',
+                'data'   => $items,
                 'products' => $productCollection,
             ];
         }

@@ -71,11 +71,23 @@ class CartController extends Controller
             //dd(request()->all());
             $result = Cart::addProduct($id, request()->all());
             if ($this->onFailureAddingToCart($result)) {
-                if(request()->get('is_ajax')){
-                    return response()->json([
-                        'data'=>cart()->getCart() 
-                    ]);
+                $cart_list = cart()->getCart();
+                foreach($cart_list->items as $item){
+                    $images = $item->product->getTypeInstance()->getBaseImage($item);
                 }
+
+                if(request()->get('is_compare')){
+                    $this->compareProductsRepository->deleteWhere([
+                        'product_flat_id' => $id),
+                        'customer_id'     => auth()->guard('customer')->user()->id,
+                    ]);
+                    return redirect()->url('/comparison');
+                }
+
+                return response()->json([
+                    'data'=>$cart_list,
+                    'cart_list'=>$cart_list,
+                ]);
                 return redirect()->back();
             }
 
@@ -99,9 +111,10 @@ class CartController extends Controller
                         $images = $item->product->getTypeInstance()->getBaseImage($item);
                     }
 
-                    // $product_ids = cart()->getCart()->items->first()->id;
-                    // $images = $item->product->getTypeInstance()->getBaseImage($item);
-                    // dd($images); 
+                    if(request()->get('is_compare')){
+                        return redirect()->url('/comparison');
+                    }
+
                     return response()->json([
                         'data'=>$cart_list,
                         'cart_list'=>$cart_list,
@@ -162,10 +175,6 @@ class CartController extends Controller
                 }
             }
            
-
-            // $product_ids = cart()->getCart()->items->first()->id;
-            // $images = $item->product->getTypeInstance()->getBaseImage($item);
-            // dd($images); 
             return response()->json([
                 'status'=>'success',
                 'data'=>$cart_list,
@@ -173,7 +182,12 @@ class CartController extends Controller
             ]);
         }
 
-        return redirect()->back();
+        if(request()->get('is_compare')){
+            return redirect()->url('/comparison');
+        }else{
+            return redirect()->back();
+        }
+
     }
 
     /**

@@ -11,6 +11,7 @@ use Webkul\Velocity\Repositories\OrderBrandsRepository;
 use Webkul\Attribute\Repositories\AttributeOptionRepository;
 use Webkul\Product\Repositories\ProductReviewRepository;
 use Webkul\Velocity\Repositories\VelocityMetadataRepository;
+use Illuminate\Support\Facades\Log;
 
 class Helper extends Review
 {
@@ -378,8 +379,9 @@ class Helper extends Review
 
         foreach ($productIds as $productId) {
             // @TODO:- query only once insted of 2
+            
             $productFlat = $this->productFlatRepository->findOneWhere(['id' => $productId]);
-
+            Log::info($productFlat);
             if ($productFlat) {
                 $product = $this->productRepository->findOneWhere(['id' => $productFlat->product_id]);
 
