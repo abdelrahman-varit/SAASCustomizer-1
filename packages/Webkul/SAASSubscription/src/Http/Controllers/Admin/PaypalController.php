@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Webkul\SAASSubscription\Http\Controllers\Controller;
 use Webkul\SAASSubscription\Helpers\Subscription;
 use Webkul\SAASSubscription\Helpers\Paypal;
+use Webkul\SAASSubscription\Repositories\RecurringProfileRepository;
+
 
 class PaypalController extends Controller
 {
@@ -24,6 +26,13 @@ class PaypalController extends Controller
     protected $paypalHelper;
 
     /**
+     * RecurringProfileRepository object
+     *
+     * @var \Webkul\SAASSubscription\Repositories\RecurringProfileRepository
+     */
+    protected $recurringProfileRepository;
+
+    /**
      * Create a new controller instance.
      *
      * @param  \Webkul\SAASSubscription\Helpers\Subscription  $subscriptionHelper
@@ -32,7 +41,8 @@ class PaypalController extends Controller
      */
     public function __construct(
         Subscription $subscriptionHelper,
-        Paypal $paypalHelper
+        Paypal $paypalHelper,
+        RecurringProfileRepository $recurringProfileRepository
     )
     {
         $this->subscriptionHelper = $subscriptionHelper;
@@ -40,6 +50,8 @@ class PaypalController extends Controller
         $this->paypalHelper = $paypalHelper;
 
         $this->_config = request('_config');
+
+        $this->recurringProfileRepository = $recurringProfileRepository;
     }
 
     /**
@@ -173,7 +185,30 @@ class PaypalController extends Controller
         $doEC = $this->paypalHelper->request($nvpdo);
 
         if ($doEC['ACK'] == "Success") {
-            $this->subscriptionHelper->createRecurringProfile($doEC);
+            
+            $recurringProfile = $this->subscriptionHelper->createRecurringProfile($doEC);
+
+            $nextDueDate = $this->subscriptionHelper->getNextDueDate($recurringProfile);
+
+            $invoice = $this->subscriptionHelper->createInvoice([
+                'recurring_profile'                      => $recurringProfile,
+                'saas_subscription_purchased_plan_id'    => $recurringProfile->purchased_plan->id,
+                'saas_subscription_recurring_profile_id' => $recurringProfile->id,
+                'grand_total'                            => $recurringProfile->amount,
+                'cycle_expired_on'                       => $nextDueDate,
+                'customer_email'                         => $recurringProfile->company->email,
+                'customer_name'                          => $recurringProfile->company->username,
+                'payment_method'                         => 'Paypal',
+                'status'                                 => 'Success',
+            ]);
+
+            $this->recurringProfileRepository->update([
+                'saas_subscription_invoice_id' => $invoice->id,
+                'cycle_expired_on'             => $nextDueDate,
+                'next_due_date'                => $nextDueDate,
+            ], $recurringProfile->id);
+
+
 
             session()->forget('subscription_cart');
 

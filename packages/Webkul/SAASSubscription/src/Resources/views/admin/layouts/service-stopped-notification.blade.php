@@ -2,7 +2,7 @@
 
 <?php //dd($subscriptionHelper->isServiceStopped());?>
 @if ($subscriptionHelper->isServiceStopped())
-
+    
     @if (! in_array(request()->route()->getName(), [
         'admin.subscription.plan.overview',
         'admin.subscription.plan.index',
@@ -107,4 +107,5 @@
             </script>
         @endpush
     @endif
+
 @endif
