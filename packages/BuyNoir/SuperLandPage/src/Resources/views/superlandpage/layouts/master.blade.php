@@ -37,6 +37,9 @@
         <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/webkul/saas/assets/css/tenant.css') }}">
 
+
+        <link rel="stylesheet" href="{{ asset('buynoir/superlandpage/assets/css/custom.css')}}" type="text/css" />
+
         
          <!-- jquery -->
          <script src="{{ asset('buynoir/superlandpage/assets/js/jquery-3.5.0.js')}}" type="text/javascript"></script>
