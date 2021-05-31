@@ -1,0 +1,29 @@
+.demo__software::before {
+	background-position-y: 75px;
+	background-position-x: center;
+}
+
+@media (max-width: 767px) {
+	.demo__software::before {
+		background-blend-mode: overlay;
+		background-color: rgba(0, 0, 0, 0.25);
+	}
+}
+
+@media (max-width: 991px) {
+	#About {
+		padding-bottom: 100px;
+	}
+}
+
+@media (min-width: 768px) {
+	#About {
+		height: 100%;
+	}
+}
+
+@media (min-width: 992px) {
+	#About {
+		height: 1000px;
+	}
+}
