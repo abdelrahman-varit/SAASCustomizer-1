@@ -190,7 +190,24 @@
         }
    
         if(product_type=="downloadable"){
-            var links = [document.getElementsByName("links[]")[0].value];
+            
+            var links = {};
+
+            var allLinks = document.getElementsByName("links[]");
+            var qntCount = allLinks.length;
+            for(var i=0;i<qntCount;i++){
+                if(allLinks[i].checked){
+                    var qtyValue = allLinks[i].value;
+                    links[i]=qtyValue;
+                }
+                
+            }
+
+            if(Object.keys(links).length<1){
+                alert("please select download links");
+                return false;
+            }
+      
             data = {
             '_token' : "{{csrf_token()}}",
             'is_buy_now' : "0",  
@@ -200,10 +217,7 @@
             'is_ajax':"1"
             };
 
-            if(!links){
-                alert("please select download links");
-                return false;
-            }
+           
         }
    
         if(product_type=="configurable"){
