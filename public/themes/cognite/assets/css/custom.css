@@ -2171,3 +2171,29 @@ section.product-detail
 .downloadable-product-table a {
 	color: blue;
 }
+
+.dropdown-filters .dropdown-container {
+	right: 2px;
+	width: calc(100% - 4px);
+}
+
+.dropdown-filters .dropdown-container > .d-flex {
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.dropdown-filters .dropdown-container > .d-flex .col-3:first-child {
+	flex: 1;
+}
+
+.table .control-group {
+	min-width: 90px;
+}
+
+.table .control-group input[type="date"] {
+	width: calc(100% - 25px);
+}
+
+.dropdown-list.dropdown-container .apply-filter {
+	border: none;
+}
