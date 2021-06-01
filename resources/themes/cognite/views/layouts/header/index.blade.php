@@ -9,7 +9,6 @@
 
 <div class="header" id="header">
 
-
     <div class="top-bar">
         <div class="main-container-wrapper">
             <div class="header-top">
@@ -603,6 +602,7 @@
 
             @guest('customer')
                 let comparedItems = JSON.parse(localStorage.getItem('compared_product'));
+                 
                 $('#compare-items-count').html(comparedItems ? comparedItems.length : 0);
             @endguest
 

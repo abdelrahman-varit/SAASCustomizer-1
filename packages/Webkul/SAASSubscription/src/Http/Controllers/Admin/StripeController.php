@@ -7,6 +7,8 @@ use Webkul\SAASSubscription\Http\Controllers\Controller;
 use Webkul\SAASSubscription\Helpers\Subscription;
 use Webkul\Payment\Facades\Payment;
 use Webkul\Checkout\Facades\Cart;
+use Webkul\SAASSubscription\Repositories\RecurringProfileRepository;
+use Company;
 // use Webkul\SAASSubscription\Helpers\Paypal;              // Use Steipe's Library
 
 class StripeController extends Controller
@@ -17,7 +19,12 @@ class StripeController extends Controller
      * @var \Webkul\SAASSubscription\Helpers\Subscription
      */
     protected $subscriptionHelper;
-
+    /**
+     * RecurringProfileRepository object
+     *
+     * @var \Webkul\SAASSubscription\Repositories\RecurringProfileRepository
+     */
+    protected $recurringProfileRepository;
     /**
      * Paypal object
      *
@@ -33,7 +40,8 @@ class StripeController extends Controller
      * @return void
      */
     public function __construct(
-        Subscription $subscriptionHelper
+        Subscription $subscriptionHelper,
+        RecurringProfileRepository $recurringProfileRepository
         // Paypal $paypalHelper
     )
     {
@@ -42,6 +50,8 @@ class StripeController extends Controller
         // $this->paypalHelper = $paypalHelper;
 
         $this->_config = request('_config');
+
+        $this->recurringProfileRepository = $recurringProfileRepository;
     }
 
     /**
@@ -86,33 +96,7 @@ class StripeController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    //  public function createProfile()
-    //  {
-    //      $cart = session()->get('subscription_cart');
- 
-    //      if (! $cart) {
-    //          return redirect()->route('admin.subscription.plan.index');
-    //      }
- 
-    //      $doEC = [
-    //          'PROFILESTATUS'=>'ActiveProfile',
-    //          'PROFILEID'=>'I-T2HYXXMJTS1T'
-    //      ];
-     
-    //     //  if ($doEC['ACK'] == "Success") {
-    //          $this->subscriptionHelper->createRecurringProfile($doEC);
- 
-    //          session()->forget('subscription_cart');
- 
-    //          session()->flash('success', trans('saassubscription::app.super-user.plans.profile-created-success'));
- 
-    //          return redirect()->route($this->_config['redirect']);
-    //     //  } else {
-    //     //      session()->flash('error', $doEC['L_LONGMESSAGE0']);
- 
-    //     //      return redirect()->route('admin.subscription.plan.index');
-    //     //  }
-    //  }
+    
 
      public function createProfilePlan()
      {
@@ -122,13 +106,40 @@ class StripeController extends Controller
              return redirect()->route('admin.subscription.plan.index');
          }
  
-         $doEC = [
-             'PROFILESTATUS'=>$cart['profile_status'],
-             'PROFILEID'=>$cart['payment_id']
-         ];
+        
      
         if ($cart['payment_status']=="success") {
-             $this->subscriptionHelper->createRecurringProfile($doEC);
+
+
+            $company = Company::getCurrent();
+            $doEC = [
+                'PROFILESTATUS'=>$cart['profile_status'],
+                'PROFILEID'=>$cart['payment_id'],
+                'company'       => $company
+            ];
+             $recurringProfile = $this->subscriptionHelper->createRecurringProfile($doEC);
+
+            $nextDueDate = $this->subscriptionHelper->getNextDueDate($recurringProfile);
+
+            $invoice = $this->subscriptionHelper->createInvoice([
+                'recurring_profile'                      => $recurringProfile,
+                'saas_subscription_purchased_plan_id'    => $recurringProfile->purchased_plan->id,
+                'saas_subscription_recurring_profile_id' => $recurringProfile->id,
+                'grand_total'                            => $recurringProfile->amount,
+                'cycle_expired_on'                       => $nextDueDate,
+                'customer_email'                         => $recurringProfile->company->email,
+                'customer_name'                          => $recurringProfile->company->username,
+                'payment_method'                         => 'Stripe',
+                'status'                                 => 'Success',
+            ]);
+
+            $this->recurringProfileRepository->update([
+                'saas_subscription_invoice_id' => $invoice->id,
+                'cycle_expired_on'             => $nextDueDate,
+                'next_due_date'                => $nextDueDate,
+            ], $recurringProfile->id);
+
+
  
              session()->forget('subscription_cart');
  

@@ -281,11 +281,14 @@ class Subscription
                 'company'       => $company
             ]);
 
+            $nextDueDate = $this->getNextDueDate($recurringProfile);
+
             $invoice = $this->createInvoice([
                 'recurring_profile'                      => $recurringProfile,
                 'saas_subscription_purchased_plan_id'    => $recurringProfile->purchased_plan->id,
                 'saas_subscription_recurring_profile_id' => $recurringProfile->id,
                 'grand_total'                            => 0,
+                'cycle_expired_on'                       => $nextDueDate,
                 'customer_email'                         => $recurringProfile->company->email,
                 'customer_name'                          => $recurringProfile->company->username,
                 'payment_method'                         => 'Free',
@@ -293,7 +296,9 @@ class Subscription
             ]);
 
             $this->recurringProfileRepository->update([
-                'saas_subscription_invoice_id' => $invoice->id
+                'saas_subscription_invoice_id' => $invoice->id,
+                'cycle_expired_on'             => $nextDueDate,
+                'next_due_date'                => $nextDueDate,
             ], $recurringProfile->id);
         } catch (\Exception $e) {
             DB::rollBack();
@@ -319,18 +324,24 @@ class Subscription
         $company = $response['company'] ?? Company::getCurrent();
 
         $data = [];
-
+        
         if ($cart['type'] == 'manual') {
             $data['payment_status'] = 'Success';
-        } elseif ($cart['type'] != 'free') {
+        } elseif ($cart['type']) {
+            $data['cycle_expired_on'] = $cart['cycle_expired_on'];
             if ($cart['type'] == 'trial') {
                 $data['cycle_expired_on'] = $cart['cycle_expired_on'];
             } else {
+              
                 $data['next_due_date'] = Carbon::now();
-                $data['payment_status'] = 'Payment Due';
+                if(isset($cart['payment_status']) && $cart['payment_status']=="success"){
+                    $data['payment_status'] = 'Success';
+                }else{
+                    $data['payment_status'] = 'Payment Due';
+                }
             }
         }
-
+        //dd($cart);
         $currentRecurringProfile = $this->getCurrentRecurringProfile($company);
         
         $cart['recurring_profile'] = $recurringProfile = $this->recurringProfileRepository->create(array_merge($data, [
@@ -359,10 +370,16 @@ class Subscription
             if ($currentRecurringProfile->type == 'paypal') {
                 app(Paypal::class)->updateRecurringProfileStatus($currentRecurringProfile);
             }
-            
-            $this->recurringProfileRepository->update([
-                'state' => 'Cancelled',
-            ], $currentRecurringProfile->id);
+
+            if(isset($cart['payment_status']) && $cart['payment_status']=="success"){
+                $this->recurringProfileRepository->update([
+                    'state' => 'Active',
+                ], $currentRecurringProfile->id);
+            }else{
+                $this->recurringProfileRepository->update([
+                    'state' => 'Cancelled',
+                ], $currentRecurringProfile->id);
+            }
             
         }
 
@@ -469,7 +486,7 @@ class Subscription
     public function isExpired($companyId)
     {
         $recurringProfile = $this->getCurrentRecurringProfile();
-
+       
         if (! $recurringProfile) {
             return false;
         }
@@ -481,9 +498,8 @@ class Subscription
         }
 
         $expirationDate = clone $recurringProfile->cycle_expired_on;
-
+      
         $isExpired = $currentDateTime->getTimestamp() >= $expirationDate->getTimestamp() ? true : false;
-
         if ($isExpired && $recurringProfile->payment_status != "Payment Due") {
             $this->recurringProfileRepository->update([
                 'payment_status' => 'Payment Due'
@@ -501,21 +517,24 @@ class Subscription
      */
     public function isServiceStopped($companyId = null)
     {
+       
         $recurringProfile = $this->getCurrentRecurringProfile();
 
         if (! $recurringProfile) {
             return true;
         }
+
+        
         
         $company = $companyId
                    ? $this->companyRepository->find($companyId)
                    : Company::getCurrent();
-
+               
         //For setting Payment Due status
-        $this->isExpired($company->id);
-
+        $expire = $this->isExpired($company->id);
+        
         if ($recurringProfile->type == 'free') {
-            return false;
+            //return false;
         }
 
         $currentDateTime = Carbon::now();
@@ -533,8 +552,10 @@ class Subscription
                 $expirationDate->addDays(1);
             }
         }
-        
-        return $currentDateTime->getTimestamp() >= $expirationDate->getTimestamp() ? true : false;
+
+        $isExpired = $currentDateTime->getTimestamp() >= $expirationDate->getTimestamp() ? true : false;
+       
+        return $expire;
     }
 
     /**
