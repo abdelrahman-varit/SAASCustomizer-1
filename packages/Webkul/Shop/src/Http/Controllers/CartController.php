@@ -78,8 +78,8 @@ class CartController extends Controller
 
                 if(request()->get('is_compare')){
                     $this->compareProductsRepository->deleteWhere([
-                        'product_flat_id' => $id),
-                        'customer_id'     => auth()->guard('customer')->user()->id,
+                        'product_flat_id' => $id,
+                        'customer_id'     => auth()->guard('customer')->user()->id
                     ]);
                     return redirect()->url('/comparison');
                 }
