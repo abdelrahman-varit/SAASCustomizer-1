@@ -113,3 +113,21 @@ table.table thead tr {
 .alert-wrapper {
 	z-index: 200;
 }
+
+.dropdown-filters .dropdown-container {
+	right: 2px;
+	width: calc(100% - 4px);
+}
+
+.dropdown-filters .dropdown-container > .d-flex {
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.dropdown-filters .dropdown-container > .d-flex .col-3:first-child {
+	flex: 1;
+}
+
+.table .control-group {
+	min-width: 90px;
+}
