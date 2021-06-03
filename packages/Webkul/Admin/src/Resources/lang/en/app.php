@@ -468,7 +468,7 @@ return [
             'add-product-btn-title' => 'Add Product',
             'add-title' => 'Add Product',
             'edit-title' => 'Edit Product',
-            'save-btn-title' => 'Save Product',
+            'save-btn-title' => 'Save & Next',
             'general' => 'General',
             'product-type' => 'Product Type',
             'simple' => 'Simple',
