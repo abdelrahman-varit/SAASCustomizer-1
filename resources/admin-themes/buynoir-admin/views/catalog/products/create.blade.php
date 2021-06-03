@@ -34,7 +34,7 @@
 
                 <div class="page-action">
                     <button type="submit" class="btn btn-lg btn-primary">
-                        {{ __('admin::app.catalog.products.save-btn-title') }}
+                        {{ __('admin::app.catalog.products.next') }}
                     </button>
                 </div>
             </div>
