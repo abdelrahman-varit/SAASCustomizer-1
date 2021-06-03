@@ -148,7 +148,7 @@ class Subscription
             ];
 
             session()->put('subscription_cart', $cart);
-
+           
             $recurringProfile = $this->createRecurringProfile([
                 'PROFILESTATUS' => 'ActiveProfile',
                 'PROFILEID'     => NULL,
@@ -258,10 +258,12 @@ class Subscription
         $company = $company ? $company : Company::getCurrent();
 
         $plan = session()->get('subscription_cart.plan');
-
+ 
         DB::beginTransaction();
 
         try {
+
+           
             $cart = [
                 'plan'             => $plan,
                 'amount'           => 0,
@@ -282,6 +284,7 @@ class Subscription
             ]);
 
             $nextDueDate = $this->getNextDueDate($recurringProfile);
+
 
             $invoice = $this->createInvoice([
                 'recurring_profile'                      => $recurringProfile,
@@ -324,12 +327,15 @@ class Subscription
         $company = $response['company'] ?? Company::getCurrent();
 
         $data = [];
-        
+        $currentDateTime = Carbon::now();
+        $expireTrail = $currentDateTime->addDays(10);
+
         if ($cart['type'] == 'manual') {
             $data['payment_status'] = 'Success';
         } elseif ($cart['type']) {
-            $data['cycle_expired_on'] = $cart['cycle_expired_on'];
+            $data['cycle_expired_on'] = isset($cart['cycle_expired_on'])?$cart['cycle_expired_on']:$expireTrail;
             if ($cart['type'] == 'trial') {
+                $cart['cycle_expired_on'] = $expireTrail;
                 $data['cycle_expired_on'] = $cart['cycle_expired_on'];
             } else {
               
