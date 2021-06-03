@@ -8,7 +8,7 @@ use Webkul\Sales\Repositories\OrderRepository;
 use Webkul\Sales\Repositories\OrderItemRepository;
 use Webkul\Customer\Repositories\CustomerRepository;
 use Webkul\Product\Repositories\ProductInventoryRepository;
-
+use Company;
 class DashboardController extends Controller
 {
     /**
@@ -236,16 +236,19 @@ class DashboardController extends Controller
     public function getCustomerWithMostSales()
     {
         $dbPrefix = DB::getTablePrefix();
+        $company = Company::getCurrent();
 
         return $this->orderRepository->getModel()
                     ->leftJoin('refunds', 'orders.id', 'refunds.order_id')
                     ->select(DB::raw("(SUM({$dbPrefix}orders.base_grand_total) - SUM(IFNULL({$dbPrefix}refunds.base_grand_total, 0))) as total_base_grand_total"))
                     ->addSelect(DB::raw("COUNT({$dbPrefix}orders.id) as total_orders"))
-                    ->addSelect('orders.id', 'customer_id', 'customer_email', 'customer_first_name', 'customer_last_name')
+                    ->addSelect('orders.id', 'customer_id', 'customer_email', 'customer_first_name', 
+                    'customer_last_name')
                     ->where('orders.created_at', '>=', $this->startDate)
                     ->where('orders.created_at', '<=', $this->endDate)
                     ->where('orders.status', '<>', 'closed')
                     ->where('orders.status', '<>', 'canceled')
+                    ->where('orders.company_id', '=', $company->id )
                     ->groupBy('customer_email')
                     ->orderBy('total_base_grand_total', 'DESC')
                     ->limit(5)

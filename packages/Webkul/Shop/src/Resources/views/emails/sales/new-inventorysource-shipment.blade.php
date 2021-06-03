@@ -31,32 +31,32 @@
             </p>
         </div>
 
-
+        
 
         <div style="display: flex;flex-direction: row;margin-top: 20px;justify-content: space-between;margin-bottom: 40px;">
             <div style="line-height: 25px;">
                 <div style="font-weight: bold;font-size: 16px;color: #242424;">
                     {{ __('shop::app.mail.order.shipping-address') }}
                 </div>
-
+               
                 <div>
                     {{ $order->shipping_address->company_name ?? '' }}
                 </div>
-
+                
                 <div>
                     {{ $order->shipping_address->name }}
                 </div>
-
+         
                 <div>
                     {{ $order->shipping_address->address1 }}, {{ $order->shipping_address->state }}
                 </div>
-
+               
                 <div>
-                    {{ core()->country_name($order->shipping_address->country) }} {{ $order->shipping_address->postcode }}
+                    {{ $order->shipping_address->country }} {{ $order->shipping_address->postcode }}
                 </div>
-
-                <div>---</div>
-
+               <div>---</div>
+               
+      
                 <div style="margin-bottom: 40px;">
                     {{ __('shop::app.mail.order.contact') }} : {{ $order->shipping_address->phone }}
                 </div>
@@ -67,19 +67,22 @@
 
                 <div style="font-size: 16px;color: #242424;">
                     <div style="font-weight: bold;">
-                        {{ $order->shipping_title }}
+                          {{$order->shipping_title }}
+                          <?php \Log::info('from inventory view line 70: ',[$order->shipping_title ]);?>
+
                     </div>
 
                     <div style="margin-top: 5px;">
                         <span style="font-weight: bold;">{{ __('shop::app.mail.shipment.carrier') }} : </span>{{ $shipment->carrier_title }}
                     </div>
-
+                    <?php \Log::info('from inventory view line 78: ',[$order->carrier_title ]);?>
                     <div style="margin-top: 5px;">
                         <span style="font-weight: bold;">{{ __('shop::app.mail.shipment.tracking-number') }} : </span>{{ $shipment->track_number }}
+                        <?php \Log::info('from inventory view line 81: ',[$order->track_number ]);?>
                     </div>
                 </div>
             </div>
-
+      
             <div style="line-height: 25px;">
                 <div style="font-weight: bold;font-size: 16px;color: #242424;">
                     {{ __('shop::app.mail.order.billing-address') }}
@@ -98,7 +101,7 @@
                 </div>
 
                 <div>
-                    {{ core()->country_name($order->billing_address->country) }} {{ $order->billing_address->postcode }}
+                    {{ $order->billing_address->country }} {{ $order->billing_address->postcode }}
                 </div>
 
                 <div>---</div>
@@ -117,6 +120,7 @@
             </div>
         </div>
 
+       
         <div class="section-content">
             <div class="table mb-20">
                 <table style="overflow-x: auto; border-collapse: collapse;
@@ -159,14 +163,6 @@
             </div>
         </div>
 
-        {{-- <div style="margin-top: 20px;font-size: 16px;color: #5E5E5E;line-height: 24px;display: inline-block;width: 100%">
-            <p style="font-size: 16px;color: #5E5E5E;line-height: 24px;">
-                {!!
-                    __('shop::app.mail.order.help', [
-                        'support_email' => '<a style="color:#0041FF" href="mailto:' . config('mail.from.address') . '">' . config('mail.from.address'). '</a>'
-                        ])
-                !!}
-            </p>
-        </div> --}}
+      
     </div>
 @endcomponent

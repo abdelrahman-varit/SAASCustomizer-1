@@ -21,7 +21,12 @@ class Order extends BaseModel
         if (auth()->guard('super-admin')->check() || ! isset($company->id)) {
             return new \Illuminate\Database\Eloquent\Builder($query);
         } else {
-            return new \Illuminate\Database\Eloquent\Builder($query->where('orders' . '.company_id', $company->id));
+            if(request()->is("admin/dashboard")){
+                return new \Illuminate\Database\Eloquent\Builder($query->where('orders.company_id','=', $company->id));
+            }else{
+                return new \Illuminate\Database\Eloquent\Builder($query->where('company_id','=', $company->id));
+            }
+           
         }
     }
 }

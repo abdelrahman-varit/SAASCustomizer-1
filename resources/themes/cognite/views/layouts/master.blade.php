@@ -211,6 +211,13 @@
         $(window).on('load', function () {
             $(".se-pre-con").fadeOut("slow");
         });
+
+        function showAlertMsg(msgType, msgText){
+            document.getElementsByClassName('alert-wrapper')[0].innerHTML = `<div class='alert ${msgType}' style='color:#fff'>${msgText}</div>`;
+            setTimeout(() => {
+                document.getElementsByClassName('alert-wrapper')[0].innerHTML = '';
+            }, 5000);
+        }
     </script>
 </body>
 

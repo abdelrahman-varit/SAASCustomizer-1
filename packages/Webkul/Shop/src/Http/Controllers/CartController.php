@@ -131,9 +131,12 @@ class CartController extends Controller
 
                 if(request()->get('is_ajax')){
                     $cart_list = cart()->getCart();
-                    foreach($cart_list->items as $item){
-                        $images = $item->product->getTypeInstance()->getBaseImage($item);
+                    if(!empty($cart_list)){
+                        foreach($cart_list->items as $item){
+                            $images = $item->product->getTypeInstance()->getBaseImage($item);
+                        }
                     }
+
                     return response()->json([
                         'status'=>'error',
                         'data'=>$cart_list,

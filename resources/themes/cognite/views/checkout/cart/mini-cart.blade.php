@@ -222,7 +222,7 @@
                                         }  
                                     }
                                    
-                                    window.flashMessages = [{'type': 'alert-success', 'message': "Product is removed to cart successfully!" }];
+                                    showAlertMsg('alert-success', 'Product removed successfully!');
 
                                     if(animated){
                                         animated.style.display="none";
@@ -233,6 +233,9 @@
                                     if(animated){
                                         animated.style.display="none";
                                     }
+
+                                    showAlertMsg('alert-warning', 'Product removed problem, try again!');
+
                                 });
     }
 </script>
