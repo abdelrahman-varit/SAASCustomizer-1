@@ -468,6 +468,7 @@ return [
             'add-product-btn-title' => 'Add Product',
             'add-title' => 'Add Product',
             'edit-title' => 'Edit Product',
+            'next' => 'Next',
             'save-btn-title' => 'Save Product',
             'general' => 'General',
             'product-type' => 'Product Type',
