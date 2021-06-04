@@ -98,7 +98,7 @@ class Order
     public function sendNewShipmentMail($shipment)
     {
         $customerLocale = $this->getLocale($shipment);
-        
+  
         try {
             if ($shipment->email_sent) {
                 return;
@@ -108,7 +108,7 @@ class Order
             $configKey = 'emails.general.notifications.emails.general.notifications.new-shipment';
              
             if (core()->getConfigData($configKey)) {
-               Log::info("Line 111 shipment: ",[$shipment]); 
+               Log::info("Line 111 shipment: ",[$shipment->order]); 
                 $this->prepareMail($customerLocale, new NewShipmentNotification($shipment));
                 Log::info('NewShipmentNotification after 113');
             }
@@ -116,9 +116,9 @@ class Order
             /* email to admin */
             $configKey = 'emails.general.notifications.emails.general.notifications.new-inventory-source';
             if (core()->getConfigData($configKey)) {
-                Log::info('NewShipmentNotification admin before 119');
+                Log::info('NewShipmentNotification admin before 119 $shipment->order->shipping_address',[$shipment->order->shipping_address]);
                 $this->prepareMail(env('APP_LOCALE'), new NewInventorySourceNotification($shipment));
-                Log::info('NewShipmentNotification admin before 121');
+                Log::info('NewShipmentNotification admin after 121');
             }
         } catch (\Exception $e) {
             report($e);
