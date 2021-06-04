@@ -83,9 +83,6 @@
 		flex-direction: column;
 		gap: 15px;
 	}
-	.review-list {
-		flex-direction: column;
-	}
 	section.review .review-layouter .product-info .product-name,
 	section.review .review-layouter .product-info .product-price {
 		max-width: 100%;
@@ -242,6 +239,9 @@
 	}
 	.others-information-row {
 		grid-template-columns: minmax(auto, 200px) 1fr;
+	}
+	.review-list {
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
