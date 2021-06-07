@@ -588,7 +588,8 @@
                 @endphp
 
                 let comparedItems = JSON.parse(localStorage.getItem('compared_product'));
-                $('#compare-items-count').html({{ $compareCount }});
+                $('#compare-items-count').html(comparedItems.length);
+                console.log('count of compare layout/header/index: ',comparedItems );
 
                 fetch("{{route('customer.wishlist.count')}}").then(response=>response.json()).then(data=>{
                    
@@ -604,6 +605,8 @@
                 let comparedItems = JSON.parse(localStorage.getItem('compared_product'));
                  
                 $('#compare-items-count').html(comparedItems ? comparedItems.length : 0);
+                console.log('count of compare layout/header/index: ',comparedItems );
+
             @endguest
 
             function toggleDropdown(e) {
