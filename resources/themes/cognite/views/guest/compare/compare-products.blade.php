@@ -172,13 +172,13 @@
             methods: {
                 'getComparedProducts': function () {
                     let items = '';
-                    let url = `${this.baseUrl}/${this.isCustomer ? 'comparison' : 'detailed-products'}`;
+                    let url = `${this.baseUrl}/${'detailed-products'}`;
 
                     let data = {
                         params: {'data': true}
                     }
 
-                    if (! this.isCustomer) {
+                    if (! this.isCustomer || this.isCustomer) {
                         items = this.getStorageValue('compared_product');
                         items = items ? items.join('&') : '';
 
@@ -214,42 +214,59 @@
                 },
 
                 'removeProductCompare': function (productId) {
-                    if (this.isCustomer) {
-                        this.$http.delete(`${this.baseUrl}/comparison?productId=${productId}`)
-                        .then(response => {
-                            if (productId == 'all') {
-                                this.$set(this, 'products', this.products.filter(product => false));
-                            } else {
-                                this.$set(this, 'products', this.products.filter(product => product.id != productId));
-                            }
+                    // if (this.isCustomer && false) {
+                    //     this.$http.delete(`${this.baseUrl}/comparison?productId=${productId}`)
+                    //     .then(response => {
+                    //         if (productId == 'all') {
+                    //             this.$set(this, 'products', this.products.filter(product => false));
+                    //         } else {
+                    //             this.$set(this, 'products', this.products.filter(product => product.id != productId));
+                    //         }
 
-                            window.flashMessages = [{'type': 'alert-success', 'message': response.data.message }];
+                    //         window.flashMessages = [{'type': 'alert-success', 'message': response.data.message }];
 
-                            this.$root.addFlashMessages();
-                        })
-                        .catch(error => {
-                            console.log("{{ __('shop::app.common.error') }}");
-                        });
+                    //         this.$root.addFlashMessages();
+                    //     })
+                    //     .catch(error => {
+                    //         console.log("{{ __('shop::app.common.error') }}");
+                    //     });
+                    // } else {
+                    //     let existingItems = this.getStorageValue('compared_product');
+
+                    //     if (productId == "all") {
+                    //         updatedItems = [];
+                    //         this.$set(this, 'products', []);
+                    //         window.flashMessages = [{'type': 'alert-success', 'message': '{{ __('shop::app.customer.compare.removed-all') }}' }];
+                    //     } else {
+                    //         updatedItems = existingItems.filter(item => item != productId);
+                    //         this.$set(this, 'products', this.products.filter(product => product.id != productId));
+                    //         window.flashMessages = [{'type': 'alert-success', 'message': '{{ __('shop::app.customer.compare.removed') }}' }];
+                    //     }
+
+                    //     this.setStorageValue('compared_product', updatedItems);
+
+                    //     this.$root.addFlashMessages();
+                    // }
+
+                    let existingItems = this.getStorageValue('compared_product');
+
+                    if (productId == "all") {
+                        updatedItems = [];
+                        this.$set(this, 'products', []);
+                        window.flashMessages = [{'type': 'alert-success', 'message': '{{ __('shop::app.customer.compare.removed-all') }}' }];
                     } else {
-                        let existingItems = this.getStorageValue('compared_product');
-
-                        if (productId == "all") {
-                            updatedItems = [];
-                            this.$set(this, 'products', []);
-                            window.flashMessages = [{'type': 'alert-success', 'message': '{{ __('shop::app.customer.compare.removed-all') }}' }];
-                        } else {
-                            updatedItems = existingItems.filter(item => item != productId);
-                            this.$set(this, 'products', this.products.filter(product => product.id != productId));
-                            window.flashMessages = [{'type': 'alert-success', 'message': '{{ __('shop::app.customer.compare.removed') }}' }];
-                        }
-
-                        this.setStorageValue('compared_product', updatedItems);
-
-                        this.$root.addFlashMessages();
+                        updatedItems = existingItems.filter(item => item != productId);
+                        this.$set(this, 'products', this.products.filter(product => product.id != productId));
+                        window.flashMessages = [{'type': 'alert-success', 'message': '{{ __('shop::app.customer.compare.removed') }}' }];
                     }
 
+                    this.setStorageValue('compared_product', updatedItems);
+
+                    this.$root.addFlashMessages();
+
+
                     this.updateCompareCount();
-                },
+                },//end function removeProductCompare
 
                 'getDynamicHTML': function (input) {
                     var _staticRenderFns;
@@ -333,26 +350,33 @@
                 },
 
                 'updateCompareCount': function () {
-                    if (this.isCustomer == "true" || this.isCustomer == true) {
-                        this.$http.get(`${this.baseUrl}/items-count`)
-                        .then(response => {
-                            $('#compare-items-count').html(response.data.compareProductsCount);
-                        })
-                        .catch(exception => {
-                            window.flashMessages = [{
-                                'type': `alert-error`,
-                                'message': "{{ __('shop::app.common.error') }}"
-                            }];
+                    // if (this.isCustomer == "true" || this.isCustomer == true) {
+                    //     this.$http.get(`${this.baseUrl}/items-count`)
+                    //     .then(response => {
+                    //         $('#compare-items-count').html(response.data.compareProductsCount);
+                    //     })
+                    //     .catch(exception => {
+                    //         window.flashMessages = [{
+                    //             'type': `alert-error`,
+                    //             'message': "{{ __('shop::app.common.error') }}"
+                    //         }];
                             
-                            this.$root.addFlashMessages();
-                        });
-                    } else {
+                    //         this.$root.addFlashMessages();
+                    //     });
+                    // } else {
+                    //     let comparedItems = JSON.parse(localStorage.getItem('compared_product'));
+                    //     comparedItemsCount = comparedItems ? comparedItems.length : 0;
+
+                    //     $('#compare-items-count').html(comparedItemsCount);
+                    // }
+
                         let comparedItems = JSON.parse(localStorage.getItem('compared_product'));
-                        comparedItemsCount = comparedItems ? comparedItems.length : 0;
+                        let comparedItemsCount = comparedItems ? comparedItems.length : 0;
 
                         $('#compare-items-count').html(comparedItemsCount);
-                    }
-                }
+                        console.log('count: ', comparedItemsCount);
+
+                }//end function updateCompareCount
             }
         });
     </script>
