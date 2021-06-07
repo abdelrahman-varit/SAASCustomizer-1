@@ -12,6 +12,7 @@ use Webkul\Attribute\Repositories\AttributeOptionRepository;
 use Webkul\Product\Repositories\ProductReviewRepository;
 use Webkul\Velocity\Repositories\VelocityMetadataRepository;
 use Illuminate\Support\Facades\Log;
+use Company;
 
 class Helper extends Review
 {
@@ -217,26 +218,34 @@ class Helper extends Review
      */
     public function getVelocityMetaData($locale = null, $channel = null, $default = true)
     {
+        $company = Company::getCurrent();
+        
         if (! $locale) {
             $locale = request()->get('locale') ?: app()->getLocale();
         }
-
+        
         if (! $channel) {
             $channel = request()->get('channel') ?: 'default';
         }
 
+     
         try {
             $metaData = $this->velocityMetadataRepository->findOneWhere([
                 'locale' => $locale,
                 'channel' => $channel
             ]);
-
+            
             if (! $metaData && $default) {
                 $metaData = $this->velocityMetadataRepository->findOneWhere([
                     'locale' => 'en',
                     'channel' => 'default'
                 ]);
             }
+            
+            $metaData = $this->velocityMetadataRepository->findOneWhere([
+                'company_id' => $company->id
+              
+            ]);
 
             return $metaData;
         } catch (\Exception $exception) {
