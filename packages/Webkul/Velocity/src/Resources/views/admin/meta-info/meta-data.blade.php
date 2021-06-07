@@ -105,6 +105,10 @@
                             value="{{ $metaData ? $metaData->header_content_count : '5' }}" />
                     </div>
 
+                    <?php
+                            //dd($metaData);
+                    ?>
+
                     <div class="control-group">
                         <label>{{ __('shop::app.home.featured-products') }}</label>
 
