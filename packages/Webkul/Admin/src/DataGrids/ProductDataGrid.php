@@ -286,6 +286,7 @@ class ProductDataGrid extends DataGrid
         }
 
         /* query builder */
+        DB::connection()->enableQueryLog();
         $queryBuilder = DB::table('product_flat')
             ->leftJoin('products', 'product_flat.product_id', '=', 'products.id')
             ->leftJoin('attribute_families', 'products.attribute_family_id', '=', 'attribute_families.id')
@@ -300,9 +301,18 @@ class ProductDataGrid extends DataGrid
                 'product_flat.status',
                 'product_flat.price',
                 'attribute_families.name as attribute_family',
-                DB::raw('SUM(' . DB::getTablePrefix() . 'product_inventories.qty) as quantity')
+                 DB::raw('(select sum(product_inventories.qty) from product_inventories where product_inventories.product_id = product_flat.product_id and product_inventories.product_id = products.id) as quantity')
             );
 
+            
+        // $queryBuilder = DB::raw("select  DISTINCT product_flat.locale, product_flat.channel, product_flat.product_id,
+        // products.sku as product_sku, product_flat.name as product_name, products.type as product_type,
+        // product_flat.status, product_flat.price, attribute_families.name as attribute_family, 
+        // (select sum(product_inventories.qty) from product_inventories where product_inventories.product_id = product_flat.product_id and product_inventories.product_id = products.id) as quantity from product_flat
+        // left join products on product_flat.product_id = products.id  
+        // left join attribute_families on products.attribute_family_id=attribute_families.id
+        // left join product_inventories on product_flat.product_id=product_inventories.product_id
+        // group by products.id");
         $queryBuilder->groupBy('product_flat.product_id', 'product_flat.channel');
 
         $queryBuilder->whereIn('product_flat.locale', $whereInLocales);
