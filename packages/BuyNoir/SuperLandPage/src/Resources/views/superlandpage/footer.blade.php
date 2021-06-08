@@ -24,11 +24,17 @@
             <a href="#">Cookie Policy</a>
           </div>
           <div class="opyright">
-            <p>
-              © 2020
-              <a href="https://buynoir.co" target="_blank">BuyNoir</a>
-              All Right Reseved
-            </p>
+            @if (company()->getSuperConfigData('general.content.footer.footer_toggle'))
+                <div class="footer">
+                    <p style="text-align: center;">
+                        @if (company()->getSuperConfigData('general.content.footer.footer_content'))
+                            {{ company()->getSuperConfigData('general.content.footer.footer_content') }}
+                        @else
+                            {!! trans('admin::app.footer.copy-right') !!}
+                        @endif
+                    </p>
+                </div>
+            @endif
           </div>
         </div>
       </div>
