@@ -724,4 +724,131 @@ return [
         'delete-success' => ':name deleted successfully.',
         'submit-success' => ':name submitted successfully.'
     ],
+
+    'admin' => [
+        'system'    => [
+            'social-login'          => 'Social Login',
+            'facebook'              => 'Facebook Settings',
+            'facebook-client-id'    => 'Facebook Client ID',
+            'facebook-client-secret'=> 'Facebook Client Secret',
+            'facebook-callback-url' => 'Facebook Callback URL',
+            'twitter'               => 'Twitter Settings',
+            'twitter-client-id'     => 'Twitter Client ID',
+            'twitter-client-secret' => 'Twitter Client Secret',
+            'twitter-callback-url'  => 'Twitter Callback URL',
+            'google'                => 'Google Settings',
+            'google-client-id'      => 'Google Client ID',
+            'google-client-secret'  => 'Google Client Secret',
+            'google-callback-url'   => 'Google Callback URL',
+            'linkedin'              => 'LinkedIn Settings',
+            'linkedin-client-id'    => 'LinkedIn Client ID',
+            'linkedin-client-secret'=> 'LinkedIn Client Secret',
+            'linkedin-callback-url' => 'LinkedIn Callback URL',
+            'github'                => 'GitHub Settings',
+            'github-client-id'      => 'GitHub Client ID',
+            'github-client-secret'  => 'GitHub Client Secret',
+            'github-callback-url'   => 'GitHub Callback URL',
+        ],
+        'tenant' => [
+            'id'                => 'ID',
+            'first-name'        => 'First Name',
+            'last-name'         => 'Last Name',
+            'email'             => 'Email',
+            'skype'             => 'Skype',
+            'c-name'            => 'CName',
+            'add-address'       => 'Add Address',
+            'country'           => 'Country',
+            'city'              => 'City',
+            'address1'          => 'Address 1',
+            'address2'          => 'Address 2',
+            'address'           => 'Address List',
+            'company'           => 'Tenant',
+            'profile'           => 'Profile',
+            'update'            => 'Update',
+            'address-details'   => 'Address Details',
+            'address'           => [
+                'create-success'    => 'Success: Company address is created successfully.',
+                'update-success'    => 'Success: Company address is updated successfully.',
+            ],
+            'company-address'   => [
+                'add-address-title'     => 'New Address',
+                'update-address-title'  => 'Update Address',
+                'save-btn-title'        => 'Save Address',
+            ],
+            'create-failed'     => 'Warning: Cannot create :attribute due to unknown reasons.',
+            'update-success'    => 'Success: :resource updated successfully.',
+            'update-failed'     => 'Warning: Cannot update :resource due to unknown reasons.',
+            'delete-success'    => 'Success: :resource deleted successfully.',
+            'delete-failed'     => 'Warning: Cannot delete :resource due to unknown reasons.',
+            'exceptions'        => [
+                'seller'                => 'Seller Deactivated',
+                'blocked'               => 'deactivated',
+                'domain-not-found'      => 'Warning: Domain not found.',
+                'company-blocked-by-administrator'  => 'This seller is deactivated',
+                'not-allowed-to-visit-this-section' => 'Warning: You are not allowed to use this section.',
+                'auth'                  => 'Warning: Authentication Error!',
+                'illegal-action'        => 'Warning: You are not allowed to perform this action.'
+            ]
+        ]
+    ],
+
+    'tenant' => [
+        'layouts' => [
+            'nav-top' => [
+                'menu' => [
+                    'account'        => 'Account',
+                    'company-signup' => 'Register Tenant',
+                ]
+            ]
+        ],
+
+        'footer' => [
+            'locale'                => 'LOCALE',
+        ],
+
+        'registration' => [
+            'merchant-auth'         =>'Merchant Registration',
+            'step-1'                => 'Step 1',
+            'auth-cred'             => 'Authentication Credentials',
+            'email'                 => 'Email',
+            'phone'                 => 'Phone',
+            'username'              => 'Username',
+            'password'              => 'Password',
+            'cpassword'             => 'Confirm Password',
+            'continue'              => 'Continue',
+            'step-2'                => 'Step 2',
+            'next'                  => 'Next',
+            'personal'              => 'Personal Details',
+            'first-name'            => 'First Name',
+            'last-name'             => 'Last Name',
+            'step-3'                => 'Step 3',
+            'org-details'           => 'Organization Details',
+            'org-name'              => 'Organization Name',
+            'company-activated'     => 'Success: Company successfully activated.',
+            'company-deactivated'   => 'Success: Company successfully deactivated.',
+            'company-updated'       => 'Success: Company Updated Successfully.',
+            'something-wrong'       => 'Warning: Something went wrong.',
+            'store-created'         => 'Success: Store Created Successfully.',
+            'something-wrong-1'     => 'Warning: Something went wrong, please try again later.',
+        ],
+
+        'custom-errors' => [
+            'channel-creating'  => 'Warning: Creating more than one channel is not allowed',
+            'channel-hostname'  => 'Warning: Kindly contact admin to change your hostname',
+            'same-domain'       => 'Warning: Cannot keep same sub-domain as main domain',
+            'block-message'     => 'Warning: If you want to unblock this seller, free feel to contact us, we are available 24x7 to solve your issue.',
+            'blocked'           => 'has been deactivated',
+            'illegal-action'    => 'Warning: You have performed an illegal action',
+            'not-allowed-to-visit'  => 'Warning: You are not allowed to visit this section, this section is only meant for usage by admins only',
+            'domain-message'    => 'Warning: Oops! We could not help at <b>:domain</b>',
+            'domain-desc'       => 'If you wish to create an account with <b>:domain</b>
+            as an organization, feel free to create an account and get started.',
+            'illegal-message'   => 'Warning: The action you performed is disabled by site admin, kindly mail your site administrator for more details on this.',
+            'locale-creation'   => 'Warning: Creating locale other than English is not allowed.',
+            'locale-delete'     => 'Warning: Cannot delete the Locale.',
+            'cannot-delete-default' => 'Warning: Cannot delete the default channel.',
+        ],
+    ],
+
+
 ];
