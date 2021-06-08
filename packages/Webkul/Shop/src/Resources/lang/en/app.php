@@ -730,7 +730,7 @@ return [
             'social-login'          => 'Social Login',
             'facebook'              => 'Facebook Settings',
             'facebook-client-id'    => 'Facebook Client ID',
-            'facebook-client-secret'=> 'Facebook Client Secret',
+            'facebook-client-secret' => 'Facebook Client Secret',
             'facebook-callback-url' => 'Facebook Callback URL',
             'twitter'               => 'Twitter Settings',
             'twitter-client-id'     => 'Twitter Client ID',
@@ -742,7 +742,7 @@ return [
             'google-callback-url'   => 'Google Callback URL',
             'linkedin'              => 'LinkedIn Settings',
             'linkedin-client-id'    => 'LinkedIn Client ID',
-            'linkedin-client-secret'=> 'LinkedIn Client Secret',
+            'linkedin-client-secret' => 'LinkedIn Client Secret',
             'linkedin-callback-url' => 'LinkedIn Callback URL',
             'github'                => 'GitHub Settings',
             'github-client-id'      => 'GitHub Client ID',
@@ -807,7 +807,7 @@ return [
         ],
 
         'registration' => [
-            'merchant-auth'         =>'Merchant Registration',
+            'merchant-auth'         => 'Merchant Registration',
             'step-1'                => 'Step 1',
             'auth-cred'             => 'Authentication Credentials',
             'email'                 => 'Email',
@@ -836,7 +836,7 @@ return [
             'channel-creating'  => 'Warning: Creating more than one channel is not allowed',
             'channel-hostname'  => 'Warning: Kindly contact admin to change your hostname',
             'same-domain'       => 'Warning: Cannot keep same sub-domain as main domain',
-            'block-message'     => 'Warning: If you want to unblock this seller, free feel to contact us, we are available 24x7 to solve your issue.',
+            'block-message'     => '<strong>Warning:</strong> If you want to unblock this seller, free feel to contact us, we are available <strong>24x7</strong> to solve your issue.',
             'blocked'           => 'has been deactivated',
             'illegal-action'    => 'Warning: You have performed an illegal action',
             'not-allowed-to-visit'  => 'Warning: You are not allowed to visit this section, this section is only meant for usage by admins only',
@@ -847,6 +847,7 @@ return [
             'locale-creation'   => 'Warning: Creating locale other than English is not allowed.',
             'locale-delete'     => 'Warning: Cannot delete the Locale.',
             'cannot-delete-default' => 'Warning: Cannot delete the default channel.',
+            'visit-us' => 'Visit us',
         ],
     ],
 
