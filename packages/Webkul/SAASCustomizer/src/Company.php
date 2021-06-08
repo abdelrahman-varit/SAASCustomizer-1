@@ -216,9 +216,8 @@ class Company
         if ($type == null) {
             return response()->view("{$path}::errors.{$statusCode}", ['message' => $message, 'status' => $statusCode], $statusCode);
         } else {
-            
-            // return response()->view("saas::errors.company_blocked_by_administrator", ['message' => $message, 'status' => $statusCode], $statusCode);
-            return response()->view("saas::errors.company_blocked_by_administrator",['message' => $message, 'status' => $statusCode]);
+            //throw new Exception('Domain not found or deactivated!');
+            return response()->view("shop::errors.company_blocked_by_administrator", ['message' => $message, 'status' => $statusCode], $statusCode);
         }
     }
 
