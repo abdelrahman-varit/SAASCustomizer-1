@@ -19,10 +19,10 @@ class ChannelObserver
     {
         if (! auth()->guard('super-admin')->check()) {
             $company = Company::getCurrent();
-
+            //dd('hostname: '.$channel->hostname.' & domain: '.$company->domain.' & channel_id: '.$company->channel_id.' & chanel->id: '. $channel->id );
             if (($channel->hostname != $company->domain) && ($company->channel_id == $channel->id)) {
                 session()->flash('warning', trans('saas::app.tenant.custom-errors.channel-hostname'));
-
+                return redirect()->back();
                 throw new \Exception('illegal_action');
             }
         }

@@ -68,6 +68,7 @@ class ConfigurationController extends Controller
      */
     public function storeMetaData($id)
     {
+        //dd(request()->get('header_content_count'));
         // check if radio button value
         if (request()->get('slides') == "on") {
             $params = request()->all() + [
@@ -118,14 +119,24 @@ class ConfigurationController extends Controller
 
         unset($params['images']);
         unset($params['slides']);
+        unset($params['_token']);
 
         $params['locale'] = $this->locale;
+        $params['header_content_count'] = request()->get('header_content_count');
 
-        // update row
-        $product = $this->velocityMetaDataRepository->update($params, $id);
-
+       try{
+      
+        $meta_data = $this->velocityMetaDataRepository->update($params, $id);
         session()->flash('success', trans('admin::app.response.update-success', ['name' => trans('velocity::app.admin.meta-data.title')]));
 
+       }catch(Exception $ex){
+    
+           session()->flash('warning', $ex->getMessage(), ['name' => trans('velocity::app.admin.meta-data.title')]));
+
+       }
+        // update row
+       
+       
         return redirect()->route($this->_config['redirect'], ['locale' => $this->locale]);
     }
 

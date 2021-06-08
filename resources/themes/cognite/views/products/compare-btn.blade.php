@@ -27,29 +27,31 @@
 
             methods: {
                 'addProductToCompare': function () {
-                    if (this.customer == "true" || this.customer == true) {
-                        this.$http.put(
-                            `${this.baseUrl}/comparison`, {
-                                productId: this.productId,
-                            }
-                        ).then(response => {
-                            window.flashMessages = [{
-                                'type': `alert-${response.data.status}`,
-                                'message': response.data.message
-                            }];
+                    // if (this.customer == "true" || this.customer == true) {
+                    //     this.$http.put(
+                    //         `${this.baseUrl}/comparison`, {
+                    //             productId: this.productId,
+                    //         }
+                    //     ).then(response => {
+                    //         window.flashMessages = [{
+                    //             'type': `alert-${response.data.status}`,
+                    //             'message': response.data.message
+                    //         }];
                             
-                            this.$root.addFlashMessages()
-                        }).catch(error => {
-                            window.flashMessages = [{
-                                'type': `alert-danger`,
-                                'message': "{{ __('shop::app.common.error') }}"
-                            }];
+                    //         this.$root.addFlashMessages()
+                    //     }).catch(error => {
+                    //         window.flashMessages = [{
+                    //             'type': `alert-danger`,
+                    //             'message': "{{ __('shop::app.common.error') }}"
+                    //         }];
 
-                            this.$root.addFlashMessages()
-                        });
-                    } else {
+                    //         this.$root.addFlashMessages()
+                    //     });
+                    // } else {
                         let updatedItems = [this.productId];
                         let existingItems = this.getStorageValue('compared_product');
+
+                        console.log('compare product/compare-btn',existingItems);
 
                         if(existingItems && existingItems.length>3){
 							 window.flashMessages = [{
@@ -92,7 +94,7 @@
                                     this.$root.addFlashMessages()
                             }
                         }
-                    }
+                    // }
 
                     this.updateCompareCount();
                 },
@@ -114,26 +116,32 @@
                 },
 
                 'updateCompareCount': function () {
-                    if (this.customer == "true" || this.customer == true) {
-                        this.$http.get(`${this.baseUrl}/items-count`)
-                        .then(response => {
-                            $('#compare-items-count').html(response.data.compareProductsCount);
-                        })
-                        .catch(exception => {
-                            window.flashMessages = [{
-                                'type': `alert-error`,
-                                'message': "{{ __('shop::app.common.error') }}"
-                            }];
+                    // if (this.customer == "true" || this.customer == true) {
+                    //     this.$http.get(`${this.baseUrl}/items-count`)
+                    //     .then(response => {
+                    //         $('#compare-items-count').html(response.data.compareProductsCount);
+                    //     })
+                    //     .catch(exception => {
+                    //         window.flashMessages = [{
+                    //             'type': `alert-error`,
+                    //             'message': "{{ __('shop::app.common.error') }}"
+                    //         }];
                             
-                            this.$root.addFlashMessages();
-                        });
-                    } else {
-                        let comparedItems = JSON.parse(localStorage.getItem('compared_product'));
-                        comparedItemsCount = comparedItems ? comparedItems.length : 0;
+                    //         this.$root.addFlashMessages();
+                    //     });
+                    // } else {
+                    //     let comparedItems = JSON.parse(localStorage.getItem('compared_product'));
+                    //     comparedItemsCount = comparedItems ? comparedItems.length : 0;
 
-                        $('#compare-items-count').html(comparedItemsCount);
-                    }
-                }
+                    //     $('#compare-items-count').html(comparedItemsCount);
+                    // }
+
+                    let comparedItems = JSON.parse(localStorage.getItem('compared_product'));
+                    let comparedItemsCount = comparedItems ? comparedItems.length : 0;
+                    $('#compare-items-count').html(comparedItemsCount);
+                    console.log('count of product/compare-btn: ',this.getStorageValue('compared_product') );
+                    // this.getStorageValue('compared_product');
+                } //end function updateCompareCount
             }
         });
     </script>

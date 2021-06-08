@@ -86,25 +86,25 @@
 
                         <div class="control-group" :class="[errors.has('address[first_name]') ? 'has-error' : '']">
                             <label for="address[first_name]" class="required">{{ __('saassubscription::app.admin.checkout.first-name') }}</label>
-                            <input v-validate="'required'" class="control" id="address[first_name]" name="address[first_name]" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.first-name') }}&quot;"/>
+                            <input v-validate="'required'" required class="control" id="address[first_name]" name="address[first_name]" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.first-name') }}&quot;"/>
                             <span class="control-error" v-if="errors.has('address[first_name]')">@{{ errors.first('address[first_name]') }}</span>
                         </div>
 
                         <div class="control-group" :class="[errors.has('address[last_name]') ? 'has-error' : '']">
                             <label for="address[last_name]" class="required">{{ __('saassubscription::app.admin.checkout.last-name') }}</label>
-                            <input v-validate="'required'" class="control" id="address[last_name]" name="address[last_name]" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.last-name') }}&quot;"/>
+                            <input v-validate="'required'" required  class="control" id="address[last_name]" name="address[last_name]" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.last-name') }}&quot;"/>
                             <span class="control-error" v-if="errors.has('address[last_name]')">@{{ errors.first('address[last_name]') }}</span>
                         </div>
 
                         <div class="control-group" :class="[errors.has('address[email]') ? 'has-error' : '']">
                             <label for="address[email]" class="required">{{ __('saassubscription::app.admin.checkout.email') }}</label>
-                            <input v-validate="'required'" class="control" id="address[email]" name="address[email]" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.email') }}&quot;"/>
+                            <input v-validate="'required'" required  class="control" id="address[email]" name="address[email]" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.email') }}&quot;"/>
                             <span class="control-error" v-if="errors.has('address[email]')">@{{ errors.first('address[email]') }}</span>
                         </div>
 
                         <div class="control-group" :class="[errors.has('address[address1]') ? 'has-error' : '']">
                             <label for="address[address1]" class="required">{{ __('saassubscription::app.admin.checkout.address1') }}</label>
-                            <input v-validate="'required'" class="control" id="address[address1]" name="address[address1]" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.address1') }}&quot;"/>
+                            <input v-validate="'required'" required  class="control" id="address[address1]" name="address[address1]" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.address1') }}&quot;"/>
                             <span class="control-error" v-if="errors.has('address[address1]')">@{{ errors.first('address[address1]') }}</span>
                         </div>
 
@@ -115,22 +115,22 @@
 
                         <div class="control-group" :class="[errors.has('address[city]') ? 'has-error' : '']">
                             <label for="address[city]" class="required">{{ __('saassubscription::app.admin.checkout.city') }}</label>
-                            <input v-validate="'required'" class="control" id="address[city]" name="address[city]" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.city') }}&quot;"/>
+                            <input v-validate="'required'" required  class="control" id="address[city]" name="address[city]" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.city') }}&quot;"/>
                             <span class="control-error" v-if="errors.has('address[city]')">@{{ errors.first('address[city]') }}</span>
                         </div>
 
                         <div class="control-group" :class="[errors.has('address[postcode]') ? 'has-error' : '']">
                             <label for="address[postcode]" class="required">{{ __('saassubscription::app.admin.checkout.postcode') }}</label>
-                            <input v-validate="'required'" class="control" id="address[postcode]" name="address[postcode]" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.postcode') }}&quot;"/>
+                            <input v-validate="'required'" required  class="control" id="address[postcode]" name="address[postcode]" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.postcode') }}&quot;"/>
                             <span class="control-error" v-if="errors.has('address[postcode]')">@{{ errors.first('address[postcode]') }}</span>
                         </div>
 
                         <div class="control-group" :class="[errors.has('address[country]') ? 'has-error' : '']">
-                            <label for="address[country]" class="required">
+                            <label for="address[country]"    class="required">
                                 {{ __('saassubscription::app.admin.checkout.country') }}
                             </label>
 
-                            <select type="text" v-validate="'required'" class="control" id="address[country]" name="address[country]" v-model="country" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.country') }}&quot;">
+                            <select type="text" v-validate="'required'" required  class="control" id="address[country]" name="address[country]" v-model="country" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.country') }}&quot;">
                                 <option value=""></option>
 
                                 @foreach (core()->countries() as $country)
@@ -150,7 +150,7 @@
                                 {{ __('saassubscription::app.admin.checkout.state') }}
                             </label>
 
-                            <input type="text" v-validate="'required'" class="control" id="state" name="address[state]" v-model="state" v-if="!haveStates()" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.state') }}&quot;"/>
+                            <input type="text" v-validate="'required'" required  class="control" id="state" name="address[state]" v-model="state" v-if="!haveStates()" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.state') }}&quot;"/>
 
                             <select v-validate="'required'" class="control" id="address[state]" name="address[state]" v-model="state" v-if="haveStates()" data-vv-as="&quot;{{ __('saassubscription::app.admin.checkout.state') }}&quot;">
 
