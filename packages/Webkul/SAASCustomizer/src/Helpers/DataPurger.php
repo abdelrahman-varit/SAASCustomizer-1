@@ -348,27 +348,27 @@ class DataPurger
 
     public function prepareDemoCategoryData($rootCategory){
 
-        $companyRepository = Company::getCurrent();
+        // $companyRepository = Company::getCurrent();
 
-        $data1 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $rootCategory->id,
-            'name'              => 'Fitness World',
-            'slug'              => 'fitness-world',
-            'description'       => 'Fitness Product',
-            'meta_title'        => 'Fitness Product',
-            'meta_description'  => 'Fitness Product',
-            'meta_keywords'     => 'Fitness Product',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data1 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $rootCategory->id,
+        //     'name'              => 'Fitness World',
+        //     'slug'              => 'fitness-world',
+        //     'description'       => 'Fitness Product',
+        //     'meta_title'        => 'Fitness Product',
+        //     'meta_description'  => 'Fitness Product',
+        //     'meta_keywords'     => 'Fitness Product',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        Log::info("Info:- prepareDemoCategoryData() created for data2 - company " . $companyRepository->domain . ".");
+        // Log::info("Info:- prepareDemoCategoryData() created for data2 - company " . $companyRepository->domain . ".");
 
-        $subCategory1 = $this->categoryRepository->create($data1);
+        // $subCategory1 = $this->categoryRepository->create($data1);
 
         // $data1_1 = [
         //     'position'          => '1',
