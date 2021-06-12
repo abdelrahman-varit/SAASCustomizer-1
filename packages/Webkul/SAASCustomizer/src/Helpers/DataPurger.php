@@ -348,614 +348,615 @@ class DataPurger
 
     public function prepareDemoCategoryData($rootCategory){
 
-        $companyRepository = Company::getCurrent();
+        // $companyRepository = Company::getCurrent();
 
-        $data1 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $rootCategory->id,
-            'name'              => 'Fitness World',
-            'slug'              => 'fitness-world',
-            'description'       => 'Fitness Product',
-            'meta_title'        => 'Fitness Product',
-            'meta_description'  => 'Fitness Product',
-            'meta_keywords'     => 'Fitness Product',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data1 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $rootCategory->id,
+        //     'name'              => 'Fitness World',
+        //     'slug'              => 'fitness-world',
+        //     'description'       => 'Fitness Product',
+        //     'meta_title'        => 'Fitness Product',
+        //     'meta_description'  => 'Fitness Product',
+        //     'meta_keywords'     => 'Fitness Product',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        Log::info("Info:- prepareDemoCategoryData() created for data2 - company " . $companyRepository->domain . ".");
+        // Log::info("Info:- prepareDemoCategoryData() created for data2 - company " . $companyRepository->domain . ".");
 
-        $subCategory1 = $this->categoryRepository->create($data1);
+        // $subCategory1 = $this->categoryRepository->create($data1);
 
-        $data1_1 = [
-            'position'          => '1',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory1->id,
-            'name'              => 'Trademil',
-            'slug'              => 'trademil',
-            'description'       => 'Trademil',
-            'meta_title'        => 'Trademil',
-            'meta_description'  => 'Trademil',
-            'meta_keywords'     => 'Trademil',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data1_1 = [
+        //     'position'          => '1',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory1->id,
+        //     'name'              => 'Trademil',
+        //     'slug'              => 'trademil',
+        //     'description'       => 'Trademil',
+        //     'meta_title'        => 'Trademil',
+        //     'meta_description'  => 'Trademil',
+        //     'meta_keywords'     => 'Trademil',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory1_1 = $this->categoryRepository->create($data1_1);
+        // $subCategory1_1 = $this->categoryRepository->create($data1_1);
 
-        $data1_2 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory1->id,
-            'name'              => 'Exercise Bike',
-            'slug'              => 'exercise-bike',
-            'description'       => 'Exercise Bike',
-            'meta_title'        => 'Exercise Bike',
-            'meta_description'  => 'Exercise Bike',
-            'meta_keywords'     => 'Exercise Bike',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data1_2 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory1->id,
+        //     'name'              => 'Exercise Bike',
+        //     'slug'              => 'exercise-bike',
+        //     'description'       => 'Exercise Bike',
+        //     'meta_title'        => 'Exercise Bike',
+        //     'meta_description'  => 'Exercise Bike',
+        //     'meta_keywords'     => 'Exercise Bike',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory1_2 = $this->categoryRepository->create($data1_2);
+        // $subCategory1_2 = $this->categoryRepository->create($data1_2);
 
 
-        $data2 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $rootCategory->id,
-            'name'              => 'Food & Beverages',
-            'slug'              => 'food-beverages',
-            'description'       => 'Food & Beverages',
-            'meta_title'        => 'Food & Beverages',
-            'meta_description'  => 'Food & Beverages',
-            'meta_keywords'     => 'Food & Beverages',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data2 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $rootCategory->id,
+        //     'name'              => 'Food & Beverages',
+        //     'slug'              => 'food-beverages',
+        //     'description'       => 'Food & Beverages',
+        //     'meta_title'        => 'Food & Beverages',
+        //     'meta_description'  => 'Food & Beverages',
+        //     'meta_keywords'     => 'Food & Beverages',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+        // Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
 
-        $subCategory2 = $this->categoryRepository->create($data2);
+        // $subCategory2 = $this->categoryRepository->create($data2);
 
-        $data2_1 = [
-            'position'          => '1',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory2->id,
-            'name'              => 'Soft Drinks',
-            'slug'              => 'soft-drinks',
-            'description'       => 'Soft Drinks',
-            'meta_title'        => 'Soft Drinks',
-            'meta_description'  => 'Soft Drinks',
-            'meta_keywords'     => 'Soft Drinks',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data2_1 = [
+        //     'position'          => '1',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory2->id,
+        //     'name'              => 'Soft Drinks',
+        //     'slug'              => 'soft-drinks',
+        //     'description'       => 'Soft Drinks',
+        //     'meta_title'        => 'Soft Drinks',
+        //     'meta_description'  => 'Soft Drinks',
+        //     'meta_keywords'     => 'Soft Drinks',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory2_1 = $this->categoryRepository->create($data2_1);
+        // $subCategory2_1 = $this->categoryRepository->create($data2_1);
 
-        $data2_2 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory2->id,
-            'name'              => 'Bakery & Pastry',
-            'slug'              => 'bakery-pastry',
-            'description'       => 'Bakery & Pastry',
-            'meta_title'        => 'Bakery & Pastry',
-            'meta_description'  => 'Bakery & Pastry',
-            'meta_keywords'     => 'Bakery & Pastry',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data2_2 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory2->id,
+        //     'name'              => 'Bakery & Pastry',
+        //     'slug'              => 'bakery-pastry',
+        //     'description'       => 'Bakery & Pastry',
+        //     'meta_title'        => 'Bakery & Pastry',
+        //     'meta_description'  => 'Bakery & Pastry',
+        //     'meta_keywords'     => 'Bakery & Pastry',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory2_2 = $this->categoryRepository->create($data2_2);
+        // $subCategory2_2 = $this->categoryRepository->create($data2_2);
         
-        $data3 = [
-            'position'          => '3',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $rootCategory->id,
-            'name'              => 'Women',
-            'slug'              => 'women-product',
-            'description'       => 'Women Product',
-            'meta_title'        => 'Women Product',
-            'meta_description'  => 'Women Product',
-            'meta_keywords'     => 'Women Product',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data3 = [
+        //     'position'          => '3',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $rootCategory->id,
+        //     'name'              => 'Women',
+        //     'slug'              => 'women-product',
+        //     'description'       => 'Women Product',
+        //     'meta_title'        => 'Women Product',
+        //     'meta_description'  => 'Women Product',
+        //     'meta_keywords'     => 'Women Product',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+        // Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
 
-        $subCategory3 = $this->categoryRepository->create($data3);
+        // $subCategory3 = $this->categoryRepository->create($data3);
     
         
-        $data3_1 = [
-            'position'          => '1',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory3->id,
-            'name'              => 'Jwellary',
-            'slug'              => 'jwellary',
-            'description'       => 'Jwellary',
-            'meta_title'        => 'Jwellary',
-            'meta_description'  => 'Jwellary',
-            'meta_keywords'     => 'Jwellary',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data3_1 = [
+        //     'position'          => '1',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory3->id,
+        //     'name'              => 'Jwellary',
+        //     'slug'              => 'jwellary',
+        //     'description'       => 'Jwellary',
+        //     'meta_title'        => 'Jwellary',
+        //     'meta_description'  => 'Jwellary',
+        //     'meta_keywords'     => 'Jwellary',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory3_1 = $this->categoryRepository->create($data3_1);
+        // $subCategory3_1 = $this->categoryRepository->create($data3_1);
 
-        $data3_2 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory3->id,
-            'name'              => 'Cosmetics',
-            'slug'              => 'cosmetics',
-            'description'       => 'Cosmetics',
-            'meta_title'        => 'Cosmetics',
-            'meta_description'  => 'Cosmetics',
-            'meta_keywords'     => 'Cosmetics',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data3_2 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory3->id,
+        //     'name'              => 'Cosmetics',
+        //     'slug'              => 'cosmetics',
+        //     'description'       => 'Cosmetics',
+        //     'meta_title'        => 'Cosmetics',
+        //     'meta_description'  => 'Cosmetics',
+        //     'meta_keywords'     => 'Cosmetics',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory3_2 = $this->categoryRepository->create($data3_2);
+        // $subCategory3_2 = $this->categoryRepository->create($data3_2);
 
-        $data4 = [
-            'position'          => '4',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $rootCategory->id,
-            'name'              => 'Kids',
-            'slug'              => 'kids-product',
-            'description'       => 'Kids Product',
-            'meta_title'        => 'Kids Product',
-            'meta_description'  => 'Kids Product',
-            'meta_keywords'     => 'Kids Product',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data4 = [
+        //     'position'          => '4',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $rootCategory->id,
+        //     'name'              => 'Kids',
+        //     'slug'              => 'kids-product',
+        //     'description'       => 'Kids Product',
+        //     'meta_title'        => 'Kids Product',
+        //     'meta_description'  => 'Kids Product',
+        //     'meta_keywords'     => 'Kids Product',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+        // Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
 
-        $subCategory4 = $this->categoryRepository->create($data4);
+        // $subCategory4 = $this->categoryRepository->create($data4);
     
         
-        $data4_1 = [
-            'position'          => '1',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory4->id,
-            'name'              => 'Baby Cloths',
-            'slug'              => 'baby-cloths',
-            'description'       => 'Baby Cloths',
-            'meta_title'        => 'Baby Cloths',
-            'meta_description'  => 'Baby Cloths',
-            'meta_keywords'     => 'Baby Cloths',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data4_1 = [
+        //     'position'          => '1',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory4->id,
+        //     'name'              => 'Baby Cloths',
+        //     'slug'              => 'baby-cloths',
+        //     'description'       => 'Baby Cloths',
+        //     'meta_title'        => 'Baby Cloths',
+        //     'meta_description'  => 'Baby Cloths',
+        //     'meta_keywords'     => 'Baby Cloths',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory4_1 = $this->categoryRepository->create($data4_1);
+        // $subCategory4_1 = $this->categoryRepository->create($data4_1);
 
-        $data4_2 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory4->id,
-            'name'              => 'Toys',
-            'slug'              => 'toys',
-            'description'       => 'Toys',
-            'meta_title'        => 'Toys',
-            'meta_description'  => 'Toys',
-            'meta_keywords'     => 'Toys',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data4_2 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory4->id,
+        //     'name'              => 'Toys',
+        //     'slug'              => 'toys',
+        //     'description'       => 'Toys',
+        //     'meta_title'        => 'Toys',
+        //     'meta_description'  => 'Toys',
+        //     'meta_keywords'     => 'Toys',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory4_2 = $this->categoryRepository->create($data4_2);   
+        // $subCategory4_2 = $this->categoryRepository->create($data4_2);   
     
-        $data5 = [
-            'position'          => '5',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $rootCategory->id,
-            'name'              => 'Video Games',
-            'slug'              => 'video-games',
-            'description'       => 'Video Games',
-            'meta_title'        => 'Video Games',
-            'meta_description'  => 'Video Games',
-            'meta_keywords'     => 'Video Games',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data5 = [
+        //     'position'          => '5',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $rootCategory->id,
+        //     'name'              => 'Video Games',
+        //     'slug'              => 'video-games',
+        //     'description'       => 'Video Games',
+        //     'meta_title'        => 'Video Games',
+        //     'meta_description'  => 'Video Games',
+        //     'meta_keywords'     => 'Video Games',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+        // Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
 
-        $subCategory5 = $this->categoryRepository->create($data5);
+        // $subCategory5 = $this->categoryRepository->create($data5);
  
-        $data5_1 = [
-            'position'          => '1',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory5->id,
-            'name'              => 'Actions & Advancers',
-            'slug'              => 'actions-advacners',
-            'description'       => 'Actions & Advancers',
-            'meta_title'        => 'Actions & Advancers',
-            'meta_description'  => 'Actions & Advancers',
-            'meta_keywords'     => 'Actions & Advancers',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data5_1 = [
+        //     'position'          => '1',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory5->id,
+        //     'name'              => 'Actions & Advancers',
+        //     'slug'              => 'actions-advacners',
+        //     'description'       => 'Actions & Advancers',
+        //     'meta_title'        => 'Actions & Advancers',
+        //     'meta_description'  => 'Actions & Advancers',
+        //     'meta_keywords'     => 'Actions & Advancers',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory5_1 = $this->categoryRepository->create($data5_1);
+        // $subCategory5_1 = $this->categoryRepository->create($data5_1);
 
-        $data5_2 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory5->id,
-            'name'              => 'Puzzle Games',
-            'slug'              => 'puzzle-games',
-            'description'       => 'Puzzle Games',
-            'meta_title'        => 'Puzzle Games',
-            'meta_description'  => 'Puzzle Games',
-            'meta_keywords'     => 'Puzzle Games',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data5_2 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory5->id,
+        //     'name'              => 'Puzzle Games',
+        //     'slug'              => 'puzzle-games',
+        //     'description'       => 'Puzzle Games',
+        //     'meta_title'        => 'Puzzle Games',
+        //     'meta_description'  => 'Puzzle Games',
+        //     'meta_keywords'     => 'Puzzle Games',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory5_2 = $this->categoryRepository->create($data5_2);
+        // $subCategory5_2 = $this->categoryRepository->create($data5_2);
     
-        $data6 = [
-            'position'          => '6',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $rootCategory->id,
-            'name'              => 'Electronics',
-            'slug'              => 'electronics-product',
-            'description'       => 'Electronics Product',
-            'meta_title'        => 'Electronics',
-            'meta_description'  => 'Electronics',
-            'meta_keywords'     => 'Electronics',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data6 = [
+        //     'position'          => '6',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $rootCategory->id,
+        //     'name'              => 'Electronics',
+        //     'slug'              => 'electronics-product',
+        //     'description'       => 'Electronics Product',
+        //     'meta_title'        => 'Electronics',
+        //     'meta_description'  => 'Electronics',
+        //     'meta_keywords'     => 'Electronics',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+        // Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
 
-        $subCategory6 = $this->categoryRepository->create($data6);
+        // $subCategory6 = $this->categoryRepository->create($data6);
         
-        $data6_1 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory6->id,
-            'name'              => 'TV & Monitors',
-            'slug'              => 'tv-monitors',
-            'description'       => 'TV & Monitors',
-            'meta_title'        => 'TV & Monitors',
-            'meta_description'  => 'TV & Monitors',
-            'meta_keywords'     => 'TV & Monitors',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data6_1 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory6->id,
+        //     'name'              => 'TV & Monitors',
+        //     'slug'              => 'tv-monitors',
+        //     'description'       => 'TV & Monitors',
+        //     'meta_title'        => 'TV & Monitors',
+        //     'meta_description'  => 'TV & Monitors',
+        //     'meta_keywords'     => 'TV & Monitors',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory6_1 = $this->categoryRepository->create($data6_1);
+        // $subCategory6_1 = $this->categoryRepository->create($data6_1);
 
-        $data6_2 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory6->id,
-            'name'              => 'Freeze & Airconditions',
-            'slug'              => 'freeze-airconditions',
-            'description'       => 'Freeze & Airconditions',
-            'meta_title'        => 'Freeze & Airconditions',
-            'meta_description'  => 'Freeze & Airconditions',
-            'meta_keywords'     => 'Freeze & Airconditions',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data6_2 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory6->id,
+        //     'name'              => 'Freeze & Airconditions',
+        //     'slug'              => 'freeze-airconditions',
+        //     'description'       => 'Freeze & Airconditions',
+        //     'meta_title'        => 'Freeze & Airconditions',
+        //     'meta_description'  => 'Freeze & Airconditions',
+        //     'meta_keywords'     => 'Freeze & Airconditions',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory6_2 = $this->categoryRepository->create($data6_2);
+        // $subCategory6_2 = $this->categoryRepository->create($data6_2);
 
-        $data7 = [
-            'position'          => '7',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $rootCategory->id,
-            'name'              => 'Furnitures',
-            'slug'              => 'furnitures',
-            'description'       => 'Furnitures Product',
-            'meta_title'        => 'Furnitures Product',
-            'meta_description'  => 'Furnitures Product',
-            'meta_keywords'     => 'Furnitures Product',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data7 = [
+        //     'position'          => '7',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $rootCategory->id,
+        //     'name'              => 'Furnitures',
+        //     'slug'              => 'furnitures',
+        //     'description'       => 'Furnitures Product',
+        //     'meta_title'        => 'Furnitures Product',
+        //     'meta_description'  => 'Furnitures Product',
+        //     'meta_keywords'     => 'Furnitures Product',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+        // Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
 
-        $subCategory7 = $this->categoryRepository->create($data7);
+        // $subCategory7 = $this->categoryRepository->create($data7);
             
-        $data7_1 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory7->id,
-            'name'              => 'Wood Furnitures',
-            'slug'              => 'wood-furnitures',
-            'description'       => 'Wood Furnitures',
-            'meta_title'        => 'Wood Furnitures',
-            'meta_description'  => 'Wood Furnitures',
-            'meta_keywords'     => 'Wood Furnitures',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data7_1 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory7->id,
+        //     'name'              => 'Wood Furnitures',
+        //     'slug'              => 'wood-furnitures',
+        //     'description'       => 'Wood Furnitures',
+        //     'meta_title'        => 'Wood Furnitures',
+        //     'meta_description'  => 'Wood Furnitures',
+        //     'meta_keywords'     => 'Wood Furnitures',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory7_1 = $this->categoryRepository->create($data7_1);
+        // $subCategory7_1 = $this->categoryRepository->create($data7_1);
 
-        $data7_2 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory7->id,
-            'name'              => 'Plastic Board Furnitures',
-            'slug'              => 'plastic-board-furnitures',
-            'description'       => 'Plastic Board Furnitures',
-            'meta_title'        => 'Plastic Board Furnitures',
-            'meta_description'  => 'Plastic Board Furnitures',
-            'meta_keywords'     => 'Plastic Board Furnitures',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data7_2 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory7->id,
+        //     'name'              => 'Plastic Board Furnitures',
+        //     'slug'              => 'plastic-board-furnitures',
+        //     'description'       => 'Plastic Board Furnitures',
+        //     'meta_title'        => 'Plastic Board Furnitures',
+        //     'meta_description'  => 'Plastic Board Furnitures',
+        //     'meta_keywords'     => 'Plastic Board Furnitures',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory7_2 = $this->categoryRepository->create($data7_2);
+        // $subCategory7_2 = $this->categoryRepository->create($data7_2);
 
-        $data8 = [
-            'position'          => '8',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $rootCategory->id,
-            'name'              => 'Mobile',
-            'slug'              => 'mobile',
-            'description'       => 'Mobile & Accessorries',
-            'meta_title'        => 'Mobile & Accessorries',
-            'meta_description'  => 'Mobile & Accessorries',
-            'meta_keywords'     => 'Mobile & Accessorries',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data8 = [
+        //     'position'          => '8',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $rootCategory->id,
+        //     'name'              => 'Mobile',
+        //     'slug'              => 'mobile',
+        //     'description'       => 'Mobile & Accessorries',
+        //     'meta_title'        => 'Mobile & Accessorries',
+        //     'meta_description'  => 'Mobile & Accessorries',
+        //     'meta_keywords'     => 'Mobile & Accessorries',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+        // Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
 
-        $subCategory8 = $this->categoryRepository->create($data8);
+        // $subCategory8 = $this->categoryRepository->create($data8);
         
         
-        $data8_1 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory8->id,
-            'name'              => 'Android Mobile',
-            'slug'              => 'android-mobile',
-            'description'       => 'Android Mobile',
-            'meta_title'        => 'Android Mobile',
-            'meta_description'  => 'Android Mobile',
-            'meta_keywords'     => 'Android Mobile',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data8_1 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory8->id,
+        //     'name'              => 'Android Mobile',
+        //     'slug'              => 'android-mobile',
+        //     'description'       => 'Android Mobile',
+        //     'meta_title'        => 'Android Mobile',
+        //     'meta_description'  => 'Android Mobile',
+        //     'meta_keywords'     => 'Android Mobile',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory8_1 = $this->categoryRepository->create($data8_1);
+        // $subCategory8_1 = $this->categoryRepository->create($data8_1);
 
-        $data8_2 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory8->id,
-            'name'              => 'iPhone & Mac Laptop',
-            'slug'              => 'iphone-mac-laptop',
-            'description'       => 'iPhone & Mac Laptop',
-            'meta_title'        => 'iPhone & Mac Laptop',
-            'meta_description'  => 'iPhone & Mac Laptop',
-            'meta_keywords'     => 'iPhone & Mac Laptop',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data8_2 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory8->id,
+        //     'name'              => 'iPhone & Mac Laptop',
+        //     'slug'              => 'iphone-mac-laptop',
+        //     'description'       => 'iPhone & Mac Laptop',
+        //     'meta_title'        => 'iPhone & Mac Laptop',
+        //     'meta_description'  => 'iPhone & Mac Laptop',
+        //     'meta_keywords'     => 'iPhone & Mac Laptop',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory8_2 = $this->categoryRepository->create($data8_2);
+        // $subCategory8_2 = $this->categoryRepository->create($data8_2);
 
-        $data9 = [
-            'position'          => '9',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $rootCategory->id,
-            'name'              => 'Watch & Wallet',
-            'slug'              => 'watch-product',
-            'description'       => 'Watch & Wallet Product',
-            'meta_title'        => 'Watch & Wallet Product',
-            'meta_description'  => 'Watch & Wallet Product',
-            'meta_keywords'     => 'Watch & Wallet Product',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data9 = [
+        //     'position'          => '9',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $rootCategory->id,
+        //     'name'              => 'Watch & Wallet',
+        //     'slug'              => 'watch-product',
+        //     'description'       => 'Watch & Wallet Product',
+        //     'meta_title'        => 'Watch & Wallet Product',
+        //     'meta_description'  => 'Watch & Wallet Product',
+        //     'meta_keywords'     => 'Watch & Wallet Product',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+        // Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
 
-        $subCategory9 = $this->categoryRepository->create($data9);
+        // $subCategory9 = $this->categoryRepository->create($data9);
         
-        $data9_1 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory9->id,
-            'name'              => 'Hand Watches',
-            'slug'              => 'hand-watches',
-            'description'       => 'Hand Watches',
-            'meta_title'        => 'Hand Watches',
-            'meta_description'  => 'Hand Watches',
-            'meta_keywords'     => 'Hand Watches',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data9_1 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory9->id,
+        //     'name'              => 'Hand Watches',
+        //     'slug'              => 'hand-watches',
+        //     'description'       => 'Hand Watches',
+        //     'meta_title'        => 'Hand Watches',
+        //     'meta_description'  => 'Hand Watches',
+        //     'meta_keywords'     => 'Hand Watches',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory9_1 = $this->categoryRepository->create($data9_1);
+        // $subCategory9_1 = $this->categoryRepository->create($data9_1);
 
-        $data9_2 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory9->id,
-            'name'              => 'Wallet & Parts',
-            'slug'              => 'wallet-parts',
-            'description'       => 'Wallet & Parts',
-            'meta_title'        => 'Wallet & Parts',
-            'meta_description'  => 'Wallet & Parts',
-            'meta_keywords'     => 'Wallet & Parts',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data9_2 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory9->id,
+        //     'name'              => 'Wallet & Parts',
+        //     'slug'              => 'wallet-parts',
+        //     'description'       => 'Wallet & Parts',
+        //     'meta_title'        => 'Wallet & Parts',
+        //     'meta_description'  => 'Wallet & Parts',
+        //     'meta_keywords'     => 'Wallet & Parts',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory9_2 = $this->categoryRepository->create($data9_2);
+        // $subCategory9_2 = $this->categoryRepository->create($data9_2);
 
-        $data10 = [
-            'position'          => '10',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $rootCategory->id,
-            'name'              => 'Shoes & Belt',
-            'slug'              => 'shoes-belt-product',
-            'description'       => 'Shoes & Belt Product',
-            'meta_title'        => 'Shoes & Belt Product',
-            'meta_description'  => 'Shoes & Belt Product',
-            'meta_keywords'     => 'Shoes & Belt Product',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data10 = [
+        //     'position'          => '10',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $rootCategory->id,
+        //     'name'              => 'Shoes & Belt',
+        //     'slug'              => 'shoes-belt-product',
+        //     'description'       => 'Shoes & Belt Product',
+        //     'meta_title'        => 'Shoes & Belt Product',
+        //     'meta_description'  => 'Shoes & Belt Product',
+        //     'meta_keywords'     => 'Shoes & Belt Product',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
+        // Log::info("Info:- prepareCategoryData() created for company " . $companyRepository->domain . ".");
 
-        $subCategory10 = $this->categoryRepository->create($data10);
+        // $subCategory10 = $this->categoryRepository->create($data10);
 
-        $data10_1 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory10->id,
-            'name'              => 'Ladies Shoes',
-            'slug'              => 'ladies-shoes',
-            'description'       => 'Ladies Shoes',
-            'meta_title'        => 'Ladies Shoes',
-            'meta_description'  => 'Ladies Shoes',
-            'meta_keywords'     => 'Ladies Shoes',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data10_1 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory10->id,
+        //     'name'              => 'Ladies Shoes',
+        //     'slug'              => 'ladies-shoes',
+        //     'description'       => 'Ladies Shoes',
+        //     'meta_title'        => 'Ladies Shoes',
+        //     'meta_description'  => 'Ladies Shoes',
+        //     'meta_keywords'     => 'Ladies Shoes',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory10_1 = $this->categoryRepository->create($data10_1);
+        // $subCategory10_1 = $this->categoryRepository->create($data10_1);
 
-        $data10_2 = [
-            'position'          => '2',
-            'image'             => NULL,
-            'status'            => '1',
-            'parent_id'         => $subCategory10->id,
-            'name'              => 'Leather Belts',
-            'slug'              => 'leather-belts',
-            'description'       => 'Leather Belts',
-            'meta_title'        => 'Leather Belts',
-            'meta_description'  => 'Leather Belts',
-            'meta_keywords'     => 'Leather Belts',
-            'locale'            => 'all',
-            'attributes'        => '37',
-            'company_id'        => $companyRepository->id
-        ];
+        // $data10_2 = [
+        //     'position'          => '2',
+        //     'image'             => NULL,
+        //     'status'            => '1',
+        //     'parent_id'         => $subCategory10->id,
+        //     'name'              => 'Leather Belts',
+        //     'slug'              => 'leather-belts',
+        //     'description'       => 'Leather Belts',
+        //     'meta_title'        => 'Leather Belts',
+        //     'meta_description'  => 'Leather Belts',
+        //     'meta_keywords'     => 'Leather Belts',
+        //     'locale'            => 'all',
+        //     'attributes'        => '37',
+        //     'company_id'        => $companyRepository->id
+        // ];
 
-        $subCategory10_2 = $this->categoryRepository->create($data10_2);
+        // $subCategory10_2 = $this->categoryRepository->create($data10_2);
 
         $categories = [
-            [
-                'category'  =>$subCategory1,
-                'sub1'      =>$subCategory1_1,
-                'sub2'      =>$subCategory1_2,
-            ], [
-                'category'  =>$subCategory2,
-                'sub1'      =>$subCategory2_1,
-                'sub2'      =>$subCategory2_2,
-            ], [
-                'category'  =>$subCategory3,
-                'sub1'      =>$subCategory3_1,
-                'sub2'      =>$subCategory3_2,
-            ],[
-                'category'  =>$subCategory4,
-                'sub1'      =>$subCategory4_1,
-                'sub2'      =>$subCategory4_2,
-            ],[
-                'category'  =>$subCategory5,
-                'sub1'      =>$subCategory5_1,
-                'sub2'      =>$subCategory5_2,
-            ],[
-                'category'  =>$subCategory6,
-                'sub1'      =>$subCategory6_1,
-                'sub2'      =>$subCategory6_2,
-            ],[
-                'category'  =>$subCategory7,
-                'sub1'      =>$subCategory7_1,
-                'sub2'      =>$subCategory7_2,
-            ],[
-                'category'  =>$subCategory8,
-                'sub1'      =>$subCategory8_1,
-                'sub2'      =>$subCategory8_2,
-            ],[
-                'category'  =>$subCategory9,
-                'sub1'      =>$subCategory9_1,
-                'sub2'      =>$subCategory9_2,
-            ],[
-                'category'  =>$subCategory10,
-                'sub1'      =>$subCategory10_1,
-                'sub2'      =>$subCategory10_2,
-            ],
+            // [
+                // 'category'  =>$subCategory1,
+                // 'sub1'      =>$subCategory1_1,
+                // 'sub2'      =>$subCategory1_2,
+            // ], 
+            // [
+            //     'category'  =>$subCategory2,
+            //     'sub1'      =>$subCategory2_1,
+            //     'sub2'      =>$subCategory2_2,
+            // ], [
+            //     'category'  =>$subCategory3,
+            //     'sub1'      =>$subCategory3_1,
+            //     'sub2'      =>$subCategory3_2,
+            // ],[
+            //     'category'  =>$subCategory4,
+            //     'sub1'      =>$subCategory4_1,
+            //     'sub2'      =>$subCategory4_2,
+            // ],[
+            //     'category'  =>$subCategory5,
+            //     'sub1'      =>$subCategory5_1,
+            //     'sub2'      =>$subCategory5_2,
+            // ],[
+            //     'category'  =>$subCategory6,
+            //     'sub1'      =>$subCategory6_1,
+            //     'sub2'      =>$subCategory6_2,
+            // ],[
+            //     'category'  =>$subCategory7,
+            //     'sub1'      =>$subCategory7_1,
+            //     'sub2'      =>$subCategory7_2,
+            // ],[
+            //     'category'  =>$subCategory8,
+            //     'sub1'      =>$subCategory8_1,
+            //     'sub2'      =>$subCategory8_2,
+            // ],[
+            //     'category'  =>$subCategory9,
+            //     'sub1'      =>$subCategory9_1,
+            //     'sub2'      =>$subCategory9_2,
+            // ],[
+            //     'category'  =>$subCategory10,
+            //     'sub1'      =>$subCategory10_1,
+            //     'sub2'      =>$subCategory10_2,
+            // ],
         ];
 
         return  $categories;
