@@ -1113,7 +1113,7 @@ class DataPurger
 
         $categoryRepository = $this->prepareCategoryData();
 
-        // $demoCategoryRepository = $this->prepareDemoCategoryData($categoryRepository);
+        $demoCategoryRepository = $this->prepareDemoCategoryData($categoryRepository);
 
         $inventorySourceRepository = $this->prepareInventoryData();
 
