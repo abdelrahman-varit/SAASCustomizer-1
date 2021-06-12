@@ -16,7 +16,6 @@
 
                 <form method="POST" action="{{ route('admin.session.store') }}" @submit.prevent="onSubmit">
                     @csrf
-
                     <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">
                         <label for="email">{{ __('admin::app.users.sessions.email') }}</label>
                         <input type="text" v-validate="'required|email'" class="control" id="email" name="email" data-vv-as="&quot;{{ __('admin::app.users.sessions.email') }}&quot;"/>

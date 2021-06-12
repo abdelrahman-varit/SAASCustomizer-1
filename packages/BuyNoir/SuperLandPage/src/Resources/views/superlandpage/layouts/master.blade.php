@@ -101,17 +101,6 @@
             
             {!! view_render_event('bagisto.saas.companies.layout.footer.after') !!}
             
-            @if (company()->getSuperConfigData('general.content.footer.footer_toggle'))
-            <div class="footer">
-                <p style="text-align: center;">
-                    @if (company()->getSuperConfigData('general.content.footer.footer_content'))
-                        {{ company()->getSuperConfigData('general.content.footer.footer_content') }}
-                    @else
-                        {!! trans('admin::app.footer.copy-right') !!}
-                    @endif
-                </p>
-            </div>
-        @endif
         </div>
 
         <script type="text/javascript">
