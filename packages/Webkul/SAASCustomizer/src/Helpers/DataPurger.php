@@ -1175,7 +1175,7 @@ class DataPurger
             $companyRepository->save();
         }
 
-        $productRepo = $this->prepareDemoProductData($demoCategoryRepository, $inventorySourceRepository,  $channelRepository);
+        // $productRepo = $this->prepareDemoProductData($demoCategoryRepository, $inventorySourceRepository,  $channelRepository);
 
 
         Log::info("Info:- prepareChannelData() created for company " . $companyRepository->domain . ".");
