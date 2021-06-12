@@ -915,11 +915,11 @@ class DataPurger
         // $subCategory10_2 = $this->categoryRepository->create($data10_2);
 
         $categories = [
-            [
-                'category'  =>$subCategory1,
+            // [
+                // 'category'  =>$subCategory1,
                 // 'sub1'      =>$subCategory1_1,
                 // 'sub2'      =>$subCategory1_2,
-            ], 
+            // ], 
             // [
             //     'category'  =>$subCategory2,
             //     'sub1'      =>$subCategory2_1,
@@ -1175,7 +1175,7 @@ class DataPurger
             $companyRepository->save();
         }
 
-        // $productRepo = $this->prepareDemoProductData($demoCategoryRepository, $inventorySourceRepository,  $channelRepository);
+        $productRepo = $this->prepareDemoProductData($demoCategoryRepository, $inventorySourceRepository,  $channelRepository);
 
 
         Log::info("Info:- prepareChannelData() created for company " . $companyRepository->domain . ".");
