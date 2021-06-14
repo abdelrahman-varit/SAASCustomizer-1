@@ -13,7 +13,7 @@ class CustomerServiceProvider extends ServiceProvider
     {
         $router->aliasMiddleware('customer', RedirectIfNotCustomer::class);
 
-        $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'customer');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'customer');
 
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }

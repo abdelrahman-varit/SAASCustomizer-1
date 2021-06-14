@@ -54,6 +54,9 @@
             line-height: 1;
         }
     </style>
+
+ 
+
     <div class="error-container">
         <div class="wrapper">
             <div class="error-box">
@@ -75,11 +78,12 @@
                 <div class="error-description">
                     {!! __('shop::app.tenant.custom-errors.block-message') !!}
                 </div>
-                <a href="{{env('APP_URL')}}" class="btn">{{ __('shop::app.tenant.custom-errors.visit-us') }}</a>
+                <a href="{{config('app.url')}}" class="btn">{{ __('shop::app.tenant.custom-errors.visit-us') }}</a>
             </div>
         </div>
     </div>
     @php
+     
         exit();
     @endphp
 @stop

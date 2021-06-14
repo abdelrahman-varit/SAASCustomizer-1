@@ -17,12 +17,23 @@ class AlterTablesCompanyIdBuynoir extends Migration
 
         // Super Channel package migration alterations
         Schema::table('attribute_option_translations', function (Blueprint $table) {
-            $table->integer('company_id')->unsigned()->nullable();
-            //$table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            if (Schema::hasColumn('attribute_option_translations', 'company_id')) {
+                
+            }else{
+                $table->integer('company_id')->unsigned()->nullable();
+                $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+    
+            }
         });
         Schema::table('orders', function (Blueprint $table) {
-            $table->integer('company_id')->unsigned()->nullable();
-            //$table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+
+            if (Schema::hasColumn('orders', 'company_id')) {
+                
+            }else{
+                $table->integer('company_id')->unsigned()->nullable();
+                $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+    
+            }
         });
     }
 
