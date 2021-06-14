@@ -77,7 +77,7 @@ class DownloadableProductDataGrid extends DataGrid
                 } elseif ($value->status == 'available') {
                     return trans('shop::app.customer.account.downloadable_products.available');
                 } elseif ($value->status == 'expired') {
-                    return trans('shop::app.customer.account.downloadable_products.expired');
+                    return "<span class='text-danger'>".trans('shop::app.customer.account.downloadable_products.expired')."</span>";
                 }
             },
         ]);
