@@ -7,7 +7,7 @@
        
  
                 @foreach ($customAttributeValues as $attribute)
-                    
+                    <div class="others-information-row" >
                         @if ($attribute['label']=="Brand")
                             <div  class="other-info-title brand" style="padding-bottom:15px">{{ $attribute['admin_name'] }} :</div>
                         @else
@@ -30,7 +30,7 @@
                         @else
                             <div class="other-info-value others" >{{ $attribute['value'] }}</div>
                         @endif
-                  
+                  </div>
                 @endforeach
 
         
