@@ -1863,6 +1863,7 @@ section.review .review-layouter {
 .product-card .price-from {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 	gap: 10px;
 	align-items: center;
 }
@@ -2203,4 +2204,13 @@ section.product-detail
 
 .dropdown-list.dropdown-container .apply-filter {
 	border: none;
+}
+
+section.product-detail div.layouter .form-container .details .bundle-options-wrapper .bundle-summary .bundle-price {
+	color: #cb1a1c;
+	font-size: 20px;
+}
+
+section.product-detail div.layouter .form-container .details .product-price .special-price {
+	font-size: 16px;
 }
