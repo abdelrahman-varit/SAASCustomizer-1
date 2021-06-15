@@ -247,6 +247,7 @@ i.compare-icons {
 
 .header .middle-bar div.right-content ul.right-content-menu li {
 	margin-right: 20px;
+	position: relative;
 }
 
 .header .header-top div.right-content .right-content-menu > li {
@@ -265,6 +266,7 @@ i.compare-icons {
 	width: 20px;
 	margin-top: -5px;
 	line-height: 18px;
+	top: 0;
 }
 
 .footer {
@@ -547,8 +549,19 @@ div.footer-copyright a {
 	.item {
 	align-items: center;
 	font-size: 16px;
-	gap: 8px;
 }
+
+.header
+	.header-top
+	div.right-content
+	.right-content-menu
+	.cart-dropdown-container
+	.dropdown-list
+	.dropdown-container
+	.dropdown-content
+	.item > *:not(:first-child) {
+		padding-left: 8px;
+	}
 
 .header
 	.header-top
@@ -572,7 +585,7 @@ div.footer-copyright a {
 	.dropdown-container
 	.item-details
 	.item-price {
-	color: red;
+	color: #cb1a1c;
 	margin-bottom: 0;
 }
 
@@ -608,10 +621,6 @@ div.footer-copyright a {
 
 .header .header-bottom .nav > li {
 	height: auto;
-}
-
-.slider-area .main-container-wrapper {
-	gap: 20px;
 }
 
 .header
@@ -937,7 +946,7 @@ section.product-detail
 }
 
 .cart-item-list .single-item .item-footer a {
-	color: red;
+	color: #cb1a1c;
 	font-weight: 300;
 }
 
@@ -1238,7 +1247,7 @@ section.cart .cart-content .right-side {
 }
 
 .vue-slider .vue-slider-dot-handle {
-	background-color: red;
+	background-color: #cb1a1c;
 }
 .vue-slider .vue-slider-rail {
 	background-color: #d7d7d7;
@@ -1567,9 +1576,12 @@ a:visited {
 	order: 3;
 	margin-top: 30px;
 	display: flex;
-	gap: 15px;
 	justify-content: center;
 	overflow: hidden;
+}
+
+.auth-content .login-form .social-login-links > *:not(:first-child) {
+	padding-left: 15px;
 }
 
 .auth-content .login-form .login-text {
@@ -2219,4 +2231,20 @@ section.product-detail div.layouter .form-container .details .product-price .spe
 
 div.table {
 	overflow-x: auto;
+}
+
+
+.menu-block-title #down-icon {
+    width: 46px;
+    height: 46px;
+    cursor: pointer;
+    margin-top: -12px;
+    background-color: #eee;
+}
+
+.menu-block-title #down-icon.icon-arrow-up {
+    background-image: url('../images/arrow-down.svg');
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	transform: rotate(180deg);
 }
