@@ -107,9 +107,9 @@
                             <div class="others-information" style="margin-top:30px">
                                 
 
-                                <div class="others-information-row" >
+                              
                                     @include ('shop::products.view.brand')                                     
-                                </div>
+                             
 
 
                                 <div class="others-information-row" >
