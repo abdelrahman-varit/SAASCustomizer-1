@@ -99,14 +99,36 @@
                             
                             </div>
 
+
                             <div class="short-description">
                                 {!! $product->short_description !!}
                             </div>
 
                             <div class="others-information" style="margin-top:30px">
+                                
+
+                                @if($product->size_label)
+                                    <div class="others-information-row" >
+                                        <div class="other-info-title" >{{__('shop::app.products.size')}} :</div>
+                                        <div  class="other-info-value" >
+                                            {!! $product->size_label !!}
+                                        </div>
+                                    </div>  
+                                @endif
+
+                                @if($product->color_label)
+                                    <div class="others-information-row" >
+                                        <div class="other-info-title" >{{__('shop::app.products.color')}}  :</div>
+                                        <div  class="other-info-value" >
+                                            {!! $product->color_label !!}
+                                        </div>
+                                    </div>  
+                                @endif
+
                                 <div class="others-information-row" >
                                     @include ('shop::products.view.brand')                                     
                                 </div>
+
 
                                 <div class="others-information-row" >
                                     <div class="other-info-title" >Availability :</div>
