@@ -11,7 +11,7 @@
                         @if ($attribute['label']=="Brand")
                             <div  class="other-info-title brand" style="padding-bottom:15px">{{ $attribute['admin_name'] }} :</div>
                         @else
-                            <div class="other-info-title others" >{{ $attribute['label'] }}</div>
+                            <div class="other-info-title others" >{{ $attribute['label'] }}:</div>
                         @endif
                         @if ($attribute['type'] == 'file' && $attribute['value'])
                             <div class="other-info-value file" >
