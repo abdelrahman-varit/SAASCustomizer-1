@@ -23,8 +23,13 @@
                                     <img src="{{ Storage::url($attribute['value']) }}" style="height: 20px; width: 20px;"/>
                                 </a>
                             </div>
+                        @elseif ($attribute['label']=="Color")
+                        
+                        @elseif ($attribute['label']=="Size")
+                        
                         @else
-                            <div class="other-info-value others" >{{ $attribute['label'] }}-{{ $attribute['value'] }}</div>
+                            <div class="other-info-title others" >{{ $attribute['label'] }}</div>
+                            <div class="other-info-value others" >{{ $attribute['value'] }}</div>
                         @endif
                   
                 @endforeach
