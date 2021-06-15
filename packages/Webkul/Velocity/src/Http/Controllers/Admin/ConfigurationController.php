@@ -131,7 +131,7 @@ class ConfigurationController extends Controller
 
        }catch(Exception $ex){
     
-           session()->flash('warning', $ex->getMessage(), ['name' => trans('velocity::app.admin.meta-data.title')]));
+           session()->flash('warning', $ex->getMessage(), ['name' => trans('velocity::app.admin.meta-data.title')]);
 
        }
         // update row
