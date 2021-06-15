@@ -24,7 +24,7 @@
                                 </a>
                             </div>
                         @else
-                            <div class="other-info-value others" >{{ $attribute['value'] }}</div>
+                            <div class="other-info-value others" >{{ $attribute['label'] }}-{{ $attribute['value'] }}</div>
                         @endif
                   
                 @endforeach
