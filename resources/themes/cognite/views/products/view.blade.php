@@ -105,7 +105,6 @@
                             </div>
 
                             <div class="others-information" style="margin-top:30px">
-                                
 
                                 @if($product->size_label)
                                     <div class="others-information-row" >
