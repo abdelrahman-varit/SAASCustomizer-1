@@ -11,10 +11,10 @@
                         @if ($attribute['label']=="Brand" && !empty($attribute['value']))
                             <div  class="other-info-title brand" style="padding-bottom:15px">{{ $attribute['admin_name'] }} :</div>
                         @elseif ($attribute['label']=="Color" && !empty($attribute['value']))
-                        
+                            <div class="other-info-title others" >{{ $attribute['label'] }}:</div>
                         @elseif ($attribute['label']=="Size" && !empty($attribute['value']))
-                        
-                        @else
+                            <div class="other-info-title others" >{{ $attribute['label'] }}:</div>
+                        @elseif ($attribute['label']!="Size")
                             <div class="other-info-title others" >{{ $attribute['label'] }}:</div>
                         @endif
                         @if ($attribute['type'] == 'file' && $attribute['value'])
