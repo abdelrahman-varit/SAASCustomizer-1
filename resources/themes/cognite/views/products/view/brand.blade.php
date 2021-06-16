@@ -8,6 +8,7 @@
  
                 @foreach ($customAttributeValues as $attribute)
                     <div class="others-information-row" >
+                            <h2>{{$product->type}}</h2>
                             @if($product->type!="configurable")
                                 @if ($attribute['label']=="Brand" && !empty($attribute['value']))
                                     <div  class="other-info-title brand" style="padding-bottom:15px">{{ $attribute['admin_name'] }} :</div>
