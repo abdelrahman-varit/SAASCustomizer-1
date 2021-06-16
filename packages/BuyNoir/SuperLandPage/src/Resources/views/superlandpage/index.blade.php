@@ -126,7 +126,7 @@
                       <div class="txt">
                         <h3>    Built black for your black business</h3>
                         <p>
-                            BuyNoir was <b>built by black entrepenures</b> for black entrepenures and makers.
+                            BuyNoir was <b>built by black entrepreneures</b> for black entrepreneures and makers.
                         </p>
                       </div>
     
@@ -187,7 +187,7 @@
                       <div class="txt">
                         <h3>Leverage our culture to grow more</h3>
                         <p>
-                          We've built tools to help you keep a pulse on our culture and speak directly to what's relevent. 
+                          We've built tools to help you keep a pulse on our culture and speak directly to what's relevant. 
                         </p>
                       </div>
     

@@ -653,8 +653,8 @@ div.footer-copyright a {
 	.cart-dropdown-container
 	.dropdown-list
 	.dropdown-container
-	.dropdown-footer {
-	gap: 15px;
+	.dropdown-footer > *:not(:first-child){
+	margin-left: 15px;
 }
 
 .btn-secondary {
