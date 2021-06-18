@@ -213,10 +213,6 @@
 		grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
 		gap: 35px !important;
 	}
-	.main-container-wrapper
-		section.featured-products.recently-viewed-products-container {
-		margin-top: -20px;
-	}
 	section.product-detail
 		div.layouter
 		.form-container
