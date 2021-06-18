@@ -135,9 +135,13 @@
 												<br>
 												<p style="color: #373737;">You can begin to customize your shop and add your products immediately.</p>
 												<br>
-												<p style="color: #373737;">You can access your shop's back office here:<br><a href="{{ $company->domain ?? '---' }}/admin/login" style="color: #aa5352;" target="_blank">{{ $company->domain ?? "---" }}/admin/login</a></p>
-												<br>
-												<p style="color: #373737;">You and your customers can acess your shop here:<br><a href="{{ $company->domain ?? '---' }}" style="color: #aa5352;" target="_blank">{{ $company->domain ?? "---" }}</a></p>
+												@if ($company->domain)
+													<p style="color: #373737;">You can access your shop's back office here:<br><a href="https://{{ $company->domain }}/admin/login" style="color: #aa5352;" target="_blank">https://{{ $company->domain }}/admin/login</a></p>
+													<br>
+													<p style="color: #373737;">You and your customers can acess your shop here:<br><a href="https://{{ $company->domain }}" style="color: #aa5352;" target="_blank">https://{{ $company->domain }}</a></p>
+												@else
+													<p style="color: #373737;">Opps! Failed to get the URL</p>
+												@endif
 												<br>
 												<br>
 												<br>
@@ -155,17 +159,17 @@
 								<tr>
 									<td class="content-block">
 										<p style="margin: 10px 0 5px 0;" class="social-icons">
-											<a href="#" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-fb.png') }}" alt="Facebook"></a>&nbsp;
-											<a href="#" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-twitter.png') }}" alt="Twitter"></a>&nbsp;
-											<a href="#" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-tumblr.png') }}" alt="Tumblr"></a>&nbsp;
-											<a href="#" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-instagram.png') }}" alt="Instagram"></a>
+											<a href="https://facebook.com" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-fb.png') }}" alt="Facebook"></a>&nbsp;
+											<a href="https://twitter.com" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-twitter.png') }}" alt="Twitter"></a>&nbsp;
+											<a href="https://tumblr.com" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-tumblr.png') }}" alt="Tumblr"></a>&nbsp;
+											<a href="https://instagram.com" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-instagram.png') }}" alt="Instagram"></a>
 										</p>
 									</td>
 								</tr>
 								<tr>
 									<td class="content-block">
 										<span class="apple-link">&copy;2021 BuyNoir</span>
-										<br> Atlanta, GA 30087 | <a href="https://buynoir.co" target="_blank">buynoir.co</a>.<br>
+										<br> Atlanta, GA 30087 | <a href="https://buynoir.co" target="_blank">buynoir.co</a><br>
 									</td>
 								</tr>
 							</table>
