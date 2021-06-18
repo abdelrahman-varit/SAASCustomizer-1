@@ -32,7 +32,7 @@
     </div>
 
     @else
-        <div class="main-container-wrapper">
+        {{-- <div class="main-container-wrapper">
             <section class="featured-products">
                 <div class="featured-heading">
                     <div class="col-3">"{{$slug}}" Not Found</div>
@@ -43,7 +43,7 @@
                     Please check the spelling of the category.
                 </div>
             </section>
-        </div>
+        </div> --}}
     @endif
 
 @else

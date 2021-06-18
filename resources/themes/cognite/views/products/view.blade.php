@@ -105,7 +105,6 @@
                             </div>
 
                             <div class="others-information" style="margin-top:30px">
-                                
 
                               
                                     @include ('shop::products.view.brand')                                     

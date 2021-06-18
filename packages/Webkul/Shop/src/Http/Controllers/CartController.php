@@ -225,7 +225,7 @@ class CartController extends Controller
                 session()->flash('success', trans('shop::app.checkout.cart.quantity.success'));
             }
         } catch(\Exception $e) {
-            dd($e->getMessage());
+            //dd($e->getMessage());
             session()->flash('error', trans($e->getMessage()));
         }
 

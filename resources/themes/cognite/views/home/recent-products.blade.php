@@ -1,5 +1,5 @@
 @if (app('Webkul\Product\Repositories\ProductRepository')->getNewProducts()->count())
-<div class="main-container-wrapper">
+<div class="main-container-wrapper" style="margin-top:50px">
     <section class="featured-products recently-viewed-products-container">
 
         <div class="featured-heading">

@@ -165,7 +165,7 @@
 								<tr>
 									<td class="content-block">
 										<span class="apple-link">&copy;2021 BuyNoir</span>
-										<br> Atlanta, GA 30087 | <a href="https://buynoir.com" target="_blank">buynoir.com</a>.<br>
+										<br> Atlanta, GA 30087 | <a href="https://buynoir.co" target="_blank">buynoir.co</a>.<br>
 									</td>
 								</tr>
 							</table>
