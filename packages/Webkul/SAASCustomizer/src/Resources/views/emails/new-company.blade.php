@@ -159,10 +159,9 @@
 								<tr>
 									<td class="content-block">
 										<p style="margin: 10px 0 5px 0;" class="social-icons">
-											<a href="https://facebook.com" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-fb.png') }}" alt="Facebook"></a>&nbsp;
-											<a href="https://twitter.com" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-twitter.png') }}" alt="Twitter"></a>&nbsp;
-											<a href="https://tumblr.com" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-tumblr.png') }}" alt="Tumblr"></a>&nbsp;
-											<a href="https://instagram.com" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-instagram.png') }}" alt="Instagram"></a>
+											<a href="https://www.facebook.com/BuyNoirApp" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-fb.png') }}" alt="Facebook"></a>&nbsp;
+											<a href="https://twitter.com/NoirBuy" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-twitter.png') }}" alt="Twitter"></a>&nbsp;
+											<a href="https://www.instagram.com/buynoir_official" target="_blank"><img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/icon-instagram.png') }}" alt="Instagram"></a>
 										</p>
 									</td>
 								</tr>
