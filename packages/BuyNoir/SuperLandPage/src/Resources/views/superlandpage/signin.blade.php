@@ -82,7 +82,7 @@
 
                                         <form class="registration" data-vv-scope="step-one" v-if="step_one" @submit.prevent="validateForm('step-one')">
                                         
-
+                                   
                                             <div class="step-navigator">
                                             <div class='registration-subtitle'>Login to your shop panel</div>
                                             </div>
@@ -118,42 +118,38 @@
                                             </div>
                                         </form>
 
-                                        <form class="registration" @submit.prevent="validateForm('step-two')" data-vv-scope="step-two" v-show="step_two">
+                                        <form class="registration" @submit.prevent="validateForm('step-two')" :action="company_name+'/admin/login'" data-vv-scope="step-two" v-show="step_two" method="post">
                                             <div class="step-two">
-                                                {{-- <h3 class="mb-30">{{ __('saas::app.tenant.registration.step-2') }}:</h3>
-
-                                                <h4>{{ __('saas::app.tenant.registration.personal') }}</h4> --}}
-
+                                              
                                                 <div class="step-navigator">
-                                                <div class='registration-subtitle'>Tell us about you</div>
+                                                <div class='registration-subtitle'>Enter your password for shop panel</div>
                                                 </div>
 
-                                                <div class="control-group" :class="[errors.has('step-two.first_name') ? 'has-error' : '']" >
-                                                    {{-- <label for="first_name" class="required">{{ __('saas::app.tenant.registration.first-name') }}</label> --}}
+                                                <div class="control-group" :class="[errors.has('step-two.company_name') ? 'has-error' : '']" >
+                                                   
+                                                    <input type="text" class="control" v-model="company_name" name="company_name" placeholder="Company Name" v-validate="'required|alpha_spaces'" data-vv-as="&quot;{{ __('saas::app.tenant.registration.usernamee') }}&quot;" readonly>
 
-                                                    <input type="text" class="control" v-model="first_name" name="first_name" placeholder="First Name" v-validate="'required|alpha_spaces'" data-vv-as="&quot;{{ __('saas::app.tenant.registration.first-name') }}&quot;">
-
-                                                    <span class="control-error" v-show="errors.has('step-two.first_name')">@{{ errors.first('step-two.first_name') }}</span>
+                                                    <span class="control-error" v-show="errors.has('step-two.company_name')"></span>
                                                 </div>
 
-                                                <div class="control-group" :class="[errors.has('step-two.last_name') ? 'has-error' : '']">
-                                                    {{-- <label for="last_name">{{ __('saas::app.tenant.registration.last-name') }}</label> --}}
+                                                
+                                                <div class="control-group" :class="[errors.has('step-two.email') ? 'has-error' : '']">
 
-                                                    <input type="text" class="control" name="last_name" v-model="last_name" placeholder="{{ __('saas::app.tenant.registration.last-name') }}" v-validate="'alpha_spaces'" data-vv-as="&quot;{{ __('saas::app.tenant.registration.first-name') }}&quot;">
+                                                    <input type="text" v-validate="'required|email|max:191'" class="control" v-model="email" name="email" data-vv-as="&quot;{{ __('saas::app.tenant.registration.email') }}&quot;" placeholder="Email Address" readonly>
 
-                                                    <span class="control-error" v-show="errors.has('step-two.last_name')">@{{ errors.first('step-two.last_name') }}</span>
+                                                    <span class="control-error" v-show="errors.has('step-two.email')">@{{ errors.first('step-two.email') }}</span>
                                                 </div>
 
-                                                <div class="control-group" :class="[errors.has('step-two.phone_no') ? 'has-error' : '']">
-                                                    {{-- <label for="phone_no" class="required">{{ __('saas::app.tenant.registration.phone') }}</label> --}}
+                                                <div class="control-group" :class="[errors.has('step-two.password') ? 'has-error' : '']">
 
-                                                    <input type="text" class="control" pattern="[-+]?\d*" name="phone_no" v-model="phone_no" placeholder="Phone Number" v-validate="'required|numeric'" data-vv-as="&quot;{{ __('saas::app.tenant.registration.phone') }}&quot;">
+                                                    <input type="password" name="password" v-validate="'required|min:6'" ref="password" class="control" v-model="password" placeholder="Password" data-vv-as="&quot;{{ __('saas::app.tenant.registration.password') }}&quot;">
 
-                                                    <span class="control-error" v-show="errors.has('step-two.phone_no')">@{{ errors.first('step-two.phone_no') }}</span>
+                                                    <span class="control-error" v-show="errors.has('step-two.password')">@{{ errors.first('step-two.password') }}</span>
                                                 </div>
 
                                                 <div class="control-group text-right">
-                                                    <button class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('first_name') || errors.has('last_name') || errors.has('step-two.phone_no')">{{ __('saas::app.tenant.registration.next') }}</button>
+                                                    <button type="submit" >{{ __('saas::app.tenant.registration.next') }}</button>
+                                                    <button  class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('first_name') || errors.has('last_name') || errors.has('step-two.phone_no')">{{ __('saas::app.tenant.registration.next') }}</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -274,8 +270,9 @@
                                           email: null,
                                           password: null,
                                           password_confirmation: null,
-                                          first_name: null,
                                           last_name: null,
+                                          company_name: null,
+                                          first_name: null,
                                           phone_no: null,
                                           name: "",
                                           productcategory: "",
@@ -304,7 +301,8 @@
                                                       if (scope == 'step-one') {
                                                           this_this.catchResponseOne();
                                                       } else if (scope == 'step-two') {
-                                                          this_this.catchResponseTwo();
+                                                          this_this.submit();
+                                                        //   this_this.catchResponseTwo();
                                                       } else if (scope == 'step-three') {
                                                           this_this.catchResponseThree();
                                                       }
@@ -346,9 +344,10 @@
                                                   o_this.step_one = false;
                                                   o_this.isOneActive = false;
                                                   o_this.isTwoActive = true;
-
+                                                  o_this.company_name = response.data.companies[0].domain
                                                   o_this.errors.clear();
-                                                  console.log('success:', response)
+                                                  console.log('success:', response.data)
+                                                  console.log('company name:', response.data.companies[0].domain)
                                               }).catch(function (errors) {
                                                   console.log('errors: ', errors);
                                                   serverErrors = errors.response.data.errors;

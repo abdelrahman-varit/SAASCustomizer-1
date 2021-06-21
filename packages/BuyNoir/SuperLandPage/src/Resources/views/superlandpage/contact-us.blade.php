@@ -66,13 +66,8 @@
                         <span class="c-green2">Contact us</span>
                       </div>
                       <h2>Got a question about using BuyNoir?</h2>
-                      <p>No coding required. Simply choose the 
-                      template that matches your style, add your branding and products 
-                      and start selling your stuff.</p>
-                      <h3><a href="https://buynoir.crunch.help/">More help...</a></h3>
-
-                     
-                                         
+                      <p>To contact us, email us at: Team@buynoir.co or text us +1 678-223-3761‬</p>
+                      <h3><a href="https://buynoir.crunch.help/">More help...</a></h3>                
                     </div>
                   </div>
                 </div>
