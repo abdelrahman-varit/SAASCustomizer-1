@@ -352,53 +352,7 @@
             </section>
             <!-- End.software_web -->
     
-            <!-- Start integration__logo -->
-            <section class="integration__logo hidden" id="Integrations">
-              <div class="container">
-                <div class="row justify-content-center text-center">
-                  <div class="col-md-8 col-lg-5">
-                    <div class="title_sections">
-                      <div class="before_title">
-                        <span class="c-green2">Integrations</span>
-                      </div>
-                      <h2>Seamless integration with marketing and sales tools</h2>
-                      <p>Easily connect with the other tools that help keep your business grow. Integrate BuyNoir with your favorite marketing tools to level up your business.</p>
-                      <a href="{{route("company.create.index")}}" class="btn btn_md_primary margin-t-2 bg-green2 c-white sweep_top sweep_letter rounded-12">
-                        <div class="inside_item">
-                          <span data-hover="Get Started">Get Started</span>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="block__circle">
-                  <div class="item_logo" data-aos="fade-up" data-aos-delay="0">
-                    <img src="{{ asset('buynoir/superlandpage/assets/img/software/logos/150.png')}}" alt="">
-                  </div>
-                  <div class="item_logo" data-aos="fade-up" data-aos-delay="100">
-                    <img src="{{ asset('buynoir/superlandpage/assets/img/software/logos/150.png')}}" alt="">
-                  </div>
-                  <div class="item_logo" data-aos="fade-up" data-aos-delay="200">
-                    <img src="{{ asset('buynoir/superlandpage/assets/img/software/logos/150.png')}}" alt="">
-                  </div>
-                  <div class="item_logo" data-aos="fade-up" data-aos-delay="300">
-                    <img src="{{ asset('buynoir/superlandpage/assets/img/software/logos/150.png')}}" alt="">
-                  </div>
-                  <div class="item_logo" data-aos="fade-up" data-aos-delay="400">
-                    <img src="{{ asset('buynoir/superlandpage/assets/img/software/logos/150.png')}}" alt="">
-                  </div>
-                  <div class=" item_logo" data-aos="fade-up" data-aos-delay="500">
-                    <img src="{{ asset('buynoir/superlandpage/assets/img/software/logos/150.png')}}" alt="">
-                  </div>
-                  <div class="item_logo" data-aos="fade-up" data-aos-delay="600">
-                    <img src="{{ asset('buynoir/superlandpage/assets/img/software/logos/150.png')}}" alt="">
-                  </div>
-                </div>
-              </div>
-            </section>
-            <!-- End. integration__logo -->
-    
- 
+           
      
             <!-- Start Simple Contact -->
             <section class="simplecontact_section bg-white padding-py-12 z-index-3">
