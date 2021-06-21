@@ -238,6 +238,40 @@ class CompanyController extends Controller
         }
     }
 
+    
+    public function signinStepOne()
+    {
+        $niceNames = array(
+            'email' => 'Email'
+        );
+
+        $validator = Validator::make(request()->all(), [
+            'email' => 'required|email'
+        ]);
+
+        $validator->setAttributeNames($niceNames);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ], 403);
+        } else {
+
+            $shop_admin = $this->admin->findOneWhere(['email'=>request()->get('email')]);
+            if(empty(!$shop_admin)){
+                $company_id = $shop_admin->company_id;
+                $company = $this->companyRepository->findWhereIn('id',[$company_id]);
+            }
+            return response()->json([
+                'success' => true,
+                'admin' => $shop_admin,
+                'company' => $company,
+                'errors' => null
+            ], 200);
+        }
+    }
+
     public function validateStepThree()
     {
         $niceNames = array(
