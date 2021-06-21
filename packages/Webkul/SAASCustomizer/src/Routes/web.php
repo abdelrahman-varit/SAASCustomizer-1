@@ -233,6 +233,10 @@ Route::group(['middleware' => ['web', 'company-locale']], function () {
         Route::post('/validate/step-three', 'Webkul\SAASCustomizer\Http\Controllers\Company\CompanyController@validateStepThree')->name('company.validate.step-three');
 
         Route::get('/seed-data', 'Webkul\SAASCustomizer\Http\Controllers\Company\PurgeController@seedDatabase')->name('company.create.data');
+    
+        //company signin
+        Route::post('/signin/step-one', 'Webkul\SAASCustomizer\Http\Controllers\Company\CompanyController@signinStepOne')->name('company.signin.step-one');
+
     });
 });
 

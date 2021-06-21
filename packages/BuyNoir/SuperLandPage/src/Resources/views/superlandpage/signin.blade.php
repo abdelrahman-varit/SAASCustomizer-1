@@ -10,13 +10,13 @@
             $homeSEO = json_decode($channel->home_seo);
 
             //$metaTitle = $homeSEO->meta_title;
-            $metaTitle = "BuyNoir - registration for opening new shop";
+            $metaTitle = "BuyNoir - Signin Page";
 
             //$metaDescription = $homeSEO->meta_description;
-            $metaDescription = "BuyNoir - registration for opening new shop, No coding required. Simply choose the template that matches your style, add your branding and products and start selling your stuff";
+            $metaDescription = "BuyNoir - Signin Page, No coding required. Simply choose the template that matches your style, add your branding and products and start selling your stuff";
 
             //$metaKeywords = $homeSEO->meta_keywords;
-            $metaKeywords = "BuyNoir - registration for opening new shop";
+            $metaKeywords = "BuyNoir - Signin Page";
         }
     }
 @endphp
@@ -64,10 +64,10 @@
                     </div>
                     
                     <div class="col-md-8 col-lg-8 mx-auto">
-                          <seller-registration></seller-registration>
+                          <buynoir-signin></buynoir-signin>
 
                           @push('scripts')
-                              <script type="text/x-template" id="seller-registration">
+                              <script type="text/x-template" id="buynoir-signin">
                                   <div class="company-content" id="buynoir-shop-registration">
                                       <div class="form-container" v-bind:style=" step_four ? 'margin-top: -30px;border: none;' : 'border: none;' ">
                                         <div class="head_nav">
@@ -84,8 +84,7 @@
                                         
 
                                             <div class="step-navigator">
-                                            <div class='registration-subtitle'>Launch your online business now.<br/>
-                                                Free for 10 days</div>
+                                            <div class='registration-subtitle'>Login to your shop panel</div>
                                             </div>
 
 
@@ -97,7 +96,7 @@
                                                 <span class="control-error" v-show="errors.has('step-one.email')">@{{ errors.first('step-one.email') }}</span>
                                             </div>
 
-                                            <div class="control-group" :class="[errors.has('step-one.password') ? 'has-error' : '']">
+                                            <!-- <div class="control-group" :class="[errors.has('step-one.password') ? 'has-error' : '']">
                                                 {{-- <label for="password" class="required">{{ __('saas::app.tenant.registration.password') }}</label> --}}
 
                                                 <input type="password" name="password" v-validate="'required|min:6'" ref="password" class="control" v-model="password" placeholder="Password" data-vv-as="&quot;{{ __('saas::app.tenant.registration.password') }}&quot;">
@@ -111,11 +110,11 @@
                                                 <input type="password" v-validate="'required|min:6|confirmed:password'" class="control" v-model="password_confirmation" name="password_confirmation" placeholder="Confirm Password" data-vv-as="&quot;{{ __('saas::app.tenant.registration.cpassword') }}&quot;">
 
                                                 <span class="control-error" v-show="errors.has('step-one.password_confirmation')">@{{ errors.first('step-one.password_confirmation') }}</span>
-                                            </div>
+                                            </div> -->
 
                                             <div class="control-group text-right">
                                                 <!-- <input type="submit" class="btn btn-lg btn-primary" :disabled="errors.has('password') || errors.has('password_confirmation') || errors.has('email')"  value="Continue"> -->
-                                                <button class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('step-one.password') || errors.has('step-one.password_confirmation') || errors.has('step-one.email')">{{ __('saas::app.tenant.registration.continue') }}</button>
+                                                <button class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('step-one.password') || errors.has('step-one.password_confirmation') || errors.has('step-one.email')">{{ __('saas::app.tenant.registration.signin-next') }}</button>
                                             </div>
                                         </form>
 
@@ -263,8 +262,8 @@
                                   
                                   var vDate = new Date();
                                   var nDigit = "BuyNoir-"+vDate.getTime();
-                                  var registration = Vue.component('seller-registration', {
-                                      template: '#seller-registration',
+                                  var registration = Vue.component('buynoir-signin', {
+                                      template: '#buynoir-signin',
                                       inject: ['$validator'],
                                       data: () => ({
                                           data_seed_url: @json(route('company.create.data')),
@@ -340,10 +339,8 @@
                                           catchResponseOne () {
                                               var o_this = this;
 
-                                              axios.post('{{ route('company.validate.step-one') }}', {
-                                                  email: this.email,
-                                                  password: this.password,
-                                                  password_confirmation: this.password_confirmation
+                                              axios.post('{{ route('company.signin.step-one') }}', {
+                                                  email: this.email
                                               }).then(function (response) {
                                                   o_this.step_two = true;
                                                   o_this.step_one = false;
@@ -351,10 +348,12 @@
                                                   o_this.isTwoActive = true;
 
                                                   o_this.errors.clear();
+                                                  console.log('success:', response)
                                               }).catch(function (errors) {
+                                                  console.log('errors: ', errors);
                                                   serverErrors = errors.response.data.errors;
-
                                                   o_this.$root.addServerErrors('step-one');
+                                                  
                                               });
                                           },
 

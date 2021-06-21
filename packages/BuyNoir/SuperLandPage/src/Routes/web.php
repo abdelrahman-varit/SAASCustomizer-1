@@ -25,6 +25,9 @@
             Route::get('/register', 'Webkul\SAASCustomizer\Http\Controllers\Company\CompanyController@create')->defaults('_config', [
                 'view' => 'superlandpage_view::superlandpage.registration'
             ])->name('company.create.index');
+            Route::get('/signin', 'Webkul\SAASCustomizer\Http\Controllers\Company\CompanyController@create')->defaults('_config', [
+                'view' => 'superlandpage_view::superlandpage.signin'
+            ])->name('buynoir.signin.index');
 
             //Store front home
             // Route::get('/landingpage', 'BuyNoir\LandingPage\Http\Controllers\LandingPageController@index')
