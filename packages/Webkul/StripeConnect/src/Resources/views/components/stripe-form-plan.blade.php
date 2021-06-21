@@ -1,4 +1,7 @@
-<div class="card justify-content-center stripe-card-shadow">
+<div class="company_logo text-center mt-5">
+    <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/logo.svg') }}" alt="Buynoir" class="mt-5" style="max-width: 110px"/>
+</div>
+<div class="card justify-content-center stripe-card-shadow mt-4" style="top: 0">
     <div class="card-body">
         <button type="button" class="close payment-cancel" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -21,7 +24,7 @@
                     
                     <div id="card-number" class="control-group form-control card-number-field"></div>
                     <!-- Used to display card number date error -->
-                    <div class="stripe-errors" id="card-number-error" role="alert"></div>
+                    <div class="stripe-errors w-100" id="card-number-error" role="alert"></div>
         
                     <div class="stripe-field-combinator" style="display: flex; width: 100%; flex-direction: row; justify-content: space-between; align-items: center;">
                         <div id="card-expiry" class="control-group" style="background: #FFFFFF; border: 1px solid #979797; border-radius: 5px; width: 65%; height: 43px; border-radius: 3px; font-size: 16px; padding-left: 15px; padding-top: 12px;"></div>
@@ -30,13 +33,13 @@
                     </div>
         
                     <!-- Used to display card expiry date error -->
-                    <div class="stripe-errors" id="card-expiration-error" role="alert"></div>
+                    <div class="stripe-errors w-100" id="card-expiration-error" role="alert"></div>
                     <button class="btn btn-primary btn-lg" id="stripe-pay-button" style="border-radius: 3px !important;">
                         {{ __('stripe_saas::app.shop.checkout.total.pay-now') }} ( {{ core()->currency($cart->amount + $applicationFee) }} )
                     </button>
+
                 </div>
             </form>
-            
             @php
                 $cards = collect();
                 if ( auth()->guard('customer')->check() ) {
@@ -93,6 +96,8 @@
                     </p>
                 </div>
             @endif
+
+            <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/payment-cards.png') }}" alt="Payment Cards" style="margin-top: 20px; max-width: 100%; height: auto"/>
         </div>
     </div>
   </div>
