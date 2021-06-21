@@ -36,15 +36,16 @@ use BuyNoir\SuperLandPage\Http\Controllers\Controller;
 
     public function privacyPolicy()
     {
-        // $currentChannel = company()->getCurrentChannel();
-        // $sliderData = $this->sliderRepository->findByField('channel_id', $currentChannel->id)->toArray();
         return view($this->_config['view']);
     }
 
     public function contactUs()
     {
-        // $currentChannel = company()->getCurrentChannel();
-        // $sliderData = $this->sliderRepository->findByField('channel_id', $currentChannel->id)->toArray();
+        return view($this->_config['view']);
+    }
+
+    public function cookiesMore()
+    {
         return view($this->_config['view']);
     }
 

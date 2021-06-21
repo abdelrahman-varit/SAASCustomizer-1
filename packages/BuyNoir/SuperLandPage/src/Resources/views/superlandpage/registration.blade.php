@@ -9,11 +9,14 @@
         if (isset($homeSEO)) {
             $homeSEO = json_decode($channel->home_seo);
 
-            $metaTitle = $homeSEO->meta_title;
+            <!-- $metaTitle = $homeSEO->meta_title; -->
+            $metaTitle = "BuyNoir - registration for opening new shop";
 
-            $metaDescription = $homeSEO->meta_description;
+            <!-- $metaDescription = $homeSEO->meta_description; -->
+            $metaDescription = "BuyNoir - registration for opening new shop, No coding required. Simply choose the template that matches your style, add your branding and products and start selling your stuff";
 
-            $metaKeywords = $homeSEO->meta_keywords;
+            <!-- $metaKeywords = $homeSEO->meta_keywords; -->
+            $metaKeywords = "BuyNoir - registration for opening new shop";
         }
     }
 @endphp

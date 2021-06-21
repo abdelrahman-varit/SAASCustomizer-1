@@ -21,7 +21,7 @@
           <div class="other--links">
             <a href="{{route("buynoir.home.contactus")}}">Support</a>
             <a href="{{route("buynoir.home.privacypolicy")}}">Privacy Policy</a>
-            <a href="#">Cookie Policy</a>
+            <a href="{{route('buynoir.home.cookiesmore')}}">Cookie Policy</a>
           </div>
           <div class="opyright">
             @if (company()->getSuperConfigData('general.content.footer.footer_toggle'))
@@ -117,7 +117,7 @@
           <i class="tio clear"></i>
         </button>
         <h5>Hey fam ✊🏾! </h5>
-        <p>We use cookies throughout this site to make your experience better. <a href="#">Ok?</a></p>
+        <p>We use cookies throughout this site to make your experience better. <a href="{{route('buynoir.home.cookiesmore')}}">Ok?</a></p>
 
         <div id="consent-popup" class="hidden">
           <p>By using this site you agree to our <a href="#">Terms and Conditions</a>.
@@ -170,7 +170,7 @@
               allow: 'Allow cookies',
               deny: 'Decline',
               link: 'Learn more',
-              href: 'http://buynoir.co',
+              href: "{{route('buynoir.home.cookiesmore')}}",
               close: '&#x274c;',
             }
           })});
