@@ -261,12 +261,20 @@ class CompanyController extends Controller
             $shop_admin = $this->admin->findOneWhere(['email'=>request()->get('email')]);
             if(empty(!$shop_admin)){
                 $company_id = $shop_admin->company_id;
-                $company = $this->companyRepository->findWhereIn('id',[$company_id]);
+                $companies = $this->companyRepository->findWhereIn('id',[$company_id]);
             }
+
+            if(empty($companies) || empty($shop_admin)){
+                return response()->json([
+                    'success' => false,
+                    'errors' =>['email'=>['Shop not found for this email!']]
+                ], 403);
+            }
+
             return response()->json([
                 'success' => true,
                 'admin' => $shop_admin,
-                'company' => $company,
+                'companies' => $companies,
                 'errors' => null
             ], 200);
         }
