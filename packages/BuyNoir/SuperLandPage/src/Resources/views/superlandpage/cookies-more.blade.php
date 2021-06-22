@@ -58,7 +58,7 @@
 						<section class="hidden mt-5 " id="Integrations">
 							<div class="container mt-5">
 								<div class="row justify-content-center ">
-									<div class="mt-5 font-weight-normal col-md-12 col-lg-8">
+									<div class="mt-5 font-weight-normal col-md-12 col-lg-8 line-height-normal">
 										<h2><strong>COOKIE POLICY</strong></h2>
 										<p><strong>Last updated February 07, 2021</strong></p><br>
 										<p>This Cookie Policy explains how BuyNoir LLC (<strong>"Company"</strong>, <strong>"we"</strong>, <strong>"us"</strong>, and <strong>"our"</strong>) uses cookies and similar technologies to recognize you when you visit our websites at <a href="http://buynoir.co">http://buynoir.co</a>, (<strong>"Websites"</strong>). It explains what these technologies are and why we use them, as well as your rights to control our use of them.</p>
@@ -309,6 +309,9 @@
 	<style>
 		.table::before {
 			content: none;
+		}
+		.line-height-normal {
+			line-height: 1.5;
 		}
 	</style>
 @endsection
