@@ -294,10 +294,17 @@
 		z-index: 999;
 	}
 
+	.buynoir-navbar-left .menu-item:nth-last-child(1)>.buynoir-menubar-sub,
+	.buynoir-navbar-left .menu-item:nth-last-child(2)>.buynoir-menubar-sub,
+	.buynoir-navbar-left .menu-item:nth-last-child(3)>.buynoir-menubar-sub,
+	.buynoir-navbar-left .menu-item:nth-last-child(4)>.buynoir-menubar-sub {
+		top: inherit;
+		bottom: 0;
+	}
+
 	.buynoir-navbar-left .menu-item.open > .buynoir-menubar-sub {
 		display: block;
 	}
-
 
 	.sidebar-inactive .buynoir-dashboard-container::before{
 		left: 63px;
