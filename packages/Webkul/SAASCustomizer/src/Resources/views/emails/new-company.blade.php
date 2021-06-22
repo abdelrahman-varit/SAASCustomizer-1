@@ -113,7 +113,7 @@
 						<table role="presentation" border="0" cellpadding="0" cellspacing="0">
 							<tr>
 								<td class="align-center">
-									<a href="https://buynoir.com" target="_blank">
+									<a href="https://buynoir.co" target="_blank">
 										<img src="{{ asset('/admin-themes/buynoir-admin/assets/admin/assets/images/email/email-banner.jpg') }}" alt="BuyNoir">
 									</a>
 								</td>
