@@ -96,21 +96,6 @@
                                                 <span class="control-error" v-show="errors.has('step-one.email')">@{{ errors.first('step-one.email') }}</span>
                                             </div>
 
-                                            <!-- <div class="control-group" :class="[errors.has('step-one.password') ? 'has-error' : '']">
-                                                {{-- <label for="password" class="required">{{ __('saas::app.tenant.registration.password') }}</label> --}}
-
-                                                <input type="password" name="password" v-validate="'required|min:6'" ref="password" class="control" v-model="password" placeholder="Password" data-vv-as="&quot;{{ __('saas::app.tenant.registration.password') }}&quot;">
-
-                                                <span class="control-error" v-show="errors.has('step-one.password')">@{{ errors.first('step-one.password') }}</span>
-                                            </div>
-
-                                            <div class="control-group" :class="[errors.has('step-one.password_confirmation') ? 'has-error' : '']">
-                                                {{-- <label for="password_confirmation" class="required">{{ __('saas::app.tenant.registration.cpassword') }}</label> --}}
-
-                                                <input type="password" v-validate="'required|min:6|confirmed:password'" class="control" v-model="password_confirmation" name="password_confirmation" placeholder="Confirm Password" data-vv-as="&quot;{{ __('saas::app.tenant.registration.cpassword') }}&quot;">
-
-                                                <span class="control-error" v-show="errors.has('step-one.password_confirmation')">@{{ errors.first('step-one.password_confirmation') }}</span>
-                                            </div> -->
 
                                             <div class="control-group text-right">
                                                 <!-- <input type="submit" class="btn btn-lg btn-primary" :disabled="errors.has('password') || errors.has('password_confirmation') || errors.has('email')"  value="Continue"> -->
@@ -118,20 +103,14 @@
                                             </div>
                                         </form>
 
-                                        <form class="registration" @submit.prevent="validateForm('step-two')" :action="company_name+'/admin/login'" data-vv-scope="step-two" v-show="step_two" method="post">
+                                        <form id="form-step-two" class="registration" @submit.prevent="validateForm('step-two')" :action="'//'+company_name+'/admin/login'" data-vv-scope="step-two" v-show="step_two" method="post">
+                                            @csrf
                                             <div class="step-two">
                                               
                                                 <div class="step-navigator">
-                                                <div class='registration-subtitle'>Enter your password for shop panel</div>
+                                                    <div class='registration-subtitle'>Enter your password for shop panel</div>
                                                 </div>
-
-                                                <div class="control-group" :class="[errors.has('step-two.company_name') ? 'has-error' : '']" >
-                                                   
-                                                    <input type="text" class="control" v-model="company_name" name="company_name" placeholder="Company Name" v-validate="'required|alpha_spaces'" data-vv-as="&quot;{{ __('saas::app.tenant.registration.usernamee') }}&quot;" readonly>
-
-                                                    <span class="control-error" v-show="errors.has('step-two.company_name')"></span>
-                                                </div>
-
+                                                
                                                 
                                                 <div class="control-group" :class="[errors.has('step-two.email') ? 'has-error' : '']">
 
@@ -148,99 +127,12 @@
                                                 </div>
 
                                                 <div class="control-group text-right">
-                                                    <button type="submit" >{{ __('saas::app.tenant.registration.next') }}</button>
-                                                    <button  class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('first_name') || errors.has('last_name') || errors.has('step-two.phone_no')">{{ __('saas::app.tenant.registration.next') }}</button>
+                                                    <button  class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('first_name') || errors.has('last_name') || errors.has('step-two.phone_no')">{{ __('saas::app.tenant.registration.signin-now') }}</button>
                                                 </div>
                                             </div>
                                         </form>
 
-                                        <form class="registration" @submit.prevent="validateForm('step-three')" data-vv-scope="step-three" v-show="step_three">
-                                            <div class="step-three">
-                                                {{-- <h3 class="mb-30">{{ __('saas::app.tenant.registration.step-3') }}:</h3>
-
-                                                <h4>{{ __('saas::app.tenant.registration.org-details') }}:</h4> --}}
-
-                                                <div class="step-navigator">
-                                                <div class='registration-subtitle'>Last step<br>
-                                                    ok, let's talk about your store
-                                                </div>
-                                                </div>
-
-                                                <div class="control-group" :class="[errors.has('step-three.username') ? 'has-error' : '']">
-                                                    {{-- <label for="username" class="required">User Name</label> --}}
-
-                                                    <input type="text" class="control" name="username" v-model="username" placeholder="{{ __('saas::app.tenant.registration.username') }}" v-validate="'required|alpha_spaces'" data-vv-as="&quot;{{ __('saas::app.tenant.registration.username') }}&quot;">
-
-                                                    <span class="control-error" v-show="errors.has('step-three.username')">@{{ errors.first('step-three.username') }}</span>
-                                                </div>
-
-                                                <div class="control-group" :class="[errors.has('step-three.productcategory') ? 'has-error' : '']">
-
-                                                    <select class="control" name="productcategory" v-model="productcategory" v-validate="'required'" >
-                                                        <option value="" selected>{{ __('saas::app.tenant.registration.org-name') }}</option>
-                                                        <option value="Clothing">Clothing</option>
-                                                        <option value="CBD Products">CBD Products</option>
-                                                        <option value="Food and Beverage">Food and Beverage</option>
-                                                        <option value="Health and Beauty">Health and Beauty</option>
-                                                        <option value="Home Decor">Home Decor</option>
-                                                        <option value="Jewelry">Jewelry</option>
-                                                        <option value="Services">Services</option>
-                                                        <option value="Other Goods">Other Goods</option>
-                                                        <option value="Others">Others</option>
-                                                    </select>
-                                                    <span class="control-error" v-show="errors.has('step-three.productcategory')">@{{ errors.first('step-three.productcategory') }}</span>
-                                                </div>
-
-                                                <div class="control-group mt-4" :class="[errors.has('step-three.name') ? 'has-error' : '']">
-                                                    <label for="elsebusiness" class="">{{ __('saas::app.tenant.registration.else-business') }}</label>
-                                                    <div class="row mt-3">
-                                                    <div class="col-md-4">
-                                                        <label style="color:#aa5352;">
-                                                            <input type="radio" class="" id="elsebusinessStart" name="elsebusiness" v-model="elsebusinessStart" value="START"  v-validate="''" data-vv-as="&quot;{{ __('saas::app.tenant.registration.else-business') }}&quot;">
-                                                            {{ __('saas::app.tenant.registration.just-start') }}
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <label style="color:#aa5352;">
-                                                            <input type="radio" class="" id="elsebusinessMoving" name="elsebusiness" v-model="elsebusinessStart" value="MOVING" v-validate="''" data-vv-as="&quot;{{ __('saas::app.tenant.registration.else-business') }}&quot;">
-                                                            {{ __('saas::app.tenant.registration.else-moving') }}
-                                                        </label>
-                                                    </div>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="control-group text-right">
-                                                    <button class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('step-three.username') || errors.has('step-three.name') || createdclicked" style="font-size:18px">{{ __('saas::app.tenant.registration.create-store') }}</button>
-                                                </div>
-                                            </div>
-                                        </form>
-
-                                        <form class="registration" data-vv-scope="step-four" v-show="step_four" id="formStepFour">
-                                            <div class="step-three" style="margin-top:-25px">
-                                                <div class="step-navigator">
-                                                    <div class='registration-subtitle'>
-                                                        <p>{{ __('saas::app.tenant.registration.congrats-title') }}</p> 
-                                                        {{ __('saas::app.tenant.registration.congrats-subtitle') }}
-                                                    </div>
-                                                    <p class="text-center mt-4">{{ __('saas::app.tenant.registration.congrats-description') }}</p>
-                                                </div>
-
-                                                <div class="control-group text-center" :class="[errors.has('step-three.username') ? 'has-error' : '']">
-                                                    <img src="{{ asset('buynoir/superlandpage/assets/img/congrats.gif') }}" alt="{{ config('app.name') }}" style="height:50vh"/>
-                                                </div>
-
-                                            
-                                                <div class="row text-center" style="display:none">
-                                                    <div class="col-6">
-                                                        <a v-bind:href="redirectUrlShop" class="btn btn-lg btn-warning registration-btn" id="btn-congrts" style="font-size:18px">{{ __('saas::app.tenant.registration.visit-shop') }}</a>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <a v-bind:href="redirectUrlAdmin" class="btn btn-lg btn-warning registration-btn" style="font-size:18px">{{ __('saas::app.tenant.registration.login-admin') }}</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
+                                       
 
 
 
@@ -255,7 +147,7 @@
                               </script>
 
                               <script>
-                                  
+                                  var csrf_token = $('meta[name="csrf-token"]').attr('content');
                                   var vDate = new Date();
                                   var nDigit = "BuyNoir-"+vDate.getTime();
                                   var registration = Vue.component('buynoir-signin', {
@@ -269,40 +161,37 @@
                                           step_four: false,
                                           email: null,
                                           password: null,
-                                          password_confirmation: null,
-                                          last_name: null,
+                                          
                                           company_name: null,
-                                          first_name: null,
-                                          phone_no: null,
-                                          name: "",
-                                          productcategory: "",
+                                         
+                                        
                                           elsebusinessStart: "START",
-                                          username: null,
-                                          createdclicked: false,
-                                          registrationData: {},
+                                         
                                           result: [],
                                           isOneActive: false,
                                           isTwoActive: false,
                                           isThreeActive: false,
                                           redirectUrlShop:"./",
-                                          redirectUrlAdmin:"./admin"
+                                          redirectUrlAdmin:"./admin",
+                                          token   : csrf_token,
                                       }),
 
                                       mounted() {
                                           this.isOneActive = true;
                                       },
-
+                                      
                                       methods: {
                                           validateForm: function(scope) {
                                               var this_this = this;
                                               this.$validator.validateAll(scope).then(function (result) {
-
+                                                  console.log(result);
                                                   if (result) {
                                                       if (scope == 'step-one') {
                                                           this_this.catchResponseOne();
                                                       } else if (scope == 'step-two') {
-                                                          this_this.submit();
-                                                        //   this_this.catchResponseTwo();
+                                                          var form = document.getElementById('form-step-two');
+                                                          form.method="post";
+                                                          form.submit();
                                                       } else if (scope == 'step-three') {
                                                           this_this.catchResponseThree();
                                                       }
@@ -346,10 +235,10 @@
                                                   o_this.isTwoActive = true;
                                                   o_this.company_name = response.data.companies[0].domain
                                                   o_this.errors.clear();
-                                                  console.log('success:', response.data)
-                                                  console.log('company name:', response.data.companies[0].domain)
+                                                //   console.log('success:', response.data)
+                                                //   console.log('company name:', response.data.companies[0].domain)
                                               }).catch(function (errors) {
-                                                  console.log('errors: ', errors);
+                                                //   console.log('errors: ', errors);
                                                   serverErrors = errors.response.data.errors;
                                                   o_this.$root.addServerErrors('step-one');
                                                   
@@ -363,87 +252,15 @@
                                               this.isThreeActive = true;
                                           },
 
-                                          catchResponseThree () {
-                                              this.createdclicked = true;
-                                              var o_this = this;
-                                              var storeNameTmp = this.username.split(' ').join(''); 
-                                             
-                                              axios.post('{{ route('company.validate.step-three') }}', {
-                                                  username: storeNameTmp,
-                                                  name: storeNameTmp,
-                                                  productcategory: this.productcategory,
-                                              }).then(function (response) {
-                                                  o_this.errors.clear();
-                                                  o_this.sendDataToServer();
-                                              }).catch(function (errors) {
-                                                  serverErrors = errors.response.data.errors;
-                                                  o_this.createdclicked = false;
-                                                  o_this.$root.addServerErrors('step-three');
-                                              });
-                                          },
-
+                                        
                                           handleErrorResponse (response, scope) {
                                               serverErrors = response.data.errors;
                                               this.$root.addServerErrors(scope);
                                           },
 
-                                          sendDataToServer () {
-                                              var o_this = this;
-                                              var usernameTm = this.username.split(' ').join(''); 
-                                              return axios.post('{{ route('company.create.store') }}', {
-                                                  email: this.email,
-                                                  first_name: this.first_name,
-                                                  last_name: this.last_name,
-                                                  phone_no: this.phone_no,
-                                                  password: this.password,
-                                                  password_confirmation: this.password_confirmation,
-                                                  name: this.username,
-                                                  productcategory: this.productcategory,
-                                                  username: usernameTm,
-                                                  elsebusinessStart: this.elsebusinessStart
-                                              }).then(function (response) {
-                                                //   window.location.href = response.data.redirect;
-                                                document.getElementById("regisCloseLink").style.display="none";
-                                                o_this.step_one   = false;
-                                                o_this.step_two   = false;
-                                                o_this.step_three = false;
-                                                o_this.step_four  = true;
-                                                
-
-                                                //this.redirectUrlShop = response.data.redirectShop;
-                                                //this.redirectUrlAdmin = response.data.redirectAdmin;
-                                                setTimeout(function(){
-                                                    console.log("success registration");
-                                                    //this.step_four = false;
-                                                    window.location.href = response.data.redirect;
-                                                },3000);
-                                               
-                                                
-                                              }).catch(function (errors) {
-                                                  serverErrors = errors.response.data.errors;
-
-                                                  o_this.createdclicked = false;
-
-                                                  for (i in serverErrors) {
-                                                      window.flashMessages = [{'type': 'alert-error', 'message': serverErrors[i]}];
-                                                  }
-
-                                                  o_this.$root.addFlashMessages();
-                                                  o_this.$root.addServerErrors('step-one');
-                                                  o_this.$root.addServerErrors('step-two');
-                                                  o_this.$root.addServerErrors('step-three');
-                                              });
-                                          }
                                       }
                                   });
 
-                                  setTimeout(function(){
-                                        var elseStart = document.getElementById('elsebusinessStart');
-                                        if(elseStart){
-                                            elseStart.checked=true;
-                                        }
-                                  },1500);
-                                 
 
                               </script>
                           @endpush

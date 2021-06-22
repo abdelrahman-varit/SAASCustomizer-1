@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'paypal/standard/ipn',
-	'super/paypal/ipn'
+	    'super/paypal/ipn',
+        'admin/login'
     ];
 }

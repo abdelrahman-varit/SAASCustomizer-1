@@ -31,13 +31,13 @@
           </ul>
           <div class="nav_account btn_demo3">
 
-            <!-- <button type="button" class="btn btn_sm_primary" style="background:transparent;color:brown !important;margin-right:5px;border:2px solid rgba(170, 83, 82, 0.5) !important;border-radius:8px">
+            <button type="button" class="btn btn_sm_primary" style="background:transparent;color:brown !important;margin-right:5px;border:2px solid rgba(170, 83, 82, 0.5) !important;border-radius:8px">
               <div class="inside_item">
                  <a href="{{route('buynoir.signin.index')}}" class="topbar-signup-link home-signin-btn" >
                   <span data-hover="Free">Sign In</span>
                 </a>
               </div>
-            </button> -->
+            </button>
 
             <button type="button" class="btn btn_sm_primary opacity-1 sweep_letter scale sweep_top rounded-8" style="background-color: rgba(170, 83, 82, .5);">
               <div class="inside_item">

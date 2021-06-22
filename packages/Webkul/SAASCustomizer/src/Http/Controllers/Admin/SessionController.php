@@ -43,7 +43,7 @@ class SessionController extends Controller
         ]);
 
         $remember = request('remember');
-
+ 
         $admin = $this->adminRepository->findOneWhere(['email' => request()->email]);
 
         if ( isset($admin['company_id']) && ($admin['company_id'] == $company->id)) {
