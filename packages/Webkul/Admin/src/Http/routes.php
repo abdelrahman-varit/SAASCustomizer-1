@@ -10,6 +10,7 @@ Route::group(['middleware' => ['web']], function () {
             'view' => 'admin::users.sessions.create',
         ])->name('admin.session.create');
 
+   
         //login post route to admin auth controller
         Route::post('/login', 'Webkul\User\Http\Controllers\SessionController@store')->defaults('_config', [
             'redirect' => 'admin.dashboard.index',

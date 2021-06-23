@@ -247,6 +247,13 @@ Route::group(['middleware' => 'web'], function () {
             'redirect' => 'admin.dashboard.index'
         ])->name('admin.session.store');
 
+               // Login Routes step - two
+               Route::get('/logins', 'Webkul\SAASCustomizer\Http\Controllers\Admin\SessionController@createTwo')->defaults('_config', [
+                'view' => 'admin::users.sessions.create-two',
+            ])->name('admin.session.createtwo');
+
+          
+
         Route::group(['middleware' => ['admin']], function () {
 
             Route::prefix('company')->group(function() {
