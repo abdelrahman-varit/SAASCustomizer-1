@@ -271,10 +271,12 @@ class CompanyController extends Controller
                 ], 403);
             }
 
+            $company_admin_url = $companies->first()->domain.'/admin/signin-two';
             return response()->json([
                 'success' => true,
                 'admin' => $shop_admin,
                 'companies' => $companies,
+                'redirect_url' => $company_admin_url,
                 'errors' => null
             ], 200);
         }

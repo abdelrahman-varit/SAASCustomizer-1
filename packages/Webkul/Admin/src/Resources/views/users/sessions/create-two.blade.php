@@ -1,4 +1,4 @@
-@extends('superlandpage_view::superlandpage.layouts.master')
+@extends('admin::layouts.master-two')
 
 @php
     $channel = company()->getCurrentChannel();
@@ -80,30 +80,7 @@
 
                                           </div>
 
-                                        <form class="registration" data-vv-scope="step-one" v-if="step_one" @submit.prevent="validateForm('step-one')">
-                                        
-                                   
-                                            <div class="step-navigator">
-                                                <div class='registration-subtitle'>Login to your shop panel</div>
-                                            </div>
-
-
-                                            <div class="control-group" :class="[errors.has('step-one.email') ? 'has-error' : '']">
-                                                {{-- <label for="email" class="required">{{ __('saas::app.tenant.registration.email') }}</label> --}}
-
-                                                <input type="text" v-validate="'required|email|max:191'" class="control" v-model="email" name="email" data-vv-as="&quot;{{ __('saas::app.tenant.registration.email') }}&quot;" placeholder="Email Address">
-
-                                                <span class="control-error" v-show="errors.has('step-one.email')">@{{ errors.first('step-one.email') }}</span>
-                                            </div>
-
-
-                                            <div class="control-group text-right">
-                                                <!-- <input type="submit" class="btn btn-lg btn-primary" :disabled="errors.has('password') || errors.has('password_confirmation') || errors.has('email')"  value="Continue"> -->
-                                                <button class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('step-one.password') || errors.has('step-one.password_confirmation') || errors.has('step-one.email')">{{ __('saas::app.tenant.registration.signin-next') }}</button>
-                                            </div>
-                                        </form>
-
-                                        <form id="form-step-two" class="registration" @submit.prevent="validateForm('step-two')" :action="'//'+company_name+'/admin/login'" data-vv-scope="step-two" v-show="step_two" method="post">
+                                        <form id="form-step-two" class="registration" method="POST" action="{{ route('admin.session.store') }}" >
                                             @csrf
                                             <div class="step-two">
                                               
@@ -114,15 +91,15 @@
                                                 
                                                 <div class="control-group" :class="[errors.has('step-two.email') ? 'has-error' : '']">
 
-                                                    <input type="hidden" v-validate="'required|email|max:191'" class="control" v-model="email" name="email" data-vv-as="&quot;{{ __('saas::app.tenant.registration.email') }}&quot;" placeholder="Email Address" readonly>
-                                                    <input type="hidden" v-validate="'required'" class="control" v-model="company_name" name="company_name" data-vv-as="&quot;{{ __('saas::app.tenant.registration.email') }}&quot;" placeholder="Email Address" readonly>
+                                                    <input type="hidden" v-validate="'required|email|max:191'" class="control" value="{{session()->get('email')}}" name="email"   required>
+                                                    <input type="hidden" v-validate="'required'" class="control" value="{{session()->get('company_name')}}" name="company_name"    required>
 
                                                     <span class="control-error" v-show="errors.has('step-two.email')">@{{ errors.first('step-two.email') }}</span>
                                                 </div>
 
                                                 <div class="control-group" :class="[errors.has('step-two.password') ? 'has-error' : '']">
 
-                                                    <input type="password" name="password" v-validate="'required|min:6'" ref="password" class="control" v-model="password" placeholder="Password" data-vv-as="&quot;{{ __('saas::app.tenant.registration.password') }}&quot;">
+                                                    <input type="password" name="password" v-validate="'required|min:6'" ref="password" class="control" v-model="password" placeholder="Password" data-vv-as="&quot;{{ __('saas::app.tenant.registration.password') }}&quot;" required>
 
                                                     <span class="control-error" v-show="errors.has('step-two.password')">@{{ errors.first('step-two.password') }}</span>
                                                 </div>
@@ -130,16 +107,12 @@
                                                 <div class="control-group">
                                                     <a href="{{ route('admin.forget-password.create') }}">{{ __('admin::app.users.sessions.forget-password-link-title') }}</a>
                                                 </div>
-                                                
+
                                                 <div class="control-group text-right">
                                                     <button  class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('first_name') || errors.has('last_name') || errors.has('step-two.phone_no')">{{ __('saas::app.tenant.registration.signin-now') }}</button>
                                                 </div>
                                             </div>
                                         </form>
-
-                                       
-
-
 
                                         <ul class="step-list registration-ul mt-3" v-bind:style="step_four?'display:none':''">
                                             <li class="registration-step-item" :class="{ active: isOneActive }" v-on:click="stepNav(1)"></li>
@@ -160,8 +133,8 @@
                                       inject: ['$validator'],
                                       data: () => ({
                                           data_seed_url: @json(route('company.create.data')),
-                                          step_one: true,
-                                          step_two: false,
+                                          step_one: false,
+                                          step_two: true,
                                           step_three: false,
                                           step_four: false,
                                           email: null,
@@ -174,7 +147,7 @@
                                          
                                           result: [],
                                           isOneActive: false,
-                                          isTwoActive: false,
+                                          isTwoActive: true,
                                           isThreeActive: false,
                                           redirectUrlShop:"./",
                                           redirectUrlAdmin:"./admin",
@@ -182,7 +155,7 @@
                                       }),
 
                                       mounted() {
-                                          this.isOneActive = true;
+                                          this.isTwoActive = true;
                                       },
                                       
                                       methods: {
