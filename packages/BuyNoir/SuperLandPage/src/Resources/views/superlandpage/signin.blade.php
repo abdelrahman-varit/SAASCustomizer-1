@@ -127,7 +127,7 @@
                                                 </div>
 
                                                 <div class="control-group text-right">
-                                                    <button  class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('first_name') || errors.has('last_name') || errors.has('step-two.phone_no')">{{ __('saas::app.tenant.registration.signin-now') }}</button>
+                                                    <button  class="btn btn-lg btn-warning registration-btn" style="width: auto" :disabled="errors.has('first_name') || errors.has('last_name') || errors.has('step-two.phone_no')">{{ __('saas::app.tenant.registration.signin-now') }}</button>
                                                 </div>
                                             </div>
                                         </form>
