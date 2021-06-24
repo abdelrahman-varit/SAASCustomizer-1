@@ -57,16 +57,16 @@
          
     
             <!-- Start integration__logo -->
-            <section class=" hidden mt-5" id="Integrations">
+            <section class="hidden mt-5 " id="Integrations">
               <div class="container mt-5">
-                <div class="row justify-content-center text-center ">
-                  <div class="col-md-12 col-lg-8 mt-5">
-                    <div class="title_sections mt-5">
+                <div class="text-center row justify-content-center ">
+                  <div class="mt-5 col-md-12 col-lg-8">
+                    <div class="mt-5 title_sections">
                       <div class="before_title">
                         <span class="c-green2">Contact us</span>
                       </div>
                       <h2>Got a question about using BuyNoir?</h2>
-                      <p>To contact us, email us at: Team@buynoir.co or text us +1 678-223-3761‬</p>
+                      <p>To contact us, email us at: <a href="mailto:team@buynoir.co">team@buynoir.co</a> or text us <a href="tel:+16782233761‬">+1 678-223-3761‬</a></p>
                       <h3><a href="https://buynoir.crunch.help/">More help...</a></h3>                
                     </div>
                   </div>

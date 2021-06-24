@@ -17,7 +17,7 @@
 
 @section('content')
 
-    <div class="panel">
+    <div class="panel buynoir-panel" id="buynoir-panel-login">
 
         <div class="panel-content">
 

@@ -54,22 +54,15 @@
     <div id="wrapper">
         <div id="content">
             <section class="section_account section-registration">
-                <div class="container-fluid">
-                     
-                      
-                     
-                  <div class="row ">
-                    <div class="col-12 text-right pt-3">
-                      <a href={{config('app.url')}} class='btn outline btn-lg' id="regisCloseLink" ><i class='icon cross-icon'></i></a>
-                    </div>
-                    
-                    <div class="col-md-8 col-lg-8 mx-auto">
+                <div class="container-fluid">                     
+                  <div class="row justify-content-center vh-100">                    
+                    <div class="col-md-7 col-lg-5">
                           <buynoir-signin></buynoir-signin>
 
                           @push('scripts')
                               <script type="text/x-template" id="buynoir-signin">
-                                  <div class="company-content" id="buynoir-shop-registration">
-                                      <div class="form-container" v-bind:style=" step_four ? 'margin-top: -30px;border: none;' : 'border: none;' ">
+                                  <div class="p-0 company-content" id="buynoir-shop-registration">
+                                      <div class="p-0 form-container w-100" v-bind:style=" step_four ? 'margin-top: -30px;border: none;' : 'border: none;' ">
                                         <div class="head_nav">
 
                                             <div class="brand-logo">
@@ -80,7 +73,7 @@
 
                                           </div>
 
-                                        <form id="form-step-two" class="registration" method="POST" action="{{ route('admin.session.store') }}" >
+                                        <form id="form-step-two" class="p-0 registration" method="POST" action="{{ route('admin.session.store') }}" >
                                             @csrf
                                             <div class="step-two">
                                               
@@ -89,7 +82,7 @@
                                                 </div>
                                                 
                                                 
-                                                <div class="control-group" :class="[errors.has('step-two.email') ? 'has-error' : '']">
+                                                <div class="control-group w-100" :class="[errors.has('step-two.email') ? 'has-error' : '']">
 
                                                     <input type="hidden" v-validate="'required|email|max:191'" class="control" value="{{session()->get('email')}}" name="email"   required>
                                                     <input type="hidden" v-validate="'required'" class="control" value="{{session()->get('company_name')}}" name="company_name"    required>
@@ -97,28 +90,38 @@
                                                     <span class="control-error" v-show="errors.has('step-two.email')">@{{ errors.first('step-two.email') }}</span>
                                                 </div>
 
-                                                <div class="control-group" :class="[errors.has('step-two.password') ? 'has-error' : '']">
+                                                <div class="control-group w-100" :class="[errors.has('step-two.password') ? 'has-error' : '']">
 
                                                     <input type="password" name="password" v-validate="'required|min:6'" ref="password" class="control" v-model="password" placeholder="Password" data-vv-as="&quot;{{ __('saas::app.tenant.registration.password') }}&quot;" required>
 
                                                     <span class="control-error" v-show="errors.has('step-two.password')">@{{ errors.first('step-two.password') }}</span>
                                                 </div>
 
-                                                <div class="control-group">
+                                                <div class="control-group w-100">
                                                     <a href="{{ route('admin.forget-password.create') }}">{{ __('admin::app.users.sessions.forget-password-link-title') }}</a>
                                                 </div>
 
-                                                <div class="control-group text-right">
-                                                    <button  class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('first_name') || errors.has('last_name') || errors.has('step-two.phone_no')">{{ __('saas::app.tenant.registration.signin-now') }}</button>
+                                                <div class="text-center text-md-right control-group w-100">
+                                                    <button  class="m-0 btn btn-lg btn-warning registration-btn" style="width: auto" :disabled="errors.has('first_name') || errors.has('last_name') || errors.has('step-two.phone_no')">{{ __('saas::app.tenant.registration.signin-now') }}</button>
                                                 </div>
                                             </div>
                                         </form>
 
-                                        <ul class="step-list registration-ul mt-3" v-bind:style="step_four?'display:none':''">
+                                        <ul class="py-5 step-list registration-ul" v-bind:style="step_four?'display:none':''">
                                             <li class="registration-step-item" :class="{ active: isOneActive }" v-on:click="stepNav(1)"></li>
                                             <li class="registration-step-item" :class="{ active: isTwoActive }" v-on:click="stepNav(2)"></li>
                                             <!-- <li class="registration-step-item" :class="{ active: isThreeActive }" v-on:click="stepNav(3)"></li> -->
                                         </ul>
+
+                                        @if (company()->getSuperConfigData('general.content.footer.footer_toggle'))
+                                            <p class="m-0 text-center">
+                                                @if (company()->getSuperConfigData('general.content.footer.footer_content'))
+                                                    {{ company()->getSuperConfigData('general.content.footer.footer_content') }}
+                                                @else
+                                                    {!! trans('admin::app.footer.copy-right') !!}
+                                                @endif
+                                            </p>
+                                        @endif
 
                                       </div>
                                   </div>
