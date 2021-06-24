@@ -7,7 +7,7 @@
             @foreach (\Illuminate\Support\Arr::get($menu->items, current($keys) . '.children') as $item)
                 <li class="{{ $menu->getActive($item) }}">
                     <a href="{{ $item['url'] }}">
-                        {{ trans($item['name']) }}
+                        {{ trans($item['name']) }} two
 
                         @if ($menu->getActive($item))
                             <i class="angle-right-icon"></i>
@@ -19,8 +19,8 @@
         @else
             @foreach ($config->items as $key => $item)
                 <li class="{{ $item['key'] == request()->route('slug') ? 'active' : '' }}">
-                    <a href="{{ route('admin.configuration.index', $item['key']) }}">
-                        {{ isset($item['name']) ? trans($item['name']) : '' }}
+                    <a href="{{ route('admin.configuration.index', request()->route('slug').'/'.$key) }}">
+                        {{ isset($item['name']) ? trans($item['name']) : '' }} one 
 
                         @if ($item['key'] == request()->route('slug'))
                             <i class="angle-right-icon"></i>

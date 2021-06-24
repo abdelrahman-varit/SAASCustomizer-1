@@ -103,7 +103,30 @@ return [
         'route'      => 'admin.configuration.index',
         'sort'       => 7,
         'icon-class' => 'configuration-icon',
-    ], [
+    ],[
+        'key'        => 'configuration.general',
+        'name'       => 'admin::app.layouts.configure',
+        'route'      => 'admin.configuration.index',
+        'sort'       => 1,
+        'icon-class' => 'configuration-icon',
+    ],[
+        'key'        => 'configuration.content',
+        'name'       => 'admin::app.layouts.configure',
+        'route'      => 'admin.configuration.index',
+        'sort'       => 2,
+        'icon-class' => 'configuration-icon',
+    ],[
+        'key'        => 'configuration.design',
+        'name'       => 'admin::app.layouts.configure',
+        'route'      => 'admin.configuration.index',
+        'sort'       => 3,
+        'icon-class' => 'configuration-icon',
+    ],
+    
+    
+    
+    
+    [
         'key'        => 'settings',
         'name'       => 'admin::app.layouts.settings',
         'route'      => 'admin.locales.index',
