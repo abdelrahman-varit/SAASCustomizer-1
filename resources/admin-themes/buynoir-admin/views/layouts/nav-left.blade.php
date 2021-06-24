@@ -10,9 +10,9 @@
                     <ul class="buynoir-menubar-sub">
                         @foreach ($menuItem['children'] as $key => $menuItemChild)
                             @if($key=="general" || $key=="content" || $key=="design")
-                                <li class="{{ $menu->getActive($menuItemChild) }}"><a href="{{ route('admin.configuration.index', 'general/'. $key) }}">{{ $key }}</a></li>
+                                <li class=" "><a href="{{ route('admin.configuration.index', 'general/'. $key) }}">{{ $key }}</a></li>
                             @else
-                                <li class="{{ $menu->getActive($menuItemChild) }}"><a href="{{ $menuItemChild['url'] }}">{{ $key }}</a></li>
+                                <li class=" "><a href="{{ $menuItemChild['url'] }}">{{ $key }}</a></li>
                             @endif
                         @endforeach
                     </ul>
