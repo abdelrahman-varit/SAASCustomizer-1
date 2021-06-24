@@ -128,7 +128,7 @@
                                                 </div>
 
                                                 <div class="control-group">
-                                                    <a href="{{ route('admin.forget-password.create') }}">{{ __('admin::app.users.sessions.forget-password-link-title') }}</a>
+                                                    <a :href="'//'+company_name+'/admin/forget-password'">{{ __('admin::app.users.sessions.forget-password-link-title') }}</a>
                                                 </div>
                                                 
                                                 <div class="control-group text-right">
