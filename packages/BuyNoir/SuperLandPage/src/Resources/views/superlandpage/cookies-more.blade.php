@@ -271,13 +271,11 @@
 										<p>The date at the top of this Cookie Policy indicates when it was last updated.</p><br>
 
 										<h3><strong>Where can I get further information?</strong></h3>
-										<p>If you have any questions about our use of cookies or other technologies, please email us at daniel@buynoir.co or by post to:</p><br>
+										<p>If you have any questions about our use of cookies or other technologies, please email us at help@buynoir.co or by post to:</p><br>
 										<address>
 											<strong>BuyNoir LLC</strong><br>
-											6085 Bowers Road<br>
-											Stone Mountain, GA 30087<br>
 											United States<br>
-											Phone: (+1)9173644932
+											Phone: (+1)678-223-3761‬
 										</address>
 									</div>
 								</div>

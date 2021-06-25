@@ -84,7 +84,7 @@
                                         
                                    
                                             <div class="step-navigator">
-                                                <div class='registration-subtitle'>Login to your shop panel</div>
+                                                <div class='registration-subtitle'>Sign into your Shop</div>
                                             </div>
 
 
