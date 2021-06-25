@@ -1,17 +1,17 @@
-<div class="company_logo text-center mt-5">
-    @if ($logo = core()->getCurrentChannel()->logo_url)
-        <img src="{{ $logo }}" alt="Buynoir" class="mt-5" style="max-width: 110px"/>
-    @else
-        <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/logo.svg') }}" alt="Buynoir" class="mt-5" style="max-width: 110px"/>
-    @endif
-</div>
-<div class="card justify-content-center stripe-card-shadow mt-4" style="top: 0">
+<div class="row justify-content-center align-items-center" style="height: 100vh">
+<div class="card stripe-card-shadow" style="top: 0">
     <div class="card-body">
         <button type="button" class="close payment-cancel" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
         
-        <img class="stripe-logo mx-auto d-block" src="{{ asset('vendor/webkul/stripe/assets/images/icons/stripe-logo.png') }}" style="height: 70px;"/>
+        <div class="text-center">
+            @if ($logo = core()->getCurrentChannel()->logo_url)
+                <img src="{{ $logo }}" alt="Buynoir" class="mt-4" style="max-width: 110px; max-height: 70px"/>
+            @else
+                <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/logo.svg') }}" alt="Buynoir" class="mt-4" style="max-width: 110px; max-height: 70px"/>
+            @endif
+        </div>
 
         @php
             $applicationFee = 0;
@@ -65,9 +65,9 @@
             @if ( auth()->guard('customer')->check() )
                 <div id="saved-cards" class="saved-old-card">
                     
-                    <div class="control-info mt-10 mb-10">
+                    <div class="mt-10 mb-10 control-info">
                         @foreach($cards as $card)
-                                <div class="stripe-card-info mb-2" id="{{ $card->id }}">
+                                <div class="mb-2 stripe-card-info" id="{{ $card->id }}">
                                     <label class="radio-container">
                                         <input type="radio" name="saved-card" class="saved-card-list" id="{{ $card->id }}" value="{{ $card->id }}">
                                         <span class="checkmark"></span>
@@ -88,7 +88,7 @@
                         @endforeach
                     </div>
 
-                    <div class="col text-center">
+                    <div class="text-center col">
                         <button class="btn btn-primary btn-lg btn-center old-stripe-button"  style="border-radius: 3px !important;">
                             {{ __('stripe_saas::app.shop.checkout.total.pay-now') }} ( {{ core()->currency(\Cart::getCart()->base_grand_total + $applicationFee) }} )
                         </button>
@@ -100,7 +100,9 @@
                 </div>
             @endif
             <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/payment-cards.png') }}" alt="Payment Cards" style="margin-top: 20px; max-width: 100%; height: auto"/>
+            <p class="mt-3 mb-0 text-center">Powered by <a href="https://stripe.com/" target="_blank">Stripe.com</a></p>
         </div>
     </div>
   </div>
+</div>
 
