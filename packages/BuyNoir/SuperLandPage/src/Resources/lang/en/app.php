@@ -294,7 +294,7 @@ return [
             'password'              => 'Password',
             'cpassword'             => 'Confirm Password',
             'continue'              => "Let's do this",
-            'signin-next'           => "Find Your Shop",
+            'signin-next'           => "Enter your shop",
             'signin-now'            => "Sign-In Now",
             'next'                  => "Ok, Next",
             'create-store'          => "Create Store",
