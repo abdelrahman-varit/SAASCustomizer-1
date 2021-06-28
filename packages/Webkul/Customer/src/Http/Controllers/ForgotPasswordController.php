@@ -4,6 +4,8 @@ namespace Webkul\Customer\Http\Controllers;
 
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Support\Facades\Password;
+use Webkul\Customer\Repositories\CustomerRepository;
+use Company;
 
 class ForgotPasswordController extends Controller
 {
@@ -16,14 +18,19 @@ class ForgotPasswordController extends Controller
      */
     protected $_config;
 
+
+    protected $customerRepository;
+
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct( CustomerRepository $customerRepository)
     {
         $this->_config = request('_config');
+        $this->customerRepository = $customerRepository;
     }
 
     /**
@@ -48,6 +55,16 @@ class ForgotPasswordController extends Controller
                 'email' => 'required|email',
             ]);
 
+            $company = Company::getCurrent();
+            $customer = $this->customerRepository->findOneWhere(['email'=>request('email'),'company_id'=>$company->id]);
+           
+            if(empty($customer)){
+                return back()
+                ->withInput(request(['email']))
+                ->withErrors([
+                    'email' => trans('customer::app.forget_password.email_not_exist'),
+                ]);
+            }
             $response = $this->broker()->sendResetLink(
                 request(['email'])
             );
