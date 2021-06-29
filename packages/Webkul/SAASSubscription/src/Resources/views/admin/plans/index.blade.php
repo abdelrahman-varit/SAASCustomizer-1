@@ -47,8 +47,8 @@
                                     <li>{!! __('saassubscription::app.admin.plans.allowed-orders', ['count' => '<b>' . $plan->allowed_orders . '</b>']) !!}</li>
                                 </ul>
 
-                                <button class="btn btn-lg btn-primary" {{$recurringProfile->schedule_description===$plan->name?' disabled ':''}}>
-                                    {{ __('saassubscription::app.admin.plans.purchase') }}
+                                <button class="btn btn-lg {{isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name)?' btn-secondary ':'btn-primary'}}" {{isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name)?' disabled ':''}}>
+                                    {{ __('saassubscription::app.admin.plans.purchase') }}  
                                 </button>
                             </form>
                         </div>

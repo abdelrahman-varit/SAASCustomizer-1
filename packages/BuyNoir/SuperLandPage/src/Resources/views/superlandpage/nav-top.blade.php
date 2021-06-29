@@ -30,6 +30,9 @@
 
           </ul>
           <div class="nav_account btn_demo3">
+
+         
+
             <button type="button" class="btn btn_sm_primary opacity-1 sweep_letter scale sweep_top rounded-8" style="background-color: rgba(170, 83, 82, .5);">
               <div class="inside_item">
                  <a href="{{route('company.create.index')}}" class="topbar-signup-link home-signup-btn" >
@@ -37,6 +40,16 @@
                 </a>
               </div>
             </button>
+
+
+            <button type="button" class="btn btn_sm_primary rounded-8" style="background:transparent;color:brown !important;margin-right:5px;border:2px solid rgba(170, 83, 82, 0.5) !important; padding: 0.575rem 1.55rem">
+              <div class="inside_item">
+                 <a href="{{route('buynoir.signin.index')}}" class="topbar-signup-link home-signin-btn" >
+                  <span data-hover="Free">Sign In</span>
+                </a>
+              </div>
+            </button>
+            
           </div>
         </div>
       </nav>

@@ -247,17 +247,19 @@
       Back to top with progress indicator
     -----------------------------*/
     var progressPath = document.querySelector('.prgoress_indicator path');
-    var pathLength = progressPath.getTotalLength();
-    progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
-    progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
-    progressPath.style.strokeDashoffset = pathLength;
-    progressPath.getBoundingClientRect();
-    progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
+    var pathLength = progressPath?progressPath.getTotalLength():0;
+    if(progressPath){
+      progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+      progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
+      progressPath.style.strokeDashoffset = pathLength;
+      progressPath.getBoundingClientRect();
+      progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
+    }
     var updateProgress = function () {
       var scroll = $(window).scrollTop();
       var height = $(document).height() - $(window).height();
       var progress = pathLength - (scroll * pathLength / height);
-      progressPath.style.strokeDashoffset = progress;
+      if(progressPath){progressPath.style.strokeDashoffset = progress;}
     }
     updateProgress();
     $(window).on('scroll', updateProgress);

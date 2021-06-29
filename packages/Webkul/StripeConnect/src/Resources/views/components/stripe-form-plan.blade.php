@@ -1,10 +1,13 @@
-<div class="card justify-content-center stripe-card-shadow">
+<div class="row justify-content-center align-items-center" style="height: 100vh">
+    <div class="card stripe-card-shadow" style="top: 0">
     <div class="card-body">
         <button type="button" class="close payment-cancel" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
         
-        <img class="stripe-logo mx-auto d-block" src="{{ asset('vendor/webkul/stripe/assets/images/icons/stripe-logo.png') }}" style="height: 70px;"/>
+        <div class="text-center">
+            <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/logo.svg') }}" alt="Buynoir" class="mt-4" style="max-width: 110px; max-height: 70px"/>
+        </div>
 
         @php
             $applicationFee = 0;
@@ -21,7 +24,7 @@
                     
                     <div id="card-number" class="control-group form-control card-number-field"></div>
                     <!-- Used to display card number date error -->
-                    <div class="stripe-errors" id="card-number-error" role="alert"></div>
+                    <div class="stripe-errors w-100" id="card-number-error" role="alert"></div>
         
                     <div class="stripe-field-combinator" style="display: flex; width: 100%; flex-direction: row; justify-content: space-between; align-items: center;">
                         <div id="card-expiry" class="control-group" style="background: #FFFFFF; border: 1px solid #979797; border-radius: 5px; width: 65%; height: 43px; border-radius: 3px; font-size: 16px; padding-left: 15px; padding-top: 12px;"></div>
@@ -30,13 +33,13 @@
                     </div>
         
                     <!-- Used to display card expiry date error -->
-                    <div class="stripe-errors" id="card-expiration-error" role="alert"></div>
+                    <div class="stripe-errors w-100" id="card-expiration-error" role="alert"></div>
                     <button class="btn btn-primary btn-lg" id="stripe-pay-button" style="border-radius: 3px !important;">
                         {{ __('stripe_saas::app.shop.checkout.total.pay-now') }} ( {{ core()->currency($cart->amount + $applicationFee) }} )
                     </button>
+
                 </div>
             </form>
-            
             @php
                 $cards = collect();
                 if ( auth()->guard('customer')->check() ) {
@@ -59,9 +62,9 @@
             @if ( auth()->guard('customer')->check() )
                 <div id="saved-cards" class="saved-old-card">
                     
-                    <div class="control-info mt-10 mb-10">
+                    <div class="mt-10 mb-10 control-info">
                         @foreach($cards as $card)
-                                <div class="stripe-card-info mb-2" id="{{ $card->id }}">
+                                <div class="mb-2 stripe-card-info" id="{{ $card->id }}">
                                     <label class="radio-container">
                                         <input type="radio" name="saved-card" class="saved-card-list" id="{{ $card->id }}" value="{{ $card->id }}">
                                         <span class="checkmark"></span>
@@ -82,7 +85,7 @@
                         @endforeach
                     </div>
 
-                    <div class="col text-center">
+                    <div class="text-center col">
                         <button class="btn btn-primary btn-lg btn-center old-stripe-button"  style="border-radius: 3px !important;">
                             {{ __('stripe_saas::app.shop.checkout.total.pay-now') }} ( {{ core()->currency($cart->amount + $applicationFee) }} )
                         </button>
@@ -93,7 +96,11 @@
                     </p>
                 </div>
             @endif
+
+            <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/payment-cards.png') }}" alt="Payment Cards" style="margin-top: 20px; max-width: 100%; height: auto"/>
+            <p class="mt-3 mb-0 text-center">Powered by <a href="https://stripe.com/" target="_blank">Stripe.com</a></p>
         </div>
     </div>
   </div>
+</div>
 

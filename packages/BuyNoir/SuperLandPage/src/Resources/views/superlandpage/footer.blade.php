@@ -1,7 +1,7 @@
    <!-- Start footer -->
-   <footer class="footer_short position-relative bg-white z-index-3">
+   <footer class="bg-white footer_short position-relative z-index-3">
     <div class="container">
-      <div class="row justify-content-md-center text-center">
+      <div class="text-center row justify-content-md-center">
         <div class="col-md-8">
           <a class=" c-dark" href="">
             <!-- <img src="assets/img/logo.svg" alt=""> -->
@@ -21,7 +21,7 @@
           <div class="other--links">
             <a href="{{route("buynoir.home.contactus")}}">Support</a>
             <a href="{{route("buynoir.home.privacypolicy")}}">Privacy Policy</a>
-            <a href="#">Cookie Policy</a>
+            <a href="{{route('buynoir.home.cookiesmore')}}">Cookie Policy</a>
           </div>
           <div class="opyright">
             @if (company()->getSuperConfigData('general.content.footer.footer_toggle'))
@@ -75,7 +75,7 @@
                     </div>
                   </div>
                   <div class="col-md-12">
-                    <div class="form-group mb-1 --password" id="show_hide_password">
+                    <div class="mb-1 form-group --password" id="show_hide_password">
                       <label>Password</label>
                       <div class="input-group">
                         <input type="password" class="form-control" data-toggle="password" placeholder="Password"
@@ -85,11 +85,11 @@
                         </div>
                       </div>
                     </div>
-                    <a href="#" class="btn mt-2 font-s-12 font-w-400 c-gray p-0">Forgot Passowrd?</a>
+                    <a href="#" class="p-0 mt-2 btn font-s-12 font-w-400 c-gray">Forgot Passowrd?</a>
                   </div>
-                  <div class="col-12 mt-4">
+                  <div class="mt-4 col-12">
                     <a href="#" class="btn rounded-6 btn_xl_primary btn_login bg-green2">Sign in</a>
-                    <a href="{{route('company.create.index')}}" class="btn mt-3 font-s-15 c-dark text-center w-100">Create new account</a>
+                    <a href="{{route('company.create.index')}}" class="mt-3 text-center btn font-s-15 c-dark w-100">Create new account</a>
                   </div>
                 </div>
               </div>
@@ -113,11 +113,11 @@
     <div class="toast toast_demo" id="myTost" role="alert" aria-live="assertive" aria-atomic="true"
       data-animation="true" data-autohide="false">
       <div class="toast-body" id="cookieconsent">
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <button type="button" class="mb-1 ml-2 close" data-dismiss="toast" aria-label="Close">
           <i class="tio clear"></i>
         </button>
         <h5>Hey fam ✊🏾! </h5>
-        <p>We use cookies throughout this site to make your experience better. <a href="#">Ok?</a></p>
+        <p>We use cookies throughout this site to make your experience better. <a href="{{route('buynoir.home.cookiesmore')}}">Ok?</a></p>
 
         <div id="consent-popup" class="hidden">
           <p>By using this site you agree to our <a href="#">Terms and Conditions</a>.
@@ -170,7 +170,7 @@
               allow: 'Allow cookies',
               deny: 'Decline',
               link: 'Learn more',
-              href: 'http://buynoir.co',
+              href: "{{route('buynoir.home.cookiesmore')}}",
               close: '&#x274c;',
             }
           })});

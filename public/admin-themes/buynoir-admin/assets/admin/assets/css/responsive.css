@@ -118,6 +118,13 @@
 	.dashboard .sale-stock {
 		grid-template-columns: 1fr;
 	}
+	.checkout div.sale-container {
+		padding-right: 0;
+	}
+	.checkout div.sale-summary {
+		width: 100%;
+		position: static;
+	}
 }
 
 @media (max-width: 991.98px) {
@@ -148,6 +155,7 @@
 	/* Navbar Start */
 	.buynoir-navbar-left {
 		left: -100%;
+		width: 280px;
 	}
 	.buynoir-dashboard-container .buynoir-aside {
 		left: -100%;
@@ -174,6 +182,29 @@
 		width: calc(100% - 180px);
 	}
 	/* Navbar End */
+	.control-group .control {
+		width: 100%;
+	}
+
+	.buynoir-navbar-left > ul.menubar > li.menu-item.open .buynoir-menubar-sub {
+		width: 226px;
+	}
+
+	.buynoir-menubar-sub {
+		width: 0;
+		overflow: hidden;
+		position: fixed;
+		right: calc(100% - 279px);
+		z-index: 100;
+		background-color: #fdf4f0;
+		top: 60px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		bottom: 0;
+		-webkit-transition: .3s;
+		-moz-transition: .3s;
+		transition: .3s;
+	}
 }
 
 @media (min-width: 768px) {
@@ -218,19 +249,65 @@
 	}
 
 	.sidebar-inactive .buynoir-navbar-left {
-		width: 73px;
+		width: 63px;
 	}
 
 	.sidebar-inactive .buynoir-dashboard-container .buynoir-aside {
 		width: auto;
 	}
 
-	.sidebar-inactive .buynoir-navbar-left ul.menubar li.menu-item {
-		padding-right: 15px;
+	.sidebar-inactive .buynoir-dashboard-container {
+		padding-left: 63px;
 	}
 
-	.sidebar-inactive .buynoir-dashboard-container {
-		padding-left: 73px;
+	.navbar-left {
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0;
+		padding-top: 70px;
+		overflow: inherit;
+		border-right: none;
+	}
+
+	
+
+	.buynoir-dashboard-container::before{
+		content: "";
+		width: 1px;
+		height: 100%;
+		top: 0;
+		left: 180px;
+		z-index: 10;
+		position: fixed;
+		background-color: hsla(0, 0%, 63.5%, .2);
+	}
+
+	.buynoir-menubar-sub {
+		width: 280px;
+		position: absolute;
+		top: 0;
+		left: 100%;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		background-color: #fdf4f0;
+		display: none;
+		z-index: 999;
+	}
+
+	.buynoir-navbar-left .menu-item:nth-last-child(1)>.buynoir-menubar-sub,
+	.buynoir-navbar-left .menu-item:nth-last-child(2)>.buynoir-menubar-sub,
+	.buynoir-navbar-left .menu-item:nth-last-child(3)>.buynoir-menubar-sub,
+	.buynoir-navbar-left .menu-item:nth-last-child(4)>.buynoir-menubar-sub {
+		top: inherit;
+		bottom: 0;
+	}
+
+	.buynoir-navbar-left .menu-item.open > .buynoir-menubar-sub {
+		display: block;
+	}
+
+	.sidebar-inactive .buynoir-dashboard-container::before{
+		left: 63px;
 	}
 
 	.sidebar-inactive .content-container .content-wrapper {

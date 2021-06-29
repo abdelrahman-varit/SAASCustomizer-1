@@ -238,6 +238,50 @@ class CompanyController extends Controller
         }
     }
 
+    
+    public function signinStepOne()
+    {
+        $niceNames = array(
+            'email' => 'Email'
+        );
+
+        $validator = Validator::make(request()->all(), [
+            'email' => 'required|email'
+        ]);
+
+        $validator->setAttributeNames($niceNames);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ], 403);
+        } else {
+
+            $shop_admin = $this->admin->findOneWhere(['email'=>request()->get('email')]);
+            if(empty(!$shop_admin)){
+                $company_id = $shop_admin->company_id;
+                $companies = $this->companyRepository->findWhereIn('id',[$company_id]);
+            }
+
+            if(empty($companies) || empty($shop_admin)){
+                return response()->json([
+                    'success' => false,
+                    'errors' =>['email'=>['Shop not found for this email!']]
+                ], 403);
+            }
+
+            $company_admin_url = $companies->first()->domain.'/admin/signin-two';
+            return response()->json([
+                'success' => true,
+                'admin' => $shop_admin,
+                'companies' => $companies,
+                'redirect_url' => $company_admin_url,
+                'errors' => null
+            ], 200);
+        }
+    }
+
     public function validateStepThree()
     {
         $niceNames = array(

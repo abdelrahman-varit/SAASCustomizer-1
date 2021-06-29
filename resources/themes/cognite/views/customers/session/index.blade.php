@@ -48,7 +48,7 @@
                     </div>
                 </div>
 
-                <input class="btn btn-primary btn-lg" type="submit" value="{{ __('shop::app.customer.login-form.button_title') }}">
+                <button type="submit" class="btn btn-primary btn-lg">{{ __('shop::app.customer.login-form.button_title') }}</button>
             </div>
         </form>
 

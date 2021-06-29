@@ -67,6 +67,9 @@ table.table thead tr {
 
 .content-container .content-wrapper {
 	padding: 25px;
+	margin-left: 0;
+	position: relative;
+	z-index: 1;
 }
 
 .table .grid-container {
@@ -130,4 +133,59 @@ table.table thead tr {
 
 .table .control-group {
 	min-width: 90px;
+}
+
+div.table {
+	overflow-x: auto !important;
+}
+
+
+
+/* Test */
+.buynoir-aside {
+	display: none;
+}
+
+.buynoir-navbar-left > ul.menubar > li.menu-item {
+	padding: 0;
+	position: relative;
+}
+
+.buynoir-navbar-left > ul.menubar > li.menu-item.has-sub > a {
+	background-image: url(../images/Angle-Right.svg);
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+    background-position: center right 8px;
+}
+
+
+.buynoir-navbar-left > ul.menubar > li.menu-item:not(.active):hover {
+	background-color: #f9f9f9;
+}
+
+.buynoir-navbar-left ul.menubar > li.menu-item span:not(.icon) {
+	margin-left: 5px;
+}
+
+.buynoir-navbar-left ul.menubar > li.menu-item > .buynoir-menubar-sub > li.active {
+	background-color: #e0ccc4;
+}
+
+.buynoir-navbar-left ul.menubar > li.menu-item > .buynoir-menubar-sub > li:not(.active):hover {
+	background-color: #f7efeb;
+}
+
+.buynoir-navbar-left ul.menubar > li.menu-item > .buynoir-menubar-sub > li > a {
+	display: block;
+	padding: 15px;
+	color: #aa5352;
+	font-weight: bold;
+	font-size: 14px;
+	text-transform: capitalize;
+}
+
+
+
+.buynoir-navbar-left ul.menubar > li.menu-item > a {
+	padding: 10px 15px;
 }

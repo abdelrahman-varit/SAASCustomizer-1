@@ -233,6 +233,10 @@ Route::group(['middleware' => ['web', 'company-locale']], function () {
         Route::post('/validate/step-three', 'Webkul\SAASCustomizer\Http\Controllers\Company\CompanyController@validateStepThree')->name('company.validate.step-three');
 
         Route::get('/seed-data', 'Webkul\SAASCustomizer\Http\Controllers\Company\PurgeController@seedDatabase')->name('company.create.data');
+    
+        //company signin
+        Route::post('/signin/step-one', 'Webkul\SAASCustomizer\Http\Controllers\Company\CompanyController@signinStepOne')->name('company.signin.step-one');
+
     });
 });
 
@@ -242,6 +246,13 @@ Route::group(['middleware' => 'web'], function () {
         Route::post('/login', 'Webkul\SAASCustomizer\Http\Controllers\Admin\SessionController@store')->defaults('_config', [
             'redirect' => 'admin.dashboard.index'
         ])->name('admin.session.store');
+
+               // Login Routes step - two
+               Route::get('/logins', 'Webkul\SAASCustomizer\Http\Controllers\Admin\SessionController@createTwo')->defaults('_config', [
+                'view' => 'admin::users.sessions.create-two',
+            ])->name('admin.session.createtwo');
+
+          
 
         Route::group(['middleware' => ['admin']], function () {
 

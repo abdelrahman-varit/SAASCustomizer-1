@@ -443,6 +443,8 @@ return [
         'settings' => 'Settings',
         'compare_options' => 'Compare Options',
         'wishlist_options' => 'Wishlist Options',
+        'size' => 'Size',
+        'color' => 'Color',
     ],
 
     // 'reviews' => [

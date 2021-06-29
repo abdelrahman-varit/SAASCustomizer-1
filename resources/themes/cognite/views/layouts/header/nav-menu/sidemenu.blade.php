@@ -18,39 +18,55 @@
 
 			@endphp
 
-			@foreach($categories as $category)
-				@if(count($categories) > 0)
-					@php
-					 
-						$sub_categories = [];
-
-						foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree($category->id) as $sub_category) {
-						    if ($sub_category->slug)
-						        array_push($sub_categories, $sub_category);
-						}
-
-					@endphp
-
-				
-					@if(count($sub_categories) > 0)
+			@if(count($categories) > 0)
+				@foreach($categories as $category)
+						@php
 						
-							<li class="expandable">
-			                    {{-- <i class="icon arrow-right-icon"></i> --}}
-			                    <i class="las la-angle-right"></i>
-			                    <span>{{$category->name}}</span>
-			                    <ul class="class-two" id="class-two">
-			                    	@foreach($sub_categories as $sub_category)
-			                        	<li><a href="/{{$sub_category->url_path}}">{{$sub_category->name}}</a></li>
-			                        @endforeach
-			                    </ul>
-			                </li>
-			            
-		            @else
-		            	<li><a href="/{{$category->url_path}}">{{$category->name}}</a></li>
-					@endif
+							$sub_categories = [];
 
-				@endif
-			@endforeach
+							foreach (app('Webkul\Category\Repositories\CategoryRepository')->getVisibleCategoryTree($category->id) as $sub_category) {
+								if ($sub_category->slug)
+									array_push($sub_categories, $sub_category);
+							}
+
+						@endphp
+
+					
+						@if(count($sub_categories) > 0)
+							
+								<li class="expandable">
+									{{-- <i class="icon arrow-right-icon"></i> --}}
+									<i class="las la-angle-right"></i>
+									<span>{{$category->name}}</span>
+									<ul class="class-two" id="class-two">
+										@foreach($sub_categories as $sub_category)
+											<li><a href="/{{$sub_category->url_path}}">{{$sub_category->name}}</a></li>
+										@endforeach
+									</ul>
+								</li>
+							
+						@else
+							<li><a href="/{{$category->url_path}}">{{$category->name}}</a></li>
+						@endif
+				
+				@endforeach
+
+			@else
+
+				<li class="expandable">
+					{{-- <i class="icon arrow-right-icon"></i> --}}
+					<i class="las la-angle-right"></i>
+					<span>Demo Category 01</span>
+					<ul class="class-two" id="class-two">
+						 
+							<li><a href="/">Demo Sub Category 1</a></li>
+							<li><a href="/">Demo Sub Category 2</a></li>
+						 
+					</ul>
+				</li>
+				<li><span>Demo Category 02</span></li>
+
+			@endif
 
 
         </ul>

@@ -99,14 +99,17 @@
                             
                             </div>
 
+
                             <div class="short-description">
                                 {!! $product->short_description !!}
                             </div>
 
                             <div class="others-information" style="margin-top:30px">
-                                <div class="others-information-row" >
+
+                              
                                     @include ('shop::products.view.brand')                                     
-                                </div>
+                             
+
 
                                 <div class="others-information-row" >
                                     <div class="other-info-title" >Availability :</div>

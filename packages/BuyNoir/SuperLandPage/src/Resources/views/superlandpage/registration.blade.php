@@ -9,11 +9,14 @@
         if (isset($homeSEO)) {
             $homeSEO = json_decode($channel->home_seo);
 
-            $metaTitle = $homeSEO->meta_title;
+            //$metaTitle = $homeSEO->meta_title;
+            $metaTitle = "BuyNoir - registration for opening new shop";
 
-            $metaDescription = $homeSEO->meta_description;
+            //$metaDescription = $homeSEO->meta_description;
+            $metaDescription = "BuyNoir - registration for opening new shop, No coding required. Simply choose the template that matches your style, add your branding and products and start selling your stuff";
 
-            $metaKeywords = $homeSEO->meta_keywords;
+            //$metaKeywords = $homeSEO->meta_keywords;
+            $metaKeywords = "BuyNoir - registration for opening new shop";
         }
     }
 @endphp
@@ -56,11 +59,11 @@
                       
                      
                   <div class="row ">
-                    <div class="col-12 text-right pt-3">
+                    <div class="pt-3 text-right col-12">
                       <a href={{config('app.url')}} class='btn outline btn-lg' id="regisCloseLink" ><i class='icon cross-icon'></i></a>
                     </div>
                     
-                    <div class="col-md-8 col-lg-8 mx-auto">
+                    <div class="mx-auto col-md-8 col-lg-8">
                           <seller-registration></seller-registration>
 
                           @push('scripts')
@@ -110,7 +113,7 @@
                                                 <span class="control-error" v-show="errors.has('step-one.password_confirmation')">@{{ errors.first('step-one.password_confirmation') }}</span>
                                             </div>
 
-                                            <div class="control-group text-right">
+                                            <div class="text-right control-group">
                                                 <!-- <input type="submit" class="btn btn-lg btn-primary" :disabled="errors.has('password') || errors.has('password_confirmation') || errors.has('email')"  value="Continue"> -->
                                                 <button class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('step-one.password') || errors.has('step-one.password_confirmation') || errors.has('step-one.email')">{{ __('saas::app.tenant.registration.continue') }}</button>
                                             </div>
@@ -150,7 +153,7 @@
                                                     <span class="control-error" v-show="errors.has('step-two.phone_no')">@{{ errors.first('step-two.phone_no') }}</span>
                                                 </div>
 
-                                                <div class="control-group text-right">
+                                                <div class="text-right control-group">
                                                     <button class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('first_name') || errors.has('last_name') || errors.has('step-two.phone_no')">{{ __('saas::app.tenant.registration.next') }}</button>
                                                 </div>
                                             </div>
@@ -193,9 +196,9 @@
                                                     <span class="control-error" v-show="errors.has('step-three.productcategory')">@{{ errors.first('step-three.productcategory') }}</span>
                                                 </div>
 
-                                                <div class="control-group mt-4" :class="[errors.has('step-three.name') ? 'has-error' : '']">
+                                                <div class="mt-4 control-group" :class="[errors.has('step-three.name') ? 'has-error' : '']">
                                                     <label for="elsebusiness" class="">{{ __('saas::app.tenant.registration.else-business') }}</label>
-                                                    <div class="row mt-3">
+                                                    <div class="mt-3 row">
                                                     <div class="col-md-4">
                                                         <label style="color:#aa5352;">
                                                             <input type="radio" class="" id="elsebusinessStart" name="elsebusiness" v-model="elsebusinessStart" value="START"  v-validate="''" data-vv-as="&quot;{{ __('saas::app.tenant.registration.else-business') }}&quot;">
@@ -212,7 +215,7 @@
 
                                                 </div>
 
-                                                <div class="control-group text-right">
+                                                <div class="text-right control-group">
                                                     <button class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('step-three.username') || errors.has('step-three.name') || createdclicked" style="font-size:18px">{{ __('saas::app.tenant.registration.create-store') }}</button>
                                                 </div>
                                             </div>
@@ -225,15 +228,15 @@
                                                         <p>{{ __('saas::app.tenant.registration.congrats-title') }}</p> 
                                                         {{ __('saas::app.tenant.registration.congrats-subtitle') }}
                                                     </div>
-                                                    <p class="text-center mt-4">{{ __('saas::app.tenant.registration.congrats-description') }}</p>
+                                                    <p class="mt-4 text-center">{{ __('saas::app.tenant.registration.congrats-description') }}</p>
                                                 </div>
 
-                                                <div class="control-group text-center" :class="[errors.has('step-three.username') ? 'has-error' : '']">
+                                                <div class="text-center control-group" :class="[errors.has('step-three.username') ? 'has-error' : '']">
                                                     <img src="{{ asset('buynoir/superlandpage/assets/img/congrats.gif') }}" alt="{{ config('app.name') }}" style="height:50vh"/>
                                                 </div>
 
                                             
-                                                <div class="row text-center" style="display:none">
+                                                <div class="text-center row" style="display:none">
                                                     <div class="col-6">
                                                         <a v-bind:href="redirectUrlShop" class="btn btn-lg btn-warning registration-btn" id="btn-congrts" style="font-size:18px">{{ __('saas::app.tenant.registration.visit-shop') }}</a>
                                                     </div>
@@ -246,7 +249,7 @@
 
 
 
-                                        <ul class="step-list registration-ul mt-3" v-bind:style="step_four?'display:none':''">
+                                        <ul class="mt-3 step-list registration-ul" v-bind:style="step_four?'display:none':''">
                                             <li class="registration-step-item" :class="{ active: isOneActive }" v-on:click="stepNav(1)"></li>
                                             <li class="registration-step-item" :class="{ active: isTwoActive }" v-on:click="stepNav(2)"></li>
                                             <li class="registration-step-item" :class="{ active: isThreeActive }" v-on:click="stepNav(3)"></li>

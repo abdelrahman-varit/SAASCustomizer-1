@@ -80,6 +80,7 @@
 
         <script type="text/javascript" src="{{ asset('vendor/webkul/admin/assets/js/admin.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/js/scripts.js') }}"></script>
         <script type="text/javascript">
             window.addEventListener('DOMContentLoaded', function() {
                 moveDown = 60;
