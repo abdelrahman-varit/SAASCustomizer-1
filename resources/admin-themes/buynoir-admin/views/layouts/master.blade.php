@@ -156,7 +156,7 @@
 
         {!! view_render_event('bagisto.admin.layout.body.after') !!}
 
-        <div class="modal-overlay"></div>
+        <!-- <div class="modal-overlay"></div> -->
 
         @include ('admin::layouts.helpcrunch')
     </body>
