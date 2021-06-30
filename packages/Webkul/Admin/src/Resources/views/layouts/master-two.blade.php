@@ -167,7 +167,7 @@
 
         @stack('scripts')
 
-        <div class="modal-overlay"></div>
+        <!-- <div class="modal-overlay"></div> -->
 
         {!! view_render_event('bagisto.saas.companies.body.after') !!}
     </body>
