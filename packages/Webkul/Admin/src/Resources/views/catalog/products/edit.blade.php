@@ -1,17 +1,19 @@
 @extends('admin::layouts.content')
 
 @section('page_title')
+@parent
     {{ __('admin::app.catalog.products.edit-title') }}
-@stop
+@Stop
 
 @section('content')
+@parent
     <div class="content">
         <?php $locale = request()->get('locale') ?: app()->getLocale(); ?>
         <?php $channel = request()->get('channel') ?: core()->getDefaultChannelCode(); ?>
 
         {!! view_render_event('bagisto.admin.catalog.product.edit.before', ['product' => $product]) !!}
 
-        <form method="POST" action="" @submit.prevent="onSubmit" enctype="multipart/form-data">
+        <form method="POST" @submit.prevent="onSubmit" enctype="multipart/form-data">
 
             <div class="page-header">
 
@@ -190,9 +192,10 @@
 
         {!! view_render_event('bagisto.admin.catalog.product.edit.after', ['product' => $product]) !!}
     </div>
-@stop
+@Stop
 
 @push('scripts')
+@parent
     <script src="{{ asset('vendor/webkul/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
 
     <script>
