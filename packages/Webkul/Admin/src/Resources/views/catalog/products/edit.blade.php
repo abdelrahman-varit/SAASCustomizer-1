@@ -192,12 +192,11 @@
 
         {!! view_render_event('bagisto.admin.catalog.product.edit.after', ['product' => $product]) !!}
     </div>
-@Stop
+@endsection
 
 @push('scripts')
 @parent
     <script src="{{ asset('vendor/webkul/admin/assets/js/tinyMCE/tinymce.min.js') }}"></script>
-
     <script>
         $(document).ready(function () {
             $('#channel-switcher, #locale-switcher').on('change', function (e) {
