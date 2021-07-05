@@ -2250,3 +2250,13 @@ div.table {
 	-moz-transform: rotate(180deg);
 	transform: rotate(180deg);
 }
+
+section.product-detail div.layouter .form-container .details .attributes .attribute.control-group .swatch-container .swatch input:checked+img, section.product-detail div.layouter .form-container .details .attributes .attribute.control-group .swatch-container .swatch input:checked+span {
+    -webkit-box-shadow: 0 0 10px #000;
+    -moz-box-shadow: 0 0 10px #000;
+    box-shadow: 0 0 10px #000;
+}
+
+section.product-detail div.layouter .form-container .details .attributes .attribute.control-group .swatch-container .swatch {
+    margin-right: 15px;
+}
