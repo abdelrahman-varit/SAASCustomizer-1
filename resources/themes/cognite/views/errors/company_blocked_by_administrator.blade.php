@@ -83,6 +83,7 @@
         </div>
     </div>
     @php
+     
         exit();
     @endphp
 @stop
