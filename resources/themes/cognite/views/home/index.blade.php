@@ -38,6 +38,16 @@
 @endsection
 
 @section('content-wrapper')
+
+
+@inject('subscriptionHelper', 'Webkul\SAASSubscription\Helpers\Subscription')
+
+<?php //dd($subscriptionHelper->isServiceStopped());?>
+@if ($subscriptionHelper->isServiceStopped())
+       @include("shop::errors.company_blocked_by_administrator", ['message' => 'Shop plan is expired','status'=>'status msg']);
+@else
+
+ 
     {{-- {!! view_render_event('bagisto.shop.home.content.before') !!}
 
     {!! DbView::make($channel)->field('home_page_content')->with(['sliderData' => $sliderData])->render() !!}
@@ -62,7 +72,7 @@
         @endif
 
     {{ view_render_event('bagisto.shop.home.content.after') }}
-
+    @endif
 @endsection
 
 
