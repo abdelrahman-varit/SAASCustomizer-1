@@ -13,8 +13,6 @@
 @stop
 
 @push('scripts')
-    @parent
-
     <script type="text/x-template" id="catalog-rule-template">
         <div>
             <form method="POST" action="{{ route('admin.catalog-rules.update', $catalogRule->id) }}" @submit.prevent="onSubmit">

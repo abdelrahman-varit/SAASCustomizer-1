@@ -40,5 +40,6 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
         Route::post('/saved/card/paymentplan', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@savedCardPaymentPlan')->name('stripe.saved.card.paymentplan');
 
         Route::get('/payment/cancel', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@paymentCancel')->name('stripe.payment.cancel');
+        Route::get('/payment/cancelplan', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@paymentCancelPlan')->name('stripe.payment.cancelplan');
     });
 });

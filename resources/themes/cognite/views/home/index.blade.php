@@ -44,7 +44,7 @@
 
 <?php //dd($subscriptionHelper->isServiceStopped());?>
 @if ($subscriptionHelper->isServiceStopped())
-       @include("shop::errors.company_blocked_by_administrator", ['message' => 'Shop plan is expired','status'=>'status msg']);
+       @include("shop::errors.subscription-expired", ['message' => 'Shop plan is expired','status'=>'status msg']);
 @else
 
  

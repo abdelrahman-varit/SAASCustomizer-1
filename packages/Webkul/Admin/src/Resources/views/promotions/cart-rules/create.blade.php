@@ -13,8 +13,7 @@
 @stop
 
 @push('scripts')
-    @parent
-
+@parent
     <script type="text/x-template" id="cart-rule-template">
         <div>
             <form method="POST" action="{{ route('admin.cart-rules.store') }}" @submit.prevent="onSubmit">
