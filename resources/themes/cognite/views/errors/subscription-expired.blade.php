@@ -65,7 +65,7 @@
                 </div>
                 <div class="error-title">
 Subscription Plan Expired!</div>
-                <div class="error-messgae">Your current plan is expired for <?php Company::getCurrent()->domain;?> and please renew the plan to active your shop.</div>
+                <div class="error-messgae">Your current plan is expired for <?php \Company::getCurrent()->domain;?> and please renew the plan to active your shop.</div>
                 <div class="error-description">For more details feel free to contact us, we are available <strong>24x7</strong> to solve your issue. Thank you</div>
                 <a href="https://buynoir.co" class="btn">Visit us</a>
             </div>
