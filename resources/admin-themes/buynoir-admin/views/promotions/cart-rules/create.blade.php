@@ -1,21 +1,21 @@
 @extends('admin::layouts.content')
 
 @section('page_title')
+@parent
     {{ __('admin::app.promotions.cart-rules.add-title') }}
 @stop
 
 @section('content')
+@parent
     <div class="content">
 
         <cart-rule></cart-rule>
 
     </div>
-@stop
+@endsection
 
 @push('scripts')
-    @parent
-
-    <script type="text/x-template" id="cart-rule-template">
+<script type="text/x-template" id="cart-rule-template">
         <div>
             <form method="POST" action="{{ route('admin.cart-rules.store') }}" @submit.prevent="onSubmit">
                 <div class="page-header">

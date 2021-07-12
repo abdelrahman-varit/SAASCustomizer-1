@@ -5,6 +5,7 @@
 @stop
 
 @section('content')
+@parent
     <div class="content">
         <?php $customer_group = request()->get('customer_group') ?: null; ?>
         <?php $channel = request()->get('channel') ?: null; ?>
@@ -27,7 +28,8 @@
     </div>
 @endsection
 @push('scripts')
-    <script>
+@parent
+<script>
         function reloadPage(getVar, getVal) {
             let url = new URL(window.location.href);
             url.searchParams.set(getVar, getVal);
