@@ -122,10 +122,6 @@ return [
         'sort'       => 3,
         'icon-class' => 'configuration-icon',
     ],
-    
-    
-    
-    
     [
         'key'        => 'settings',
         'name'       => 'admin::app.layouts.settings',

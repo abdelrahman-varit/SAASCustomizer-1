@@ -15,7 +15,8 @@
         <div class="page-content">
             @if ( $client_id )
                 @if (! isset($stripeConnect->id) )
-                    <a href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id={{  $client_id }}&stripe_landing=register&scope=read_write&redirect_uri={{ route('admin.stripe.retrieve-grant') }}" class="btn btn-lg btn-primary">{{ __('stripe_saas::app.admin.stripe.connect-stripe') }}</a>
+                    <a href="{{ route('admin.stripe.createlink') }}" class="btn btn-lg btn-primary">{{ __('stripe_saas::app.admin.stripe.connect-stripe') }}</a>
+                    <!-- <a href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id={{  $client_id }}&stripe_landing=register&scope=read_write&redirect_uri={{ route('admin.stripe.retrieve-grant') }}" class="btn btn-lg btn-primary">{{ __('stripe_saas::app.admin.stripe.connect-stripe') }}</a> -->
                 @else
                     <a href="{{ route('admin.stripe.revoke-access') }}" class="btn btn-lg btn-primary">{{ __('stripe_saas::app.admin.stripe.revoke-access') }}</a>
                 @endif

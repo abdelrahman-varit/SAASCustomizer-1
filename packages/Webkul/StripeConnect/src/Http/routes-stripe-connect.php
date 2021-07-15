@@ -3,6 +3,7 @@
 Route::prefix('admin')->group(function () {
     Route::group(['middleware' => ['admin']], function () {
         Route::get('stripe/connect', 'Webkul\StripeConnect\Http\Controllers\SellerRegistrationController@index')->name('admin.stripe.seller');
+        Route::get('stripe/connect/createlink', 'Webkul\StripeConnect\Http\Controllers\SellerRegistrationController@createLink')->name('admin.stripe.createlink');
 
         Route::get('stripe/connect/retrieve/token', 'Webkul\StripeConnect\Http\Controllers\SellerRegistrationController@retrieveToken')->name('admin.stripe.retrieve-grant');
 
