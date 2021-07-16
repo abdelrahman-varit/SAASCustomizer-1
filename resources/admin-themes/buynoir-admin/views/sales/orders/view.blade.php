@@ -540,7 +540,7 @@
                                     </tr>
                                 @endforeach
 
-                                @if (! $order->shipments->count())
+                                @if (! isset($order) && !$order->shipments->count())
                                     <tr>
                                         <td class="empty" colspan="7">{{ __('admin::app.common.no-result-found') }}</td>
                                     <tr>
