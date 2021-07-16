@@ -55,14 +55,7 @@ class SellerRegistrationController extends Controller
          $account = \Stripe\Account::create([
             'country' => 'US',
             'type' => 'express',
-            'capabilities' => [
-                'card_payments' => [
-                  'requested' => true,
-                ],
-                'transfers' => [
-                  'requested' => true,
-                ],
-              ],
+            
         ]);
 
         
@@ -95,7 +88,7 @@ class SellerRegistrationController extends Controller
         //     $client_id,
         //     []
         //   );
-        // dd($account_data);
+   
 
         if (! request()->has('error')) {
             $code       = request()->input('code');
