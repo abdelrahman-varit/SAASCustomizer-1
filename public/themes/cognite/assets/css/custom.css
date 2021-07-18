@@ -2260,3 +2260,18 @@ section.product-detail div.layouter .form-container .details .attributes .attrib
 section.product-detail div.layouter .form-container .details .attributes .attribute.control-group .swatch-container .swatch {
     margin-right: 15px;
 }
+
+.product-detail .price-from {
+	display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+    row-gap: 5px;
+}
+
+.product-detail .price-from span {
+    order: 0 !important;
+}
+
+.product-detail .price-from span:not([class]) {
+    grid-column: span 2;
+}
