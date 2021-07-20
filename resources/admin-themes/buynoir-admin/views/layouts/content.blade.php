@@ -5,7 +5,7 @@
 
         <div class="content-wrapper buynoir-inside-container buynoir-content">
             
-            <!--@include ('admin::layouts.tabs')-->
+            @include ('admin::layouts.tabs')
 
             @yield('content')
 
