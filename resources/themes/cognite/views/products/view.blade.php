@@ -87,14 +87,14 @@
                     
                                 </div>
                                 @else
-                                <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
-                                <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
-                                <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
-                                <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
-                                <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
-                                <div class="total-reviews">
-                                    {{ __('shop::app.products.total-reviews', ['total' => $total]) }}
-                                </div>
+                                    <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
+                                    <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
+                                    <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
+                                    <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
+                                    <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
+                                    <div class="total-reviews">
+                                        {{ __('shop::app.products.total-reviews', ['total' => $total]) }}
+                                    </div>
                                 @endif
                             
                             </div>
