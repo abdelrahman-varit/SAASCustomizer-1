@@ -21,6 +21,10 @@
     <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/shop.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
 
+    <!-- Fonts from tinyMCE -->
+    <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/tinymce-fonts.css') }}">
+
+
     <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/responsive.css') }}">
 
