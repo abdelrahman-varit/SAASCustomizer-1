@@ -219,9 +219,11 @@
                 height: 200,
                 width: "100%",
                 plugins: 'image imagetools media wordcount save fullscreen code table lists link hr',
-                toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor link hr | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | code | table',
+                toolbar1: 'formatselect | fontselect | bold italic strikethrough forecolor backcolor link hr | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat | code | table',
                 image_advtab: true,
-                valid_elements : '*[*]'
+                valid_elements : '*[*]',
+                content_css: "{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/tinymce-fonts.css') }}",
+                font_formats: "Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Open Sans=Open Sans, sans-serif; Roboto=Roboto, sans-serif; Symbol=symbol; Tahoma=tahoma,arial,helvetica,sans-serif; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva; Webdings=webdings; Wingdings=wingdings,zapf dingbats; Roboto=Roboto, sans-serif; Open Sans=Open Sans, sans-serif; Lato=Lato, sans-serif; Montserrat=Montserrat, sans-serif; Source Sans Pro=Source Sans Pro, sans-serif; Oswald=Oswald, sans-serif; Poppins=Poppins, sans-serif; Noto Sans=Noto Sans, sans-serif; Raleway=Raleway, sans-serif; Ubuntu=Ubuntu, sans-serif; PT Sans=PT Sans, sans-serif; Nunito=Nunito, sans-serif; Playfair Display=Playfair Display, serif; Quicksand=Quicksand, sans-serif; PT Serif=PT Serif, serif;",
             });
         });
     </script>
