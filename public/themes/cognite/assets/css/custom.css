@@ -1542,7 +1542,6 @@ a:visited {
 .comparison-component > .btn {
 	background: transparent;
 	color: black;
-	padding-right: 0;
 }
 
 .comparison-component {
@@ -2274,4 +2273,8 @@ section.product-detail div.layouter .form-container .details .attributes .attrib
 
 .product-detail .price-from span:not([class]) {
     grid-column: span 2;
+}
+
+section.product-detail div.layouter .form-container .details .stock-status {
+	color: red;
 }
