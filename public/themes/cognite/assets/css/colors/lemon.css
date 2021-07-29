@@ -245,3 +245,8 @@ section.cart .cart-content .left-side .misc-controls .btn {
 section.product-detail div.layouter .form-container .details .product-price {
     color: #97B659;
 }
+
+.category-description > div {
+    background-color: #97B659;
+    color: white;
+}
