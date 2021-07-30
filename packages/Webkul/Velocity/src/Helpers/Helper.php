@@ -418,4 +418,44 @@ class Helper extends Review
 
         return $productCollection;
     }
+
+
+    public function fetchProductCollectionData($items, $moveToCart = false, $separator='&')
+    {
+        $productCollection = [];
+        $productIds = explode($separator, $items);
+
+        foreach ($productIds as $productId) {
+            // @TODO:- query only once insted of 2
+            
+            $productFlat = $this->productFlatRepository->findOneWhere(['product_id' => $productId]);
+            Log::info($productFlat);
+            if ($productFlat) {
+                $product = $this->productRepository->findOneWhere(['id' => $productFlat->product_id]);
+
+                if ($product) {
+                    $formattedProduct = $this->formatProduct($productFlat, false, [
+                        'moveToCart' => $moveToCart,
+                        'btnText' => $moveToCart ? trans('shop::app.customer.account.wishlist.move-to-cart') : null,
+                    ]);
+
+                    $productMetaDetails = [];
+                    $productMetaDetails['slug'] = $product->url_key;
+                    $productMetaDetails['product_image'] = $formattedProduct['image'];
+                    $productMetaDetails['priceHTML'] = $formattedProduct['priceHTML'];
+                    $productMetaDetails['new'] = $formattedProduct['new'];
+                    $productMetaDetails['addToCartHtml'] = $formattedProduct['addToCartHtml'];
+                    $productMetaDetails['galleryImages'] = $formattedProduct['galleryImages'];
+                    $productMetaDetails['defaultAddToCart'] = $formattedProduct['defaultAddToCart'];
+
+                    $product = array_merge($productFlat->toArray(), $productMetaDetails);
+
+                    array_push($productCollection, $product);
+                }
+            }
+        }
+
+        return $productCollection;
+    }
+
 }

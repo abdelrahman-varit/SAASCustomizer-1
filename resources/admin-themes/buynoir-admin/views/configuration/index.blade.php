@@ -2,6 +2,7 @@
 
 @section('page_title')
     {{ __('admin::app.configuration.title') }}
+ 
 @stop
 
 @section('content')
