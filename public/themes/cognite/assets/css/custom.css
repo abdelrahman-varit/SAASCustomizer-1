@@ -1542,7 +1542,6 @@ a:visited {
 .comparison-component > .btn {
 	background: transparent;
 	color: black;
-	padding-right: 0;
 }
 
 .comparison-component {
@@ -2249,4 +2248,33 @@ div.table {
 	-webkit-transform: rotate(180deg);
 	-moz-transform: rotate(180deg);
 	transform: rotate(180deg);
+}
+
+section.product-detail div.layouter .form-container .details .attributes .attribute.control-group .swatch-container .swatch input:checked+img, section.product-detail div.layouter .form-container .details .attributes .attribute.control-group .swatch-container .swatch input:checked+span {
+    -webkit-box-shadow: 0 0 10px #000;
+    -moz-box-shadow: 0 0 10px #000;
+    box-shadow: 0 0 10px #000;
+}
+
+section.product-detail div.layouter .form-container .details .attributes .attribute.control-group .swatch-container .swatch {
+    margin-right: 15px;
+}
+
+.product-detail .price-from {
+	display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+    row-gap: 5px;
+}
+
+.product-detail .price-from span {
+    order: 0 !important;
+}
+
+.product-detail .price-from span:not([class]) {
+    grid-column: span 2;
+}
+
+section.product-detail div.layouter .form-container .details .stock-status {
+	color: red;
 }

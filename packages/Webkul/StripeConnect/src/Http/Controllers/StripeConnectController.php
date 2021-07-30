@@ -174,7 +174,7 @@ class StripeConnectController extends Controller
             if ( (core()->getCurrentChannel() && core()->getCurrentChannel()->theme == "velocity")) {
                 return view('stripe_saas::shop.velocity.checkout.card-plan');
             } else {
-                return view('stripe_saas::shop.default.checkout.card-plan');
+                return view('stripe_saas::admin.card-plan');
             }
         }
     }
@@ -547,15 +547,15 @@ class StripeConnectController extends Controller
         $stripeConnect = $this->stripeConnect->findOneWhere([
             'company_id' => $company->id
             ]);
+        
 
+        // if ( isset($stripeConnect->id) ) {
+        //     $sellerUserId = $stripeConnect->stripe_user_id;
+        // } else {
+        //     session()->flash('warning', 'Stripe unavailable for this tenant.');
 
-        if ( isset($stripeConnect->id) ) {
-            $sellerUserId = $stripeConnect->stripe_user_id;
-        } else {
-            session()->flash('warning', 'Stripe unavailable for this tenant.');
-
-            return redirect()->route('shop.checkout.success');
-        }
+        //     return redirect()->route('shop.checkout.success');
+        // }
 
         $stripeId   = '';
         $payment    = $this->helper->productDetail();
@@ -566,12 +566,14 @@ class StripeConnectController extends Controller
 
         $decodeStripeToken = json_decode($stripeToken);
 
+        
+
         $customerId =  NULL;
 
         $paymentMethodId = $decodeStripeToken->attachedCustomer->id;
-
+        $sellerUserId = "";
         $intent = $this->helper->stripePaymentPlan($payment, $stripeId, $paymentMethodId, $customerId, $sellerUserId);
-        
+        // return response()->json(['client_secret' => $intent],403);
         if ( $intent && !empty($intent->client_secret) ) {
             $data = session()->get('subscription_cart');
             $data = array_merge($data, [
@@ -677,6 +679,18 @@ class StripeConnectController extends Controller
         return response()->json([
             'data' => [
                 'route' => route("shop.checkout.cart.index"),
+                'success' => true
+            ]
+        ]);
+    }
+
+    public function paymentCancelPlan()
+    {
+        session()->flash('error', trans('stripe_saas::app.shop.checkout.total.payment-failed'));
+
+        return response()->json([
+            'data' => [
+                'route' => route("admin.subscription.plan.index"),
                 'success' => true
             ]
         ]);

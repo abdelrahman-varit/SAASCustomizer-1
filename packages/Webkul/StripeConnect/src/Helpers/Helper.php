@@ -139,7 +139,7 @@ class Helper {
         $cart = (Object)session()->get('subscription_cart');
         $customer_email = $company->email;
         $cart_currency_code = 'usd';
-        $description = json_encode(['pay_id'=>$sellerUser,'domain'=>$company->domain, 'email'=>$customer_email]);
+        $description = json_encode(['type'=>'subscription-fee','plan'=>$cart->plan->name,'pay_id'=>$sellerUser,'domain'=>$company->domain, 'email'=>$customer_email]);
 
 
                  try {
@@ -150,10 +150,7 @@ class Helper {
                         'statement_descriptor' => $this->statementDescriptor,
                         "description"          => $description,
                         'currency'             => $cart_currency_code,
-                        'receipt_email'        => $customer_email,
-                        'transfer_data'        => [
-                                  'destination'    => $sellerUser
-                        ],
+                        'receipt_email'        => $customer_email
                     ]);
                 } else {
                     $result = PaymentIntent::create([
@@ -162,10 +159,8 @@ class Helper {
                         'payment_method_types'  => ['card'],
                         'statement_descriptor'  => $this->statementDescriptor,
                         "description"           => $description,
-                        'receipt_email'         => $customer_email,
-                        'transfer_data'         => [
-                                    'destination'   => $sellerUser
-                                ],
+                        'receipt_email'         => $customer_email
+                       
                     ]);
                 }
             } catch (\Exception $e) {

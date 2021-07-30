@@ -26,8 +26,6 @@
 {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.images.after', ['product' => $product]) !!}
 
 @push('scripts')
-    @parent
-
     <script type="text/x-template" id="product-image-template">
         <div>
             <div class="image-wrapper">

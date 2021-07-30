@@ -9,7 +9,7 @@
                 @if (count($menuItem['children']))
                     <ul class="buynoir-menubar-sub">
                         @foreach ($menuItem['children'] as $key => $menuItemChild)
-                            @if($key=="general" || $key=="content" || $key=="design")
+                            @if($key=="general" || $key=="content" || $key=="design" )
                                 <li class=" "><a href="{{ route('admin.configuration.index', 'general/'. $key) }}">{{ $key }}</a></li>
                             @else
                                 <li class=""><a href="{{ $menuItemChild['url'] }}">{{ $key }}</a></li>

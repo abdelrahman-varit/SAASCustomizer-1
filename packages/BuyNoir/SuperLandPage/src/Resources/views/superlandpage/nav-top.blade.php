@@ -26,12 +26,19 @@
             {{--  <li class="nav-item">
               <a class="nav-link" href="#Integrations">Integrations</a>
             </li>  --}}
-           
+
+            
 
           </ul>
           <div class="nav_account btn_demo3">
 
-         
+            <button type="button" class="btn" style="background:transparent;color:brown !important;margin-right:5px;border:2px solid rgba(170, 83, 82, 0.5) !important; padding: 0.575rem 1.55rem;border:0px">
+              <div class="inside_item">
+                 <a href="https://docs.buynoir.co" class="topbar-signup-link home-signin-btn" >
+                  <span data-hover="Free">DOCS</span>
+                </a>
+              </div>
+            </button>
 
             <button type="button" class="btn btn_sm_primary opacity-1 sweep_letter scale sweep_top rounded-8" style="background-color: rgba(170, 83, 82, .5);">
               <div class="inside_item">

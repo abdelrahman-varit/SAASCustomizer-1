@@ -4,6 +4,8 @@ namespace Webkul\User\Http\Controllers;
 
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Support\Facades\Password;
+use Webkul\User\Repositories\AdminRepository;
+use Company;
 
 class ForgetPasswordController extends Controller
 {
@@ -16,14 +18,24 @@ class ForgetPasswordController extends Controller
      */
     protected $_config;
 
+
+        /**
+     * AdminRepository object
+     *
+     * @var \Webkul\User\Repositories\AdminRepository
+     */
+    protected $adminRepository;
+
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct( AdminRepository $adminRepository)
     {
         $this->_config = request('_config');
+        $this->adminRepository = $adminRepository;
     }
 
     /**
@@ -53,12 +65,25 @@ class ForgetPasswordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //shop admin forget password!
     public function store()
     {
         try {
             $this->validate(request(), [
                 'email' => 'required|email',
             ]);
+
+            $company = Company::getCurrent();
+            $adminUser = $this->adminRepository->findOneWhere(['email'=>request('email'),
+                                                            'company_id'=>$company->id]);
+            
+            if(empty($adminUser)){
+                return back()
+                ->withInput(request(['email']))
+                ->withErrors([
+                    'email' => trans('customer::app.forget_password.email_not_exist'),
+                ]);
+            }
 
             $response = $this->broker()->sendResetLink(
                 request(['email'])
@@ -75,6 +100,7 @@ class ForgetPasswordController extends Controller
                 ->withErrors([
                     'email' => trans('customer::app.forget_password.email_not_exist'),
                 ]);
+
         } catch(\Exception $e) {
             session()->flash('error', trans($e->getMessage()));
 

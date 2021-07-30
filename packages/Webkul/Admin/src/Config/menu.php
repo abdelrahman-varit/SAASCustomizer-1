@@ -97,35 +97,52 @@ return [
         'route'      => 'admin.customers.subscribers.index',
         'sort'       => 4,
         'icon-class' => '',
-    ], [
+    ], 
+    [
         'key'        => 'configuration',
         'name'       => 'admin::app.layouts.configure',
         'route'      => 'admin.configuration.index',
         'sort'       => 7,
         'icon-class' => 'configuration-icon',
-    ],[
+    ],
+    [
         'key'        => 'configuration.general',
         'name'       => 'admin::app.layouts.configure',
         'route'      => 'admin.configuration.index',
         'sort'       => 1,
         'icon-class' => 'configuration-icon',
-    ],[
-        'key'        => 'configuration.content',
-        'name'       => 'admin::app.layouts.configure',
+    ], 
+    
+    [
+        'key'        => 'configuration.catalog',
+        'name'       => 'admin::app.layouts.catalog',
         'route'      => 'admin.configuration.index',
-        'sort'       => 2,
-        'icon-class' => 'configuration-icon',
-    ],[
-        'key'        => 'configuration.design',
-        'name'       => 'admin::app.layouts.configure',
-        'route'      => 'admin.configuration.index',
-        'sort'       => 3,
+        'sort'       => 5,
         'icon-class' => 'configuration-icon',
     ],
-    
-    
-    
-    
+    [
+        'key'        => 'configuration.customer',
+        'name'       => 'admin::app.layouts.customer',
+        'route'      => 'admin.configuration.index',
+        'sort'       => 5,
+        'icon-class' => 'configuration-icon',
+    ],
+    [
+        'key'        => 'configuration.sales',
+        'name'       => 'admin::app.layouts.sales',
+        'route'      => 'admin.configuration.index',
+        'sort'       => 5,
+        'icon-class' => 'configuration-icon',
+    ],
+
+    [
+        'key'        => 'configuration.emails',
+        'name'       => 'admin::app.layouts.emails',
+        'route'      => 'admin.configuration.index',
+        'sort'       => 5,
+        'icon-class' => 'configuration-icon',
+    ],
+
     [
         'key'        => 'settings',
         'name'       => 'admin::app.layouts.settings',

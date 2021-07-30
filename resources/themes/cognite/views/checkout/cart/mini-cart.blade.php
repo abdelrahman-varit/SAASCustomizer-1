@@ -189,7 +189,7 @@
                                             carts.forEach(item => {
                                                 content+=`<div class="item">
                                                                 <div class="item-image">
-                                                                    <img src="${item.product.images[0].url}" alt="product image">
+                                                                    <img src="${item.product.images[0]?item.product.images[0].url:''}" alt="product image">
                                                                 </div> 
                                                                 <div class="item-details">
                                                                     <div class="item-name">${item.name}</div> 

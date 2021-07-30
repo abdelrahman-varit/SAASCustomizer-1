@@ -45,7 +45,32 @@ class SellerRegistrationController extends Controller
         
         $client_id = company()->getSuperConfigData('sales.paymentmethods.stripe.client_id');
 
-        return view('stripe_saas::admin.connect', compact('stripeConnect', 'client_id'));
+        return view('stripe_saas::admin.connect', compact('stripeConnect', 'client_id','company'));
+    }
+
+    public function createLink()
+    {
+        $company = Company::getCurrent();
+
+         $account = \Stripe\Account::create([
+            'country' => 'US',
+            'type' => 'express',
+            
+        ]);
+
+        
+
+        $account_links = \Stripe\AccountLink::create([
+            'account' =>  $account->id,
+            'refresh_url' => 'http://'.$company->domain.'/admin/stripe/connect/retrieve/token?error=true',
+            'return_url' => 'http://'.$company->domain.'/admin/stripe/connect/retrieve/token',
+            'type' => 'account_onboarding',
+        ]);
+        
+        session()->put('client_id',$account->id);
+
+        return redirect()->to($account_links->url);
+        
     }
 
     /**
@@ -54,6 +79,17 @@ class SellerRegistrationController extends Controller
      */
     public function retrieveToken()
     {
+        $client_id = session()->get('client_id');
+
+//        "https://connect.stripe.com/oauth/v2/authorize?response_type=code&client_id=ca_IsX83oFa3rGDuWnWu6oU2S1MQU9bRKPV&stripe_landing=register&scope=read_write&redirect_uri=http://storebd.sellnoir.devs/admin/stripe/connect/retrieve/token"
+
+        // \Stripe\Stripe::setApiKey('sk_test_51FVW6nAo1CUCqESm1Mr7yZdWS0jyKXCGmqrCR6drUbDpbWtqRJ3uMqyJDcoboIW6TEQKQPtur3LH6yRGGn19qYHv00B7q0dhMf');
+        // $account_data = $stripe->accounts->retrieve(
+        //     $client_id,
+        //     []
+        //   );
+   
+
         if (! request()->has('error')) {
             $code       = request()->input('code');
             $mode       = company()->getSuperConfigData('sales.paymentmethods.stripe.mode');
@@ -63,28 +99,30 @@ class SellerRegistrationController extends Controller
                 $secret_key = company()->getSuperConfigData('sales.paymentmethods.stripe.live_secret_key');
             }
 
-            $client = new Client(); //GuzzleHttp\Client
-            $result = $client->post('https://connect.stripe.com/oauth/token', [
-                'auth'          => [$secret_key, ''],
-                'form_params'   => [
-                    'code'          => $code,
-                    'grant_type'    => 'authorization_code'
-                ]
-            ]);
+            // $client = new Client(); //GuzzleHttp\Client
+            // $result = $client->post('https://connect.stripe.com/oauth/token', [
+            //     'auth'          => [$secret_key, ''],
+            //     'form_params'   => [
+            //         'code'          => $code,
+            //         'grant_type'    => 'authorization_code'
+            //     ]
+            // ]);
 
-            $decoded            = json_decode($result->getBody()->getContents());
-            $access_token       = $decoded->access_token;
-            $refresh_token      = $decoded->refresh_token;
-            $publishable_key    = $decoded->stripe_publishable_key;
-            $stripe_user_id     = $decoded->stripe_user_id;
+           
+
+            // $decoded            = json_decode($result->getBody()->getContents());
+            // $access_token       = $decoded->access_token;
+            // $refresh_token      = $decoded->refresh_token;
+            // $publishable_key    = $decoded->stripe_publishable_key;
+            // $stripe_user_id     = $decoded->stripe_user_id;
 
             $company = Company::getCurrent();
             $company_id = $company->id;
             $result = $this->stripeConnectRepository->create([
-                'access_token'              => $access_token,
-                'refresh_token'             => $refresh_token,
-                'stripe_publishable_key'    => $publishable_key,
-                'stripe_user_id'            => $stripe_user_id, 
+                'access_token'              => '$access_token',
+                'refresh_token'             => '$refresh_token',
+                'stripe_publishable_key'    => '$publishable_key',
+                'stripe_user_id'            => $client_id, 
                 'company_id'                => $company_id
             ]);
 

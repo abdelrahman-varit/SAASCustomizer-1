@@ -292,7 +292,7 @@
                                             carts.forEach(item => {
                                                 content+=`<div class="item">
                                                                 <div class="item-image">
-                                                                    <img src="${item.product.images[0].url}" alt="product image">
+                                                                    <img src="${item.product.images[0]?item.product.images[0].url:''}" onerror="{{url()->to('/')}}/vendor/webkul/ui/assets/images/product/small-product-placeholder.png" alt="product image">
                                                                 </div> 
                                                                 <div class="item-details">
                                                                     <div class="item-name">${item.name}</div> 
@@ -309,12 +309,10 @@
                                             if(lbl_count){
                                                 lbl_count.innerHTML = cartCount;
                                             }
-                                            document.getElementById("bn-mini-carts").innerHTML = content;
+                                            document.getElementById("bn-mini-carts").innerHTML = content; //ad to cart product
                                             if(data.data.grand_total){
                                                 document.getElementById("bn-mini-cart-grandTotal").innerHTML = "$"+parseFloat(data.data.grand_total).toFixed(2);
-                                            }
-                                            
-                                            
+                                            }    
                                         }else{
                                             document.getElementById("bn-mini-carts").innerHTML = `<div class="item">
                                                 <div class="item-details">
@@ -338,8 +336,7 @@
                                         animated.style.display="none";
                                     }
 
-                                })
-                                .catch(error=>{
+                                }).catch(error=>{
                                     if(animated){
                                         animated.style.display="none";
                                     }

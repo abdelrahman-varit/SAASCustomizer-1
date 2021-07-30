@@ -21,8 +21,15 @@
     <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/shop.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
 
+    <!-- Fonts from tinyMCE -->
+    <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/tinymce-fonts.css') }}">
+
+
     <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/responsive.css') }}">
+
+    <!-- Color Scheme -->
+    <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/colors/lemon.css') }}">
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"
     integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"

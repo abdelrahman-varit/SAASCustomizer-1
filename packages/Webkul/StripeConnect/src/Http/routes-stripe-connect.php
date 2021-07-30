@@ -3,6 +3,7 @@
 Route::prefix('admin')->group(function () {
     Route::group(['middleware' => ['admin']], function () {
         Route::get('stripe/connect', 'Webkul\StripeConnect\Http\Controllers\SellerRegistrationController@index')->name('admin.stripe.seller');
+        Route::get('stripe/connect/createlink', 'Webkul\StripeConnect\Http\Controllers\SellerRegistrationController@createLink')->name('admin.stripe.createlink');
 
         Route::get('stripe/connect/retrieve/token', 'Webkul\StripeConnect\Http\Controllers\SellerRegistrationController@retrieveToken')->name('admin.stripe.retrieve-grant');
 
@@ -40,5 +41,6 @@ Route::group(['middleware' => ['web', 'locale', 'theme', 'currency']], function 
         Route::post('/saved/card/paymentplan', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@savedCardPaymentPlan')->name('stripe.saved.card.paymentplan');
 
         Route::get('/payment/cancel', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@paymentCancel')->name('stripe.payment.cancel');
+        Route::get('/payment/cancelplan', 'Webkul\StripeConnect\Http\Controllers\StripeConnectController@paymentCancelPlan')->name('stripe.payment.cancelplan');
     });
 });

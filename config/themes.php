@@ -17,19 +17,19 @@ return [
         //     'parent' => 'default'
         // ]
 
-        'velocity' => [
-            'views_path' => 'resources/themes/velocity/views',
-            'assets_path' => 'public/themes/velocity/assets',
-            'name' => 'Velocity',
-            'parent' => 'default'
-        ],
+        // 'velocity' => [
+        //     'views_path' => 'resources/themes/velocity/views',
+        //     'assets_path' => 'public/themes/velocity/assets',
+        //     'name' => 'Velocity',
+        //     'parent' => 'default'
+        // ],
 
-        'buynoir-lite' => [
-            'views_path' => 'resources/themes/buynoir-lite/views',
-            'assets_path' => 'public/themes/buynoir-lite/assets',
-            'name' => 'Buynoir-lite',
-            'parent' => 'default'
-        ],
+        // 'buynoir-lite' => [
+        //     'views_path' => 'resources/themes/buynoir-lite/views',
+        //     'assets_path' => 'public/themes/buynoir-lite/assets',
+        //     'name' => 'Buynoir-lite',
+        //     'parent' => 'default'
+        // ],
 
         
 
