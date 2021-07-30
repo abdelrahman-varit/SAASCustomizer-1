@@ -11,7 +11,7 @@
         @include ('shop::products.wishlist-btn')
     @endif
     @if($showCompare)
-        @include ('shop::products.compare-btn',['productId'=>$product->id])
+        @include ('shop::products.compare-btn',['productId'=>$product->product_id])
     @endif
 
 

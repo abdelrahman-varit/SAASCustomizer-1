@@ -98,11 +98,11 @@ class SubscriptionController extends Controller
         ]);
 
         if (! (float) $plan->monthly_amount) {
-            $this->subscriptionHelper->activateFreePlan();
+            // $this->subscriptionHelper->activateFreePlan();
 
-            session()->flash('success', trans('saassubscription::app.admin.plans.free-plan-activated'));
+            // session()->flash('success', trans('saassubscription::app.admin.plans.free-plan-activated'));
 
-            return redirect()->route('admin.subscription.plan.overview');
+            // return redirect()->route('admin.subscription.plan.overview');
         }
 
         return redirect()->route($this->_config['redirect']);

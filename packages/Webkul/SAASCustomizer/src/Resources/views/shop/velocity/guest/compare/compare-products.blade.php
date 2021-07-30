@@ -99,7 +99,7 @@
 
                                             <i
                                                 class="material-icons cross fs16"
-                                                @click="removeProductCompare(product.id)">
+                                                @click="removeProductCompare(product.product_id)">
 
                                                 close
                                             </i>

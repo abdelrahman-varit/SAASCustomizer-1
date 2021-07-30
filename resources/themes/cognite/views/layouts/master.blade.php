@@ -29,8 +29,14 @@
     <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/responsive.css') }}">
 
     <!-- Color Scheme -->
-    <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/colors/lemon.css') }}">
-
+    @php 
+        $theme_color=core()->getConfigData('general.general.theme-color.theme_color_scheme')
+    @endphp
+    @if($theme_color=="default" || empty($theme_color))
+        <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/custom.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/colors/'.$theme_color.'.css') }}">
+    @endif
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"
     integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
     crossorigin="anonymous"></script>

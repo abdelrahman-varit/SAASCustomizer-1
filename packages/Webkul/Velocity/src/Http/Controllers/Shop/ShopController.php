@@ -233,6 +233,29 @@ class ShopController extends Controller
         ]);
     }
 
+
+    public function getDetailedProductsData()
+    {
+        // for product details
+        if ($items = request()->get('items')) {
+            $moveToCart = request()->get('moveToCart');
+
+            $productCollection = $this->velocityHelper->fetchProductCollectionData($items, $moveToCart);
+
+            $response = [
+                'status'   => 'success',
+                'data'   => $items,
+                'products' => $productCollection,
+            ];
+        }
+
+        return response()->json($response ?? [
+            'status' => false
+        ]);
+    }
+
+
+
     public function getCategoryProducts($categoryId)
     {
         $products = $this->productRepository->getAll($categoryId);

@@ -18,7 +18,14 @@
         </li>
         <li>
             @if ($showCompare)
-                @include('shop::products.compare', ['productId' => $product->id])
+                @php
+                    if($product->product_id>0){
+                        $product_id=$product->product_id;
+                    }else{
+                        $product_id=$product->id;
+                    }
+                @endphp
+                @include('shop::products.compare', ['productId' => $product_id])
             @endif
         </li>
     </ul>

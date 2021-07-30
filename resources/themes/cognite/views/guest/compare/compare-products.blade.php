@@ -82,7 +82,7 @@
                                         </form>
                                         <div class="action">
                                             
-                                            <span class="icon white-cross-sm-icon remove-product" @click="removeProductCompare(product.id)"></span>
+                                            <span class="icon white-cross-sm-icon remove-product" @click="removeProductCompare(product.product_id)"></span>
                                         </div>
                                         @break
 
@@ -172,7 +172,7 @@
             methods: {
                 'getComparedProducts': function () {
                     let items = '';
-                    let url = `${this.baseUrl}/${'detailed-products'}`;
+                    let url = `${this.baseUrl}/${'detailed-products-data'}`;
 
                     let data = {
                         params: {'data': true}
@@ -200,8 +200,8 @@
                             }
 
                             this.products = response.data.products;
-                            console.log('products data: ',data);
-                            console.log('products list: ',this.products);
+                            //console.log('products data: ',data);
+                            //console.log('products list: ',this.products);
                         })
                         .catch(error => {
                             this.isProductListLoaded = true;
@@ -249,14 +249,15 @@
                     // }
 
                     let existingItems = this.getStorageValue('compared_product');
-
+                    
                     if (productId == "all") {
                         updatedItems = [];
                         this.$set(this, 'products', []);
                         window.flashMessages = [{'type': 'alert-success', 'message': '{{ __('shop::app.customer.compare.removed-all') }}' }];
                     } else {
                         updatedItems = existingItems.filter(item => item != productId);
-                        this.$set(this, 'products', this.products.filter(product => product.id != productId));
+                        //console.log('compares:::::',productId);
+                        this.$set(this, 'products', this.products.filter(product => product.product_id != productId));
                         window.flashMessages = [{'type': 'alert-success', 'message': '{{ __('shop::app.customer.compare.removed') }}' }];
                     }
 

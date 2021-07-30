@@ -9,7 +9,32 @@ return [
         'key'  => 'general.general',
         'name' => 'admin::app.admin.system.general',
         'sort' => 1,
-    ], [
+    ], 
+    
+    [
+        'key'    => 'general.general.theme-color',
+        'name'   => 'admin::app.admin.system.theme-color-scheme',
+        'sort'   => 1,
+        'fields' => [
+            [
+                'name'          => 'theme_color_scheme',
+                'title'         => 'admin::app.admin.system.theme-color-scheme',
+                'type'          => 'select',
+                'options'       => [
+                    [
+                        'title' => 'default',
+                        'value' => 'default',
+                    ], [
+                        'title' => 'lemon',
+                        'value' => 'lemon',
+                    ],  
+                ],
+                'channel_based' => true
+            ],
+        ],
+    ], 
+    
+    [
         'key'    => 'general.general.locale_options',
         'name'   => 'admin::app.admin.system.locale-options',
         'sort'   => 1,
@@ -30,7 +55,11 @@ return [
                 'channel_based' => true
             ],
         ],
-    ], [
+    ], 
+    
+    
+    
+    [
         'key'    => 'general.general.email_settings',
         'name'   => 'admin::app.admin.system.email-settings',
         'sort'   => 1,
