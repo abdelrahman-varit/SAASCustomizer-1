@@ -5,6 +5,7 @@ namespace Webkul\Webfont\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Webkul\Webfont\Repositories\WebfontRepository as Webfont;
 use GuzzleHttp;
+use Company;
 
 class WebfontController extends Controller
 {
@@ -30,7 +31,7 @@ class WebfontController extends Controller
         $client = new GuzzleHttp\Client();
 
         if (core()->getConfigData('general.design.webfont.status') && core()->getConfigData('general.design.webfont.webfont')) {
-            $res = $client->request('GET', 'https://www.googleapis.com/webfonts/v1/webfonts?key='.core()->getConfigData('general.design.webfont.webfont'));
+            $res = $client->request('GET', 'https://www.googleapis.com/webfonts/v1/webfonts?key='.company()->getSuperConfigData('general.design.webfont.webfont'));
 
             if ($res->getStatusCode() == 200) {
                 $result =  (string) $res->getBody()->getContents();
@@ -53,14 +54,15 @@ class WebfontController extends Controller
         $fonts = request()->input('fonts');
 
         $fonts = json_decode($fonts);
-
+      
+        $company_id = Company::getCurrent()->id;
         foreach($fonts as $font) {
             $existing = $this->webfont->findOneWhere([
                 'font' => $font
             ]);
-
+            
             if (! $existing) {
-                $this->webfont->create(['font' => $font]);
+                $this->webfont->create(['font' => $font,'company_id'=>$company_id]);
             }
         }
 

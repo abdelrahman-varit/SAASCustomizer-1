@@ -173,13 +173,17 @@ return [
         'route'      => 'admin.inventory_sources.index',
         'sort'       => 4,
         'icon-class' => '',
-    ], [
-        'key'        => 'settings.channels',
-        'name'       => 'admin::app.layouts.channels',
-        'route'      => 'admin.channels.index',
-        'sort'       => 5,
-        'icon-class' => '',
-    ], [
+    ], 
+    
+    // [
+    //     'key'        => 'settings.channels',
+    //     'name'       => 'admin::app.layouts.channels',
+    //     'route'      => 'admin.channels.index',
+    //     'sort'       => 5,
+    //     'icon-class' => '',
+    // ], 
+    
+    [
         'key'        => 'settings.users',
         'name'       => 'admin::app.layouts.users',
         'route'      => 'admin.users.index',
@@ -260,22 +264,22 @@ return [
         'sort'       => 4,
         'icon-class' => 'catalog-icon',
     ],[
-        'key'        => 'my-shop.theme-selection',
-        'name'       => 'admin::app.admin.my-shop.index',
-        'route'      => 'admin.channels.index',
-        'sort'       => 4,
-        'icon-class' => 'catalog-icon',
-    ],[
-        'key'        => 'my-shop.meta-data',
-        'name'       => 'velocity::app.admin.layouts.meta-data',
-        'route'      => 'velocity.admin.meta-data',
-        'sort'       => 1,
-        'icon-class' => '',
-    ],[
         'key'        => 'my-shop.header',
         'name'       => 'velocity::app.admin.layouts.header-content',
         'route'      => 'velocity.admin.content.index',
         'sort'       => 1,
         'icon-class' => '',
+    ],[
+        'key'        => 'my-shop.meta-data',
+        'name'       => 'velocity::app.admin.layouts.meta-data',
+        'route'      => 'velocity.admin.meta-data',
+        'sort'       => 2,
+        'icon-class' => '',
+    ],[
+        'key'        => 'my-shop.theme-selection',
+        'name'       => 'admin::app.admin.my-shop.index',
+        'route'      => 'admin.channels.index',
+        'sort'       => 3,
+        'icon-class' => 'catalog-icon',
     ],
 ];

@@ -113,6 +113,7 @@ return [
                 'design'            => 'Design',
                 'admin-logo'        => 'Admin Logo',
                 'logo-image'        => 'Logo Image',
+                'google-fonts'      => 'Google Fonts',
                 'all-channels'      => 'All',
                 'all-locales'       => 'All',
                 'super-agent'       => 'Super Agent',
