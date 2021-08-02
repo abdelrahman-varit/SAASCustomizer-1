@@ -22,7 +22,23 @@ return [
                 'validation' => 'mimes:jpeg,bmp,png,jpg'
             ]
         ]
-    ],  [
+    ],
+
+    [
+        'key' => 'general.design.webfont',
+        'name' => 'Google Fonts',
+        'sort' => 2,
+        'fields' => [
+            [
+                'name' => 'webfont',
+                'title' => 'webfont::app.webfont-api',
+                'type' => 'text',
+                'channel_based' => false,
+                'locale_based' => false
+            ]
+        ]
+    ],  
+    [
         'key' => 'general.agent',
         'name' => 'saas::app.super-user.config.system.super-agent',
         'sort' => 1,

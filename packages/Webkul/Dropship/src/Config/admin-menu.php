@@ -1,0 +1,33 @@
+<?php
+
+return [
+    [
+        'key' => 'dropship',
+        'name' => 'dropship::app.admin.layouts.dropship',
+        'route' => 'admin.dropship.orders.index',
+        'sort' => 2,
+        'icon-class' => 'dropship-icon',
+    ], [
+        'key' => 'dropship.products',
+        'name' => 'dropship::app.admin.layouts.products',
+        'route' => 'admin.dropship.products.index',
+        'sort' => 1,
+        'icon-class' => 'dropship-icon',
+    ], [
+        'key' => 'dropship.orders',
+        'name' => 'dropship::app.admin.layouts.orders',
+        'route' => 'admin.dropship.orders.index',
+        'sort' => 2,
+        'icon-class' => 'dropship-icon',
+    ], 
+    
+    [
+        'key'        => 'configuration.dropship',
+        'name'       => 'admin::app.layouts.dropship',
+        'route'      => 'admin.configuration.index',
+        'sort'       => 5,
+        'icon-class' => 'configuration-icon',
+    ],
+];
+
+?>

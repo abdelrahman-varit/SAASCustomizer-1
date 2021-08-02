@@ -4,17 +4,17 @@
             <?php $keys = explode('.', $menu->currentKey);  ?>
 
             @if(isset($keys) && strlen($keys[0]))
-            @foreach (\Illuminate\Support\Arr::get($menu->items, current($keys) . '.children') as $item)
-                <li class="{{ $menu->getActive($item) }}">
-                    <a href="{{ $item['url'] }}">
-                        {{ trans($item['name']) }} two
+                @foreach (\Illuminate\Support\Arr::get($menu->items, current($keys) . '.children') as $item)
+                    <li class="{{ $menu->getActive($item) }}">
+                        <a href="{{ $item['url'] }}">
+                            {{ trans($item['name']) }} 
 
-                        @if ($menu->getActive($item))
-                            <i class="angle-right-icon"></i>
-                        @endif
-                    </a>
-                </li>
-            @endforeach
+                            @if ($menu->getActive($item))
+                                <i class="angle-right-icon"></i>
+                            @endif
+                        </a>
+                    </li>
+                @endforeach
             @endif
         @else
             @foreach ($config->items as $key => $item)

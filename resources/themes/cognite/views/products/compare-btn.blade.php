@@ -139,7 +139,7 @@
                     let comparedItems = JSON.parse(localStorage.getItem('compared_product'));
                     let comparedItemsCount = comparedItems ? comparedItems.length : 0;
                     $('#compare-items-count').html(comparedItemsCount);
-                    console.log('count of product/compare-btn: ',this.getStorageValue('compared_product') );
+                    //console.log('count of product/compare-btn: ',this.getStorageValue('compared_product') );
                     // this.getStorageValue('compared_product');
                 } //end function updateCompareCount
             }

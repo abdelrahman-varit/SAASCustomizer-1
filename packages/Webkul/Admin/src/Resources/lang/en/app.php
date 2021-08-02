@@ -1308,6 +1308,7 @@ return [
             'footer-toggle' => 'Toggle footer',
             'locale-options' => 'Unit Options',
             'weight-unit' => 'Weight Unit',
+            'theme-color-scheme' => 'Theme Color',
             'email-settings'    => 'Email Settings',
             'email-sender-name' => 'Email Sender Name',
             'shop-email-from'   => 'Shop Email Address [For sending emails]',
@@ -1368,6 +1369,9 @@ return [
             'custom-scripts' => 'Custom Scripts',
             'custom-css' => 'Custom CSS',
             'custom-javascript' => 'Custom Javascript'
-       ]
+        ],
+        'my-shop'=>[
+            'index'=>'My Shop'
+        ]
     ]
 ];
