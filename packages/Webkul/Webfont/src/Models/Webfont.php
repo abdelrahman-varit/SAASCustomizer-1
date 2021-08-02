@@ -9,5 +9,5 @@ class Webfont extends Model implements WebfontContract
 {
     protected $table = 'google_web_fonts';
 
-    protected $fillable = ['font', 'activated'];
+    protected $fillable = ['font','company_id', 'activated'];
 }

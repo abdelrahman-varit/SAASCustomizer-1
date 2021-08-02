@@ -17,6 +17,8 @@ class CreateGoogleWebFontsTable extends Migration
             $table->increments('id');
             $table->text('font');
             $table->boolean('activated')->default(0);
+            $table->integer('company_id')->unsigned();
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->timestamps();
         });
     }

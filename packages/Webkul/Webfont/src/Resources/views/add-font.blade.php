@@ -20,7 +20,7 @@
                         <h1>
                             <i class="icon angle-left-icon back-link" onclick="history.length > 1 ? history.go(-1) : window.location = '{{ url('/admin/dashboard') }}';"></i>
 
-                            {{ __('webfont::app.title') }}
+                            {{ __('webfont::app.title') }} 
                         </h1>
                     </div>
 
