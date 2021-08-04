@@ -6,255 +6,356 @@
 
 @section('content-wrapper')
 
-    <div class="row align-items-center gap-4">
-        <div class="col">
-            <h4 class="fw-bold m-0">{{ __('admin::app.dashboard.title') }}</h4>
-        </div>
-        <div class="col-auto">
-            <date-filter></date-filter>
-        </div>
-    </div>
+    <div class="content full-page dashboard">
+        <div class="page-header force-responsive-breakable">
+            <div class="page-title">
+                <h1>{{ __('admin::app.dashboard.title') }}</h1>
+            </div>
 
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 text-white pt-4">
-        <div class="col">
-            <div class="rounded-3 p-3 h-100" style="background-color: #A1D9E8">
-                <p class="fw-bold mb-3 text-uppercase">{{ __('admin::app.dashboard.total-customers') }}</p>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/img/TOTAL CUSTOMERS.svg') }}" alt="Customers">
-                    <h4 class="m-0 fw-bold">{{ $statistics['total_customers']['current'] }}</h4>
-                </div>
-                <p class="m-0 fw-light small">
-                    @if ($statistics['total_customers']['progress'] < 0)
-                        {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['total_customers']['progress'], 1) ]) }}
-                    @else
-                        {{ __('admin::app.dashboard.increased', [ 'progress' => number_format($statistics['total_customers']['progress'], 1) ]) }}
-                    @endif
-                </p>
+            <div class="page-action">
+                <date-filter></date-filter>
             </div>
         </div>
-        <div class="col">
-            <div class="rounded-3 p-3 h-100" style="background-color: #B9DCD5">
-                <p class="fw-bold mb-3 text-uppercase">{{ __('admin::app.dashboard.total-orders') }}</p>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/img/TOTAL ORDERS.svg') }}" alt="Orders">
-                    <h4 class="m-0 fw-bold">{{ $statistics['total_orders']['current'] }}</h4>
-                </div>
-                <p class="m-0 fw-light small">
-                    @if ($statistics['total_orders']['progress'] < 0)
-                        {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['total_orders']['progress'], 1) ]) }}
-                    @else
-                        {{ __('admin::app.dashboard.increased', [ 'progress' => number_format($statistics['total_orders']['progress'], 1) ]) }}
-                    @endif
-                </p>
-            </div>
-        </div>
-        <div class="col">
-            <div class="rounded-3 p-3 h-100" style="background-color: #F9BFCE">
-                <p class="fw-bold mb-3 text-uppercase">{{ __('admin::app.dashboard.total-sale') }}</p>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/img/TOTAL SALE.svg') }}" alt="Sale">
-                    <h4 class="m-0 fw-bold">{{ core()->formatBasePrice($statistics['total_sales']['current']) }}</h4>
-                </div>
-                <p class="m-0 fw-light small">
-                    @if ($statistics['total_sales']['progress'] < 0)
-                        {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['total_sales']['progress'], 1) ]) }}
-                    @else
-                        {{ __('admin::app.dashboard.increased', [ 'progress' => number_format($statistics['total_sales']['progress'], 1) ]) }}
-                    @endif
-                </p>
-            </div>
-        </div>
-        <div class="col">
-            <div class="rounded-3 p-3 h-100" style="background-color: #EBD290">
-                <p class="fw-bold mb-3 text-uppercase">{{ __('admin::app.dashboard.average-sale') }}</p>
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/img/AVERAGE ORDER SALE.svg') }}" alt="Average Order Sale">
-                    <h4 class="m-0 fw-bold">{{ core()->formatBasePrice($statistics['avg_sales']['current']) }}</h4>
-                </div>
-                <p class="m-0 fw-light small">
-                    @if ($statistics['avg_sales']['progress'] < 0)
-                        {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['avg_sales']['progress'], 1) ]) }}
-                    @else
-                        {{ __('admin::app.dashboard.increased', [ 'progress' => number_format($statistics['avg_sales']['progress'], 1) ]) }}
-                    @endif
-                </p>
-            </div>
-        </div>
-    </div>
 
-    <div class="row g-4 mt-0">
-        <div class="col-lg-9">
-            <div class="bg-white rounded-3 p-4 h-100">
-                <p class="m-0 fw-bold border-bottom pb-2 text-uppercase small">{{ __('admin::app.dashboard.sales') }}</p>
+        <div class="page-content">
 
-                @if (!array_filter($statistics['sale_graph']['total']))
-                    <!-- No Data -->
-                    <div class="text-center">
-                        <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/img/SALES_GR.svg') }}" alt="No data available!" class="mb-3 mt-4">
-                        <h6 class="fw-bold">{{ __('admin::app.common.start-building-dashboard') }}</h6>
-                        <p class="fw-light mb-2">{{ __('admin::app.common.no-data-suggation') }}</p>
-                        <a href="#" class="btn btn-secondary btn-sm rounded-3">{{ __('admin::app.common.add-data') }}</a>
+            <div class="dashboard-stats">
+
+                <div class="dashboard-card">
+                    <div class="title">
+                        {{ __('admin::app.dashboard.total-customers') }}
                     </div>
-                @else
-                    <canvas id="sales_graph" class="mt-4"></canvas>
-                @endif
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="bg-white rounded-3 p-4 h-100">
-                <p class="m-0 fw-bold border-bottom pb-2 text-uppercase small">{{ __('admin::app.dashboard.top-performing-categories') }}</p>
-                @if (! count($statistics['top_selling_categories']))
-                    <!-- No Data -->
-                    <div class="text-center">
-                        <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/img/TOP PERFORMING CATEGORIES_GR.svg') }}" alt="No data available!" class="mb-3 mt-4">
-                        <h6 class="fw-bold">{{ __('admin::app.common.no-data-avaibale') }}</h6>
-                        <p class="fw-light mb-2">{{ __('admin::app.common.no-data-suggation') }}</p>
-                        <a href="#" class="btn btn-secondary btn-sm rounded-3">{{ __('admin::app.common.add-category') }}</a>
+
+                    <div class="data">
+                        {{ $statistics['total_customers']['current'] }}
+
+                        <span class="progress">
+                            @if ($statistics['total_customers']['progress'] < 0)
+                                <span class="icon graph-down-icon"></span>
+                                {{ __('admin::app.dashboard.decreased', [
+                                        'progress' => -number_format($statistics['total_customers']['progress'], 1)
+                                    ])
+                                }}
+                            @else
+                                <span class="icon graph-up-icon"></span>
+                                {{ __('admin::app.dashboard.increased', [
+                                        'progress' => number_format($statistics['total_customers']['progress'], 1)
+                                    ])
+                                }}
+                            @endif
+                        </span>
                     </div>
-                @endif
+                </div>
 
+                <div class="dashboard-card">
+                    <div class="title">
+                        {{ __('admin::app.dashboard.total-orders') }}
+                    </div>
 
-                @foreach ($statistics['top_selling_categories'] as $item)
-                    <!-- Data -->
-                    <div class="row justify-content-between g-1 mt-2">
-                        <div class="col-auto">{{ $item->name }}</div>
-                        <div class="col-auto">{{ __('admin::app.dashboard.sale-count', ['count' => $item->total_qty_invoiced]) }}</div>
-                        <div class="col-12">
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 85%; background-color: #FF5067"></div>
-                            </div>
+                    <div class="data">
+                        {{ $statistics['total_orders']['current'] }}
+
+                        <span class="progress">
+                            @if ($statistics['total_orders']['progress'] < 0)
+                                <span class="icon graph-down-icon"></span>
+                                {{ __('admin::app.dashboard.decreased', [
+                                        'progress' => -number_format($statistics['total_orders']['progress'], 1)
+                                    ])
+                                }}
+                            @else
+                                <span class="icon graph-up-icon"></span>
+                                {{ __('admin::app.dashboard.increased', [
+                                        'progress' => number_format($statistics['total_orders']['progress'], 1)
+                                    ])
+                                }}
+                            @endif
+                        </span>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="title">
+                        {{ __('admin::app.dashboard.total-sale') }}
+                    </div>
+
+                    <div class="data">
+                        {{ core()->formatBasePrice($statistics['total_sales']['current']) }}
+
+                        <span class="progress">
+                            @if ($statistics['total_sales']['progress'] < 0)
+                                <span class="icon graph-down-icon"></span>
+                                {{ __('admin::app.dashboard.decreased', [
+                                        'progress' => -number_format($statistics['total_sales']['progress'], 1)
+                                    ])
+                                }}
+                            @else
+                                <span class="icon graph-up-icon"></span>
+                                {{ __('admin::app.dashboard.increased', [
+                                        'progress' => number_format($statistics['total_sales']['progress'], 1)
+                                    ])
+                                }}
+                            @endif
+                        </span>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="title">
+                        {{ __('admin::app.dashboard.average-sale') }}
+                    </div>
+
+                    <div class="data">
+                        {{ core()->formatBasePrice($statistics['avg_sales']['current']) }}
+
+                        <span class="progress">
+                            @if ($statistics['avg_sales']['progress'] < 0)
+                                <span class="icon graph-down-icon"></span>
+                                {{ __('admin::app.dashboard.decreased', [
+                                        'progress' => -number_format($statistics['avg_sales']['progress'], 1)
+                                    ])
+                                }}
+                            @else
+                                <span class="icon graph-up-icon"></span>
+                                {{ __('admin::app.dashboard.increased', [
+                                        'progress' => number_format($statistics['avg_sales']['progress'], 1)
+                                    ])
+                                }}
+                            @endif
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="graph-stats">
+
+                <div class="left-card-container graph">
+                    <div class="card" style="overflow: hidden;">
+                        <div class="card-title" style="margin-bottom: 30px;">
+                            {{ __('admin::app.dashboard.sales') }}
+                        </div>
+
+                        <div class="card-info" style="height: 100%;">
+
+                            <canvas id="myChart" style="width: 100%; height: 87%"></canvas>
+
                         </div>
                     </div>
-                @endforeach
+                </div>
+
+                <div class="right-card-container category">
+                    <div class="card">
+                        <div class="card-title">
+                            {{ __('admin::app.dashboard.top-performing-categories') }}
+                        </div>
+
+                        <div class="card-info {{ !count($statistics['top_selling_categories']) ? 'center' : '' }}">
+                            <ul>
+
+                                @foreach ($statistics['top_selling_categories'] as $item)
+
+                                    <li>
+                                        <a href="{{ route('admin.catalog.categories.edit', $item->category_id) }}">
+                                            <div class="description">
+                                                <div class="name">
+                                                    {{ $item->name }}
+                                                </div>
+
+                                                <div class="info">
+                                                    {{ __('admin::app.dashboard.product-count', ['count' => $item->total_products]) }}
+                                                    &nbsp;.&nbsp;
+                                                    {{ __('admin::app.dashboard.sale-count', ['count' => $item->total_qty_invoiced]) }}
+                                                </div>
+                                            </div>
+
+                                            <span class="icon angle-right-icon"></span>
+                                        </a>
+                                    </li>
+
+                                @endforeach
+
+                            </ul>
+
+                            @if (! count($statistics['top_selling_categories']))
+
+                                <div class="no-result-found">
+
+                                    <i class="icon no-result-icon"></i>
+                                    <p>{{ __('admin::app.common.no-result-found') }}</p>
+
+                                </div>
+
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </div>
 
+            @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
 
-    @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
-    <div class="row g-4 mt-0">
-        <div class="col-lg-9">
-            <div class="row g-4 h-100">
-                <div class="col-lg-6">
-                    <div class="bg-white rounded-3 p-4 h-100">
-                        <p class="m-0 fw-bold border-bottom mb-3 pb-2 text-uppercase small">{{ __('admin::app.dashboard.top-selling-products') }}</p>
+            <div class="sale-stock">
+                <div class="card">
+                    <div class="card-title">
+                        {{ __('admin::app.dashboard.top-selling-products') }}
+                    </div>
 
+                    <div class="card-info {{ !count($statistics['top_selling_products']) ? 'center' : '' }}">
+                        <ul>
+
+                            @foreach ($statistics['top_selling_products'] as $item)
+
+                                <li>
+                                    <a href="{{ route('admin.catalog.products.edit', $item->product_id) }}">
+                                        <div class="product image">
+                                            <?php $productBaseImage = $productImageHelper->getProductBaseImage($item->product); ?>
+
+                                            <img class="item-image" src="{{ $productBaseImage['small_image_url'] }}" />
+                                        </div>
+
+                                        <div class="description do-not-cross-arrow">
+                                            <div class="name ellipsis">
+                                                @if (isset($item->name))
+                                                    {{ $item->name }}
+                                                @endif
+                                            </div>
+
+                                            <div class="info">
+                                                {{ __('admin::app.dashboard.sale-count', ['count' => $item->total_qty_invoiced]) }}
+                                            </div>
+                                        </div>
+
+                                        <span class="icon angle-right-icon"></span>
+                                    </a>
+                                </li>
+
+                            @endforeach
+
+                        </ul>
 
                         @if (! count($statistics['top_selling_products']))
-                            <!-- No Data -->
-                            <div class="text-center">
-                                <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/img/TOP SELLING PRODUCTS_GR.svg') }}" alt="No data available!" class="mb-3 mt-4">
-                                <h6 class="fw-bold">{{ __('admin::app.common.no-data-avaibale') }}</h6>
-                                <p class="fw-light mb-2">{{ __('admin::app.common.no-data-suggation') }}</p>
-                                <a href="#" class="btn btn-secondary btn-sm rounded-3">{{ __('admin::app.common.add-data') }}</a>
+
+                            <div class="no-result-found">
+
+                                <i class="icon no-result-icon"></i>
+                                <p>{{ __('admin::app.common.no-result-found') }}</p>
+
                             </div>
 
                         @endif
-
-                        @foreach ($statistics['top_selling_products'] as $item)
-                            
-                            <?php $productBaseImage = $productImageHelper->getProductBaseImage($item->product); ?>
-
-                            <div class="position-relative mb-2 border-bottom pb-2">
-                                <div class="row gx-3 align-items-center">
-                                    <div class="col-auto">
-                                        <a href="{{ route('admin.catalog.products.edit', $item->product_id) }}" class="stretched-link border p-1 rounded-2 d-block"><img src="{{ $productBaseImage['small_image_url'] }}" alt=""></a>
-                                    </div>
-                                    <div class="col">
-                                        @if (isset($item->name))
-                                            <p class="m-0">{{ $item->name }}</p>
-                                        @endif
-                                        <p class="m-0 fw-light">{{ __('admin::app.dashboard.sale-count', ['count' => $item->total_qty_invoiced]) }}</p>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-angle-right"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                        @endforeach
-
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="bg-white rounded-3 p-4 h-100">
-                        <p class="m-0 fw-bold border-bottom mb-3 pb-2 text-uppercase small">{{ __('admin::app.dashboard.customer-with-most-sales') }}</p>
-                        
+
+                <div class="card">
+                    <div class="card-title">
+                        {{ __('admin::app.dashboard.customer-with-most-sales') }}
+                    </div>
+
+                    <div class="card-info {{ !count($statistics['customer_with_most_sales']) ? 'center' : '' }}">
+                        <ul>
+
+                            @foreach ($statistics['customer_with_most_sales'] as $item)
+
+                                <li>
+                                    @if ($item->customer_id)
+                                        <a href="{{ route('admin.customer.edit', $item->customer_id) }}">
+                                    @endif
+
+                                        <div class="image">
+                                            <span class="icon profile-pic-icon"></span>
+                                        </div>
+
+                                        <div class="description do-not-cross-arrow">
+                                            <div class="name ellipsis">
+                                                {{ $item->customer_full_name }}
+                                            </div>
+
+                                            <div class="info">
+                                                {{ __('admin::app.dashboard.order-count', ['count' => $item->total_orders]) }}
+                                                    &nbsp;.&nbsp;
+                                                {{ __('admin::app.dashboard.revenue', [
+                                                    'total' => core()->formatBasePrice($item->total_base_grand_total)
+                                                    ])
+                                                }}
+                                            </div>
+                                        </div>
+
+                                        <span class="icon angle-right-icon"></span>
+
+                                    @if ($item->customer_id)
+                                        </a>
+                                    @endif
+                                </li>
+
+                            @endforeach
+
+                        </ul>
+
                         @if (! count($statistics['customer_with_most_sales']))
-                            <!-- No Data -->
-                            <div class="text-center">
-                                <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/img/CUSTOMER WITH MOST SALES_GR.svg') }}" alt="No data available!" class="mb-3 mt-4">
-                                <h6 class="fw-bold">{{ __('admin::app.common.no-data-avaibale') }}</h6>
-                                <p class="fw-light mb-2">{{ __('admin::app.common.no-data-suggation') }}</p>
-                                <a href="#" class="btn btn-secondary btn-sm rounded-3">{{ __('admin::app.common.add-data') }}</a>
+
+                            <div class="no-result-found">
+
+                                <i class="icon no-result-icon"></i>
+                                <p>{{ __('admin::app.common.no-result-found') }}</p>
+
                             </div>
 
                         @endif
-
-
-                        @foreach ($statistics['customer_with_most_sales'] as $item)
-
-                            <!-- Data -->
-                            <div class="position-relative mb-2 border-bottom pb-2">
-                                <div class="row gx-3 align-items-center">
-                                    <div class="col-auto">
-                                        <a href="{{ $item->customer_id ? route('admin.customer.edit', $item->customer_id) : '#' }}" class="stretched-link border p-1 rounded-2 d-block"><img src="http://placehold.it/30x30" alt=""></a>
-                                    </div>
-                                    <div class="col">
-                                        <p class="m-0">{{ $item->customer_full_name }}</p>
-                                        <p class="m-0 fw-light">{{ __('admin::app.dashboard.order-count', ['count' => $item->total_orders]) }} . {{ __('admin::app.dashboard.revenue', ['total' => core()->formatBasePrice($item->total_base_grand_total)]) }}</p>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-angle-right"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                        @endforeach
                     </div>
+
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="bg-white rounded-3 p-4 h-100">
-                <p class="m-0 fw-bold border-bottom mb-3 pb-2 text-uppercase small">{{ __('admin::app.dashboard.stock-threshold') }}</p>
 
-                @if (! count($statistics['stock_threshold']))
-
-                    <!-- No Data -->
-                    <div class="text-center">
-                        <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/img/STOCK THRESHOLD_GR.svg') }}" alt="No data available!" class="mb-3 mt-3">
-                        <h6 class="fw-bold">{{ __('admin::app.common.no-data-avaibale') }}</h6>
-                        <p class="fw-light mb-2">{{ __('admin::app.common.no-data-suggation') }}</p>
-                        <a href="#" class="btn btn-secondary btn-sm rounded-3">{{ __('admin::app.common.add-product') }}</a>
+                <div class="card">
+                    <div class="card-title">
+                        {{ __('admin::app.dashboard.stock-threshold') }}
                     </div>
 
-                @endif
+                    <div class="card-info {{ !count($statistics['stock_threshold']) ? 'center' : '' }}">
+                        <ul>
 
+                            @foreach ($statistics['stock_threshold'] as $item)
 
-                @foreach ($statistics['stock_threshold'] as $item)
-                
-                    <?php $productBaseImage = $productImageHelper->getProductBaseImage($item->product); ?>
-                    <div class="position-relative mb-2 border-bottom pb-2">
-                        <div class="row gx-3 align-items-center">
-                            <div class="col-auto">
-                                <a href="{{ route('admin.catalog.products.edit', $item->product_id) }}" class="stretched-link border p-1 rounded-2 d-block">
-                                    <img src="{{ $productBaseImage['small_image_url'] }}" alt="" width="30">
-                                </a>
+                                <li>
+                                    <a href="{{ route('admin.catalog.products.edit', $item->product_id) }}">
+                                        <div class="image">
+                                            <?php $productBaseImage = $productImageHelper->getProductBaseImage($item->product); ?>
+
+                                            <img class="item-image" src="{{ $productBaseImage['small_image_url'] }}" />
+                                        </div>
+
+                                        <div class="description do-not-cross-arrow">
+                                            <div class="name ellipsis">
+                                                @if (isset($item->product->name))
+                                                    {{ $item->product->name }}
+                                                @endif
+                                            </div>
+
+                                            <div class="info">
+                                                {{ __('admin::app.dashboard.qty-left', ['qty' => $item->total_qty]) }}
+                                            </div>
+                                        </div>
+
+                                        <span class="icon angle-right-icon"></span>
+                                    </a>
+                                </li>
+
+                            @endforeach
+
+                        </ul>
+
+                        @if (! count($statistics['stock_threshold']))
+
+                            <div class="no-result-found">
+
+                                <i class="icon no-result-icon"></i>
+                                <p>{{ __('admin::app.common.no-result-found') }}</p>
+
                             </div>
-                            <div class="col">
-                                @if (isset($item->product->name))
-                                    <p class="m-0">{{ $item->product->name }}</p>
-                                @endif
-                                <p class="m-0 fw-light">{{ __('admin::app.dashboard.qty-left', ['qty' => $item->total_qty]) }}</p>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-angle-right"></i>
-                            </div>
-                        </div>
+
+                        @endif
                     </div>
 
-                @endforeach
+                </div>
             </div>
         </div>
     </div>
@@ -263,17 +364,17 @@
 
 @push('scripts')
 
-    <script type="text/x-template" id="date-filter-template">
-        <div class="d-flex gap-3">
-            <date @onChange="applyFilter('start', $event)" hide-remove-button="1" class="input-group" style="width: 180px">
-                <input type="text" class="form-control rounded-pill-start" id="start_date" value="{{ $startDate->format('Y-m-d') }}" placeholder="{{ __('admin::app.dashboard.from') }}" v-model="start" ref="from">
-                <button @click="showDatePicker('from')" class="btn btn-secondary rounded-pill-end" type="button"><i class="fas fa-calendar-alt"></i></button>
-            </date>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 
-            <date @onChange="applyFilter('end', $event)" hide-remove-button="1" class="input-group" style="width: 180px">
-                <input type="text" class="form-control rounded-pill-start" id="end_date" value="{{ $endDate->format('Y-m-d') }}" placeholder="{{ __('admin::app.dashboard.to') }}" v-model="end" ref="end">
-                <button @click="showDatePicker('end')" class="btn btn-secondary rounded-pill-end" type="button"><i class="fas fa-calendar-alt"></i></button>
-            </date>
+    <script type="text/x-template" id="date-filter-template">
+        <div class="action-list">
+            <div class="control-group date">
+                <date @onChange="applyFilter('start', $event)" hide-remove-button="1"><input type="text" class="control" id="start_date" value="{{ $startDate->format('Y-m-d') }}" placeholder="{{ __('admin::app.dashboard.from') }}" v-model="start"/></date>
+            </div>
+
+            <div class="control-group date">
+                <date @onChange="applyFilter('end', $event)" hide-remove-button="1"><input type="text" class="control" id="end_date" value="{{ $endDate->format('Y-m-d') }}" placeholder="{{ __('admin::app.dashboard.to') }}" v-model="end"/></date>
+            </div>
         </div>
     </script>
 
@@ -294,78 +395,67 @@
                     this[field] = date;
 
                     window.location.href = "?start=" + this.start + '&end=' + this.end;
-                },
-                showDatePicker(field) {
-                    if(field === 'from') {
-                        this.$refs.from.focus();
-                    } else if(field === 'end') {
-                        this.$refs.end.focus();
-                    }
                 }
             }
         });
 
-    </script>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"></script>
-    <script>
         $(document).ready(function () {
-            var ctx = document.getElementById("sales_graph");
-            if(typeof(ctx) != 'undefined' && ctx != null) {
-                var data = @json($statistics['sale_graph']);
-                var myChart = new Chart(ctx.getContext('2d'), {
-                    type: 'bar',
-                    data: {
-                        labels: data['label'],
-                        datasets: [{
-                            data: data['total'],
-                            backgroundColor: 'rgba(34, 201, 93, 1)',
-                            borderColor: 'rgba(34, 201, 93, 1)',
-                            borderWidth: 1
+
+            var ctx = document.getElementById("myChart").getContext('2d');
+
+            var data = @json($statistics['sale_graph']);
+
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data['label'],
+                    datasets: [{
+                        data: data['total'],
+                        backgroundColor: 'rgba(34, 201, 93, 1)',
+                        borderColor: 'rgba(34, 201, 93, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        xAxes: [{
+                            maxBarThickness: 20,
+                            gridLines : {
+                                display : false,
+                                drawBorder: false,
+                            },
+                            ticks: {
+                                beginAtZero: true,
+                                fontColor: 'rgba(162, 162, 162, 1)'
+                            }
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                drawBorder: false,
+                            },
+                            ticks: {
+                                padding: 20,
+                                beginAtZero: true,
+                                fontColor: 'rgba(162, 162, 162, 1)'
+                            }
                         }]
                     },
-                    options: {
-                        responsive: true,
-                        legend: {
-                            display: false
-                        },
-                        scales: {
-                            xAxes: [{
-                                maxBarThickness: 20,
-                                gridLines : {
-                                    display : false,
-                                    drawBorder: false,
-                                },
-                                ticks: {
-                                    beginAtZero: true,
-                                    fontColor: 'rgba(162, 162, 162, 1)'
-                                }
-                            }],
-                            yAxes: [{
-                                gridLines: {
-                                    drawBorder: false,
-                                },
-                                ticks: {
-                                    padding: 20,
-                                    beginAtZero: true,
-                                    fontColor: 'rgba(162, 162, 162, 1)'
-                                }
-                            }]
-                        },
-                        tooltips: {
-                            mode: 'index',
-                            intersect: false,
-                            displayColors: false,
-                            callbacks: {
-                                label: function(tooltipItem, dataTemp) {
-                                    return data['formated_total'][tooltipItem.index];
-                                }
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(tooltipItem, dataTemp) {
+                                return data['formated_total'][tooltipItem.index];
                             }
                         }
                     }
-                });
-            }
+                }
+            });
         });
     </script>
 
