@@ -13,12 +13,13 @@
             <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/favicon.ico') }}" />
         @endif
 
-        <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/ui/assets/css/ui.css') }}">
-        <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/admin.css') }}">
-        <link rel="stylesheet" href="{{ asset('buynoir/shopadmin/css/shop-admin.css') }}">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-        <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/custom.css') }}">
-        <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/responsive.css') }}">
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/style.css') }}">
 
         @yield('head')
 
@@ -39,24 +40,26 @@
 
             @include ('admin::layouts.nav-top')
 
-            {!! view_render_event('bagisto.admin.layout.nav-top.after') !!}
+            {!! view_render_event('bagisto.admin.layout.nav-top.after') !!}            
 
+            <div class="main-content-wrapper">
+                {!! view_render_event('bagisto.admin.layout.nav-left.before') !!}
 
-            {!! view_render_event('bagisto.admin.layout.nav-left.before') !!}
+                @include ('admin::layouts.nav-left')
 
-            @include ('admin::layouts.nav-left')
-
-            {!! view_render_event('bagisto.admin.layout.nav-left.after') !!}
-
-
-            <div class="content-container buynoir-dashboard-container">
-
-                {!! view_render_event('bagisto.admin.layout.content.before') !!}
-
-                @yield('content-wrapper')
-
-                {!! view_render_event('bagisto.admin.layout.content.after') !!}
-
+                {!! view_render_event('bagisto.admin.layout.nav-left.after') !!}
+                
+                <div class="main-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col p-3 p-lg-4">
+                                {!! view_render_event('bagisto.admin.layout.content.before') !!}
+                                    @yield('content-wrapper')
+                                {!! view_render_event('bagisto.admin.layout.content.after') !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -80,7 +83,14 @@
 
         <script type="text/javascript" src="{{ asset('vendor/webkul/admin/assets/js/admin.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/js/scripts.js') }}"></script>
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/js/scripts.js') }}"></script>
+        
         <script type="text/javascript">
             window.addEventListener('DOMContentLoaded', function() {
                 moveDown = 60;

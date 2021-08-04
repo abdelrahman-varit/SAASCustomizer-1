@@ -1,0 +1,35 @@
+$primary: #0d6efd;
+$secondary: #6c757d;
+$success: #198754;
+$info: #0dcaf0;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #212529;
+
+$theme-colors: (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark
+);
+
+$font-family-base: 'Lato', sans-serif;
+$body-color: #333333;
+$body-bg: #F2F2F2;
+$btn-focus-width: 0;
+$dropdown-border-width: 0;
+$dropdown-min-width: 14rem;
+$dropdown-link-active-color: $dark;
+$dropdown-link-active-bg: rgba($secondary, .25);
+$zindex-dropdown: 2000;
+$border-radius-lg: .5rem;
+$progress-height: .25rem;
+
+$sidebar-width: 220px;
+$header-height: 58px;
+
