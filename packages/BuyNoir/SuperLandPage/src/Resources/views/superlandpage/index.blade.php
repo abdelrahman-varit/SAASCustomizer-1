@@ -198,6 +198,121 @@
 							</div>
 						</section>
 						<!-- End. serv_soft -->
+	 
+		
+							<!-- Start price plan -->
+							<section class="services_section save__nature serv_soft padding-t-12" id="Features">
+								<div class="container">
+									<div class="text-center row justify-content-center">
+										<div class="col-md-8 col-lg-5">
+											<div class="title_sections">
+												<div class="before_title">
+													<span>OUR </span>
+													<span class="c-green2">PACKAGES</span>
+												</div>
+												<h2>PRICE PLAN </h2>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 col-lg-3 item__nature">
+											<div class="mb-4 items_serv sevice_block mb-lg-0" data-aos="fade-up" data-aos-delay="0">
+												<div class="icon--top">
+													 
+														<svg xmlns="http://www.w3.org/2000/svg" width="26.824" height="23.192" viewBox="0 0 26.824 23.192">
+															<g id="Group_6272" data-name="Group 6272" transform="translate(-0.118 -3.632)">
+																<path id="Rectangle-154"
+																	d="M2.343,2.343V4.686H8.2V2.343ZM1.171,0H24.6a1.171,1.171,0,0,1,1.171,1.171V5.857A1.171,1.171,0,0,1,24.6,7.028H1.171A1.171,1.171,0,0,1,0,5.857V1.171A1.171,1.171,0,0,1,1.171,0Z"
+																	transform="translate(23.31 8.602) rotate(135)" fill="#31d1ab" />
+																<path id="Combined-Shape"
+																	d="M17.586,12.514h1.171a.586.586,0,0,1,.586.586v1.171a.586.586,0,0,1-.586.586H17.586A.586.586,0,0,1,17,14.271V13.1A.586.586,0,0,1,17.586,12.514ZM21.1,9h1.171a.586.586,0,0,1,.586.586v1.171a.586.586,0,0,1-.586.586H21.1a.586.586,0,0,1-.586-.586V9.586A.586.586,0,0,1,21.1,9Zm1.171,4.686h1.171a.586.586,0,0,1,.586.586v1.171a.586.586,0,0,1-.586.586H22.271a.586.586,0,0,1-.586-.586V14.271A.586.586,0,0,1,22.271,13.686Z"
+																	transform="translate(2.914 1.543)" fill="#31d1ab" fill-rule="evenodd" opacity="0.3" />
+															</g>
+														</svg>
+													 
+													 
+												</div>
+												<div class="txt">
+													<h3>TRIAL PLAN</h3>
+													<h3>0$ FREE</h3>
+													<p>
+															BuyNoir was <b>built by black entrepreneures</b> for black entrepreneures and makers.
+													</p>
+													<ul><li><b>500</b> Product(s)</li> <li><b>50</b> Category(s)</li> <li><b>100</b> Attribute(s)</li> <li><b>100</b> Attribute Family(s)</li> <li><b>2</b> Channel(s)</li> <li><b>1000</b> Order(s)</li></ul>
+												</div>
+			
+											</div>
+										</div>
+										<div class="col-md-6 col-lg-3 item__nature mx-lg-auto">
+											<div class="mb-4 items_serv sevice_block mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+												<div class="icon--top">
+													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+														<g id="Group_6273" data-name="Group 6273" transform="translate(-4.896 -4.896)">
+															<rect id="Rectangle-7" width="4" height="4" rx="2" transform="translate(4.896 4.896)"
+																fill="#d6c0b7" opacity="0.3" />
+															<rect id="Rectangle-7-Copy-3" width="4" height="4" rx="2" transform="translate(4.896 11.896)"
+																fill="#d6c0b7" />
+															<rect id="Rectangle-7-Copy" width="4" height="4" rx="2" transform="translate(11.896 4.896)"
+																fill="#d6c0b7" />
+															<rect id="Rectangle-7-Copy-4" width="4" height="4" rx="2" transform="translate(11.896 11.896)"
+																fill="#d6c0b7" />
+															<rect id="Rectangle-7-Copy-2" width="4" height="4" rx="2" transform="translate(18.896 4.896)"
+																fill="#d6c0b7" />
+															<rect id="Rectangle-7-Copy-5" width="4" height="4" rx="2" transform="translate(18.896 11.896)"
+																fill="#d6c0b7" />
+															<rect id="Rectangle-7-Copy-8" width="4" height="4" rx="2" transform="translate(4.896 18.896)"
+																fill="#d6c0b7" />
+															<rect id="Rectangle-7-Copy-7" width="4" height="4" rx="2" transform="translate(11.896 18.896)"
+																fill="#d6c0b7" />
+															<rect id="Rectangle-7-Copy-6" width="4" height="4" rx="2" transform="translate(18.896 18.896)"
+																fill="#d6c0b7" />
+														</g>
+													</svg>
+												</div>
+												<div class="txt">
+													<h3>STANDARD</h3>
+													<h3>$23 PER MONTH</h3>
+													<p>
+														We listened to <b>hundreds of black owned small businesses</b> like yours and built the tools you'll need to sell more.
+													</p>
+													<ul><li><b>10000</b> Product(s)</li> <li><b>200</b> Category(s)</li> <li><b>300</b> Attribute(s)</li> <li><b>100</b> Attribute Family(s)</li> <li><b>5</b> Channel(s)</li> <li><b>100000</b> Order(s)</li></ul>
+												</div>
+			
+											</div>
+										</div>
+										<div class="col-md-6 col-lg-3 item__nature">
+											<div class="mb-4 items_serv sevice_block mb-lg-0" data-aos="fade-up" data-aos-delay="200">
+												<div class="icon--top">
+													<svg xmlns="http://www.w3.org/2000/svg" width="21.085" height="21.085" viewBox="0 0 21.085 21.085">
+														<g id="Group_6274" data-name="Group 6274" transform="translate(-3.514 -3.514)">
+															<rect id="Rectangle-62-Copy" width="3.514" height="15.228" rx="1.5"
+																transform="translate(14.057 4.686)" fill="#d6c0b7" opacity="0.3" />
+															<rect id="Rectangle-62-Copy-2" width="3.514" height="9.371" rx="1.5"
+																transform="translate(8.2 10.543)" fill="#d6c0b7" opacity="0.3" />
+															<path id="Path-95"
+																d="M5.343,21.742H22.914a1.171,1.171,0,0,1,0,2.343H4.171A1.171,1.171,0,0,1,3,22.914V4.171a1.171,1.171,0,0,1,2.343,0Z"
+																transform="translate(0.514 0.514)" fill="#31d1ab" />
+															<rect id="Rectangle-62-Copy-4" width="3.514" height="7.028" rx="1.5"
+																transform="translate(19.914 12.885)" fill="#d6c0b7" opacity="0.3" />
+														</g>
+													</svg>
+												</div>
+												<div class="txt">
+													<h3>PREMIUM</h3>
+													<h3>$39.99 PER MONTH</h3>
+													<p>
+														We've built tools to help you keep a pulse on our culture and speak directly to what's relevant. 
+													</p>
+													<ul><li><b>25000</b> Product(s)</li> <li><b>250</b> Category(s)</li> <li><b>300</b> Attribute(s)</li> <li><b>300</b> Attribute Family(s)</li> <li><b>10</b> Channel(s)</li> <li><b>200000</b> Order(s)</li></ul>
+												</div>
+			
+											</div>
+										</div>
+			
+									</div>
+								</div>
+							</section>
+							<!-- End. price plan -->
 		
 						<!-- Start Easy Templates -->
 						<section class="software_web margin-t-12" id="Products">
@@ -207,6 +322,7 @@
 										<div class="mb-4 item__section mb-lg-0">
 											<div class="media">
 												<div class="icon_sec">
+
 													<svg xmlns="http://www.w3.org/2000/svg" width="11.711" height="24.599"
 														viewBox="0 0 11.711 24.599">
 														<g id="Group_6275" data-name="Group 6275" transform="translate(-8.202 -2.343)">
