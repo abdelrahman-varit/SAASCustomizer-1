@@ -259,7 +259,7 @@
 		display: inline-block;
 	}
 	div.footer .footer-statics {
-		flex-direction: row;
+		flex-direction: row !important;
 	}
 	.software-description {
 		flex: 3;
