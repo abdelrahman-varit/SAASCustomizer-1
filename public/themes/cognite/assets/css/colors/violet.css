@@ -1,20 +1,20 @@
 .header .header-bottom {
-    background-color: #97B659;
+    background-color: #32355E;
 }
 
 .buynow {
-    background-color: #719230 !important;
+    background-color: #171b4c !important;
 }
 
 .header .header-bottom .nav a {
     color: white;
 }
 .header .header-top div.left-content ul.search-container li.search-group .search-icon-wrapper button {
-    background-color: #97B659;
+    background-color: #32355E;
 }
 
 .header .header-top div.right-content .right-content-menu > li .la-user {
-    color: #97B659;
+    color: #32355E;
 }
 
 .middle-bar .header-top div.left-content ul.search-container select {
@@ -26,12 +26,12 @@
 }
 
 #sidenav .category_heading {
-    background-color: #719230 !important;
+    background-color: #171b4c !important;
 }
 
 
 #sidenav .category_content .class-one li:hover {
-    background-color: #97B659 !important;
+    background-color: #32355E !important;
 }
 
 #sidenav .category_content .class-one li:hover > a {
@@ -39,7 +39,7 @@
 }
 
 #sidenav .category_content .class-one li.active {
-    background-color: #97B659 !important;
+    background-color: #32355E !important;
 }
 
 #sidenav .category_content .expandable:hover > i,
@@ -53,29 +53,29 @@
 }
 
 .slick-dots li.slick-active button:before {
-    background-color: #97B659;
-    border-color: #97B659;
+    background-color: #32355E;
+    border-color: #32355E;
 }
 
 .main-container-wrapper .product-card .sticker.new {
-    background-color: #97B659;
+    background-color: #32355E;
 }
 
 .card-current-price,
 .product-card .product-price {
-    color: #97B659 !important;
+    color: #32355E !important;
 }
 
 .product-card .price-from {
-    color: #97B659;
+    color: #32355E;
 }
 
 .footer-copyright {
-    background-color: #719230;
+    background-color: #171b4c;
 }
 
 div.footer {
-    background-image: url('../../images/footer-bg-lemon.jpg');
+    background-image: url('../../images/footer-bg-violet.jpg');
     color: white;
 }
 
@@ -98,23 +98,23 @@ div.footer {
 }
 
 #scrollTop {
-    background-color: #97B659;
+    background-color: #32355E;
 }
 
 .btn.btn-primary,
 .btn.btn-black,
 .btn-dark {
-    background-color: #97B659;
+    background-color: #32355E;
     color: white !important;
 }
 
 .btn-bn {
-    background-color: #97B659;
+    background-color: #32355E;
     color: white;
 }
 
 .header .header-bottom .nav>li:hover {
-    background-color: #719230;
+    background-color: #171b4c;
 }
 
 .card-quick-icon {
@@ -126,23 +126,23 @@ div.footer {
 }
 
 i.wishlist-icons {
-    background-image: url('../../images/wishlist-added-lemon.svg');
+    background-image: url('../../images/wishlist-added-violet.svg');
 }
 
 .cart-icon {
-    background-image: url('../../images/icon-cart-lemon.svg');
+    background-image: url('../../images/icon-cart-violet.svg');
 }
 
 i.compare-icons {
-    background-image: url('../../images/sync-lemon.svg');
+    background-image: url('../../images/sync-violet.svg');
 }
 
 .header .header-bottom .main-container-wrapper {
-    background-color: #97B659;
+    background-color: #32355E;
 }
 
 #section.product-detail div.layouter .form-container .details .product-price {
-    color: #97B659;
+    color: #32355E;
 }
 
 .border-bottom {
@@ -154,55 +154,55 @@ i.compare-icons {
 }
 
 .account-content .menu-block .menubar li.active a {
-    border-color: #97B659;
+    border-color: #32355E;
 }
 
 .pagination .page-item.active {
-    background-color: #97B659;
-    border-color: #97B659;
+    background-color: #32355E;
+    border-color: #32355E;
 }
 
 .badge.badge-success {
-    background-color: #97B659;
+    background-color: #32355E;
 }
 
 .downloadable-product-table a {
-    color: #97B659;
+    color: #32355E;
 }
 
 .search-filter .icon-wrapper {
-    background-color: #97B659;
-    border-color: #97B659;
+    background-color: #32355E;
+    border-color: #32355E;
 }
 
 .product-price .special-price,
 .product-price .regular-price {
-    color: #97B659;
+    color: #32355E;
 }
 
 
 section.product-detail div.layouter .form-container div.product-image-group div .product-hero-image .add-to-wishlist {
-    background-image: url('../../images/wishlist-lemon.svg');
+    background-image: url('../../images/wishlist-violet.svg');
 }
 
 section.product-detail div.layouter .form-container div.product-image-group div .product-hero-image .add-to-wishlist:hover {
-    background-image: url('../../images/wishlist-added-lemon.svg');
+    background-image: url('../../images/wishlist-added-violet.svg');
 }
 
 section.product-detail div.layouter .form-container div.product-image-group div .product-hero-image .add-to-wishlist.already {
-    background-image: url('../../images/wishlist-added-lemon.svg') !important;
+    background-image: url('../../images/wishlist-added-violet.svg') !important;
 }
 
 .compare-products .product-price {
-    color: #97B659 !important;
+    color: #32355E !important;
 }
 
 #bn-mini-cart-grandTotal {
-    color: #97B659;
+    color: #32355E;
 }
 
 .order-summary-wrapper .btn {
-    border-color: #97B659;
+    border-color: #32355E;
 }
 
 section.cart .cart-content .left-side .misc-controls .btn {
@@ -212,26 +212,26 @@ section.cart .cart-content .left-side .misc-controls .btn {
 }
 
 .checkout-process .address-card.active {
-    border-color: #97B659;
+    border-color: #32355E;
 }
 
 .checkout-process .address-card.active .radio-container .checkmark {
-    border-color: #97B659;
+    border-color: #32355E;
 }
 .radio-container .checkmark:after {
-    background-color: #97B659;
+    background-color: #32355E;
 }
 
 .checkbox input:checked+.checkbox-view {
-    background-image: url('../../images/checkbox-checked-lemon.svg')!important;
+    background-image: url('../../images/checkbox-checked-violet.svg')!important;
 }
 
 #checkout .checkout-method-group.active {
-    border-color: #97B659;
+    border-color: #32355E;
 }
 
 #checkout .checkout-method-group.active .radio-container .checkmark {
-    border-color: #97B659;
+    border-color: #32355E;
 }
 
 #checkout-place-order-button {
@@ -239,26 +239,26 @@ section.cart .cart-content .left-side .misc-controls .btn {
 }
 
 .checkout-process .col-main ul.checkout-steps li.active .decorator {
-    border-color: #97B659;
+    border-color: #32355E;
 }
 
 section.product-detail div.layouter .form-container .details .product-price {
-    color: #97B659 !important;
+    color: #32355E !important;
 }
 
 .category-description > div {
-    background-color: #97B659;
+    background-color: #32355E;
     color: white;
 }
 
 .animated-loader:after {
-    border-top-color: #719230;
+    border-top-color: #171b4c;
 }
 
 .newsletter-subscription {
-	background-color: rgba(151, 182, 89, .5);
+	background-color: rgba(50, 53, 94, .5);
 }
 
 .newsletter-subscription .control-group button{
-    background: #719230;
+    background: #171b4c;
 }
