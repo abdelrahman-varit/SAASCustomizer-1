@@ -572,6 +572,7 @@ table.table {
 	border-bottom-color: #d3d3d3;
 }
 
+.table table thead th,
 table.table th {
 	background-color: #7BAFF8 !important;
 }
@@ -712,4 +713,8 @@ a:active, a:focus, a:hover, a:link, a:visited {
 
 .tabs ul li.active a {
 	border-color: #7BAFF8;
+}
+
+.content-container .content .page-content .tabs {
+	background-color: white;
 }
