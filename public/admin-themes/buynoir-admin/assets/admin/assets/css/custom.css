@@ -370,7 +370,7 @@ div.table {
 }
 
 .dashboard .dashboard-stats .dashboard-card .progress {
-	font-size: 32px;
+	font-size: 20px;
     font-weight: bold;
     color: white;
     display: flex;
@@ -382,6 +382,7 @@ div.table {
 
 .dashboard .dashboard-stats .dashboard-card .feedback {
 	color: white;
+	text-align: right;
 }
 
 .buynoir-dashboard-container .dashboard .card {
@@ -701,4 +702,14 @@ a:active, a:focus, a:hover, a:link, a:visited {
 
 .content-container .content .page-header .page-title h1 {
 	font-size: 24px;
+}
+
+.content-container .content .page-header .control {
+	-webkit-border-radius: 1rem;
+	-moz-border-radius: 1rem;
+	border-radius: 1rem;
+}
+
+.tabs ul li.active a {
+	border-color: #7BAFF8;
 }

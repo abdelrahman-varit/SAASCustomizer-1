@@ -31,9 +31,9 @@
                     </div>
                     <div class="feedback">
                         @if ($statistics['total_customers']['progress'] < 0)
-                            {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['total_customers']['progress'], 1) ]) }}
+                            <i class="fa fa-arrow-up"></i> {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['total_customers']['progress'], 1) ]) }}
                         @else
-                            {{ __('admin::app.dashboard.increased', [ 'progress' => number_format($statistics['total_customers']['progress'], 1) ]) }}
+                            <i class="fa fa-arrow-down"></i> {{ __('admin::app.dashboard.increased', [ 'progress' => number_format($statistics['total_customers']['progress'], 1) ]) }}
                         @endif
                     </div>
                 </div>
@@ -44,14 +44,14 @@
                         {{ __('admin::app.dashboard.total-orders') }}
                     </div>
                     <div class="progress">
-                        <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/total_customers.svg') }}" alt="Total Customers">
+                        <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/total_orders.svg') }}" alt="Total Orders">
                         <span>{{ $statistics['total_orders']['current'] }}</span>
                     </div>
                     <div class="feedback">
                         @if ($statistics['total_orders']['progress'] < 0)
-                            {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['total_orders']['progress'], 1) ]) }}
+                            <i class="fa fa-arrow-up"></i> {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['total_orders']['progress'], 1) ]) }}
                         @else
-                            {{ __('admin::app.dashboard.increased', [ 'progress' => number_format($statistics['total_orders']['progress'], 1) ]) }}
+                            <i class="fa fa-arrow-down"></i> {{ __('admin::app.dashboard.increased', [ 'progress' => number_format($statistics['total_orders']['progress'], 1) ]) }}
                         @endif
                     </div>
                 </div>
@@ -62,14 +62,14 @@
                         {{ __('admin::app.dashboard.total-sale') }}
                     </div>
                     <div class="progress">
-                        <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/total_customers.svg') }}" alt="Total Customers">
+                        <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/total_sales.svg') }}" alt="Total Sales">
                         <span>{{ core()->formatBasePrice($statistics['total_sales']['current']) }}</span>
                     </div>
                     <div class="feedback">
                         @if ($statistics['total_sales']['progress'] < 0)
-                            {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['total_sales']['progress'], 1)])}}
+                            <i class="fa fa-arrow-up"></i> {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['total_sales']['progress'], 1)])}}
                         @else
-                            {{ __('admin::app.dashboard.increased', ['progress' => number_format($statistics['total_sales']['progress'], 1)]) }}
+                            <i class="fa fa-arrow-down"></i> {{ __('admin::app.dashboard.increased', ['progress' => number_format($statistics['total_sales']['progress'], 1)]) }}
                         @endif
                     </div>
                 </div>
@@ -79,14 +79,14 @@
                         {{ __('admin::app.dashboard.average-sale') }}
                     </div>
                     <div class="progress">
-                        <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/total_customers.svg') }}" alt="Total Customers">
+                        <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/average_order_sale.svg') }}" alt="Average Order Sale">
                         <span>{{ core()->formatBasePrice($statistics['avg_sales']['current']) }}</span>
                     </div>
                     <div class="feedback">
                         @if ($statistics['avg_sales']['progress'] < 0)
-                            {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['avg_sales']['progress'], 1) ]) }}
+                            <i class="fa fa-arrow-up"></i> {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['avg_sales']['progress'], 1) ]) }}
                         @else
-                            {{ __('admin::app.dashboard.increased', [ 'progress' => number_format($statistics['avg_sales']['progress'], 1) ]) }}
+                            <i class="fa fa-arrow-down"></i> {{ __('admin::app.dashboard.increased', [ 'progress' => number_format($statistics['avg_sales']['progress'], 1) ]) }}
                         @endif
                     </div>
                 </div>
