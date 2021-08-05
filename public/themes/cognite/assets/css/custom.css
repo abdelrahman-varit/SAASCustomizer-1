@@ -2278,3 +2278,31 @@ section.product-detail div.layouter .form-container .details .attributes .attrib
 section.product-detail div.layouter .form-container .details .stock-status {
 	color: red;
 }
+
+
+.newsletter-subscription {
+	background-color: rgba(250, 227, 219, .5);
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.newsletter-subscription .control-group {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+.newsletter-subscription .control-group input{
+	margin: 0;
+	flex-grow: 1;
+}
+.newsletter-subscription .control-group button{
+	width: 180px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
