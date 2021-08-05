@@ -157,6 +157,28 @@ body {
 
 .search-filter .control {
 	width: calc(100% - 36px);
+	border-top-left-radius: 1rem;
+	border-bottom-left-radius: 1rem;
+	border-width: 1px;
+}
+
+.search-filter .control:focus,
+.search-filter .control:focus + .icon-wrapper{
+	border-color: #7BAFF8;
+}
+
+.search-filter .icon-wrapper {
+	border-width: 1px;
+	cursor: pointer;
+	border-top-right-radius: 1rem;
+	border-bottom-right-radius: 1rem;
+}
+
+.search-filter .icon-wrapper .icon {
+	width: 16px;
+	height: 16px;
+	display: block;
+	margin: 6px auto;
 }
 
 .content-container .content {
@@ -545,9 +567,129 @@ div.table {
 }
 
 
+table.table {
+	border-bottom-color: #d3d3d3;
+}
+
+table.table th {
+	background-color: #7BAFF8 !important;
+}
+
+.table table thead th {
+	color: white;
+}
+
+.pagination .page-item.active {
+	border-color: #7BAFF8;
+	background-color: #7BAFF8;
+}
+
+.pagination .page-item {
+	border-width: 1px;
+	-webkit-border-radius: .25rem;
+	-moz-border-radius: .25rem;
+	border-radius: .25rem;
+}
 
 
+.control-group .control {
+	border-width: 1px;
+}
 
+.control-group .control:focus {
+	border-color: #7BAFF8;
+}
 
+.dropdown-list .dropdown-container ul li a:hover {
+	color: #7BAFF8;
+}
 
+.dropdown-list.dropdown-container .apply-filter {
+	background: #bbb;
+	color: white;
+    border: none;
+    cursor: pointer;
+	-webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    border-radius: .5rem;
+}
 
+.dropdown-toggle.active .grid-dropdown-header {
+	border-color: #7BAFF8;
+}
+
+.grid-dropdown-header {
+	background-color: white;
+	border-width: 1px;
+	-webkit-border-radius: 1rem;
+	-moz-border-radius: 1rem;
+	border-radius: 1rem;
+}
+
+.badge.badge-success {
+    background-color: #01A751;
+}
+
+.badge.badge-warning {
+    background-color: #FEC107;
+}
+
+.badge {
+	text-align: center;
+	display: block;
+}
+.table .control-group .control,
+.datagrid-filters .dropdown-filters.per-page .control-group .control {
+	border-radius: 1rem;
+	-webkit-border-radius: 1rem;
+	-moz-border-radius: 1rem;
+}
+
+.checkbox input:checked+.checkbox-view {
+	background-image: url('../images/Checkbox-Checked.svg');
+}
+
+.checkbox .checkbox-view {
+	background-image: url('../images/Checkbox.svg');
+}
+
+.mass-action-wrapper .checkbox-dash-icon {
+	background-image: url('../images/Checkbox-Dash.svg');
+}
+
+.btn {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.btn-primary {
+    background: #7BAFF8 !important;
+}
+
+.mass-action-wrapper .btn-primary {
+	background-color: #bbb !important;
+}
+
+.accordian, accordian {
+	background-color: white;
+}
+
+.accordian .accordian-header,
+.accordian div[slot*=header],
+accordian .accordian-header,
+accordian div[slot*=header] {
+	background-color: rgba(123, 175, 248, .35);
+	font-weight: bold;
+}
+
+.accordian-down-icon {
+	background-image: url('../images/Accordion-Arrow-Down.svg');
+}
+.accordian-up-icon {
+	background-image: url('../images/Accordion-Arrow-Up.svg');
+}
+
+.control-group input:checked+.slider {
+	background-color: #7BAFF8 !important;
+}

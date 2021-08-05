@@ -56,21 +56,6 @@
 		width: auto;
 		height: auto;
 	}
-
-	.accordian .accordian-content,
-	.accordian div[slot*="body"],
-	accordian .accordian-content,
-	accordian div[slot*="body"] {
-		padding-left: 0;
-		padding-right: 0;
-	}
-	.accordian .accordian-header,
-	.accordian div[slot*="header"],
-	accordian .accordian-header,
-	accordian div[slot*="header"] {
-		padding-left: 0;
-		padding-right: 0;
-	}
 	.content-container .content .page-header {
 		margin-bottom: 25px;
 	}
