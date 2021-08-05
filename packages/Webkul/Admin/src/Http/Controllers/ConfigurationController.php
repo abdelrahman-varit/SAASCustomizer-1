@@ -7,6 +7,7 @@ use Webkul\Core\Repositories\CoreConfigRepository;
 use Webkul\Core\Tree;
 use Illuminate\Support\Facades\Storage;
 use Webkul\Admin\Http\Requests\ConfigurationForm;
+use Company;
 
 class ConfigurationController extends Controller
 {
@@ -113,7 +114,17 @@ class ConfigurationController extends Controller
     public function store(ConfigurationForm $request)
     {
         Event::dispatch('core.configuration.save.before');
-
+        $shop_accounts = request()->get('general')['general']['shop-accounts']['enable'];
+        $company = Company::getCurrent();
+        if($shop_accounts){
+            $company->update([
+                'is_active' => 0
+            ]);
+        }else{
+            $company->update([
+                'is_active' => 1
+            ]);
+        }
         $this->coreConfigRepository->create(request()->all());
 
         Event::dispatch('core.configuration.save.after');

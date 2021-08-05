@@ -259,11 +259,11 @@ class CartController extends Controller
     public function applyCoupon()
     {
         $couponCode = request()->get('code');
-
+        
         try {
             if (strlen($couponCode)) {
                 Cart::setCouponCode($couponCode)->collectTotals();
-
+              
                 if (Cart::getCart()->coupon_code == $couponCode) {
                     return response()->json([
                         'success' => true,
