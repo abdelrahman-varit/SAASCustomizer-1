@@ -25,77 +25,52 @@
                     <div class="title">
                         {{ __('admin::app.dashboard.total-customers') }}
                     </div>
-
-                    <div class="data">
-                        {{ $statistics['total_customers']['current'] }}
-
-                        <span class="progress">
-                            @if ($statistics['total_customers']['progress'] < 0)
-                                <span class="icon graph-down-icon"></span>
-                                {{ __('admin::app.dashboard.decreased', [
-                                        'progress' => -number_format($statistics['total_customers']['progress'], 1)
-                                    ])
-                                }}
-                            @else
-                                <span class="icon graph-up-icon"></span>
-                                {{ __('admin::app.dashboard.increased', [
-                                        'progress' => number_format($statistics['total_customers']['progress'], 1)
-                                    ])
-                                }}
-                            @endif
-                        </span>
+                    <div class="progress">
+                        <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/total_customers.svg') }}" alt="Total Customers">
+                        <span>{{ $statistics['total_customers']['current'] }}</span>
+                    </div>
+                    <div class="feedback">
+                        @if ($statistics['total_customers']['progress'] < 0)
+                            <i class="fa fa-arrow-up"></i> {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['total_customers']['progress'], 1) ]) }}
+                        @else
+                            <i class="fa fa-arrow-down"></i> {{ __('admin::app.dashboard.increased', [ 'progress' => number_format($statistics['total_customers']['progress'], 1) ]) }}
+                        @endif
                     </div>
                 </div>
+
 
                 <div class="dashboard-card">
                     <div class="title">
                         {{ __('admin::app.dashboard.total-orders') }}
                     </div>
-
-                    <div class="data">
-                        {{ $statistics['total_orders']['current'] }}
-
-                        <span class="progress">
-                            @if ($statistics['total_orders']['progress'] < 0)
-                                <span class="icon graph-down-icon"></span>
-                                {{ __('admin::app.dashboard.decreased', [
-                                        'progress' => -number_format($statistics['total_orders']['progress'], 1)
-                                    ])
-                                }}
-                            @else
-                                <span class="icon graph-up-icon"></span>
-                                {{ __('admin::app.dashboard.increased', [
-                                        'progress' => number_format($statistics['total_orders']['progress'], 1)
-                                    ])
-                                }}
-                            @endif
-                        </span>
+                    <div class="progress">
+                        <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/total_orders.svg') }}" alt="Total Orders">
+                        <span>{{ $statistics['total_orders']['current'] }}</span>
+                    </div>
+                    <div class="feedback">
+                        @if ($statistics['total_orders']['progress'] < 0)
+                            <i class="fa fa-arrow-up"></i> {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['total_orders']['progress'], 1) ]) }}
+                        @else
+                            <i class="fa fa-arrow-down"></i> {{ __('admin::app.dashboard.increased', [ 'progress' => number_format($statistics['total_orders']['progress'], 1) ]) }}
+                        @endif
                     </div>
                 </div>
+
 
                 <div class="dashboard-card">
                     <div class="title">
                         {{ __('admin::app.dashboard.total-sale') }}
                     </div>
-
-                    <div class="data">
-                        {{ core()->formatBasePrice($statistics['total_sales']['current']) }}
-
-                        <span class="progress">
-                            @if ($statistics['total_sales']['progress'] < 0)
-                                <span class="icon graph-down-icon"></span>
-                                {{ __('admin::app.dashboard.decreased', [
-                                        'progress' => -number_format($statistics['total_sales']['progress'], 1)
-                                    ])
-                                }}
-                            @else
-                                <span class="icon graph-up-icon"></span>
-                                {{ __('admin::app.dashboard.increased', [
-                                        'progress' => number_format($statistics['total_sales']['progress'], 1)
-                                    ])
-                                }}
-                            @endif
-                        </span>
+                    <div class="progress">
+                        <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/total_sales.svg') }}" alt="Total Sales">
+                        <span>{{ core()->formatBasePrice($statistics['total_sales']['current']) }}</span>
+                    </div>
+                    <div class="feedback">
+                        @if ($statistics['total_sales']['progress'] < 0)
+                            <i class="fa fa-arrow-up"></i> {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['total_sales']['progress'], 1)])}}
+                        @else
+                            <i class="fa fa-arrow-down"></i> {{ __('admin::app.dashboard.increased', ['progress' => number_format($statistics['total_sales']['progress'], 1)]) }}
+                        @endif
                     </div>
                 </div>
 
@@ -103,25 +78,16 @@
                     <div class="title">
                         {{ __('admin::app.dashboard.average-sale') }}
                     </div>
-
-                    <div class="data">
-                        {{ core()->formatBasePrice($statistics['avg_sales']['current']) }}
-
-                        <span class="progress">
-                            @if ($statistics['avg_sales']['progress'] < 0)
-                                <span class="icon graph-down-icon"></span>
-                                {{ __('admin::app.dashboard.decreased', [
-                                        'progress' => -number_format($statistics['avg_sales']['progress'], 1)
-                                    ])
-                                }}
-                            @else
-                                <span class="icon graph-up-icon"></span>
-                                {{ __('admin::app.dashboard.increased', [
-                                        'progress' => number_format($statistics['avg_sales']['progress'], 1)
-                                    ])
-                                }}
-                            @endif
-                        </span>
+                    <div class="progress">
+                        <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/average_order_sale.svg') }}" alt="Average Order Sale">
+                        <span>{{ core()->formatBasePrice($statistics['avg_sales']['current']) }}</span>
+                    </div>
+                    <div class="feedback">
+                        @if ($statistics['avg_sales']['progress'] < 0)
+                            <i class="fa fa-arrow-up"></i> {{ __('admin::app.dashboard.decreased', [ 'progress' => -number_format($statistics['avg_sales']['progress'], 1) ]) }}
+                        @else
+                            <i class="fa fa-arrow-down"></i> {{ __('admin::app.dashboard.increased', [ 'progress' => number_format($statistics['avg_sales']['progress'], 1) ]) }}
+                        @endif
                     </div>
                 </div>
 
@@ -131,14 +97,21 @@
 
                 <div class="left-card-container graph">
                     <div class="card" style="overflow: hidden;">
-                        <div class="card-title" style="margin-bottom: 30px;">
+                        <div class="card-title">
                             {{ __('admin::app.dashboard.sales') }}
                         </div>
-
-                        <div class="card-info" style="height: 100%;">
-
-                            <canvas id="myChart" style="width: 100%; height: 87%"></canvas>
-
+                        <div class="card-info">
+                            @if (!array_filter($statistics['sale_graph']['total']))
+                                <br>
+                                <div class="no-result">
+                                    <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/sales_gr.svg') }}" alt="No data available!">
+                                    <h4>{{ __('admin::app.common.start-building-dashboard') }}</h4>
+                                    <p>{{ __('admin::app.common.no-data-suggation') }}</p>
+                                    <a href="#">{{ __('admin::app.common.add-data') }}</a>
+                                </div>
+                            @else
+                                <canvas id="myChart"></canvas>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -177,12 +150,12 @@
                             </ul>
 
                             @if (! count($statistics['top_selling_categories']))
-
-                                <div class="no-result-found">
-
-                                    <i class="icon no-result-icon"></i>
-                                    <p>{{ __('admin::app.common.no-result-found') }}</p>
-
+                                <br>
+                                <div class="no-result">
+                                    <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/top_performing_categories_gr.svg') }}" alt="No data available!">
+                                    <h4>{{ __('admin::app.common.no-data-avaibale') }}</h4>
+                                    <p>{{ __('admin::app.common.no-data-suggation') }}</p>
+                                    <a href="#">{{ __('admin::app.common.add-category') }}</a>
                                 </div>
 
                             @endif
@@ -234,12 +207,14 @@
                         </ul>
 
                         @if (! count($statistics['top_selling_products']))
-
-                            <div class="no-result-found">
-
-                                <i class="icon no-result-icon"></i>
-                                <p>{{ __('admin::app.common.no-result-found') }}</p>
-
+                            <br>
+                            <br>
+                            <br>
+                            <div class="no-result">
+                                <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/top_selling_products_gr.svg') }}" alt="No data available!">
+                                <h4>{{ __('admin::app.common.no-data-avaibale') }}</h4>
+                                <p>{{ __('admin::app.common.no-data-suggation') }}</p>
+                                <a href="#">{{ __('admin::app.common.add-data') }}</a>
                             </div>
 
                         @endif
@@ -293,11 +268,13 @@
 
                         @if (! count($statistics['customer_with_most_sales']))
 
-                            <div class="no-result-found">
-
-                                <i class="icon no-result-icon"></i>
-                                <p>{{ __('admin::app.common.no-result-found') }}</p>
-
+                            <br>
+                            <br>
+                            <div class="no-result">
+                                <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/customers_with_most_sales_gr.svg') }}" alt="No data available!">
+                                <h4>{{ __('admin::app.common.no-data-avaibale') }}</h4>
+                                <p>{{ __('admin::app.common.no-data-suggation') }}</p>
+                                <a href="#">{{ __('admin::app.common.add-data') }}</a>
                             </div>
 
                         @endif
@@ -343,13 +320,16 @@
 
                         </ul>
 
-                        @if (! count($statistics['stock_threshold']))
-
-                            <div class="no-result-found">
-
-                                <i class="icon no-result-icon"></i>
-                                <p>{{ __('admin::app.common.no-result-found') }}</p>
-
+                        @if (!count($statistics['stock_threshold']))
+                            
+                            <br>
+                            <br>
+                            <br>
+                            <div class="no-result">
+                                <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/stock_threshold_gr.svg') }}" alt="No data available!">
+                                <h4>{{ __('admin::app.common.no-data-avaibale') }}</h4>
+                                <p>{{ __('admin::app.common.no-data-suggation') }}</p>
+                                <a href="#">{{ __('admin::app.common.add-data') }}</a>
                             </div>
 
                         @endif
@@ -401,61 +381,62 @@
 
         $(document).ready(function () {
 
-            var ctx = document.getElementById("myChart").getContext('2d');
+            var ctx = document.getElementById("myChart");
 
-            var data = @json($statistics['sale_graph']);
-
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: data['label'],
-                    datasets: [{
-                        data: data['total'],
-                        backgroundColor: 'rgba(34, 201, 93, 1)',
-                        borderColor: 'rgba(34, 201, 93, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    legend: {
-                        display: false
-                    },
-                    scales: {
-                        xAxes: [{
-                            maxBarThickness: 20,
-                            gridLines : {
-                                display : false,
-                                drawBorder: false,
-                            },
-                            ticks: {
-                                beginAtZero: true,
-                                fontColor: 'rgba(162, 162, 162, 1)'
-                            }
-                        }],
-                        yAxes: [{
-                            gridLines: {
-                                drawBorder: false,
-                            },
-                            ticks: {
-                                padding: 20,
-                                beginAtZero: true,
-                                fontColor: 'rgba(162, 162, 162, 1)'
-                            }
+            if(typeof(ctx) != 'undefined' && ctx != null) {
+                var data = @json($statistics['sale_graph']);
+                var myChart = new Chart(ctx.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: data['label'],
+                        datasets: [{
+                            data: data['total'],
+                            backgroundColor: 'rgba(79, 152, 255, 1)',
+                            borderColor: 'rgba(79, 152, 255, 1)',
+                            borderWidth: 1
                         }]
                     },
-                    tooltips: {
-                        mode: 'index',
-                        intersect: false,
-                        displayColors: false,
-                        callbacks: {
-                            label: function(tooltipItem, dataTemp) {
-                                return data['formated_total'][tooltipItem.index];
+                    options: {
+                        responsive: true,
+                        legend: {
+                            display: false
+                        },
+                        scales: {
+                            xAxes: [{
+                                maxBarThickness: 20,
+                                gridLines : {
+                                    display : false,
+                                    drawBorder: false,
+                                },
+                                ticks: {
+                                    beginAtZero: true,
+                                    fontColor: 'rgba(162, 162, 162, 1)'
+                                }
+                            }],
+                            yAxes: [{
+                                gridLines: {
+                                    drawBorder: false,
+                                },
+                                ticks: {
+                                    padding: 20,
+                                    beginAtZero: true,
+                                    fontColor: 'rgba(162, 162, 162, 1)'
+                                }
+                            }]
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                            displayColors: false,
+                            callbacks: {
+                                label: function(tooltipItem, dataTemp) {
+                                    return data['formated_total'][tooltipItem.index];
+                                }
                             }
                         }
                     }
-                }
-            });
+                });
+            }
         });
     </script>
 
