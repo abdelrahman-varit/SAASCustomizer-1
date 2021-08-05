@@ -254,3 +254,11 @@ section.product-detail div.layouter .form-container .details .product-price {
 .animated-loader:after {
     border-top-color: #719230;
 }
+
+.newsletter-subscription {
+	background-color: rgba(151, 182, 89, .5);
+}
+
+.newsletter-subscription .control-group button{
+    background: #719230;
+}
