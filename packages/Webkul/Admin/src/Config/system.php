@@ -25,9 +25,18 @@ return [
                         'title' => 'default',
                         'value' => 'default',
                     ], [
+                        'title' => 'blue',
+                        'value' => 'blue',
+                    ],[
                         'title' => 'lemon',
                         'value' => 'lemon',
-                    ],  
+                    ],  [
+                        'title' => 'sky',
+                        'value' => 'sky',
+                    ],  [
+                        'title' => 'violet',
+                        'value' => 'violet',
+                    ]
                 ],
                 'channel_based' => true
             ],
@@ -94,7 +103,23 @@ return [
                 'default_value' => config('mail.admin.address'),
             ],
         ],
-    ], [
+    ],
+    
+    [
+        'key'    => 'general.general.shop-accounts',
+        'name'   => 'Shop active/deactived',
+        'sort'   => 6,
+        'fields' => [
+            [
+                'name'  => 'enable',
+                'title' => 'Deactived',
+                'type'  => 'boolean',
+            ]
+        ]
+    ],
+
+    
+    [
         'key'  => 'general.content',
         'name' => 'admin::app.admin.system.content',
         'sort' => 2,
