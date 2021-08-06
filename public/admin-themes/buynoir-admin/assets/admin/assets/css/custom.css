@@ -30,6 +30,7 @@ body {
 }
 
 .navbar-left ul.menubar > li.menu-item:hover > a,
+.navbar-left ul.menubar > li.menu-item.current > a,
 .navbar-left ul.menubar > li.menu-item.active > a {
 	background-color: #E6E7E9;
 }
@@ -38,7 +39,7 @@ body {
 	display: none;
 }
 
-.navbar-left ul.menubar li.active ul.buynoir-menubar-sub {
+.navbar-left ul.menubar li.current ul.buynoir-menubar-sub {
 	display: block;
 }
 
@@ -69,15 +70,14 @@ body {
 	margin-bottom: 5px;
 }
 
-
-
 .navbar-left ul.menubar ul.buynoir-menubar-sub a {
 	color: inherit !important;
-	padding: 5px 15px;
+	padding: 5px 15px 5px 55px;
 	text-transform: capitalize;
 	font-size: 15px;
 }
 
+.navbar-left ul.menubar ul.buynoir-menubar-sub li.current a,
 .navbar-left ul.menubar ul.buynoir-menubar-sub li.active a {
 	color: black;
 	font-weight: bold;

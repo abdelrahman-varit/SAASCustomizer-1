@@ -138,22 +138,6 @@
 	.control-group .control {
 		width: 100%;
 	}
-
-	.buynoir-menubar-sub {
-		width: 0;
-		overflow: hidden;
-		position: fixed;
-		right: calc(100% - 279px);
-		z-index: 100;
-		background-color: #fdf4f0;
-		top: 60px;
-		padding-top: 10px;
-		padding-bottom: 10px;
-		bottom: 0;
-		-webkit-transition: .3s;
-		-moz-transition: .3s;
-		transition: .3s;
-	}
 }
 
 @media (min-width: 768px) {
@@ -187,14 +171,6 @@
 		display: inline-block;
 		margin-left: 7px;
 	}
-	
-
-
-
-
-
-
-
 }
 
 @media (min-width: 992px) {

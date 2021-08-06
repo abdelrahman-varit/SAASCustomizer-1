@@ -27,3 +27,39 @@
 		height: 1000px;
 	}
 }
+
+
+.package {
+	background-color: white;
+	padding: 50px 30px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	font-weight: normal;
+	min-height: 500px;
+}
+
+.package .package_name {
+	color: #284058;
+	margin-bottom: 15px;
+}
+
+.package .package_price {
+	margin-top: 15px;
+	color: #aa5352;
+}
+.package ul {
+	padding-top: 10px;
+}
+
+.package li + li {
+	margin-top: 5px;
+}
+
+.package.featured {
+	background-color: #284058;
+	color: white;
+}
+
+.package.featured .package_name,
+.package.featured .package_price {
+	color: white;
+}
