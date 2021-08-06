@@ -49,7 +49,8 @@ class HomeController extends Controller
     public function index()
     {
         $currentChannel = core()->getCurrentChannel();
-
+        
+       
         $currentLocale = core()->getCurrentLocale();
 
         $sliderData = $this->sliderRepository

@@ -288,7 +288,7 @@ return [
         BuyNoir\StripeConnect\Providers\StripeConnectServiceProvider::class,
         BuyNoir\SuperLandPage\Providers\SuperLandPageServiceProvider::class,
         Ridhima\MediaManager\Providers\MediaManagerServiceProvider::class,
-        Webkul\Dropship\Providers\DropshipServiceProvider::class,
+        //Webkul\Dropship\Providers\DropshipServiceProvider::class,
         Webkul\Webfont\Providers\WebfontServiceProvider::class
     ],
 
