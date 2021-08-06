@@ -7,7 +7,6 @@
                     <span>{{ trans($menuItem['name']) }}</span>
                 </a>
                 @if (count($menuItem['children']))
-                 
                     <ul class="buynoir-menubar-sub">
                         @foreach ($menuItem['children'] as $key => $menuItemChild)
                                 
@@ -22,7 +21,9 @@
                             @elseif($key=="sales")
                                 <li class="{{in_array(request()->route('slug2'),['shipping','carriers','paymentmethods','orderSettings'])?'active':''}}"><a href="{{ route('admin.configuration.index', 'sales/shipping') }}">{{ $key }}</a></li>
                             @elseif($key=="emails")
+ 
                                 <li class="{{$key=='emails' && request()->route('slug1')=="emails"?'active':''}}"><a href="{{ route('admin.configuration.index', 'emails/general') }}">{{ $key }}</a></li>
+
                             @else
                                 <li class="{{ $menu->getActive($menuItemChild) }}"><a href="{{ $menuItemChild['url'] }}">{{ $key}}</a></li>
                             @endif
