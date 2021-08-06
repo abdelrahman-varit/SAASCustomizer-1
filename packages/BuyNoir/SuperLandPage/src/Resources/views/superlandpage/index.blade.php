@@ -215,100 +215,60 @@
 										</div>
 									</div>
 									<div class="row">
-										<div class="col-md-6 col-lg-3 item__nature">
-											<div class="mb-4 items_serv sevice_block mb-lg-0" data-aos="fade-up" data-aos-delay="0">
-												<div class="icon--top">
-													 
-														<svg xmlns="http://www.w3.org/2000/svg" width="26.824" height="23.192" viewBox="0 0 26.824 23.192">
-															<g id="Group_6272" data-name="Group 6272" transform="translate(-0.118 -3.632)">
-																<path id="Rectangle-154"
-																	d="M2.343,2.343V4.686H8.2V2.343ZM1.171,0H24.6a1.171,1.171,0,0,1,1.171,1.171V5.857A1.171,1.171,0,0,1,24.6,7.028H1.171A1.171,1.171,0,0,1,0,5.857V1.171A1.171,1.171,0,0,1,1.171,0Z"
-																	transform="translate(23.31 8.602) rotate(135)" fill="#31d1ab" />
-																<path id="Combined-Shape"
-																	d="M17.586,12.514h1.171a.586.586,0,0,1,.586.586v1.171a.586.586,0,0,1-.586.586H17.586A.586.586,0,0,1,17,14.271V13.1A.586.586,0,0,1,17.586,12.514ZM21.1,9h1.171a.586.586,0,0,1,.586.586v1.171a.586.586,0,0,1-.586.586H21.1a.586.586,0,0,1-.586-.586V9.586A.586.586,0,0,1,21.1,9Zm1.171,4.686h1.171a.586.586,0,0,1,.586.586v1.171a.586.586,0,0,1-.586.586H22.271a.586.586,0,0,1-.586-.586V14.271A.586.586,0,0,1,22.271,13.686Z"
-																	transform="translate(2.914 1.543)" fill="#31d1ab" fill-rule="evenodd" opacity="0.3" />
-															</g>
-														</svg>
-													 
-													 
+										<div class="col-lg-4 mb-5 mb-lg-0">
+											<div class="package" data-aos="fade-up" data-aos-delay="200">
+												<h3 class="package_name text-center font-weight-bold">TRIAL PLAN</h3>
+												<div class="text-center">
+													<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="10 10 60 60" xmlns:v="https://vecta.io/nano"><path fill="#284058" d="M17.5 10h45a7.5 7.5 0 0 1 7.5 7.5v45a7.5 7.5 0 0 1-7.5 7.5h-45a7.5 7.5 0 0 1-7.5-7.5v-45a7.5 7.5 0 0 1 7.5-7.5z"/><path d="M43.653 40.898l-1.21 1.207.416.559c.367.499.353.875-.097 1.284l-3.826 3.442c-.295.263-.62.266-.899-.023l-2.13-2.293-6.085-6.655c-.424-.463-.427-.899.032-1.319l3.868-3.481c.427-.379.959-.296 1.304.158l.416.542 6.266-5.677-.533-.701c-.347-.45-.323-.887.096-1.266l3.679-3.304c.37-.329.844-.332 1.186.02l2.363 2.509 5.798 6.216c.266.284.485.584.328.992a1.14 1.14 0 0 1-.283.419l-3.653 3.289c-.413.37-.677.361-1.07-.025-.115-.113-.208-.25-.308-.376l-.289-.37-1.733 1.37.413.451 9.403 10.081c.721.767.686 1.211-.083 1.868l-2.162 1.98c-.395.361-.666.373-1.042-.017l-2.575-2.742-7.321-7.86-.269-.278zm-.547-11.225l-6.443 5.852 4.726 5.192 6.395-6.079-4.678-4.965zm-11.495 8.093l7.141 7.573 2.483-2.282-7.025-7.688-2.599 2.397zm21.247-5.165l-7.141-7.574-2.489 2.111 7.069 7.655 2.561-2.192zm-7.643 7.079l9.34 10.086 1.223-1.201-9.337-10.081-1.226 1.196zM25.863 51.712v-.361l.002-2.084c.008-.71.287-.983 1-1.002l.203-.001h14.999l.203.001c.719.016.997.284 1.006.992l.002 2.113v.343h.338l2.197.002c.625.006.941.29.95.901l.001 3.342c-.008.604-.301.877-.913.916-.096.006-.193.002-.289.002H23.568c-.125 0-.251.004-.376-.013-.554-.074-.804-.334-.809-.889l.001-3.371c.007-.592.319-.88.931-.887l2.196-.002.352-.002zm-1.745 1.734v1.303c0 .401 0 .401.401.401h20.114c.077 0 .162.019.229-.007s.155-.095.155-.146l.007-1.55-20.906-.001zm3.509-1.753h13.879v-1.687H27.627v1.687z" fill="#fff"/></svg>
 												</div>
-												<div class="txt">
-													<h3>TRIAL PLAN</h3>
-													<h3>0$ FREE</h3>
-													<p>
-															BuyNoir was <b>built by black entrepreneures</b> for black entrepreneures and makers.
-													</p>
-													<ul><li><b>500</b> Product(s)</li> <li><b>50</b> Category(s)</li> <li><b>100</b> Attribute(s)</li> <li><b>100</b> Attribute Family(s)</li> <li><b>2</b> Channel(s)</li> <li><b>1000</b> Order(s)</li></ul>
-												</div>
-			
+												<p class="package_price text-center">0$ FREE</p>
+												<p>BuyNoir was built by black entrepreneures for black entrepreneures and makers.</p>
+												<ul>
+													<li>500 Product(s)</li>
+													<li>50 Category(s)</li>
+													<li>100 Attribute(s)</li>
+													<li>100 Attribute Family(s)</li>
+													<li>2 Channel(s)</li>
+													<li>1000 Order(s)</li>
+												</ul>
 											</div>
 										</div>
-										<div class="col-md-6 col-lg-3 item__nature mx-lg-auto">
-											<div class="mb-4 items_serv sevice_block mb-lg-0" data-aos="fade-up" data-aos-delay="100">
-												<div class="icon--top">
-													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-														<g id="Group_6273" data-name="Group 6273" transform="translate(-4.896 -4.896)">
-															<rect id="Rectangle-7" width="4" height="4" rx="2" transform="translate(4.896 4.896)"
-																fill="#d6c0b7" opacity="0.3" />
-															<rect id="Rectangle-7-Copy-3" width="4" height="4" rx="2" transform="translate(4.896 11.896)"
-																fill="#d6c0b7" />
-															<rect id="Rectangle-7-Copy" width="4" height="4" rx="2" transform="translate(11.896 4.896)"
-																fill="#d6c0b7" />
-															<rect id="Rectangle-7-Copy-4" width="4" height="4" rx="2" transform="translate(11.896 11.896)"
-																fill="#d6c0b7" />
-															<rect id="Rectangle-7-Copy-2" width="4" height="4" rx="2" transform="translate(18.896 4.896)"
-																fill="#d6c0b7" />
-															<rect id="Rectangle-7-Copy-5" width="4" height="4" rx="2" transform="translate(18.896 11.896)"
-																fill="#d6c0b7" />
-															<rect id="Rectangle-7-Copy-8" width="4" height="4" rx="2" transform="translate(4.896 18.896)"
-																fill="#d6c0b7" />
-															<rect id="Rectangle-7-Copy-7" width="4" height="4" rx="2" transform="translate(11.896 18.896)"
-																fill="#d6c0b7" />
-															<rect id="Rectangle-7-Copy-6" width="4" height="4" rx="2" transform="translate(18.896 18.896)"
-																fill="#d6c0b7" />
-														</g>
-													</svg>
+										<div class="col-lg-4 mb-5 mb-lg-0">
+											<div class="package featured" data-aos="fade-up" data-aos-delay="200">
+												<h3 class="package_name text-center font-weight-bold">STANDARD</h3>
+												<div class="text-center">
+													<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="10 10 60 60" xmlns:v="https://vecta.io/nano"><path fill="#fff" d="M17.5 10h45a7.5 7.5 0 0 1 7.5 7.5v45a7.5 7.5 0 0 1-7.5 7.5h-45a7.5 7.5 0 0 1-7.5-7.5v-45a7.5 7.5 0 0 1 7.5-7.5z"/><path d="M40.173 50.768h-5.327c-1.721 0-3.442.007-5.161-.001-2.365-.011-3.93-1.577-3.931-3.929l-.002-19.819c0-2.258 1.616-3.882 3.899-3.889l11.236.007a.87.87 0 0 1 .578.245l6.404 7.057c.222.244.305.487.304.806l-.013 11.242c-.001.366.065.532.49.617 3.29.661 5.683 3.644 5.597 6.922-.089 3.382-2.584 6.227-5.924 6.761-3.791.606-7.364-1.906-8.057-5.659-.019-.102-.051-.203-.093-.36zm1.303-5.171H30.017v-1.895h.396l13.157-.001c.151 0 .314.025.452-.022l2.167-.767v-10.81h-6.356v-6.977c-.086-.025-.128-.047-.17-.047-3.412-.001-6.822-.008-10.234.016-.326.002-.686.15-.97.328-.577.362-.748.944-.748 1.602l-.001 19.87c.001 1.241.748 1.96 1.997 1.958h7.127 3.227l1.415-3.255zm10.802 4.275c-.037-2.842-2.311-5.028-5.195-4.996-2.753.03-5.018 2.342-4.98 5.083.04 2.819 2.35 5.015 5.227 4.969 2.743-.043 4.984-2.333 4.948-5.056zM41.824 30.13h3.142l-3.142-3.467v3.467zm-11.821 6.241v-1.858h13.903v1.858H30.003zm.002 4.617v-1.864h13.903v1.864H30.005zm16.29 9.184l3.281-3.092 1.349 1.378-4.609 4.276-2.875-2.738 1.438-1.484 1.416 1.66z" fill="#284058"/></svg>
 												</div>
-												<div class="txt">
-													<h3>STANDARD</h3>
-													<h3>$23 PER MONTH</h3>
-													<p>
-														We listened to <b>hundreds of black owned small businesses</b> like yours and built the tools you'll need to sell more.
-													</p>
-													<ul><li><b>10000</b> Product(s)</li> <li><b>200</b> Category(s)</li> <li><b>300</b> Attribute(s)</li> <li><b>100</b> Attribute Family(s)</li> <li><b>5</b> Channel(s)</li> <li><b>100000</b> Order(s)</li></ul>
-												</div>
-			
+												<p class="package_price text-center">$23 PER MONTH</p>
+												<p>We listened to hundreds of black owned small businesses like yours and built the tools you'll need to sell more.</p>
+												<ul>
+													<li>10000 Product(s)</li>
+													<li>200 Category(s)</li>
+													<li>300 Attribute(s)</li>
+													<li>100 Attribute Family(s)</li>
+													<li>5 Channel(s)</li>
+													<li>100000 Order(s)</li>
+												</ul>
 											</div>
 										</div>
-										<div class="col-md-6 col-lg-3 item__nature">
-											<div class="mb-4 items_serv sevice_block mb-lg-0" data-aos="fade-up" data-aos-delay="200">
-												<div class="icon--top">
-													<svg xmlns="http://www.w3.org/2000/svg" width="21.085" height="21.085" viewBox="0 0 21.085 21.085">
-														<g id="Group_6274" data-name="Group 6274" transform="translate(-3.514 -3.514)">
-															<rect id="Rectangle-62-Copy" width="3.514" height="15.228" rx="1.5"
-																transform="translate(14.057 4.686)" fill="#d6c0b7" opacity="0.3" />
-															<rect id="Rectangle-62-Copy-2" width="3.514" height="9.371" rx="1.5"
-																transform="translate(8.2 10.543)" fill="#d6c0b7" opacity="0.3" />
-															<path id="Path-95"
-																d="M5.343,21.742H22.914a1.171,1.171,0,0,1,0,2.343H4.171A1.171,1.171,0,0,1,3,22.914V4.171a1.171,1.171,0,0,1,2.343,0Z"
-																transform="translate(0.514 0.514)" fill="#31d1ab" />
-															<rect id="Rectangle-62-Copy-4" width="3.514" height="7.028" rx="1.5"
-																transform="translate(19.914 12.885)" fill="#d6c0b7" opacity="0.3" />
-														</g>
-													</svg>
+										<div class="col-lg-4 mb-5 mb-lg-0">
+											<div class="package" data-aos="fade-up" data-aos-delay="200">
+												<h3 class="package_name text-center font-weight-bold">PREMIUM</h3>
+												<div class="text-center">
+													<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="10 10 60 60" xmlns:v="https://vecta.io/nano"><path fill="#284058" d="M17.5 10h45a7.5 7.5 0 0 1 7.5 7.5v45a7.5 7.5 0 0 1-7.5 7.5h-45a7.5 7.5 0 0 1-7.5-7.5v-45a7.5 7.5 0 0 1 7.5-7.5z"/><path d="M45.741 43.413c-1.111-.397-1.848.157-2.435 1.247-.427.794-1.343.958-2.048.38-.907-.74-1.691-.704-2.615-.038-.827.595-1.645.371-2.141-.563-.5-.941-1.127-1.328-2.209-1.086-.982.221-1.738-.334-1.782-1.337-.053-1.192-.512-1.843-1.687-2.118-.91-.212-1.288-1.076-.912-1.967.445-1.055.276-1.846-.595-2.6-.767-.665-.755-1.558.022-2.234.84-.731 1.015-1.496.589-2.522-.409-.989-.018-1.793 1.013-2.059.995-.257 1.48-.78 1.537-1.847.068-1.259.809-1.79 2.028-1.538.871.18 1.464-.113 1.916-.869.785-1.312 1.43-1.454 2.638-.592.661.472 1.286.463 1.956.035 1.273-.812 1.898-.683 2.641.612.431.751 1.015.998 1.836.859 1.279-.217 1.924.25 1.997 1.55.058 1.021.515 1.549 1.472 1.808 1.128.305 1.49 1.069 1.042 2.182-.39.968-.205 1.685.589 2.354.863.728.877 1.597.031 2.354-.796.712-.979 1.451-.568 2.449.43 1.042.029 1.844-1.042 2.116-1.007.256-1.465.822-1.499 1.879-.029 1.041-.675 1.586-1.774 1.545zm1.331-9.103c.024-3.986-3.103-7.208-7.039-7.253-3.9-.043-7.105 3.169-7.135 7.154s3.109 7.217 7.039 7.235c3.946.019 7.111-3.145 7.135-7.136zm-5.966 13.159c.658 0 1.195.089 1.687-.024.527-.121 1.211-.293 1.478-.685.829-1.214 2.063-1.188 3.352-1.36l1.724 4.399 1.547 3.971c.074.198.043.438.06.659-.217.007-.451.071-.65.014l-2.429-.769c-.517-.2-.797-.1-1.049.398l-1.344 2.399c-.247.43-.556.622-.797.023l-3.579-9.025zm-8.784-2.058l2.009.152c.146.016.325.124.41.246.967 1.379 2.287 1.87 3.992 1.6-.059.233-.084.421-.151.593l-3.184 8.101c-.097.245-.334.433-.505.647-.173-.185-.382-.347-.51-.559l-1.079-1.937c-.323-.731-.713-.955-1.481-.613-.719.32-1.496.509-2.254.739-.394.12-.815.092-.6-.466l3.353-8.503zm12.782-11.119c-.008 2.87-2.323 5.195-5.159 5.177-2.809-.018-5.089-2.381-5.081-5.267.01-2.874 2.342-5.219 5.156-5.183 2.828.036 5.092 2.384 5.084 5.273zm-7.272 2.794c.263.043.323.067.377.058.085-.013.187-.024.245-.077.976-.911 1.948-1.021 2.96-.048.103.098.515.07.526.029.065-.238.138-.534.049-.742-.442-1.042-.185-1.792.781-2.358.203-.119.281-.454.415-.689-.232-.086-.466-.25-.695-.245-1.039.02-1.784-.299-2-1.457-.044-.239-.329-.431-.502-.643-.175.21-.455.396-.509.635-.238 1.054-.832 1.553-1.907 1.439-.114-.012-.242-.005-.347.036-.178.07-.438.14-.485.275-.044.128.106.368.229.505.175.196.388.367.612.503.556.337.731.756.493 1.403-.152.421-.163.896-.242 1.376z" fill="#fff"/></svg>
 												</div>
-												<div class="txt">
-													<h3>PREMIUM</h3>
-													<h3>$39.99 PER MONTH</h3>
-													<p>
-														We've built tools to help you keep a pulse on our culture and speak directly to what's relevant. 
-													</p>
-													<ul><li><b>25000</b> Product(s)</li> <li><b>250</b> Category(s)</li> <li><b>300</b> Attribute(s)</li> <li><b>300</b> Attribute Family(s)</li> <li><b>10</b> Channel(s)</li> <li><b>200000</b> Order(s)</li></ul>
-												</div>
-			
+												<p class="package_price text-center">$39.99 PER MONTH</p>
+												<p>We've built tools to help you keep a pulse on our culture and speak directly to what's relevant.</p>
+												<ul>
+													<li>25000 Product(s)</li>
+													<li>250 Category(s)</li>
+													<li>300 Attribute(s)</li>
+													<li>300 Attribute Family(s)</li>
+													<li>10 Channel(s)</li>
+													<li>200000 Order(s)</li>
+												</ul>
 											</div>
 										</div>
-			
 									</div>
 								</div>
 							</section>
