@@ -526,21 +526,26 @@ div.table {
 .buynoir-navbar {
 	display: flex;
     align-items: center;
-	padding: 0 15px;
-	gap: 15px;
-	font-size: inherit;
-	justify-content: space-between;
+    padding: 0 15px;
+    font-size: inherit;
 }
 
 .buynoir-navbar-l {
+	
+}
+
+.buynoir-navbar-m {
 	display: flex;
     align-items: center;
+	justify-content: center;
 }
 
 .buynoir-navbar-r {
 	display: flex;
     align-items: center;
+	justify-content: flex-end;
 	gap: 30px;
+	flex-grow: 1;
 }
 
 .buynoir-navbar-logo a {
@@ -561,6 +566,10 @@ div.table {
 	text-transform: uppercase;
 	margin-bottom: 8px;
     opacity: .35;
+}
+.buynoir-navbar .profile-info .dropdown-list {
+	top: 42px;
+	right: 0;
 }
 
 .buynoir-dashboard-container .dashboard div.page-title h1 {
@@ -718,3 +727,4 @@ a:active, a:focus, a:hover, a:link, a:visited {
 .content-container .content .page-content .tabs {
 	background-color: white;
 }
+
