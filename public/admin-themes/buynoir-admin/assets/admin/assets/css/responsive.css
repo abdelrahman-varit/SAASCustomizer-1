@@ -195,7 +195,8 @@
 	.dashboard .sale-stock {
 		grid-template-columns: repeat(2, 1fr);
 	}
-	.buynoir-navbar-l {
-		flex-flow: row-reverse;
+	.buynoir-navbar {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
 	}
 }

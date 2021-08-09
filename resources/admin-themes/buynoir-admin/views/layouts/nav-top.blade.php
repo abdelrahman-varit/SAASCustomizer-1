@@ -5,15 +5,15 @@
                 <i class="fas fa-list"></i>
             </button>
         </div>
-        <div class="buynoir-navbar-logo">
-            <a href="{{ route('admin.dashboard.index') }}">
-                @if (core()->getConfigData('general.design.admin_logo.logo_image'))
-                    <img src="{{ \Illuminate\Support\Facades\Storage::url(core()->getConfigData('general.design.admin_logo.logo_image')) }}" alt="{{ config('app.name') }}" style="height: 40px; width: 110px;"/>
-                @else
-                    <img src="{{ asset('buynoir/shopadmin/images/logo-bk.png') }}" alt="{{ config('app.name') }}"/>
-                @endif
-            </a>
-        </div>
+    </div>
+    <div class="buynoir-navbar-m">
+        <a href="{{ route('admin.dashboard.index') }}">
+            @if (core()->getConfigData('general.design.admin_logo.logo_image'))
+                <img src="{{ \Illuminate\Support\Facades\Storage::url(core()->getConfigData('general.design.admin_logo.logo_image')) }}" alt="{{ config('app.name') }}" style="display: block; height: 40px; width: 110px"/>
+            @else
+                <img src="{{ asset('buynoir/shopadmin/images/logo-trans.png') }}" alt="{{ config('app.name') }}" style="display: block"/>
+            @endif
+        </a>
     </div>
     <div class="buynoir-navbar-r">
         <?php $locale = request()->get('admin_locale') ?: app()->getLocale();?>
@@ -26,7 +26,7 @@
                 @endforeach
             </div>
 
-            <div class="dropdown-list bottom-right">
+            <div class="dropdown-list">
                 <div class="dropdown-container" style="padding: 12px 15px 15px">
                     <div class="control-group" style="margin-bottom: 0">
                         <select class="control" onChange="window.location.href = this.value" style="width: 100%">
@@ -43,13 +43,12 @@
             </div>
         </div>
 
-
         <div class="profile-info">
             <div class="dropdown-toggle">
                 <i class="fas fa-user-circle"></i><span>{{ auth()->guard('admin')->user()->role['name'] }}</span><i class="fas fa-chevron-down"></i>
             </div>
 
-            <div class="dropdown-list bottom-right">
+            <div class="dropdown-list">
                 <div class="dropdown-container">
                     <span class="app-version">{{ __('admin::app.layouts.app-version', ['version' => 'v' . config('app.version')]) }}</span>
                     <label>{{ auth()->guard('admin')->user()->name }}</label>
