@@ -385,14 +385,20 @@
 
             if(typeof(ctx) != 'undefined' && ctx != null) {
                 var data = @json($statistics['sale_graph']);
+
+                // Color Scheme
+                let schemeColor = "#4f98ff"; // Default
+                
+                schemeColor = "#6BAA63"; //Lemon
+
                 var myChart = new Chart(ctx.getContext('2d'), {
                     type: 'bar',
                     data: {
                         labels: data['label'],
                         datasets: [{
                             data: data['total'],
-                            backgroundColor: 'rgba(79, 152, 255, 1)',
-                            borderColor: 'rgba(79, 152, 255, 1)',
+                            backgroundColor: schemeColor,
+                            borderColor: schemeColor,
                             borderWidth: 1
                         }]
                     },
