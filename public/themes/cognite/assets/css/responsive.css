@@ -250,6 +250,10 @@
 	}
 	.slider-area .main-container-wrapper .right-content {
 		padding-left: 20px;
+	}	
+	div.footer-copyright-inner {
+		flex-direction: row;
+		justify-content: space-between;
 	}
 }
 

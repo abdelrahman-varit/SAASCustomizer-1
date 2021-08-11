@@ -2306,3 +2306,21 @@ section.product-detail div.layouter .form-container .details .stock-status {
     font-weight: bold;
     font-size: 16px;
 }
+
+.footer-copyright-inner {
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+    gap: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.footer-copyright-inner p {
+	margin: 0;
+}
+
+.footer-copyright-inner img {
+	max-width: 100px;
+    display: block;
+}
