@@ -1,0 +1,148 @@
+.navbar-left ul.menubar > li.menu-item:hover > a, .navbar-left ul.menubar > li.menu-item.current > a, .navbar-left ul.menubar > li.menu-item.active > a {
+    background-color: #C5F1D0;
+}
+
+.buynoir-navbar-toggler button {
+    color: #6BAA63;
+}
+
+.buynoir-dashboard-container .dashboard div.dashboard-card:first-child {
+    background-color: #6BAA63;
+}
+
+.buynoir-dashboard-container .dashboard div.dashboard-card:nth-child(2) {
+    background-color: #3B9D6C;
+}
+
+.buynoir-dashboard-container .dashboard div.dashboard-card:nth-child(3) {
+    background-color: #018D73;
+}
+
+.buynoir-dashboard-container .dashboard div.dashboard-card:last-child {
+    background-color: #007D79;
+}
+
+.dropdown-list .dropdown-container ul li a:hover {
+    color: #6BAA63;
+}
+
+.buynoir-dashboard-container .dashboard .card .no-result a {
+    background-color: #C5F1D0;
+    color: inherit;
+}
+
+.navbar-left ul.menubar ul.buynoir-menubar-sub li:hover a {
+    background-color: #c5f1d050;
+}
+
+.navbar-left ul.menubar ul.buynoir-menubar-sub li.current a, .navbar-left ul.menubar ul.buynoir-menubar-sub li.active a {
+    background-color: #c5f1d050;
+}
+
+
+.control-group input:checked+.slider,
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected.inRange,
+.flatpickr-day.startRange.inRange,
+.flatpickr-day.endRange.inRange,
+.flatpickr-day.selected:focus,
+.flatpickr-day.startRange:focus,
+.flatpickr-day.endRange:focus,
+.flatpickr-day.selected:hover,
+.flatpickr-day.startRange:hover,
+.flatpickr-day.endRange:hover,
+.flatpickr-day.selected.prevMonthDay,
+.flatpickr-day.startRange.prevMonthDay,
+.flatpickr-day.endRange.prevMonthDay,
+.flatpickr-day.selected.nextMonthDay,
+.flatpickr-day.startRange.nextMonthDay,
+.flatpickr-day.endRange.nextMonthDay,
+.pagination .page-item.active,
+.table table thead th, table.table th,
+.btn-primary,
+.dropdown-list.dropdown-container .apply-filter {
+    background-color: #6BAA63 !important;
+}
+
+
+.buynoir-navbar .profile-info .dropdown-toggle > .fa-user-circle,
+.buynoir-inside-container .tabs ul li.active a,
+a:active, a:focus, a:hover, a:link, a:visited {
+    color: #3B9D6C;
+}
+
+.accordian .accordian-header,
+.accordian div[slot*=header],
+accordian .accordian-header,
+accordian div[slot*=header] {
+    background-color: #3B9D6C35;
+}
+
+
+.dashboard .card .card-info ul li .image,
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected.inRange,
+.flatpickr-day.startRange.inRange,
+.flatpickr-day.endRange.inRange,
+.flatpickr-day.selected:focus,
+.flatpickr-day.startRange:focus,
+.flatpickr-day.endRange:focus,
+.flatpickr-day.selected:hover,
+.flatpickr-day.startRange:hover,
+.flatpickr-day.endRange:hover,
+.flatpickr-day.selected.prevMonthDay,
+.flatpickr-day.startRange.prevMonthDay,
+.flatpickr-day.endRange.prevMonthDay,
+.flatpickr-day.selected.nextMonthDay,
+.flatpickr-day.startRange.nextMonthDay,
+.flatpickr-day.endRange.nextMonthDay,
+.control-group .control:focus,
+.pagination .page-item.active,
+.tabs ul li.active a,
+.dropdown-toggle.active .grid-dropdown-header,
+.search-filter .control:focus, .search-filter .control:focus + .icon-wrapper {
+    border-color: #6BAA63 !important;
+}
+
+.buynoir-navbar-left ul.menubar li.menu-item span.icon {
+    background-color: #6BAA6350;
+    background-blend-mode: overlay;
+}
+
+.mass-action-wrapper .checkbox-dash-icon,
+.checkbox input:checked+.checkbox-view,
+.accordian .accordian-header .icon,
+.accordian div[slot*=header] .icon,
+accordian .accordian-header .icon,
+accordian div[slot*=header] .icon {
+    background-color: #6BAA63;
+    background-blend-mode: overlay;
+}
+
+
+.buynoir-navbar-left ul.menubar li.menu-item span.icon,
+.mass-action-wrapper .checkbox-dash-icon,
+.checkbox input:checked+.checkbox-view {
+    -webkit-border-radius: .25rem;
+    -moz-border-radius: .25rem;
+    border-radius: .25rem;
+}
+
+.accordian .accordian-header .icon,
+.accordian div[slot*=header] .icon,
+accordian .accordian-header .icon,
+accordian div[slot*=header] .icon {
+    -webkit-border-radius: 5rem;
+    -moz-border-radius: 5rem;
+    border-radius: 5rem;
+}
+
+
+.badge.badge-success,
+.btn.btn-black {
+    background-color: #007D79;
+}
