@@ -24,7 +24,13 @@
         <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/responsive.css') }}">
 
         <!--Color Scheme-->
-        <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/colors/lemon.css') }}">
+        <?php $theme_color = core()->getConfigData('general.design.admin-theme.theme-color');?>
+        @if(empty($theme_color) || $theme_color=="default")
+            <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/custom.css') }}">
+        @else
+            <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/colors/'.$theme_color.'.css') }}">
+        @endif
+        
 
         @yield('head')
 
