@@ -388,8 +388,10 @@
 
                 // Color Scheme
                 let schemeColor = "#4f98ff"; // Default
-                
                 schemeColor = "#6BAA63"; //Lemon
+                schemeColor = "#4E97FD"; //Blue
+                schemeColor = "#554979"; //Violet
+                schemeColor = "#00C7C4"; //Sky
 
                 var myChart = new Chart(ctx.getContext('2d'), {
                     type: 'bar',
