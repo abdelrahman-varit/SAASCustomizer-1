@@ -154,15 +154,23 @@
 
         @if (core()->getConfigData('general.content.footer.footer_toggle'))
             <div class="footer footer-copyright">
-                <p style="text-align: center;">
-                    @if (core()->getConfigData('general.content.footer.footer_content'))
-                        {{ core()->getConfigData('general.content.footer.footer_content') }}
-                    @else
-                        {!! trans('admin::app.footer.copy-right') !!}
-                    @endif
-                </p>
+                <div class="main-container-wrapper">
+                    <div class="footer-copyright-inner">
+                        <p>
+                            @if (core()->getConfigData('general.content.footer.footer_content'))
+                                {{ core()->getConfigData('general.content.footer.footer_content') }}
+                            @else
+                                {!! trans('admin::app.footer.copy-right') !!}
+                            @endif
+                        </p>
+                        <a href="https://buynoir.co"><img src="{{ asset("themes/cognite/assets/images/powered_by_logo_light.png") }}" alt="Powered By Buynoir"></a>
+                    </div>
+                </div>
             </div>
         @endif
+
+
+        
 
         <overlay-loader :is-open="show_loader"></overlay-loader>
     </div>
