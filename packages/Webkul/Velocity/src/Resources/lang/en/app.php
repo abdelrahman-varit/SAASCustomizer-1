@@ -91,7 +91,7 @@ return [
         ],
         'meta-data' => [
             'footer'                    => 'Footer',
-            'title'                     => 'Velocity meta data',
+            'title'                     => 'Shop meta data',
             'activate-slider'           => 'Activate Slider',
             'home-page-content'         => 'Home Page Content',
             'footer-left-content'       => 'Footer Left Content',

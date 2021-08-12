@@ -270,12 +270,20 @@
 													</svg>
 												</div>
 												<div class="txt">
-													<h3>STANDARD</h3>
-													<h3>$23 PER MONTH</h3>
+													<h3>Start with Us</h3>
+													<h3>$19.99 PER MONTH</h3>
 													<p>
-														We listened to <b>hundreds of black owned small businesses</b> like yours and built the tools you'll need to sell more.
+													We’re just getting started powering your online businesses. Use all of 
+													our features for one low price. As we grow, grow with us. 
+													The first 10 days are on us. Don’t forget, we won’t be taking any of your sales income.
 													</p>
-													<ul><li><b>10000</b> Product(s)</li> <li><b>200</b> Category(s)</li> <li><b>300</b> Attribute(s)</li> <li><b>100</b> Attribute Family(s)</li> <li><b>5</b> Channel(s)</li> <li><b>100000</b> Order(s)</li></ul>
+													<ul>
+														<li><b>Unlimited</b> Product(s)</li> 
+														<li><b>Unlimited</b> Category(s)</li> 
+														<li><b>Unlimited</b> Attribute(s)</li> 
+														<li><b>Unlimited</b> Attribute Family(s)</li> 
+														<li><b>Unlimited</b> Order(s)</li>
+													</ul>
 												</div>
 			
 											</div>
@@ -298,12 +306,18 @@
 													</svg>
 												</div>
 												<div class="txt">
-													<h3>PREMIUM</h3>
-													<h3>$39.99 PER MONTH</h3>
+													<h3>PROMO CODE</h3>
+													<h3>XUZA0C</h3>
 													<p>
 														We've built tools to help you keep a pulse on our culture and speak directly to what's relevant. 
 													</p>
-													<ul><li><b>25000</b> Product(s)</li> <li><b>250</b> Category(s)</li> <li><b>300</b> Attribute(s)</li> <li><b>300</b> Attribute Family(s)</li> <li><b>10</b> Channel(s)</li> <li><b>200000</b> Order(s)</li></ul>
+													<ul>
+														<li><b>Unlimited</b> Product(s)</li> 
+														<li><b>Unlimited</b> Category(s)</li> 
+														<li><b>Unlimited</b> Attribute(s)</li> 
+														<li><b>Unlimited</b> Attribute Family(s)</li> 
+														<li><b>Unlimited</b> Order(s)</li>
+													</ul>
 												</div>
 			
 											</div>
