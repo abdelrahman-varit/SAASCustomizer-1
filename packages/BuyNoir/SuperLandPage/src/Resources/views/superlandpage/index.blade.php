@@ -243,9 +243,9 @@
 											<p>We're just getting started powering your online businesses. Use all of our features for one low price. As we grow, grow with us. The first 10 days are on us.<br>Don't forget, we won't be taking any of your sales income.</p>
 											<ul>
 												<li>Unlimited Products</li>
-												<li>Unlimited Categorys</li>
+												<li>Unlimited Categories</li>
 												<li>Unlimited Attributes</li>
-												<li>Unlimited Attribute Familys</li>
+												<li>Unlimited Attribute Families</li>
 												<li>Unlimited Channels</li>
 												<li>Unlimited Orders</li>
 											</ul>
