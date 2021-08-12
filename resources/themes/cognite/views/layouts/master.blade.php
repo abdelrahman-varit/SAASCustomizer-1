@@ -30,7 +30,7 @@
 
     <!-- Color Scheme -->
     @php 
-        $theme_color=core()->getConfigData('general.general.theme-color.theme_color_scheme')
+        $theme_color=$velocityMetaData->theme_color
     @endphp
     @if($theme_color=="default" || empty($theme_color))
         <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/custom.css') }}">
@@ -108,7 +108,7 @@
 
 
 <body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif style="scroll-behavior: smooth;">
-
+ 
     <div class="se-pre-con">
         <div class="se-pre-con-inner">
             @if ($logo = core()->getCurrentChannel()->logo_url)                

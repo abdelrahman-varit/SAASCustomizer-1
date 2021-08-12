@@ -134,15 +134,14 @@
                     </div>
 
                     <div class="control-group">
-                        <label>{{ __('shop::app.home.new-products') }}</label>
+                        <label>{{ __('Theme Color') }}</label>
 
                         <select
-                             
                             class="control"
                             id="theme_color"
                             name="theme_color"
-                            value="{{ $metaData ? $metaData->theme_color : 'default' }}" >
-                            <option value="{{ $metaData ? $metaData->theme_color : 'default' }}" >{{ $metaData ? $metaData->theme_color : 'default' }}</option>
+                            >
+                            <option value="{{ $metaData->theme_color ? $metaData->theme_color : 'default' }}" >{{ $metaData ? $metaData->theme_color : 'default' }}</option>
                             <option value="blue">Blue</option>
                             <option value="lemon">Lemon</option>
                             <option value="sky">Sky</option>
