@@ -7,6 +7,10 @@
 @section('content')
     <div class="content">
         <web-font-form></web-font-form>
+
+        @inject('webfontGrid', 'Webkul\Webfont\DataGrids\WebfontDataGrid')
+
+        {!! $webfontGrid->render() !!}
     </div>
 @stop
 
