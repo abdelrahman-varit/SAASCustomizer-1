@@ -34,7 +34,7 @@
 	padding: 50px 30px;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	font-weight: normal;
-	min-height: 500px;
+	height: 100%;
 }
 
 .package .package_name {
