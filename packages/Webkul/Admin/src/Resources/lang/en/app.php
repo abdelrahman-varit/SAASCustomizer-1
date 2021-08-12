@@ -1314,6 +1314,7 @@ return [
             'locale-options' => 'Unit Options',
             'weight-unit' => 'Weight Unit',
             'theme-color-scheme' => 'Theme Color',
+            'admin-theme-color-scheme' => 'Admin Theme Color',
             'email-settings'    => 'Email Settings',
             'email-sender-name' => 'Email Sender Name',
             'shop-email-from'   => 'Shop Email Address [For sending emails]',
