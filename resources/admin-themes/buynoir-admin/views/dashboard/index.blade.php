@@ -334,7 +334,6 @@
 
                         @endif
                     </div>
-
                 </div>
             </div>
         </div>
@@ -388,10 +387,18 @@
 
                 // Color Scheme
                 let schemeColor = "#4f98ff"; // Default
-                schemeColor = "#6BAA63"; //Lemon
-                schemeColor = "#4E97FD"; //Blue
-                schemeColor = "#554979"; //Violet
-                schemeColor = "#00C7C4"; //Sky
+                @php
+                    $theme_color = core()->getConfigData('general.design.admin-theme.theme-color');
+                @endphp
+                @if ($theme_color === 'lemon')
+                    schemeColor = "#6BAA63";
+                @elseif ($theme_color === 'blue')
+                    schemeColor = "#4E97FD";
+                @elseif ($theme_color === 'violet')
+                    schemeColor = "#554979";
+                @elseif ($theme_color === 'sky')
+                    schemeColor = "#00C7C4";
+                @endif
 
                 var myChart = new Chart(ctx.getContext('2d'), {
                     type: 'bar',
