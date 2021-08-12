@@ -24,9 +24,10 @@ return [
                 'locale_based' => false
             ], [
                 'name' => 'webfont',
-                'title' => 'webfont::app.webfont-api',
-                'type' => 'text',
-                'validation' => 'required',
+                //'title' => 'webfont::app.webfont-api',
+                'title' => '',
+                'type' => 'hidden',
+               
                 'channel_based' => false,
                 'locale_based' => false
             ], [
