@@ -37,9 +37,7 @@
                             </span>
                           
                             <span class="value">
-                                
-                                {{ $recurringProfile->id }} : 
-                                
+                                {{ $recurringProfile->id }} 
                             </span>
                         </div>
 

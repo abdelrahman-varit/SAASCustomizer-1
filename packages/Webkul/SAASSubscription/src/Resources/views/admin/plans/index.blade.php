@@ -52,9 +52,22 @@
                                 ?>
 
                                 @if($plan->yearly_amount>0)
-                                <button class="btn btn-lg {{$isServiceStopped?' btn-primary ':' btn-secondary'}}" {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' btn-primary'}}>
-                                    {{ __('saassubscription::app.admin.plans.purchase') }}  
-                                </button>
+                                    @if($isServiceStopped)
+                                        <button class="btn btn-lg  btn-primary" {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
+                                            {{ __('saassubscription::app.admin.plans.purchase') }}  
+                                        </button>
+                                    @else
+                                        @if(isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name ))
+                                        <button class="btn btn-lg " {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
+                                            {{ __('saassubscription::app.admin.plans.purchase') }}  
+                                        </button>
+                                        @else
+                                        <button class="btn btn-lg btn-primary" {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
+                                            {{ __('saassubscription::app.admin.plans.purchase') }}  
+                                        </button>
+                                        @endif
+                                        
+                                    @endif
                                 @else
                                 <!-- <button class="btn btn-lg btn-danger" {{isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name)?'  ':''}}>
                                     {{ __('saassubscription::app.admin.plans.purchase') }}  
