@@ -2320,7 +2320,6 @@ section.product-detail div.layouter .form-container .details .stock-status {
 	margin: 0;
 }
 
-.footer-copyright-inner img {
-	max-width: 100px;
+.footer-copyright-inner svg {
     display: block;
 }
