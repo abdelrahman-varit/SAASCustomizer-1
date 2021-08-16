@@ -35,7 +35,7 @@
                         !!}
                         <tr>
                             <td>{{ __('shop::app.customer.account.profile.fname') }}</td>
-                            <td>{{ $customer->first_name }}</td>
+                            <td>{{ empty($customer->first_name) ?'':$customer->first_name }}</td>
                         </tr>
 
                         {!! view_render_event('bagisto.shop.customers.account.profile.view.table.first_name.after', ['customer' => $customer]) !!}
