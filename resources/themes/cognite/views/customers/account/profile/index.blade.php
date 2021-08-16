@@ -29,7 +29,8 @@
 
             <div class="account-table-content" style="width: 50%;">
                 <table style="color: #5E5E5E;">
-                    <tbody>
+                @if(!empty($customer))    
+                <tbody>
                         {!! view_render_event(
                         'bagisto.shop.customers.account.profile.view.table.before', ['customer' => $customer])
                         !!}
@@ -78,6 +79,7 @@
                             </tr>
                         @endif --}}
                     </tbody>
+                    @endif
                 </table>
 
 
