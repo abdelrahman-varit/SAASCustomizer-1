@@ -66,11 +66,11 @@
 
 			{!! view_render_event('bagisto.shop.layout.header.after') !!}
 
-			{{-- @yield('slider') --}}
+			@yield('slider')
 
 			{!! view_render_event('bagisto.shop.layout.content.before') !!}
 
-			{{-- @yield('content-wrapper') --}}
+			@yield('content-wrapper')
 
 			{!! view_render_event('bagisto.shop.layout.content.after') !!}
 
@@ -176,6 +176,26 @@
                 }, 5000);
             }
         </script>
+
+		<script>
+			(function () {
+				'use strict'
+
+				// Fetch all the forms we want to apply custom Bootstrap validation styles to
+				let forms = document.querySelectorAll('.needs-validation')
+
+				// Loop over them and prevent submission
+				Array.prototype.slice.call(forms).forEach(function (form) {
+					form.addEventListener('submit', function (event) {
+						if (!form.checkValidity()) {
+							event.preventDefault()
+							event.stopPropagation()
+						}
+						form.classList.add('was-validated')
+					}, false)
+				})
+			})()
+		</script>
 
         <script>
             {!! core()->getConfigData('general.content.custom_scripts.custom_javascript') !!}
