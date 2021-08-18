@@ -1018,4 +1018,25 @@ hr {
     padding: 5px;
     margin: 0; }
 
+.social-login-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  overflow: hidden; }
+
+.social-login-links .link {
+  min-width: auto !important;
+  -webkit-border-radius: 5rem !important;
+  -moz-border-radius: 5rem !important;
+  border-radius: 5rem !important;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  padding: 0 0 0 3px !important;
+  text-align: center; }
+
+.social-login-links .control-group {
+  margin-bottom: 0 !important;
+  width: auto !important; }
+
 /*# sourceMappingURL=style.css.map */
