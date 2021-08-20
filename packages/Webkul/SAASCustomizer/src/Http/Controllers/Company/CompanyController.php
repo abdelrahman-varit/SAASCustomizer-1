@@ -223,6 +223,22 @@ class CompanyController extends Controller
             'email' => 'required|email|unique:admins,email'
         ]);
 
+        $promo_enable = company()->getSuperConfigData('general.design.promo-code.promo-enable');
+        $promo_code = company()->getSuperConfigData('general.design.promo-code.promo-code');
+        $user_promo_code = request()->get('promo_code');
+        if(!empty($user_promo_code)){
+            if($user_promo_code==$promo_code && $promo_enable){
+
+            }else{
+                return response()->json([
+                    'success' => false,
+                    'data' => 'enable:'.$promo_enable.', promo_code:'.$promo_code.',user_promo_code:'.$user_promo_code,
+                    'errors' => $validator->errors()->add('promo_code','Promo code is invalid!')
+                ], 403);
+            }
+        } 
+        
+
         $validator->setAttributeNames($niceNames);
 
         if ($validator->fails()) {

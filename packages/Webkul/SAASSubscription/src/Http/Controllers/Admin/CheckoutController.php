@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Webkul\SAASSubscription\Http\Controllers\Controller;
 use Webkul\SAASSubscription\Repositories\PlanRepository;
+use Company;
 
 class CheckoutController extends Controller
 {
@@ -59,13 +60,21 @@ class CheckoutController extends Controller
 
         $plan = $this->planRepository->findOrFail(request('plan'));
 
+        $company = Company::getCurrent();
+        $promo_code = $company->promo_code;
+        $promo_code_validate = $company->promo_code_validate;
+        $promo_code_company = company()->getSuperConfigData('general.design.promo-code.promo-code');
+        $base_price = $data['period_unit'] == 'month' ? $plan->monthly_amount : $plan->yearly_amount * 12;
+        $price_subtotal = $base_price;
+        if(!empty($promo_code) && $promo_code == $promo_code_company && empty($promo_code_validate)){
+            $price_tenth = $base_price * 0.10;
+            $price_subtotal = $base_price - $price_tenth;
+        }
         $data = array_merge($data, [
             'plan'             => $plan,
             'type'             => $data['payment_method'],
             'cycle_expired_on' => Carbon::now(),
-            'amount'           => $data['period_unit'] == 'month'
-                                  ? $plan->monthly_amount
-                                  : $plan->yearly_amount * 12,
+            'amount'           => $price_subtotal,
         ]);
 
         session()->put('subscription_cart', $data);

@@ -194,13 +194,34 @@
                         @{{ plans[period_unit][plan]['name'] }}
                     </label>
                 </div>
-                
+               
                 <div id="grand-total-detail" class="payable-amount">
                     <label>{{ __('saassubscription::app.admin.checkout.subtotal') }}</label>
                     <label id="grand-total-amount-detail" class="right">
                         @{{ plans[period_unit][plan]['total'] }}
                     </label>
                 </div>
+                @php
+                    $company = Company::getCurrent();
+                    $promo_code = $company->promo_code;
+                    $promo_code_company = company()->getSuperConfigData('general.design.promo-code.promo-code');
+                    $promo_code_validate = $company->promo_code_validate;
+                @endphp
+                @if(!empty($promo_code) && $promo_code==$promo_code_company && empty($promo_code_validate))
+                <div id="grand-total-detail" class="payable-amount">
+                    <label>{{ __('Promo Code 10% discount') }}</label>
+                    <label id="grand-total-amount-detail" class="right">
+                        @{{ (plans[period_unit][plan]['total'].replace(/\$/g,'')*0.10).toFixed(2)}}
+                    </label>
+                </div>
+
+                <div id="grand-total-detail" class="payable-amount">
+                    <label>{{ __('saassubscription::app.admin.checkout.subtotal') }}</label>
+                    <label id="grand-total-amount-detail" class="right">
+                        @{{ plans[period_unit][plan]['total'].replace(/\$/g,'')-(plans[period_unit][plan]['total'].replace(/\$/g,'')*0.10).toFixed(2) }}
+                    </label>
+                </div>
+                @endif
 
                 <button class="btn btn-lg btn-primary">
                     {{ __('saassubscription::app.admin.plans.purchase') }}
@@ -218,12 +239,16 @@
             inject: ['$validator'],
 
             data: function() {
+                 const plans =  @json(app('Webkul\SAASSubscription\Helpers\Subscription')->getFormatedPlans());
+                 const price = plans['period_unit'] ? plans[period_unit][plan]['total'].replace(/\$/g,''):0;
                 return {
                     plan: {{ session()->get('subscription_cart.plan.id') }},
 
-                    plans: @json(app('Webkul\SAASSubscription\Helpers\Subscription')->getFormatedPlans()),
+                    plans: plans,
 
                     period_unit: 'month',
+
+                    price: price, 
 
                     country: '',
 
