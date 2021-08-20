@@ -19,7 +19,7 @@
 
         <title>BuyNoir - The tools your business needs to sell more and grow more.</title>
         <!-- Bootstrap 4.5 -->
-        <link rel="stylesheet" href="{{ asset('buynoir/superlandpage/assets/css/bootstrap.min.css')}}" type="text/css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" type="text/css" />
         <!-- animate -->
         <link rel="stylesheet" href="{{ asset('buynoir/superlandpage/assets/css/animate.css')}}" type="text/css" />
         <!-- Swiper -->
@@ -42,9 +42,9 @@
 
         
          <!-- jquery -->
-         <script src="{{ asset('buynoir/superlandpage/assets/js/jquery-3.5.0.js')}}" type="text/javascript"></script>
+         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
          <!-- jquery-migrate -->
-         <script src="{{ asset('buynoir/superlandpage/assets/js/jquery-migrate.min.js')}}" type="text/javascript"></script>
+         <script src="https://code.jquery.com/jquery-migrate-3.3.2.min.js"></script>
          
         <!-- js for Brwoser -->
         <!--[if lt IE 9]>
@@ -139,7 +139,7 @@
         <!-- particles -->
         <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/particles.min.js')}}" type="text/javascript"></script>
         <!-- TweenMax -->
-        <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/TweenMax.min.js')}}" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" type="text/javascript"></script>
         <!-- ScrollMagic -->
         <script src="{{ asset('buynoir/superlandpage/assets/js/vendor/ScrollMagic.js')}}" type="text/javascript"></script>
         <!-- animation.gsap -->
