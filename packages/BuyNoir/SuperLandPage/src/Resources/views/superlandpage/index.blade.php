@@ -216,7 +216,7 @@
 									</div>
 								</div>
 								<div class="row justify-content-center align-items-stretch">
-									<div class="col-lg-5 mb-5 mb-lg-0">
+									<div class="col-lg-4 mb-5 mb-lg-0">
 										<div class="package" data-aos="fade-up" data-aos-delay="200">
 											<h3 class="package_name text-center font-weight-bold">TRIAL PLAN</h3>
 											<div class="text-center">
@@ -234,7 +234,7 @@
 											</ul>
 										</div>
 									</div>
-									<div class="col-lg-5 mb-5 mb-lg-0">
+									<div class="col-lg-4 mb-5 mb-lg-0">
 										<div class="package featured" data-aos="fade-up" data-aos-delay="200">
 											<h3 class="package_name text-center font-weight-bold">STANDARD</h3>
 											<div class="text-center">
@@ -249,6 +249,20 @@
 												<li>Unlimited Attribute Families</li>
 												<li>Unlimited Channels</li>
 												<li>Unlimited Orders</li>
+											</ul>
+										</div>
+									</div>
+									<div class="col-lg-4 mb-5 mb-lg-0">
+										<div class="package featured" data-aos="fade-up" data-aos-delay="200">
+											<h3 class="package_name text-center font-weight-bold">PROMO CODE</h3>
+											<div class="text-center">
+												<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="10 10 60 60" xmlns:v="https://vecta.io/nano"><path fill="#fff" d="M17.5 10h45a7.5 7.5 0 0 1 7.5 7.5v45a7.5 7.5 0 0 1-7.5 7.5h-45a7.5 7.5 0 0 1-7.5-7.5v-45a7.5 7.5 0 0 1 7.5-7.5z"/><path d="M40.173 50.768h-5.327c-1.721 0-3.442.007-5.161-.001-2.365-.011-3.93-1.577-3.931-3.929l-.002-19.819c0-2.258 1.616-3.882 3.899-3.889l11.236.007a.87.87 0 0 1 .578.245l6.404 7.057c.222.244.305.487.304.806l-.013 11.242c-.001.366.065.532.49.617 3.29.661 5.683 3.644 5.597 6.922-.089 3.382-2.584 6.227-5.924 6.761-3.791.606-7.364-1.906-8.057-5.659-.019-.102-.051-.203-.093-.36zm1.303-5.171H30.017v-1.895h.396l13.157-.001c.151 0 .314.025.452-.022l2.167-.767v-10.81h-6.356v-6.977c-.086-.025-.128-.047-.17-.047-3.412-.001-6.822-.008-10.234.016-.326.002-.686.15-.97.328-.577.362-.748.944-.748 1.602l-.001 19.87c.001 1.241.748 1.96 1.997 1.958h7.127 3.227l1.415-3.255zm10.802 4.275c-.037-2.842-2.311-5.028-5.195-4.996-2.753.03-5.018 2.342-4.98 5.083.04 2.819 2.35 5.015 5.227 4.969 2.743-.043 4.984-2.333 4.948-5.056zM41.824 30.13h3.142l-3.142-3.467v3.467zm-11.821 6.241v-1.858h13.903v1.858H30.003zm.002 4.617v-1.864h13.903v1.864H30.005zm16.29 9.184l3.281-3.092 1.349 1.378-4.609 4.276-2.875-2.738 1.438-1.484 1.416 1.66z" fill="#284058"/></svg>
+											</div>
+											<p class="package_price text-center">Get 10% discount</p>
+											<p>Using promo code user will get 10% discount on purchase of subscription plan. User will get unlimited access for products, categories, orders & sales</p>
+											<ul>
+												<li style="font-size:20px;text-align:center;text-transform: uppercase;">"{{ company()->getSuperConfigData('general.design.promo-code.promo-code')}}"</li>
+												 
 											</ul>
 										</div>
 									</div>

@@ -51,7 +51,6 @@ class ResetPasswordController extends Controller
      */
     public function store()
     {
-        //dd($this->_config['redirect']);
         try {
             $this->validate(request(), [
                 'token'    => 'required',
