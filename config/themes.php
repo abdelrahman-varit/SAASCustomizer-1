@@ -40,12 +40,12 @@ return [
             'parent' => 'default'
         ],
 
-        'beshop' => [
-            'views_path' => 'resources/themes/beshop/views',
-            'assets_path' => 'public/themes/beshop/assets',
-            'name' => 'Beshop',
-            'parent' => 'default'
-        ],
+        // 'beshop' => [
+        //     'views_path' => 'resources/themes/beshop/views',
+        //     'assets_path' => 'public/themes/beshop/assets',
+        //     'name' => 'Beshop',
+        //     'parent' => 'default'
+        // ],
     ],
 
     'admin-default' => 'buynoir-admin',
