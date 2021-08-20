@@ -728,3 +728,7 @@ a:active, a:focus, a:hover, a:link, a:visited {
 	background-color: white;
 }
 
+
+.buynoir-navbar-left ul.menubar li.menu-item .shop-icon {
+    background-image: url('../images/shop.svg');
+}
