@@ -227,7 +227,7 @@ class CompanyController extends Controller
         $promo_code = company()->getSuperConfigData('general.design.promo-code.promo-code');
         $user_promo_code = request()->get('promo_code');
         if(!empty($user_promo_code)){
-            if($user_promo_code==$promo_code && $promo_enable){
+            if(strtolower($user_promo_code)==strtolower($promo_code) && $promo_enable){
 
             }else{
                 return response()->json([

@@ -211,14 +211,14 @@
                 <div id="grand-total-detail" class="payable-amount">
                     <label>{{ __('Promo Code 10% discount') }}</label>
                     <label id="grand-total-amount-detail" class="right">
-                        @{{ (plans[period_unit][plan]['total'].replace(/\$/g,'')*0.10).toFixed(2)}}
+                        @{{ (plans[period_unit][plan]['total'].replace(/\$|,/g,'')*0.10).toFixed(2)}}
                     </label>
                 </div>
 
                 <div id="grand-total-detail" class="payable-amount">
                     <label>{{ __('saassubscription::app.admin.checkout.subtotal') }}</label>
                     <label id="grand-total-amount-detail" class="right">
-                        @{{ plans[period_unit][plan]['total'].replace(/\$/g,'')-(plans[period_unit][plan]['total'].replace(/\$/g,'')*0.10).toFixed(2) }}
+                        @{{ plans[period_unit][plan]['total'].replace(/\$|,/g,'')-(plans[period_unit][plan]['total'].replace(/\$/g,'')*0.10).toFixed(2) }}
                     </label>
                 </div>
                 @endif
