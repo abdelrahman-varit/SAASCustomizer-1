@@ -93,9 +93,12 @@
             </label>
 
             @if ($field['type'] == 'text')
-
-                <input type="text" v-validate="'{{ $validations }}'" class="control" id="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" name="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" value="{{ old($name) ?: company()->getSuperConfigData($name) }}" data-vv-as="&quot;{{ trans($field['title']) }}&quot;">
-
+                @if($field['name']=="promo-code")
+                    <input type="text" style="text-transform:uppercase" minlength="6" maxlength="8" v-validate="'{{ $validations }}'" class="control" id="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" name="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" value="{{ old($name) ?: company()->getSuperConfigData($name) }}" data-vv-as="&quot;{{ trans($field['title']) }}&quot;">
+                @else
+                    <input type="text" v-validate="'{{ $validations }}'" class="control" id="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" name="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" value="{{ old($name) ?: company()->getSuperConfigData($name) }}" data-vv-as="&quot;{{ trans($field['title']) }}&quot;">
+                @endif
+                
             @elseif ($field['type'] == 'password')
 
                 <input type="password" v-validate="'{{ $validations }}'" class="control" id="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" name="{{ $firstField }}[{{ $secondField }}][{{ $thirdField }}][{{ $field['name'] }}]" value="{{ old($name) ?: company()->getSuperConfigData($name) }}" data-vv-as="&quot;{{ trans($field['title']) }}&quot;">

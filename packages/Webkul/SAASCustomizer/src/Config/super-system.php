@@ -54,7 +54,7 @@ return [
             ],
             [
                 'name' => 'promo-code',
-                'title' => 'Promo Code',
+                'title' => 'Promo Code [min:6 chars]',
                 'type' => 'text',
                 'channel_based' => false,
                 'locale_based' => false

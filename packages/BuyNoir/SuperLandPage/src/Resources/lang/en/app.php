@@ -319,6 +319,7 @@ return [
             'something-wrong'       => 'Warning: Something went wrong.',
             'store-created'         => 'Success: Store Created Successfully.',
             'something-wrong-1'     => 'Warning: Something went wrong, please try again later.',
+            'promo_code'            => 'Invalid promo code',
         ],
 
         'custom-errors' => [
