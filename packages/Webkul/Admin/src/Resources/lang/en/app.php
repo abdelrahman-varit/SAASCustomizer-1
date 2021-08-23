@@ -817,6 +817,11 @@ return [
 
         ],
 
+        'themes' => [
+            'title' => 'Template',
+            'add-title' => 'Save Template ',
+        ],
+
         'sliders' => [
             'title' => 'Sliders',
             'name' => 'Name',
