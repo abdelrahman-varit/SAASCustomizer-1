@@ -732,3 +732,11 @@ a:active, a:focus, a:hover, a:link, a:visited {
 .buynoir-navbar-left ul.menubar li.menu-item .shop-icon {
     background-image: url('../images/shop.svg');
 }
+
+.buynoir-navbar-left ul.menubar li.menu-item span.icon {
+	width: 25px;
+	height: 25px;
+	-webkit-border-radius: 5rem;
+	-moz-border-radius: 5rem;
+	border-radius: 5rem;
+}
