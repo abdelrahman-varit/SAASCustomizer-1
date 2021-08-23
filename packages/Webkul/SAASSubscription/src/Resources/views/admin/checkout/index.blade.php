@@ -207,10 +207,11 @@
                     $promo_code_company = company()->getSuperConfigData('general.design.promo-code.promo-code');
                     $promo_code_validate = $company->promo_code_validate;
                 @endphp
-                @if(!empty($promo_code) && $promo_code==$promo_code_company && empty($promo_code_validate))
+                @if(!empty($promo_code) && strtolower($promo_code)==strtolower($promo_code_company) && empty($promo_code_validate))
                 <div id="grand-total-detail" class="payable-amount">
                     <label>{{ __('Promo Code 10% discount') }}</label>
                     <label id="grand-total-amount-detail" class="right">
+                        {{core()->currencySymbol(core()->getCurrentCurrencyCode())}}
                         @{{ (plans[period_unit][plan]['total'].replace(/\$|,/g,'')*0.10).toFixed(2)}}
                     </label>
                 </div>
@@ -218,7 +219,8 @@
                 <div id="grand-total-detail" class="payable-amount">
                     <label>{{ __('saassubscription::app.admin.checkout.subtotal') }}</label>
                     <label id="grand-total-amount-detail" class="right">
-                        @{{ plans[period_unit][plan]['total'].replace(/\$|,/g,'')-(plans[period_unit][plan]['total'].replace(/\$/g,'')*0.10).toFixed(2) }}
+                        {{core()->currencySymbol(core()->getCurrentCurrencyCode())}}
+                        @{{ plans[period_unit][plan]['total'].replace(/\$|,/g,'')-(plans[period_unit][plan]['total'].replace(/\$|,/g,'')*0.10).toFixed(2) }}
                     </label>
                 </div>
                 @endif

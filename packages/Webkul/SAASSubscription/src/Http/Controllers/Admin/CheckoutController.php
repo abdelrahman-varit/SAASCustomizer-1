@@ -66,13 +66,13 @@ class CheckoutController extends Controller
         $promo_code_company = company()->getSuperConfigData('general.design.promo-code.promo-code');
         $base_price = $data['period_unit'] == 'month' ? $plan->monthly_amount : $plan->yearly_amount * 12;
         $price_subtotal = $base_price;
-        if(!empty($promo_code) && $promo_code == $promo_code_company && empty($promo_code_validate)){
+        if(!empty($promo_code) && strtolower($promo_code) == strtolower($promo_code_company) && empty($promo_code_validate)){
             $price_tenth = $base_price * 0.10;
             $price_subtotal = $base_price - $price_tenth;
         }
         $data = array_merge($data, [
             'plan'             => $plan,
-            'type'             => $data['payment_method'],
+            'type'             => $data['payment_method']?$data['payment_method']:'',
             'cycle_expired_on' => Carbon::now(),
             'amount'           => $price_subtotal,
         ]);
