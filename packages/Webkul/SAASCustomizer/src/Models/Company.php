@@ -13,7 +13,7 @@ class Company extends Model implements CompanyContract
 
     protected $table = 'companies';
 
-    protected $fillable = ['name', 'code', 'username','description', 'email', 'logo', 'domain', 'more_info', 'is_active', 'cname'];
+    protected $fillable = ['name', 'code', 'username','description', 'email', 'logo', 'domain', 'more_info', 'is_active','promo_code','promo_code_validate', 'cname'];
 
     public function details()
     {
