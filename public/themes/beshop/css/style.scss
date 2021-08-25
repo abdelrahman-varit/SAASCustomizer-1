@@ -1629,3 +1629,32 @@ hr {
 	margin-bottom: 0 !important;
 	width: auto !important;
 }
+
+
+.fa-people::before {
+	content: '\f007';
+}
+
+.fa-contact_mail::before {
+	content: '\f3c5';
+}
+
+.fa-rate_review::before {
+	content: '\f086';
+}
+
+.fa-playlist_add_check::before {
+	content: '\f004';
+}
+
+.fa-compare::before {
+	content: '\f2f1';
+}
+
+.fa-shopping_cart::before {
+	content: '\f07a';
+}
+
+.fa-cloud_download::before {
+	content: '\f381';
+}
