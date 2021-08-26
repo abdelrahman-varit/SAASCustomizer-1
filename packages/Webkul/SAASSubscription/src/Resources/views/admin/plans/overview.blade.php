@@ -31,6 +31,15 @@
                     </div>
 
                     <div class="section-content">
+                        <div class="row">
+                            <span class="title">
+                                {{ __('Profile Plan ID') }}
+                            </span>
+                          
+                            <span class="value">
+                                {{ $recurringProfile->id }} 
+                            </span>
+                        </div>
 
                         <div class="row">
                             <span class="title">
@@ -45,6 +54,9 @@
                                 @endif
                             </span>
                         </div>
+
+                        
+
 
                         @if ($recurringProfile->type != 'free')
                             <div class="row">

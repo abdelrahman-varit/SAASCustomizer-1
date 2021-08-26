@@ -42,7 +42,14 @@
 
 @inject('subscriptionHelper', 'Webkul\SAASSubscription\Helpers\Subscription')
 
-<?php //dd($subscriptionHelper->isServiceStopped());?>
+<?php 
+    $shop_accounts =core()->getConfigData('general.general.shop-accounts.enable');
+    if($shop_accounts){
+?>
+        @include("shop::errors.company_blocked_by_administrator", ['message' => 'Shop plan is expired', 'status' =>'status msg']);
+<?php    }
+?>
+
 @if ($subscriptionHelper->isServiceStopped())
        @include("shop::errors.subscription-expired", ['message' => 'Shop plan is expired','status'=>'status msg']);
 @else

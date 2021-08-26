@@ -38,6 +38,31 @@ return [
             ]
         ]
     ],  
+
+
+    [
+        'key' => 'general.design.promo-code',
+        'name' => 'Promo Code Settings',
+        'sort' => 2,
+        'fields' => [
+            [
+                'name' => 'promo-enable',
+                'title' => 'Promo Enable',
+                'type' => 'boolean',
+                'channel_based' => false,
+                'locale_based' => false
+            ],
+            [
+                'name' => 'promo-code',
+                'title' => 'Promo Code [min:6 chars]',
+                'type' => 'text',
+                'channel_based' => false,
+                'locale_based' => false
+            ]
+        ]
+    ],  
+
+
     [
         'key' => 'general.agent',
         'name' => 'saas::app.super-user.config.system.super-agent',

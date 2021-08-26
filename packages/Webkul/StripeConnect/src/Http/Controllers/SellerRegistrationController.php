@@ -62,8 +62,8 @@ class SellerRegistrationController extends Controller
 
         $account_links = \Stripe\AccountLink::create([
             'account' =>  $account->id,
-            'refresh_url' => 'http://'.$company->domain.'/admin/stripe/connect/retrieve/token?error=true',
-            'return_url' => 'http://'.$company->domain.'/admin/stripe/connect/retrieve/token',
+            'refresh_url' => 'https://'.$company->domain.'/admin/stripe/connect/retrieve/token?error=true',
+            'return_url' => 'https://'.$company->domain.'/admin/stripe/connect/retrieve/token',
             'type' => 'account_onboarding',
         ]);
         

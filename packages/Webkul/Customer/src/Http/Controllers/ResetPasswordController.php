@@ -65,7 +65,8 @@ class ResetPasswordController extends Controller
             );
 
             if ($response == Password::PASSWORD_RESET) {
-                return redirect()->route($this->_config['redirect']);
+                return redirect()->route('customer.session.destroy');
+                //return redirect()->route($this->_config['redirect']);
             }
 
             return back()

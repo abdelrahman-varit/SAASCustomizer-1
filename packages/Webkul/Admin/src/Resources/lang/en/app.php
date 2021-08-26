@@ -36,10 +36,15 @@ return [
 
     'common' => [
         'no-result-found' => 'We could not find any records.',
+        'no-data-avaibale' => 'No data available!',
         'country' => 'Country',
         'state' => 'State',
         'true' => 'True',
-        'false' => 'False'
+        'false' => 'False',
+        'start-building-dashboard' => 'Start building your dashboard!',
+        'no-data-suggation' => 'Before we can create any chart, we\'ll first need to get some data in here!',
+        'add-category' => 'Add Category',
+        'add-data' => 'Add Data',
     ],
 
     'layouts' => [
@@ -812,6 +817,11 @@ return [
 
         ],
 
+        'themes' => [
+            'title' => 'Template',
+            'add-title' => 'Save Template ',
+        ],
+
         'sliders' => [
             'title' => 'Sliders',
             'name' => 'Name',
@@ -1309,6 +1319,7 @@ return [
             'locale-options' => 'Unit Options',
             'weight-unit' => 'Weight Unit',
             'theme-color-scheme' => 'Theme Color',
+            'admin-theme-color-scheme' => 'Admin Theme Color',
             'email-settings'    => 'Email Settings',
             'email-sender-name' => 'Email Sender Name',
             'shop-email-from'   => 'Shop Email Address [For sending emails]',

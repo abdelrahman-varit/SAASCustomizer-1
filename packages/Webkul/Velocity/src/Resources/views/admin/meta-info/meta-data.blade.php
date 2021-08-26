@@ -134,6 +134,24 @@
                     </div>
 
                     <div class="control-group">
+                        <label>{{ __('Theme Color') }}</label>
+
+                        <select
+                            class="control"
+                            id="theme_color"
+                            name="theme_color"
+                            >
+                            <option value="{{ $metaData->theme_color ? $metaData->theme_color : 'default' }}" >{{ $metaData ? $metaData->theme_color : 'default' }}</option>
+                            <option value="default">Default</option>
+                            <option value="blue">Blue</option>
+                            <option value="lemon">Lemon</option>
+                            <option value="sky">Sky</option>
+                            <option value="voilet">Voilet</option>
+                        </select>    
+                    </div>
+
+
+                    <div class="control-group">
                         <label style="width:100%;">
                             {{ __('velocity::app.admin.meta-data.home-page-content') }}
                             <span class="locale">[{{ $metaData ? $metaData->channel : $channel }} - {{ $metaData ? $metaData->locale : $locale }}]</span>

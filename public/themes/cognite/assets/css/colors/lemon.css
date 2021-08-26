@@ -71,7 +71,7 @@
 }
 
 .footer-copyright {
-    background-color: #86A353;
+    background-color: #719230;
 }
 
 div.footer {
@@ -243,7 +243,7 @@ section.cart .cart-content .left-side .misc-controls .btn {
 }
 
 section.product-detail div.layouter .form-container .details .product-price {
-    color: #97B659;
+    color: #97B659 !important;
 }
 
 .category-description > div {
@@ -253,4 +253,12 @@ section.product-detail div.layouter .form-container .details .product-price {
 
 .animated-loader:after {
     border-top-color: #719230;
+}
+
+.newsletter-subscription {
+	background-color: rgba(151, 182, 89, .5);
+}
+
+.newsletter-subscription .control-group button{
+    background: #719230;
 }

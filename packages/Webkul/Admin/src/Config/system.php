@@ -11,29 +11,7 @@ return [
         'sort' => 1,
     ], 
     
-    [
-        'key'    => 'general.general.theme-color',
-        'name'   => 'admin::app.admin.system.theme-color-scheme',
-        'sort'   => 1,
-        'fields' => [
-            [
-                'name'          => 'theme_color_scheme',
-                'title'         => 'admin::app.admin.system.theme-color-scheme',
-                'type'          => 'select',
-                'options'       => [
-                    [
-                        'title' => 'default',
-                        'value' => 'default',
-                    ], [
-                        'title' => 'lemon',
-                        'value' => 'lemon',
-                    ],  
-                ],
-                'channel_based' => true
-            ],
-        ],
-    ], 
-    
+   
     [
         'key'    => 'general.general.locale_options',
         'name'   => 'admin::app.admin.system.locale-options',
@@ -94,7 +72,23 @@ return [
                 'default_value' => config('mail.admin.address'),
             ],
         ],
-    ], [
+    ],
+    
+    [
+        'key'    => 'general.general.shop-accounts',
+        'name'   => 'Shop active/deactived',
+        'sort'   => 6,
+        'fields' => [
+            [
+                'name'  => 'enable',
+                'title' => 'Deactived',
+                'type'  => 'boolean',
+            ]
+        ]
+    ],
+
+    
+    [
         'key'  => 'general.content',
         'name' => 'admin::app.admin.system.content',
         'sort' => 2,
@@ -140,7 +134,43 @@ return [
         'key'  => 'general.design',
         'name' => 'admin::app.admin.system.design',
         'sort' => 3,
-    ], [
+    ],
+    
+    [
+        'key'    => 'general.design.admin-theme',
+        'name'   => 'admin::app.admin.system.theme-color-scheme',
+        'sort'   => 0,
+        'fields' => [
+            [
+                'name'          => 'theme-color',
+                'title'         => 'admin::app.admin.system.admin-theme-color-scheme',
+                'type'          => 'select',
+                'options'       => [
+                    [
+                        'title' => 'default',
+                        'value' => 'default',
+                    ], [
+                        'title' => 'blue',
+                        'value' => 'blue',
+                    ],[
+                        'title' => 'lemon',
+                        'value' => 'lemon',
+                    ],  [
+                        'title' => 'sky',
+                        'value' => 'sky',
+                    ],  [
+                        'title' => 'violet',
+                        'value' => 'violet',
+                    ]
+                ],
+                'channel_based' => true
+            ],
+        ],
+    ], 
+    
+    
+    
+    [
         'key'    => 'general.design.admin_logo',
         'name'   => 'admin::app.admin.system.admin-logo',
         'sort'   => 1,

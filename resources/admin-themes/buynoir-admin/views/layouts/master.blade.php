@@ -13,12 +13,25 @@
             <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/favicon.ico') }}" />
         @endif
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
         <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/ui/assets/css/ui.css') }}">
         <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/admin.css') }}">
         <link rel="stylesheet" href="{{ asset('buynoir/shopadmin/css/shop-admin.css') }}">
 
         <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/custom.css') }}">
         <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/responsive.css') }}">
+
+        <!--Color Scheme-->
+        @php
+            $theme_color = core()->getConfigData('general.design.admin-theme.theme-color');
+        @endphp
+        
+        @if(!empty($theme_color) && $theme_color!=="default")
+            <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/colors/'.$theme_color.'.css') }}">
+        @endif
+        
 
         @yield('head')
 
@@ -32,7 +45,6 @@
         {!! view_render_event('bagisto.admin.layout.body.before') !!}
 
         <div id="app">
-
             <flash-wrapper ref='flashes'></flash-wrapper>
 
             {!! view_render_event('bagisto.admin.layout.nav-top.before') !!}

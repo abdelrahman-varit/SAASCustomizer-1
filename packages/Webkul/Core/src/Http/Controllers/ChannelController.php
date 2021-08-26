@@ -44,6 +44,13 @@ class ChannelController extends Controller
         return view($this->_config['view']);
     }
 
+
+    public function themeindex()
+    {
+        return view($this->_config['view']);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

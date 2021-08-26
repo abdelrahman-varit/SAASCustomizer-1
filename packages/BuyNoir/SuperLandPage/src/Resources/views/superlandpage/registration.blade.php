@@ -113,7 +113,14 @@
                                                 <span class="control-error" v-show="errors.has('step-one.password_confirmation')">@{{ errors.first('step-one.password_confirmation') }}</span>
                                             </div>
 
+                                            @if(company()->getSuperConfigData('general.design.promo-code.promo-enable') && company()->getSuperConfigData('general.design.promo-code.promo-code'))
+                                            <div class="control-group" :class="[errors.has('step-one.promo_code') ? 'has-error' : '']">
+                                                <input type="text"  v-validate="'min:6'" class="control" v-model="promo_code" name="promo_code" placeholder="Promo Code" data-vv-as="&quot;{{ __('saas::app.tenant.registration.promo_code') }}&quot;">
+                                                <span class="control-error" v-show="errors.has('step-one.promo_code')">@{{ errors.first('step-one.promo_code') }}</span>
+                                            </div>
+                                            @endif
                                             <div class="text-right control-group">
+                                               
                                                 <!-- <input type="submit" class="btn btn-lg btn-primary" :disabled="errors.has('password') || errors.has('password_confirmation') || errors.has('email')"  value="Continue"> -->
                                                 <button class="btn btn-lg btn-warning registration-btn" :disabled="errors.has('step-one.password') || errors.has('step-one.password_confirmation') || errors.has('step-one.email')">{{ __('saas::app.tenant.registration.continue') }}</button>
                                             </div>
@@ -275,6 +282,7 @@
                                           email: null,
                                           password: null,
                                           password_confirmation: null,
+                                          promo_code: null,
                                           first_name: null,
                                           last_name: null,
                                           phone_no: null,
@@ -343,7 +351,8 @@
                                               axios.post('{{ route('company.validate.step-one') }}', {
                                                   email: this.email,
                                                   password: this.password,
-                                                  password_confirmation: this.password_confirmation
+                                                  password_confirmation: this.password_confirmation,
+                                                  promo_code: o_this.promo_code,
                                               }).then(function (response) {
                                                   o_this.step_two = true;
                                                   o_this.step_one = false;
@@ -400,6 +409,7 @@
                                                   password: this.password,
                                                   password_confirmation: this.password_confirmation,
                                                   name: this.username,
+                                                  promo_code: this.promo_code,
                                                   productcategory: this.productcategory,
                                                   username: usernameTm,
                                                   elsebusinessStart: this.elsebusinessStart

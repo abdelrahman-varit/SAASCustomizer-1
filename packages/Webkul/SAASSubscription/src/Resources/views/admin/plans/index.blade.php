@@ -46,11 +46,28 @@
                                     <li>{!! __('saassubscription::app.admin.plans.allowed-channels', ['count' => '<b>' . $plan->allowed_channels . '</b>']) !!}</li>
                                     <li>{!! __('saassubscription::app.admin.plans.allowed-orders', ['count' => '<b>' . $plan->allowed_orders . '</b>']) !!}</li>
                                 </ul>
+                                @inject('subscriptionHelper', 'Webkul\SAASSubscription\Helpers\Subscription')
+                                <?php
+                                    $isServiceStopped = $subscriptionHelper->isServiceStopped();
+                                ?>
+
                                 @if($plan->yearly_amount>0)
-                                <button class="btn btn-lg {{isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name)?' btn-secondary ':'btn-primary'}}" {{isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name)?' disabled ':''}}>
-                                    {{ __('saassubscription::app.admin.plans.purchase') }}  
-                                    
-                                </button>
+                                    @if($isServiceStopped)
+                                        <button class="btn btn-lg  btn-primary" {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
+                                            {{ __('saassubscription::app.admin.plans.purchase') }}  
+                                        </button>
+                                    @else
+                                        @if(isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name ))
+                                        <button class="btn btn-lg " {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
+                                            {{ __('saassubscription::app.admin.plans.purchase') }}  
+                                        </button>
+                                        @else
+                                        <button class="btn btn-lg btn-primary" {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
+                                            {{ __('saassubscription::app.admin.plans.purchase') }}  
+                                        </button>
+                                        @endif
+                                        
+                                    @endif
                                 @else
                                 <!-- <button class="btn btn-lg btn-danger" {{isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name)?'  ':''}}>
                                     {{ __('saassubscription::app.admin.plans.purchase') }}  

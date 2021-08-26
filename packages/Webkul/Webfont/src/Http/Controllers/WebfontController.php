@@ -40,12 +40,12 @@ class WebfontController extends Controller
             } else {
                 session()->flash('error', trans('webfont::app.cannot-fetch'));
 
-                return redirect()->route('admin.cms.webfont');
+                return redirect()->route('admin.cms.webfont.add');
             }
         } else {
             session()->flash('error', trans('webfont::app.set-api-key'));
 
-            return redirect()->route('admin.cms.webfont');
+            return redirect()->route('admin.cms.webfont.add');
         }
     }
 
@@ -68,7 +68,7 @@ class WebfontController extends Controller
 
         session()->flash('success', trans('webfont::app.create-success'));
 
-        return redirect()->route('admin.cms.webfont');
+        return redirect()->route('admin.cms.webfont.add');
     }
 
     public function activate($id)
@@ -95,7 +95,7 @@ class WebfontController extends Controller
 
         session()->flash('success', trans('webfont::app.active-success'));
 
-        return redirect()->route('admin.cms.webfont');
+        return redirect()->route('admin.cms.webfont.add');
     }
 
     public function remove($id)

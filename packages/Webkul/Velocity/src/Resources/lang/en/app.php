@@ -91,7 +91,8 @@ return [
         ],
         'meta-data' => [
             'footer'                    => 'Footer',
-            'title'                     => 'Velocity meta data',
+            'title'                     => 'Shop meta data',
+            'theme-color'               => 'Theme Color',
             'activate-slider'           => 'Activate Slider',
             'home-page-content'         => 'Home Page Content',
             'footer-left-content'       => 'Footer Left Content',
