@@ -43,12 +43,13 @@
                                 @csrf()
 
                                 <h2>{{ core()->formatPrice($plan->yearly_amount, config('app.currency')) }}</h2>
-
-                                <p>{!! __('saassubscription::app.admin.plans.plan-description', ['amount' => '<b>' . core()->formatPrice($plan->monthly_amount, config('app.currency')) . '</b>']) !!}</p>
+                                @if($plan->name=="Promo Code Plan")
+                                    <p>Promo Code</p>
+                                    <h2 style='text-transform:uppercase'>{{company()->getSuperConfigData('general.design.promo-code.promo-code')}}</h2>
+                                @endif
+                                <p>Unlimited access</p>
                                 
                                 <ul>
-                                    <li>{!! __('saassubscription::app.admin.plans.allowed-products', ['count' => '<b>' . $plan->allowed_products . '</b>']) !!}</li>
-                                    <li>{!! __('saassubscription::app.admin.plans.allowed-categories', ['count' => '<b>' . $plan->allowed_categories . '</b>']) !!}</li>
                                     <li>{!! __('saassubscription::app.admin.plans.allowed-attributes', ['count' => '<b>' . $plan->allowed_attributes . '</b>']) !!}</li>
                                     <li>{!! __('saassubscription::app.admin.plans.allowed-attribute-families', ['count' => '<b>' . $plan->allowed_attribute_families . '</b>']) !!}</li>
                                     <li>{!! __('saassubscription::app.admin.plans.allowed-channels', ['count' => '<b>' . $plan->allowed_channels . '</b>']) !!}</li>
