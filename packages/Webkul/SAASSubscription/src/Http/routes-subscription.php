@@ -85,9 +85,19 @@ Route::group(['middleware' => ['web', 'super-locale']], function () {
                     'view' => 'saassubscription::admin.checkout.index'
                 ])->name('admin.subscription.checkout.index');
 
+                Route::get('/checkout-promo/{promo_plan_id}', 'Webkul\SAASSubscription\Http\Controllers\Admin\CheckoutController@indexPromo')->defaults('_config', [
+                    'view' => 'saassubscription::admin.checkout.index-promo'
+                ])->name('admin.subscription.checkout.index-promo');
+
+
                 Route::post('/checkout/purchase', 'Webkul\SAASSubscription\Http\Controllers\Admin\CheckoutController@purchase')->defaults('_config', [
                     'redirect' => 'admin.subscription.plan.index'
                 ])->name('admin.subscription.checkout.purchase');
+
+                Route::post('/checkout/purchase-promo', 'Webkul\SAASSubscription\Http\Controllers\Admin\CheckoutController@purchasePromo')->defaults('_config', [
+                    'redirect' => 'admin.subscription.plan.index'
+                ])->name('admin.subscription.checkout.purchase-promo');
+
 
 
                 Route::get('/paypal/start', 'Webkul\SAASSubscription\Http\Controllers\Admin\PaypalController@start')->defaults('_config', [

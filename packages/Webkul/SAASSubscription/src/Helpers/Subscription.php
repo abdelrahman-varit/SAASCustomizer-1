@@ -606,6 +606,40 @@ class Subscription
         return $data;
     }
 
+    public function getFormatedPlansPromo()
+    {
+        $currencySymbol = config('app.currency');
+
+        $data = [];
+
+        foreach ($this->planRepository->all() as $plan) {
+
+            $data['month'][$plan->id] = [
+                'id'     => $plan->id,
+                'name'   => $plan->name,
+                'label'  => trans('saassubscription::app.admin.checkout.plan-option-label', [
+                                'plan'   => $plan->name,
+                                'amount' => core()->formatPrice($plan->monthly_amount, $currencySymbol)
+                            ]),
+                'amount' => core()->formatPrice($plan->monthly_amount, $currencySymbol),
+                'total'  => core()->formatPrice($plan->monthly_amount, $currencySymbol),
+            ];
+
+            $data['year'][$plan->id] = [
+                'id'     => $plan->id,
+                'name'   => $plan->name,
+                'label'  => trans('saassubscription::app.admin.checkout.plan-option-label', [
+                                'plan'   => $plan->name,
+                                'amount' => core()->formatPrice($plan->yearly_amount, $currencySymbol)
+                            ]),
+                'amount' => core()->formatPrice($plan->yearly_amount, $currencySymbol),
+                'total'  => core()->formatPrice($plan->yearly_amount * 12, $currencySymbol),
+            ];
+        }
+
+        return $data;
+    }
+
     /**
      * Get remaining resource to create
      * 

@@ -25,6 +25,14 @@
 
             <div class="plan-list">
                 @foreach ($plans as $plan)
+                    @php
+                        $promo_code = company()->getSuperConfigData('general.design.promo-code.promo-code');
+                        $promo_code_enable = company()->getSuperConfigData('general.design.promo-code.promo-enable');
+                        if((!$promo_code_enable || !$promo_code) && $plan->name=="Promo Code Plan"){
+                            continue;
+                        }
+                    @endphp
+
                     <div class="card">
                         <div class="card-title">
                             {{ $plan->name }}
@@ -46,6 +54,8 @@
                                     <li>{!! __('saassubscription::app.admin.plans.allowed-channels', ['count' => '<b>' . $plan->allowed_channels . '</b>']) !!}</li>
                                     <li>{!! __('saassubscription::app.admin.plans.allowed-orders', ['count' => '<b>' . $plan->allowed_orders . '</b>']) !!}</li>
                                 </ul>
+
+                                
                                 @inject('subscriptionHelper', 'Webkul\SAASSubscription\Helpers\Subscription')
                                 <?php
                                     $isServiceStopped = $subscriptionHelper->isServiceStopped();
@@ -74,11 +84,17 @@
                                     
                                 </button> -->
                                 @endif
+
+                                @if($plan->name=="Promo Code Plan")
+                                    <a href="{{route('admin.subscription.checkout.index-promo',$plan->id)}}" class="btn btn-lg btn-primary">Purchase</a>
+                                @endif
                             </form>
                         </div>
                     </div>
                 @endforeach
-            </div>
+
+
+            </div><!-- end plan list -->
 
         </div>
 
