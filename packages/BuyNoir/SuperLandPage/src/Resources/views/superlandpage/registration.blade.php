@@ -113,12 +113,12 @@
                                                 <span class="control-error" v-show="errors.has('step-one.password_confirmation')">@{{ errors.first('step-one.password_confirmation') }}</span>
                                             </div>
 
-                                            @if(company()->getSuperConfigData('general.design.promo-code.promo-enable') && company()->getSuperConfigData('general.design.promo-code.promo-code'))
+                                            <!-- @if(company()->getSuperConfigData('general.design.promo-code.promo-enable') && company()->getSuperConfigData('general.design.promo-code.promo-code'))
                                             <div class="control-group" :class="[errors.has('step-one.promo_code') ? 'has-error' : '']">
                                                 <input type="text"  v-validate="'min:6'" class="control" v-model="promo_code" name="promo_code" placeholder="Promo Code" data-vv-as="&quot;{{ __('saas::app.tenant.registration.promo_code') }}&quot;">
                                                 <span class="control-error" v-show="errors.has('step-one.promo_code')">@{{ errors.first('step-one.promo_code') }}</span>
                                             </div>
-                                            @endif
+                                            @endif -->
                                             <div class="text-right control-group">
                                                
                                                 <!-- <input type="submit" class="btn btn-lg btn-primary" :disabled="errors.has('password') || errors.has('password_confirmation') || errors.has('email')"  value="Continue"> -->

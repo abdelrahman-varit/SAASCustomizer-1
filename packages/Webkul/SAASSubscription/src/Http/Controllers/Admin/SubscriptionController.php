@@ -98,7 +98,7 @@ class SubscriptionController extends Controller
         ]);
 
         if (! (float) $plan->monthly_amount) {
-            // $this->subscriptionHelper->activateFreePlan();
+            //  $this->subscriptionHelper->activateFreePlan();
 
             // session()->flash('success', trans('saassubscription::app.admin.plans.free-plan-activated'));
 
