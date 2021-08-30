@@ -131,11 +131,12 @@ class CheckoutController extends Controller
          * 
          * ****/
         $data = request()->all();
-        $plan = $this->planRepository->findOrFail(6);
+        $promo_plan_id = request()->get('promo_plan_id');
+        $plan = $this->planRepository->findOrFail($promo_plan_id);
 
         $company = Company::getCurrent();
         $promo_code = request()->get('promo_code');
-        $promo_plan_id = request()->get('promo_plan_id');
+        
         
         $promo_code_validate = $company->promo_code_validate;
         $promo_code_super_admin = company()->getSuperConfigData('general.design.promo-code.promo-code');
