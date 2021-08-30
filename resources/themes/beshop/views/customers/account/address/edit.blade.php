@@ -4,6 +4,10 @@
     {{ __('shop::app.customer.account.address.edit.page-title') }}
 @endsection
 
+@section('activeItem')
+    <i class="fas fa-contact_mail me-2"></i> Address
+@endsection
+
 @section('content-wrapper')
 <div class="main-container-wrapper">
     <div class="account-content">

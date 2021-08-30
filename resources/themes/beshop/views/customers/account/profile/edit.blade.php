@@ -4,6 +4,10 @@
     {{ __('shop::app.customer.account.profile.edit-profile.page-title') }}
 @endsection
 
+@section('activeItem')
+    <i class="fas fa-people me-2"></i> Profile
+@endsection
+
 @section('content-wrapper')
 
 <div class="py-5"></div>
@@ -14,7 +18,7 @@
         @include('shop::customers.account.partials.sidemenu')
 
         <!-- Right Side Content Start -->
-        <div class="col-lg-8 col-xl-9">
+        <div class="col-lg-8 col-xl-9 mt-4">
             {!! view_render_event('bagisto.shop.customers.account.profile.edit.before', ['customer' => $customer]) !!}
 
             <form method="post" action="{{ route('customer.profile.store') }}" class="row gy-3 needs-validation" novalidate>
