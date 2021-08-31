@@ -133,7 +133,7 @@ class CheckoutController extends Controller
         $data = request()->all();
         $promo_plan_id = request()->get('promo_plan_id');
         $plan = $this->planRepository->findOrFail($promo_plan_id);
-
+        $doEC = "";
         $company = Company::getCurrent();
         $promo_code = request()->get('promo_code');
         
