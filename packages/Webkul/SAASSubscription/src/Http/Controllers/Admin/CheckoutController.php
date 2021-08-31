@@ -184,8 +184,6 @@ class CheckoutController extends Controller
 
             $this->recurringProfileRepository->update([
                 'saas_subscription_invoice_id' => $invoice->id,
-                'cycle_expired_on'             => $nextDueDate,
-                'next_due_date'                => $nextDueDate,
             ], $recurringProfile->id);
 
 

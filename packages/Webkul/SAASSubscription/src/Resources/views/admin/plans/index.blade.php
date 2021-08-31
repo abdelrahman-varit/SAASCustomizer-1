@@ -62,32 +62,36 @@
                                     $isServiceStopped = $subscriptionHelper->isServiceStopped();
                                 ?>
 
-                                @if($plan->yearly_amount>0)
-                                    @if($isServiceStopped)
-                                        <button class="btn btn-lg  btn-primary" {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
-                                            {{ __('saassubscription::app.admin.plans.purchase') }}  
-                                        </button>
-                                    @else
-                                        @if(isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name ))
-                                        <button class="btn btn-lg " {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
-                                            {{ __('saassubscription::app.admin.plans.purchase') }}  
-                                        </button>
-                                        @else
-                                        <button class="btn btn-lg btn-primary" {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
-                                            {{ __('saassubscription::app.admin.plans.purchase') }}  
-                                        </button>
-                                        @endif
-                                        
-                                    @endif
-                                @else
-                                <!-- <button class="btn btn-lg btn-danger" {{isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name)?'  ':''}}>
-                                    {{ __('saassubscription::app.admin.plans.purchase') }}  
-                                    
-                                </button> -->
-                                @endif
 
-                                @if($plan->name=="Promo Code Plan")
-                                    <a href="{{route('admin.subscription.checkout.index-promo',$plan->id)}}" class="btn btn-lg btn-primary">Purchase</a>
+                                @if($recurringProfile->schedule_description=="Promo Code Plan")
+                                @else
+                                    @if($plan->yearly_amount>0)
+                                        @if($isServiceStopped)
+                                            <button class="btn btn-lg  btn-primary" {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
+                                                {{ __('saassubscription::app.admin.plans.purchase') }}  
+                                            </button>
+                                        @else
+                                            @if(isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name ))
+                                            <button class="btn btn-lg " {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
+                                                {{ __('saassubscription::app.admin.plans.purchase') }}  
+                                            </button>
+                                            @else
+                                            <button class="btn btn-lg btn-primary" {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
+                                                {{ __('saassubscription::app.admin.plans.purchase') }}  
+                                            </button>
+                                            @endif
+                                            
+                                        @endif
+                                    @else
+                                    <!-- <button class="btn btn-lg btn-danger" {{isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name)?'  ':''}}>
+                                        {{ __('saassubscription::app.admin.plans.purchase') }}  
+                                        
+                                    </button> -->
+                                    @endif
+
+                                    @if($plan->name=="Promo Code Plan")
+                                        <a href="{{route('admin.subscription.checkout.index-promo',$plan->id)}}" class="btn btn-lg btn-primary">Purchase</a>
+                                    @endif
                                 @endif
                             </form>
                         </div>
