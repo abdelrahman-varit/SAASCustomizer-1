@@ -153,7 +153,7 @@ class StripeController extends Controller
             ]);
 
          } else {
-             session()->flash('error', 'The promo code you entered is invalid!');
+             session()->flash('error', $doEC['L_LONGMESSAGE0']);
  
              return redirect()->route('admin.subscription.plan.index');
          }
