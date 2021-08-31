@@ -14,7 +14,7 @@
         <div class="page-header">
             <div class="page-title">
                 <h1>
-                    {{ __('saassubscription::app.admin.checkout.title') }} Promo
+                    {{ __('saassubscription::app.admin.checkout.title') }} Promo 
                 </h1>
             </div>
         </div>
