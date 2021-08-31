@@ -17,9 +17,9 @@
 
         <!-- Right Side Content Start -->
         <div class="col-lg-8 col-xl-9">
-            <div class="row">
+            <div class="row mt-3 mt-lg-0">
                 <div class="col">
-                    <h4 class="mb-0 text-primary">Addresses</h4>
+                    <h4 class="m-0 text-primary">Addresses</h4>
                 </div>
                 <div class="col-auto">
                     <a href="{{ route('customer.address.create') }}" class="btn btn-dark btn-sm">{{ __('shop::app.customer.account.address.index.add') }}</a>
