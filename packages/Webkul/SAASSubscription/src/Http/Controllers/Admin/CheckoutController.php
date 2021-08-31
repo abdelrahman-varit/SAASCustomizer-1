@@ -175,7 +175,7 @@ class CheckoutController extends Controller
                 'saas_subscription_purchased_plan_id'    => $recurringProfile->purchased_plan->id,
                 'saas_subscription_recurring_profile_id' => $recurringProfile->id,
                 'grand_total'                            => $recurringProfile->amount,
-                'cycle_expired_on'                       => $nextDueDate,
+                
                 'customer_email'                         => $recurringProfile->company->email,
                 'customer_name'                          => $recurringProfile->company->username,
                 'payment_method'                         => 'Stripe',
