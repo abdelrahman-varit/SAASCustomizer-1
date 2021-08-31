@@ -14,7 +14,7 @@
         <div class="page-header">
             <div class="page-title">
                 <h1>
-                    {{ __('saassubscription::app.admin.checkout.title') }} Checkout
+                    {{ __('saassubscription::app.admin.checkout.title') }} Promo
                 </h1>
             </div>
         </div>
@@ -23,7 +23,7 @@
 
             @include('saassubscription::admin.layouts.tabs')
             
-            <form action="{{ route('admin.subscription.checkout.purchase') }}" method="post">
+            <form action="{{ route('admin.subscription.checkout.purchase-promo') }}" method="post">
                 
                 @csrf()
 
@@ -46,7 +46,7 @@
                     
                     <div class="section-content">
 
-                        <div class="control-group">
+                        <!-- <div class="control-group">
                             <label for="plan">Payment Method</label>
                             <select class="control" id="payment_method" name="payment_method">
                                 <option value="paypal">Paypal</option>
@@ -67,7 +67,7 @@
                                 <option value="month">{{ __('saassubscription::app.admin.checkout.month') }}</option>
                                 <option value="year">{{ __('saassubscription::app.admin.checkout.year') }}</option>
                             </select>
-                        </div>
+                        </div> -->
 
                         <div class="control-group">
                             <label for="tin">{{ __('saassubscription::app.admin.checkout.tin') }}</label>
@@ -172,26 +172,12 @@
 
             <div class="sale-summary">
                 <h3>{{ __('saassubscription::app.admin.checkout.summary') }}</h3>
-                <div class="item-detail">
-                    <label>
-                        {{ __('saassubscription::app.admin.checkout.billing-cycle') }}
-                    </label>
-                    
-                    <label class="right">
-                        <span v-if="period_unit == 'month'">
-                            {{ __('saassubscription::app.admin.checkout.month') }}
-                        </span>
-
-                        <span v-else>
-                            {{ __('saassubscription::app.admin.checkout.annual') }}
-                        </span>
-                    </label>
-                </div>
+                
                 
                 <div class="item-detail">
                     <label id="taxrate-0">{{ __('saassubscription::app.admin.checkout.plan') }}</label>
                     <label id="basetaxamount-0" class="right">
-                        @{{ plans[period_unit][plan]['name'] }}
+                       @{{ plans[period_unit][plan]['name'] }}
                     </label>
                 </div>
                
@@ -204,11 +190,19 @@
                 @php
                     $company = Company::getCurrent();
                     $promo_code_user = $company->promo_code;
-                    $promo_code_company = company()->getSuperConfigData('general.design.promo-code.promo-code');
+                    $promo_code_super_admin = company()->getSuperConfigData('general.design.promo-code.promo-code');
                     $promo_code_validate = $company->promo_code_validate;
                 @endphp
-                
+             
 
+                <div class="control-group" :class="[errors.has('promo_code') ? 'has-error' : '']" style="margin-top:15px">
+                    <label for="promo_code" class="required">{{ __('Promo Code') }}</label>
+                    <input v-validate="'required'" required  class="control" style="width:100%" id="promo_code" name="promo_code" data-vv-as="&quot;{{ __('promo_code') }}&quot;"/>
+                    <span class="control-error" v-if="errors.has('promo_code')">@{{ errors.first('promo_code') }}</span>
+                </div>
+                @if($promo_plan_id)
+                <input type="hidden" id="promo_plan_id" name="promo_plan_id" value="{{$promo_plan_id}}" required>
+                @endif
                 <button class="btn btn-lg btn-primary">
                     {{ __('saassubscription::app.admin.plans.purchase') }}
                 </button>
@@ -225,14 +219,14 @@
             inject: ['$validator'],
 
             data: function() {
-                const plan = {{ session()->get('subscription_cart.plan.id') }};
-                const plans =  @json(app('Webkul\SAASSubscription\Helpers\Subscription')->getFormatedPlans());
-                const price = plans['month'] ? plans['month'][plan]['total'].replace(/\$|,/g,''):0;
-                console.log('plans list:::',plans);
+                 const plan = 6;
+                 const plans =  @json(app('Webkul\SAASSubscription\Helpers\Subscription')->getFormatedPlansPromo());
+                 console.log('plans list:::',plans);
+                 const price = plans['month'] ? plans['month'][plan]['total'].replace(/\$|,/g,''):0;
                 return {
-                    plan: {{ session()->get('subscription_cart.plan.id') }},
+                    plan: 6,
 
-                    plans: @json(app('Webkul\SAASSubscription\Helpers\Subscription')->getFormatedPlans()),
+                    plans: @json(app('Webkul\SAASSubscription\Helpers\Subscription')->getFormatedPlansPromo()),
 
                     period_unit: 'month',
 

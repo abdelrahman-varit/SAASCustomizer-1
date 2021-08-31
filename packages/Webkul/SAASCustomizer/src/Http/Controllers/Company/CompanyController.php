@@ -233,7 +233,7 @@ class CompanyController extends Controller
                 return response()->json([
                     'success' => false,
                     'data' => 'enable:'.$promo_enable.', promo_code:'.$promo_code.',user_promo_code:'.$user_promo_code,
-                    'errors' => $validator->errors()->add('promo_code','Promo code is invalid!')
+                    'errors' => $validator->errors()->add('promo_code','The code you entered is not valid.!')
                 ], 403);
             }
         } 
