@@ -74,37 +74,37 @@
 
                             <div class="control-group" :class="[errors.has('allowed_products') ? 'has-error' : '']">
                                 <label for="allowed_products" class="required">{{ __('saassubscription::app.super-user.plans.allowed-products') }}</label>
-                                <input type="text" v-validate="'required|numeric|min:1'" class="control" id="allowed_products" name="allowed_products" data-vv-as="&quot;{{ __('saassubscription::app.super-user.plans.allowed-products') }}&quot;" value="{{ old('allowed_products') }}" />
+                                <input type="text" v-validate="'required|numeric|min:0'" class="control" id="allowed_products" name="allowed_products" data-vv-as="&quot;{{ __('saassubscription::app.super-user.plans.allowed-products') }}&quot;" value="{{ old('allowed_products') }}" />
                                 <span class="control-error" v-if="errors.has('allowed_products')">@{{ errors.first('allowed_products') }}</span>
                             </div>
 
                             <div class="control-group" :class="[errors.has('allowed_categories') ? 'has-error' : '']">
                                 <label for="allowed_categories" class="required">{{ __('saassubscription::app.super-user.plans.allowed-categories') }}</label>
-                                <input type="text" v-validate="'required|numeric|min:1'" class="control" id="allowed_categories" name="allowed_categories" data-vv-as="&quot;{{ __('saassubscription::app.super-user.plans.allowed-categories') }}&quot;" value="{{ old('allowed_categories') }}" />
+                                <input type="text" v-validate="'required|numeric|min:0'" class="control" id="allowed_categories" name="allowed_categories" data-vv-as="&quot;{{ __('saassubscription::app.super-user.plans.allowed-categories') }}&quot;" value="{{ old('allowed_categories') }}" />
                                 <span class="control-error" v-if="errors.has('allowed_categories')">@{{ errors.first('allowed_categories') }}</span>
                             </div>
 
                             <div class="control-group" :class="[errors.has('allowed_attributes') ? 'has-error' : '']">
                                 <label for="allowed_attributes" class="required">{{ __('saassubscription::app.super-user.plans.allowed-attributes') }}</label>
-                                <input type="text" v-validate="'required|numeric|min:1'" class="control" id="allowed_attributes" name="allowed_attributes" data-vv-as="&quot;{{ __('saassubscription::app.super-user.plans.allowed-attributes') }}&quot;" value="{{ old('allowed_attributes') }}" />
+                                <input type="text" v-validate="'required|numeric|min:0'" class="control" id="allowed_attributes" name="allowed_attributes" data-vv-as="&quot;{{ __('saassubscription::app.super-user.plans.allowed-attributes') }}&quot;" value="{{ old('allowed_attributes') }}" />
                                 <span class="control-error" v-if="errors.has('allowed_attributes')">@{{ errors.first('allowed_attributes') }}</span>
                             </div>
 
                             <div class="control-group" :class="[errors.has('allowed_attribute_families') ? 'has-error' : '']">
                                 <label for="allowed_attribute_families" class="required">{{ __('saassubscription::app.super-user.plans.allowed-attribute-families') }}</label>
-                                <input type="text" v-validate="'required|numeric|min:1'" class="control" id="allowed_attribute_families" name="allowed_attribute_families" data-vv-as="&quot;{{ __('saassubscription::app.super-user.plans.allowed-attribute-families') }}&quot;" value="{{ old('allowed_attribute_families') }}" />
+                                <input type="text" v-validate="'required|numeric|min:0'" class="control" id="allowed_attribute_families" name="allowed_attribute_families" data-vv-as="&quot;{{ __('saassubscription::app.super-user.plans.allowed-attribute-families') }}&quot;" value="{{ old('allowed_attribute_families') }}" />
                                 <span class="control-error" v-if="errors.has('allowed_attribute_families')">@{{ errors.first('allowed_attribute_families') }}</span>
                             </div>
 
                             <div class="control-group" :class="[errors.has('allowed_channels') ? 'has-error' : '']">
                                 <label for="allowed_channels" class="required">{{ __('saassubscription::app.super-user.plans.allowed-channels') }}</label>
-                                <input type="text" v-validate="'required|numeric|min:1'" class="control" id="allowed_channels" name="allowed_channels" data-vv-as="&quot;{{ __('saassubscription::app.super-user.plans.allowed-channels') }}&quot;" value="{{ old('channels') }}" />
+                                <input type="text" v-validate="'required|numeric|min:0'" class="control" id="allowed_channels" name="allowed_channels" data-vv-as="&quot;{{ __('saassubscription::app.super-user.plans.allowed-channels') }}&quot;" value="{{ old('channels') }}" />
                                 <span class="control-error" v-if="errors.has('allowed_channels')">@{{ errors.first('allowed_channels') }}</span>
                             </div>
 
                             <div class="control-group" :class="[errors.has('allowed_orders') ? 'has-error' : '']">
                                 <label for="allowed_orders" class="required">{{ __('saassubscription::app.super-user.plans.allowed-orders') }}</label>
-                                <input type="text" v-validate="'required|numeric|min:1'" class="control" id="allowed_orders" name="allowed_orders" data-vv-as="&quot;{{ __('saassubscription::app.super-user.plans.allowed-orders') }}&quot;" value="{{ old('allowed_orders') }}" />
+                                <input type="text" v-validate="'required|numeric|min:0'" class="control" id="allowed_orders" name="allowed_orders" data-vv-as="&quot;{{ __('saassubscription::app.super-user.plans.allowed-orders') }}&quot;" value="{{ old('allowed_orders') }}" />
                                 <span class="control-error" v-if="errors.has('allowed_orders')">@{{ errors.first('allowed_orders') }}</span>
                             </div>
 

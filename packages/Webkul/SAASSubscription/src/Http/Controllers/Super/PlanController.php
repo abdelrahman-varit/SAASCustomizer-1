@@ -71,12 +71,12 @@ class PlanController extends Controller
             'name'                       => 'required',
             'monthly_amount'             => 'required|numeric|min:0',
             'yearly_amount'              => 'required|numeric|min:0',
-            'allowed_products'           => 'required|integer|min:1',
-            'allowed_categories'         => 'required|integer|min:1',
-            'allowed_attributes'         => 'required|integer|min:1',
-            'allowed_attribute_families' => 'required|integer|min:1',
-            'allowed_channels'           => 'required|integer|min:1',
-            'allowed_orders'             => 'required|integer|min:1',
+            'allowed_products'           => 'required|integer|min:0',
+            'allowed_categories'         => 'required|integer|min:0',
+            'allowed_attributes'         => 'required|integer|min:0',
+            'allowed_attribute_families' => 'required|integer|min:0',
+            'allowed_channels'           => 'required|integer|min:0',
+            'allowed_orders'             => 'required|integer|min:0',
         ]);
 
         Event::dispatch('super.subscription.plan.create.before');
@@ -120,12 +120,12 @@ class PlanController extends Controller
             'name'                       => 'required',
             'monthly_amount'             => 'required|numeric|min:0',
             'yearly_amount'              => 'required|numeric|min:0',
-            'allowed_products'           => 'required|integer|min:1',
-            'allowed_categories'         => 'required|integer|min:1',
-            'allowed_attributes'         => 'required|integer|min:1',
-            'allowed_attribute_families' => 'required|integer|min:1',
-            'allowed_channels'           => 'required|integer|min:1',
-            'allowed_orders'             => 'required|integer|min:1',
+            'allowed_products'           => 'required|integer|min:0',
+            'allowed_categories'         => 'required|integer|min:0',
+            'allowed_attributes'         => 'required|integer|min:0',
+            'allowed_attribute_families' => 'required|integer|min:0',
+            'allowed_channels'           => 'required|integer|min:0',
+            'allowed_orders'             => 'required|integer|min:0',
         ]);
 
         Event::dispatch('super.subscription.plan.update.before', $id);

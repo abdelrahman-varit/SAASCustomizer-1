@@ -694,11 +694,12 @@ class Subscription
         $purchasedPlan = $recurringProfile->purchased_plan;
 
         $resources = [
+            
             'products' => [
                 'purchased'    => $purchased = $purchasedPlan->allowed_products,
                 'used'         => $used = $this->getUsedResources('products'),
                 'remaining'    => $remaining = $purchased - $used,
-                'allow'        => $remaining <= 0 ? false : true,
+                'allow'        => $remaining <= 0 && $purchasedPlan->allowed_products!=0 ? false : true,
                 'message'      => trans('saassubscription::app.admin.plans.product-left-notification', [
                                     'remaining' => $remaining,
                                     'purchased' => $purchased,
@@ -709,7 +710,7 @@ class Subscription
                 'purchased'    => $purchased = $purchasedPlan->allowed_categories,
                 'used'         => $used = $this->getUsedResources('categories'),
                 'remaining'    => $remaining = $purchased - $used,
-                'allow'        => $remaining <= 0 ? false : true,
+                'allow'        => $remaining <= 0 && $purchasedPlan->allowed_categories!=0 ? false : true,
                 'message'      => trans('saassubscription::app.admin.plans.category-left-notification', [
                                     'remaining' => $remaining,
                                     'purchased' => $purchased,
