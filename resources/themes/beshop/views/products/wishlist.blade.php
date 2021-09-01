@@ -1,5 +1,5 @@
 @inject ('wishListHelper', 'Webkul\Customer\Helpers\Wishlist')
-
+{{-- 
 @auth('customer')
     {!! view_render_event('bagisto.shop.products.wishlist.before') !!}
     @php
@@ -38,4 +38,7 @@
         href="{{ route('customer.wishlist.add', $product->product_id) }}">
         <i class="icon wishlist-icons"></i>
     </a>
-@endguest
+@endguest --}}
+
+
+<a href="/" class="btn btn-light btn-sm" title="Add to wishlist"><i class="fas fa-heart"></i></a>
