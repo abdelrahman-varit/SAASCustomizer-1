@@ -3,13 +3,22 @@
 @push('scripts')
 
     <script type="text/x-template" id="compare-component-template">
-        <button type="button" class="btn btn-light btn-sm" title="{{  __('shop::app.customer.compare.add-tooltip') }}" @click="addProductToCompare"><i class="fas fa-heart"></i></button>
+        <a
+            class="unset text-right"
+            title="{{  __('shop::app.customer.compare.add-tooltip') }}"
+            @click="addProductToCompare"
+            style="cursor: pointer">
+            <i class="icon compare-icons"></i>
+            
+        </a>
     </script>
 
     <script>
         Vue.component('compare-component', {
             props: ['productId'],
+
             template: '#compare-component-template',
+
             data: function () {                
                 return {
                     'baseUrl': "{{ url()->to('/') }}",

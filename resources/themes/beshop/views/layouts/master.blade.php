@@ -1,204 +1,259 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-	<head>
-		<!-- Meta -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta http-equiv="content-language" content="{{ app()->getLocale() }}">
-		
-        <!-- Fonts from tinyMCE -->
-        <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/tinymce-fonts.css') }}">
 
-		<!-- Fonts -->
-		<link rel="stylesheet" href="{{ asset('themes/beshop/fonts/fontawesome/css/all.min.css') }}">
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
+<head>
 
-		<!-- Title -->
-		<title>@yield('page_title')</title>
+    <title>@yield('page_title')</title>
 
-		<!-- Stylesheets -->
-		<link rel="stylesheet" href="{{ asset('themes/beshop/css/swiper-bundle.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('themes/beshop/css/greedynav.css') }}">
-		<link rel="stylesheet" href="{{ asset('themes/beshop/css/stellarnav.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('themes/beshop/css/bootstrap.css') }}">
-		<link rel="stylesheet" href="{{ asset('themes/beshop/css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="content-language" content="{{ app()->getLocale() }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
 
-        @if ($favicon = core()->getCurrentChannel()->favicon_url)
-            <link rel="icon" sizes="16x16" href="{{ $favicon }}" />
-        @else
-            <link rel="icon" sizes="16x16" href="{{ bagisto_asset('images/favicon.ico') }}" />
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    {{-- <link rel="stylesheet" href="{{ bagisto_asset('css/shop.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/shop.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
+
+    <!-- Fonts from tinyMCE -->
+    <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/tinymce-fonts.css') }}">
+
+
+    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/greedynav.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/stellarnav.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/style.css') }}">
+
+    {{-- <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/responsive.css') }}"> --}}
+
+    <!-- Color Scheme -->
+    @php 
+        $theme_color=$velocityMetaData->theme_color
+    @endphp
+    @if($theme_color!=="default" && !empty($theme_color))
+        <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/colors/'.$theme_color.'.css') }}">
+    @endif
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+    crossorigin="anonymous"></script>
+
+    @if ($favicon = core()->getCurrentChannel()->favicon_url)
+        <link rel="icon" sizes="16x16" href="{{ $favicon }}" />
+    @else
+        <link rel="icon" sizes="16x16" href="{{ bagisto_asset('images/favicon.ico') }}" />
+    @endif
+
+    @yield('head')
+
+    @section('seo')
+        @if (! request()->is('/'))
+            <meta name="description" content="{{ core()->getCurrentChannel()->description }}"/>
+        @endif
+    @show
+
+    @stack('css')
+
+    {!! view_render_event('bagisto.shop.layout.head') !!}
+
+    <style>
+        {!! core()->getConfigData('general.content.custom_scripts.custom_css') !!}
+    </style>
+
+    <style>
+        .no-js #loader { display: none;  }
+        .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: white;
+        }
+        .se-pre-con-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .se-pre-con-logo {
+            max-width: 173px;
+            height: auto;
+            -webkit-transform: scale(1);
+            -moz-transform: scale(1);
+            transform: scale(1);
+	        animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(0.9);
+            }
+            70% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(0.9);
+            }
+        }
+    </style>
+
+</head>
+
+
+<body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif style="scroll-behavior: smooth;">
+    <div class="se-pre-con">
+        <div class="se-pre-con-inner">
+            @if ($logo = core()->getCurrentChannel()->logo_url)                
+                <img class="se-pre-con-logo" src="{{ $logo }}" />
+            @else
+                <img class="se-pre-con-logo" src="{{ asset('themes/beshop/assets/images/logo.svg') }}" />
+            @endif
+        </div>
+    </div>
+
+    {!! view_render_event('bagisto.shop.layout.body.before') !!}
+
+    <div id="app">
+        <flash-wrapper ref='flashes'></flash-wrapper>
+        
+        {{-- <div class="main-container-wrapper"> --}}
+
+            {!! view_render_event('bagisto.shop.layout.header.before') !!}
+
+            @include('shop::layouts.header.index')
+
+            {!! view_render_event('bagisto.shop.layout.header.after') !!}
+
+            @yield('slider')
+
+            <div class="content-container">
+
+                {!! view_render_event('bagisto.shop.layout.content.before') !!}
+
+                @yield('content-wrapper')
+
+                {!! view_render_event('bagisto.shop.layout.content.after') !!}
+
+            </div>
+
+        {{-- </div> --}}
+
+        {!! view_render_event('bagisto.shop.layout.footer.before') !!}
+
+        @include('shop::layouts.footer.index')
+
+        {!! view_render_event('bagisto.shop.layout.footer.after') !!}
+
+        @if (core()->getConfigData('general.content.footer.footer_toggle'))
+            <div class="footer footer-copyright">
+                <div class="main-container-wrapper">
+                    <div class="footer-copyright-inner">
+                        <p>
+                            @if (core()->getConfigData('general.content.footer.footer_content'))
+                                {{ core()->getConfigData('general.content.footer.footer_content') }}
+                            @else
+                                {!! trans('admin::app.footer.copy-right') !!}
+                            @endif
+                        </p>
+                        <a href="https://buynoir.co">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="30.72" viewBox="194.435 73.756 130 39.958" xmlns:v="https://vecta.io/nano"><path d="M202.912 82.427c4.697 0 7.459 2.762 7.459 6.596 0 2.59-1.52 4.524-3.626 5.284 2.59.691 4.386 2.935 4.386 5.836 0 3.937-3.039 6.769-7.598 6.769h-9.047V82.427h8.426zm-.552 10.36c2.417 0 3.868-1.381 3.868-3.419 0-2.072-1.45-3.419-3.971-3.419h-3.661v6.837l3.764.001h0zm.449 10.601c2.486 0 4.11-1.347 4.11-3.522 0-2.107-1.415-3.592-3.971-3.592h-4.351v7.114c-.001 0 4.212 0 4.212 0zm18.026 4.006c-4.006 0-6.354-2.969-6.354-6.699V90.093h4.005v9.876c0 2.072.967 3.833 3.384 3.833 2.314 0 3.522-1.554 3.522-3.764v-9.945h4.006v13.744c0 1.381.103 2.452.173 3.074h-3.833c-.069-.38-.138-1.174-.138-1.865-.828 1.519-2.797 2.348-4.765 2.348zm14.573 6.319l4.04-8.805-7.183-14.814h4.524l4.834 10.636 4.524-10.636h4.248l-10.705 23.62-4.282-.001h0zm34.498-6.803L257.82 88.366v18.544h-4.144V82.427h5.284l11.119 17.37v-17.37h4.144v24.484h-4.317v-.001zm25.935-8.426c0 5.18-3.695 8.944-8.737 8.944-5.007 0-8.702-3.764-8.702-8.944 0-5.145 3.695-8.91 8.702-8.91 5.042.001 8.737 3.765 8.737 8.91zm-4.041 0c0-3.488-2.21-5.284-4.697-5.284-2.451 0-4.697 1.796-4.697 5.284s2.245 5.352 4.697 5.352c2.487.001 4.697-1.829 4.697-5.352zm9.877-16.921c1.45 0 2.625 1.174 2.625 2.625s-1.174 2.59-2.625 2.59c-1.415 0-2.59-1.139-2.59-2.59s1.173-2.625 2.59-2.625zm-1.969 25.347V90.093h3.971v16.818h-3.971v-.001zm18.993-12.846a8.74 8.74 0 0 0-1.312-.103c-3.108 0-4.524 1.796-4.524 4.939v8.011h-4.005V90.093h3.902v2.693c.794-1.83 2.659-2.901 4.869-2.901a5.79 5.79 0 0 1 1.07.103v4.076h0z" fill="#fff"/><path fill="#fae3da" d="M321.603 101.489c1.554 0 2.832 1.278 2.832 2.832s-1.278 2.798-2.832 2.798-2.798-1.243-2.798-2.798 1.243-2.832 2.798-2.832z"/><path d="M195.524 77.614v2.062h-1.09v-5.853h1.907a3.31 3.31 0 0 1 1.016.136c.287.092.523.221.71.387a1.53 1.53 0 0 1 .412.589c.088.232.133.482.133.755 0 .283-.048.541-.14.78a1.6 1.6 0 0 1-.427.607 2 2 0 0 1-.707.398 3.23 3.23 0 0 1-.998.14h-.816zm0-.85h.817a1.58 1.58 0 0 0 .523-.074c.151-.052.272-.121.368-.214s.169-.206.221-.342a1.3 1.3 0 0 0 .07-.445c0-.158-.022-.298-.07-.427a.89.89 0 0 0-.221-.324.95.95 0 0 0-.368-.202 1.69 1.69 0 0 0-.523-.07h-.817v2.098zm9.553-.015c0 .431-.074.825-.217 1.193a2.83 2.83 0 0 1-.6.95c-.258.269-.571.475-.935.626s-.769.225-1.211.225-.847-.077-1.215-.225a2.83 2.83 0 0 1-.939-.626c-.258-.269-.46-.585-.604-.95a3.23 3.23 0 0 1-.214-1.193 3.22 3.22 0 0 1 .214-1.193c.144-.364.346-.681.604-.95a2.81 2.81 0 0 1 .939-.626c.368-.147.773-.225 1.215-.225s.847.077 1.211.228.674.361.935.626.46.582.6.946a3.23 3.23 0 0 1 .217 1.194zm-1.119 0c0-.32-.04-.611-.125-.865a1.84 1.84 0 0 0-.368-.648 1.55 1.55 0 0 0-.582-.409 1.97 1.97 0 0 0-.769-.144c-.287 0-.545.048-.773.144s-.427.228-.585.409a1.95 1.95 0 0 0-.372.648 2.73 2.73 0 0 0-.129.865c0 .32.044.607.129.865s.21.471.372.648a1.56 1.56 0 0 0 .585.405c.232.092.486.144.773.144a1.97 1.97 0 0 0 .769-.144c.228-.092.423-.228.582-.405s.28-.394.368-.648a2.75 2.75 0 0 0 .125-.865zm1.432-2.927h.917c.092 0 .173.022.236.066s.107.107.129.18l.994 3.501c.026.088.048.18.066.283l.059.32.074-.32a2.66 2.66 0 0 1 .081-.283l1.149-3.501c.022-.063.066-.118.129-.169s.14-.077.232-.077h.32c.096 0 .173.022.236.066s.103.107.129.18l1.141 3.501c.059.173.11.364.155.574l.059-.302.063-.272.994-3.501a.36.36 0 0 1 .125-.173.39.39 0 0 1 .236-.074h.854l-1.815 5.853h-.987l-1.277-3.998-.052-.166-.052-.191-.048.191-.052.166-1.292 3.998h-.983l-1.82-5.852zm12.704 0v.865h-2.592v1.623h2.043v.839h-2.043v1.657h2.592v.869h-3.689v-5.853h3.689zm2.069 3.567v2.286h-1.09v-5.853h1.785c.401 0 .744.04 1.027.125s.519.195.699.346.317.324.401.53a1.79 1.79 0 0 1 .129.681 1.73 1.73 0 0 1-.088.56 1.62 1.62 0 0 1-.655.854 2.23 2.23 0 0 1-.549.261 1.06 1.06 0 0 1 .357.335l1.465 2.161h-.979a.49.49 0 0 1-.243-.055c-.066-.04-.121-.092-.166-.162l-1.233-1.874c-.044-.074-.096-.121-.151-.151s-.136-.044-.243-.044h-.466zm0-.784h.681c.206 0 .383-.022.537-.074a1.08 1.08 0 0 0 .375-.214c.099-.092.173-.199.221-.324a1.12 1.12 0 0 0 .074-.409c0-.295-.099-.523-.295-.681s-.493-.239-.898-.239h-.696v1.941zm7.871-2.783v.865h-2.592v1.623h2.043v.839h-2.043v1.657h2.592v.869h-3.689v-5.853h3.689zm6.14 2.927c0 .431-.07.825-.214 1.182a2.7 2.7 0 0 1-.604.928 2.76 2.76 0 0 1-.935.604c-.364.144-.766.214-1.207.214h-2.235v-5.853h2.235a3.27 3.27 0 0 1 1.207.217c.364.144.677.346.935.604a2.66 2.66 0 0 1 .604.924c.144.355.214.749.214 1.18zm-1.112 0a2.73 2.73 0 0 0-.129-.865c-.088-.254-.21-.471-.368-.648a1.54 1.54 0 0 0-.582-.405 1.97 1.97 0 0 0-.769-.144h-1.138v4.123h1.138a1.97 1.97 0 0 0 .769-.144c.228-.092.423-.228.582-.405s.28-.394.368-.648.129-.544.129-.864zm3.531 2.926v-5.853h2.017a3.84 3.84 0 0 1 .983.11c.272.07.493.177.666.309a1.19 1.19 0 0 1 .383.49c.081.191.121.409.121.648 0 .14-.018.269-.059.398a1.1 1.1 0 0 1-.188.35c-.085.11-.195.21-.324.298a2.04 2.04 0 0 1-.468.228c.803.18 1.204.615 1.204 1.303 0 .247-.048.475-.14.688a1.52 1.52 0 0 1-.412.541c-.18.155-.405.272-.67.361s-.567.129-.906.129h-2.207zm1.086-3.32h.872c.368 0 .648-.066.839-.202s.291-.35.291-.641c0-.306-.088-.523-.261-.655s-.442-.191-.81-.191h-.931v1.689zm0 .755v1.715h1.108a1.54 1.54 0 0 0 .508-.074c.136-.048.243-.11.328-.191a.7.7 0 0 0 .177-.283 1.06 1.06 0 0 0 .055-.346c0-.121-.022-.239-.063-.342a.63.63 0 0 0-.188-.258c-.085-.07-.199-.125-.335-.166s-.298-.055-.49-.055h-1.1zm6.792.29v2.275h-1.09V77.4l-2.135-3.578h.961c.096 0 .169.022.225.07a.55.55 0 0 1 .14.173l1.071 1.955.162.331.125.306.121-.309a3.35 3.35 0 0 1 .158-.328l1.064-1.955a.56.56 0 0 1 .136-.166c.059-.052.133-.077.225-.077h.964l-2.127 3.578z" fill="#fff"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
         @endif
 
-        @yield('head')
 
-        @section('seo')
-            @if (! request()->is('/'))
-                <meta name="description" content="{{ core()->getCurrentChannel()->description }}"/>
-            @endif
-        @show
-
-        @stack('css')
-
-        {!! view_render_event('bagisto.shop.layout.head') !!}
-
-        <style>
-            {!! core()->getConfigData('general.content.custom_scripts.custom_css') !!}
-        </style>
-
-        <!--jQuery-->
-        <script src="{{ asset('themes/beshop/js/jquery.min.js') }}"></script>
-
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
-
-	</head>
-    <body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif>
-
-        {!! view_render_event('bagisto.shop.layout.body.before') !!}
-
-		<div id="app">
-			<flash-wrapper ref='flashes'></flash-wrapper>
-			
-			{!! view_render_event('bagisto.shop.layout.header.before') !!}
-
-			@include('shop::layouts.header.index')
-
-			{!! view_render_event('bagisto.shop.layout.header.after') !!}
-
-			@yield('slider')
-
-			{!! view_render_event('bagisto.shop.layout.content.before') !!}
-
-			@yield('content-wrapper')
-
-			{!! view_render_event('bagisto.shop.layout.content.after') !!}
-
-
-
-			{!! view_render_event('bagisto.shop.layout.footer.before') !!}
-
-			@include('shop::layouts.footer.index')
-
-			{!! view_render_event('bagisto.shop.layout.footer.after') !!}			
-
-			<overlay-loader :is-open="show_loader"></overlay-loader>
-		</div>
-		
-		
-
-		
-
-		<!-- Floating Menu (Mobile only) Start -->
-		<div class="floating-menu bg-white fixed-bottom d-lg-none">
-			<div class="list-group list-group-horizontal rounded-0 text-center">
-				<a href="#" class="list-group-item list-group-item-action py-3 active">
-					<svg width="20" height="20" fill="#00acc2" enable-background="new 0 0 19.002 19" version="1.1" viewBox="0 0 19.002 19" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-						<path d="m9.129 0h0.742c0.529 0.182 0.914 0.556 1.299 0.942 2.346 2.357 4.701 4.706 7.053 7.058 0.096 0.096 0.195 0.19 0.286 0.291 0.479 0.534 0.625 1.147 0.369 1.821-0.249 0.656-0.741 1.03-1.443 1.119-0.144 0.018-0.288 0.033-0.469 0.054v0.454c0 1.694 8e-3 3.388-3e-3 5.082-8e-3 1.329-0.867 2.174-2.19 2.177-0.853 2e-3 -1.706 1e-3 -2.56 0-0.757 0-0.88-0.123-0.88-0.882v-3.784c0-1.01-0.284-1.29-1.306-1.29h-1.113c-0.942 1e-3 -1.249 0.303-1.249 1.235-1e-3 1.348 3e-3 2.696-2e-3 4.044-2e-3 0.482-0.196 0.674-0.675 0.676-0.878 4e-3 -1.756 1e-3 -2.634 1e-3 -1.502 0-2.32-0.812-2.322-2.308-2e-3 -1.657 0-3.314 0-4.971v-0.421c-0.304-0.051-0.565-0.072-0.812-0.142-0.656-0.185-0.989-0.69-1.22-1.285v-0.742c0.176-0.517 0.537-0.895 0.915-1.27 2.32-2.309 4.634-4.624 6.943-6.943 0.376-0.378 0.753-0.741 1.271-0.916z"/>
-					</svg>
-				</a>
-				<a href="#" class="list-group-item list-group-item-action py-3">
-					<span class="count">0</span>
-					<svg width="20" height="20" fill="#00acc2" enable-background="new 293.364 356.469 25.271 22.484" version="1.1" viewBox="293.36 356.47 25.271 22.484" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-						<path d="m316.63 358.67c-1.308-1.419-3.103-2.2-5.055-2.2-1.459 0-2.795 0.461-3.971 1.371-0.593 0.459-1.131 1.021-1.605 1.676-0.474-0.655-1.012-1.217-1.605-1.676-1.176-0.909-2.512-1.371-3.971-1.371-1.952 0-3.747 0.781-5.055 2.2-1.293 1.402-2.005 3.318-2.005 5.395 0 2.137 0.796 4.094 2.506 6.157 1.53 1.846 3.728 3.719 6.274 5.889 0.869 0.741 1.855 1.581 2.878 2.475 0.27 0.237 0.617 0.367 0.977 0.367s0.707-0.13 0.977-0.367c1.023-0.895 2.009-1.735 2.879-2.476 2.546-2.169 4.744-4.043 6.274-5.889 1.71-2.063 2.506-4.02 2.506-6.157 1e-3 -2.076-0.711-3.992-2.004-5.394z"/>
-					</svg>
-				</a>
-				<a href="#" class="list-group-item list-group-item-action py-3">
-					<span class="count">0</span>
-					<svg width="20" height="20" fill="#00acc2" enable-background="new 0 0 21.138 21.138" version="1.1" viewBox="0 0 21.138 21.138" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-						<path d="m21.138 3.42c-1.988 1.166-3.868 2.268-5.84 3.426v-2.135c-1.116-0.236-1.177-0.201-1.543 0.787-1.581 4.269-3.171 8.535-4.732 12.812-0.173 0.474-0.411 0.619-0.89 0.594-0.736-0.038-1.476-0.01-2.259-0.01v2.245c-1.99-1.16-3.879-2.26-5.874-3.421 1.968-1.156 3.856-2.265 5.837-3.428v2.133c1.097 0.236 1.15 0.21 1.505-0.745 1.592-4.286 3.188-8.571 4.764-12.863 0.159-0.432 0.36-0.612 0.839-0.584 0.755 0.046 1.515 0.012 2.317 0.012v-2.243c1.989 1.157 3.878 2.258 5.876 3.42z"/>
-						<path d="m15.267 21.137v-2.243c-0.836 0-1.632-0.018-2.427 7e-3 -0.373 0.012-0.548-0.111-0.672-0.471-0.374-1.083-0.798-2.149-1.189-3.227-0.062-0.172-0.119-0.392-0.064-0.55 0.376-1.081 0.783-2.151 1.231-3.361 0.21 0.547 0.375 0.966 0.531 1.389 0.366 0.983 0.726 1.969 1.092 2.953 0.356 0.957 0.358 0.957 1.482 0.836v-2.2c1.997 1.169 3.887 2.276 5.883 3.445-1.967 1.147-3.854 2.248-5.867 3.422z"/>
-						<path d="m5.819 2.243c0.912 0 1.711 0.015 2.509-6e-3 0.342-9e-3 0.522 0.093 0.641 0.433 0.386 1.101 0.814 2.187 1.212 3.284 0.055 0.152 0.087 0.352 0.036 0.498-0.381 1.08-0.786 2.152-1.233 3.361-0.321-0.856-0.598-1.587-0.871-2.32-0.251-0.674-0.497-1.35-0.746-2.025-0.353-0.953-0.353-0.953-1.505-0.779v2.171c-1.99-1.168-3.879-2.275-5.86-3.437 1.971-1.15 3.849-2.247 5.818-3.397-1e-3 0.763-1e-3 1.447-1e-3 2.217z"/>
-					</svg>
-				</a>
-				<a href="#" class="list-group-item list-group-item-action py-3">
-					<span class="count">0</span>
-					<svg width="20" height="20" fill="#00acc2" enable-background="new 228.689 272 24.58 21.604" version="1.1" viewBox="228.69 272 24.58 21.604" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-						<path d="m236.66 286.4h13.01c0.322 0 0.605-0.213 0.692-0.522l2.881-10.082c0.062-0.217 0.02-0.451-0.117-0.631s-0.349-0.286-0.575-0.286h-17.553l-0.515-2.316c-0.073-0.33-0.366-0.564-0.703-0.564h-4.369c-0.398 0-0.72 0.322-0.72 0.72s0.322 0.72 0.72 0.72h3.791l2.6 11.702c-0.765 0.333-1.302 1.094-1.302 1.98 0 1.191 0.969 2.16 2.16 2.16h13.01c0.398 0 0.72-0.322 0.72-0.72s-0.322-0.72-0.72-0.72h-13.01c-0.397 0-0.72-0.323-0.72-0.72s0.324-0.721 0.72-0.721z"/>
-						<path d="m235.94 291.44c0 1.191 0.969 2.16 2.161 2.16 1.191 0 2.16-0.969 2.16-2.16s-0.969-2.16-2.16-2.16c-1.192 0-2.161 0.969-2.161 2.16z"/>
-						<path d="m246.07 291.44c0 1.191 0.969 2.16 2.16 2.16s2.16-0.969 2.16-2.16-0.969-2.16-2.16-2.16-2.16 0.969-2.16 2.16z"/>
-					</svg>
-				</a>
-				<a href="#" class="list-group-item list-group-item-action py-3">
-					<svg width="20" height="20" fill="#00acc2" enable-background="new 297.497 386.5 17.007 19" version="1.1" viewBox="297.5 386.5 17.007 19" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
-						<path d="m306 386.5c-2.714 0-4.933 2.219-4.933 4.933s2.219 4.933 4.933 4.933 4.933-2.219 4.933-4.933-2.219-4.933-4.933-4.933z"/>
-						<path d="m314.47 400.31c-0.129-0.323-0.302-0.625-0.495-0.905-0.991-1.465-2.52-2.434-4.244-2.671-0.215-0.022-0.452 0.022-0.625 0.151-0.905 0.668-1.982 1.012-3.102 1.012s-2.197-0.345-3.102-1.012c-0.172-0.129-0.409-0.194-0.625-0.151-1.723 0.237-3.274 1.206-4.244 2.671-0.194 0.28-0.366 0.603-0.495 0.905-0.065 0.129-0.043 0.28 0.022 0.409 0.172 0.302 0.388 0.603 0.582 0.862 0.302 0.409 0.625 0.775 0.991 1.12 0.302 0.302 0.646 0.582 0.991 0.862 1.702 1.271 3.748 1.939 5.859 1.939s4.158-0.668 5.859-1.939c0.345-0.258 0.689-0.56 0.991-0.862 0.345-0.345 0.689-0.711 0.991-1.12 0.215-0.28 0.409-0.56 0.582-0.862 0.107-0.129 0.129-0.279 0.064-0.409z"/>
-					</svg>			
-				</a>
-			</div>			
-		</div>
-		<!-- Floating Menu (Mobile only) End -->
-
-        <!-- ScrollTop Button -->
-		<button id="scrollTop" onclick="document.body.scrollTop = 0; document.documentElement.scrollTop = 0;"><i class="fas fa-chevron-up"></i></button>
         
-        @stack('scripts')
 
+        <overlay-loader :is-open="show_loader"></overlay-loader>
+    </div>
 
-        {!! view_render_event('bagisto.shop.layout.body.after') !!}
+    <div id="scrollTop">
+        <svg width="20" height="20" enable-background="new 0 0 490.523 490.523" version="1.1" viewBox="0 0 490.52 490.52" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+            <path d="m487.41 355.05-234.67-234.67c-4.165-4.164-10.917-4.164-15.083 0l-234.67 234.67c-4.093 4.237-3.976 10.99 0.262 15.083 4.134 3.993 10.687 3.993 14.821 0l227.12-227.12 227.12 227.14c4.237 4.093 10.99 3.976 15.083-0.261 3.993-4.134 3.993-10.688 0-14.821l0.021-0.022z" fill="#FFC107"/>
+            <path d="m479.86 373.27c-2.831 5e-3 -5.548-1.115-7.552-3.115l-227.12-227.14-227.12 227.14c-4.237 4.093-10.99 3.976-15.083-0.262-3.993-4.134-3.993-10.687 0-14.821l234.67-234.67c4.165-4.164 10.917-4.164 15.083 0l234.67 234.67c4.159 4.172 4.148 10.926-0.024 15.085-1.999 1.993-4.706 3.112-7.528 3.113z" fill="#000000"/>
+        </svg>
+    </div>
 
-        <!-- Scripts -->
-		<script src="{{ asset('themes/beshop/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-		<script src="{{ asset('themes/beshop/js/swiper-bundle.min.js') }}"></script>
-		<script src="{{ asset('themes/beshop/js/greedynav.js') }}"></script>
-		<script src="{{ asset('themes/beshop/js/stellarnav.min.js') }}"></script>
-		<script src="{{ asset('themes/beshop/js/scripts.js') }}"></script>
+    <script type="text/javascript">
+        window.flashMessages = [];
 
-        <script type="text/javascript">
-            window.flashMessages = [];
+        @if ($success = session('success'))
+            window.flashMessages = [{'type': 'alert-success', 'message': "{{ $success }}" }];
+            
+        @elseif ($warning = session('warning'))
+            window.flashMessages = [{'type': 'alert-warning', 'message': "{{ $warning }}" }];
+        @elseif ($error = session('error'))
+            window.flashMessages = [{'type': 'alert-error', 'message': "{{ $error }}" }
+            ];
+        @elseif ($info = session('info'))
+            window.flashMessages = [{'type': 'alert-info', 'message': "{{ $info }}" }
+            ];
+        @endif
 
-            @if ($success = session('success'))
-                window.flashMessages = [{'type': 'alert-success', 'message': "{{ $success }}" }];
-                
-            @elseif ($warning = session('warning'))
-                window.flashMessages = [{'type': 'alert-warning', 'message': "{{ $warning }}" }];
-            @elseif ($error = session('error'))
-                window.flashMessages = [{'type': 'alert-error', 'message': "{{ $error }}" }
-                ];
-            @elseif ($info = session('info'))
-                window.flashMessages = [{'type': 'alert-info', 'message': "{{ $info }}" }
-                ];
+        window.serverErrors = [];
+        @if(isset($errors))
+            @if (count($errors))
+                window.serverErrors = @json($errors->getMessages());
             @endif
+        @endif
+    </script>
 
-            window.serverErrors = [];
-            @if(isset($errors))
-                @if (count($errors))
-                    window.serverErrors = @json($errors->getMessages());
-                @endif
-            @endif
-        </script>
 
-        <script>
-            function showAlertMsg(msgType, msgText){
-                document.getElementsByClassName('alert-wrapper')[0].innerHTML = `<div class='alert ${msgType}' style='color:#fff'>${msgText}</div>`;
-                setTimeout(() => {
-                    document.getElementsByClassName('alert-wrapper')[0].innerHTML = '';
-                }, 5000);
-            }
-        </script>
+    <script type="text/javascript" src="{{ asset('themes/beshop/assets/js/shop.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
 
-		<script>
-			(function () {
-				'use strict'
 
-				// Fetch all the forms we want to apply custom Bootstrap validation styles to
-				let forms = document.querySelectorAll('.needs-validation')
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-				// Loop over them and prevent submission
-				Array.prototype.slice.call(forms).forEach(function (form) {
-					form.addEventListener('submit', function (event) {
-						if (!form.checkValidity()) {
-							event.preventDefault()
-							event.stopPropagation()
-						}
-						form.classList.add('was-validated')
-					}, false)
-				})
-			})()
-		</script>
+    
+    @stack('scripts')
 
-        <script>
-            {!! core()->getConfigData('general.content.custom_scripts.custom_javascript') !!}
-        </script>
-    </body>
+
+    {!! view_render_event('bagisto.shop.layout.body.after') !!}
+
+    <!-- Scripts -->
+    <script src="{{ asset('themes/beshop/assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('themes/beshop/assets/js/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('themes/beshop/assets/js/greedynav.js') }}"></script>
+    <script src="{{ asset('themes/beshop/assets/js/stellarnav.min.js') }}"></script>
+    {{-- <script src="{{ asset('themes/beshop/assets/js/scripts.js') }}"></script> --}}
+
+    <div class="modal-overlay"></div>
+
+    <script>
+        {!! core()->getConfigData('general.content.custom_scripts.custom_javascript') !!}
+    </script>
+
+
+    <script type="text/javascript" src="{{ asset('themes/beshop/assets/js/scripts.js') }}"></script>
+
+    <script>
+        $(window).on('load', function () {
+            $(".se-pre-con").fadeOut("slow");
+        });
+
+        function showAlertMsg(msgType, msgText){
+            document.getElementsByClassName('alert-wrapper')[0].innerHTML = `<div class='alert ${msgType}' style='color:#fff'>${msgText}</div>`;
+            setTimeout(() => {
+                document.getElementsByClassName('alert-wrapper')[0].innerHTML = '';
+            }, 5000);
+        }
+    </script>
+</body>
+
 </html>

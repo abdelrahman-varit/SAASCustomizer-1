@@ -1,21 +1,29 @@
-<div class="col-lg-4">
-    <div class="footer_top_widget">
-        <h4 class="footer_top_widget__heading">{{ __('velocity::app.home.payment-methods') }}</h4>
-        <div class="row">
-            <div class="col small">
-                @foreach(\Webkul\Payment\Facades\Payment::getPaymentMethods() as $method)
-                    <span class="d-inline-block border py-1 px-3 mt-1">{{ $method['method_title'] }}</span>
-                @endforeach
-            </div>
+<div class="footer-rt-content">
+    <div class="payment-option">
+        <div class="mb5 col-12 clearfix border-bottom">
+            <h2>{{ __('velocity::app.home.payment-methods') }}</h2>
         </div>
-        <br>
-        <h4 class="footer_top_widget__heading">{{ __('velocity::app.home.shipping-methods') }}</h4>
-        <div class="row">
-            <div class="col small">
-                @foreach(\Webkul\Shipping\Facades\Shipping::getShippingMethods() as $method)
-                    <span class="d-inline-block border py-1 px-3 mt-1">{{ $method['method_title'] }}</span>
-                @endforeach
-            </div>
+
+        <div class="payment-methods col-12">
+            @foreach(\Webkul\Payment\Facades\Payment::getPaymentMethods() as $method)
+                <div class="method-sticker">
+                    {{ $method['method_title'] }}
+                </div>
+            @endforeach
+        </div>
+    </div>
+
+    <div class="shipment-option">
+        <div class="mb5 col-12">
+            <h4 style="margin-bottom: 5px;">{{ __('velocity::app.home.shipping-methods') }}</h4>
+        </div>
+
+        <div class="shipping-methods col-12">
+            @foreach(\Webkul\Shipping\Facades\Shipping::getShippingMethods() as $method)
+                <div class="method-sticker">
+                    {{ $method['method_title'] }}
+                </div>
+            @endforeach
         </div>
     </div>
 </div>
