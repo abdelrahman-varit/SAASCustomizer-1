@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="content-language" content="{{ app()->getLocale() }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -18,28 +18,22 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     {{-- <link rel="stylesheet" href="{{ bagisto_asset('css/shop.css') }}"> --}}
-    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/shop.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/shop.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
 
     <!-- Fonts from tinyMCE -->
     <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/tinymce-fonts.css') }}">
 
 
-    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/swiper-bundle.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/greedynav.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/stellarnav.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/style.css') }}">
-
-    {{-- <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/custom.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/responsive.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/responsive.css') }}">
 
     <!-- Color Scheme -->
     @php 
         $theme_color=$velocityMetaData->theme_color
     @endphp
     @if($theme_color!=="default" && !empty($theme_color))
-        <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/colors/'.$theme_color.'.css') }}">
+        <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/colors/'.$theme_color.'.css') }}">
     @endif
 
 
@@ -114,12 +108,13 @@
 
 
 <body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif style="scroll-behavior: smooth;">
+ 
     <div class="se-pre-con">
         <div class="se-pre-con-inner">
             @if ($logo = core()->getCurrentChannel()->logo_url)                
                 <img class="se-pre-con-logo" src="{{ $logo }}" />
             @else
-                <img class="se-pre-con-logo" src="{{ asset('themes/beshop/assets/images/logo.svg') }}" />
+                <img class="se-pre-con-logo" src="{{ asset('themes/cognite/assets/images/logo.svg') }}" />
             @endif
         </div>
     </div>
@@ -214,7 +209,7 @@
     </script>
 
 
-    <script type="text/javascript" src="{{ asset('themes/beshop/assets/js/shop.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('themes/cognite/assets/js/shop.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
 
 
@@ -226,13 +221,6 @@
 
     {!! view_render_event('bagisto.shop.layout.body.after') !!}
 
-    <!-- Scripts -->
-    <script src="{{ asset('themes/beshop/assets/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('themes/beshop/assets/js/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('themes/beshop/assets/js/greedynav.js') }}"></script>
-    <script src="{{ asset('themes/beshop/assets/js/stellarnav.min.js') }}"></script>
-    {{-- <script src="{{ asset('themes/beshop/assets/js/scripts.js') }}"></script> --}}
-
     <div class="modal-overlay"></div>
 
     <script>
@@ -240,7 +228,7 @@
     </script>
 
 
-    <script type="text/javascript" src="{{ asset('themes/beshop/assets/js/scripts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('themes/cognite/assets/js/scripts.js') }}"></script>
 
     <script>
         $(window).on('load', function () {
