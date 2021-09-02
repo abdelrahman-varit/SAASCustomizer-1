@@ -133,7 +133,7 @@ class CheckoutController extends Controller
         $data = request()->all();
         $promo_plan_id = request()->get('promo_plan_id');
         $plan = $this->planRepository->findOrFail($promo_plan_id);
-
+        $doEC = [];
         $company = Company::getCurrent();
         $promo_code = request()->get('promo_code');
         
@@ -175,7 +175,7 @@ class CheckoutController extends Controller
                 'saas_subscription_purchased_plan_id'    => $recurringProfile->purchased_plan->id,
                 'saas_subscription_recurring_profile_id' => $recurringProfile->id,
                 'grand_total'                            => $recurringProfile->amount,
-                'cycle_expired_on'                       => $nextDueDate,
+                
                 'customer_email'                         => $recurringProfile->company->email,
                 'customer_name'                          => $recurringProfile->company->username,
                 'payment_method'                         => 'Stripe',
@@ -184,8 +184,6 @@ class CheckoutController extends Controller
 
             $this->recurringProfileRepository->update([
                 'saas_subscription_invoice_id' => $invoice->id,
-                'cycle_expired_on'             => $nextDueDate,
-                'next_due_date'                => $nextDueDate,
             ], $recurringProfile->id);
 
 
@@ -196,7 +194,7 @@ class CheckoutController extends Controller
  
              return redirect()->route('admin.subscription.plan.index');
          } else {
-             session()->flash('error', $doEC['L_LONGMESSAGE0']);
+             session()->flash('error', 'The promo code you entered is invalid');
  
              return redirect()->route('admin.subscription.plan.index');
          }

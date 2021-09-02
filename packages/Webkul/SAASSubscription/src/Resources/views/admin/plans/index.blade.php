@@ -47,13 +47,13 @@
                                     <p>Promo Code</p>
                                     <h2 style='text-transform:uppercase'>{{company()->getSuperConfigData('general.design.promo-code.promo-code')}}</h2>
                                 @endif
-                                <p>Unlimited access</p>
+                                <p>{{$plan->description}}</p>
                                 
                                 <ul>
-                                    <li>{!! __('saassubscription::app.admin.plans.allowed-attributes', ['count' => '<b>' . $plan->allowed_attributes . '</b>']) !!}</li>
-                                    <li>{!! __('saassubscription::app.admin.plans.allowed-attribute-families', ['count' => '<b>' . $plan->allowed_attribute_families . '</b>']) !!}</li>
-                                    <li>{!! __('saassubscription::app.admin.plans.allowed-channels', ['count' => '<b>' . $plan->allowed_channels . '</b>']) !!}</li>
-                                    <li>{!! __('saassubscription::app.admin.plans.allowed-orders', ['count' => '<b>' . $plan->allowed_orders . '</b>']) !!}</li>
+                                    <li>{!! __('saassubscription::app.admin.plans.allowed-attributes', ['count' => '<b>' . ($plan->allowed_attributes==0?'Unlimited':$plan->allowed_attributes) . '</b>']) !!}</li>
+                                    <li>{!! __('saassubscription::app.admin.plans.allowed-attribute-families', ['count' => '<b>' . ($plan->allowed_attribute_families==0?"Unlimited":$plan->allowed_attribute_families) . '</b>']) !!}</li>
+                                    <li>{!! __('saassubscription::app.admin.plans.allowed-channels', ['count' => '<b>' . ($plan->allowed_channels==0?'Unlimited':$plan->allowed_channels) . '</b>']) !!}</li>
+                                    <li>{!! __('saassubscription::app.admin.plans.allowed-orders', ['count' => '<b>' . ($plan->allowed_orders==0?'Unlimited':$plan->allowed_orders) . '</b>']) !!}</li>
                                 </ul>
 
                                 
@@ -62,32 +62,36 @@
                                     $isServiceStopped = $subscriptionHelper->isServiceStopped();
                                 ?>
 
-                                @if($plan->yearly_amount>0)
-                                    @if($isServiceStopped)
-                                        <button class="btn btn-lg  btn-primary" {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
-                                            {{ __('saassubscription::app.admin.plans.purchase') }}  
-                                        </button>
-                                    @else
-                                        @if(isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name ))
-                                        <button class="btn btn-lg " {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
-                                            {{ __('saassubscription::app.admin.plans.purchase') }}  
-                                        </button>
-                                        @else
-                                        <button class="btn btn-lg btn-primary" {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
-                                            {{ __('saassubscription::app.admin.plans.purchase') }}  
-                                        </button>
-                                        @endif
-                                        
-                                    @endif
-                                @else
-                                <!-- <button class="btn btn-lg btn-danger" {{isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name)?'  ':''}}>
-                                    {{ __('saassubscription::app.admin.plans.purchase') }}  
-                                    
-                                </button> -->
-                                @endif
 
-                                @if($plan->name=="Promo Code Plan")
-                                    <a href="{{route('admin.subscription.checkout.index-promo',$plan->id)}}" class="btn btn-lg btn-primary">Purchase</a>
+                                @if($recurringProfile->schedule_description=="Promo Code Plan")
+                                @else
+                                    @if($plan->yearly_amount>0)
+                                        @if($isServiceStopped)
+                                            <button class="btn btn-lg  btn-primary" {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
+                                                {{ __('saassubscription::app.admin.plans.purchase') }}  
+                                            </button>
+                                        @else
+                                            @if(isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name ))
+                                            <button class="btn btn-lg " {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
+                                                {{ __('saassubscription::app.admin.plans.purchase') }}  
+                                            </button>
+                                            @else
+                                            <button class="btn btn-lg btn-primary" {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
+                                                {{ __('saassubscription::app.admin.plans.purchase') }}  
+                                            </button>
+                                            @endif
+                                            
+                                        @endif
+                                    @else
+                                    <!-- <button class="btn btn-lg btn-danger" {{isset($recurringProfile->schedule_description)&&($recurringProfile->schedule_description===$plan->name)?'  ':''}}>
+                                        {{ __('saassubscription::app.admin.plans.purchase') }}  
+                                        
+                                    </button> -->
+                                    @endif
+
+                                    @if($plan->name=="Promo Code Plan")
+                                        <a href="{{route('admin.subscription.checkout.index-promo',$plan->id)}}" class="btn btn-lg btn-primary">Purchase</a>
+                                    @endif
                                 @endif
                             </form>
                         </div>
