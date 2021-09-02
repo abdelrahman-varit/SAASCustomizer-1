@@ -721,7 +721,7 @@ class Subscription
                 'purchased'    => $purchased = $purchasedPlan->allowed_attributes,
                 'used'         => $used = $this->getUsedResources('attributes'),
                 'remaining'    => $remaining = $purchased - $used,
-                'allow'        => $remaining <= 0 ? false : true,
+                'allow'        => $remaining <= 0 && $purchasedPlan->allowed_attributes!=0 ? false : true,
                 'message'      => trans('saassubscription::app.admin.plans.attribute-left-notification', [
                                     'remaining' => $remaining,
                                     'purchased' => $purchased,
@@ -732,7 +732,7 @@ class Subscription
                 'purchased'    => $purchased = $purchasedPlan->allowed_attribute_families,
                 'used'         => $used = $this->getUsedResources('attribute_families'),
                 'remaining'    => $remaining = $purchased - $used,
-                'allow'        => $remaining <= 0 ? false : true,
+                'allow'        =>  $remaining <= 0 && $purchasedPlan->allowed_attribute_families!=0  ? false : true,
                 'message'      => trans('saassubscription::app.admin.plans.attribute-family-left-notification', [
                                     'remaining' => $remaining,
                                     'purchased' => $purchased,
@@ -743,7 +743,7 @@ class Subscription
                 'purchased'    => $purchased = $purchasedPlan->allowed_channels,
                 'used'         => $used = $this->getUsedResources('channels'),
                 'remaining'    => $remaining = $purchased - $used,
-                'allow'        => $remaining <= 0 ? false : true,
+                'allow'        => $remaining <= 0 && $purchasedPlan->allowed_channels!=0 ? false : true,
                 'message'      => trans('saassubscription::app.admin.plans.channel-left-notification', [
                                     'remaining' => $remaining,
                                     'purchased' => $purchased,
@@ -754,7 +754,7 @@ class Subscription
                 'purchased'    => $purchased = $purchasedPlan->allowed_orders,
                 'used'         => $used = $this->getUsedResources('orders'),
                 'remaining'    => $remaining = $purchased - $used,
-                'allow'        => $remaining <= 0 ? false : true,
+                'allow'        => $remaining <= 0 && $purchasedPlan->allowed_orders!=0 ? false : true,
                 'message'      => trans('saassubscription::app.admin.plans.order-left-notification', [
                                     'remaining' => $remaining,
                                     'purchased' => $purchased,
@@ -824,6 +824,7 @@ class Subscription
             $used = $this->getUsedResources($tableName, $company);
 
             if ($used > ($allowed = $plan->{'allowed_' . $tableName})) {
+                if($allowed==0){continue;}
                 $errors[] = trans('saassubscription::app.admin.plans.resource-limit-error', [
                     'entity_name' => trans('saassubscription::app.admin.plans.' . $tableName),
                     'allowed'     => $allowed,

@@ -81,15 +81,26 @@ class CheckoutController extends Controller
         $plan = $this->planRepository->findOrFail(request('plan'));
 
         $company = Company::getCurrent();
-        $promo_code = $company->promo_code;
+        $promo_code_company = $company->promo_code;
         $promo_code_validate = $company->promo_code_validate;
-        $promo_code_company = company()->getSuperConfigData('general.design.promo-code.promo-code');
+        $promo_code_super_enable = company()->getSuperConfigData('general.design.promo-code.promo-enable');
+        $promo_code_super_admin = company()->getSuperConfigData('general.design.promo-code.promo-code');
         $base_price = $data['period_unit'] == 'month' ? $plan->monthly_amount : $plan->yearly_amount * 12;
         $price_subtotal = $base_price;
-        if(!empty($promo_code) && strtolower($promo_code) == strtolower($promo_code_company) && empty($promo_code_validate)){
-            $price_tenth = $base_price * 0.10;
-            $price_subtotal = $base_price - $price_tenth;
+
+        $doEC = [];
+        $company = Company::getCurrent();
+        $promo_code = request()->get('promo_code');
+        
+        if(empty($promo_code) || strtolower($promo_code) != strtolower($promo_code_super_admin) || !empty($promo_code_validate)){
+            return redirect()->route('admin.subscription.checkout.index')->withErrors(['promo_code'=>'The promo code you entered is invalid!']);
+        }else{
+            return $this->purchasePromo($data, $plan);
+
         }
+
+        
+         
         $data = array_merge($data, [
             'plan'             => $plan,
             'type'             => $data['payment_method']?$data['payment_method']:'',
@@ -102,6 +113,8 @@ class CheckoutController extends Controller
         $payment_data = request()->all();
         $payment_method = $payment_data['payment_method'];
 
+
+
         if ($payment_method == 'paypal') {
             return redirect()->route('admin.subscription.paypal.start');
         }elseif ($payment_method == 'stripe') {
@@ -112,27 +125,9 @@ class CheckoutController extends Controller
     }
 
 
-    public function purchasePromo()
+    public function purchasePromo($data, $plan)
     {
-        /***
-         * "tin" => ""
-            "address" => array:9 [▼
-                "first_name" => "fakhrul"
-                "last_name" => "islam"
-                "email" => "shahin2k5@gmail.com"
-                "address1" => "Sanarpar, Siddirgonj"
-                "address2" => "Nimay kashari"
-                "city" => "Narayangonj"
-                "postcode" => "1430"
-                "country" => "BD"
-                "state" => "bd"
-            ]
-            "promo_code" => "adfdfd"
-         * 
-         * ****/
-        $data = request()->all();
-        $promo_plan_id = request()->get('promo_plan_id');
-        $plan = $this->planRepository->findOrFail($promo_plan_id);
+         
         $doEC = [];
         $company = Company::getCurrent();
         $promo_code = request()->get('promo_code');
@@ -142,14 +137,14 @@ class CheckoutController extends Controller
         $promo_code_super_admin = company()->getSuperConfigData('general.design.promo-code.promo-code');
         
         if(empty($promo_code) || strtolower($promo_code) != strtolower($promo_code_super_admin) && !empty($promo_code_validate)){
-            return redirect()->route('admin.subscription.checkout.index-promo',$promo_plan_id)->withErrors(['promo_code'=>'The promo code you entered is invalid!']);
+            return redirect()->route('admin.subscription.checkout.index')->withErrors(['promo_code'=>'The promo code you entered is invalid!']);
         }
         $data = array_merge($data, [
             'plan'             => $plan,
             'type'             => '',
             'period_unit'=>'infinite',
             'state'=>'Active',
-            'cycle_expired_on' => Carbon::now(),
+            //'cycle_expired_on' => Carbon::now(),
             'amount'           => 0,
         ]);
 
