@@ -353,7 +353,7 @@ class Subscription
             'type'                 => $cart['type'],
             'state'                => app(Paypal::class)->getProfileState($response['PROFILESTATUS']),
             'reference_id'         => $response['PROFILEID'],
-            'schedule_description' => $cart['plan']->name?$cart['plan']->name:'',
+            'schedule_description' => isset($cart['plan']->name)?$cart['plan']->name:'',
             'period_unit'          => $cart['period_unit'],
             'amount'               => $cart['amount'],
             'company_id'           => $company->id,
