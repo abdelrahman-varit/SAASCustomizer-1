@@ -122,9 +122,9 @@ class Subscription
         }
 
         $plan = $this->planRepository->find(company()->getSuperConfigData('subscription.payment.general.trial_plan'));
-
+        
         if (! $plan) {
-            return;
+            //return;
         }
 
         DB::beginTransaction();
@@ -353,7 +353,7 @@ class Subscription
             'type'                 => $cart['type'],
             'state'                => app(Paypal::class)->getProfileState($response['PROFILESTATUS']),
             'reference_id'         => $response['PROFILEID'],
-            'schedule_description' => $cart['plan']->name,
+            'schedule_description' => $cart['plan']->name?$cart['plan']->name:'',
             'period_unit'          => $cart['period_unit'],
             'amount'               => $cart['amount'],
             'company_id'           => $company->id,
