@@ -131,7 +131,6 @@ class Subscription
 
         try {
             $cycleExpiredOn = Carbon::now();
-
             $cycleExpiredOn->addDays(company()->getSuperConfigData('subscription.payment.general.trial_days'));
 
             $cart = [
@@ -329,14 +328,14 @@ class Subscription
         $data = [];
         $currentDateTime = Carbon::now();
         $expireTrail = $currentDateTime->addDays(10);
-
+        
         if ($cart['type'] == 'manual') {
             $data['payment_status'] = 'Success';
         } elseif ($cart['type']) {
             $data['cycle_expired_on'] = isset($cart['cycle_expired_on'])?$cart['cycle_expired_on']:$expireTrail;
             if ($cart['type'] == 'trial') {
                 $cart['cycle_expired_on'] = $expireTrail;
-                $data['cycle_expired_on'] = $cart['cycle_expired_on'];
+                // $data['cycle_expired_on'] = $cart['cycle_expired_on'];
             } else {
               
                 $data['next_due_date'] = Carbon::now();
