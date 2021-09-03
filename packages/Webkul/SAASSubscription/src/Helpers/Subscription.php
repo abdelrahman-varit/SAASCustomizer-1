@@ -435,7 +435,7 @@ class Subscription
      */
     public function createPurchasedPlan($cart)
     {
-        $purchasedPlan = $this->purchasedPlanRepository->create(array_merge($cart['plan']->toArray(), [
+        $purchasedPlan = $this->purchasedPlanRepository->create(array_merge(isset($cart['plan'])?$cart['plan']->toArray():[], [
             'saas_subscription_recurring_profile_id' => $cart['recurring_profile']->id,
             'company_id'                             => $cart['recurring_profile']->company_id
         ]));
