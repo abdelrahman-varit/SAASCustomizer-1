@@ -212,8 +212,8 @@
                 @endphp
                 @if($promo_code_enable && $promo_code_superadmin)
                 <div class="control-group" :class="[errors.has('promo_code') ? 'has-error' : '']" style="margin-top:15px">
-                    <label for="promo_code" class="required" style="width:100%;font-weight:bold">{{ __('Enter promo code to get 100% discount') }}</label>
-                    <input v-validate="'required'" required  class="control" style="width:100%" id="promo_code" name="promo_code" data-vv-as="&quot;{{ __('promo_code') }}&quot;"/>
+                    <label for="promo_code" class="required" style="width:100%;font-weight:bold">{{ __('Promo Code') }}</label>
+                    <input v-validate="''"  class="control" style="width:100%" id="promo_code" name="promo_code" data-vv-as="&quot;{{ __('promo_code') }}&quot;"/>
                     <span class="control-error" v-if="errors.has('promo_code')">@{{ errors.first('promo_code') }}</span>
                 </div>
                 @endif
