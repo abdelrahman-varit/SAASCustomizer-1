@@ -217,7 +217,11 @@ class Company
             return response()->view("{$path}::errors.{$statusCode}", ['message' => $message, 'status' => $statusCode], $statusCode);
         } else {
             //throw new Exception('Domain not found or deactivated!');
-            return response()->view("shop::errors.company_blocked_by_administrator", ['message' => $message, 'status' => $statusCode], $statusCode);
+            if(request()->is('admin') || request()->is('admin/*')){
+                
+            }else{
+                return response()->view("shop::errors.company_blocked_by_administrator", ['message' => $message, 'status' => $statusCode], $statusCode);
+            }
         }
     }
 

@@ -63,8 +63,8 @@
                                 ?>
 
 
-                                @if($recurringProfile->schedule_description=="Promo Code Plan")
-                                @else
+                             
+                                
                                     @if($plan->yearly_amount>0)
                                         @if($isServiceStopped)
                                             <button class="btn btn-lg  btn-primary" {{isset($recurringProfile->schedule_description)&&(($recurringProfile->schedule_description===$plan->name) && !$isServiceStopped)?' disabled ':' '}}>
@@ -88,11 +88,7 @@
                                         
                                     </button> -->
                                     @endif
-
-                                    @if($plan->name=="Promo Code Plan")
-                                        <a href="{{route('admin.subscription.checkout.index-promo',$plan->id)}}" class="btn btn-lg btn-primary">Purchase</a>
-                                    @endif
-                                @endif
+ 
                             </form>
                         </div>
                     </div>

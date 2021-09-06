@@ -122,16 +122,15 @@ class Subscription
         }
 
         $plan = $this->planRepository->find(company()->getSuperConfigData('subscription.payment.general.trial_plan'));
-
+        
         if (! $plan) {
-            return;
+            //return;
         }
 
         DB::beginTransaction();
 
         try {
             $cycleExpiredOn = Carbon::now();
-
             $cycleExpiredOn->addDays(company()->getSuperConfigData('subscription.payment.general.trial_days'));
 
             $cart = [
@@ -329,14 +328,14 @@ class Subscription
         $data = [];
         $currentDateTime = Carbon::now();
         $expireTrail = $currentDateTime->addDays(10);
-
+        
         if ($cart['type'] == 'manual') {
             $data['payment_status'] = 'Success';
         } elseif ($cart['type']) {
             $data['cycle_expired_on'] = isset($cart['cycle_expired_on'])?$cart['cycle_expired_on']:$expireTrail;
             if ($cart['type'] == 'trial') {
                 $cart['cycle_expired_on'] = $expireTrail;
-                $data['cycle_expired_on'] = $cart['cycle_expired_on'];
+                // $data['cycle_expired_on'] = $cart['cycle_expired_on'];
             } else {
               
                 $data['next_due_date'] = Carbon::now();
@@ -354,7 +353,7 @@ class Subscription
             'type'                 => $cart['type'],
             'state'                => app(Paypal::class)->getProfileState($response['PROFILESTATUS']),
             'reference_id'         => $response['PROFILEID'],
-            'schedule_description' => $cart['plan']->name,
+            'schedule_description' => isset($cart['plan']->name)?$cart['plan']->name:'',
             'period_unit'          => $cart['period_unit'],
             'amount'               => $cart['amount'],
             'company_id'           => $company->id,
@@ -436,7 +435,7 @@ class Subscription
      */
     public function createPurchasedPlan($cart)
     {
-        $purchasedPlan = $this->purchasedPlanRepository->create(array_merge($cart['plan']->toArray(), [
+        $purchasedPlan = $this->purchasedPlanRepository->create(array_merge(isset($cart['plan'])?$cart['plan']->toArray():[], [
             'saas_subscription_recurring_profile_id' => $cart['recurring_profile']->id,
             'company_id'                             => $cart['recurring_profile']->company_id
         ]));
@@ -721,7 +720,7 @@ class Subscription
                 'purchased'    => $purchased = $purchasedPlan->allowed_attributes,
                 'used'         => $used = $this->getUsedResources('attributes'),
                 'remaining'    => $remaining = $purchased - $used,
-                'allow'        => $remaining <= 0 ? false : true,
+                'allow'        => $remaining <= 0 && $purchasedPlan->allowed_attributes!=0 ? false : true,
                 'message'      => trans('saassubscription::app.admin.plans.attribute-left-notification', [
                                     'remaining' => $remaining,
                                     'purchased' => $purchased,
@@ -732,7 +731,7 @@ class Subscription
                 'purchased'    => $purchased = $purchasedPlan->allowed_attribute_families,
                 'used'         => $used = $this->getUsedResources('attribute_families'),
                 'remaining'    => $remaining = $purchased - $used,
-                'allow'        => $remaining <= 0 ? false : true,
+                'allow'        =>  $remaining <= 0 && $purchasedPlan->allowed_attribute_families!=0  ? false : true,
                 'message'      => trans('saassubscription::app.admin.plans.attribute-family-left-notification', [
                                     'remaining' => $remaining,
                                     'purchased' => $purchased,
@@ -743,7 +742,7 @@ class Subscription
                 'purchased'    => $purchased = $purchasedPlan->allowed_channels,
                 'used'         => $used = $this->getUsedResources('channels'),
                 'remaining'    => $remaining = $purchased - $used,
-                'allow'        => $remaining <= 0 ? false : true,
+                'allow'        => $remaining <= 0 && $purchasedPlan->allowed_channels!=0 ? false : true,
                 'message'      => trans('saassubscription::app.admin.plans.channel-left-notification', [
                                     'remaining' => $remaining,
                                     'purchased' => $purchased,
@@ -754,7 +753,7 @@ class Subscription
                 'purchased'    => $purchased = $purchasedPlan->allowed_orders,
                 'used'         => $used = $this->getUsedResources('orders'),
                 'remaining'    => $remaining = $purchased - $used,
-                'allow'        => $remaining <= 0 ? false : true,
+                'allow'        => $remaining <= 0 && $purchasedPlan->allowed_orders!=0 ? false : true,
                 'message'      => trans('saassubscription::app.admin.plans.order-left-notification', [
                                     'remaining' => $remaining,
                                     'purchased' => $purchased,
@@ -824,6 +823,7 @@ class Subscription
             $used = $this->getUsedResources($tableName, $company);
 
             if ($used > ($allowed = $plan->{'allowed_' . $tableName})) {
+                if($allowed==0){continue;}
                 $errors[] = trans('saassubscription::app.admin.plans.resource-limit-error', [
                     'entity_name' => trans('saassubscription::app.admin.plans.' . $tableName),
                     'allowed'     => $allowed,
