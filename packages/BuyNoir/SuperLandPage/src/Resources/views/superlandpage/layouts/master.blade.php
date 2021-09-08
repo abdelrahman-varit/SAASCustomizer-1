@@ -71,8 +71,6 @@
             @endif
 
             {!! view_render_event('bagisto.saas.companies.layout.footer.after') !!}
-
-            <div class="go-top"><i class='bx bx-up-arrow-alt'></i></div>
         </div>
 
         <script type="text/javascript">
@@ -93,6 +91,8 @@
                 @endif
             @endif
         </script>
+
+        <div class="go-top"><i class='bx bx-up-arrow-alt'></i></div>
 
         <!-- Links of JS files -->
         <script src="{{ asset('buynoir/superlandpage/assets/js/popper.min.js') }}"></script>
