@@ -31,7 +31,8 @@
                     <input name="_method" type="hidden" value="PUT">
 
                     <accordian :title="'{{ __('admin::app.users.roles.general') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.users.roles.general') }}</div>
+                    <div slot="body">
                             <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
                                 <label for="name" class="required">{{ __('admin::app.users.roles.name') }}</label>
                                 <input type="text" v-validate="'required'" class="control" id="name" name="name" data-vv-as="&quot;{{ __('admin::app.users.roles.name') }}&quot;" value="{{ old('name') ?: $role->name }}"/>
@@ -46,7 +47,8 @@
                     </accordian>
 
                     <accordian :title="'{{ __('admin::app.users.roles.access-control') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.users.roles.access-control') }}</div>
+                    <div slot="body">
                             <div class="control-group">
                                 <label for="permission_type">{{ __('admin::app.users.roles.permissions') }}</label>
                                 <select class="control" name="permission_type" id="permission_type">

@@ -33,7 +33,8 @@
                     {!! view_render_event('bagisto.admin.catalog.family.edit_form_accordian.general.before', ['attributeFamily' => $attributeFamily]) !!}
 
                     <accordian :title="'{{ __('admin::app.catalog.families.general') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.catalog.families.general') }}</div>  
+                    <div slot="body">
 
                             {!! view_render_event('bagisto.admin.catalog.family.edit_form_accordian.general.controls.before', ['attributeFamily' => $attributeFamily]) !!}
 
@@ -60,7 +61,8 @@
                     {!! view_render_event('bagisto.admin.catalog.family.edit_form_accordian.groups.before', ['attributeFamily' => $attributeFamily]) !!}
 
                     <accordian :title="'{{ __('admin::app.catalog.families.groups') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.catalog.families.groups') }}</div>  
+                    <div slot="body">
 
                             {!! view_render_event('bagisto.admin.catalog.family.edit_form_accordian.groups.controls.before', ['attributeFamily' => $attributeFamily]) !!}
 

@@ -33,6 +33,7 @@
                     <input name="_method" type="hidden" value="PUT">
 
                     <accordian :title="'{{ __('admin::app.settings.locales.general') }}'" :active="true">
+                    <div slot="header">{{ __('admin::app.settings.locales.general') }}</div> 
                         <div slot="body">
 
                             <div class="control-group" :class="[errors.has('code') ? 'has-error' : '']">

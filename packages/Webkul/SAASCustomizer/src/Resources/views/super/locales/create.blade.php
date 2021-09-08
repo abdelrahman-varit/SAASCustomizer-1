@@ -31,7 +31,8 @@
                     {!! view_render_event('bagisto.saas.settings.locale.create.before') !!}
 
                     <accordian :title="'{{ __('saas::app.super-user.settings.locales.general') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('saas::app.super-user.settings.locales.general')  }}</div>
+                    <div slot="body">
                             <div class="control-group" :class="[errors.has('code') ? 'has-error' : '']">
                                 <label for="code" class="required">{{ __('saas::app.super-user.settings.locales.code') }}</label>
                                 <input v-validate="'required'" class="control" id="code" name="code" value="{{ old('code') }}" data-vv-as="&quot;{{ __('saas::app.super-user.settings.locales.code') }}&quot;" v-code/>

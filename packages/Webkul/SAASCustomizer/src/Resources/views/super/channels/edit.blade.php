@@ -29,7 +29,8 @@
                     <input name="_method" type="hidden" value="PUT">
 
                     <accordian :title="'{{ __('saas::app.super-user.settings.channels.general') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('saas::app.super-user.settings.channels.general') }}</div>  
+                    <div slot="body">
                             <div class="control-group" :class="[errors.has('code') ? 'has-error' : '']">
                                 <label for="code" class="required">{{ __('saas::app.super-user.settings.channels.code') }}</label>
                                 <input type="text" v-validate="'required'" class="control" id="code" name="code" data-vv-as="&quot;{{ __('saas::app.super-user.settings.channels.code') }}&quot;" value="{{ $superChannel->code }}" disabled="disabled"/>
@@ -54,7 +55,8 @@
                     </accordian>
 
                     <accordian :title="'{{ __('saas::app.super-user.settings.channels.currencies-and-locales') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('saas::app.super-user.settings.channels.currencies-and-locales') }}</div> 
+                    <div slot="body">
 
                             <div class="control-group" :class="[errors.has('locales[]') ? 'has-error' : '']">
                                 <label for="locales" class="required">{{ __('saas::app.super-user.settings.channels.locales') }}</label>
@@ -113,6 +115,7 @@
                     </accordian>
 
                     <accordian :title="'{{ __('saas::app.super-user.settings.channels.design') }}'" :active="true">
+                    <div slot="header">{{ __('saas::app.super-user.settings.channels.design') }}</div> 
                         <div slot="body">
 
                             <div class="control-group">
@@ -145,7 +148,8 @@
                     @endphp
 
                     <accordian :title="'{{ __('saas::app.super-user.settings.channels.home-page-seo') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('saas::app.super-user.settings.channels.home-page-seo') }}</div> 
+                    <div slot="body">
                             <div class="control-group" :class="[errors.has('meta_title') ? 'has-error' : '']">
                                 <label for="meta_title" class="required">
                                     {{ __('saas::app.super-user.settings.channels.meta-title') }}

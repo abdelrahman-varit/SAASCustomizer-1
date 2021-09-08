@@ -3,6 +3,7 @@
 {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.categories.before', ['product' => $product]) !!}
 
 <accordian :title="'{{ __('admin::app.catalog.products.categories') }}'" :active="false">
+    <div slot="header">{{ __('admin::app.catalog.products.categories') }}</div>
     <div slot="body">
 
         {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.categories.controls.before', ['product' => $product]) !!}

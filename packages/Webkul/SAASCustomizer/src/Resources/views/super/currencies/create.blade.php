@@ -31,7 +31,8 @@
                     {!! view_render_event('bagisto.super.settings.currencies.create.before') !!}
 
                     <accordian :title="'{{ __('saas::app.super-user.settings.currencies.general') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('saas::app.super-user.settings.currencies.general')  }}</div>
+                    <div slot="body">
 
                             <div class="control-group" :class="[errors.has('code') ? 'has-error' : '']">
                                 <label for="code" class="required">{{ __('saas::app.super-user.settings.currencies.code') }}</label>

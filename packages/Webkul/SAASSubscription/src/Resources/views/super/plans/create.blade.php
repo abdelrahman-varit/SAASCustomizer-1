@@ -30,7 +30,8 @@
                     {!! view_render_event('bagisto.super.subscription.plan.create.before') !!}
 
                     <accordian :title="'{{ __('saassubscription::app.super-user.plans.general') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('saassubscription::app.super-user.plans.general')  }}</div>  
+                    <div slot="body">
                             <div class="control-group" :class="[errors.has('code') ? 'has-error' : '']">
                                 <label for="code" class="required">{{ __('saassubscription::app.super-user.plans.code') }}</label>
                                 <input type="text" v-validate="'required'" class="control" id="code" name="code" data-vv-as="&quot;{{ __('saassubscription::app.super-user.plans.code') }}&quot;" value="{{ old('code') }}" />
@@ -52,7 +53,8 @@
                     </accordian>
 
                     <accordian :title="'{{ __('saassubscription::app.super-user.plans.billing-amount') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('saassubscription::app.super-user.plans.billing-amount')  }}</div>  
+                    <div slot="body">
 
                             <div class="control-group" :class="[errors.has('monthly_amount') ? 'has-error' : '']">
                                 <label for="monthly_amount" class="required">{{ __('saassubscription::app.super-user.plans.monthly-amount') }}</label>
@@ -70,7 +72,8 @@
                     </accordian>
 
                     <accordian :title="'{{ __('saassubscription::app.super-user.plans.plan-limitation') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('saassubscription::app.super-user.plans.plan-limitation') }}</div>  
+                    <div slot="body">
 
                             <div class="control-group" :class="[errors.has('allowed_products') ? 'has-error' : '']">
                                 <label for="allowed_products" class="required">{{ __('saassubscription::app.super-user.plans.allowed-products') }}</label>
