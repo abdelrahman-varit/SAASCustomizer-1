@@ -92,15 +92,13 @@ class CheckoutController extends Controller
         $company = Company::getCurrent();
         $promo_code = request()->get('promo_code');
         
-        if(empty($promo_code) || strtolower($promo_code) != strtolower($promo_code_super_admin) || !empty($promo_code_validate)){
-            return redirect()->route('admin.subscription.checkout.index')->withErrors(['promo_code'=>'The promo code you entered is invalid!']);
-        }else{
+        if(!empty($promo_code)){
+            if(strtolower($promo_code) != strtolower($promo_code_super_admin) || !empty($promo_code_validate)){
+                return redirect()->route('admin.subscription.checkout.index')->withErrors(['promo_code'=>'The promo code you entered is invalid!']);
+            }
             return $this->purchasePromo($data, $plan);
-
-        }
-
+        } 
         
-         
         $data = array_merge($data, [
             'plan'             => $plan,
             'type'             => $data['payment_method']?$data['payment_method']:'',
