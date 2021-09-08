@@ -31,7 +31,8 @@
                     {!! view_render_event('bagisto.admin.settings.locale.create.before') !!}
 
                     <accordian :title="'{{ __('admin::app.settings.locales.general') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.settings.locales.general') }}</div>
+                    <div slot="body">
                             <div class="control-group" :class="[errors.has('code') ? 'has-error' : '']">
                                 <label for="code" class="required">{{ __('admin::app.settings.locales.code') }}</label>
                                 <input v-validate="'required'" class="control" id="code" name="code" data-vv-as="&quot;{{ __('admin::app.settings.locales.code') }}&quot;" v-code/>

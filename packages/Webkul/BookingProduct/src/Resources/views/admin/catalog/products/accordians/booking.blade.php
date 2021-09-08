@@ -18,6 +18,7 @@
 {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.booking.before', ['product' => $product]) !!}
 
 <accordian :title="'{{ __('bookingproduct::app.admin.catalog.products.booking') }}'" :active="true">
+<div slot="header">{{ __('bookingproduct::app.admin.catalog.products.booking') }}</div>
     <div slot="body">
 
         <booking-information></booking-information>

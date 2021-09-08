@@ -7,6 +7,7 @@
 ?>
 
 <accordian :title="'{{ __('admin::app.catalog.products.channel') }}'" :active="false">
+<div slot="header">{{ __('admin::app.catalog.products.channel') }}</div>
     <div slot="body">
         <div class="control-group" :class="[errors.has('channels[]') ? 'has-error' : '']">
             <label for="channels" class="required">{{ __('admin::app.catalog.products.channel') }}</label>

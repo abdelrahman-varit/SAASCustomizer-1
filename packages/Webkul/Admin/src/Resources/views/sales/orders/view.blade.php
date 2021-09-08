@@ -62,7 +62,8 @@
                     <div class="sale-container">
 
                         <accordian :title="'{{ __('admin::app.sales.orders.order-and-account') }}'" :active="true">
-                            <div slot="body">
+                        <div slot="header">{{ __('admin::app.sales.orders.payment-and-shipping') }}</div>
+                        <div slot="body">
 
                                 <div class="sale-section">
                                     <div class="secton-title">
@@ -159,7 +160,8 @@
 
                         @if ($order->billing_address || $order->shipping_address)
                             <accordian :title="'{{ __('admin::app.sales.orders.address') }}'" :active="true">
-                                <div slot="body">
+                            <div slot="header">{{ __('admin::app.sales.orders.payment-and-shipping') }}</div>
+                            <div slot="body">
 
                                     @if($order->billing_address)
                                         <div class="sale-section">
@@ -194,7 +196,8 @@
                         @endif
 
                         <accordian :title="'{{ __('admin::app.sales.orders.payment-and-shipping') }}'" :active="true">
-                            <div slot="body">
+                        <div slot="header">{{ __('admin::app.sales.orders.payment-and-shipping') }}</div>
+                        <div slot="body">
 
                                 <div class="sale-section">
                                     <div class="secton-title">
@@ -275,7 +278,8 @@
                         </accordian>
 
                         <accordian :title="'{{ __('admin::app.sales.orders.products-ordered') }}'" :active="true">
-                            <div slot="body">
+                        <div slot="header">{{ __('admin::app.sales.orders.products-ordered') }}</div>
+                        <div slot="body">
 
                                 <div class="table">
                                     <table>

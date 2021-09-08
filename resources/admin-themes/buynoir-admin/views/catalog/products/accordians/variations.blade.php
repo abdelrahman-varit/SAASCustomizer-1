@@ -22,6 +22,7 @@
 {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.variations.before', ['product' => $product]) !!}
 
 <accordian :title="'{{ __('admin::app.catalog.products.variations') }}'" :active="true">
+<div slot="header">{{ __('admin::app.catalog.products.variations') }}</div>
     <div slot="body">
 
         {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.variations.controls.before', ['product' => $product]) !!}

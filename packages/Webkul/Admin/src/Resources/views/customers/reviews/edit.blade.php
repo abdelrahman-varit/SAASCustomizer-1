@@ -32,6 +32,7 @@
                     <input name="_method" type="hidden" value="PUT">
 
                     <accordian :title="'{{ __('admin::app.account.general') }}'" :active="true">
+                    <div slot="header">{{ __('admin::app.account.general') }}</div>
                         <div slot="body">
 
                             <div class="control-group">

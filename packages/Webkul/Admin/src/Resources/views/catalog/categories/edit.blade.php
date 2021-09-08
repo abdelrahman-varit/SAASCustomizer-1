@@ -46,6 +46,7 @@
                     {!! view_render_event('bagisto.admin.catalog.category.edit_form_accordian.general.before', ['category' => $category]) !!}
 
                     <accordian :title="'{{ __('admin::app.catalog.categories.general') }}'" :active="true">
+                        <div slot="header">{{ __('admin::app.catalog.categories.general') }}</div>
                         <div slot="body">
 
                             {!! view_render_event('bagisto.admin.catalog.category.edit_form_accordian.general.controls.before', ['category' => $category]) !!}
@@ -86,6 +87,9 @@
                     {!! view_render_event('bagisto.admin.catalog.category.edit_form_accordian.description_images.before', ['category' => $category]) !!}
 
                     <accordian :title="'{{ __('admin::app.catalog.categories.description-and-images') }}'" :active="true">
+                    
+                        <div slot="header">{{ __('admin::app.catalog.categories.description-and-images') }}</div>
+
                         <div slot="body">
 
                             {!! view_render_event('bagisto.admin.catalog.category.edit_form_accordian.description_images.controls.before', ['category' => $category]) !!}
@@ -133,6 +137,7 @@
                         {!! view_render_event('bagisto.admin.catalog.category.edit_form_accordian.parent_category.before', ['category' => $category]) !!}
 
                         <accordian :title="'{{ __('admin::app.catalog.categories.parent-category') }}'" :active="true">
+                            <div slot="header">{{ __('admin::app.catalog.categories.parent-category') }}</div>
                             <div slot="body">
 
                                 {!! view_render_event('bagisto.admin.catalog.category.edit_form_accordian.parent_category.controls.before', ['category' => $category]) !!}
@@ -149,6 +154,8 @@
                     @endif
 
                     <accordian :title="'{{ __('admin::app.catalog.categories.filterable-attributes') }}'" :active="true">
+                    
+                        <div slot="header">{{ __('admin::app.catalog.categories.filterable-attributes') }}</div>
                         <div slot="body">
 
                             <?php $selectedaAtributes = old('attributes') ?? $category->filterableAttributes->pluck('id')->toArray() ?>
@@ -174,6 +181,9 @@
                     {!! view_render_event('bagisto.admin.catalog.category.edit_form_accordian.seo.before', ['category' => $category]) !!}
 
                     <accordian :title="'{{ __('admin::app.catalog.categories.seo') }}'" :active="true">
+                        
+                        <div slot="header">{{ __('admin::app.catalog.categories.seo') }}</div>
+
                         <div slot="body">
 
                             {!! view_render_event('bagisto.admin.catalog.category.edit_form_accordian.seo.controls.before', ['category' => $category]) !!}

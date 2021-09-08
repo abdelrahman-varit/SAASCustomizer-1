@@ -32,7 +32,8 @@
                     {!! view_render_event('bagisto.admin.catalog.attribute.edit_form_accordian.general.before', ['attribute' => $attribute]) !!}
 
                     <accordian :title="'{{ __('admin::app.catalog.attributes.general') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.catalog.attributes.general') }}</div>   
+                    <div slot="body">
 
                             {!! view_render_event('bagisto.admin.catalog.attribute.edit_form_accordian.general.controls.before', ['attribute' => $attribute]) !!}
 
@@ -94,7 +95,8 @@
                     {!! view_render_event('bagisto.admin.catalog.attribute.edit_form_accordian.attributes.before', ['attribute' => $attribute]) !!}
 
                     <accordian :title="'{{ __('admin::app.catalog.attributes.label') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.catalog.attributes.label') }}</div>   
+                    <div slot="body">
 
                             {!! view_render_event('bagisto.admin.catalog.attribute.edit_form_accordian.attributes.controls.before', ['attribute' => $attribute]) !!}
 
@@ -126,7 +128,8 @@
                         {!! view_render_event('bagisto.admin.catalog.attribute.edit_form_accordian.options.before', ['attribute' => $attribute]) !!}
 
                         <accordian :title="'{{ __('admin::app.catalog.attributes.options') }}'" :active="true" :id="'options'">
-                            <div slot="body">
+                        <div slot="header">{{ __('admin::app.catalog.attributes.options') }}</div>   
+                        <div slot="body">
 
                                 {!! view_render_event('bagisto.admin.catalog.attribute.edit_form_accordian.options.controls.before', ['attribute' => $attribute]) !!}
 
@@ -144,7 +147,8 @@
                     {!! view_render_event('bagisto.admin.catalog.attribute.edit_form_accordian.validations.before', ['attribute' => $attribute]) !!}
 
                     <accordian :title="'{{ __('admin::app.catalog.attributes.validations') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.catalog.attributes.validations') }}</div> 
+                    <div slot="body">
 
                             {!! view_render_event('bagisto.admin.catalog.attribute.edit_form_accordian.validations.controls.before', ['attribute' => $attribute]) !!}
 
@@ -200,7 +204,8 @@
                     {!! view_render_event('bagisto.admin.catalog.attribute.edit_form_accordian.configuration.before', ['attribute' => $attribute]) !!}
 
                     <accordian :title="'{{ __('admin::app.catalog.attributes.configuration') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.catalog.attributes.configuration') }}</div>
+                    <div slot="body">
 
                             {!! view_render_event('bagisto.admin.catalog.attribute.edit_form_accordian.configuration.controls.before', ['attribute' => $attribute]) !!}
 

@@ -64,6 +64,7 @@
             </div>
 
             <accordian :title="'{{ __('velocity::app.admin.meta-data.general') }}'" :active="true">
+                <div slot="header">{{ __('velocity::app.admin.meta-data.general') }}</div>
                 <div slot="body">
                     <div class="control-group">
                         <label>{{ __('velocity::app.admin.meta-data.activate-slider') }}</label>
@@ -161,6 +162,7 @@
             </accordian>
 
             <accordian :title="'{{ __('velocity::app.admin.meta-data.images') }}'" :active="false">
+                <div slot="header">{{ __('velocity::app.admin.meta-data.images') }}</div>
                 <div slot="body">
                     <div class="control-group">
                         <label>{{ __('velocity::app.admin.meta-data.advertisement-four') }}</label>
@@ -310,6 +312,7 @@
             </accordian>
 
             <accordian :title="'{{ __('velocity::app.admin.meta-data.footer') }}'" :active="false">
+                <div slot="header">{{ __('velocity::app.admin.meta-data.footer') }}</div>
                 <div slot="body">
                     <div class="control-group">
                         <label style="width:100%;">

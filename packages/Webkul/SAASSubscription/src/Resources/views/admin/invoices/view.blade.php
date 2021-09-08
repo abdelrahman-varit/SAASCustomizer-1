@@ -26,7 +26,8 @@
             <div class="sale-container">
 
                 <accordian :title="'{{ __('saassubscription::app.admin.invoices.invoice-and-account') }}'" :active="true">
-                    <div slot="body">
+                <div slot="header">{{ __('saassubscription::app.admin.invoices.invoice-and-account')  }}</div>
+                <div slot="body">
 
                         <div class="sale-section">
                             <div class="secton-title">
@@ -110,7 +111,8 @@
                 </accordian>
 
                 <accordian :title="'{{ __('saassubscription::app.admin.invoices.plan-info') }}'" :active="true">
-                    <div slot="body">
+                <div slot="header">{{ __('saassubscription::app.admin.invoices.plan-info')  }}</div>
+                <div slot="body">
 
                         <div class="table">
                             <table>

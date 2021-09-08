@@ -29,7 +29,8 @@
                     <input name="_method" type="hidden" value="PUT">
 
                     <accordian :title="'{{ __('admin::app.users.users.general') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.users.users.general') }}</div>
+                    <div slot="body">
                             <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
                                 <label for="name" class="required">{{ __('admin::app.users.users.name') }}</label>
                                 <input type="text" v-validate="'required'" class="control" id="name" name="name" data-vv-as="&quot;{{ __('admin::app.users.users.name') }}&quot;" value="{{ $user->name }}"/>
@@ -45,7 +46,8 @@
                     </accordian>
 
                     <accordian :title="'{{ __('admin::app.users.users.password') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.users.users.password') }}</div>
+                    <div slot="body">
                             <div class="control-group" :class="[errors.has('password') ? 'has-error' : '']">
                                 <label for="password">{{ __('admin::app.users.users.password') }}</label>
                                 <input type="password" v-validate="'min:6|max:18'" class="control" id="password" name="password" ref="password" data-vv-as="&quot;{{ __('admin::app.users.users.password') }}&quot;"/>
@@ -61,7 +63,8 @@
                     </accordian>
 
                     <accordian :title="'{{ __('admin::app.users.users.status-and-role') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.users.users.status-and-role') }}</div>     
+                    <div slot="body">
                             <div class="control-group" :class="[errors.has('role_id') ? 'has-error' : '']">
                                 <label for="role" class="required">{{ __('admin::app.users.users.role') }}</label>
                                 <select v-validate="'required'" class="control" name="role_id" data-vv-as="&quot;{{ __('admin::app.users.users.role') }}&quot;">

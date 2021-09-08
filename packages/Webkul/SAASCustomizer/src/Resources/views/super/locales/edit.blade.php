@@ -33,7 +33,8 @@
                     <input name="_method" type="hidden" value="PUT">
 
                     <accordian :title="'{{ __('saas::app.super-user.settings.locales.general') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('saas::app.super-user.settings.locales.general')  }}</div>
+                    <div slot="body">
 
                             <div class="control-group" :class="[errors.has('code') ? 'has-error' : '']">
                                 <label for="code" class="required">{{ __('saas::app.super-user.settings.locales.code') }}</label>

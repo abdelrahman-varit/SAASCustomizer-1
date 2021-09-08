@@ -28,6 +28,7 @@
                     @csrf()
 
                     <accordian :title="'{{ __('admin::app.users.users.general') }}'" :active="true">
+                    <div slot="header">{{ __('admin::app.users.users.general') }}</div>
                         <div slot="body">
                             <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
                                 <label for="name" class="required">{{ __('admin::app.users.users.name') }}</label>
@@ -44,6 +45,7 @@
                     </accordian>
 
                     <accordian :title="'{{ __('Password') }}'" :active="true">
+                    <div slot="header">{{ __('Password') }}</div>
                         <div slot="body">
                             <div class="control-group" :class="[errors.has('password') ? 'has-error' : '']">
                                 <label for="password">{{ __('admin::app.users.users.password') }}</label>
@@ -60,6 +62,7 @@
                     </accordian>
 
                     <accordian :title="'{{ __('admin::app.users.users.status-and-role') }}'" :active="true">
+                        <div slot="header">{{ __('admin::app.users.users.status-and-role') }}</div>
                         <div slot="body">
                             <div class="control-group" :class="[errors.has('role_id') ? 'has-error' : '']">
                                 <label for="role" class="required">{{ __('admin::app.users.users.role') }}</label>

@@ -32,6 +32,8 @@
                     {!! view_render_event('bagisto.admin.catalog.family.create_form_accordian.general.before') !!}
 
                     <accordian :title="'{{ __('admin::app.catalog.families.general') }}'" :active="true">
+                        <div slot="header">{{ __('admin::app.catalog.families.general') }}</div>
+
                         <div slot="body">
 
                             {!! view_render_event('bagisto.admin.catalog.family.create_form_accordian.general.controls.before') !!}
@@ -59,6 +61,7 @@
                     {!! view_render_event('bagisto.admin.catalog.family.create_form_accordian.groups.before') !!}
 
                     <accordian :title="'{{ __('admin::app.catalog.families.groups') }}'" :active="true">
+                        <div slot="header">{{ __('admin::app.catalog.families.groups') }}</div>
                         <div slot="body">
 
                             <button type="button" style="margin-bottom : 20px" class="btn btn-md btn-primary" @click="showModal('addGroup')">

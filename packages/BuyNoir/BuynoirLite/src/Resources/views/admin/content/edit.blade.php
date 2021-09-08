@@ -53,6 +53,7 @@
                 {!! view_render_event('bagisto.admin.content.edit_form_accordian.page.before', ['content' => $content]) !!}
 
                 <accordian :title="'{{ __('velocity::app.admin.contents.tab.page') }}'" :active="true">
+                    <div slot="header">{{ __('velocity::app.admin.contents.tab.page') }}</div>
                     <div slot="body">
 
                         {!! view_render_event('bagisto.admin.content.edit_form_accordian.page.controls.before', ['content' => $content]) !!}
@@ -98,6 +99,7 @@
                 {!! view_render_event('bagisto.admin.content.edit_form_accordian.content.before', ['content' => $content]) !!}
 
                 <accordian :title="'{{ __('velocity::app.admin.contents.tab.content') }}'" :active="true">
+                    <div slot="header">{{ __('velocity::app.admin.contents.tab.content') }}</div>
                     <div slot="body">
 
                         {!! view_render_event('bagisto.admin.content.edit_form_accordian.content.controls.before', ['content' => $content]) !!}

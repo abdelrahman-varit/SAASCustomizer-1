@@ -32,6 +32,7 @@
                     {!! view_render_event('bagisto.admin.settings.channel.edit.before') !!}
 
                     <accordian :title="'{{ __('admin::app.settings.channels.general') }}'" :active="true">
+                    <div slot="header">{{ __('admin::app.settings.channels.general') }}</div> 
                         <div slot="body">
 
                             <div class="control-group" :class="[errors.has('code') ? 'has-error' : '']">
@@ -89,7 +90,8 @@
                     </accordian>
 
                     <accordian :title="'{{ __('admin::app.settings.channels.currencies-and-locales') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.settings.channels.currencies-and-locales') }}</div> 
+                    <div slot="body">
 
                             <div class="control-group" :class="[errors.has('locales[]') ? 'has-error' : '']">
                                 <label for="locales" class="required">{{ __('admin::app.settings.channels.locales') }}</label>
@@ -147,7 +149,8 @@
                     </accordian>
 
                     <accordian :title="'{{ __('admin::app.settings.channels.design') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.settings.channels.design') }}</div> 
+                    <div slot="body">
                             <div class="control-group">
                                 <label for="theme">{{ __('admin::app.settings.channels.theme') }}</label>
 
@@ -192,6 +195,7 @@
                     @endphp
 
                     <accordian :title="'{{ __('admin::app.settings.channels.seo') }}'" :active="true">
+                    <div slot="header">{{ __('admin::app.settings.channels.seo') }}</div> 
                         <div slot="body">
                             <div class="control-group" :class="[errors.has('seo_title') ? 'has-error' : '']">
                                 <label for="seo_title" class="required">{{ __('admin::app.settings.channels.seo-title') }}</label>
