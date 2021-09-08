@@ -72,7 +72,6 @@
                 
                 <div class="form-container col-lg-6 mx-auto">
                     <form class="registration" data-vv-scope="step-one" v-if="step_one" @submit.prevent="validateForm('step-one')">
-                        @csrf
                         <h4 class="mt-3 mb-5 text-orange text-center">Launch your online business now.<br/>Free for 10 days</h4>
                         <div class="form-group mb-3" :class="[errors.has('step-one.email') ? 'has-error' : '']">
                             <input type="text" v-validate="'required|email|max:191'" class="form-control" v-model="email" name="email" data-vv-as="&quot;{{ __('saas::app.tenant.registration.email') }}&quot;" placeholder="Email Address">
@@ -109,7 +108,6 @@
                     </form>
 
                     <form class="registration" @submit.prevent="validateForm('step-two')" data-vv-scope="step-two" v-show="step_two">
-                        @csrf
                         <div class="step-two">
                             <h4 class="mt-3 mb-5 text-orange text-center">Tell us about you</h4>
 
@@ -144,7 +142,6 @@
                     </form>
 
                     <form class="registration" @submit.prevent="validateForm('step-three')" data-vv-scope="step-three" v-show="step_three">
-                        @csrf
                         <div class="step-three">
                             <h4 class="mt-3 mb-5 text-orange text-center">Last step<br>ok, let's talk about your store</h4>
 
@@ -170,23 +167,20 @@
                                 <span class="text-danger small d-block mt-1" v-show="errors.has('step-three.productcategory')">@{{ errors.first('step-three.productcategory') }}</span>
                             </div>
 
-                            <div class="mt-4 form-group mb-3" :class="[errors.has('step-three.name') ? 'has-error' : '']">
+                            <div class="form-group mb-3" :class="[errors.has('step-three.name') ? 'has-error' : '']">
                                 <label for="elsebusiness" class="">{{ __('saas::app.tenant.registration.else-business') }}</label>
                                 <div class="mt-3 row">
-                                <div class="col-md-4">
-                                    <label style="color:#aa5352;">
-                                        <input type="radio" class="" id="elsebusinessStart" name="elsebusiness" v-model="elsebusinessStart" value="START"  v-validate="''" data-vv-as="&quot;{{ __('saas::app.tenant.registration.else-business') }}&quot;">
-                                        {{ __('saas::app.tenant.registration.just-start') }}
-                                    </label>
+                                    <div class="col-md-4">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" id="elsebusinessStart" name="elsebusiness" v-model="elsebusinessStart" value="START"  v-validate="''" data-vv-as="&quot;{{ __('saas::app.tenant.registration.else-business') }}&quot;"> {{ __('saas::app.tenant.registration.just-start') }}
+                                        </label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" id="elsebusinessMoving" name="elsebusiness" v-model="elsebusinessStart" value="MOVING" v-validate="''" data-vv-as="&quot;{{ __('saas::app.tenant.registration.else-business') }}&quot;"> {{ __('saas::app.tenant.registration.else-moving') }}
+                                        </label>
+                                    </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <label style="color:#aa5352;">
-                                        <input type="radio" class="" id="elsebusinessMoving" name="elsebusiness" v-model="elsebusinessStart" value="MOVING" v-validate="''" data-vv-as="&quot;{{ __('saas::app.tenant.registration.else-business') }}&quot;">
-                                        {{ __('saas::app.tenant.registration.else-moving') }}
-                                    </label>
-                                </div>
-                                </div>
-
                             </div>
 
                             <div class="text-end form-group mb-3">
@@ -196,21 +190,12 @@
                     </form>
 
                     <form class="registration" data-vv-scope="step-four" v-show="step_four" id="formStepFour">
-                        @csrf
                         <div class="step-three">
-                            <div class="step-navigator">
-                                <div class='registration-subtitle'>
-                                    <p>{{ __('saas::app.tenant.registration.congrats-title') }}</p> 
-                                    {{ __('saas::app.tenant.registration.congrats-subtitle') }}
-                                </div>
-                                <p class="mt-4 text-center">{{ __('saas::app.tenant.registration.congrats-description') }}</p>
-                            </div>                           
-
-                            <div class="text-center form-group mb-3" :class="[errors.has('step-three.username') ? 'has-error' : '']">
+                            <h4 class="mt-3 mb-5 text-orange text-center">{{ __('saas::app.tenant.registration.congrats-title') }}<br>{{ __('saas::app.tenant.registration.congrats-subtitle') }}</h4>
+                            <p class="m-0 text-center">{{ __('saas::app.tenant.registration.congrats-description') }}</p>
+                            <div class="text-center my-5" :class="[errors.has('step-three.username') ? 'has-error' : '']">
                                 <img src="{{ asset('buynoir/superlandpage/assets/img/congrats.gif') }}" alt="{{ config('app.name') }}" style="height:50vh"/>
                             </div>
-
-                        
                             <div class="text-center row" style="display:none">
                                 <div class="col-6">
                                     <a v-bind:href="redirectUrlShop" class="btn default-btn" id="btn-congrts" style="font-size:18px">{{ __('saas::app.tenant.registration.visit-shop') }}</a>
@@ -432,4 +417,15 @@
 
 
 
-
+@section('css')
+    <style>
+        .step-list.registration-ul li {
+            width: 50px;
+            height: 5px;
+            background-color: #fe4c1c;
+        }
+        .step-list.registration-ul li.active {
+            background-color: #080e32;
+        }
+    </style>
+@endsection
