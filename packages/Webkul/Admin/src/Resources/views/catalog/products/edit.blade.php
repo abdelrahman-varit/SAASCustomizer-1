@@ -73,6 +73,8 @@
 
                         <accordian :title="'{{ __($attributeGroup->name) }}'"
                                    :active="{{$index == 0 ? 'true' : 'false'}}">
+                                   <div slot="header">{{ __($attributeGroup->name) }}</div>
+
                             <div slot="body">
                                 {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.' . $attributeGroup->name . '.controls.before', ['product' => $product]) !!}
 

@@ -32,6 +32,7 @@
                     {!! view_render_event('bagisto.admin.cms.pages.create_form_accordian.general.before') !!}
 
                     <accordian :title="'{{ __('admin::app.cms.pages.general') }}'" :active="true">
+                    <div slot="header">{{ __('admin::app.cms.pages.general') }}</div>
                         <div slot="body">
                             <div class="control-group" :class="[errors.has('page_title') ? 'has-error' : '']">
                                 <label for="page_title" class="required">{{ __('admin::app.cms.pages.page-title') }}</label>
@@ -71,6 +72,7 @@
                     {!! view_render_event('bagisto.admin.cms.pages.create_form_accordian.seo.before') !!}
 
                     <accordian :title="'{{ __('admin::app.cms.pages.seo') }}'" :active="true">
+                        <div slot="header">{{ __('admin::app.cms.pages.seo') }}</div>
                         <div slot="body">
                             <div class="control-group">
                                 <label for="meta_title">{{ __('admin::app.cms.pages.meta_title') }}</label>

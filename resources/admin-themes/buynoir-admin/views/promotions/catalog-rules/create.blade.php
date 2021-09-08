@@ -40,7 +40,8 @@
                         {!! view_render_event('bagisto.admin.promotions.catalog-rules.create.before') !!}
 
                         <accordian :title="'{{ __('admin::app.promotions.catalog-rules.rule-information') }}'" :active="true">
-                            <div slot="body">
+                        <div slot="header">{{ __('admin::app.promotions.cart-rules.rule-information')  }}</div> 
+                        <div slot="body">
 
                                 <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
                                     <label for="name" class="required">{{ __('admin::app.promotions.catalog-rules.name') }}</label>
@@ -118,7 +119,8 @@
                         </accordian>
 
                         <accordian :title="'{{ __('admin::app.promotions.catalog-rules.conditions') }}'" :active="false">
-                            <div slot="body">
+                        <div slot="header">{{ __('admin::app.promotions.catalog-rules.conditions')  }}</div> 
+                        <div slot="body">
 
                                 <div class="control-group">
                                     <label for="condition_type">{{ __('admin::app.promotions.catalog-rules.condition-type') }}</label>
@@ -151,7 +153,8 @@
                         </accordian>
 
                         <accordian :title="'{{ __('admin::app.promotions.catalog-rules.actions') }}'" :active="false">
-                            <div slot="body">
+                        <div slot="header">{{ __('admin::app.promotions.catalog-rules.actions')  }}</div> 
+                        <div slot="body">
 
                                 <div class="control-group" :class="[errors.has('action_type') ? 'has-error' : '']">
                                     <label for="action_type" class="required">{{ __('admin::app.promotions.catalog-rules.action-type') }}</label>

@@ -32,6 +32,7 @@
                 {!! view_render_event('bagisto.admin.category.edit_form_accordian.general.before', ['velocityCategory' => $velocityCategory]) !!}
 
                 <accordian :title="'{{ __('velocity::app.admin.category.tab.general') }}'" :active="true">
+                    <div slot="header">{{ __('velocity::app.admin.category.tab.general') }}</div>
                     <div slot="body">
 
                         {!! view_render_event('bagisto.admin.category.edit_form_accordian.general.content.before', ['velocityCategory' => $velocityCategory]) !!}

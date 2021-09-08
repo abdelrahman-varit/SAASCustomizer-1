@@ -31,6 +31,7 @@
                     <input name="_method" type="hidden" value="PUT">
 
                     <accordian :title="'{{ __('admin::app.account.general') }}'" :active="true">
+                    <div slot="header">{{ __('admin::app.account.general') }}</div>
                         <div slot="body">
                             <div class="control-group" :class="[errors.has('name') ? 'has-error' : '']">
                                 <label for="name" class="required">{{ __('admin::app.account.name') }}</label>
@@ -47,6 +48,7 @@
                     </accordian>
 
                     <accordian :title="'{{ __('admin::app.account.change-password') }}'" :active="true">
+                    <div slot="header">{{ __('admin::app.account.change-password') }}</div>
                         <div slot="body">
                             <div class="control-group" :class="[errors.has('password') ? 'has-error' : '']">
                                 <label for="password">{{ __('admin::app.account.password') }}</label>
@@ -63,7 +65,8 @@
                     </accordian>
 
                     <accordian :title="'{{ __('admin::app.account.current-password') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('admin::app.account.current-password') }}</div>
+                    <div slot="body">
                             <div class="control-group" :class="[errors.has('current_password') ? 'has-error' : '']">
                                 <label for="current_password">{{ __('admin::app.account.current-password') }}</label>
                                 <input type="password" v-validate="'required|min:6'" class="control" id="current_password" name="current_password" data-vv-as="&quot;{{ __('admin::app.account.current-password') }}&quot;"/>

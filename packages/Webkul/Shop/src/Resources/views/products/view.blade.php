@@ -95,7 +95,8 @@
                         {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
 
                         <accordian :title="'{{ __('shop::app.products.description') }}'" :active="true">
-                            <div slot="header">
+                        <div slot="header">{{ __('shop::app.products.description') }}</div>
+                        <div slot="header">
                                 {{ __('shop::app.products.description') }}
                                 <i class="icon expand-icon right"></i>
                             </div>

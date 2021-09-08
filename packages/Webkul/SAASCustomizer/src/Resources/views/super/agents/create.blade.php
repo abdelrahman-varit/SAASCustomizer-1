@@ -30,7 +30,8 @@
                     {!! view_render_event('bagisto.super.settings.agent.create.before') !!}
 
                     <accordian :title="'{{ __('saas::app.super-user.settings.locales.general') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('saas::app.super-user.settings.locales.general') }}</div>  
+                    <div slot="body">
                             <div class="control-group" :class="[errors.has('first_name') ? 'has-error' : '']">
                                 <label for="first_name" class="required">{{ __('saas::app.super-user.settings.agents.first-name') }}</label>
                                 <input type="text" v-validate="'required'" class="control" id="first_name" name="first_name" data-vv-as="&quot;{{ __('saas::app.super-user.settings.agents.first-name') }}&quot;" value="{{ old('first_name') }}" />
@@ -52,7 +53,8 @@
                     </accordian>
 
                     <accordian :title="'{{ __('saas::app.super-user.settings.agents.password') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('saas::app.super-user.settings.agents.password') }}</div>  
+                    <div slot="body">
 
                             <div class="control-group" :class="[errors.has('password') ? 'has-error' : '']">
                                 <label for="password">{{ __('saas::app.super-user.settings.agents.new-password') }}</label>
@@ -69,7 +71,8 @@
                     </accordian>
 
                     <accordian :title="'{{ __('saas::app.super-user.settings.agents.status-and-role') }}'" :active="true">
-                        <div slot="body">
+                    <div slot="header">{{ __('saas::app.super-user.settings.agents.status-and-role') }}</div>  
+                    <div slot="body">
                             {{--  <div class="control-group" :class="[errors.has('role_id') ? 'has-error' : '']">
                                 <label for="role">{{ __('saas::app.super-user.settings.agents.role') }}</label>
                                 <select class="control" name="role_id" data-vv-as="&quot;{{ __('saas::app.super-user.settings.agents.role') }}&quot;">

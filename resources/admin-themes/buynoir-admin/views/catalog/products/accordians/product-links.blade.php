@@ -1,6 +1,7 @@
 {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.product_links.before', ['product' => $product]) !!}
 
 <accordian :title="'{{ __('admin::app.catalog.products.product-link') }}'" :active="false">
+<div slot="header">{{ __('admin::app.catalog.products.product-link') }}</div>
     <div slot="body">
 
         <linked-products></linked-products>

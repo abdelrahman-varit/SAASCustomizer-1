@@ -19,6 +19,7 @@
 {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.grouped_products.before', ['product' => $product]) !!}
 
 <accordian :title="'{{ __('admin::app.catalog.products.grouped-products') }}'" :active="true">
+    <div slot="header">{{ __('admin::app.catalog.products.grouped-products') }}</div>
     <div slot="body">
 
         {!! view_render_event('bagisto.admin.catalog.product.edit_form_accordian.grouped_products.controls.before', ['product' => $product]) !!}
