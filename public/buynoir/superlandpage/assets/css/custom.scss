@@ -1,0 +1,22 @@
+.step-list {
+    &.registration-ul {
+        li {
+            &.active {
+                background-color: #080e32;
+            }
+            width: 50px;
+            height: 5px;
+            background-color: #fe4c1c;
+        }
+    }
+}
+
+.text-orange {
+    color: #fe4c1c;
+}
+
+.has-error {
+    .form-control {
+        border-color: #dc3545;
+    }
+}
