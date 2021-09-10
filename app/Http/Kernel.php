@@ -31,7 +31,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-	    \Webkul\SAASCustomizer\Http\Middleware\ValidatesDomain::class
+	        \Webkul\SAASCustomizer\Http\Middleware\ValidatesDomain::class,
+            \App\Http\Middleware\XFrameHeaders::class,
         ],
 
         'api' => [
