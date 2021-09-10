@@ -5,53 +5,10 @@
 @endsection
 
 @section('content-wrapper')
-
-<div class="py-5"></div>
-
-<div class="container">
-    <div class="row">
-        
-        @include('shop::customers.account.partials.sidemenu')
-
-        <!-- Right Side Content Start -->
-        <div class="col-lg-8 col-xl-9">
-            <div class="user-profile-wrapper d-flex flex-column flex-lg-row mt-4">
-                <div class="col-lg-4 p-4 text-lg-center">
-                    <img src="{{ asset('themes/beshop/img/demo/User.png') }}" alt="Mohammad Wahid" width="100" height="100" class="rounded-circle mb-3">
-                    <h4 class="m-0 text-black">Mohammad Wahid</h4>
-                </div>
-                <div class="col-lg-8 p-4">
-                    <h4 class="mb-4 text-primary border-bottom border-primary d-inline-block">Personal Details</h4>
-                    <p class="mb-2"><strong>Gender:</strong> Male</p>
-                    <p class="mb-2"><strong>Date of Birth:</strong> 12-12-2012</p>
-                    <p class="mb-4"><strong>Email:</strong> wahid.rootnext@gmail.com</p>
-                    <a href="#" class="btn btn-primary text-white fw-bold rounded-pill" style="width: 120px">Edit</a>
-                </div>
-            </div>
-        </div>
-        <!-- Right Side Content End -->
-    </div>
-</div>
-
-<div class="py-5"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="main-container-wrapper d-none">
+<div class="main-container-wrapper">
     <div class="account-content">
 
-        
+        @include('shop::customers.account.partials.sidemenu')
 
         <div class="account-layout">
 
@@ -72,13 +29,14 @@
 
             <div class="account-table-content" style="width: 50%;">
                 <table style="color: #5E5E5E;">
-                    <tbody>
+                @if(!empty($customer))    
+                <tbody>
                         {!! view_render_event(
                         'bagisto.shop.customers.account.profile.view.table.before', ['customer' => $customer])
                         !!}
                         <tr>
                             <td>{{ __('shop::app.customer.account.profile.fname') }}</td>
-                            <td>{{ $customer->first_name }}</td>
+                            <td>{{ empty($customer->first_name) ?'':$customer->first_name }}</td>
                         </tr>
 
                         {!! view_render_event('bagisto.shop.customers.account.profile.view.table.first_name.after', ['customer' => $customer]) !!}
@@ -121,6 +79,7 @@
                             </tr>
                         @endif --}}
                     </tbody>
+                    @endif
                 </table>
 
 

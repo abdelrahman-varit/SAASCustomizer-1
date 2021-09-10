@@ -5,69 +5,29 @@
 @endsection
 
 @section('content-wrapper')
-
-<div class="py-5"></div>
-<div class="container">
-    <div class="row">
-        @include('shop::customers.account.partials.sidemenu')
-
-        <!-- Right Side Content Start -->
-        <div class="col-lg-8 col-xl-9">
-            <div class="user-address-wrapper mt-4">
-
-                {!! view_render_event('bagisto.shop.customers.account.address.list.before', ['addresses' => $addresses]) !!}
-
-                @if ($addresses->isEmpty())
-                    <div class="row row-cols-1 row-cols-md-2 gy-5">
-                        <!-- Single Address Start -->
-                        <div class="col">
-                            <p class="mb-2">Mohammad Wahid</p>
-                            <p class="mb-2">House #229, Road #3, Mirpur DOHS</p>
-                            <p class="mb-2">Dhaka - 1216, Bagladesh</p>
-                            <p class="mb-4">Contact: 818-466-1528</p>
-                            <a href="#" class="btn btn-black fw-bold rounded-pill" style="width: 120px">Delete</a>
-                            <a href="#" class="btn btn-primary text-white fw-bold rounded-pill ms-2" style="width: 120px">Edit</a>
-                        </div>
-                        <!-- Single Address End -->
-
-                        <!-- Single Address Start -->
-                        <div class="col">
-                            <p class="mb-2">Yasin Khan</p>
-                            <p class="mb-2">3857 Edsel Road, Pomona, CA 91766</p>
-                            <p class="mb-2">United States</p>
-                            <p class="mb-4">Contact: 818-466-1528</p>
-                            <a href="#" class="btn btn-black fw-bold rounded-pill" style="width: 120px">Delete</a>
-                            <a href="#" class="btn btn-primary text-white fw-bold rounded-pill ms-2" style="width: 120px">Edit</a>
-                        </div>
-                        <!-- Single Address End -->
-                    </div>
-                @else
-                    
-                @endif
-
-                {!! view_render_event('bagisto.shop.customers.account.address.list.after', ['addresses' => $addresses]) !!}
-            </div>
-        </div>
-        <!-- Right Side Content End -->
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
 <div class="main-container-wrapper">
     <div class="account-content">
 
-        
+        @include('shop::customers.account.partials.sidemenu')
 
         <div class="account-layout">
 
-            
+            <div class="account-head">
+                <span class="back-icon"><a href="{{ route('customer.profile.index') }}"><i class="icon icon-menu-back"></i></a></span>
+                <span
+                    class="account-heading">{{ __('shop::app.customer.account.address.index.title') }}</span>
+
+                @if (! $addresses->isEmpty())
+                    <span class="account-action">
+                    <a href="{{ route('customer.address.create') }}">{{ __('shop::app.customer.account.address.index.add') }}</a>
+                </span>
+                @else
+                    <span></span>
+                @endif
+                <div class="horizontal-rule"></div>
+            </div>
+
+            {!! view_render_event('bagisto.shop.customers.account.address.list.before', ['addresses' => $addresses]) !!}
 
             <div class="account-table-content">
                 @if ($addresses->isEmpty())
@@ -137,11 +97,10 @@
                 @endif
             </div>
 
-            
+            {!! view_render_event('bagisto.shop.customers.account.address.list.after', ['addresses' => $addresses]) !!}
         </div>
     </div>
 </div>
-<div class="py-5"></div>
 @endsection
 
 @push('scripts')
