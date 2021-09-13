@@ -15,35 +15,72 @@
         @php
             $isRendered = true;
         @endphp
+        <div class="main-container-wrapper">
+            <div class="container-fluid advertisement-one">
+                <div class="row">
+                <div
+                    class="col offers-lt-panel bg-image"
+                    style="background-image: url('{{ asset('/storage/' . $advertisementOne['image_1']) }}')">
+                </div>
 
-        <!-- Advertisement Start -->
-        <div class="container advertisement">
-            <div class="row gy-4 gy-md-0">
-                <div class="col-md-12">
-                    <a href="{{ isset($one) ? $one : 'javascript:void(0)' }}">
-                        @if ( isset($advertisementOne[0]))
-                            <img src="{{ asset('/storage/' . $advertisementOne['image_1']) }}" alt="offer-banner-1">
-                        @else
-                            <img src="{{ asset('/themes/beshop/img/demo/offer-banner-1.jpg') }}" alt="offer-banner-1">
-                        @endif
-                    </a>
+                    <div class="col offers-ct-panel">
+
+                        <div class="row pb10">
+                            <div
+                                class="col-12 offers-ct-top"
+                                style="background-image: url('{{ asset('/storage/' . $advertisementOne['image_2']) }}')">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div
+                                class="col-12 offers-ct-bottom"
+                                style="background-image: url('{{ asset('/storage/' . $advertisementOne['image_3']) }}')">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="col offers-rt-panel"
+                        style="background-image: url('{{ asset('/storage/' . $advertisementOne['image_4']) }}')">
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Advertisement End -->
     @endif
 @endif
 
 @if (! $isRendered)
-    <!-- Advertisement Start -->
-    <div class="container advertisement">
-        <div class="row gy-4 gy-md-0">
-            <div class="col-md-12">
-                <a href="{{ isset($one) ? $one : 'javascript:void(0)' }}">
-                    <img src="{{ asset('/themes/beshop/img/demo/offer-banner-1.jpg') }}" alt="offer-banner-1">
-                </a>
+    <div class="main-container-wrapper">
+        <div class="container-fluid advertisement-one">
+            <div class="row">
+                <div class="col offers-lt-panel bg-image"></div>
+
+                <div class="col offers-ct-panel">
+
+                    <div class="row pb10">
+                        <div class="col-12 offers-ct-top"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 offers-ct-bottom"></div>
+                    </div>
+
+                </div>
+
+                <div class="col offers-rt-panel"></div>
             </div>
         </div>
     </div>
-    <!-- Advertisement End -->
 @endif
+
+
+
+@push('css')
+    <style type="text/css">
+        .advertisement-one{
+            overflow: hidden;
+        }
+    </style>
+@endpush

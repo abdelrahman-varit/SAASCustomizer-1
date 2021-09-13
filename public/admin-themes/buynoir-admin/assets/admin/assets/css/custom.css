@@ -740,3 +740,45 @@ a:active, a:focus, a:hover, a:link, a:visited {
 	-moz-border-radius: 5rem;
 	border-radius: 5rem;
 }
+
+.theme-list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+	text-align: center;
+}
+
+.theme-list p {
+	margin: 0;
+	text-align: left;
+}
+
+.theme-list img {
+	margin: 5px auto;
+	width: 100%;
+	height: auto;
+}
+
+.theme-list .btn {
+	padding: 3px 12px;
+	-webkit-border-radius: 1rem;
+	-moz-border-radius: 1rem;
+	border-radius: 1rem;
+	font-size: 12px;
+    text-transform: uppercase;
+}
+
+.theme-list li.active {
+	background-color: #E2E2E2;
+}
+
+.theme-list li {
+	-webkit-border-radius: 1rem;
+	-moz-border-radius: 1rem;
+	border-radius: 1rem;
+	padding: 1rem;
+}
+
+.page-title p {
+	margin-top: 5px;
+}

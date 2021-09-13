@@ -1,65 +1,7 @@
-.demo__software::before {
-	background-position-y: 75px;
-	background-position-x: center;
-}
+.text-orange {
+  color: #fe4c1c; }
 
-@media (max-width: 767px) {
-	.demo__software::before {
-		background-blend-mode: overlay;
-		background-color: rgba(0, 0, 0, 0.25);
-	}
-}
+.has-error .form-control {
+  border-color: #dc3545; }
 
-@media (max-width: 991px) {
-	#About {
-		padding-bottom: 100px;
-	}
-}
-
-@media (min-width: 768px) {
-	#About {
-		height: 100%;
-	}
-}
-
-@media (min-width: 992px) {
-	#About {
-		height: 1000px;
-	}
-}
-
-
-.package {
-	background-color: white;
-	padding: 50px 30px;
-	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-	font-weight: normal;
-	height: 100%;
-}
-
-.package .package_name {
-	color: #284058;
-	margin-bottom: 15px;
-}
-
-.package .package_price {
-	margin-top: 15px;
-	color: #aa5352;
-}
-.package ul {
-	padding-top: 10px;
-}
-
-.package li + li {
-	margin-top: 5px;
-}
-
-.package.featured {
-	background-color: #284058;
-	color: white;
-}
-
-.package.featured .package_name,
-.package.featured .package_price {
-	color: white;
-}
+/*# sourceMappingURL=custom.css.map */

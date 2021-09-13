@@ -1,178 +1,117 @@
-   <!-- Start footer -->
-   <footer class="bg-white footer_short position-relative z-index-3">
-    <div class="container">
-      <div class="text-center row justify-content-md-center">
-        <div class="col-md-8">
-          <a class=" c-dark" href="">
-            <!-- <img src="assets/img/logo.svg" alt=""> -->
-            <img  src="{{ asset('vendor/webkul/ui/assets/images/logo.png') }}" />
-          </a>
-          <div class="social--media">
-            <a href="https://www.instagram.com/buynoir_official/" class="btn so-link" target="_blank" rel="noreferrer">
-              <i class="tio instagram"></i>
-            </a>
-            <a href="https://twitter.com/NoirBuy" class="btn so-link" target="_blank" rel="noreferrer" class="btn so-link">
-              <i class="tio twitter"></i>
-            </a>
-            <a href="https://www.facebook.com/BuyNoirApp/" class="btn so-link" target="_blank" rel="noreferrer">
-              <i class="tio facebook_square"></i>
-            </a>
-          </div>
-          <div class="other--links">
-            <a href="{{route("buynoir.home.contactus")}}">Support</a>
-            <a href="{{route("buynoir.home.privacypolicy")}}">Privacy Policy</a>
-            <a href="{{route('buynoir.home.cookiesmore')}}">Cookie Policy</a>
-          </div>
-          <div class="opyright">
-            @if (company()->getSuperConfigData('general.content.footer.footer_toggle'))
-                <div class="footer">
-                    <p style="text-align: center;">
-                        @if (company()->getSuperConfigData('general.content.footer.footer_content'))
-                            {{ company()->getSuperConfigData('general.content.footer.footer_content') }}
-                        @else
-                            {!! trans('admin::app.footer.copy-right') !!}
-                        @endif
-                    </p>
-                </div>
-            @endif
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- End Footer -->
-  <!-- Login Modal  -->
-  <div class="modal mdllaccount fade" id="mdllLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <i class="tio clear"></i>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form_account">
-            <div class="head_account">
-              <div class="img_profile">
-                <img src="{{ asset('buynoir/landingpage/assets/img/buy-logo-small.png')}}" />
-              </div>
-              <div class="title">
-                <h4>BuyNoir.</h4>
-                <p>
-                  Welcome back <br />
-                  ✊🏾
-                </p>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-12">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <label>Email / Username</label>
-                      <input type="email" class="form-control" placeholder="E-mail / Username" />
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="mb-1 form-group --password" id="show_hide_password">
-                      <label>Password</label>
-                      <div class="input-group">
-                        <input type="password" class="form-control" data-toggle="password" placeholder="Password"
-                          required="" />
-                        <div class="input-group-prepend hide_show">
-                          <a href=""><span class="input-group-text tio hidden_outlined"></span></a>
-                        </div>
-                      </div>
-                    </div>
-                    <a href="#" class="p-0 mt-2 btn font-s-12 font-w-400 c-gray">Forgot Passowrd?</a>
-                  </div>
-                  <div class="mt-4 col-12">
-                    <a href="#" class="btn rounded-6 btn_xl_primary btn_login bg-green2">Sign in</a>
-                    <a href="{{route('company.create.index')}}" class="mt-3 text-center btn font-s-15 c-dark w-100">Create new account</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End. Modal -->
+<!-- Start Footer Area -->
+<footer class="footer-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="single-footer-widget">
+					<a href="index.html" class="logo">
+						<img src="{{ asset('buynoir/superlandpage/assets/img/logo-white.png') }}" alt="Buynoir.">
+					</a>
+					<p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
 
-  <!-- Back to top with progress indicator-->
-  <div class="prgoress_indicator" id="prgoress_indicator" onclick='navTo()'>
-    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-    </svg>
-  </div>
+					<ul class="social-link">
+						<li><a href="https://www.facebook.com/BuyNoirApp/" class="d-block" target="_blank"><i class='bx bxl-facebook'></i></a></li>
+						<li><a href="https://twitter.com/NoirBuy" class="d-block" target="_blank"><i class='bx bxl-twitter'></i></a></li>
+						<li><a href="https://www.instagram.com/buynoir_official/" class="d-block" target="_blank"><i class='bx bxl-instagram'></i></a></li>
+					</ul>
+				</div>
+			</div>
 
-  <!-- Tosts -->
-  {{--  <div aria-live="polite" aria-atomic="true"  class="d-flex justify-content-center align-items-center">
-    <div class="toast toast_demo" id="myTost" role="alert" aria-live="assertive" aria-atomic="true"
-      data-animation="true" data-autohide="false">
-      <div class="toast-body" id="cookieconsent">
-        <button type="button" class="mb-1 ml-2 close" data-dismiss="toast" aria-label="Close">
-          <i class="tio clear"></i>
-        </button>
-        <h5>Hey fam ✊🏾! </h5>
-        <p>We use cookies throughout this site to make your experience better. <a href="{{route('buynoir.home.cookiesmore')}}">Ok?</a></p>
+			<div class="col-lg-2 col-md-6 col-sm-6">
+				<div class="single-footer-widget pl-5">
+					<h3>Explore</h3>
 
-        <div id="consent-popup" class="hidden">
-          <p>By using this site you agree to our <a href="#">Terms and Conditions</a>.
-              Please <a id="accept" href="#">Accept</a> these before using the site.
-          </p>
-      </div>
+					<ul class="footer-links-list">
+						<li><a href="/">Home</a></li>
+						<li><a href="/">About</a></li>
+						<li><a href="/">Pricing</a></li>
+						<li><a href="/">Portfolio</a></li>
+						<li><a href="/">Contact</a></li>
+					</ul>
+				</div>
+			</div>
 
-      </div>
-    </div>
-  </div>  --}}
-  <!-- End. Toasts -->
+			<div class="col-lg-2 col-md-6 col-sm-6">
+				<div class="single-footer-widget pl-2">
+					<h3>Resources</h3>
 
-  <!-- Start Section Loader -->
-    @if( request()->is('index') )
-      <section class="loading_overlay">
-        <div class="loader_logo">
-          <!-- <img class="logo" src="assets/img/logo.svg" /> -->
-          <span class="logo">Made in ATL!</span>
-        </div>
-      </section>
-    @endif
-      <!-- End. Loader -->
- 
+					<ul class="footer-links-list">
+						<li><a href="/">Team</a></li>
+						<li><a href="/">Contact</a></li>
+						<li><a href="/">Services</a></li>
+						<li><a href="/">FAQ</a></li>
+						<li><a href="/">Blog</a></li>
+					</ul>
+				</div>
+			</div>
 
- 
-  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
-  <script>
-          function navTo(){
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth'   
-            });
-          }
-           
-          window.addEventListener("load", function(){
-          window.cookieconsent.initialise({
-            "palette": {
-                "popup": {
-                  "background": "#000"
-                },
-                "button": {
-                  "background": "#f1d600"
-                },
-              },
-            content: {
-              header: 'Cookiessss used on the website!',
-              message: 'We use cookies throughout this site to make your experience better.',
-              dismiss: 'Got it!',
-              allow: 'Allow cookies',
-              deny: 'Decline',
-              link: 'Learn more',
-              href: "{{route('buynoir.home.cookiesmore')}}",
-              close: '&#x274c;',
-            }
-          })});
-  </script>
-     
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="single-footer-widget">
+					<h3>Address</h3>
+
+					<ul class="footer-contact-info">
+						<li><i class='bx bx-map'></i>175 5th Ave Premium Area, New York, NY 10010, United States</li>
+						<li><i class='bx bx-phone-call'></i><a href="tel:+16782233761‬">+1 678-223-3761‬</a></li>
+						<li><i class='bx bx-envelope'></i><a href="mailto:team@buynoir.co">team@buynoir.co</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-bottom-area">
+			<div class="row align-items-center">
+				<div class="col-lg-6 col-md-6">
+					@if (company()->getSuperConfigData('general.content.footer.footer_toggle'))
+						@if (company()->getSuperConfigData('general.content.footer.footer_content'))
+							<p>{{ company()->getSuperConfigData('general.content.footer.footer_content') }}</p>
+						@else
+							<p><i class='bx bx-copyright'></i>{!! trans('admin::app.footer.copy-right') !!}</p>
+						@endif
+					@endif
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<ul>
+						<li><a href="{{ route("buynoir.home.contactus") }}">Support</a></li>
+						<li><a href="{{ route("buynoir.home.privacypolicy") }}">Privacy Policy</a></li>
+						<li><a href="{{ route('buynoir.home.cookiesmore') }}">Cookie Policy</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="shape16"><img src="{{ asset('buynoir/superlandpage/assets/img/shape/shape16.png')}}" alt="image"></div>
+</footer>
+<!-- End Footer Area -->
+
+
+
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>	 
+	window.addEventListener("load", function(){
+		window.cookieconsent.initialise({
+			"palette": {
+				"popup": {
+					"background": "#000"
+				},
+				"button": {
+					"background": "#f1d600"
+				},
+			},
+			content: {
+				header: 'Cookiessss used on the website!',
+				message: 'We use cookies throughout this site to make your experience better.',
+				dismiss: 'Got it!',
+				allow: 'Allow cookies',
+				deny: 'Decline',
+				link: 'Learn more',
+				href: "{{route('buynoir.home.cookiesmore')}}",
+				close: '&#x274c;',
+			}
+		})
+	});
+</script>
+		 

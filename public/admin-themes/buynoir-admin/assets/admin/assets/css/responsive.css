@@ -171,6 +171,9 @@
 		display: inline-block;
 		margin-left: 7px;
 	}
+	.theme-list {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 @media (min-width: 992px) {
@@ -198,5 +201,14 @@
 	.buynoir-navbar {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
+	}
+	.theme-list {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media (min-width: 1200px) {
+	.theme-list {
+		grid-template-columns: repeat(5, 1fr);
 	}
 }

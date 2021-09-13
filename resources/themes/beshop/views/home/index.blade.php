@@ -42,20 +42,27 @@
 
 @inject('subscriptionHelper', 'Webkul\SAASSubscription\Helpers\Subscription')
 
-
-@php
+<?php 
     $shop_accounts =core()->getConfigData('general.general.shop-accounts.enable');
-@endphp
-
-@if ($shop_accounts)
-    @include("shop::errors.company_blocked_by_administrator", ['message' => 'Shop plan is expired', 'status' =>'status msg']);
-@endif
+    if($shop_accounts){
+?>
+        @include("shop::errors.company_blocked_by_administrator", ['message' => 'Shop plan is expired', 'status' =>'status msg']);
+<?php    }
+?>
 
 @if ($subscriptionHelper->isServiceStopped())
-    @include("shop::errors.subscription-expired", ['message' => 'Shop plan is expired','status'=>'status msg']);
+       @include("shop::errors.subscription-expired", ['message' => 'Shop plan is expired','status'=>'status msg']);
 @else
 
+ 
+    {{-- {!! view_render_event('bagisto.shop.home.content.before') !!}
+
+    {!! DbView::make($channel)->field('home_page_content')->with(['sliderData' => $sliderData])->render() !!}
+
+    {{ view_render_event('bagisto.shop.home.content.after') }} --}}
+
     @include('shop::home.slider')
+
 
     {!! view_render_event('bagisto.shop.home.content.before') !!}
 
@@ -74,3 +81,12 @@
     {{ view_render_event('bagisto.shop.home.content.after') }}
     @endif
 @endsection
+
+
+@push('css')
+    <style type="text/css">
+        .main-container-wrapper{
+            background-color: transparent !important;
+        }
+    </style>
+@endpush
