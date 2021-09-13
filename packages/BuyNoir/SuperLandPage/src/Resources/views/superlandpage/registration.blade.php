@@ -366,7 +366,10 @@
                             elsebusinessStart: this.elsebusinessStart
                         }).then(function (response) {
                         //   window.location.href = response.data.redirect;
-                        document.getElementById("regisCloseLink").style.display="none";
+                        const regis = document.getElementById("regisCloseLink");
+                        if(regis){
+                            regis.style.display="none";
+                        } 
                         o_this.step_one   = false;
                         o_this.step_two   = false;
                         o_this.step_three = false;
@@ -383,6 +386,7 @@
                         
                         
                         }).catch(function (errors) {
+                            console.log(errors);
                             serverErrors = errors.response.data.errors;
 
                             o_this.createdclicked = false;

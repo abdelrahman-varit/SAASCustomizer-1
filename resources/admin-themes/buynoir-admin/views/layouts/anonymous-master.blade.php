@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="{{ asset('buynoir/shopadmin/css/shop-admin.css') }}">
         <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/ui/assets/css/ui.css') }}">
 
-        <style>
+        <style nonce="r@nd0m">
             .container {
                 text-align: center;
                 position: absolute;

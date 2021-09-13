@@ -5,7 +5,7 @@
 @stop
 
 @section('css')
-    <style>
+    <style nonce="r@nd0m">
         .button-group {
             margin-bottom: 25px;
         }
