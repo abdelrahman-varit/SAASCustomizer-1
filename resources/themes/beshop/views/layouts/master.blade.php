@@ -28,6 +28,8 @@
 
     <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/stellarnav.min.css') }}">
     <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/xzoom.min.css') }}">
     <link rel="stylesheet" href="{{ asset('themes/beshop/assets/css/style.css') }}">
 
     <!-- Color Scheme -->
@@ -205,6 +207,8 @@
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="{{ asset('themes/beshop/assets/js/stellarnav.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('themes/beshop/assets/js/swiper-bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('themes/beshop/assets/js/xzoom.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('themes/beshop/assets/js/scripts.js') }}"></script>
 
     <script>

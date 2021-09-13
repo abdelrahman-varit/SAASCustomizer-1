@@ -1,101 +1,60 @@
-@if (app('Webkul\Product\Repositories\ProductRepository')->getAll()->count()>0)
+<div class="py-5"></div>
 
-    @php
-
+@php
+    if (app('Webkul\Product\Repositories\ProductRepository')->getAll()->count()>0) {
         $slug = empty($category)?0:$category;
         $category = app('Webkul\Category\Repositories\CategoryRepository')->findBySlugOrFail($slug);
         if ($category != null) {
             $products = app('Webkul\Product\Repositories\ProductRepository')->getAll($category->id)->take(8);
         }
-        
-    @endphp
+    }
+@endphp
 
-    @if($category != null)
-    <div class="main-container-wrapper">
-        <section class="featured-products">
-
-            <div class="featured-heading">
-                <div class="col-3 ftitle">{{$category->name}}</div>
-                <div class="col-7 fline"><hr></div>
-                <div class="col-2 fbtn"><a class="btn-dark" href="/{{$slug}}">Shop More <i class="las la-arrow-right"></i></a></div>
+@if ($category != null)
+    <div class="container">
+        <div class="swiper-container products-grid swipeable">
+            <div class="row align-items-baseline">
+                <div class="col">
+                    <h2 class="section_heading text-black">{{$category->name}}</h2>
+                </div>
+                <div class="col-auto">
+                    <a href="/{{$slug}}" class="btn btn-outline-primary rounded-pill btn-sm">Shop More <i class="fas fa-angle-double-right"></i></a>
+                </div>
             </div>
-
-            <div class="product-grid-4">
+            <div class="swiper-wrapper">
                 @foreach ($products as $productFlat)
-                    @include ('shop::products.list.card', ['product' => $productFlat])
-
+                    <div class="swiper-slide">
+                        @include ('shop::products.list.card', ['product' => $productFlat])
+                    </div>
                 @endforeach
-
             </div>
-
-        </section>
+        </div>
     </div>
-
-    @else
-        {{-- <div class="main-container-wrapper">
-            <section class="featured-products">
-                <div class="featured-heading">
-                    <div class="col-3">"{{$slug}}" Not Found</div>
-                    <div class="col-9"><hr></div>
-                </div>
-
-                <div class="product-grid-4" style="text-align: center;">
-                    Please check the spelling of the category.
-                </div>
-            </section>
-        </div> --}}
-    @endif
-
 @else
-    <div class="main-container-wrapper">
-        <section class="featured-products">
-
-            <div class="featured-heading">
-                <div class="col-3">{{ __('Kids Products') }}</div>
-                <div class="col-9"><hr></div>
+    <div class="container">
+        <div class="swiper-container products-grid swipeable">
+            <div class="row align-items-baseline">
+                <div class="col">
+                    <h2 class="section_heading text-black">{{ __('shop::app.home.new-products') }}</h2>
+                </div>
             </div>
-
-
-            <div class="featured-grid product-grid-4">
-                
+            <div class="swiper-wrapper">
                 @for($i=1;$i<9;$i++)
-                
-                    <div class="product-card">
-
-                            <div class="sticker new">
-                                {{ __('Demo') }}
-                            </div>
-                
-
-                        <div class="product-image">
-                            <a href="/" title="Demo product">
-                                <img src="{{ asset('/themes/cognite/assets/images/product/catproduct-0'.$i.'.png') }}" onerror="this.src='{{ asset('/themes/cognite/assets/images/product/featured-01.jpg') }}'"/>
-                            </a>
-                        </div>
-
-                        <div class="product-information text-center">
-
-                            <div class="product-name">
-                                <a href="/" title="Demo product">
-                                    <span>
-                                        Demo Product 0{{$i}}
-                                    </span>
-                                </a>
-                            </div>
-
-                            <div class="product-price text-danger">
-                                $25.00
-                            </div>
-
-                        </div>
-
-                        </div>
-
+                    <div class="swiper-slide">
+                        <!-- Simple Product -->
+						<div class="product text-center">
+							<div class="product_thumbnail p-3">
+								<img src="{{ asset('/themes/beshop/assets/img/demo/Men\'s-Collection-'.$i.'.jpg') }}" alt="Thumbnail">
+								<div class="product_thumbnail_overlay">
+									<a href="/" class="btn btn-light btn-sm" title="Quick View"><i class="fas fa-eye"></i></a>
+								</div>
+							</div>
+							<h4 class="product_title mt-3 mb-2"><a href="/" class="stretched-link text-reset text-decoration-none">Demo Product 0{{$i}}</a></h4>
+							<p class="product_price text-primary m-0">$25.00</p>
+						</div>
+                    </div>
                 @endfor
-
-            </div> 
-
-        </section>
-
+            </div>
+        </div>
     </div>
 @endif

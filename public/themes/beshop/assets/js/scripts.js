@@ -82,28 +82,30 @@ $(function() {
 	}
 	
 
-	// Recently Viewed Products
-	if ($(".recently-viewed-products").length) {
-		new Swiper(".recently-viewed-products", {
-			slidesPerView: 1.5,
-			spaceBetween: 16,
-			navigation: {
-				nextEl: ".recently-viewed-products .swiper-button-next",
-				prevEl: ".recently-viewed-products .swiper-button-prev",
-			},
-			breakpoints: {
-				768: {
-					slidesPerView: 3.5
+	window.onload = function () {
+		// Recently Viewed Products
+		if ($(".recently-viewed-products").length) {
+			new Swiper(".recently-viewed-products", {
+				slidesPerView: 1.5,
+				spaceBetween: 16,
+				navigation: {
+					nextEl: ".recently-viewed-products .swiper-button-next",
+					prevEl: ".recently-viewed-products .swiper-button-prev",
 				},
-				992: {
-					slidesPerView: 4
-				},
-				1200: {
-					slidesPerView: 5
+				breakpoints: {
+					768: {
+						slidesPerView: 3.5
+					},
+					992: {
+						slidesPerView: 4
+					},
+					1200: {
+						slidesPerView: 5
+					}
 				}
-			}
-		});
-	}
+			});
+		}
+	};
 	
 
 	// Upselling Products

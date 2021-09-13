@@ -5,45 +5,36 @@
 
 {!! view_render_event('bagisto.shop.products.view.gallery.before', ['product' => $product]) !!}
 
-<div class="product-image-group">
-
-    <div class="cp-spinner cp-round" id="loader">
-    </div>
-
-    <product-gallery></product-gallery>
-
-    
-
-</div>
+<!-- Product Gallery Start -->
+<product-gallery></product-gallery>
+<!-- Product Gallery End -->
 
 {!! view_render_event('bagisto.shop.products.view.gallery.after', ['product' => $product]) !!}
 
 @push('scripts')
 
     <script type="text/x-template" id="product-gallery-template">
-        <div class="bn-img-gallery-panel">
-            <div class="product-hero-image" id="product-hero-image">
-                <img :src="currentLargeImageUrl" id="pro-img" :data-image="currentOriginalImageUrl"/>
-                @auth('customer')
-                    <a @if ($wishListHelper->getWishlistProduct($product)) class="add-to-wishlist already" @else class="add-to-wishlist" @endif href="{{ route('customer.wishlist.add', $product->product_id) }}">
-                    </a>
-                @endauth
+        <div class="xzoom-container d-block">
+            <div class="xzoom-image-wrapper border d-flex justify-content-center align-items-center">
+                <img class="xzoom" :src="currentLargeImageUrl" :xoriginal="currentOriginalImageUrl">
             </div>
-            <ul class="thumb-list bn-thumb-list">
-                <li class="gallery-control top" @click="moveThumbs('top')" v-if="(thumbs.length > 4) && this.is_move.up">
-                    <span class="overlay"></span>
-                    <i class="icon arrow-up-white-icon"></i>
-                </li>
-
-                <li class="thumb-frame" v-for='(thumb, index) in thumbs' @mouseover="changeImage(thumb)" :class="[thumb.large_image_url == currentLargeImageUrl ? 'active' : '']" id="thumb-frame">
-                    <img :src="thumb.small_image_url"/>
-                </li>
-
-                <li class="gallery-control bottom" @click="moveThumbs('bottom')" v-if="(thumbs.length > 4) && this.is_move.down">
-                    <span class="overlay"></span>
-                    <i class="icon arrow-down-white-icon"></i>
-                </li>
-            </ul>
+            <div class="swiper-container xzoom-thumbs-container mt-3">
+                <div class="swiper-wrapper xzoom-thumbs m-0">
+                    <a
+                        class="swiper-slide"
+                        :href="thumb.small_image_url"
+                        v-for='(thumb, index) in thumbs'>
+                        <img
+                            class="xzoom-gallery"
+                            :src="thumb.small_image_url"
+                            :xpreview="thumb.small_image_url">
+                    </a>
+                </div>
+                <div class="d-flex justify-content-between mt-3">
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
         </div>
     </script>
 
@@ -105,10 +96,6 @@
                     this.currentLargeImageUrl = image.large_image_url;
 
                     this.currentOriginalImageUrl = image.original_image_url;
-
-                    if ($(window).width() > 580) {
-                        $('img#pro-img').data('zoom-image', image.original_image_url).ezPlus();
-                    }
                 },
 
                 moveThumbs: function(direction) {
@@ -152,9 +139,6 @@
 
     <script>
         $(document).ready(function() {
-            if ($(window).width() > 580) {
-                $('img#pro-img').data('zoom-image', $('img#pro-img').data('image')).ezPlus();
-            }
 
             var wishlist = " <?php echo $wishListHelper->getWishlistProduct($product);  ?> ";
 
@@ -168,12 +152,6 @@
                         $(".zoomContainer").removeClass("show-wishlist");
                     }
                 };
-
-                if ($("body").hasClass("rtl")) {
-                    $(".zoomWindow").addClass("zoom-image-direction");
-                } else {
-                    $(".zoomWindow").removeClass("zoom-image-direction");
-                }
             });
         })
     </script>

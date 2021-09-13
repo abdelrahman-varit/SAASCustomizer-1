@@ -10,26 +10,18 @@
         <input type="hidden" name="quantity" value="1">
         <button class="btn btn-lg btn-primary addtocart" {{ $product->isSaleable() ? '' : 'disabled' }}>{{ ($product->type == 'booking') ?  __('shop::app.products.book-now') :  __('shop::app.products.add-to-cart') }}</button>
     </form> --}}
-    <ul class="card-quick-icon">
-        <li>
-            @if ($showWishlist)
-                @include('shop::products.wishlist')
-            @endif
-        </li>
-        <li>
-            @if ($showCompare)
-                @php
-                    if($product->product_id>0){
-                        $product_id=$product->product_id;
-                    }else{
-                        $product_id=$product->id;
-                    }
-                @endphp
-                @include('shop::products.compare', ['productId' => $product_id])
-            @endif
-        </li>
-    </ul>
-    
-    
-    
- 
+
+    @if ($showWishlist)
+        @include('shop::products.wishlist')
+    @endif
+
+    @if ($showCompare)
+        @php
+            if($product->product_id>0){
+                $product_id=$product->product_id;
+            }else{
+                $product_id=$product->id;
+            }
+        @endphp
+        @include('shop::products.compare', ['productId' => $product_id])
+    @endif
