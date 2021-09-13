@@ -18,121 +18,82 @@
         <link rel="stylesheet" href="{{ asset('buynoir/shopadmin/css/shop-admin.css') }}">
         <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/ui/assets/css/ui.css') }}">
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+
         <style>
-            .container {
-                text-align: center;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                display: table;
-                z-index: 1;
-                background: #F8F9FA;
+            body {
+                font-family: 'Nunito', sans-serif;
             }
-            .center-box {
-                display: table-cell;
-                vertical-align: middle;
+            .text-orange {
+                color: #fe4c1c;
             }
-            .adjacent-center {
-                width: 365px;
-                display: inline-block;
-                text-align: left;
+            .fw-black {
+                font-weight: 800;
             }
-
-            .form-container .control-group .control {
-                width: 100%;
-            }
-
-            h1 {
-                font-size: 24px;
+            .form-control {
+                height: 50px;
+                color: #080e32;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+                border: 1px solid #f5f5f5;
+                background-color: #f5f5f5;
+                -webkit-transition: .5s;
+                -moz-transition: .5s;
+                transition: .5s;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+                padding: 1px 0 0 15px;
+                font-size: 16px;
                 font-weight: 600;
-                margin-bottom: 30px;
             }
-
-            .brand-logo {
-                margin-bottom: 30px;
+            .form-control.is-invalid,
+            .was-validated .form-control:invalid {
+                background-image: none;
+            }
+            .form-control:focus {
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+                border-color: #fe4c1c;
+            }
+            a:active, a:focus, a:hover, a:link, a:visited {
+                color: #fe4c1c;
+            }
+            .default-btn {
                 text-align: center;
+                display: inline-block;
+                transition: .5s;
+                border-radius: 5px;
+                border: none;
+                padding: 10px 30px;
+                position: relative;
+                z-index: 1;
+                color: white;
+                background-color: #080e32;
+                font-size: 17px;
+                font-weight: 700;
             }
-
-            .footer {
-                margin-top: 40px;
-                padding: 0 20px;
+            .default-btn:hover {
+                color: white;
             }
-
-            .footer p {
-                font-size: 14px;
-                color: #8E8E8E;
-                text-align: center;
+            .default-btn:hover::before {
+                transform: scaleX(0);
             }
-
-            .btn.btn-primary {
-                width: 100%;
+            .default-btn::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                border-radius: 5px;
+                background-color: #fe4c1c;
+                z-index: -1;
+                transition: .5s;
             }
-
-            .buynoir-panel form.buynoir-form-login label{
-                font-size:20px;
-                color:#aa5352;
-                font-weight:bold;
-                width:100%;
-                margin-top:0px;
-                margin-bottom:15px;
-            }
-
-            .buynoir-panel form.buynoir-form-login input{
-                font-size:15px;
-                color:#000 !important;
-                font-weight:bold;
-                width:100%;
-                margin-bottom:5px;
-                padding:17px !important;
-                height: 50px;
-            }
-            .buynoir-panel form.buynoir-form-login input{
-                font-size:15px;
-                color:#000 !important;
-                font-weight:bold;
-                width:100%;
-                margin-bottom:5px;
-                padding:17px !important;
-                height: 50px;
-            }
-
-                  .buynoir-panel form.buynoir-form-login input::placeholder{
-                font-size:15px;
-                color:#000 !important;
-                
-            }
-
-            
-
-            .buynoir-panel form.buynoir-form-login a,
-            .buynoir-panel form.buynoir-form-login a:visited{
-                  font-size:25px;
-                color:#aa5352;
-                font-weight:bold;
-            }
-
-            .buynoir-panel form.buynoir-form-login button{
-                width:50%;
-                box-shadow:none;
-                font-size:20px;
-                margin-top:15px;
-            }
-
-            .adjacent-center{
-                width:450px;
-            }
-
-            .buynoir-panel{
-                padding:20px;
-            }
-
-           .buynoir-panel .control-group .control {
-               border:2px solid #aa5352;
-           }
-
-           #buynoir-panel-login{
-               border:2.5px solid #aa5352;
-           }
         </style>
 
         @yield('css')
@@ -140,41 +101,45 @@
         {!! view_render_event('bagisto.admin.layout.head') !!}
     </head>
     <body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif style="scroll-behavior: smooth;">
-        <div id="app" class="container">
+        <div id="app">
 
             <flash-wrapper ref='flashes'></flash-wrapper>
 
-            <div class="center-box">
 
-                <div class="adjacent-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="py-5"></div>
+                        
+                        <div class="text-center">
+                            <a href="{{ route('buynoir.home.index') }}" class="d-inline-block">
+                                @if (core()->getConfigData('general.design.admin_logo.logo_image'))
+                                    <img src="{{ \Illuminate\Support\Facades\Storage::url(core()->getConfigData('general.design.admin_logo.logo_image')) }}" alt="{{ config('app.name') }}">
+                                @else
+                                    <img src="{{ asset('buynoir/shopadmin/images/logo-trans.png') }}" alt="{{ config('app.name') }}">
+                                @endif
+                            </a>
+                        </div>
 
-                    <div class="brand-logo">
-                        @if (core()->getConfigData('general.design.admin_logo.logo_image'))
-                            <img src="{{ \Illuminate\Support\Facades\Storage::url(core()->getConfigData('general.design.admin_logo.logo_image')) }}" alt="{{ config('app.name') }}" style="height: 40px; width: 110px;"/>
-                        @else
-                            <img src="{{ asset('buynoir/shopadmin/images/logo-trans.png') }}" alt="{{ config('app.name') }}"/>
-                        @endif
-                    </div>
-
-                    {!! view_render_event('bagisto.admin.layout.content.before') !!}
-
-                    @yield('content')
-
-                    {!! view_render_event('bagisto.admin.layout.content.after') !!}
-
-                    @if (core()->getConfigData('general.content.footer.footer_toggle'))
-                        <div class="footer">
-                            <p style="text-align: center;">
+                        {!! view_render_event('bagisto.admin.layout.content.before') !!}
+            
+                        @yield('content')
+            
+                        {!! view_render_event('bagisto.admin.layout.content.after') !!}
+            
+                        @if (core()->getConfigData('general.content.footer.footer_toggle'))
+                            <p class="m-0 text-center">
                                 @if (core()->getConfigData('general.content.footer.footer_content'))
                                     {{ core()->getConfigData('general.content.footer.footer_content') }}
                                 @else
                                     {!! trans('admin::app.footer.copy-right') !!}
                                 @endif
                             </p>
-                        </div>
-                    @endif
+                        @endif
+                        
+                        <div class="py-5"></div>
+                    </div>
                 </div>
-
             </div>
 
         </div>
@@ -197,6 +162,7 @@
             @endif
         </script>
 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript" src="{{ asset('vendor/webkul/admin/assets/js/admin.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
 
