@@ -1,5 +1,5 @@
 
-<style style="text/css">
+<style style="text/css" nonce="r@nd0m">
     .path-hint {
         border: solid 1px transparent;
         padding: 1px;
