@@ -42,164 +42,103 @@
 
     {!! view_render_event('bagisto.shop.products.view.before', ['product' => $product]) !!}
 
+    <div class="py-5"></div>
+
+    <product-view>
+        @csrf()
+        <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+
+        <div class="container">
+            <div class="row gy-5 gy-lg-0">
+                <div class="col-lg-auto">
+                    @include ('shop::products.view.gallery')
+                </div>
+                <div class="col">
+					<!-- Product About Start -->
+					<h2 class="text-black mb-3">{{ $product->name }}</h2>
+					<div class="row justify-content-start mb-3">
+						<div class="col">
+                            @inject ('reviewHelper', 'Webkul\Product\Helpers\Review')
+                            @if ($total = $reviewHelper->getTotalReviews($product))
+                                <div class="rating text-warning d-inline-block">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if($i <= round($reviewHelper->getAverageRating($product)))
+                                            <i class="fas fa-star"></i>
+                                        @else
+                                            <i class="far fa-star"></i>
+                                        @endif
+                                    @endfor
+                                </div>
+                                {{ __('shop::app.products.total-reviews', ['total' => $total]) }}
+                            @else
+                                <div class="rating text-warning d-inline-block">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        <i class="far fa-star"></i>
+                                    @endfor
+                                </div>
+                                {{ __('shop::app.products.total-reviews', ['total' => $total]) }}
+                            @endif
+						</div>
+					</div>
+
+                    {!! view_render_event('bagisto.shop.products.view.short_description.before', ['product' => $product]) !!}
+
+					<p class="mb-4">{!! $product->short_description !!}</p>
+
+                    {!! view_render_event('bagisto.shop.products.view.short_description.after', ['product' => $product]) !!}
+                    
+                    @include ('shop::products.view.brand')
+
+                    <div class="row mb-3">
+						<div class="col-lg-4 fw-bold">Availability:</div>
+						<div class="col-lg-8">@include ('shop::products.view.stock', ['product' => $product])</div>
+					</div>
+
+                    <div class="row mb-3">
+						<div class="col-lg-4 fw-bold">Effective Price:</div>
+						<div class="col-lg-8">@include ('shop::products.price', ['product' => $product])</div>
+					</div>
+
+
+                    {!! view_render_event('bagisto.shop.products.view.quantity.before', ['product' => $product]) !!}
+
+                    <div class="row mb-3">
+						<div class="col-lg-4 fw-bold">{{ __('shop::app.products.quantity') }}:</div>
+						<div class="col-lg-8">
+                            @if ($product->getTypeInstance()->showQuantityBox())
+                                <quantity-changer></quantity-changer>
+                            @else
+                                <input type="hidden" name="quantity" value="1">
+                            @endif
+                        </div>
+					</div>
+
+                    {!! view_render_event('bagisto.shop.products.view.quantity.after', ['product' => $product]) !!}
+
+                    
+                    @include ('shop::products.view.configurable-options')
+
+                    @include ('shop::products.view.downloadable')
+
+                    @include ('shop::products.view.grouped-products')
+
+                    @include ('shop::products.view.bundle-options')
+
+                    @include ('shop::products.view.product-add')
+
+                    {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
+    
+                    {!! view_render_event('bagisto.shop.products.view.description.after', ['product' => $product]) !!}
+					<!-- Product About End -->
+				</div>
+            </div>
+        </div>
+    </product-view>
+
     <div class="main-container-wrapper bn-product-details">
         <section class="product-detail">
 
             <div class="layouter">
-                <product-view>
-                    <div class="form-container">
-                        @csrf()
-
-                        <input type="hidden" name="product_id" value="{{ $product->product_id }}">
-
-                        @include ('shop::products.view.gallery')
-
-                        <div class="details">
-
-                            <div class="product-heading">
-                                <span>{{ $product->name }}</span>
-                            </div>
-
-                            <div class="product-ratings">
-                                @inject ('reviewHelper', 'Webkul\Product\Helpers\Review')
-                                @if ($total = $reviewHelper->getTotalReviews($product))
-                                <div class="review-info">
-
-                                    <span class="number">
-                                        {{ $reviewHelper->getAverageRating($product) }}
-                                    </span>
-                    
-                                    <span class="stars">
-                                        @for ($i = 1; $i <= 5; $i++)
-                    
-                                          @if($i <= round($reviewHelper->getAverageRating($product)))
-                                            <span class="icon star-icon"></span>
-                                          @else
-                                            <span class="icon star-icon-blank"></span>
-                                          @endif
-                    
-                                        @endfor
-                                    </span>
-                    
-                                    <div class="total-reviews">
-                                        {{ __('shop::app.products.total-reviews', ['total' => $total]) }}
-                                    </div>
-                    
-                                </div>
-                                @else
-                                    <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
-                                    <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
-                                    <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
-                                    <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
-                                    <img src="{{asset('/themes/cognite/assets/images/icons/rating-black.png')}}" style="height:13px;width:13px"/>
-                                    <div class="total-reviews">
-                                        {{ __('shop::app.products.total-reviews', ['total' => $total]) }}
-                                    </div>
-                                @endif
-                            
-                            </div>
-
-
-                            <div class="short-description">
-                                {!! $product->short_description !!}
-                            </div>
-
-                            <div class="others-information" style="margin-top:30px">
-
-                              
-                                    @include ('shop::products.view.brand')                                     
-                             
-
-
-                                <div class="others-information-row" >
-                                    <div class="other-info-title" >Availability :</div>
-                                    <div  class="other-info-value" >
-                                        @include ('shop::products.view.stock', ['product' => $product])
-                                    </div>
-                                </div>  
-                                
-                                <div class="others-information-row" >
-                                    <div class="other-info-title" >Effective Price :</div>
-                                    <div  class="other-info-value" >
-                                        @include ('shop::products.price', ['product' => $product])
-                                    </div>
-                                </div>
-
-                                <!-- <div class="others-information-row" >
-                                    <div class="other-info-title" >Material :</div>
-                                    <div  class="other-info-value" >Wood</div>
-                                </div> -->
-
-                                <div class="others-information-row">
-                                    <div class="other-info-title" >{{ __('shop::app.products.quantity') }} :</div>
-                                    <div  class="other-info-value" >
-                                        @if ($product->getTypeInstance()->showQuantityBox())
-                                            <quantity-changer></quantity-changer>
-                                        @else
-                                            <input type="hidden" name="quantity" value="1">
-                                        @endif
-                                    </div>
-                                </div> 
-                                
-                                {!! view_render_event('bagisto.shop.products.view.short_description.before', ['product' => $product]) !!}
-
-
-                                {!! view_render_event('bagisto.shop.products.view.short_description.after', ['product' => $product]) !!}
-
-
-                                {!! view_render_event('bagisto.shop.products.view.quantity.before', ['product' => $product]) !!}
-
-                            
-
-                                {!! view_render_event('bagisto.shop.products.view.quantity.after', ['product' => $product]) !!}
-
-
-                                @include ('shop::products.view.configurable-options')
-
-                                @include ('shop::products.view.downloadable')
-    
-                                @include ('shop::products.view.grouped-products')
-    
-                                @include ('shop::products.view.bundle-options')
-    
-                                
-                               
-                                
-                                <div class="others-information-row" style="display:none" >
-                                    <div class="other-info-title" >Subtotal :</div>
-                                    <div  class="other-info-value" id="subtotal-value" > 
-                                        
-                                    </div>
-                                </div>
-
-                                <div class="bn-product-details-btn-container add-to-buttons">
-                                   
-                                    @include ('shop::products.view.product-add')
-
-                                </div>
-
-                                {!! view_render_event('bagisto.shop.products.view.description.before', ['product' => $product]) !!}
-    
-                                {!! view_render_event('bagisto.shop.products.view.description.after', ['product' => $product]) !!}
-
-                                
-
-                                {{-- <div class="" style="align-items:center;display:flex;flex-direction:row;gap:30px;margin-top:25px;">
-                                    <div class="other-info-title" >Share with us :</div>
-                                    <div  class="other-info-value"  style="flex:0 0 70%;gap:30px;">
-                                    <a href="#"><img src="{{asset('/themes/cognite/assets/images/facebook-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/></a> &nbsp; 
-                                    <a href="#"><img src="{{asset('/themes/cognite/assets/images/linkedin-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/></a> &nbsp; 
-                                    <a href="#"><img src="{{asset('/themes/cognite/assets/images/twitter-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/></a> &nbsp; 
-                                    <a href="#"><img src="{{asset('/themes/cognite/assets/images/pinterest-round.png')}}" style="height:32px;width:32px;vertical-align:middle"/></a> &nbsp; 
-                                    </div>
-                                </div> --}}
-
-                            </div>
-
-                        </div>
-                    </div>
-                </product-view>
-
                 <div class="bn-tab-panel">
                     <div class="tab">
                         <button class="tablinks active" onclick="openCity(event, 'description')" type="button">Description</button>
@@ -273,7 +212,7 @@
     </script>
 
     <script type="text/x-template" id="quantity-changer-template">
-        <div class="quantity control-group" :class="[errors.has(controlName) ? 'has-error' : '']">
+        <div class="quantity control-group m-0" :class="[errors.has(controlName) ? 'has-error' : '']">
 
             <button type="button" class="decrease" @click="decreaseQty()">-</button>
 
