@@ -4,6 +4,17 @@
     {{ __('admin::app.users.forget-password.title') }}
 @stop
 
+@section('css')
+    <style nonce="r@nd0m">
+        .button-group {
+            margin-bottom: 25px;
+        }
+        .primary-back-icon {
+            vertical-align: middle;
+        }
+    </style>
+@stop
+
 @section('content')
 
     <div class="form-container col-lg-6 mx-auto">
