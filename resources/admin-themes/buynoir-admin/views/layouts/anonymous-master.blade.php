@@ -8,6 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
 
+  
         @if ($favicon = core()->getConfigData('general.design.admin_logo.favicon'))
             <link rel="icon" sizes="16x16" href="{{ \Illuminate\Support\Facades\Storage::url($favicon) }}" />
         @else
@@ -18,7 +19,7 @@
         <link rel="stylesheet" href="{{ asset('buynoir/shopadmin/css/shop-admin.css') }}">
         <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/ui/assets/css/ui.css') }}">
 
-        <style nonce="r@nd0m">
+        <style nonce="2726c7f26c" >
             .container {
                 text-align: center;
                 position: absolute;

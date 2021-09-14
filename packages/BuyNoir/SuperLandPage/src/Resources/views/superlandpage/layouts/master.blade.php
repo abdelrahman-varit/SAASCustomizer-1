@@ -12,7 +12,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="google-site-verification" content="V8hWcwFuGVFvBlm5ZPjDeRI1VLR-EKORg47pmyi7riU" />
 		<meta name="facebook-domain-verification" content="jzbyb93y51hd3oos0otv55095d17v3" />
-
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.gstatic.com/; style-src 'self' https://fonts.googleapis.com/ 'unsafe-inline';">
         <!-- Links of CSS files -->
         <link rel="stylesheet" href="{{ asset('buynoir/superlandpage/assets/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('buynoir/superlandpage/assets/css/flaticon.css') }}">
