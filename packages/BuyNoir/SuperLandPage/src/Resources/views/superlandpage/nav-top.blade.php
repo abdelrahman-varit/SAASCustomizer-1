@@ -5,7 +5,7 @@
 			<div class="dibiz-responsive-menu">
 				<div class="logo">
 					<a href="{{ route('buynoir.home.index') }}">
-						<img src="{{ asset('vendor/webkul/ui/assets/images/logo.png') }}" alt="Buynoir.">
+						<img src="{{ asset('buynoir/superlandpage/assets/img/logo.png') }}" alt="Buynoir.">
 					</a>
 				</div>
 			</div>
@@ -16,7 +16,7 @@
 		<div class="container-fluid">
 			<nav class="navbar navbar-expand-md navbar-light">
 				<a class="navbar-brand" href="{{ route('buynoir.home.index') }}">
-					<img src="{{ asset('vendor/webkul/ui/assets/images/logo.png') }}" alt="Buynoir.">
+					<img src="{{ asset('buynoir/superlandpage/assets/img/logo.png') }}" alt="Buynoir.">
 				</a>
 
 				<div class="collapse navbar-collapse mean-menu">

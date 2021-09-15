@@ -47,7 +47,7 @@
                             <p>The world's only platform dedicated to powering black and brown owned e-commerce businesses. We give you the tools you need to build and grow your online business. Start your online business with us.</p>
                             <div class="btn-box">
                                 <div class="d-flex align-items-center">
-                                    <a href="contact.html" class="default-btn">Start now</a>
+                                    <a href="{{ route("buynoir.home.contactus") }}" class="default-btn">Start now</a>
                                     <a href="https://www.youtube.com/watch?v=Y5KCDWi7h9o" class="video-btn popup-youtube"><i class="flaticon-play-button"></i> Watch video</a>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
                                     <div class="circle-two"></div>
                                 </div>
                             </div>
-                            <h3><a href="single-services.html">No coding required</a></h3>
+                            <h3><a href="javascript:void(0)">No coding required</a></h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
                                     <div class="circle-two"></div>
                                 </div>
                             </div>
-                            <h3><a href="single-services.html">Beautifully Designed Templates</a></h3>
+                            <h3><a href="javascript:void(0)">Beautifully Designed Templates</a></h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                                     <div class="circle-two"></div>
                                 </div>
                             </div>
-                            <h3><a href="single-services.html">Lorum ipsum</a></h3>
+                            <h3><a href="javascript:void(0)">Lorum ipsum</a></h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
                         </div>
                     </div>
