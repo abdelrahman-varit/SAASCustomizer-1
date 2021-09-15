@@ -282,6 +282,7 @@ return [
         'sort'       => 3,
         'icon-class' => 'catalog-icon',
     ],
+
     // [
     //     'key'        => 'my-shop.theme-selections',
     //     'name'       => 'admin::app.admin.my-shop.index',
@@ -289,4 +290,5 @@ return [
     //     'sort'       => 4,
     //     'icon-class' => 'catalog-icon',
     // ],
+
 ];
