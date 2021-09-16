@@ -151,7 +151,6 @@
                             </div>
 
                             <div class="form-group mb-3" :class="[errors.has('step-three.productcategory') ? 'has-error' : '']">
-
                                 <select class="form-control" name="productcategory" v-model="productcategory" v-validate="'required'" >
                                     <option value="" selected>{{ __('saas::app.tenant.registration.org-name') }}</option>
                                     <option value="Clothing">Clothing</option>
