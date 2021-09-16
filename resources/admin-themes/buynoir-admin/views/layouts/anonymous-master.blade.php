@@ -19,15 +19,13 @@
         <link rel="stylesheet" href="{{ asset('buynoir/shopadmin/css/shop-admin.css') }}">
         <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/ui/assets/css/ui.css') }}">
 
-        <style nonce="2726c7f26c" >
-            .container {
-                text-align: center;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                display: table;
-                z-index: 1;
-                background: #F8F9FA;
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+
+
+        <style nonce="2726c7f26c">
+            body {
+                font-family: 'Nunito', sans-serif;
             }
             .text-orange {
                 color: #fe4c1c;

@@ -187,7 +187,7 @@
 		});
 
 		// Nice Select JS
-		$('select').niceSelect();
+		// $('select').niceSelect();
 
 		// Input Plus & Minus Number JS
 		$('.input-counter').each(function() {
