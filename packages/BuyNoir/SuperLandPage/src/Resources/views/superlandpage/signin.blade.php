@@ -100,7 +100,7 @@
 							</div>
 
 							<div class="form-group mb-3">
-								<a :href="'//'+company_name+'/admin/forget-password'">{{ __('admin::app.users.sessions.forget-password-link-title') }}</a>
+								<a :href="'//'+company_name+'/admin/forget-password'" class="text-orange"><strong>{{ __('admin::app.users.sessions.forget-password-link-title') }}</strong></a>
 							</div>
 							
 							<div class="text-center text-md-end form-group mb-3">

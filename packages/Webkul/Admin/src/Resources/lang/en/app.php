@@ -310,12 +310,12 @@ return [
         'sessions' => [
             'title' => 'Sign In',
             'email' => 'Email',
-            'emails' => 'Sign in to your shop',
+            'emails' => 'Sign into your Shop',
             'password' => 'Password',
-            'forget-password-link-title' => 'Forget Password ?',
+            'forget-password-link-title' => 'Forget Password?',
             'remember-me' => 'Remember Me',
-            'submit-btn-title' => 'Sign In',
-            'forget-password-link-titles' => 'Forgot Password ?',
+            'submit-btn-title' => 'Enter your shop',
+            'forget-password-link-titles' => 'Forgot Password?',
             'email-label' => 'Email Address',
         ]
     ],

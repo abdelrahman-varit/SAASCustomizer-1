@@ -17,66 +17,64 @@
             $isRendered = true;
         @endphp
 
-        <div class="main-container-wrapper advertisement-three-container">
-            <div class="col-4">
-                @if ( isset($advertisementThree[0]))
-                    <a @if (isset($one)) href="{{ $one }}" @endif >
-                        <img class="col-12" src="{{ asset('/storage/' . $advertisementThree[0]) }}" />
+        <!-- Advertisement Start -->
+         <div class="container advertisement">
+            <div class="row gy-4 gy-md-0">
+                <div class="col-md-6">
+                    <a href="{{ isset($one) ? $one : 'javascript:void(0)' }}">
+                        @if ( isset($advertisementThree[0]))
+                            <img src="{{ asset('/storage/' . $advertisementThree[0]) }}" alt="offer-banner-1">
+                        @else
+                            <img src="{{ asset('/themes/beshop/assets/img/demo/offer-banner-1.jpg') }}" alt="offer-banner-1">
+                        @endif
                     </a>
-                @else
-                    <a @if (isset($one)) href="{{ $one }}" @endif >
-                        <img class="col-12" src="{{ asset('/themes/cognite/assets/images/banner/advertise-2-1.jpg') }}" />
-                    </a>
-                @endif
-            </div>
-
-            <div class="col-4">
-                @if ( isset($advertisementThree[1]))
-                    <a @if (isset($two)) href="{{ $two }}" @endif>
-                        <img class="col-12 offers-ct-top" src="{{ asset('/storage/' . $advertisementThree[1]) }}" />
-                    </a>
-                @else
-                    <a @if (isset($one)) href="{{ $one }}" @endif >
-                        <img class="col-12" src="{{ asset('/themes/cognite/assets/images/banner/advertise-2-2.jpg') }}" />
-                    </a>
-
-                @endif
-            </div>
-
-            <div class="col-4">
-
-                @if ( isset($advertisementThree[2]))
-                    <a @if (isset($three)) href="{{ $three }}" @endif >
-                        <img class="col-12 offers-ct-bottom" src="{{ asset('/storage/' . $advertisementThree[2]) }}" />
-                    </a>
-                @else
-                    <a @if (isset($one)) href="{{ $one }}" @endif >
-                        <img class="col-12" src="{{ asset('/themes/cognite/assets/images/banner/advertise-2-3.jpg') }}" />
-                    </a>
-
-                @endif
+                </div>
+                <div class="col-md-6 advertisement-row-2">
+                    <div class="row row-cols-1 gy-4">
+                        <div class="col">
+                            <a href="{{ isset($two) ? $two : 'javascript:void(0)' }}">
+                                @if ( isset($advertisementThree[1]))
+                                    <img src="{{ asset('/storage/' . $advertisementThree[1]) }}" alt="offer-banner-1">
+                                @else
+                                    <img src="{{ asset('/themes/beshop/assets/img/demo/50_off.jpg') }}" alt="50_off.jpg">
+                                @endif
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="{{ isset($three) ? $three : 'javascript:void(0)' }}">
+                                @if ( isset($advertisementThree[2]))
+                                    <img src="{{ asset('/storage/' . $advertisementThree[2]) }}" alt="offer-banner-1">
+                                @else
+                                    <img src="{{ asset('/themes/beshop/assets/img/demo/just-for.jpg') }}" alt="offer-banner-1">
+                                @endif
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- Advertisement End -->
     @endif
 @endif
 
 @if (! $isRendered)
-    <div class="main-container-wrapper advertisement-three-container">
-        <div class="col-4">
-            <a @if (isset($one)) href="{{ $one }}" @endif style="flex: 1;">
-            <img class="col-12" src="{{ asset('/themes/cognite/assets/images/banner/advertise-2-1.jpg') }}" />
-            </a>
-        </div>
-        <div class="col-4">
-            <a @if (isset($two)) href="{{ $two }}" @endif >
-            <img class="col-12" src="{{ asset('/themes/cognite/assets/images/banner/advertise-2-2.jpg') }}" />
-            </a>
-        </div>
-
-        <div class="col-4" >
-            <a @if (isset($three)) href="{{ $three }}" @endif >
-            <img class="col-12" src="{{ asset('/themes/cognite/assets/images/banner/advertise-2-3.jpg') }}" />
-            </a>
+    <!-- Advertisement Start -->
+    <div class="container advertisement">
+        <div class="row gy-4 gy-md-0">
+            <div class="col-md-6">
+                <a href="{{ isset($one) ? $one : 'javascript:void(0)' }}"><img src="{{ asset('/themes/beshop/assets/img/demo/offer-women-1.jpg') }}" alt="offer-women-1"></a>
+            </div>
+            <div class="col-md-6 advertisement-row-2">
+                <div class="row row-cols-1 gy-4">
+                    <div class="col">
+                        <a href="{{ isset($two) ? $two : 'javascript:void(0)' }}"><img src="{{ asset('/themes/beshop/assets/img/demo/50_off.jpg') }}" alt="50_off"></a>
+                    </div>
+                    <div class="col">
+                        <a href="{{ isset($three) ? $three : 'javascript:void(0)' }}"><img src="{{ asset('/themes/beshop/assets/img/demo/just-for.jpg') }}" alt="just-for"></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- Advertisement End -->
 @endif

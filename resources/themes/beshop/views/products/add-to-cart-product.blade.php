@@ -1,7 +1,7 @@
 {!! view_render_event('bagisto.shop.products.add_to_cart.before', ['product' => $product]) !!}
 
-<button class="btn btn-bn" type="button" onclick="addTocartAjax()" {{ ! $product->isSaleable() ? 'disabled' : '' }}>
-<i class="las la-shopping-cart"></i> &nbsp; {{ ($product->type == 'booking') ?  __('shop::app.products.book-now') :  __('shop::app.products.add-to-cart') }}
+<button class="btn btn-primary rounded-0 text-white py-2" type="button" style="width: 200px" onclick="addTocartAjax()" {{ ! $product->isSaleable() ? 'disabled' : '' }}>
+    <i class="las la-shopping-cart"></i> {{ ($product->type == 'booking') ?  __('shop::app.products.book-now') :  __('shop::app.products.add-to-cart') }}
 </button>
  
 

@@ -6,10 +6,8 @@ $header_contents = app('Webkul\Velocity\Repositories\ContentRepository')->getAll
 
 ?>
 
-    <div class="main-container-wrapper">
-        <ul class="nav">
-            @foreach($header_contents as $header_content)
-                <li><a href="{{$header_content['page_link']}}">{{$header_content['title']}}</a></li>
-            @endforeach
-        </ul>
-    </div>
+<ul class="nav fw-light">
+    @foreach($header_contents as $header_content)
+        <li class="nav-item"><a href="{{$header_content['page_link']}}" class="nav-link">{{$header_content['title']}}</a></li>
+    @endforeach
+</ul>

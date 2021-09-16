@@ -31,9 +31,9 @@
         <title>@yield('page_title')</title>
         
         @if ( $channel && $channel->favicon_url)
-            <link rel="icon" sizes="16x16" href="{{ $channel->favicon_url }}" />
+            <link rel="icon" href="{{ $channel->favicon_url }}" />
         @else
-            <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/favicon.ico') }}" />
+            <link rel="icon" href="{{ asset('buynoir/superlandpage/assets/img/favicon.png') }}" />
         @endif
 
         
