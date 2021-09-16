@@ -4,66 +4,38 @@
     {{ __('admin::app.users.reset-password.title') }}
 @stop
 
-@section('css')
-    <style>
-        .button-group {
-            margin-bottom: 25px;
-        }
-        .primary-back-icon {
-            vertical-align: middle;
-        }
-    </style>
-@stop
-
 @section('content')
 
-    <div class="panel">
+    <div class="form-container col-lg-6 mx-auto">
+        <form method="POST" action="{{ route('admin.reset-password.store') }}" @submit.prevent="onSubmit">
+            @csrf
+            <h4 class="mt-3 mb-5 text-orange text-center fw-black">{{ __('admin::app.users.reset-password.title') }}</h4>
 
-        <div class="panel-content">
-
-            <div class="form-container" style="text-align: left">
-
-                <h1>{{ __('admin::app.users.reset-password.title') }}</h1>
-
-                <form method="POST" action="{{ route('admin.reset-password.store') }}" @submit.prevent="onSubmit">
-                    @csrf
-
-                    <input type="hidden" name="token" value="{{ $token }}">
-
-                    <div class="control-group" :class="[errors.has('email') ? 'has-error' : '']">
-                        <label for="email">{{ __('admin::app.users.reset-password.email') }}</label>
-                        <input type="text" v-validate="'required|email'" class="control" id="email" name="email" data-vv-as="&quot;{{ __('admin::app.users.reset-password.email') }}&quot;" value="{{ old('email') }}"/>
-                        <span class="control-error" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
-                    </div>
-
-                    <div class="control-group" :class="[errors.has('password') ? 'has-error' : '']">
-                        <label for="password">{{ __('admin::app.users.reset-password.password') }}</label>
-                        <input type="password" v-validate="'required|min:6'" class="control" id="password" name="password" ref="password" data-vv-as="&quot;{{ __('admin::app.users.reset-password.password') }}&quot;"/>
-                        <span class="control-error" v-if="errors.has('password')">@{{ errors.first('password') }}</span>
-                    </div>
-
-                    <div class="control-group" :class="[errors.has('password_confirmation') ? 'has-error' : '']">
-                        <label for="password_confirmation">{{ __('admin::app.users.reset-password.confirm-password') }}</label>
-                        <input type="password" v-validate="'required|min:6|confirmed:password'" class="control" id="password_confirmation" name="password_confirmation" data-vv-as="&quot;{{ __('admin::app.users.reset-password.confirm-password') }}&quot;" data-vv-as="password"/>
-                        <span class="control-error" v-if="errors.has('password_confirmation')">@{{ errors.first('password_confirmation') }}</span>
-                    </div>
-                    
-                    <div class="button-group">
-                        <button type="submit" class="btn btn-xl btn-primary">{{ __('admin::app.users.reset-password.submit-btn-title') }}</button>
-                    </div>
-
-                    <div class="control-group" style="margin-bottom: 0">
-                        <a href="{{ route('admin.session.create') }}">
-                            <i class="icon primary-back-icon"></i>
-                            {{ __('admin::app.users.reset-password.back-link-title') }}
-                        </a>
-                    </div>
-                </form>
-
+            <input type="hidden" name="token" value="{{ $token }}">
+            
+            <div class="form-group mb-3">
+                <input type="text" :class="[errors.has('email') ? 'is-invalid' : '']" v-validate="'required|email'" class="form-control" id="email" name="email" data-vv-as="&quot;{{ __('admin::app.users.reset-password.email') }}&quot;" value="{{ old('email') }}"/>
+                <span class="invalid-feedback" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
             </div>
-        
-        </div>
+            
+            <div class="form-group mb-3">
+                <input type="password" :class="[errors.has('password') ? 'is-invalid' : '']" v-validate="'required|min:6'" class="form-control" id="password" name="password" ref="password" data-vv-as="&quot;{{ __('admin::app.users.reset-password.password') }}&quot;">
+                <span class="invalid-feedback" v-if="errors.has('password')">@{{ errors.first('password') }}</span>
+            </div>
+            
+            <div class="form-group mb-3">
+                <input type="password" :class="[errors.has('password') ? 'is-invalid' : '']" v-validate="'required|min:6|confirmed:password'" class="form-control" id="password_confirmation" name="password_confirmation" data-vv-as="&quot;{{ __('admin::app.users.reset-password.confirm-password') }}&quot;" data-vv-as="password"/>
+                <span class="invalid-feedback" v-if="errors.has('password_confirmation')">@{{ errors.first('password_confirmation') }}</span>
+            </div>
 
+            <div class="text-center text-lg-end mb-3">
+                <button class="btn default-btn">{{ __('admin::app.users.reset-password.submit-btn-title') }}</button>
+            </div>
+
+            <a href="{{ route('admin.session.create') }}">&#8592; {{ __('admin::app.users.reset-password.back-link-title') }}</a>
+
+        </form>
     </div>
 
+    <div class="py-5"></div>
 @stop

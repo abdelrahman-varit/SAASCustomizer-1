@@ -13,12 +13,12 @@
             
             <div class="form-group mb-3">
                 <input type="text" v-validate="'required|email'" class="form-control" :class="[errors.has('email') ? 'is-invalid' : '']" id="email" name="email" data-vv-as="&quot;{{ __('admin::app.users.sessions.email') }}&quot;" placeholder="{{ __('admin::app.users.sessions.email-label') }}" />
-                <span class="text-danger small d-block mt-1" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
+                <span class="invalid-feedback" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
             </div>
 
             <div class="form-group mb-3">
                 <input type="password" v-validate="'required|min:6'" class="form-control" :class="[errors.has('password') ? 'is-invalid' : '']" id="password" name="password" data-vv-as="&quot;{{ __('admin::app.users.sessions.password') }}&quot;" value=""  placeholder="{{ __('admin::app.users.sessions.password') }}"/>
-                <span class="text-danger small d-block mt-1" v-if="errors.has('password')">@{{ errors.first('password') }}</span>
+                <span class="invalid-feedback" v-if="errors.has('password')">@{{ errors.first('password') }}</span>
             </div>
 
             <div class="form-group mb-3">

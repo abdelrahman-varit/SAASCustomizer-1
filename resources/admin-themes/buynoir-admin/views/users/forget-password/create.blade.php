@@ -4,17 +4,6 @@
     {{ __('admin::app.users.forget-password.title') }}
 @stop
 
-@section('css')
-    <style nonce="r@nd0m">
-        .button-group {
-            margin-bottom: 25px;
-        }
-        .primary-back-icon {
-            vertical-align: middle;
-        }
-    </style>
-@stop
-
 @section('content')
 
     <div class="form-container col-lg-6 mx-auto">
@@ -24,7 +13,7 @@
             
             <div class="form-group mb-3">
                 <input type="text" v-validate="'required|email'" class="form-control" :class="[errors.has('email') ? 'is-invalid' : '']" id="email" name="email" data-vv-as="&quot;{{ __('admin::app.users.forget-password.email') }}&quot;" placeholder="{{ __('admin::app.users.forget-password.email') }}" value="{{ old('email') }}">
-                <span class="text-danger small d-block mt-1" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
+                <span class="invalid-feedback" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
             </div>
 
             <div class="text-center text-lg-end mb-3">
