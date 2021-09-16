@@ -14,17 +14,17 @@
             <input type="hidden" name="token" value="{{ $token }}">
             
             <div class="form-group mb-3">
-                <input type="text" :class="[errors.has('email') ? 'is-invalid' : '']" v-validate="'required|email'" class="form-control" id="email" name="email" data-vv-as="&quot;{{ __('admin::app.users.reset-password.email') }}&quot;" value="{{ old('email') }}"/>
+                <input type="text" :class="[errors.has('email') ? 'is-invalid' : '']" v-validate="'required|email'" class="form-control" id="email" name="email" data-vv-as="&quot;{{ __('admin::app.users.reset-password.email') }}&quot;" placeholder="{{ __('admin::app.users.reset-password.email') }}" value="{{ old('email') }}"/>
                 <span class="invalid-feedback" v-if="errors.has('email')">@{{ errors.first('email') }}</span>
             </div>
             
             <div class="form-group mb-3">
-                <input type="password" :class="[errors.has('password') ? 'is-invalid' : '']" v-validate="'required|min:6'" class="form-control" id="password" name="password" ref="password" data-vv-as="&quot;{{ __('admin::app.users.reset-password.password') }}&quot;">
+                <input type="password" :class="[errors.has('password') ? 'is-invalid' : '']" v-validate="'required|min:6'" class="form-control" id="password" name="password" ref="password" data-vv-as="&quot;{{ __('admin::app.users.reset-password.password') }}&quot;" placeholder="{{ __('admin::app.users.reset-password.password') }}">
                 <span class="invalid-feedback" v-if="errors.has('password')">@{{ errors.first('password') }}</span>
             </div>
             
             <div class="form-group mb-3">
-                <input type="password" :class="[errors.has('password') ? 'is-invalid' : '']" v-validate="'required|min:6|confirmed:password'" class="form-control" id="password_confirmation" name="password_confirmation" data-vv-as="&quot;{{ __('admin::app.users.reset-password.confirm-password') }}&quot;" data-vv-as="password"/>
+                <input type="password" :class="[errors.has('password_confirmation') ? 'is-invalid' : '']" v-validate="'required|min:6|confirmed:password'" class="form-control" id="password_confirmation" name="password_confirmation" data-vv-as="&quot;{{ __('admin::app.users.reset-password.confirm-password') }}&quot;" data-vv-as="password" placeholder="{{ __('admin::app.users.reset-password.confirm-password') }}">
                 <span class="invalid-feedback" v-if="errors.has('password_confirmation')">@{{ errors.first('password_confirmation') }}</span>
             </div>
 
