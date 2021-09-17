@@ -9,7 +9,7 @@
     <div class="form-container col-lg-6 mx-auto">
         <form method="POST" action="{{ route('admin.reset-password.store') }}" @submit.prevent="onSubmit">
             @csrf
-            <h4 class="mt-3 mb-5 text-orange text-center fw-black">{{ __('admin::app.users.reset-password.title') }}</h4>
+            <h4 class="mt-3 mb-5 text-center fw-black">{{ __('admin::app.users.reset-password.title') }}</h4>
 
             <input type="hidden" name="token" value="{{ $token }}">
             
