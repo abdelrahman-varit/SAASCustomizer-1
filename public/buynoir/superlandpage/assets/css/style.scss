@@ -60,10 +60,10 @@ Default CSS
 
 :root {
     --fontFamily: 'Nunito', sans-serif;
-    --mainColor: #fe4c1c;
+    --mainColor: #0EA1E2;
     --optionalColor: #4b5280;
     --whiteColor: #ffffff;
-    --blackColor: #080e32;
+    --blackColor: #002F64;
     --fontSize: 16px;
     --transition: .5s;
 }
@@ -659,7 +659,7 @@ Navbar Area CSS
                     position: absolute;
                     left: -2px;
                     top: -4px;
-                    background-color: #fa6a45;
+                    background-color: rgba(255, 255, 255, .4);
                     height: 25px;
                     width: 1.5px;
                 }
@@ -9320,3 +9320,4 @@ Sidebar Modal CSS
         }
     }
 }
+
