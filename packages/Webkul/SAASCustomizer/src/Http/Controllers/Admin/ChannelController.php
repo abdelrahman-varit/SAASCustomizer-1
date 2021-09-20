@@ -139,7 +139,7 @@ class ChannelController extends Controller
         ]);
 
         $data = request()->all();
-
+       
         $data['seo']['meta_title'] = $data['seo_title'];
         $data['seo']['meta_description'] = $data['seo_description'];
         $data['seo']['meta_keywords'] = $data['seo_keywords'];
@@ -158,7 +158,34 @@ class ChannelController extends Controller
 
         session()->flash('success', trans('admin::app.settings.channels.update-success'));
 
-        return redirect()->route($this->_config['redirect']);
+        return redirect()->route('admin.theme.index');
+    }
+
+    public function themesSelect(){
+        $id=request()->get('id');
+        $data=['theme'=>request()->get('theme')];
+        $channel = $this->channel->with(['locales', 'currencies','inventory_sources'])->findOrFail($id);
+
+         
+        // $channel->locales()->sync($data['locales']);
+ 
+        // $channel->currencies()->sync($data['currencies']);
+ 
+        // $channel->inventory_sources()->sync($data['inventory_sources']);
+ 
+        // $this->uploadImages($data, $channel);
+ 
+        // $this->uploadImages($data, $channel, 'favicon');
+
+       
+        $channel = $this->channel->updateTheme($data, $id);
+      
+        Event::dispatch('core.channel.update.after', $channel);
+        
+        session()->flash('success', trans('admin::app.settings.channels.theme-success'));
+        
+        return redirect()->route('admin.channels.edit',$id);
+        
     }
 
     /**

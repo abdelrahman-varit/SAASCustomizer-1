@@ -275,20 +275,22 @@ return [
         'route'      => 'velocity.admin.meta-data',
         'sort'       => 2,
         'icon-class' => '',
-    ],[
-        'key'        => 'my-shop.theme-selection',
-        'name'       => 'admin::app.admin.my-shop.index',
-        'route'      => 'admin.channels.index',
-        'sort'       => 3,
-        'icon-class' => 'catalog-icon',
     ],
-
+    
     // [
-    //     'key'        => 'my-shop.theme-selections',
+    //     'key'        => 'my-shop.theme-selection',
     //     'name'       => 'admin::app.admin.my-shop.index',
-    //     'route'      => 'admin.theme.index',
-    //     'sort'       => 4,
+    //     'route'      => 'admin.channels.index',
+    //     'sort'       => 3,
     //     'icon-class' => 'catalog-icon',
     // ],
+
+    [
+        'key'        => 'my-shop.theme-selections',
+        'name'       => 'admin::app.admin.my-shop.index',
+        'route'      => 'admin.theme.index',
+        'sort'       => 4,
+        'icon-class' => 'catalog-icon',
+    ],
 
 ];

@@ -556,7 +556,6 @@ Route::group(['middleware' => ['web']], function () {
                 'view' => 'admin::settings.themes.index',
             ])->name('admin.theme.index');
 
-
             Route::get('/channels/create', 'Webkul\Core\Http\Controllers\ChannelController@create')->defaults('_config', [
                 'view' => 'admin::settings.channels.create',
             ])->name('admin.channels.create');
