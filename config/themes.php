@@ -4,11 +4,12 @@ return [
     'default' => 'default',
 
     'themes' => [
-        'default' => [
-            'views_path' => 'resources/themes/default/views',
-            'assets_path' => 'public/themes/default/assets',
-            'name' => 'Default'
-        ],
+        // 'default' => [
+        //     'views_path' => 'resources/themes/default/views',
+        //     'assets_path' => 'public/themes/default/assets',
+        //     'image_path' => '/themes/default/assets/themes/default.jpg',
+        //     'name' => 'Default'
+        // ],
 
         // 'bliss' => [
         //     'views_path' => 'resources/themes/bliss/views',
@@ -36,6 +37,7 @@ return [
         'cognite' => [
             'views_path' => 'resources/themes/cognite/views',
             'assets_path' => 'public/themes/cognite/assets',
+            'image_path' => '/themes/cognite/assets/themes/cognite.jpg',
             'name' => 'Cognite',
             'parent' => 'default'
         ],
@@ -43,6 +45,7 @@ return [
         'beshop' => [
             'views_path' => 'resources/themes/beshop/views',
             'assets_path' => 'public/themes/beshop/assets',
+            'image_path' => '/themes/beshop/assets/themes/beshop.jpg',
             'name' => 'Beshop',
             'parent' => 'default'
         ],

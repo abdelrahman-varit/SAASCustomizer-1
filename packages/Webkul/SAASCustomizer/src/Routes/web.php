@@ -304,6 +304,12 @@ Route::group(['middleware' => 'web'], function () {
                 'redirect' => 'admin.channels.index'
             ])->name('admin.channels.store');
 
+
+            Route::get('/channels/themes-select', 'Webkul\SAASCustomizer\Http\Controllers\Admin\ChannelController@themesSelect')->defaults('_config', [
+                'view' => 'saas::admin.settings.channels.create'
+            ])->name('admin.channels.themes-select');
+
+
             Route::get('/channels/edit/{id}', 'Webkul\SAASCustomizer\Http\Controllers\Admin\ChannelController@edit')->defaults('_config', [
                 'view' => 'saas::admin.settings.channels.edit'
             ])->name('admin.channels.edit');

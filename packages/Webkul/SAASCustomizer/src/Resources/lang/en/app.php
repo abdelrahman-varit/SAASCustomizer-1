@@ -246,7 +246,8 @@ return [
                 'meta-keywords'         => 'Meta Keywords',
                 'meta-description'      => 'Meta Description',
                 'create-success'        => 'Success: Super channel successfully created.',
-                'update-success'        => 'Success: Super channel successfully updated.'
+                'update-success'        => 'Success: Super channel successfully updated.',
+                'theme-success'        => 'Success: Theme successfully updated.'
             ]
         ],
 
@@ -381,6 +382,7 @@ return [
             ],
             'create-failed'     => 'Warning: Cannot create :attribute due to unknown reasons.',
             'update-success'    => 'Success: :resource updated successfully.',
+            'theme-success'    => 'Success: :resource updated successfully.',
             'update-failed'     => 'Warning: Cannot update :resource due to unknown reasons.',
             'delete-success'    => 'Success: :resource deleted successfully.',
             'delete-failed'     => 'Warning: Cannot delete :resource due to unknown reasons.',
