@@ -1,5 +1,5 @@
 .header .header-bottom {
-    background-color: #5B9EF9;
+    background-color: #1B66E3;
 }
 
 .buynow {
@@ -10,11 +10,11 @@
     color: white;
 }
 .header .header-top div.left-content ul.search-container li.search-group .search-icon-wrapper button {
-    background-color: #5B9EF9;
+    background-color: #1B66E3;
 }
 
 .header .header-top div.right-content .right-content-menu > li .la-user {
-    color: #5B9EF9;
+    color: #1B66E3;
 }
 
 .middle-bar .header-top div.left-content ul.search-container select {
@@ -31,7 +31,7 @@
 
 
 #sidenav .category_content .class-one li:hover {
-    background-color: #5B9EF9 !important;
+    background-color: #1B66E3 !important;
 }
 
 #sidenav .category_content .class-one li:hover > a {
@@ -39,7 +39,7 @@
 }
 
 #sidenav .category_content .class-one li.active {
-    background-color: #5B9EF9 !important;
+    background-color: #1B66E3 !important;
 }
 
 #sidenav .category_content .expandable:hover > i,
@@ -53,21 +53,21 @@
 }
 
 .slick-dots li.slick-active button:before {
-    background-color: #5B9EF9;
-    border-color: #5B9EF9;
+    background-color: #1B66E3;
+    border-color: #1B66E3;
 }
 
 .main-container-wrapper .product-card .sticker.new {
-    background-color: #5B9EF9;
+    background-color: #1B66E3;
 }
 
 .card-current-price,
 .product-card .product-price {
-    color: #5B9EF9 !important;
+    color: #1B66E3 !important;
 }
 
 .product-card .price-from {
-    color: #5B9EF9;
+    color: #1B66E3;
 }
 
 .footer-copyright {
@@ -98,18 +98,18 @@ div.footer {
 }
 
 #scrollTop {
-    background-color: #5B9EF9;
+    background-color: #1B66E3;
 }
 
 .btn.btn-primary,
 .btn.btn-black,
 .btn-dark {
-    background-color: #5B9EF9;
+    background-color: #1B66E3;
     color: white !important;
 }
 
 .btn-bn {
-    background-color: #5B9EF9;
+    background-color: #1B66E3;
     color: white;
 }
 
@@ -138,11 +138,11 @@ i.compare-icons {
 }
 
 .header .header-bottom .main-container-wrapper {
-    background-color: #5B9EF9;
+    background-color: #1B66E3;
 }
 
 #section.product-detail div.layouter .form-container .details .product-price {
-    color: #5B9EF9;
+    color: #1B66E3;
 }
 
 .border-bottom {
@@ -154,30 +154,30 @@ i.compare-icons {
 }
 
 .account-content .menu-block .menubar li.active a {
-    border-color: #5B9EF9;
+    border-color: #1B66E3;
 }
 
 .pagination .page-item.active {
-    background-color: #5B9EF9;
-    border-color: #5B9EF9;
+    background-color: #1B66E3;
+    border-color: #1B66E3;
 }
 
 .badge.badge-success {
-    background-color: #5B9EF9;
+    background-color: #1B66E3;
 }
 
 .downloadable-product-table a {
-    color: #5B9EF9;
+    color: #1B66E3;
 }
 
 .search-filter .icon-wrapper {
-    background-color: #5B9EF9;
-    border-color: #5B9EF9;
+    background-color: #1B66E3;
+    border-color: #1B66E3;
 }
 
 .product-price .special-price,
 .product-price .regular-price {
-    color: #5B9EF9;
+    color: #1B66E3;
 }
 
 
@@ -194,15 +194,15 @@ section.product-detail div.layouter .form-container div.product-image-group div 
 }
 
 .compare-products .product-price {
-    color: #5B9EF9 !important;
+    color: #1B66E3 !important;
 }
 
 #bn-mini-cart-grandTotal {
-    color: #5B9EF9;
+    color: #1B66E3;
 }
 
 .order-summary-wrapper .btn {
-    border-color: #5B9EF9;
+    border-color: #1B66E3;
 }
 
 section.cart .cart-content .left-side .misc-controls .btn {
@@ -212,14 +212,14 @@ section.cart .cart-content .left-side .misc-controls .btn {
 }
 
 .checkout-process .address-card.active {
-    border-color: #5B9EF9;
+    border-color: #1B66E3;
 }
 
 .checkout-process .address-card.active .radio-container .checkmark {
-    border-color: #5B9EF9;
+    border-color: #1B66E3;
 }
 .radio-container .checkmark:after {
-    background-color: #5B9EF9;
+    background-color: #1B66E3;
 }
 
 .checkbox input:checked+.checkbox-view {
@@ -227,11 +227,11 @@ section.cart .cart-content .left-side .misc-controls .btn {
 }
 
 #checkout .checkout-method-group.active {
-    border-color: #5B9EF9;
+    border-color: #1B66E3;
 }
 
 #checkout .checkout-method-group.active .radio-container .checkmark {
-    border-color: #5B9EF9;
+    border-color: #1B66E3;
 }
 
 #checkout-place-order-button {
@@ -239,15 +239,15 @@ section.cart .cart-content .left-side .misc-controls .btn {
 }
 
 .checkout-process .col-main ul.checkout-steps li.active .decorator {
-    border-color: #5B9EF9;
+    border-color: #1B66E3;
 }
 
 section.product-detail div.layouter .form-container .details .product-price {
-    color: #5B9EF9 !important;
+    color: #1B66E3 !important;
 }
 
 .category-description > div {
-    background-color: #5B9EF9;
+    background-color: #1B66E3;
     color: white;
 }
 
@@ -261,4 +261,9 @@ section.product-detail div.layouter .form-container .details .product-price {
 
 .newsletter-subscription .control-group button{
     background: #1e72e4;
+}
+
+
+ul.slick-dots li.slick-active button:before {
+    background-color: #0EA1E2;
 }

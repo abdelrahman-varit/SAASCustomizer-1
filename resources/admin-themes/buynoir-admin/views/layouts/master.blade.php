@@ -30,6 +30,8 @@
         
         @if(!empty($theme_color) && $theme_color!=="default")
             <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/colors/'.$theme_color.'.css') }}">
+        @else
+            <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/colors/blue.css') }}">
         @endif
         
 

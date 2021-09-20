@@ -4,27 +4,27 @@
 
 .page-title p,
 .buynoir-navbar-toggler button {
-    color: #4E97FD;
+    color: #1B66E3;
 }
 
 .buynoir-dashboard-container .dashboard div.dashboard-card:first-child {
-    background-color: #4E97FD;
+    background-color: #1B66E3;
 }
 
 .buynoir-dashboard-container .dashboard div.dashboard-card:nth-child(2) {
-    background-color: #00BAFF;
+    background-color: #0EA1E2;
 }
 
 .buynoir-dashboard-container .dashboard div.dashboard-card:nth-child(3) {
-    background-color: #00D6F2;
+    background-color: #1B66E3;
 }
 
 .buynoir-dashboard-container .dashboard div.dashboard-card:last-child {
-    background-color: #01EABF;
+    background-color: #0EA1E2;
 }
 
 .dropdown-list .dropdown-container ul li a:hover {
-    color: #4E97FD;
+    color: #1B66E3;
 }
 
 .buynoir-dashboard-container .dashboard .card .no-result a {
@@ -64,21 +64,21 @@
 .table table thead th, table.table th,
 .btn-primary,
 .dropdown-list.dropdown-container .apply-filter {
-    background-color: #4E97FD !important;
+    background-color: #1B66E3 !important;
 }
 
 
 .buynoir-navbar .profile-info .dropdown-toggle > .fa-user-circle,
 .buynoir-inside-container .tabs ul li.active a,
 a:active, a:focus, a:hover, a:link, a:visited {
-    color: #4E97FD;
+    color: #1B66E3;
 }
 
 .accordian .accordian-header,
 .accordian div[slot*=header],
 accordian .accordian-header,
 accordian div[slot*=header] {
-    background-color: #4E97FD35;
+    background-color: #1B66E335;
 }
 
 
@@ -106,12 +106,12 @@ accordian div[slot*=header] {
 .tabs ul li.active a,
 .dropdown-toggle.active .grid-dropdown-header,
 .search-filter .control:focus, .search-filter .control:focus + .icon-wrapper {
-    border-color: #4E97FD !important;
+    border-color: #1B66E3 !important;
 }
 
 .buynoir-navbar-left ul.menubar li.menu-item span.icon {
-    background-color: #4E97FD90;
-    background-blend-mode: overlay;
+    /* background-color: #1B66E390;
+    background-blend-mode: overlay; */
 }
 
 .mass-action-wrapper .checkbox-dash-icon,
@@ -120,8 +120,8 @@ accordian div[slot*=header] {
 .accordian div[slot*=header] .icon,
 accordian .accordian-header .icon,
 accordian div[slot*=header] .icon {
-    background-color: #4E97FD;
-    background-blend-mode: overlay;
+    /* background-color: #1B66E3;
+    background-blend-mode: overlay; */
 }
 
 .mass-action-wrapper .checkbox-dash-icon,
@@ -143,5 +143,5 @@ accordian div[slot*=header] .icon {
 
 .badge.badge-success,
 .btn.btn-black {
-    background-color: #4E97FD;
+    background-color: #1B66E3;
 }

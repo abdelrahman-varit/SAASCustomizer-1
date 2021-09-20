@@ -56,8 +56,8 @@
 				<div class="col text-center">
 					<h2><strong>CONTACT US</strong></h2>
 					<h4>Got a question about using BuyNoir?</h4>
-					<p>To contact us, email us at: <a href="mailto:team@buynoir.co">team@buynoir.co</a> or text us <a href="tel:+16782233761‬">+1 678-223-3761‬</a></p>
-					<h3><a href="https://buynoir.crunch.help/">More help...</a></h3>
+					<p>To contact us, email us at: <a href="mailto:team@buynoir.co">team@buynoir.co</a></p>
+					<h3><a href="https://docs.buynoir.co" target="_blank">More help...</a></h3>
 				</div>
 			</div>
 		</div>
