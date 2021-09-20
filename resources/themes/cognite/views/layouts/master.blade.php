@@ -32,8 +32,11 @@
     @php 
         $theme_color=$velocityMetaData->theme_color
     @endphp
+    
     @if($theme_color!=="default" && !empty($theme_color))
         <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/colors/'.$theme_color.'.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/colors/blue.css') }}">
     @endif
 
 
