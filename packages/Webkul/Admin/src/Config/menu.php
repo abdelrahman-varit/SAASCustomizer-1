@@ -287,7 +287,7 @@ return [
 
     [
         'key'        => 'my-shop.theme-selections',
-        'name'       => 'admin::app.admin.my-shop.index',
+        'name'       => 'admin::app.admin.my-shop.theme-selections',
         'route'      => 'admin.theme.index',
         'sort'       => 4,
         'icon-class' => 'catalog-icon',

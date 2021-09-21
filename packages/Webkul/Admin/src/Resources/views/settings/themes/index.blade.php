@@ -13,9 +13,9 @@
             </div>
 
             <div class="page-action">
-                <a href="{{ route('admin.channels.create') }}" class="btn btn-lg btn-primary">
+                <!-- <a href="{{ route('admin.channels.create') }}" class="btn btn-lg btn-primary">
                     {{ __('admin::app.settings.themes.add-title') }}
-                </a>
+                </a> -->
             </div>
         </div>
 
@@ -29,7 +29,11 @@
                         <p><strong>{{$theme['name']}}</strong></p>
                         <img src="{{ $theme['image_path'] }}" alt="{{$theme['name']}}">
                         <!-- <button type="button" onclick="themeSelection(1)" class="btn btn-primary">Select</button class="btn btn-primary"> -->
-                        <a type="button" onclick="return confirm('Do you want to change theme')" href="{{route('admin.channels.themes-select')}}?id={{Company::getCurrent()->channel_id}}&theme={{$themeCode}}" class="btn btn-primary">Select</a>
+                        @if($themeCode==$channel->theme)
+                            <a type="button" href="{{route('admin.channels.edit',Company::getCurrent()->channel_id)}}" class="btn btn-primary">Customize</a>
+                        @else
+                            <a type="button" onclick="return confirm('Do you want to change theme')" href="{{route('admin.channels.themes-select')}}?id={{Company::getCurrent()->channel_id}}&theme={{$themeCode}}" class="btn btn-primary">Select</a>
+                        @endif
                     </li>
                 @endforeach
 

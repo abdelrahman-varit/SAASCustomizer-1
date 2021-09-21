@@ -1383,7 +1383,8 @@ return [
             'custom-javascript' => 'Custom Javascript'
         ],
         'my-shop'=>[
-            'index'=>'My Shop'
+            'index'=>'My Shop',
+            'theme-selections'=>'Theme Selection'
         ]
     ]
 ];
