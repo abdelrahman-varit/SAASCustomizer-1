@@ -14,7 +14,7 @@ return [
     'add'               => 'Add Web Font',
     'webfont-default'   => 'Default Font',
     'save-btn-title'    => 'Save Web Font',
-    'set-api-key'       => 'Set API key first',
+    'set-api-key'       => 'Configure the webfont setting from configure menu',
     'delete-fail'       => 'Cannot delete font',
     'webfont-backend'   => 'Enable for backend',
     'select-values'     => 'Please select values',

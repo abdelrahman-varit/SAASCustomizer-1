@@ -28,9 +28,13 @@ class WebfontController extends Controller
 
     public function add()
     {
+         
         $client = new GuzzleHttp\Client();
 
-        if (core()->getConfigData('general.design.webfont.status') && core()->getConfigData('general.design.webfont.webfont')) {
+        //dd(company()->getSuperConfigData('general.design.webfont.webfont'));
+        //dd( var_dump(openssl_get_cert_locations()));
+
+        if (core()->getConfigData('general.design.webfont.status') && company()->getSuperConfigData('general.design.webfont.webfont')) {
             $res = $client->request('GET', 'https://www.googleapis.com/webfonts/v1/webfonts?key='.company()->getSuperConfigData('general.design.webfont.webfont'));
 
             if ($res->getStatusCode() == 200) {
@@ -39,13 +43,14 @@ class WebfontController extends Controller
                 return view('webfont::add-font')->with('fonts', json_decode($result)->items);
             } else {
                 session()->flash('error', trans('webfont::app.cannot-fetch'));
-
+                 
                 return redirect()->route('admin.cms.webfont.add');
             }
         } else {
             session()->flash('error', trans('webfont::app.set-api-key'));
+            //dd('configure here...');
 
-            return redirect()->route('admin.cms.webfont.add');
+            return redirect()->route('admin.cms.webfont');
         }
     }
 

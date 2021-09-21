@@ -13,24 +13,31 @@
             </div>
 
             <div class="page-action">
-                <a href="{{ route('admin.channels.create') }}" class="btn btn-lg btn-primary">
+                <!-- <a href="{{ route('admin.channels.create') }}" class="btn btn-lg btn-primary">
                     {{ __('admin::app.settings.themes.add-title') }}
-                </a>
+                </a> -->
             </div>
         </div>
 
         <div class="page-content">
             <ul class="theme-list">
-                <li class="active">
-                    <p><strong>Cognite</strong></p>
-                    <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/themes/cognite.jpg') }}" alt="Cognite">
-                    <button type="button" onclick="themeSelection(1)" class="btn btn-primary">Select</button class="btn btn-primary">
-                </li>
-                <li>
-                    <p><strong>Beshop</strong></p>
-                    <img src="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/images/themes/beshop.jpg') }}" alt="Beshop">
-                    <button type="button" onclick="themeSelection(2)" class="btn btn-primary">Select</button class="btn btn-primary">
-                </li>
+                @php
+                $channel = core()->getCurrentChannel();
+                @endphp
+                @foreach (config('themes.themes') as $themeCode => $theme)
+                    <li class="{{$themeCode==$channel->theme?'active':''}}">
+                        <p><strong>{{$theme['name']}}</strong></p>
+                        <img src="{{ $theme['image_path'] }}" alt="{{$theme['name']}}">
+                        <!-- <button type="button" onclick="themeSelection(1)" class="btn btn-primary">Select</button class="btn btn-primary"> -->
+                        @if($themeCode==$channel->theme)
+                            <a type="button" href="{{route('admin.channels.edit',Company::getCurrent()->channel_id)}}" class="btn btn-primary">Customize</a>
+                        @else
+                            <a type="button" onclick="return confirm('Do you want to change theme')" href="{{route('admin.channels.themes-select')}}?id={{Company::getCurrent()->channel_id}}&theme={{$themeCode}}" class="btn btn-primary">Select</a>
+                        @endif
+                    </li>
+                @endforeach
+
+                
             </ul>
         </div>
     </div>

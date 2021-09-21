@@ -141,13 +141,14 @@
                             class="control"
                             id="theme_color"
                             name="theme_color"
+                            style="text-transform:capitalize"
                             >
                             <option value="{{ $metaData->theme_color ? $metaData->theme_color : 'default' }}" >{{ $metaData ? $metaData->theme_color : 'default' }}</option>
                             <option value="default">Default</option>
                             <option value="blue">Blue</option>
                             <option value="lemon">Lemon</option>
                             <option value="sky">Sky</option>
-                            <option value="voilet">Voilet</option>
+                            <option value="violet">Violet</option>
                         </select>    
                     </div>
 

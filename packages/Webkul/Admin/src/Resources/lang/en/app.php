@@ -808,6 +808,7 @@ return [
             'favicon' => 'Favicon',
             'create-success' => 'Channel created successfully.',
             'update-success' => 'Channel updated successfully.',
+            'theme-success' => 'Theme updated successfully.',
             'delete-success' => 'Channel deleted successfully.',
             'last-delete-error' => 'At least one Channel is required.',
             'seo' => 'Home page SEO',
@@ -1382,7 +1383,8 @@ return [
             'custom-javascript' => 'Custom Javascript'
         ],
         'my-shop'=>[
-            'index'=>'My Shop'
+            'index'=>'My Shop',
+            'theme-selections'=>'Theme Selection'
         ]
     ]
 ];

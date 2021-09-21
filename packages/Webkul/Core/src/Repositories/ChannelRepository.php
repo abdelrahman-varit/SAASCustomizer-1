@@ -63,6 +63,16 @@ class ChannelRepository extends Repository
         return $channel;
     }
 
+
+    public function updateTheme(array $data, $id, $attribute = "id")
+    {
+        $channel = $this->find($id);
+
+        $channel->update($data);
+
+        return $channel;
+    }
+
     /**
      * @param  array  $data
      * @param  \Webkul\Core\Contratcs\Channel  $channel
