@@ -242,7 +242,7 @@
                     <p>Open your shop today and we’ll cover the first 10 days, <strong>free</strong>. After that, you pay a simple monthly cost to keep your shop running. We don’t take any of your sales income. You keep 100% of your profits.</p>
                 </div>
 
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-pricing-box">
                             <div class="pricing-header">
