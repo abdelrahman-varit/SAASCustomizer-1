@@ -9,7 +9,7 @@
     <div class="form-container col-lg-6 mx-auto">
         <form method="POST" action="{{ route('admin.forget-password.store') }}" @submit.prevent="onSubmit">
             @csrf
-            <h4 class="mt-3 mb-5 text-orange text-center fw-black">{{ __('admin::app.users.forget-password.header-title') }}</h4>
+            <h4 class="mt-3 mb-5 text-center fw-black">{{ __('admin::app.users.forget-password.header-title') }}</h4>
             
             <div class="form-group mb-3">
                 <input type="text" v-validate="'required|email'" class="form-control" :class="[errors.has('email') ? 'is-invalid' : '']" id="email" name="email" data-vv-as="&quot;{{ __('admin::app.users.forget-password.email') }}&quot;" placeholder="{{ __('admin::app.users.forget-password.email') }}" value="{{ old('email') }}">
