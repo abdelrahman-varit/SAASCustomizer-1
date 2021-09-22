@@ -31,9 +31,6 @@ class WebfontController extends Controller
          
         $client = new GuzzleHttp\Client();
 
-        //dd(company()->getSuperConfigData('general.design.webfont.webfont'));
-        //dd( var_dump(openssl_get_cert_locations()));
-
         if (core()->getConfigData('general.design.webfont.status') && company()->getSuperConfigData('general.design.webfont.webfont')) {
             $res = $client->request('GET', 'https://www.googleapis.com/webfonts/v1/webfonts?key='.company()->getSuperConfigData('general.design.webfont.webfont'));
 
@@ -48,7 +45,6 @@ class WebfontController extends Controller
             }
         } else {
             session()->flash('error', trans('webfont::app.set-api-key'));
-            //dd('configure here...');
 
             return redirect()->route('admin.cms.webfont');
         }
