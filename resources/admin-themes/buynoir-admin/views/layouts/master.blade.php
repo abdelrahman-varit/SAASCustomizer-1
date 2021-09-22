@@ -8,9 +8,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         @if ($favicon = core()->getConfigData('general.design.admin_logo.favicon'))
-            <link rel="icon" sizes="16x16" href="{{ \Illuminate\Support\Facades\Storage::url($favicon) }}" />
+            <link rel="icon" href="{{ \Illuminate\Support\Facades\Storage::url($favicon) }}" />
         @else
-            <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/favicon.ico') }}" />
+            <link rel="icon" href="{{ asset('vendor/webkul/ui/assets/images/favicon.png') }}" />
         @endif
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
