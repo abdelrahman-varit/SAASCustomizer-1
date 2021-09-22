@@ -49,6 +49,14 @@ return [
             'name' => 'Beshop',
             'parent' => 'default'
         ],
+
+        'myshop' => [
+            'views_path' => 'resources/themes/myshop/views',
+            'assets_path' => 'public/themes/myshop/assets',
+            'image_path' => '/themes/myshop/assets/themes/myshop.jpg',
+            'name' => 'MyShop',
+            'parent' => 'default'
+        ],
     ],
 
     'admin-default' => 'buynoir-admin',
