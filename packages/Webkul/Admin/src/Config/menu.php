@@ -270,13 +270,13 @@ return [
         'sort'       => 1,
         'icon-class' => '',
     ],
-    // [
-    //     'key'        => 'my-shop.meta-data',
-    //     'name'       => 'velocity::app.admin.layouts.meta-data',
-    //     'route'      => 'velocity.admin.meta-data',
-    //     'sort'       => 2,
-    //     'icon-class' => '',
-    // ],
+    [
+        'key'        => 'my-shop.meta-data',
+        'name'       => 'velocity::app.admin.layouts.meta-data',
+        'route'      => 'velocity.admin.meta-data',
+        'sort'       => 2,
+        'icon-class' => '',
+    ],
     
     // [
     //     'key'        => 'my-shop.theme-selection',
