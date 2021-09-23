@@ -5,7 +5,7 @@
 <div class="dropdown-toggle">
     <div>
         <a class="cart-link" href="{{ route('shop.checkout.cart.index') }}">
-            <span class="icon cart-icon"></span>
+            <span class="las la-shopping-cart"></span>
         </a>
         <span>
             <span class="count" id="lbl-cart-count"> 

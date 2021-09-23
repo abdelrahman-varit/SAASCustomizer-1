@@ -30,9 +30,9 @@
         
                     <div class="col-2 locale-img">
                         @if ($localeImage)
-                            <img src="{{ asset('/storage/' . $localeImage) }}" onerror="this.src = '/themes/cognite/assets/images/icons/en.png'" height="13" />
+                            <img src="{{ asset('/storage/' . $localeImage) }}" onerror="this.src = '/themes/myshop/assets/images/icons/en.png'" height="13" />
                         @elseif (app()->getLocale() == 'en')
-                            <img src="{{ asset('/themes/cognite/assets/images/icons/en.png') }}" height="13" />
+                            <img src="{{ asset('/themes/myshop/assets/images/icons/en.png') }}" height="13" />
                         @endif
                     </div>
                     
@@ -90,9 +90,9 @@
                                     @foreach (core()->getCurrentChannel()->currencies as $currency)
                                         <li>
                                             @if (isset($serachQuery))
-                                                <a href="?{{ $serachQuery }}&currency={{ $currency->code }}">{{ $currency->code }} ({{ $currency->symbol }})</a>
+                                                <a href="?{{ $serachQuery }}&currency={{ $currency->code }}" class="dropdown-item">{{ $currency->code }} ({{ $currency->symbol }})</a>
                                             @else
-                                                <a href="?currency={{ $currency->code }}">{{ $currency->code }} ({{ $currency->symbol }})</a>
+                                                <a href="?currency={{ $currency->code }}" class="dropdown-item">{{ $currency->code }} ({{ $currency->symbol }})</a>
                                             @endif
                                         </li>
                                     @endforeach
@@ -131,24 +131,11 @@
                             @guest('customer')
                                 <ul class="dropdown-list account guest">
                                     <li>
-                                        <div>
-                                            <label style="color: black; font-weight: 700; text-transform: uppercase; font-size: 16px;">
-                                                {{ __('shop::app.header.title') }}
-                                            </label>
-                                        </div>
-
-                                        <div style="margin-top: 5px;">
-                                            <span style="font-size: 14px;">{{ __('shop::app.header.dropdown-text') }}</span>
-                                        </div>
-
-                                        <div style="margin-top: 15px;">
-                                            <a class="btn btn-dark btn-md" href="{{ route('customer.session.index') }}" style="color: #ffffff">
-                                                {{ __('shop::app.header.sign-in') }}
-                                            </a>
-
-                                            <a class="btn btn-dark btn-md" href="{{ route('customer.register.index') }}" style="float: right; color: #ffffff">
-                                                {{ __('shop::app.header.sign-up') }}
-                                            </a>
+                                        <div style="text-transform: uppercase; font-weight: bold">{{ __('shop::app.header.title') }}</div>
+                                        <div>{{ __('shop::app.header.dropdown-text') }}</div>
+                                        <div style="display: flex; justify-content: space-between; margin-top: 1rem">
+                                            <a class="btn btn-dark btn-md" href="{{ route('customer.session.index') }}">{{ __('shop::app.header.sign-in') }}</a>
+                                            <a class="btn btn-dark btn-md" href="{{ route('customer.register.index') }}">{{ __('shop::app.header.sign-up') }}</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -158,7 +145,7 @@
                                 <ul class="dropdown-list account customer">
                                     <li>
                                         <div>
-                                            <label style="color: #9e9e9e; font-weight: 700; text-transform: uppercase; font-size: 15px;">
+                                            <label>
                                                 {{ auth()->guard('customer')->user()->first_name }}
                                             </label>
                                         </div>
@@ -208,7 +195,7 @@
                                 @if ($logo = core()->getCurrentChannel()->logo_url)
                                     <img class="logo" src="{{ $logo }}" />
                                 @else
-                                    <img class="logo" src="{{asset('/themes/cognite/assets/images/logo.svg') }}" />
+                                    <img class="logo" src="{{asset('/themes/myshop/assets/images/logo.svg') }}" />
                                 @endif
                             </a>
                         </li>
@@ -216,7 +203,7 @@
 
                     <ul class="search-container">
                         <li class="search-group">
-                            <form role="search" action="{{ route('shop.search.index') }}" method="GET" style="display: inherit;">
+                            <form role="search" action="{{ route('shop.search.index') }}" method="GET">
                                 
                                 
                                 @php
@@ -280,9 +267,9 @@
 
                         @if($showWishlist)
                             <li class="compare-dropdown-container">
-                                <a href="{{ route('customer.wishlist.index') }}" style="color: rgb(36, 36, 36);">
+                                <a href="{{ route('customer.wishlist.index') }}">
                                     <div>
-                                        <i class="icon wishlist-icons"></i>
+                                        <i class="las la-heart"></i>
                                         <span class="count">
                                             <span id="wishlist-items-count">0</span>
                                         </span>
@@ -304,11 +291,10 @@
                                     @guest('customer')
                                         href="{{ route('velocity.product.compare') }}"
                                     @endguest
-                                    style="color: #242424;"
                                     >
 
                                     <div>
-                                        <i class="icon compare-icons"></i>
+                                        <i class="las la-sync"></i>
                                         <span class="count">
                                             <span id="compare-items-count">0</span>
                                         </span>
@@ -346,16 +332,16 @@
     </div>
 
     <div class="search-responsive mt-10" id="search-responsive">
-        <form role="search" action="{{ route('shop.search.index') }}" method="GET" style="display: inherit;">
+        <form role="search" action="{{ route('shop.search.index') }}" method="GET">
             <div class="search-content">
-                <button style="background: none; border: none; padding: 0px;">
-                    <i class="icon icon-search"></i>
+                <button>
+                    <i class="las la-search"></i>
                 </button>
 
                 <image-search-component></image-search-component>
 
                 <input type="search" name="term" class="search">
-                <i class="icon icon-menu-back right"></i>
+                <i class="las la-angle-left"></i>
             </div>
         </form>
     </div>
