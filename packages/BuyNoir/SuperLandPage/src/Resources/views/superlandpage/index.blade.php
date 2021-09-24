@@ -44,11 +44,11 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="main-banner-content">
                             <h1>We power your black and brown owned online business</h1>
-                            <p>The world’s only platform dedicated to powering black and brown owned e-commerce businesses. We give you the tools you need to build and grow your online business. Start your online business and grow with us.</p>
+                            <p>The world's only platform dedicated to powering black and brown owned e-commerce businesses. We give you the tools you need to build and grow your online business. Start your online business and grow with us.</p>
                             <div class="btn-box">
-                                <div class="d-flex align-items-center">
-                                    <a href="{{ route("buynoir.home.contactus") }}" class="default-btn">Start now</a>
-                                    <a href="https://www.youtube.com/watch?v=Y5KCDWi7h9o" class="video-btn popup-youtube"><i class="flaticon-play-button"></i> Watch video</a>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <a href="{{ route('company.create.index') }}" class="default-btn">Start now</a>
+                                    {{-- <a href="https://www.youtube.com/watch?v=Y5KCDWi7h9o" class="video-btn popup-youtube"><i class="flaticon-play-button"></i> Watch video</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                             <h3><a href="javascript:void(0)">No coding required</a></h3>
-                            <p>It’s so simple. Select a template, upload your products, and sell! No need for coding, hosting, or any technical nery stuff. We’ve got that part covered.</p>
+                            <p>It's so simple. Select a template, upload your products, and sell! No need for coding, hosting, or any technical nery stuff. We've got that part covered.</p>
                         </div>
                     </div>
 
@@ -107,7 +107,7 @@
                                 </div>
                             </div>
                             <h3><a href="javascript:void(0)">Beautifully Designed Templates</a></h3>
-                            <p>Simple, mobile ready, and beautifully designed. Your online shop’s look and feel will appeal to your customers and give your brand a refined feel.</p>
+                            <p>Simple, mobile ready, and beautifully designed. Your online shop's look and feel will appeal to your customers and give your brand a refined feel.</p>
                         </div>
                     </div>
 
@@ -149,8 +149,8 @@
                                     <li>
                                         <div class="list">
                                             <i class="flaticon-menu-1"></i>
-                                            <h3 class="odometer" data-count="5">00</h3>+
-                                            <p>Templates</p>
+                                            <h3 class="odometer" data-count="5">00</h3>
+                                            <p>Templates, and growing</p>
                                         </div>
                                     </li>                                    
                                     <li>
@@ -200,7 +200,7 @@
                                     </a>
     
                                     <div class="accordion-content show">
-                                        <p>There are no more excuses. We’ve taken care of all of your technology needs. Simply select a shop template, add products and GO!</p>
+                                        <p>There are no more excuses. We've taken care of all of your technology needs. Simply select a shop template, add products and GO!</p>
                                     </div>
                                 </li>
 
@@ -211,7 +211,7 @@
                                     </a>
     
                                     <div class="accordion-content">
-                                        <p>Named after our favorite R&B and Jazz musicians, our templates are beautiful, simple, and fully responsive. With your BuyNoir shop, you’ll give your customers a beautiful shopping experience that keeps them coming back.</p>
+                                        <p>Named after our favorite R&B and Jazz musicians, our templates are beautiful, simple, and fully responsive. With your BuyNoir shop, you'll give your customers a beautiful shopping experience that keeps them coming back.</p>
                                     </div>
                                 </li>
 
@@ -239,7 +239,7 @@
                 <div class="section-title">
                     <span class="sub-title">Pricing</span>
                     <h2>Our pricing is simple</h2>
-                    <p>Open your shop today and we’ll cover the first 10 days, <strong>free</strong>. After that, you pay a simple monthly cost to keep your shop running. We don’t take any of your sales income. You keep 100% of your profits.</p>
+                    <p>Open your shop today and we'll cover the first 10 days, <strong>free</strong>. After that, you pay a simple monthly cost to keep your shop running. We don't take any of your sales income. You keep 100% of your profits.</p>
                 </div>
 
                 <div class="row justify-content-center">
@@ -283,9 +283,9 @@
         <section class="subscribe-area ptb-100">
             <div class="container">
                 <div class="subscribe-content">
-                    <span class="sub-title">Dibiz Updates</span>
+                    <span class="sub-title">Keep in touch</span>
                     <h2>Subscribe To Our Newsletter</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Get connected with us. Learn what we're up to and how we're growing. Connect this form with our Mailchimp account so that email addresses get placed in our list.</p>
                     <form class="newsletter-form" data-bs-toggle="validator">
                         <input type="text" class="input-newsletter" placeholder="Enter your email address" name="EMAIL" required autocomplete="off">
                         <button type="submit" class="default-btn">Subscribe Now</button>

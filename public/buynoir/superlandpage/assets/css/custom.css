@@ -21,4 +21,16 @@
 .step-list.registration-ul li.active {
   background-color: var(--blackColor); }
 
+.mean-container .mean-bar {
+  z-index: 9999; }
+
+@media only screen and (max-width: 1199px) {
+  .dibiz-responsive-nav .logo {
+    width: 100%;
+    text-align: center; } }
+@media only screen and (max-width: 767px) {
+  .about-content .funfacts-list li {
+    flex: 0 0 100%;
+    max-width: 100%; } }
+
 /*# sourceMappingURL=custom.css.map */
