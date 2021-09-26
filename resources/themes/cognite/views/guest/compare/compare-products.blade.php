@@ -200,7 +200,7 @@
                             }
 
                             this.products = response.data.products;
-                            //console.log('products data: ',data);
+                            console.log('products data: ',this.products);
                             //console.log('products list: ',this.products);
                         })
                         .catch(error => {
