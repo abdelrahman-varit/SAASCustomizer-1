@@ -285,7 +285,7 @@
                 <div class="subscribe-content">
                     <span class="sub-title">Keep in touch</span>
                     <h2>Subscribe To Our Newsletter</h2>
-                    <p>Get connected with us. Learn what we're up to and how we're growing. Connect this form with our Mailchimp account so that email addresses get placed in our list.</p>
+                    <p>Get connected with us. Learn what we're up to and how we're growing.</p>
                     <form class="newsletter-form" data-bs-toggle="validator">
                         <input type="text" class="input-newsletter" placeholder="Enter your email address" name="EMAIL" required autocomplete="off">
                         <button type="submit" class="default-btn">Subscribe Now</button>
