@@ -1,4 +1,4 @@
-$(document).ready(function(){ 
+$(window).on('load', function () {
     $(window).scroll(function(){ 
         if ($(this).scrollTop() > 100) { 
             $('#scrollTop').fadeIn(); 
@@ -26,4 +26,29 @@ $(document).ready(function(){
         $(this).closest(".checkout-method-group").addClass("active");
     });
 
+
+    // Stellarnav
+	if($(".stellarnav").length) {
+		$('.stellarnav').stellarNav({
+			theme: 'light',
+			breakpoint: 992,
+			menuLabel: false,
+			position: 'right'
+		});
+    }
+    
+    // Home slider
+	if ($(".home-slider").length) {
+		new Swiper(".home-slider", {
+			autoplay: true,
+			loop: true,
+			pagination: {
+				el: ".home-slider .swiper-pagination",
+				clickable: true
+			},
+		});
+    }
+    
+
+    
 });

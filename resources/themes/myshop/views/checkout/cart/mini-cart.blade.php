@@ -22,7 +22,7 @@
 
 @if ($cart)
     <?php $items = $cart->items; ?>
-    <div class="dropdown-list" style="display: none; top: 52px; right: 0px;">
+    <div class="dropdown-list" style="display: none; top: 70px; right: 0px;">
         <div class="dropdown-container">
             <div class="dropdown-cart">
                 <div class="dropdown-content" id="bn-mini-carts">
@@ -75,7 +75,7 @@
                                 </div>
 
                                 <div class="item-remove">
-                                    <button type="button" class="" onclick="removeCartItem({{$item->id}}, this)"><i class="las la-times"></i></button>
+                                    <button type="button" onclick="removeCartItem({{$item->id}}, this)"><i class="las la-times"></i></button>
                                 </div>
 
                             </div>
@@ -103,8 +103,8 @@
                 </div>
 
                 <div class="dropdown-footer">
-                    <a class="btn btn-secondary btn-lg text-black" href="{{ route('shop.checkout.onepage.index') }}"><i class="las la-check-circle"></i> &nbsp; {{ __('shop::app.minicart.checkout') }}</a>
-                    <a class="btn btn-black btn-lg" href="{{ route('shop.checkout.cart.index') }}"><i class="las la-shopping-cart"></i> &nbsp; {{ __('shop::app.minicart.view-cart') }}</a>                    
+                    <a class="btn btn-primary btn-md" href="{{ route('shop.checkout.onepage.index') }}"><i class="las la-check-circle"></i> &nbsp; {{ __('shop::app.minicart.checkout') }}</a>
+                    <a class="btn btn-black btn-md" href="{{ route('shop.checkout.cart.index') }}"><i class="las la-shopping-cart"></i> &nbsp; {{ __('shop::app.minicart.view-cart') }}</a>                    
                 </div>
             </div>
         </div>
@@ -123,7 +123,7 @@
         </div>
     </div> --}}
 
-    <div class="dropdown-list" style="display: none; top: 52px; right: 0px;">
+    <div class="dropdown-list" style="display: none; top: 70px; right: 0px;">
         <div class="dropdown-container">
             <div class="dropdown-cart">
                 <div class="dropdown-content" id="bn-mini-carts">
@@ -143,8 +143,8 @@
                 </div>
 
                 <div class="dropdown-footer">
-                    <a class="btn btn-secondary btn-lg text-black" href="{{ route('shop.checkout.onepage.index') }}"><i class="las la-check-circle"></i> &nbsp; {{ __('shop::app.minicart.checkout') }}</a>
-                    <a class="btn btn-black btn-lg" href="{{ route('shop.checkout.cart.index') }}"><i class="las la-shopping-cart"></i> &nbsp; {{ __('shop::app.minicart.view-cart') }}</a>                    
+                    <a class="btn btn-primary btn-md" href="{{ route('shop.checkout.onepage.index') }}"><i class="las la-check-circle"></i> &nbsp; {{ __('shop::app.minicart.checkout') }}</a>
+                    <a class="btn btn-black btn-md" href="{{ route('shop.checkout.cart.index') }}"><i class="las la-shopping-cart"></i> &nbsp; {{ __('shop::app.minicart.view-cart') }}</a>                    
                 </div>
             </div>
         </div>

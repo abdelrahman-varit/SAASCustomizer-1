@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/tinymce-fonts.css') }}">
 
 
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
+    <link rel="stylesheet" href="{{ asset('themes/myshop/assets/css/stellarnav.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('themes/myshop/assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('themes/myshop/assets/css/responsive.css') }}">
 
@@ -183,7 +186,7 @@
     <div id="scrollTop">
         <svg width="20" height="20" enable-background="new 0 0 490.523 490.523" version="1.1" viewBox="0 0 490.52 490.52" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
             <path d="m487.41 355.05-234.67-234.67c-4.165-4.164-10.917-4.164-15.083 0l-234.67 234.67c-4.093 4.237-3.976 10.99 0.262 15.083 4.134 3.993 10.687 3.993 14.821 0l227.12-227.12 227.12 227.14c4.237 4.093 10.99 3.976 15.083-0.261 3.993-4.134 3.993-10.688 0-14.821l0.021-0.022z" fill="#FFC107"/>
-            <path d="m479.86 373.27c-2.831 5e-3 -5.548-1.115-7.552-3.115l-227.12-227.14-227.12 227.14c-4.237 4.093-10.99 3.976-15.083-0.262-3.993-4.134-3.993-10.687 0-14.821l234.67-234.67c4.165-4.164 10.917-4.164 15.083 0l234.67 234.67c4.159 4.172 4.148 10.926-0.024 15.085-1.999 1.993-4.706 3.112-7.528 3.113z" fill="#000000"/>
+            <path d="m479.86 373.27c-2.831 5e-3 -5.548-1.115-7.552-3.115l-227.12-227.14-227.12 227.14c-4.237 4.093-10.99 3.976-15.083-0.262-3.993-4.134-3.993-10.687 0-14.821l234.67-234.67c4.165-4.164 10.917-4.164 15.083 0l234.67 234.67c4.159 4.172 4.148 10.926-0.024 15.085-1.999 1.993-4.706 3.112-7.528 3.113z" fill="#ffffff"/>
         </svg>
     </div>
 
@@ -231,6 +234,9 @@
     </script>
 
 
+    <script src="{{ asset('themes/myshop/assets/js/stellarnav.min.js') }}"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    
     <script type="text/javascript" src="{{ asset('themes/myshop/assets/js/scripts.js') }}"></script>
 
     <script>
