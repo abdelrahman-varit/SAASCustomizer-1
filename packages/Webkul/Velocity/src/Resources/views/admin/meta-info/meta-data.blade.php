@@ -143,12 +143,12 @@
                             name="theme_color"
                             style="text-transform:capitalize"
                             >
-                            <option value="{{ $metaData->theme_color ? $metaData->theme_color : 'default' }}" >{{ $metaData ? $metaData->theme_color : 'default' }}</option>
-                            <option value="default">Default</option>
-                            <option value="blue">Blue</option>
-                            <option value="lemon">Lemon</option>
-                            <option value="sky">Sky</option>
-                            <option value="violet">Violet</option>
+                            
+                            <option {{ $metaData->theme_color=='' ? 'selected' : '' }} value="default">Default</option>
+                            <option  {{ $metaData->theme_color=='blue' ? 'selected' : '' }} value="blue">Blue</option>
+                            <option  {{ $metaData->theme_color=='lemon' ? 'selected' : '' }} value="lemon">Lemon</option>
+                            <option  {{ $metaData->theme_color=='sky' ? 'selected' : '' }} value="sky">Sky</option>
+                            <option  {{ $metaData->theme_color=='violet' ? 'selected' : '' }} value="violet">Violet</option>
                         </select>    
                     </div>
 
