@@ -190,9 +190,9 @@
 
                     <form class="registration" data-vv-scope="step-four" v-show="step_four" id="formStepFour">
                         <div class="step-three">
-                            <h4 class="mt-3 mb-5 text-center">{{ __('saas::app.tenant.registration.congrats-title') }}<br>{{ __('saas::app.tenant.registration.congrats-subtitle') }}</h4>
+                            <h4 class="mt-3 mb-1 text-center">{{ __('saas::app.tenant.registration.congrats-title') }}! {{ __('saas::app.tenant.registration.congrats-subtitle') }}</h4>
                             <p class="m-0 text-center">{{ __('saas::app.tenant.registration.congrats-description') }}</p>
-                            <div class="text-center my-5" :class="[errors.has('step-three.username') ? 'has-error' : '']">
+                            <div class="text-center mt-4" :class="[errors.has('step-three.username') ? 'has-error' : '']">
                                 <img src="{{ asset('buynoir/superlandpage/assets/img/congrats.gif') }}" alt="{{ config('app.name') }}" style="height:50vh"/>
                             </div>
                             <div class="text-center row" style="display:none">
