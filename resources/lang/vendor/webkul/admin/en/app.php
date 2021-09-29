@@ -1172,8 +1172,8 @@ return [
         'pages' => [
             'general' => 'General',
             'seo' => 'SEO',
-            'pages' => 'Pages',
-            'title' => 'Pages',
+            'pages' => 'Web Pages',
+            'title' => 'Web Pages',
             'add-title' => 'Add Page',
             'content' => 'Content',
             'url-key' => 'URL Key',

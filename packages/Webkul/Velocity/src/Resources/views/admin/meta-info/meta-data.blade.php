@@ -152,7 +152,7 @@
                         </select>    
                     </div>
 
-
+ 
                     <div class="control-group">
                         <label style="width:100%;">
                             {{ __('velocity::app.admin.meta-data.home-page-content') }}

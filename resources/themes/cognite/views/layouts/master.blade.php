@@ -129,7 +129,7 @@
         },
 
         account: {
-            id:           'ACCOUNT-UNIQUE-ID' // Required if using Pendo Feedback
+            id:           "{{time()}}" // Required if using Pendo Feedback
             // name:         // Optional
             // is_paying:    // Recommended if using Pendo Feedback
             // monthly_value:// Recommended if using Pendo Feedback
