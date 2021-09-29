@@ -69,7 +69,7 @@
 
                         <div class="product-image">
                             <a href="/" title="Demo product">
-                                <img src="{{ asset('/themes/cognite/assets/images/product/catproduct-0'.$i.'.png') }}" onerror="this.src='{{ asset('/themes/cognite/assets/images/product/featured-01.jpg') }}'"/>
+                                <img src="{{ asset('/themes/myshop/assets/images/product/catproduct-0'.$i.'.png') }}" onerror="this.src='{{ asset('/themes/myshop/assets/images/product/featured-01.jpg') }}'"/>
                             </a>
                         </div>
 

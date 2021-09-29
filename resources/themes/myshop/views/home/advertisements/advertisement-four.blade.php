@@ -26,7 +26,7 @@
 
                 @else
                     <a @if (isset($one)) href="{{ $one }}" @endif >
-                        <img class="col-12" src="{{ asset('/themes/cognite/assets/images/banner/advertise-1-1.jpg') }}" />
+                        <img class="col-12" src="{{ asset('/themes/myshop/assets/images/banner/advertise-1-1.jpg') }}" />
                     </a>
 
                 @endif
@@ -39,7 +39,7 @@
                     </a>
                 @else
                     <a @if (isset($one)) href="{{ $one }}" @endif >
-                    <img class="col-12" src="{{ asset('/themes/cognite/assets/images/banner/advertise-1-2.jpg') }}" />
+                    <img class="col-12" src="{{ asset('/themes/myshop/assets/images/banner/advertise-1-2.jpg') }}" />
                     </a>
 
                 @endif
@@ -53,7 +53,7 @@
                     </a>
                 @else
                     <a @if (isset($one)) href="{{ $one }}" @endif >
-                    <img class="col-12" src="{{ asset('/themes/cognite/assets/images/banner/advertise-1-3.jpg') }}" />
+                    <img class="col-12" src="{{ asset('/themes/myshop/assets/images/banner/advertise-1-3.jpg') }}" />
                     </a>
 
                 @endif
@@ -66,18 +66,18 @@
     <div class="main-container-wrapper advertisement-four-container">
         <div class="col-3">
             <a @if (isset($one)) href="{{ $one }}" @endif style="flex: 1;">
-            <img class="col-12" src="{{ asset('/themes/cognite/assets/images/banner/advertise-1-1.jpg') }}" />
+            <img class="col-12" src="{{ asset('/themes/myshop/assets/images/banner/advertise-1-1.jpg') }}" />
             </a>
         </div>
         <div class="col-3">
             <a @if (isset($two)) href="{{ $two }}" @endif >
-            <img class="col-12" src="{{ asset('/themes/cognite/assets/images/banner/advertise-1-2.jpg') }}" />
+            <img class="col-12" src="{{ asset('/themes/myshop/assets/images/banner/advertise-1-2.jpg') }}" />
             </a>
         </div>
 
         <div class="col-3" >
             <a @if (isset($three)) href="{{ $three }}" @endif >
-            <img class="col-12" src="{{ asset('/themes/cognite/assets/images/banner/advertise-1-3.jpg') }}" />
+            <img class="col-12" src="{{ asset('/themes/myshop/assets/images/banner/advertise-1-3.jpg') }}" />
             </a>
         </div>
     </div>

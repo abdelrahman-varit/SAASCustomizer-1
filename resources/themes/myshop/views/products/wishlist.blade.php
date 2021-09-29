@@ -18,7 +18,7 @@
         id="wishlist-changer"
         style="margin-right: 15px;"
         href="{{ route('customer.wishlist.add', $product->product_id) }}">
-        <i class="icon wishlist-icons"></i>
+        <i class="las la-heart"></i>
     </a>
     
     @endif 
@@ -36,6 +36,6 @@
         id="wishlist-changer"
         style="margin-right: 15px;"
         href="{{ route('customer.wishlist.add', $product->product_id) }}">
-        <i class="icon wishlist-icons"></i>
+        <i class="las la-heart"></i>
     </a>
 @endguest

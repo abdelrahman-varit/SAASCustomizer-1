@@ -8,15 +8,14 @@
             <div class="col-9 fline"><hr></div>
         </div>
 
-
-        <div class="featured-grid product-grid-4">
-
-            @foreach (app('Webkul\Velocity\Repositories\Product\ProductRepository')->getFeaturedProducts(8) as $productFlat)
-
-                @include ('shop::products.list.card', ['product' => $productFlat])
-
-            @endforeach
-
+        <div class="swiper-container products-grid swipeable">
+            <div class="swiper-wrapper">
+                @foreach (app('Webkul\Velocity\Repositories\Product\ProductRepository')->getFeaturedProducts(8) as $productFlat)
+                    <div class="swiper-slide">
+                        @include ('shop::products.list.card', ['product' => $productFlat])
+                    </div>
+                @endforeach
+            </div>
         </div>
 
     </section>
@@ -45,7 +44,7 @@
 
                     <div class="product-image">
                         <a href="/" title="Demo product">
-                            <img src="{{ asset('/themes/cognite/assets/images/product/featured-0'.$i.'.jpg') }}" onerror="this.src='{{ asset('/themes/cognite/assets/images/product/featured-01.jpg') }}'"/>
+                            <img src="{{ asset('/themes/myshop/assets/images/product/featured-0'.$i.'.jpg') }}" onerror="this.src='{{ asset('/themes/myshop/assets/images/product/featured-01.jpg') }}'"/>
                         </a>
                     </div>
 

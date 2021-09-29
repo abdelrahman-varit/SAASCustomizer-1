@@ -4,7 +4,7 @@
 		@if(count($sliderData)<1)
 			<div class="swiper-slide">
 				<a href="#">
-					<img src="{{ asset('/themes/cognite/assets/images/banner/banner-01.jpg')  }}">
+					<img src="{{ asset('/themes/myshop/assets/images/banner/banner-01.jpg')  }}">
 				</a>
 			</div>
 		@else

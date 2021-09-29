@@ -8,7 +8,7 @@
             title="{{  __('shop::app.customer.compare.add-tooltip') }}"
             @click="addProductToCompare"
             style="cursor: pointer">
-            <i class="icon compare-icons"></i>
+            <i class="las la-sync"></i>
             
         </a>
     </script>
