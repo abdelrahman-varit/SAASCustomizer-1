@@ -83,7 +83,7 @@ return [
         'tax-rates' => 'Tax Rates',
         'promotions' => 'Promotions',
         'discount' => 'Discount',
-        'cms' => 'Web Pages'
+        'cms' => 'Website'
     ],
 
     'acl' => [
@@ -1188,8 +1188,8 @@ return [
         'pages' => [
             'general' => 'General',
             'seo' => 'SEO',
-            'pages' => 'Pages',
-            'title' => 'Pages',
+            'pages' => 'Web Pages',
+            'title' => 'Web pages',
             'add-title' => 'Add Page',
             'content' => 'Content',
             'url-key' => 'URL Key',
