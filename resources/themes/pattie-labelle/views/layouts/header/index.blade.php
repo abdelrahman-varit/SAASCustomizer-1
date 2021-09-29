@@ -134,8 +134,8 @@
                                         <div style="text-transform: uppercase; font-weight: bold">{{ __('shop::app.header.title') }}</div>
                                         <div>{{ __('shop::app.header.dropdown-text') }}</div>
                                         <div style="display: flex; justify-content: space-between; margin-top: 1rem">
-                                            <a class="btn btn-primary btn-md" href="{{ route('customer.session.index') }}">{{ __('shop::app.header.sign-in') }}</a>
-                                            <a class="btn btn-black btn-md" href="{{ route('customer.register.index') }}">{{ __('shop::app.header.sign-up') }}</a>
+                                            <a class="btn btn-primary btn-md text-white" href="{{ route('customer.session.index') }}">{{ __('shop::app.header.sign-in') }}</a>
+                                            <a class="btn btn-black btn-md text-white" href="{{ route('customer.register.index') }}">{{ __('shop::app.header.sign-up') }}</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -144,12 +144,7 @@
                             @auth('customer')
                                 <ul class="dropdown-list account customer">
                                     <li>
-                                        <div>
-                                            <label>
-                                                {{ auth()->guard('customer')->user()->first_name }}
-                                            </label>
-                                        </div>
-
+                                        <div style="text-transform: uppercase; font-weight: bold">{{ auth()->guard('customer')->user()->first_name }}</div>
                                         <ul>
                                             <li>
                                                 <a href="{{ route('customer.profile.index') }}">{{ __('shop::app.header.profile') }}</a>

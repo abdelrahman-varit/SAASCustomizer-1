@@ -11,7 +11,7 @@
 body {
     font-family: "Ubuntu", sans-serif;
     font-size: 1rem;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.5;
     color: #212529;
 }
@@ -133,12 +133,14 @@ a:hover, a:visited, a:focus, a:active {
     position: relative;
     color: inherit;
     padding: 10px 5px 0 0;
+    font-weight: 300;
 }
 
 .header .middle-bar .header-top div.right-content .right-content-menu > li > .dropdown-toggle {
     display: block;
     position: relative;
     padding: 10px 15px 0 0;
+    font-weight: 300;
 }
 
 .header .middle-bar .header-top div.right-content .right-content-menu > li .las{
@@ -395,6 +397,7 @@ a:hover, a:visited, a:focus, a:active {
 .software-description {
     order: 2;
     text-align: center;
+    padding-top: .5rem;
 }
 
 .footer-ct-content {
@@ -464,9 +467,17 @@ a:hover, a:visited, a:focus, a:active {
     margin-right: 5px;
 }
 
-.header .header-top div.right-content .right-content-menu ul.dropdown-list li a {
-    color: white;
+.header .header-top div.right-content .right-content-menu ul.dropdown-list li a:not(.btn){
+    display: block;
+}
+
+.header .header-top div.right-content .right-content-menu ul.dropdown-list li a:not(.btn):hover{
+    color: var(--primary);
+}
+
+.header .header-top div.right-content .right-content-menu ul.dropdown-list li .btn {
     font-size: .875rem;
+    color: white;
 }
 
 .header .header-bottom {
@@ -478,6 +489,7 @@ a:hover, a:visited, a:focus, a:active {
 .header .header-bottom ul.nav {
     justify-content: center;
     display: flex;
+    font-weight: 300;
 }
 
 .header .header-bottom .nav > li {
@@ -671,7 +683,6 @@ nav.greedy button {
 .main-container-wrapper .product-card .product-name {
     color: var(--dark);
     margin-bottom: .25rem;
-    font-weight: 400;
 }
 
 .product-price {
