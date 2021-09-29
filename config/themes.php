@@ -42,11 +42,11 @@ return [
             'parent' => 'default'
         ],
 
-        'beshop' => [
-            'views_path' => 'resources/themes/beshop/views',
-            'assets_path' => 'public/themes/beshop/assets',
-            'image_path' => '/themes/thumbnails/beshop.jpg',
-            'name' => 'Beshop',
+        'pattie-labelle' => [
+            'views_path' => 'resources/themes/pattie-labelle/views',
+            'assets_path' => 'public/themes/pattie-labelle/assets',
+            'image_path' => '/themes/thumbnails/pattie-labelle.jpg',
+            'name' => 'Pattie LaBelle',
             'parent' => 'default'
         ],
     ],
