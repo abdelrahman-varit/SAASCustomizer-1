@@ -7,7 +7,7 @@
             @if ($logo = core()->getCurrentChannel()->logo_url)
                 <img class="logo" src="{{ $logo }}" />
             @else
-                <img class="logo" src="{{ asset('themes/cognite/assets/images/logo-white.svg') }}" />
+                <img class="logo" src="{{ asset('themes/pattie-labelle/assets/images/logo.svg') }}" />
             @endif
         </a>
     </div>
