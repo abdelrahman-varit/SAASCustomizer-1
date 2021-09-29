@@ -37,7 +37,7 @@ return [
         'cognite' => [
             'views_path' => 'resources/themes/cognite/views',
             'assets_path' => 'public/themes/cognite/assets',
-            'image_path' => '/themes/cognite/assets/themes/cognite.jpg',
+            'image_path' => '/themes/thumbnails/cognite.jpg',
             'name' => 'Cognite',
             'parent' => 'default'
         ],
@@ -45,7 +45,7 @@ return [
         'beshop' => [
             'views_path' => 'resources/themes/beshop/views',
             'assets_path' => 'public/themes/beshop/assets',
-            'image_path' => '/themes/beshop/assets/themes/beshop.jpg',
+            'image_path' => '/themes/thumbnails/beshop.jpg',
             'name' => 'Beshop',
             'parent' => 'default'
         ],
