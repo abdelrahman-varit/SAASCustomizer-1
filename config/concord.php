@@ -28,6 +28,6 @@ return [
         \Webkul\SAASCustomizer\Providers\ModuleServiceProvider::class,
         \Webkul\SAASSubscription\Providers\ModuleServiceProvider::class,
         \Webkul\StripeConnect\Providers\ModuleServiceProvider::class,
-        \Webkul\Webfont\Providers\ModuleServiceProvider::class
+        
     ]
 ];

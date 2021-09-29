@@ -258,23 +258,33 @@ return [
     ],
 
     [
+        'key'        => 'cms.header',
+        'name'       => 'velocity::app.admin.layouts.header-content',
+        'route'      => 'velocity.admin.content.index',
+        'sort'       => 4,
+        'icon-class' => '',
+    ],
+
+    [
+        'key'        => 'cms.theme',
+        'name'       => 'admin::app.admin.my-shop.theme',
+        'route'      => 'admin.theme.index',
+        'sort'       => 1,
+        'icon-class' => 'catalog-icon',
+    ],
+
+    [
         'key'        => 'my-shop',
         'name'       => 'admin::app.admin.my-shop.index',
         'route'      => 'admin.channels.index',
         'sort'       => 4,
         'icon-class' => 'catalog-icon',
-    ],[
-        'key'        => 'my-shop.header',
-        'name'       => 'velocity::app.admin.layouts.header-content',
-        'route'      => 'velocity.admin.content.index',
-        'sort'       => 1,
-        'icon-class' => '',
     ],
     [
         'key'        => 'my-shop.meta-data',
         'name'       => 'velocity::app.admin.layouts.meta-data',
         'route'      => 'velocity.admin.meta-data',
-        'sort'       => 2,
+        'sort'       => 3,
         'icon-class' => '',
     ],
     
@@ -286,12 +296,6 @@ return [
     //     'icon-class' => 'catalog-icon',
     // ],
 
-    [
-        'key'        => 'my-shop.theme-selections',
-        'name'       => 'admin::app.admin.my-shop.theme-selections',
-        'route'      => 'admin.theme.index',
-        'sort'       => 4,
-        'icon-class' => 'catalog-icon',
-    ],
+  
 
 ];

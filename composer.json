@@ -38,7 +38,6 @@
         "laravel/ui": "^2.0",
         "maatwebsite/excel": "3.1.19",
         "prettus/l5-repository": "^2.6",
-        "ridhima/mediamanager": "dev-master",
         "stripe/stripe-php": "^7.75",
         "symfony/dom-crawler": "^5.3",
         "tymon/jwt-auth": "^1.0.0"
@@ -116,10 +115,7 @@
             "Webkul\\SAASSubscription\\": "packages/Webkul/SAASSubscription/src",
             "Webkul\\StripeConnect\\": "packages/Webkul/StripeConnect/src",
             "BuyNoir\\StripeConnect\\": "packages/BuyNoir/StripeConnect/src",
-            "BuyNoir\\SuperLandPage\\": "packages/BuyNoir/SuperLandPage/src",
-            "Webkul\\Webfont\\": "packages/Webkul/Webfont/src"
-            
-             
+            "BuyNoir\\SuperLandPage\\": "packages/BuyNoir/SuperLandPage/src"         
         }
     },
 
