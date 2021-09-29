@@ -14,37 +14,30 @@
 
 @push('scripts')
     <script type="text/x-template" id="recently-viewed-template">
-        <div :class="`${addClass} recently-viewed`">
+        <div :class="`${addClass} recently-viewed`" class="swiper-container products-grid recently-viewed-products">
 
-            <div :class="`recetly-viewed-products-wrapper ${addClassWrapper}`" style="display:inline-flex;gap:20px">
+            <div :class="`recetly-viewed-products-wrapper ${addClassWrapper}`" class="swiper-wrapper">
                 <div
                     :key="Math.random()"
-                    class=" product-card"
+                    class="swiper-slide"
                     v-for="(product, index) in recentlyViewed">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <a :href="`/${product.urlKey}`">
+                                <img :src="`${product.image}`" />
+                            </a>
+                        </div>
 
-                    <div class="col-4 product-image-container mr15 product-image">
-                        <a :href="`/${product.urlKey}`" class="unset">
-                            <div class="product-image" :style="`background-image: url(${product.image})`"></div>
-                            <img :src="`${product.image}`" />
-                        </a>
-                    </div>
-
-                    <div class="col-8 no-padding card-body align-vertical-top product-information text-center" v-if="product.urlKey">
-                        <a :href="`/${product.urlKey}`" class="unset no-padding">
-                            <div class="product-name ">
-                                <span class="fs16 text-nowrap">@{{ product.name }}</span>
-                            </div>
-
-                            <div
-                                v-html="product.priceHTML"
-                                class="fs18 card-current-price fw6 text-danger">
-                            </div>
-
-                            <star-ratings v-if="product.rating > 0"
-                                push-class="display-inbl"
-                                :ratings="product.rating">
-                            </star-ratings>
-                        </a>
+                        <div class="product-information text-center" v-if="product.urlKey">
+                            <a :href="`/${product.urlKey}`">
+                                <div class="product-name">@{{ product.name }}</div>
+                                <div v-html="product.priceHTML"></div>
+                                <star-ratings v-if="product.rating > 0"
+                                    push-class="display-inbl"
+                                    :ratings="product.rating">
+                                </star-ratings>
+                            </a>
+                        </div>
                     </div>
                 </div>
 

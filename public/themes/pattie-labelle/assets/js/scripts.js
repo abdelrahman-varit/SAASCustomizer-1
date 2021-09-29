@@ -79,8 +79,8 @@ $(window).on('load', function () {
 			slidesPerView: 1.5,
 			spaceBetween: 16,
 			navigation: {
-				nextEl: ".recently-viewed-products .swiper-button-next",
-				prevEl: ".recently-viewed-products .swiper-button-prev",
+				nextEl: ".recently-viewed-products-container .swiper-button-next",
+				prevEl: ".recently-viewed-products-container .swiper-button-prev",
 			},
 			breakpoints: {
 				768: {

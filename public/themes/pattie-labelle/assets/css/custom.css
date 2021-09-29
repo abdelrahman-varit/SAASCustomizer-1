@@ -8,6 +8,12 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
+a {
+    -webkit-transition: .35s;
+    -moz-transition: .35s;
+    transition: .35s;
+}
+
 body {
     font-family: "Ubuntu", sans-serif;
     font-size: 1rem;
@@ -578,6 +584,7 @@ a:hover, a:visited, a:focus, a:active {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-gap: 1rem;
+    margin-bottom: 50px;
 }
 
 .advertisement-three-container > *:first-child{
@@ -587,7 +594,7 @@ a:hover, a:visited, a:focus, a:active {
 
 .advertisement-three-container img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     -webkit-border-radius: 1rem;
     -moz-border-radius: 1rem;
@@ -607,6 +614,9 @@ nav.greedy button {
     border-radius: 1rem;
     display: flex;
     align-items: center;
+    max-width: 100%;
+    max-height: 100%;
+    justify-content: center;
 }
 
 .main-container-wrapper .product-card .product-image img {
@@ -692,4 +702,104 @@ nav.greedy button {
 
 .text-center {
     text-align: center;
+}
+
+.featured-heading {
+    display: flex;
+}
+
+.featured-heading .ftitle{
+    flex: 1 1 0%;
+    text-align: left;
+    color: var(--dark);
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: relative;
+    text-transform: capitalize;
+}
+
+.featured-heading .ftitle::before{
+    content: "";
+    width: 120px;
+    height: 1px;
+    background-color: var(--primary);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.featured-heading .fline{
+    display: none;
+}
+
+.featured-heading .fbtn{
+    flex: 0 0 auto;
+    position: relative;
+}
+
+.featured-heading .fbtn a {
+    text-transform: capitalize;
+    font-size: .875rem;
+    border: 1px solid var(--primary);
+    padding: .25rem .5rem;
+    border-radius: 1rem;
+    color: var(--primary);
+    display: block;
+}
+
+.featured-heading .fbtn a:hover{
+    background-color: var(--primary);
+    color: white;
+}
+
+.featured-heading .fbtn a i {
+    font-size: inherit;
+}
+
+
+.recently-viewed-products-container .swiper-button-next,
+.recently-viewed-products-container .swiper-button-prev {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    display: inline-flex;
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin-left: 0.5rem;
+    vertical-align: bottom;
+}
+
+.recently-viewed-products-container .swiper-button-next:focus,
+.recently-viewed-products-container .swiper-button-prev:focus {
+    outline: none;
+}
+
+.recently-viewed-products-container .swiper-button-next.swiper-button-disabled,
+.recently-viewed-products-container .swiper-button-prev.swiper-button-disabled {
+    opacity: 1;
+    color: var(--dark);
+}
+
+.recently-viewed-products-container .swiper-button-next:after,
+.recently-viewed-products-container .swiper-container-rtl .swiper-button-prev:after {
+    content: "\f30b";
+}
+
+.recently-viewed-products-container .swiper-button-prev:after,
+.recently-viewed-products-container .swiper-container-rtl .swiper-button-next:after {
+    content: "\f30a";
+}
+
+.recently-viewed-products-container .swiper-button-next:after,
+.recently-viewed-products-container .swiper-button-prev:after,
+.recently-viewed-products-container .swiper-container-rtl .swiper-button-next:after,
+.recently-viewed-products-container .swiper-container-rtl .swiper-button-prev:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: inherit;
+}
+
+.main-container-wrapper section.featured-products {
+    margin-bottom: 50px;
 }
