@@ -7,9 +7,9 @@
     @endphp
 
     @if ($showWishlist) 
-    <a class="btn btn-light"
+    <a 
         @if ($wishListHelper->getWishlistProduct($product))
-            class="add-to-wishlist already"
+            class="btn btn-light add-to-wishlist already"
             title="{{ __('shop::app.customer.account.wishlist.remove-wishlist-text') }}"
         @else
             class="add-to-wishlist"
@@ -26,9 +26,9 @@
     {!! view_render_event('bagisto.shop.products.wishlist.after') !!}
 @endauth
 @guest('customer')
-    <a class="btn btn-light"
+    <a 
         @if ($wishListHelper->getWishlistProduct($product))
-            class="add-to-wishlist already"
+            class="btn btn-light add-to-wishlist already"
             title="{{ __('shop::app.customer.account.wishlist.remove-wishlist-text') }}"
         @else
             class="add-to-wishlist"
@@ -37,7 +37,7 @@
         id="wishlist-changer"
         style="margin-right: 15px;padding-left:30px;padding-right:30px"
         href="{{ route('customer.wishlist.add', $product->product_id) }}">
-        <i class="icon wishlist-icons" style="vertical-align:middle;margin-right:5px"></i>
+        <i class="las la-heart" style="vertical-align:middle;margin-right:5px"></i>
         Wishlist
     </a>
 

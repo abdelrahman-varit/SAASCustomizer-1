@@ -1,6 +1,6 @@
 {!! view_render_event('bagisto.shop.products.buy_now.before', ['product' => $product]) !!}
 
-<button type="submit" class="btn btn-dark buynow" {{ ! $product->isSaleable(1) ? 'disabled' : '' }}>
+<button type="submit" class="btn btn-black buynow" {{ ! $product->isSaleable(1) ? 'disabled' : '' }}>
     {{ __('shop::app.products.buy-now') }}
 </button>
 
