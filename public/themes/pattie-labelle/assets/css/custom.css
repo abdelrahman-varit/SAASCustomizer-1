@@ -803,3 +803,152 @@ nav.greedy button {
 .main-container-wrapper section.featured-products {
     margin-bottom: 50px;
 }
+
+
+
+.auth-container {
+    margin: 6rem auto;
+    -webkit-box-shadow: 0 0 100px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0 0 100px rgba(0, 0, 0, .15);
+    box-shadow: 0 0 100px rgba(0, 0, 0, .15);
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    border-radius: 1rem;
+}
+
+.login-auth-container {    
+    background-color: #DAF3F7;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+}
+
+.registration-auth-container {
+    background-color: white;
+    max-width: 600px;
+}
+
+.registration-auth-container .auth-content {
+    padding: 3rem 0;
+}
+
+.login-auth-container .auth-content {
+    padding: 6rem 0;
+    background-color: white;
+    border-radius: 0 1rem 1rem 0;
+    flex: 1;
+}
+
+.auth-graphic-content {
+    width: 500px;
+    height: 500px;
+    line-height: 500px;
+    margin: 0 auto;
+    background-color: white;
+    text-align: center;
+    border: 10px solid rgba(0, 172, 194, 0.35);
+    border-radius: 50rem;
+}
+
+.auth-content .login-form {
+    margin: 0;
+    padding: 0 30px;
+    max-width: 100%;
+    min-width: auto;
+    border: none;
+}
+
+
+.w-100{
+    width: 100%;
+}
+
+
+.auth-content .checkbox {
+    margin-top: 0;
+}
+
+.auth-content .login-form .login-text {
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.auth-content .login-form .login-text + p {
+    margin-bottom: 30px;
+    margin-top: 0;
+    text-align: center;
+}
+
+.auth-content .login-form .login-text span {
+    display: block;
+    line-height: 1;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.auth-content .login-form .login-text span::before{
+    content: "";
+    background-color: var(--primary);
+    width: 150px;
+    display: block;
+    height: 1px;
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    margin-left: -75px;
+}
+
+.auth-content .login-form .forgot-password-link {
+    margin-bottom: 5px;
+}
+
+.registration-auth-container .auth-content .sign-up-text {
+    margin: 0;
+}
+
+.registration-auth-container .auth-content .sign-up-text p {
+    margin-bottom: 0;
+}
+
+.login-auth-container .auth-content .sign-up-text {
+    margin-bottom: 15px;
+}
+
+
+.auth-content .sign-up-text {
+    color: var(--dark);
+    font-size: 1rem;
+}
+
+.auth-content .sign-up-text a {
+    font-weight: bold;
+}
+
+.social-login-links {
+    display: flex;
+	justify-content: center;
+	gap: 15px;
+	overflow: hidden;
+}
+
+.social-login-links .link {
+    min-width: auto !important;
+    -webkit-border-radius: 5rem !important;
+    -moz-border-radius: 5rem !important;
+    border-radius: 5rem !important;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 0 0 3px !important;
+    text-align: center;
+}
+
+.social-login-links .control-group {
+	margin-bottom: 0 !important;
+	width: auto !important;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
