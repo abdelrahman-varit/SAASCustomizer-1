@@ -5,6 +5,6 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="star" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <polygon id="Star" fill="#242424" fill-rule="nonzero" points="7.99999999 13.2668737 3.05572808 16 4 10.2111456 0 6.11145618 5.52786404 5.26687371 7.99999999 0 10.472136 5.26687371 16 6.11145618 12 10.2111456 12.9442719 16"></polygon>
+        <polygon id="Star" fill="#FEBB26" fill-rule="nonzero" points="7.99999999 13.2668737 3.05572808 16 4 10.2111456 0 6.11145618 5.52786404 5.26687371 7.99999999 0 10.472136 5.26687371 16 6.11145618 12 10.2111456 12.9442719 16"></polygon>
     </g>
 </svg>

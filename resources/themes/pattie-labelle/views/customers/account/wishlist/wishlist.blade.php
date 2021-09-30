@@ -30,7 +30,7 @@
 
             {!! view_render_event('bagisto.shop.customers.account.wishlist.list.before', ['wishlist' => $items]) !!}
 
-            <div class="account-items-list">
+            <div class="account-items-list account-wishlist">
                
                 @if ($items->count())
                     @foreach ($items as $item)
