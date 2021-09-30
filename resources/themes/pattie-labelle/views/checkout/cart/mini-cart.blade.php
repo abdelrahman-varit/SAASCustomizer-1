@@ -92,7 +92,7 @@
 
                 <div class="dropdown-footer">
                     <p class="heading">
-                        <span id="gr-heading">{{ __('shop::app.checkout.cart.cart-subtotal') }}</span> -
+                        <span id="gr-heading">{{ __('shop::app.checkout.cart.cart-subtotal') }}:</span>
 
                         {!! view_render_event('bagisto.shop.checkout.cart-mini.subtotal.before', ['cart' => $cart]) !!}
 
@@ -137,7 +137,7 @@
 
                 <div class="dropdown-footer">
                     <p class="heading">
-                        <span id="gr-heading">{{ __('shop::app.checkout.cart.cart-subtotal') }}</span> -
+                        <span id="gr-heading">{{ __('shop::app.checkout.cart.cart-subtotal') }}:</span>
                         <b id="bn-mini-cart-grandTotal">0.00</b>
                     </p>                
                 </div>
@@ -193,11 +193,11 @@
                                                                 </div> 
                                                                 <div class="item-details">
                                                                     <div class="item-name">${item.name}</div> 
-                                                                    <div class="item-price"><b>$ ${parseFloat(item.total).toFixed(2)}</b></div> 
+                                                                    <div class="item-price"><b>$${parseFloat(item.total).toFixed(2)}</b></div> 
                                                                     <div class="item-qty">Quantity - ${item.quantity}</div>
                                                                 </div>
                                                                 <div class="item-remove">
-                                                                    <button type="button" class="" onclick="removeCartItem(${item.id}, this)">x</button>
+                                                                    <button type="button" class="" onclick="removeCartItem(${item.id}, this)"><i class="las la-times"></i></button>
                                                                 </div>
                                                             </div>`;
                                                 cartCount+=item.quantity;

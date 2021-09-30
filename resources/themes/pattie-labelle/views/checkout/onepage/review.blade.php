@@ -70,67 +70,60 @@
 
     @inject ('productImageHelper', 'Webkul\Product\Helpers\ProductImage')
 
-    <div class="cart-item-list mt-20">
-        @foreach ($cart->items as $item)
-            @php
-                $productBaseImage = $item->product->getTypeInstance()->getBaseImage($item);
-            @endphp
-
-            <div class="item mb-5" style="margin-bottom: 5px;">
-                <div class="item-image">
-                    <img src="{{ $productBaseImage['medium_image_url'] }}" />
-                </div>
-
-                <div class="item-details">
-
-                    {!! view_render_event('bagisto.shop.checkout.name.before', ['item' => $item]) !!}
-
-                    <div class="item-title">
-                        {{ $item->product->name }}
-                    </div>
-
-                    {!! view_render_event('bagisto.shop.checkout.name.after', ['item' => $item]) !!}
-                    {!! view_render_event('bagisto.shop.checkout.price.before', ['item' => $item]) !!}
-
-                    <div class="row">
-                        <span class="title">
-                            {{ __('shop::app.checkout.onepage.price') }}
-                        </span>
-                        <span class="value">
+    <div class="order-items-review-table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-left" colspan="2">Items</th>
+                    <th>{{ __('shop::app.checkout.onepage.price') }}</th>
+                    <th>{{ __('shop::app.checkout.onepage.quantity') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($cart->items as $item)
+                    @php
+                        $productBaseImage = $item->product->getTypeInstance()->getBaseImage($item);
+                    @endphp
+    
+                    <tr>
+                        <td width="100"><img src="{{ $productBaseImage['medium_image_url'] }}"></td>
+                        <td>
+                            {!! view_render_event('bagisto.shop.checkout.name.before', ['item' => $item]) !!}
+    
+                            {{ $item->product->name }}
+    
+                            {!! view_render_event('bagisto.shop.checkout.name.after', ['item' => $item]) !!}
+    
+                            {!! view_render_event('bagisto.shop.checkout.options.before', ['item' => $item]) !!}
+    
+                            @if (isset($item->additional['attributes']))
+                                <div class="item-options">
+                                    @foreach ($item->additional['attributes'] as $attribute)
+                                        <b>{{ $attribute['attribute_name'] }} : </b>{{ $attribute['option_label'] }}</br>
+                                    @endforeach
+                                </div>
+                            @endif
+    
+                            {!! view_render_event('bagisto.shop.checkout.options.after', ['item' => $item]) !!}
+                        </td>
+                        <td class="text-center">
+                            {!! view_render_event('bagisto.shop.checkout.price.before', ['item' => $item]) !!}
+    
                             {{ core()->currency($item->base_price) }}
-                        </span>
-                    </div>
-
-                    {!! view_render_event('bagisto.shop.checkout.price.after', ['item' => $item]) !!}
-                    {!! view_render_event('bagisto.shop.checkout.quantity.before', ['item' => $item]) !!}
-
-                    <div class="row">
-                        <span class="title">
-                            {{ __('shop::app.checkout.onepage.quantity') }}
-                        </span>
-                        <span class="value">
+    
+                            {!! view_render_event('bagisto.shop.checkout.price.after', ['item' => $item]) !!}
+                        </td>
+                        <td class="text-center">
+                            {!! view_render_event('bagisto.shop.checkout.quantity.before', ['item' => $item]) !!}
+    
                             {{ $item->quantity }}
-                        </span>
-                    </div>
-
-                    {!! view_render_event('bagisto.shop.checkout.quantity.after', ['item' => $item]) !!}
-
-                    {!! view_render_event('bagisto.shop.checkout.options.before', ['item' => $item]) !!}
-
-                    @if (isset($item->additional['attributes']))
-                        <div class="item-options">
-
-                            @foreach ($item->additional['attributes'] as $attribute)
-                                <b>{{ $attribute['attribute_name'] }} : </b>{{ $attribute['option_label'] }}</br>
-                            @endforeach
-
-                        </div>
-                    @endif
-
-                    {!! view_render_event('bagisto.shop.checkout.options.after', ['item' => $item]) !!}
-                </div>
-            </div>
-        @endforeach
+    
+                            {!! view_render_event('bagisto.shop.checkout.quantity.after', ['item' => $item]) !!}
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 
     <div class="order-description mt-20">

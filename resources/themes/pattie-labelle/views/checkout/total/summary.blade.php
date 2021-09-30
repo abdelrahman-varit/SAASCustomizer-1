@@ -35,6 +35,10 @@
         </label>
     </div>
 
+    <div class="item-detail" id="payment-method">
+        <label>Payment Method</label>
+        <label class="right">-</label>
+    </div>
 
     <div class="payable-amount" id="grand-total-detail">
         <label>{{ __('shop::app.checkout.total.grand-total') }}</label>
