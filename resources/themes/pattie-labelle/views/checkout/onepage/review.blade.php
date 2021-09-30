@@ -125,39 +125,4 @@
             </tbody>
         </table>
     </div>
-
-    <div class="order-description mt-20">
-        <div class="pull-left" style="width: 60%; float: left;">
-            @if ($cart->haveStockableItems())
-                <div class="shipping">
-                    <div class="decorator">
-                        <i class="icon shipping-icon"></i>
-                    </div>
-
-                    <div class="text">
-                        {{ core()->currency($cart->selected_shipping_rate->base_price) }}
-
-                        <div class="info">
-                            {{ $cart->selected_shipping_rate->method_title }}
-                        </div>
-                    </div>
-                </div>
-            @endif
-
-            <div class="payment">
-                <div class="decorator">
-                    <i class="icon payment-icon"></i>
-                </div>
-
-                <div class="text">
-                    {{ core()->getConfigData('sales.paymentmethods.' . $cart->payment->method . '.title') }}
-                </div>
-            </div>
-
-        </div>
-
-        <div class="pull-right" style="width: 40%; float: left;">
-            <slot name="summary-section"></slot>
-        </div>
-    </div>
 </div>

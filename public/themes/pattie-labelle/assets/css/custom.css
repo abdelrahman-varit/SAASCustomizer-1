@@ -2107,3 +2107,34 @@ section.product-detail {
 .product-hero-image .add-to-wishlist {
 	display: none;
 }
+
+
+.checkout-process .address-holder {
+	grid-row-gap: 30px;
+}
+
+.checkout-process .address-card {
+	border: 1px solid #ddd;
+    padding: 15px 15px 15px 50px;
+	position: relative;
+}
+
+.checkout-process .address-card.active {
+	border-color: var(--primary);
+}
+
+.checkout-process .address-card .radio-container {
+	position: absolute;
+    left: 0;
+    top: 5px;
+    width: 100% !important;
+    height: 100%;
+}
+
+.checkout-process .address-card.active .radio-container .checkmark {
+	border-color: var(--primary);
+}
+
+.checkout-process .address-card.active .radio-container .checkmark:after {
+	background-color: var(--primary);
+}
