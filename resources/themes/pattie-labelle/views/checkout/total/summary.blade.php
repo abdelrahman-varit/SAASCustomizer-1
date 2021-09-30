@@ -35,6 +35,12 @@
         </label>
     </div>
 
+    @if ($cart->payment)
+        <div class="item-detail" id="payment-method">
+            <label>Payment Method</label>
+            <label class="right">{{ core()->getConfigData('sales.paymentmethods.' . $cart->payment->method . '.title') }}</label>
+        </div>
+    @endif
 
     <div class="payable-amount" id="grand-total-detail">
         <label>{{ __('shop::app.checkout.total.grand-total') }}</label>

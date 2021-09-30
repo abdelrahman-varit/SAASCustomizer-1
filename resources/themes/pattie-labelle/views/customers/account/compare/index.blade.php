@@ -11,7 +11,7 @@
     <div class="account-content">
         @include('shop::customers.account.partials.sidemenu')
 
-        <div class="account-layout">
+        <div class="account-layout comparison-layout">
             {!! view_render_event('bagisto.shop.customers.account.comparison.list.before') !!}
 
             <div class="account-items-list">

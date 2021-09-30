@@ -3,7 +3,6 @@
         <div class="menu-block">
             <div class="menu-block-title">
                 {{ trans($menuItem['name']) }}
-
                 <i class="icon icon-arrow-down right" id="down-icon"></i>
             </div>
 
@@ -22,10 +21,9 @@
                     @foreach ($menuItem['children'] as $subMenuItem)
                         <li class="menu-item {{ $menu->getActive($subMenuItem) }}">
                             <a href="{{ $subMenuItem['url'] }}">
+                                <i class="las la-{{ $subMenuItem['icon'] }}"></i>
                                 {{ trans($subMenuItem['name']) }}
                             </a>
-
-                            <i class="icon angle-right-icon"></i>
                         </li>
                     @endforeach
                 </ul>

@@ -19,19 +19,6 @@
                         @csrf
 
                         <div class="cart-item-list" style="margin-top: 0">
-                            @if($cart->items)
-                                <div class="single-item">
-                                    <div class="item" style="margin-top: 0; padding-top: 0; margin-bottom: 0; padding-bottom: 0; font-weight: bold; color: black; font-size: 18px;">
-                                        <div class="item-image" style="border: none">Product</div>
-                                        <div class="item-details">
-                                            <div class="item-title"></div>
-                                            <div class="price">Price</div>
-                                            <div class="misc" style="justify-content: center">Qty</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                            
                             @foreach ($cart->items as $key => $item)
                                 @php
                                     $productBaseImage = $item->product->getTypeInstance()->getBaseImage($item);
@@ -139,11 +126,6 @@
                             @endif
                         </div>
 
-                        <div class="cart-coupon-box">
-                            <h3>Apply Discount Code</h3>
-                            <coupon-component></coupon-component>
-                        </div>
-
                         {!! view_render_event('bagisto.shop.checkout.cart.controls.after', ['cart' => $cart]) !!}
                     </form>
                 </div>
@@ -154,8 +136,12 @@
                     <div class="order-summary-wrapper">
                         @include('shop::checkout.total.summary', ['cart' => $cart])
 
+                        <div class="cart-coupon-box">
+                            <coupon-component></coupon-component>
+                        </div>
+
                         @if (! cart()->hasError())
-                            <a href="{{ route('shop.checkout.onepage.index') }}" class="btn btn-lg btn-primary">
+                            <a href="{{ route('shop.checkout.onepage.index') }}" class="btn btn-lg btn-black w-100 text-center">
                                 {{ __('shop::app.checkout.cart.proceed-to-checkout') }}
                             </a>
                         @endif
@@ -169,19 +155,9 @@
 
         @else
 
-            <div class="title">
-                {{ __('shop::app.checkout.cart.title') }}
-            </div>
-
-            <div class="cart-content">
-                <p>
-                    {{ __('shop::app.checkout.cart.empty') }}
-                </p>
-
-                <p style="display: inline-block;">
-                    <a style="display: inline-block;" href="{{ route('shop.home.index') }}" class="btn btn-lg btn-primary">{{ __('shop::app.checkout.cart.continue-shopping') }}</a>
-                </p>
-            </div>
+            <div class="title">{{ __('shop::app.checkout.cart.title') }}</div>
+            <p>{{ __('shop::app.checkout.cart.empty') }}</p>
+            <p><a style="display: inline-block;" href="{{ route('shop.home.index') }}" class="btn btn-lg btn-primary">{{ __('shop::app.checkout.cart.continue-shopping') }}</a></p>
 
         @endif
     </section>

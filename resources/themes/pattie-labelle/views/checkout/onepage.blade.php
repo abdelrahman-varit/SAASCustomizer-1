@@ -87,27 +87,16 @@
                 </div>
 
                 <div class="step-content review" v-show="current_step == 4" id="summary-section">
-                    <review-section v-if="current_step == 4" :key="reviewComponentKey">
-                        <div slot="summary-section">
-                            <summary-section :key="summeryComponentKey"></summary-section>
-
-                            <coupon-component
-                                @onApplyCoupon="getOrderSummary"
-                                @onRemoveCoupon="getOrderSummary">
-                            </coupon-component>
-                        </div>
-                    </review-section>
-
-                    <div class="button-group">
-                        <button type="button" class="btn btn-lg btn-primary" @click="placeOrder()" :disabled="disable_button" id="checkout-place-order-button">
-                            {{ __('shop::app.checkout.onepage.place-order') }}
-                        </button>
-                    </div>
+                    <review-section v-if="current_step == 4" :key="reviewComponentKey"></review-section>
                 </div>
             </div>
 
-            <div class="col-right" v-show="current_step != 4">
-                <summary-section :key="summeryComponentKey"></summary-section>
+            <div class="col-right">
+                <div class="order-summary-section">
+                    <summary-section :key="summeryComponentKey"></summary-section>
+                    <coupon-component v-show="current_step == 4" @onApplyCoupon="getOrderSummary" @onRemoveCoupon="getOrderSummary"></coupon-component>
+                    <button v-show="current_step == 4" type="button" class="btn btn-lg btn-primary w-100" @click="placeOrder()" :disabled="disable_button" id="checkout-place-order-button">{{ __('shop::app.checkout.onepage.place-order') }}</button>
+                </div>
             </div>
         </div>
     </script>
