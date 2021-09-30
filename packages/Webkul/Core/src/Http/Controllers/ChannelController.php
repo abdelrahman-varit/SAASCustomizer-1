@@ -145,7 +145,7 @@ class ChannelController extends Controller
         ]);
 
         $data = request()->all();
-        dd($data);
+       
         $data['seo']['meta_title'] = $data['seo_title'];
         $data['seo']['meta_description'] = $data['seo_description'];
         $data['seo']['meta_keywords'] = $data['seo_keywords'];

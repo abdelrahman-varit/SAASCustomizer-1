@@ -82,6 +82,18 @@ class ConfigurationController extends Controller
         return view($this->_config['view'], ['config' => $this->configTree]);
     }
 
+
+    public function paymentMethodIndex()
+    {
+        // $slugs = $this->getDefaultConfigSlugs();
+
+        // if (count($slugs)) {
+        //     return redirect()->route('admin.configuration.paymentmethod', $slugs);
+        // }
+
+        return view($this->_config['view'], ['config' => $this->configTree]);
+    }
+
     /**
      * Returns slugs
      *
@@ -125,14 +137,32 @@ class ConfigurationController extends Controller
         //         'is_active' => 1
         //     ]);
         // }
+        dd(request()->get('sales'));
         $this->coreConfigRepository->create(request()->all());
-
+      
         Event::dispatch('core.configuration.save.after');
 
         session()->flash('success', trans('admin::app.configuration.save-message'));
 
         return redirect()->back();
     }
+
+
+    public function paymentMethodStore(ConfigurationForm $request)
+    {
+        Event::dispatch('core.configuration.save.before');
+         
+       // dd(request()->all());
+        $this->coreConfigRepository->create(request()->all());
+      
+        Event::dispatch('core.configuration.save.after');
+
+        session()->flash('success', trans('admin::app.configuration.save-message'));
+
+        return redirect()->back();
+    }
+
+
 
     /**
      * download the file for the specified resource.
