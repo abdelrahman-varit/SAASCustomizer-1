@@ -229,7 +229,7 @@ return [
         'key'        => 'promotions',
         'name'       => 'admin::app.layouts.promotions',
         'route'      => 'admin.catalog-rules.index',
-        'sort'       => 5,
+        'sort'       => 4,
         'icon-class' => 'promotion-icon',
     ], [
         'key'        => 'promotions.catalog-rules',
@@ -251,7 +251,7 @@ return [
         'icon-class' => 'cms-icon',
     ], [
         'key'        => 'cms.pages',
-        'name'       => 'admin::app.cms.pages.pages',
+        'name'       => 'admin::app.layouts.cms-pages',
         'route'      => 'admin.cms.index',
         'sort'       => 1,
         'icon-class' => '',

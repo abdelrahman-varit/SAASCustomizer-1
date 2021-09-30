@@ -122,6 +122,20 @@ Route::group(['middleware' => ['web']], function () {
                 'redirect' => 'admin.configuration.index',
             ])->name('admin.configuration.index.store');
 
+
+            Route::get('paymentmethods-stripe', 'Webkul\Admin\Http\Controllers\ConfigurationController@paymentMethodIndex')->defaults('_config', [
+                'view' => 'admin::configuration.paymentmethod-stripe',
+            ])->name('admin.configuration.paymentmethod-stripe');
+
+            Route::get('paymentmethods-paypal', 'Webkul\Admin\Http\Controllers\ConfigurationController@paymentMethodIndex')->defaults('_config', [
+                'view' => 'admin::configuration.paymentmethod-paypal',
+            ])->name('admin.configuration.paymentmethod-paypal');
+
+            Route::post('paymentmethods', 'Webkul\Admin\Http\Controllers\ConfigurationController@paymentMethodStore')->defaults('_config', [
+                'redirect' => 'admin.configuration.paymentmethod',
+            ])->name('admin.configuration.paymentmethod.store');
+
+
             Route::get('configuration/{slug?}/{slug2?}/{path}', 'Webkul\Admin\Http\Controllers\ConfigurationController@download')->defaults('_config', [
                 'redirect' => 'admin.configuration.index',
             ])->name('admin.configuration.download');
