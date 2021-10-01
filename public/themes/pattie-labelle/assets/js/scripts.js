@@ -55,6 +55,10 @@ $(window).on('load', function () {
 		new Swiper(".swipeable", {
 			slidesPerView: 1.5,
 			spaceBetween: 16,
+			navigation: {
+				nextEl: ".swipeable .swiper-button-next",
+				prevEl: ".swipeable .swiper-button-prev",
+			},
 			breakpoints: {
 				576: {
 					slidesPerView: 2.5
@@ -66,7 +70,7 @@ $(window).on('load', function () {
 					slidesPerView: 4.5
 				},
 				1200: {
-					slidesPerView: 5
+					slidesPerView: 5.5
 				}
 			}
 		});
@@ -87,10 +91,10 @@ $(window).on('load', function () {
 					slidesPerView: 3.5
 				},
 				992: {
-					slidesPerView: 4
+					slidesPerView: 4.5
 				},
 				1200: {
-					slidesPerView: 5
+					slidesPerView: 5.5
 				}
 			}
 		});
@@ -112,9 +116,6 @@ $(window).on('load', function () {
 				},
 				992: {
 					slidesPerView: 4
-				},
-				1200: {
-					slidesPerView: 5
 				}
 			}
 		});
@@ -137,9 +138,6 @@ $(window).on('load', function () {
 				992: {
 					slidesPerView: 4
 				},
-				1200: {
-					slidesPerView: 5
-				}
 			}
 		});
 	}

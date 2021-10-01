@@ -29,10 +29,10 @@
                     </a>
                 @endauth
             </div>
-            <ul class="thumb-list bn-thumb-list">
+            <ul class="bn-gallery-thumb-list">
                 <li class="gallery-control top" @click="moveThumbs('top')" v-if="(thumbs.length > 4) && this.is_move.up">
                     <span class="overlay"></span>
-                    <i class="icon arrow-up-white-icon"></i>
+                    <i class="fas fa-angle-left"></i>
                 </li>
 
                 <li class="thumb-frame" v-for='(thumb, index) in thumbs' @mouseover="changeImage(thumb)" :class="[thumb.large_image_url == currentLargeImageUrl ? 'active' : '']" id="thumb-frame">
@@ -41,7 +41,7 @@
 
                 <li class="gallery-control bottom" @click="moveThumbs('bottom')" v-if="(thumbs.length > 4) && this.is_move.down">
                     <span class="overlay"></span>
-                    <i class="icon arrow-down-white-icon"></i>
+                    <i class="fas fa-angle-right"></i>
                 </li>
             </ul>
         </div>
