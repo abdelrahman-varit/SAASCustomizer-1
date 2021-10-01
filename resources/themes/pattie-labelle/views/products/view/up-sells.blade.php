@@ -12,7 +12,7 @@
             <div class="col-9 fline"><hr></div>
         </div>
 
-        <div class="swiper-container products-grid related-products">
+        <div class="swiper-container products-grid upselling-products">
             <div class="swiper-wrapper">
                 @foreach ($productUpSells as $up_sell_product)
                     <div class="swiper-slide">

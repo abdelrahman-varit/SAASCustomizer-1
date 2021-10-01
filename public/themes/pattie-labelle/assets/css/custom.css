@@ -666,6 +666,7 @@ nav.greedy button {
 }
 
 .main-container-wrapper .product-card .card-quick-icon {
+	cursor: grab;
 	-webkit-border-radius: 1rem;
 	-moz-border-radius: 1rem;
 	border-radius: 1rem;
@@ -2270,8 +2271,7 @@ section.product-detail div.layouter .form-container div.product-image-group div 
     overflow: hidden;
     gap: 10px;
     position: relative;
-    padding-left: 25px;
-    padding-right: 25px;
+	padding-right: 25px;
 }
 
 .bn-gallery-thumb-list .gallery-control {
@@ -2301,6 +2301,10 @@ section.product-detail div.layouter .form-container div.product-image-group div 
 
 .bn-gallery-thumb-list .gallery-control.top {
 	left: 0;
+}
+
+.bn-gallery-thumb-list .gallery-control.top + .thumb-frame {
+	margin-left: 25px;
 }
 
 .bn-gallery-thumb-list .gallery-control.bottom {
@@ -2358,4 +2362,8 @@ section.product-detail div.layouter .form-container div.product-image-group div 
 
 .account-table-content .compare-products {
 	margin-top: 30px;
+}
+
+.product-detail .featured-products {
+	margin-top: 50px;
 }

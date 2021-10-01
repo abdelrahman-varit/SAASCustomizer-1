@@ -87,10 +87,11 @@
     @if (core()->getConfigData('catalog.products.review.guest_review') || auth()->guard('customer')->check())
         <div class="rating-reviews">
             <div class="rating-header">
-                <a href="{{ route('shop.reviews.create', $product->url_key) }}" class="btn btn-lg btn-primary">
-                    {{ __('shop::app.products.write-review-btn') }}
-                </a>
+                {{ __('shop::app.products.reviews-title') }}
             </div>
+            <a href="{{ route('shop.reviews.create', $product->url_key) }}" class="btn btn-lg btn-primary">
+                {{ __('shop::app.products.write-review-btn') }}
+            </a>
         </div>
     @endif
 @endif
