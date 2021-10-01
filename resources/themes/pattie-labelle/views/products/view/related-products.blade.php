@@ -3,22 +3,26 @@
 ?>
 
 @if ($relatedProducts->count())
-    <div class="attached-products-wrapper">
 
-        <div class="title">
-            {{ __('shop::app.products.related-product-title') }}
-            <span class="border-bottom"></span>
+    <section class="featured-products">
+
+        <div class="featured-heading">
+            <div class="col-3 ftitle">{{ __('shop::app.products.related-product-title') }}</div>
+            <div class="col-9 fline"><hr></div>
         </div>
 
-        <div class="product-grid-4">
-
-            @foreach ($relatedProducts as $related_product)
-                
-                @include ('shop::products.list.card', ['product' => $related_product])
-
-            @endforeach
-
+        <div class="swiper-container products-grid related-products">
+            <div class="swiper-wrapper">
+                @foreach ($relatedProducts as $related_product)
+                    <div class="swiper-slide">
+                        @include ('shop::products.list.card', ['product' => $related_product])
+                    </div>
+                @endforeach
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
 
-    </div>
+    </section>
+
 @endif

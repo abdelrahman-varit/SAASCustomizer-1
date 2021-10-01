@@ -11,26 +11,27 @@
 
 @if (isset($products))
 
-    <div class="attached-products-wrapper mt-50">
+    <section class="featured-products">
 
-        <div class="title">
-            {{ __('shop::app.products.cross-sell-title') }}
-             <span class="border-bottom"></span>
+        <div class="featured-heading">
+            <div class="col-3 ftitle">{{ __('shop::app.products.cross-sell-title') }}</div>
+            <div class="col-9 fline"><hr></div>
         </div>
 
-        <div class="product-grid-4">
-            @foreach($products as $product)
-
-                @foreach ($product->cross_sells()->paginate(2) as $cross_sell_product)
-
-                    @include ('shop::products.list.card', ['product' => $cross_sell_product])
-
+        <div class="swiper-container products-grid related-products">
+            <div class="swiper-wrapper">
+                @foreach($products as $product)
+                    @foreach ($product->cross_sells()->paginate(2) as $cross_sell_product)
+                        <div class="swiper-slide">
+                            @include ('shop::products.list.card', ['product' => $cross_sell_product])
+                        </div>
+                    @endforeach
                 @endforeach
-
-            @endforeach
-
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
 
-    </div>
+    </section>
 
 @endif
