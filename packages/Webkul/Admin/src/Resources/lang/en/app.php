@@ -68,7 +68,7 @@ return [
         'reviews' => 'Reviews',
         'newsletter-subscriptions' => 'Newsletter Subscriptions',
         'configure' => 'Configure',
-        'settings' => 'Business Oper.',
+        'settings' => 'Business Operation',
         'settings-title' => 'Business Operation',
         'locales' => 'Locales',
         'currencies' => 'Currencies',
@@ -83,7 +83,10 @@ return [
         'tax-rates' => 'Tax Rates',
         'promotions' => 'Promotions',
         'discount' => 'Discount',
-        'cms' => 'Website'
+        'cms' => 'Website',
+        'cms-pages' => 'Web Pages',
+        'emails' => 'Emails',
+        'customer' => 'Customers',
     ],
 
     'acl' => [
@@ -1319,7 +1322,7 @@ return [
             'footer-toggle' => 'Toggle footer',
             'locale-options' => 'Unit Options',
             'weight-unit' => 'Weight Unit',
-            'theme-color-scheme' => 'Theme Color',
+            'theme-color-scheme' => 'Admin Theme Color',
             'admin-theme-color-scheme' => 'Admin Theme Color',
             'email-settings'    => 'Email Settings',
             'email-sender-name' => 'Email Sender Name',
@@ -1384,7 +1387,8 @@ return [
         ],
         'my-shop'=>[
             'index'=>'My Shop',
-            'theme-selections'=>'Theme Selection'
+            'theme-selections'=>'Theme Selection',
+            'theme'=>'Theme',
         ]
     ]
 ];
