@@ -212,19 +212,19 @@
                             @php
                                 $images[4][] = [
                                     'id' => 'image_1',
-                                    'url' => asset('/themes/cognite/assets/images/banner/advertise-1-1.jpg'),
+                                    'url' => asset('/themes/aretha-franklin/assets/images/banner/advertise-1-1.jpg'),
                                 ];
                                 $images[4][] = [
                                     'id' => 'image_2',
-                                    'url' => asset('/themes/cognite/assets/images/banner/advertise-1-2.jpg'),
+                                    'url' => asset('/themes/aretha-franklin/assets/images/banner/advertise-1-2.jpg'),
                                 ];
                                 $images[4][] = [
                                     'id' => 'image_3',
-                                    'url' => asset('/themes/cognite/assets/images/banner/advertise-1-3.jpg'),
+                                    'url' => asset('/themes/aretha-franklin/assets/images/banner/advertise-1-3.jpg'),
                                 ];
                                 $images[4][] = [
                                     'id' => 'image_4',
-                                    'url' => asset('/themes/cognite/assets/images/banner/advertise-1-2.jpg'),
+                                    'url' => asset('/themes/aretha-franklin/assets/images/banner/advertise-1-2.jpg'),
                                 ];
                             @endphp
                         
@@ -259,15 +259,15 @@
                             @php
                                 $images[3][] = [
                                     'id' => 'image_1',
-                                    'url' => asset('/themes/cognite/assets/images/banner/advertise-2-1.jpg'),
+                                    'url' => asset('/themes/aretha-franklin/assets/images/banner/advertise-2-1.jpg'),
                                 ];
                                 $images[3][] = [
                                     'id' => 'image_2',
-                                    'url' => asset('/themes/cognite/assets/images/banner/advertise-2-2.jpg'),
+                                    'url' => asset('/themes/aretha-franklin/assets/images/banner/advertise-2-2.jpg'),
                                 ];
                                 $images[3][] = [
                                     'id' => 'image_3',
-                                    'url' => asset('/themes/cognite/assets/images/banner/advertise-2-3.jpg'),
+                                    'url' => asset('/themes/aretha-franklin/assets/images/banner/advertise-2-3.jpg'),
                                 ];
                             @endphp
 
@@ -301,15 +301,15 @@
                             @php
                                 $images[2][] = [
                                     'id' => 'image_1',
-                                    'url' => asset('/themes/cognite/assets/images/banner/advertise-3-1.jpg'),
+                                    'url' => asset('/themes/aretha-franklin/assets/images/banner/advertise-3-1.jpg'),
                                 ];
                                 $images[2][] = [
                                     'id' => 'image_2',
-                                    'url' => asset('/themes/cognite/assets/images/banner/advertise-3-2.jpg'),
+                                    'url' => asset('/themes/aretha-franklin/assets/images/banner/advertise-3-2.jpg'),
                                 ];
                                 $images[2][] = [
                                     'id' => 'image_3',
-                                    'url' => asset('/themes/cognite/assets/images/banner/advertise-3-3.jpg'),
+                                    'url' => asset('/themes/aretha-franklin/assets/images/banner/advertise-3-3.jpg'),
                                 ];
                             @endphp
 

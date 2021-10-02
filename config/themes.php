@@ -34,11 +34,11 @@ return [
 
         
 
-        'cognite' => [
-            'views_path' => 'resources/themes/cognite/views',
-            'assets_path' => 'public/themes/cognite/assets',
-            'image_path' => '/themes/thumbnails/cognite.jpg',
-            'name' => 'Cognite',
+        'aretha-franklin' => [
+            'views_path' => 'resources/themes/aretha-franklin/views',
+            'assets_path' => 'public/themes/aretha-franklin/assets',
+            'image_path' => '/themes/thumbnails/aretha-franklin.jpg',
+            'name' => 'Aretha Franklin',
             'parent' => 'default'
         ],
 

@@ -15,7 +15,7 @@
 
 					@if(count($sliderData)<1)
 						<div>
-							<img src="{{ asset('/themes/cognite/assets/images/banner/banner-01.jpg')  }}">
+							<img src="{{ asset('/themes/aretha-franklin/assets/images/banner/banner-01.jpg')  }}">
 						</div>
 					@else
 						@foreach($sliderData as $slider)

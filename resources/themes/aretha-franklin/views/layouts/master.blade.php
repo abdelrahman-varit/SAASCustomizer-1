@@ -18,15 +18,15 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     {{-- <link rel="stylesheet" href="{{ bagisto_asset('css/shop.css') }}"> --}}
-    <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/shop.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/aretha-franklin/assets/css/shop.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/webkul/ui/assets/css/ui.css') }}">
 
     <!-- Fonts from tinyMCE -->
     <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/tinymce-fonts.css') }}">
 
 
-    <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/custom.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/aretha-franklin/assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/aretha-franklin/assets/css/responsive.css') }}">
 
     <!-- Color Scheme -->
     @php 
@@ -34,9 +34,9 @@
     @endphp
     
     @if($theme_color!=="default" && !empty($theme_color))
-        <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/colors/'.$theme_color.'.css') }}">
+        <link rel="stylesheet" href="{{ asset('themes/aretha-franklin/assets/css/colors/'.$theme_color.'.css') }}">
     @else
-        <link rel="stylesheet" href="{{ asset('themes/cognite/assets/css/colors/blue.css') }}">
+        <link rel="stylesheet" href="{{ asset('themes/aretha-franklin/assets/css/colors/blue.css') }}">
     @endif
 
 
@@ -154,7 +154,7 @@
             @if ($logo = core()->getCurrentChannel()->logo_url)                
                 <img class="se-pre-con-logo" src="{{ $logo }}" />
             @else
-                <img class="se-pre-con-logo" src="{{ asset('themes/cognite/assets/images/logo.svg') }}" />
+                <img class="se-pre-con-logo" src="{{ asset('themes/aretha-franklin/assets/images/logo.svg') }}" />
             @endif
         </div>
     </div>
@@ -249,7 +249,7 @@
     </script>
 
 
-    <script type="text/javascript" src="{{ asset('themes/cognite/assets/js/shop.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('themes/aretha-franklin/assets/js/shop.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/webkul/ui/assets/js/ui.js') }}"></script>
 
 
@@ -268,7 +268,7 @@
     </script>
 
 
-    <script type="text/javascript" src="{{ asset('themes/cognite/assets/js/scripts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('themes/aretha-franklin/assets/js/scripts.js') }}"></script>
 
     <script>
         $(window).on('load', function () {
