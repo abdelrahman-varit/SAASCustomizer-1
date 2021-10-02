@@ -44,7 +44,7 @@
                 @if ($localeImage)
                     <img src="{{ asset('/storage/' . $localeImage) }}" onerror="this.src = '{{ asset($localeImage) }}'" height="30" />
                 @elseif (app()->getLocale() == 'en')
-                    <img src="{{ asset('/themes/cognite/assets/images/icons/en.png') }}" />
+                    <img src="{{ asset('/themes/aretha-franklin/assets/images/icons/en.png') }}" />
                 @endif
             </div>
 

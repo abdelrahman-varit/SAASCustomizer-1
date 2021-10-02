@@ -1138,7 +1138,7 @@ class DataPurger
                 0               => $currencyRepository->id
             ],
             'base_currency_id'  => $currencyRepository->id,
-            'theme'             => 'cognite',
+            'theme'             => 'aretha-franklin',
             'home_page_content' => "<p>@include('shop::home.advertisements.advertisement-four')@include('shop::home.featured-products') @include('shop::home.advertisements.advertisement-three') @include('shop::home.new-products') @include('shop::home.advertisements.advertisement-two')@include('shop::home.recent-products')</p>",
 
             'footer_content' => 
