@@ -250,7 +250,10 @@
 
                 <div class="right-content">
 
-                    <span class="search-box"><span class="icon icon-search" id="search"></span></span>
+                    <span class="search-box">
+                        <span class="icon icon-search" id="search"></span>
+                        <span class="search-name">Search</span>
+                    </span>
 
                     <ul class="right-content-menu">
 
@@ -322,10 +325,6 @@
         </div>
     </div>
 
-    <div class="header-bottom" id="header-bottom">
-        @include('shop::layouts.header.nav-menu.navmenu')
-    </div>
-
     <div class="search-responsive mt-10" id="search-responsive">
         <form role="search" action="{{ route('shop.search.index') }}" method="GET">
             <div class="search-content">
@@ -335,10 +334,14 @@
 
                 <image-search-component></image-search-component>
 
-                <input type="search" name="term" class="search">
+                <input type="search" placeholder="{{ __('shop::app.header.search-text') }}" name="term" class="search">
                 <i class="las la-angle-left"></i>
             </div>
         </form>
+    </div>
+
+    <div class="header-bottom" id="header-bottom">
+        @include('shop::layouts.header.nav-menu.navmenu')
     </div>
 </div>
 
