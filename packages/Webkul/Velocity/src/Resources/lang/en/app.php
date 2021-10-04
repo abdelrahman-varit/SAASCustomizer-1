@@ -44,7 +44,7 @@ return [
             'cms-pages' => 'CMS Pages',
             'meta-data' => 'Meta Data',
             'category-menu' => 'Category Menu',
-            'header-content' => 'Header Content',
+            'header-content' => 'Header',
         ],
         'contents'  => [
             'self' => 'Self',

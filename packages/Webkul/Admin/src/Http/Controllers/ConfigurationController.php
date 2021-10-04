@@ -137,7 +137,7 @@ class ConfigurationController extends Controller
         //         'is_active' => 1
         //     ]);
         // }
-        dd(request()->get('sales'));
+        //dd(request()->get('sales'));
         $this->coreConfigRepository->create(request()->all());
       
         Event::dispatch('core.configuration.save.after');

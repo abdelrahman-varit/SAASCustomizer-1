@@ -265,13 +265,7 @@ return [
         'icon-class' => '',
     ],
 
-    [
-        'key'        => 'cms.theme',
-        'name'       => 'admin::app.admin.my-shop.theme',
-        'route'      => 'admin.theme.index',
-        'sort'       => 1,
-        'icon-class' => 'catalog-icon',
-    ],
+  
 
     [
         'key'        => 'my-shop',
@@ -280,13 +274,24 @@ return [
         'sort'       => 4,
         'icon-class' => 'catalog-icon',
     ],
+
+
+    [
+        'key'        => 'my-shop.theme',
+        'name'       => 'admin::app.admin.my-shop.theme',
+        'route'      => 'admin.theme.index',
+        'sort'       => 1,
+        'icon-class' => 'catalog-icon',
+    ],
     [
         'key'        => 'my-shop.meta-data',
         'name'       => 'velocity::app.admin.layouts.meta-data',
         'route'      => 'velocity.admin.meta-data',
-        'sort'       => 3,
+        'sort'       => 2,
         'icon-class' => '',
     ],
+
+
     
     // [
     //     'key'        => 'my-shop.theme-selection',
