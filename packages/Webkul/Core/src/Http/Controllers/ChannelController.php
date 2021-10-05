@@ -146,6 +146,13 @@ class ChannelController extends Controller
         $theme_color = request()->get("theme_color");
         $data = ['theme'=>$theme];
         
+        $velocityHelper = app('Webkul\Velocity\Helpers\Helper');
+        $this->locale = request()->get('locale') ?: app()->getLocale();
+        $this->channel = request()->get('channel') ?: 'default';
+        $metaData = $velocityHelper->getVelocityMetaData($this->locale, $this->channel);
+         
+        $metaData->theme_color = $theme_color;
+        $metaData->save();
         $company = Company::getCurrent();
         $channel = $this->channelRepository->with(['locales', 'currencies'])->findOrFail($company->channel_id);
         $channel = $this->channelRepository->updateTheme($data, $company->channel_id);
