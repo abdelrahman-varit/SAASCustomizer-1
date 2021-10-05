@@ -600,6 +600,11 @@ Route::group(['middleware' => ['web']], function () {
                 'view' => 'admin::settings.channels.edit',
             ])->name('admin.channels.edit');
 
+            Route::get('/channels/edit', 'Webkul\Core\Http\Controllers\ChannelController@editChannel')->defaults('_config', [
+                'view' => 'admin::settings.channels.edit',
+            ])->name('admin.channels.edits');
+
+
             Route::put('/channels/edit/{id}', 'Webkul\Core\Http\Controllers\ChannelController@update')->defaults('_config', [
                 'redirect' => 'admin.channels.index',
             ])->name('admin.channels.update');

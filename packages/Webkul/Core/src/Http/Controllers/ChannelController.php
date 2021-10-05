@@ -135,6 +135,14 @@ class ChannelController extends Controller
         return view($this->_config['view'], compact('channel'));
     }
 
+    public function editChannel()
+    {
+        $company = Company::getCurrent();
+        $channel = $this->channelRepository->with(['locales', 'currencies'])->findOrFail($company->channel_id);
+
+        return view($this->_config['view'], compact('channel'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
