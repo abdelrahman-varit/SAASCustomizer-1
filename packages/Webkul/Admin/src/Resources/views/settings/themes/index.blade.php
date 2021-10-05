@@ -1,7 +1,7 @@
 @extends('admin::layouts.content')
 
 @section('page_title')
-    {{ __('admin::app.settings.channels.title') }}
+    {{ __('admin::app.settings.channels.theme-title') }}
 @stop
 
 @section('content')
