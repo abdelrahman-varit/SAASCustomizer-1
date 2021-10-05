@@ -130,6 +130,10 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('paymentmethods-paypal', 'Webkul\Admin\Http\Controllers\ConfigurationController@paymentMethodIndex')->defaults('_config', [
                 'view' => 'admin::configuration.paymentmethod-paypal',
             ])->name('admin.configuration.paymentmethod-paypal');
+         
+            Route::get('paymentmethods-paymentmethod', 'Webkul\Admin\Http\Controllers\ConfigurationController@paymentMethodIndex')->defaults('_config', [
+                'view' => 'admin::configuration.paymentmethod-paymentmethod',
+            ])->name('admin.configuration.paymentmethod-paymentmethod');
 
             Route::post('paymentmethods', 'Webkul\Admin\Http\Controllers\ConfigurationController@paymentMethodStore')->defaults('_config', [
                 'redirect' => 'admin.configuration.paymentmethod',
@@ -569,6 +573,20 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/themes', 'Webkul\Core\Http\Controllers\ChannelController@themeindex')->defaults('_config', [
                 'view' => 'admin::settings.themes.index',
             ])->name('admin.theme.index');
+
+            
+            Route::get('/themes/edit', 'Webkul\Core\Http\Controllers\ChannelController@themeEdit')->defaults('_config', [
+                'view' => 'admin::settings.themes.edit',
+            ])->name('admin.theme.edit');
+
+            Route::put('/themes/edit', 'Webkul\Core\Http\Controllers\ChannelController@themeEditStore')->defaults('_config', [
+                'redirect' => 'admin.theme.index',
+            ])->name('admin.theme.edit-store');
+
+
+            // Route::get('/themes', 'Webkul\Core\Http\Controllers\ChannelController@themeindex')->defaults('_config', [
+            //     'view' => 'admin::settings.themes.index',
+            // ])->name('admin.theme.index');
 
             Route::get('/channels/create', 'Webkul\Core\Http\Controllers\ChannelController@create')->defaults('_config', [
                 'view' => 'admin::settings.channels.create',

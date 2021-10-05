@@ -823,7 +823,9 @@ return [
 
         'themes' => [
             'title' => 'Template',
-            'add-title' => 'Save Template ',
+            'add-title' => 'Save Template',
+            'edit-title' => 'Edit Theme',
+            'save-btn-title' => 'Save Theme ',
         ],
 
         'sliders' => [

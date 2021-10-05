@@ -13,7 +13,7 @@
                     <h1>
                         <i class="icon angle-left-icon back-link" onclick="history.length > 1 ? history.go(-1) : window.location = '{{ route('admin.dashboard.index') }}';"></i>
 
-                        {{ __('admin::app.settings.channels.add-title') }}
+                        {{ __('admin::app.settings.channels.add-title') }} create admin
                     </h1>
                 </div>
 

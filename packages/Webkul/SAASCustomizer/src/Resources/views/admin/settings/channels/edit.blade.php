@@ -13,7 +13,7 @@
                     <h1>
                         <i class="icon angle-left-icon back-link" onclick="history.length > 1 ? history.go(-1) : window.location = '{{ url('/admin/dashboard') }}';"></i>
 
-                        {{ __('admin::app.settings.channels.edit-title') }} 
+                        {{ __('admin::app.settings.channels.edit-title') }} hell all
                     </h1>
                 </div>
 
@@ -165,7 +165,7 @@
                                 </select>
                             </div>
 
-                            <div class="control-group">
+                            <!-- <div class="control-group">
                                 <label for="home_page_content">{{ __('admin::app.settings.channels.home_page_content') }}</label>
                                 <textarea class="control" id="home_page_content" name="home_page_content">{{ old('home_page_content') ?: $channel->home_page_content }}</textarea>
                             </div>
@@ -173,7 +173,7 @@
                             <div class="control-group">
                                 <label for="footer_content">{{ __('admin::app.settings.channels.footer_content') }}</label>
                                 <textarea class="control" id="footer_content" name="footer_content">{{ old('footer_content') ?: $channel->footer_content }}</textarea>
-                            </div>
+                            </div> -->
 
                             <div class="control-group">
                                 <label>{{ __('admin::app.settings.channels.logo') }}
