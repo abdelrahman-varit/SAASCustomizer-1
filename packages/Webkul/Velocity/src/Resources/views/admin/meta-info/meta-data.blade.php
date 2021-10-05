@@ -134,23 +134,7 @@
                             value="{{ $metaData ? $metaData->new_products_count : 10 }}" />
                     </div>
 
-                    <div class="control-group">
-                        <label>{{ __('Theme Color') }}</label>
-
-                        <select
-                            class="control"
-                            id="theme_color"
-                            name="theme_color"
-                            style="text-transform:capitalize"
-                            >
-                            
-                            <option {{ $metaData->theme_color=='' ? 'selected' : '' }} value="default">Default</option>
-                            <option  {{ $metaData->theme_color=='blue' ? 'selected' : '' }} value="blue">Blue</option>
-                            <option  {{ $metaData->theme_color=='lemon' ? 'selected' : '' }} value="lemon">Lemon</option>
-                            <option  {{ $metaData->theme_color=='sky' ? 'selected' : '' }} value="sky">Sky</option>
-                            <option  {{ $metaData->theme_color=='violet' ? 'selected' : '' }} value="violet">Violet</option>
-                        </select>    
-                    </div>
+                  
 
  
                     <div class="control-group">

@@ -7,6 +7,7 @@ use Webkul\Core\Repositories\CoreConfigRepository;
 use Webkul\Core\Tree;
 use Illuminate\Support\Facades\Storage;
 use Webkul\Admin\Http\Requests\ConfigurationForm;
+use Webkul\StripeConnect\Repositories\StripeConnectRepository;
 use Company;
 
 class ConfigurationController extends Controller
@@ -25,6 +26,7 @@ class ConfigurationController extends Controller
      */
     protected $coreConfigRepository;
 
+    protected $stripeConnectRepository;
     /**
      *
      * @var array
@@ -37,11 +39,13 @@ class ConfigurationController extends Controller
      * @param  \Webkul\Core\Repositories\CoreConfigRepository  $coreConfigRepository
      * @return void
      */
-    public function __construct(CoreConfigRepository $coreConfigRepository)
+    public function __construct(CoreConfigRepository $coreConfigRepository, StripeConnectRepository $stripeConnectRepository)
     {
         $this->middleware('admin');
 
         $this->coreConfigRepository = $coreConfigRepository;
+
+        $this->stripeConnectRepository = $stripeConnectRepository;
 
         $this->_config = request('_config');
 
@@ -91,7 +95,15 @@ class ConfigurationController extends Controller
         //     return redirect()->route('admin.configuration.paymentmethod', $slugs);
         // }
 
-        return view($this->_config['view'], ['config' => $this->configTree]);
+        $company = Company::getCurrent();
+
+        $stripeConnect = $this->stripeConnectRepository->findOneWhere([
+            'company_id' => $company->id
+            ]);
+        
+        $client_id = company()->getSuperConfigData('sales.paymentmethods.stripe.client_id');
+
+        return view($this->_config['view'], ['config' => $this->configTree,'stripeConnect'=>$stripeConnect, 'client_id'=>$client_id,'company'=>$company]);
     }
 
     /**

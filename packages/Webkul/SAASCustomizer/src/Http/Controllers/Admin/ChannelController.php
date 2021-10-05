@@ -184,7 +184,8 @@ class ChannelController extends Controller
         
         session()->flash('success', trans('admin::app.settings.channels.theme-success'));
         
-        return redirect()->route('admin.channels.edit',$id);
+        return redirect()->route('admin.theme.index');
+        // return redirect()->route('admin.channels.edit',$id);
         
     }
 
