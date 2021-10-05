@@ -19,8 +19,8 @@
 
                 @if (! $addresses->isEmpty())
                     <span class="account-action">
-                    <a href="{{ route('customer.address.create') }}">{{ __('shop::app.customer.account.address.index.add') }}</a>
-                </span>
+                        <a href="{{ route('customer.address.create') }}">{{ __('shop::app.customer.account.address.index.add') }}</a>
+                    </span>
                 @else
                     <span></span>
                 @endif

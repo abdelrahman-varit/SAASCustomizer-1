@@ -17,7 +17,7 @@
                     {{ __('shop::app.customer.account.order.index.title') }}
                 </span>
 
-                <div class="horizontal-rule"></div>
+                <span></span>
             </div>
 
             {!! view_render_event('bagisto.shop.customers.account.orders.list.before') !!}
