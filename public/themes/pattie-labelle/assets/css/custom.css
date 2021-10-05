@@ -2627,3 +2627,7 @@ section.review .review-layouter .review-form {
 div.table {
 	overflow-x: auto;
 }
+
+.header .currency-switcher {
+    display: inline-block !important;
+}
