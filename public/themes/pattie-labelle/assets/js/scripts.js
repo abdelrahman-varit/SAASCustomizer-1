@@ -53,7 +53,7 @@ $(window).on('load', function () {
     // All products that are swipable
 	if ($(".swipeable").length) {
 		new Swiper(".swipeable", {
-			slidesPerView: 1.5,
+			slidesPerView: 2.5,
 			spaceBetween: 16,
 			navigation: {
 				nextEl: ".swipeable .swiper-button-next",
@@ -80,7 +80,7 @@ $(window).on('load', function () {
 	// Recently Viewed Products
 	if ($(".recently-viewed-products").length) {
 		new Swiper(".recently-viewed-products", {
-			slidesPerView: 1.5,
+			slidesPerView: 2.5,
 			spaceBetween: 16,
 			navigation: {
 				nextEl: ".recently-viewed-products-container .swiper-button-next",
@@ -104,7 +104,7 @@ $(window).on('load', function () {
 	// Upselling Products
 	if ($(".upselling-products").length) {
 		new Swiper(".upselling-products", {
-			slidesPerView: 1.5,
+			slidesPerView: 2.5,
 			spaceBetween: 16,
 			navigation: {
 				nextEl: ".upselling-products .swiper-button-next",
@@ -125,7 +125,7 @@ $(window).on('load', function () {
 	// Related Products
 	if ($(".related-products").length) {
 		new Swiper(".related-products", {
-			slidesPerView: 1.5,
+			slidesPerView: 2.5,
 			spaceBetween: 16,
 			navigation: {
 				nextEl: ".related-products .swiper-button-next",
@@ -141,6 +141,14 @@ $(window).on('load', function () {
 			}
 		});
 	}
+
+	if ($(".search-name").length) {
+		$(".search-name").click(function () {
+			$("#search").click();
+		});
+	}
+
+	
 
     
 });

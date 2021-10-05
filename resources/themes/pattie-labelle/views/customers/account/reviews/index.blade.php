@@ -23,9 +23,6 @@
                         <a href="{{ route('customer.review.deleteall') }}">{{ __('shop::app.customer.account.wishlist.deleteall') }}</a>
                     </div>
                 @endif
-
-                <span></span>
-                <div class="horizontal-rule"></div>
             </div>
 
             {!! view_render_event('bagisto.shop.customers.account.reviews.list.before', ['reviews' => $reviews]) !!}

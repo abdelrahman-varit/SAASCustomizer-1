@@ -3,7 +3,7 @@
         <div class="menu-block">
             <div class="menu-block-title">
                 {{ trans($menuItem['name']) }}
-                <i class="icon icon-arrow-down right" id="down-icon"></i>
+                <i class="icon icon-arrow-down right las" id="down-icon"></i>
             </div>
 
             <div class="menu-block-content">
