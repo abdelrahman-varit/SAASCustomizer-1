@@ -43,7 +43,7 @@
 							<li><a href="/">Demo Sub Category 2</a></li> 
 						</ul>
 					</li>
-					<li><span>Demo Category 02</span></li>
+					<li><a href="/">Demo Category 02</a></li>
 				@endif
 			</ul>
 		</li>
