@@ -21,9 +21,9 @@ $header_contents = app('Webkul\Velocity\Repositories\ContentRepository')->getAll
                 <ul class='hidden-links hidden'></ul>
             </nav>            
         </div>
-        {{-- <div class="header-bottom-phone">
+        <div class="header-bottom-phone">
             <ul class="nav">
                 <li><a href="tel:+123456789">+123456789</a></li>
             </ul>
-        </div> --}}
+        </div>
     </div>

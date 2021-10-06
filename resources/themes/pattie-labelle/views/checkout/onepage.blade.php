@@ -91,7 +91,7 @@
                 </div>
             </div>
 
-            <div class="col-right">
+            <div class="col-right" :class="{ last_step: current_step == 4 }">
                 <div class="order-summary-section">
                     <summary-section :key="summeryComponentKey"></summary-section>
                     <coupon-component v-show="current_step == 4" @onApplyCoupon="getOrderSummary" @onRemoveCoupon="getOrderSummary"></coupon-component>
