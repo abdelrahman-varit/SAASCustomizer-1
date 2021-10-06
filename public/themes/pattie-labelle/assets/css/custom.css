@@ -2737,3 +2737,7 @@ section.product-detail div.layouter .form-container .details .product-price .spe
 .comparison-component>h1 {
 	position: relative;
 }
+
+section.cart .cart-item-list .single-item .item-footer .towishlist{
+	display: none;
+}
