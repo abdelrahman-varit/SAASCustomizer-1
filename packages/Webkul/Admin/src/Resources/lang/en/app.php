@@ -788,6 +788,7 @@ return [
         ],
         'channels' => [
             'title' => 'Channels',
+            'theme-title' => 'Themes',
             'add-title' => 'Add Channel',
             'edit-title' => 'Edit Channel',
             'save-btn-title' => 'Save Channel',
@@ -823,7 +824,9 @@ return [
 
         'themes' => [
             'title' => 'Template',
-            'add-title' => 'Save Template ',
+            'add-title' => 'Save Template',
+            'edit-title' => 'Edit Theme',
+            'save-btn-title' => 'Save Theme ',
         ],
 
         'sliders' => [
@@ -1389,6 +1392,7 @@ return [
             'index'=>'My Shop',
             'theme-selections'=>'Theme Selection',
             'theme'=>'Theme',
+            'channel'=>'Channel',
         ]
     ]
 ];

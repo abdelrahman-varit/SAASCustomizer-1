@@ -1,7 +1,7 @@
 @extends('admin::layouts.content')
 
 @section('page_title')
-    {{ __('admin::app.settings.channels.title') }}
+    {{ __('admin::app.settings.channels.theme-title') }}
 @stop
 
 @section('content')
@@ -30,7 +30,8 @@
                         <img src="{{ $theme['image_path'] }}" alt="{{$theme['name']}}">
                         <!-- <button type="button" onclick="themeSelection(1)" class="btn btn-primary">Select</button class="btn btn-primary"> -->
                         @if($themeCode==$channel->theme)
-                            <a type="button" href="{{route('admin.channels.edit',Company::getCurrent()->channel_id)}}" class="btn btn-primary">Customize</a>
+                            <!-- <a type="button" href="{{route('admin.channels.edit',Company::getCurrent()->channel_id)}}" class="btn btn-primary">Customize</a> -->
+                            <a type="button" href="{{route('admin.theme.edit')}}" class="btn btn-primary">Customize</a>
                         @else
                             <a type="button" onclick="return confirm('Do you want to change theme')" href="{{route('admin.channels.themes-select')}}?id={{Company::getCurrent()->channel_id}}&theme={{$themeCode}}" class="btn btn-primary">Select</a>
                         @endif

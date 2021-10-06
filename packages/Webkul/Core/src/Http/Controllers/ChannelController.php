@@ -4,6 +4,7 @@ namespace Webkul\Core\Http\Controllers;
 
 use Illuminate\Support\Facades\Event;
 use Webkul\Core\Repositories\ChannelRepository;
+use Company;
 
 class ChannelController extends Controller
 {
@@ -48,6 +49,18 @@ class ChannelController extends Controller
     public function themeindex()
     {
         return view($this->_config['view']);
+    }
+
+    public function themeEdit()
+    {
+        $velocityHelper = app('Webkul\Velocity\Helpers\Helper');
+        $this->locale = request()->get('locale') ?: app()->getLocale();
+        $this->channel = request()->get('channel') ?: 'default';
+        $metaData = $velocityHelper->getVelocityMetaData($this->locale, $this->channel);
+        $company = Company::getCurrent();
+        $channel = $this->channelRepository->with(['locales', 'currencies'])->findOrFail($company->channel_id);
+
+        return view($this->_config['view'], compact('channel','metaData'));
     }
 
 
@@ -122,12 +135,41 @@ class ChannelController extends Controller
         return view($this->_config['view'], compact('channel'));
     }
 
+    public function editChannel()
+    {
+        $company = Company::getCurrent();
+        $channel = $this->channelRepository->with(['locales', 'currencies'])->findOrFail($company->channel_id);
+
+        return view($this->_config['view'], compact('channel'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function themeEditStore(){
+        $theme = request()->get("theme");
+        $theme_color = request()->get("theme_color");
+        $data = ['theme'=>$theme];
+        
+        $velocityHelper = app('Webkul\Velocity\Helpers\Helper');
+        $this->locale = request()->get('locale') ?: app()->getLocale();
+        $this->channel = request()->get('channel') ?: 'default';
+        $metaData = $velocityHelper->getVelocityMetaData($this->locale, $this->channel);
+         
+        $metaData->theme_color = $theme_color;
+        $metaData->save();
+        $company = Company::getCurrent();
+        $channel = $this->channelRepository->with(['locales', 'currencies'])->findOrFail($company->channel_id);
+        $channel = $this->channelRepository->updateTheme($data, $company->channel_id);
+
+        session()->flash('success', trans('admin::app.settings.channels.theme-success'));
+
+        return redirect()->route($this->_config['redirect']);
+    }
+
     public function update($id)
     {
         $this->validate(request(), [

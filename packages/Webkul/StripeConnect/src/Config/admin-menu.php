@@ -21,5 +21,12 @@ return [
         'route' =>  'admin.configuration.paymentmethod-paypal',
         'sort' => 12,
         'icon-class' => '',
+    ],
+    [
+        'key' => 'payments.paymentmethod',
+        'name' => 'Payment Method',
+        'route' =>  'admin.configuration.paymentmethod-paymentmethod',
+        'sort' => 12,
+        'icon-class' => '',
     ]
 ];

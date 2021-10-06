@@ -291,7 +291,13 @@ return [
         'icon-class' => '',
     ],
 
-
+    [
+        'key'        => 'my-shop.channel',
+        'name'       => 'admin::app.admin.my-shop.channel',
+        'route'      => 'admin.channels.edits',
+        'sort'       => 2,
+        'icon-class' => '',
+    ],
     
     // [
     //     'key'        => 'my-shop.theme-selection',
