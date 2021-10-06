@@ -10,9 +10,11 @@
 
                 @foreach (\Illuminate\Support\Arr::get($menu->items, implode('.children.', array_slice($keys, 0, 2)) . '.children') as $item)
 
+
                     <li class="{{ $menu->getActive($item) }}">
                         <a href="{{ $item['url'] }}">
                             {{ trans($item['name']) }}
+                          
                         </a>
                     </li>
 
@@ -30,9 +32,15 @@
 
                 @foreach ($items as $key => $item)
 
+                    <?php
+                        if($key=="paymentmethods"){
+                            continue;
+                        }
+                    ?>
                     <li class="{{ $key == request()->route('slug2') ? 'active' : '' }}">
                         <a href="{{ route('admin.configuration.index', (request()->route('slug') . '/' . $key)) }}">
                             {{ trans($item['name']) }}
+                            
                         </a>
                     </li>
 

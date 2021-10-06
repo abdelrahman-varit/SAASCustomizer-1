@@ -135,7 +135,8 @@ class SellerRegistrationController extends Controller
             session()->flash('error', request()->input('error_description'));
         }
 
-        return redirect()->route('admin.stripe.seller');
+        return redirect()->route('admin.configuration.paymentmethod-stripe');
+        // return redirect()->route('admin.stripe.seller');
     }
 
     public function revokeAccess()
@@ -177,6 +178,7 @@ class SellerRegistrationController extends Controller
             session()->flash('info', $e->getMessage());
         }
 
-        return redirect()->route('admin.stripe.seller');
+        // return redirect()->route('admin.stripe.seller');
+        return redirect()->route('admin.configuration.paymentmethod-stripe');
     }
 }
