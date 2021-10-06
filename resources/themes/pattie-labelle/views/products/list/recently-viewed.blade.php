@@ -31,7 +31,7 @@
                         <div class="product-information text-center" v-if="product.urlKey">
                             <a :href="`/${product.urlKey}`">
                                 <div class="product-name">@{{ product.name }}</div>
-                                <div v-html="product.priceHTML"></div>
+                                <div class="product-price" v-html="product.priceHTML"></div>
                                 <star-ratings v-if="product.rating > 0"
                                     push-class="display-inbl"
                                     :ratings="product.rating">
