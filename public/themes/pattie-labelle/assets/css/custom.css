@@ -2383,6 +2383,7 @@ section.product-detail div.layouter .form-container div.product-image-group div 
 .comparison-component {
 	padding-top: 30px;
 	padding-bottom: 30px;
+	overflow-x: auto !important;
 }
 
 .comparison-component>h1::before {
@@ -2403,6 +2404,8 @@ section.product-detail div.layouter .form-container div.product-image-group div 
 .compare-products th,
 .compare-products td {
 	border: 1px solid #ddd;
+	font-weight: 300;
+	position: relative;
 }
 
 .compare-products {
@@ -2415,12 +2418,12 @@ section.product-detail div.layouter .form-container div.product-image-group div 
 
 .compare-products .product-price {
 	color: var(--primary) !important;
+	font-weight: 300;
 }
 
 .compare-products .addtocart {
 	padding: .25rem 1rem;
 	font-size: .875rem;
-	color: var(--primary) !important;
 }
 
 .account-table-content .compare-products {
@@ -2695,7 +2698,7 @@ section.cart .cart-content .left-side {
 }
 
 .product-price .regular-price {
-	color: inherit;
+	color: var(--dark);
 	opacity: .75;
 }
 
@@ -2705,4 +2708,32 @@ section.cart .cart-content .left-side {
 
 section.product-detail div.layouter .form-container .details .product-price .special-price {
 	font-size: inherit;
+}
+
+.compare-products h4 {
+	margin: 0;
+}
+
+.compare-products p {
+	margin: 0;
+}
+
+.compare-products .image-wrapper {
+	max-width: 120px;
+    margin: 0 auto;
+    display: block;
+}
+
+.compare-products .action {
+	position: absolute;
+	top: 20px;
+	right: 1rem;
+}
+
+.compare-products .sticker.sale{
+	font-weight: bold;
+}
+
+.comparison-component>h1 {
+	position: relative;
 }
