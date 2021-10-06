@@ -151,10 +151,10 @@
                     <accordian :title="'{{ __('admin::app.settings.channels.design') }}'" :active="true">
                     <div slot="header">{{ __('admin::app.settings.channels.design') }}</div>
                     <div slot="body">
-                            <div class="control-group">
+                            <!-- <div class="control-group">
                                 <label for="theme">{{ __('admin::app.settings.channels.theme') }}</label>
 
-                                <?php $selectedOption = old('theme') ?: $channel->theme ?>
+                                <?php //$selectedOption = old('theme') ?: $channel->theme ?>
 
                                 <select class="control" id="theme" name="theme">
                                     @foreach (config('themes.themes') as $themeCode => $theme)
@@ -163,7 +163,7 @@
                                         </option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> -->
 
                           
                             <div class="control-group">
