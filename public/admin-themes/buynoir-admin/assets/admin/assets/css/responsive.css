@@ -107,6 +107,10 @@
 		width: 100%;
 		position: static;
 	}
+	.content-container .content.full-page {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
 }
 
 @media (max-width: 991.98px) {
@@ -174,6 +178,9 @@
 	.theme-list {
 		grid-template-columns: repeat(3, 1fr);
 	}
+	.dashboard .sale-stock {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
 @media (min-width: 992px) {
@@ -194,9 +201,6 @@
 	}
 	.dashboard .dashboard-stats {
 		grid-template-columns: repeat(4, 1fr);
-	}
-	.dashboard .sale-stock {
-		grid-template-columns: repeat(2, 1fr);
 	}
 	.buynoir-navbar {
 		display: grid;
