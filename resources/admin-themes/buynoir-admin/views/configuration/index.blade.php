@@ -60,6 +60,7 @@
 
                         @foreach ($groups as $key => $item)
 
+                     
                             <accordian :title="'{{ __($item['name']) }}'" :active="{{ $loop->first ? 'true' : 'false' }}">
                             <div slot="header">{{ __($item['name'])  }}</div>
                             <div slot="body">
