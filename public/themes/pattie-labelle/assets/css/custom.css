@@ -1999,6 +1999,8 @@ section.product-detail div.layouter .form-container .details .quantity {
 	display: block !important;
 	padding-top: 0;
 	border: none;
+	overflow: hidden;
+	margin-bottom: 15px;
 }
 
 section.product-detail div.layouter .form-container .details .product-price {
@@ -2769,4 +2771,16 @@ section.product-detail div.layouter .form-container .details .grouped-product-co
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+section.product-detail div.layouter .form-container .details .bundle-options-wrapper .bundle-summary .bundle-price {
+	color: var(--primaryColor);
+	margin-top: 0;
+}
+
+
+section.product-detail div.layouter .form-container .details .bundle-options-wrapper .bundle-summary {
+    border-color: var(--borderColor) !important;
+	border-width: 1px 0;
+	border-style: solid;
 }
