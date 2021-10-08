@@ -33,7 +33,7 @@
         @if ( $channel && $channel->favicon_url)
             <link rel="icon" href="{{ $channel->favicon_url }}" />
         @else
-            <link rel="icon" href="{{ asset('buynoir/superlandpage/assets/img/favicon.png') }}" />
+            <link rel="icon" href="{{ asset('vendor/webkul/ui/assets/images/favicon.png') }}" />
         @endif
 
         

@@ -1,6 +1,6 @@
 :root {
 	--primaryColor: #00ACC2;
-	--primaryHoverColor: #00ACC2;
+	--primaryHoverColor: #009db1;
 	--darkColor: #1B1E22;
 	--grayColor: #B1B1B1;
 	--borderColor: #DDDDDD;
@@ -767,7 +767,14 @@ nav.greedy button {
 
 .product-price {
 	margin-bottom: 0;
+	font-size: 14px;
 	color: var(--primaryColor);
+	display: grid;
+}
+
+.product-price span {
+	width: 100%;
+	margin: 0 !important;
 }
 
 .text-center {
@@ -1632,6 +1639,7 @@ section.cart .cart-content {
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
+	margin-bottom: 50px;
 }
 
 section.cart .cart-item-list {
@@ -1670,7 +1678,7 @@ section.cart .cart-item-list .item .item-details .item-title {
 section.cart .cart-item-list .item .item-details .price {
 	color: var(--primaryColor);
 	margin-bottom: 0;
-	font-size: 1rem;
+	font-size: 14px;
 	line-height: 1;
 }
 
@@ -1991,6 +1999,8 @@ section.product-detail div.layouter .form-container .details .quantity {
 	display: block !important;
 	padding-top: 0;
 	border: none;
+	overflow: hidden;
+	margin-bottom: 15px;
 }
 
 section.product-detail div.layouter .form-container .details .product-price {
@@ -2572,7 +2582,6 @@ section.product-detail div.layouter .form-container div.product-image-group div 
 
 .price-from span:not([class]) {
 	font-weight: 300 !important;
-	line-height: 1;
 }
 
 .cp-round:after {
@@ -2749,4 +2758,29 @@ section.product-detail div.layouter .form-container .details .product-price .spe
 
 section.cart .cart-item-list .single-item .item-footer .towishlist{
 	display: none;
+}
+
+.price-from {
+	display: grid;
+}
+
+
+section.product-detail div.layouter .form-container .details .grouped-product-container .grouped-product-list ul li {
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--borderColor);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section.product-detail div.layouter .form-container .details .bundle-options-wrapper .bundle-summary .bundle-price {
+	color: var(--primaryColor);
+	margin-top: 0;
+}
+
+
+section.product-detail div.layouter .form-container .details .bundle-options-wrapper .bundle-summary {
+    border-color: var(--borderColor) !important;
+	border-width: 1px 0;
+	border-style: solid;
 }
