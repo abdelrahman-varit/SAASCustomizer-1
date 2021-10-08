@@ -15,13 +15,13 @@ return [
         'sort' => 1,
         'icon-class' => '',
     ],
-    [
-        'key' => 'payments.paypal',
-        'name' => 'Paypal',
-        'route' =>  'admin.configuration.paymentmethod-paypal',
-        'sort' => 12,
-        'icon-class' => '',
-    ],
+    // [
+    //     'key' => 'payments.paypal',
+    //     'name' => 'Paypal',
+    //     'route' =>  'admin.configuration.paymentmethod-paypal',
+    //     'sort' => 12,
+    //     'icon-class' => '',
+    // ],
     [
         'key' => 'payments.paymentmethod',
         'name' => 'Payment Method',
