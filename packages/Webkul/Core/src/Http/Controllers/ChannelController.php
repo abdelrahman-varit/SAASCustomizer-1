@@ -172,6 +172,7 @@ class ChannelController extends Controller
 
     public function update($id)
     {
+  
         $this->validate(request(), [
             'code'              => ['required', 'unique:channels,code,' . $id, new \Webkul\Core\Contracts\Validations\Code],
             'name'              => 'required',
@@ -205,7 +206,7 @@ class ChannelController extends Controller
         Event::dispatch('core.channel.update.after', $channel);
 
         session()->flash('success', trans('admin::app.settings.channels.update-success'));
-
+       
         return redirect()->route($this->_config['redirect']);
     }
 
