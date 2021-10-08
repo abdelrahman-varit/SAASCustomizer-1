@@ -50,9 +50,9 @@
     crossorigin="anonymous"></script>
 
     @if ($favicon = core()->getCurrentChannel()->favicon_url)
-        <link rel="icon" sizes="16x16" href="{{ $favicon }}" />
+        <link rel="icon" href="{{ $favicon }}" />
     @else
-        <link rel="icon" sizes="16x16" href="{{ bagisto_asset('images/favicon.ico') }}" />
+        <link rel="icon" href="{{ asset('themes/pattie-labelle/assets/images/favicon.png') }}" />
     @endif
 
     @yield('head')
