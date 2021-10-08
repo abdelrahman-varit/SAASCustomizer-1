@@ -12,7 +12,7 @@
         @if ($favicon = core()->getConfigData('general.design.admin_logo.favicon'))
             <link rel="icon" sizes="16x16" href="{{ \Illuminate\Support\Facades\Storage::url($favicon) }}" />
         @else
-            <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/favicon.ico') }}" />
+            <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/favicon.png') }}" />
         @endif
         
         <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/css/admin.css') }}">
