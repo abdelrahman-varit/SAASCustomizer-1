@@ -158,7 +158,7 @@ class ChannelController extends Controller
 
         session()->flash('success', trans('admin::app.settings.channels.update-success'));
 
-        return redirect()->route('admin.theme.index');
+        return redirect()->route('admin.channels.edits');
     }
 
     public function themesSelect(){

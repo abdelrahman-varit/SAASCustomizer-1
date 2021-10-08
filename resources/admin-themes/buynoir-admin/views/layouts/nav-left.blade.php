@@ -10,8 +10,8 @@
                     <ul class="buynoir-menubar-sub">
                         @foreach ($menuItem['children'] as $key => $menuItemChild)
                                 
-                            @if($key=="general" || $key=="content" || $key=="design")
-                                <li class="{{in_array(request()->route('slug2'),['general','content','design']) && ($key!='emails')?'current active':''}}"><a href="{{ route('admin.configuration.index', 'general/'. $key) }}">{{ __($menuItemChild['name']) }}</a></li>
+                            @if(($key=="general" || $key=="content" || $key=="design") )
+                                <li class="{{ (isset(request()->segments()[2]) && request()->segments()[2]=='general') && in_array(request()->route('slug2'),['general','content','design'])?'current active':'' }}"><a href="{{ route('admin.configuration.index', 'general/'. $key) }}">{{ __($menuItemChild['name']) }}</a></li>
                             @elseif($key=="catalog")
  
                                 <li class="{{in_array(request()->route('slug2'),['inventory','products','rich_snippets'])?'current active':''}}"><a href="{{ route('admin.configuration.index', 'catalog/inventory') }}">{{ __($menuItemChild['name']) }}</a></li>
@@ -22,11 +22,11 @@
                                 <li class="{{in_array(request()->route('slug2'),['shipping','carriers','paymentmethods','orderSettings'])?'current active':''}}"><a href="{{ route('admin.configuration.index', 'sales/shipping') }}">{{ __($menuItemChild['name']) }}</a></li>
                             @elseif($key=="emails")
  
-                                <li class="{{$key=='emails' && request()->route('slug1')=='emails'?'current active':''}}"><a href="{{ route('admin.configuration.index', 'emails/general') }}">{{ __($menuItemChild['name']) }}</a></li>
+                                <li class="{{$key=='emails' && (isset(request()->segments()[2]) && request()->segments()[2]=='emails')?'current active':''}}"><a href="{{ route('admin.configuration.index', 'emails/general') }}">{{ __($menuItemChild['name']) }}</a></li>
                             @elseif($key=="dropship")
                                 <li class="{{$key=='emails' && request()->route('slug1')=='dropship'?'current active':''}}"><a href="{{ route('admin.configuration.index', 'dropship/settings') }}">{{ __($menuItemChild['name']) }}</a></li>
                             @else
-                                <li class="{{ $menu->getActive($menuItemChild) ? 'current active' : '' }}"><a href="{{ $menuItemChild['url'] }}">{{ __($menuItemChild['name']) }}</a></li>
+                                <li class="{{ $menu->getActive($menuItemChild) && (isset(request()->segments()[2]) && request()->segments()[2]!='emails') ? 'current active' : '' }}"><a href="{{ $menuItemChild['url'] }}">{{ __($menuItemChild['name']) }}</a></li>
  
                             @endif
                         @endforeach
