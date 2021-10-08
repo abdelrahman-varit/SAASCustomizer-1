@@ -1,0 +1,14 @@
+:root {
+	--primaryColor: #0EA2E2;
+	--primaryHoverColor: #00C3E8;
+	--darkColor: #3F4656;
+	--grayColor: #B1B1B1;
+	--borderColor: #DDDDDD;
+	--bodyColor: #212529;
+	--lightColor: #F2F2F2;
+	--lightHoverColor: #E7E8E8;
+	--copyrightBGColor: #292F3B;
+	--footerBGColor: #3F4656;
+	--tableBorderColor: #DEE2E6;
+	--authBGColor: #0EA2E250;
+}
