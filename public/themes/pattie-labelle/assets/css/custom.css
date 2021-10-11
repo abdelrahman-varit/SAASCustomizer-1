@@ -363,6 +363,10 @@ a:active {
 	margin: 0;
 }
 
+.footer-copyright-inner p a {
+	color: inherit;
+}
+
 .footer-copyright-inner svg {
 	display: block;
 }
@@ -2783,4 +2787,19 @@ section.product-detail div.layouter .form-container .details .bundle-options-wra
     border-color: var(--borderColor) !important;
 	border-width: 1px 0;
 	border-style: solid;
+}
+
+.pagination .page-item {
+	border-color: var(--borderColor);
+	border-width: 1px;
+}
+
+.pagination .page-item.active {
+	background-color: var(--primaryColor);
+	border-color: var(--primaryColor);
+}
+
+.account-table-content .compare-products > span {
+	padding: 1rem;
+	display: block;
 }

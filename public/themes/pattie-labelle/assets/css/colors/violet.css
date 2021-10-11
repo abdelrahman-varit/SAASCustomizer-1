@@ -1,0 +1,22 @@
+:root {
+    --primaryColor: #CE9FFF;
+    --primaryHoverColor: #8D74A6;
+    --darkColor: #333333;
+    --grayColor: #B1B1B1;
+    --borderColor: #DDDDDD;
+    --bodyColor: #212529;
+    --lightColor: #F2F2F2;
+    --lightHoverColor: #E7E8E8;
+    --copyrightBGColor: #795B97;
+    --footerBGColor: #CE9FFF;
+    --tableBorderColor: #DEE2E6;
+    --authBGColor: #2E0C4750;
+}
+
+.footer {
+    color: white;
+}
+
+.footer-ct-content ul[type="none"] a {
+    color: white;
+}
