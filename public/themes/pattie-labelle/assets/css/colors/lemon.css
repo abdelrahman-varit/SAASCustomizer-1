@@ -1,0 +1,35 @@
+:root {
+    --primaryColor: #8CBF1C;
+    --primaryHoverColor: #7b973e;
+    --darkColor: #444839;
+    --grayColor: #B1B1B1;
+    --borderColor: #DDDDDD;
+    --bodyColor: #212529;
+    --lightColor: #F2F2F2;
+    --lightHoverColor: #E7E8E8;
+    --copyrightBGColor: #696969;
+    --footerBGColor: #E6E7E9;
+    --tableBorderColor: #DEE2E6;
+    --authBGColor: #8CBF1C50;
+}
+
+.footer {
+    color: var(--bodyColor);
+}
+
+.footer-ct-content ul[type="none"] a {
+    color: var(--bodyColor);
+}
+
+.footer-ct-content h2,
+.footer-rt-content h2 {
+    color: var(--darkColor);
+}
+
+.shipment-option h4 {
+    color: var(--darkColor);
+}
+
+.footer.footer-copyright {
+    color: white;
+}
