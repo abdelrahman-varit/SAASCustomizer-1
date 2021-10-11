@@ -100,6 +100,9 @@
 	section.cart .cart-item-list {
 		grid-template-columns: repeat(2, 1fr);
 	}
+	.product-policy-container>.row {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 @media (min-width: 992px) {
