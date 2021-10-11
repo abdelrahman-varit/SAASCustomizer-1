@@ -135,7 +135,8 @@ p {
 }
 
 .shipment-option h4 {
-    margin-top: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px !important;
 }
 
 .payment-methods,
@@ -147,6 +148,8 @@ p {
 
 .payment-methods .method-sticker,
 .shipping-methods .method-sticker {
-    border: 1px solid white;
     padding: 3px 12px;
+    background-color: white;
+    color: var(--bodyColor);
+    cursor: default;
 }
