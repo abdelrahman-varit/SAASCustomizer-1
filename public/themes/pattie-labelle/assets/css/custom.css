@@ -2784,3 +2784,13 @@ section.product-detail div.layouter .form-container .details .bundle-options-wra
 	border-width: 1px 0;
 	border-style: solid;
 }
+
+.pagination .page-item {
+	border-color: var(--borderColor);
+	border-width: 1px;
+}
+
+.pagination .page-item.active {
+	background-color: var(--primaryColor);
+	border-color: var(--primaryColor);
+}
