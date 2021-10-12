@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/tinymce-fonts.css') }}">
 
 
+    <link rel="stylesheet" href="{{ asset('themes/toni-braxton/assets/css/greedynav.css') }}">
+
     <link rel="stylesheet" href="{{ asset('themes/toni-braxton/assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('themes/toni-braxton/assets/css/responsive.css') }}">
 
@@ -269,6 +271,8 @@
         {!! core()->getConfigData('general.content.custom_scripts.custom_javascript') !!}
     </script>
 
+
+    <script src="{{ asset('themes/toni-braxton/assets/js/greedynav.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('themes/toni-braxton/assets/js/scripts.js') }}"></script>
 

@@ -421,3 +421,52 @@ div.product-policy-container .card {
 .software-description .border-bottom {
     margin-bottom: 15px;
 }
+
+.bn-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.bn-header-left {
+    
+}
+
+.bn-header .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.bn-header .nav li {
+    line-height: 1;
+}
+
+.bn-header .nav a {
+    display: inline-flex;
+    align-items: center;
+    color: black;
+}
+
+.bn-header .nav a .la-angle-down {
+    margin-left: 5px;
+    font-size: .875rem;
+}
+
+.bn-header-middle {
+    display: flex;
+    justify-content: center;
+}
+
+.bn-header-middle a {
+    display: inline-block;
+}
+
+.bn-header-right {
+    
+}
