@@ -26,7 +26,7 @@
                             @elseif($key=="dropship")
                                 <li class="{{$key=='emails' && request()->route('slug1')=='dropship'?'current active':''}}"><a href="{{ route('admin.configuration.index', 'dropship/settings') }}">{{ __($menuItemChild['name']) }}</a></li>
                             @else
-                                <li class="{{ $menu->getActive($menuItemChild) && (isset(request()->segments()[2]) && request()->segments()[2]!='emails') ? 'current active' : '' }}"><a href="{{ $menuItemChild['url'] }}">{{ __($menuItemChild['name']) }}</a></li>
+                                <li class="{{ $menu->getActive($menuItemChild)   ? 'current active' : '' }}"><a href="{{ $menuItemChild['url'] }}">{{ __($menuItemChild['name']) }}</a></li>
  
                             @endif
                         @endforeach

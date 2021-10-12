@@ -201,13 +201,17 @@ return [
         'route'      => 'admin.roles.index',
         'sort'       => 2,
         'icon-class' => '',
-    ], [
-        'key'        => 'settings.sliders',
-        'name'       => 'admin::app.layouts.sliders',
-        'route'      => 'admin.sliders.index',
-        'sort'       => 7,
-        'icon-class' => '',
-    ], [
+    ],
+    
+    // [
+    //     'key'        => 'settings.sliders',
+    //     'name'       => 'admin::app.layouts.sliders',
+    //     'route'      => 'admin.sliders.index',
+    //     'sort'       => 7,
+    //     'icon-class' => '',
+    // ],
+
+    [
         'key'        => 'settings.taxes',
         'name'       => 'admin::app.layouts.taxes',
         'route'      => 'admin.tax-categories.index',
@@ -243,22 +247,37 @@ return [
         'route'      => 'admin.cart-rules.index',
         'sort'       => 2,
         'icon-class' => '',
-    ], [
-        'key'        => 'cms',
+    ], 
+
+    [
+        'key'        => 'my-shop.meta-data',
+        'name'       => 'velocity::app.admin.layouts.meta-data',
+        'route'      => 'velocity.admin.meta-data',
+        'sort'       => 2,
+        'icon-class' => '',
+    ],
+
+    //website menu
+        
+    [
+        'key'        => 'website',
         'name'       => 'admin::app.layouts.cms',
         'route'      => 'admin.cms.index',
         'sort'       => 5,
         'icon-class' => 'cms-icon',
-    ], [
-        'key'        => 'cms.pages',
+    ], 
+    
+    [
+        'key'        => 'website.pages',
         'name'       => 'admin::app.layouts.cms-pages',
         'route'      => 'admin.cms.index',
         'sort'       => 1,
         'icon-class' => '',
     ],
 
+
     [
-        'key'        => 'cms.header',
+        'key'        => 'website.header',
         'name'       => 'velocity::app.admin.layouts.header-content',
         'route'      => 'velocity.admin.content.index',
         'sort'       => 4,
@@ -266,6 +285,24 @@ return [
     ],
 
   
+    [
+        'key'        => 'website.footer',
+        'name'       => 'admin::app.layouts.footer',
+        'route'      => 'admin.website.footer',
+        'sort'       => 5,
+        'icon-class' => '',
+    ],
+
+
+    [
+        'key'        => 'website.sliders',
+        'name'       => 'admin::app.layouts.sliders',
+        'route'      => 'admin.sliders.index',
+        'sort'       => 7,
+        'icon-class' => '',
+    ],
+
+
 
     [
         'key'        => 'my-shop',
@@ -283,13 +320,7 @@ return [
         'sort'       => 1,
         'icon-class' => 'catalog-icon',
     ],
-    [
-        'key'        => 'my-shop.meta-data',
-        'name'       => 'velocity::app.admin.layouts.meta-data',
-        'route'      => 'velocity.admin.meta-data',
-        'sort'       => 2,
-        'icon-class' => '',
-    ],
+  
 
     [
         'key'        => 'my-shop.channel',

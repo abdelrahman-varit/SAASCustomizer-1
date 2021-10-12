@@ -4,6 +4,7 @@ namespace Webkul\CMS\Http\Controllers\Admin;
 
 use Webkul\CMS\Http\Controllers\Controller;
 use Webkul\CMS\Repositories\CmsRepository;
+use Company;
 
  class PageController extends Controller
 {
@@ -32,6 +33,7 @@ use Webkul\CMS\Repositories\CmsRepository;
         $this->middleware('admin');
 
         $this->cmsRepository = $cmsRepository;
+        
 
         $this->_config = request('_config');
     }
@@ -44,6 +46,18 @@ use Webkul\CMS\Repositories\CmsRepository;
     public function index()
     {
         return view($this->_config['view']);
+    }
+
+    public function websiteFooter()
+    {
+        $velocityHelper = app('Webkul\Velocity\Helpers\Helper');
+        $this->locale = request()->get('locale') ?: app()->getLocale();
+        $this->channel = request()->get('channel') ?: 'default';
+        $metaData = $velocityHelper->getVelocityMetaData($this->locale, $this->channel);
+        $company = Company::getCurrent();
+        //$channel = $this->channelRepository->with(['locales', 'currencies'])->findOrFail($company->channel_id);
+
+        return view($this->_config['view'],compact('metaData'));
     }
 
     /**
