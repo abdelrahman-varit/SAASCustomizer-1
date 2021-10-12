@@ -47,7 +47,7 @@
     @if ($favicon = core()->getCurrentChannel()->favicon_url)
         <link rel="icon" href="{{ $favicon }}" />
     @else
-        <link rel="icon" href="{{ asset('themes/aretha-franklin/assets/images/favicon.png') }}" />
+        <link rel="icon" href="{{ asset('vendor/webkul/ui/assets/images/favicon.png') }}" />
     @endif
 
     @yield('head')

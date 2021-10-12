@@ -1854,9 +1854,8 @@ section.review .review-layouter {
 .product-card .product-price {
 	margin-bottom: 0;
 	color: #cb1a1c !important;
-	display: flex;
-	justify-content: center;
-	gap: 10px;
+	display: grid;
+	font-size: 14px;
 }
 
 .main-container-wrapper .product-card .sticker.sale {
@@ -1865,7 +1864,6 @@ section.review .review-layouter {
 
 .product-price .regular-price {
 	color: #cb1a1c;
-	order: 1;
 	margin: 0;
 	font-weight: 300;
 }
@@ -1876,16 +1874,12 @@ section.review .review-layouter {
 }
 
 .product-card .price-from {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	gap: 10px;
-	align-items: center;
+	display: grid;
 }
 
 .product-card .price-from span {
 	margin: 0;
-	width: auto;
+	width: 100%;
 }
 
 .recetly-viewed-products-wrapper {
@@ -1904,16 +1898,15 @@ section.review .review-layouter {
 
 .card-current-price {
 	color: #cb1a1c !important;
-	display: flex;
+	display: grid;
 	justify-content: center;
-	gap: 10px;
 	font-weight: bold;
+	font-size: 14px;
 }
 
 .card-current-price .regular-price {
 	font-weight: 300;
 	text-decoration: line-through;
-	order: 1;
 }
 
 .card-current-price .special-price {

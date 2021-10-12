@@ -1,0 +1,25 @@
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {
+    .footer-copyright-inner {
+        flex-direction: row;
+    }
+    .footer-statics {
+        flex-direction: row;
+        gap: 2rem;
+    }
+    .advertisement-four-container,
+    .advertisement-three-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .footer-ct-content .row {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 1200px) {
+    
+}
