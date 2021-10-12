@@ -26,4 +26,13 @@ $(document).ready(function(){
         $(this).closest(".checkout-method-group").addClass("active");
     });
 
+
+    $(".featured-heading .ftitle").each(function(index, elem) {
+        let oldTitle = elem.innerHTML; // Hello My Shop
+        let newTitle1 = oldTitle.substr(0, oldTitle.indexOf(' ')); //Hello
+        let newTitle2 = oldTitle.substr(oldTitle.indexOf(' ')+1); // My Shop
+        elem.innerHTML = newTitle1 + "<span>" + newTitle2 + "</span>";
+    });
+
+
 });

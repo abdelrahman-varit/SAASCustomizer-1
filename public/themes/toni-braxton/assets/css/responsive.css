@@ -8,6 +8,10 @@
         flex-direction: row;
         gap: 2rem;
     }
+    .advertisement-four-container,
+    .advertisement-three-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media (min-width: 992px) {
