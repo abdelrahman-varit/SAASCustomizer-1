@@ -42,7 +42,7 @@ return [
         'layouts'   => [
             'velocity' => 'Velocity',
             'cms-pages' => 'CMS Pages',
-            'meta-data' => 'Meta Data',
+            'meta-data' => 'Layout',
             'category-menu' => 'Category Menu',
             'header-content' => 'Header',
         ],

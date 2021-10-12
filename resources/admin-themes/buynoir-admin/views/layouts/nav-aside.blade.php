@@ -20,7 +20,7 @@
             @foreach ($config->items as $key => $item)
                 <li class="{{ $item['key'] == request()->route('slug') ? 'active' : '' }}">
                     <a href="{{ route('admin.configuration.index', request()->route('slug').'/'.$key) }}">
-                        {{ isset($item['name']) ? trans($item['name']) : '' }} one 
+                        {{ isset($item['name']) ? trans($item['name']) : '' }}  
 
                         @if ($item['key'] == request()->route('slug'))
                             <i class="angle-right-icon"></i>

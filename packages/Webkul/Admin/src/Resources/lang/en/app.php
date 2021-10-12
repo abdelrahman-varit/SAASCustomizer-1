@@ -87,6 +87,7 @@ return [
         'cms-pages' => 'Web Pages',
         'emails' => 'Emails',
         'customer' => 'Customers',
+        'footer' => 'Footer',
     ],
 
     'acl' => [
@@ -1393,6 +1394,12 @@ return [
             'theme-selections'=>'Theme Selection',
             'theme'=>'Theme',
             'channel'=>'Channel',
+        ]
+    ],
+    'website'=>[
+        'footer'=>[
+            'title'=>'Footer',
+            'image-title'=>'Footer Background Image',
         ]
     ]
 ];
