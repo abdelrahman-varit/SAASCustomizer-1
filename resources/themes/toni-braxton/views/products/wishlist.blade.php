@@ -16,9 +16,8 @@
             title="{{ __('shop::app.customer.account.wishlist.add-wishlist-text') }}"
         @endif
         id="wishlist-changer"
-        style="margin-right: 15px;"
         href="{{ route('customer.wishlist.add', $product->product_id) }}">
-        <i class="icon wishlist-icons"></i>
+        <i class="las la-heart"></i>
     </a>
     
     @endif 
@@ -34,8 +33,7 @@
             title="{{ __('shop::app.customer.account.wishlist.add-wishlist-text') }}"
         @endif
         id="wishlist-changer"
-        style="margin-right: 15px;"
         href="{{ route('customer.wishlist.add', $product->product_id) }}">
-        <i class="icon wishlist-icons"></i>
+        <i class="las la-heart"></i>
     </a>
 @endguest
