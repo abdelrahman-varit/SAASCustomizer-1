@@ -79,7 +79,7 @@ a:hover,
 a:visited,
 a:focus,
 a:active {
-	color: var(--primaryColor);
+	color: inherit;
 }
 
 .control-group .control-error {

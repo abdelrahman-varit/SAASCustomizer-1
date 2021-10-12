@@ -7,9 +7,36 @@
     }
 ?>
 
+<div class="main-container-wrapper">
+    <div class="bn-header">
+    <div class="bn-header-left">
+        @include('shop::layouts.header.nav-menu.navmenu')
+    </div>
+    <div class="bn-header-middle">
+        <a href="{{ route('shop.home.index') }}">
+            @if ($logo = core()->getCurrentChannel()->logo_url)
+                <img class="logo" src="{{ $logo }}" />
+            @else
+                <img class="logo" src="{{asset('/themes/toni-braxton/assets/images/logo.svg') }}" />
+            @endif
+        </a>
+    </div>
+    <div class="bn-header-right">
+        <ul class="nav">
+            <li><a href="#"><i class="las la-shopping-bag"></i></a></li>
+            <li><a href="#"><i class="las la-exchange-alt"></i></a></li>
+            <li><a href="#"><i class="las la-heart"></i></a></li>
+            <li><a href="#"><i class="las la-user"></i></a></li>
+            <li><a href="#">Currency <i class="las la-angle-down"></i></a></li>
+            <li><a href="#">English <i class="las la-angle-down"></i></a></li>
+            <li><a href="#"><i class="las la-search"></i></a></li>
+        </ul>
+    </div>
+</div>
+</div>
 
 
-<div class="header" id="header">
+<div class="header" id="header" style="display: none">
 
     <div class="top-bar">
         <div class="main-container-wrapper">
@@ -342,7 +369,7 @@
     </div>
 
     <div class="header-bottom" id="header-bottom">
-        @include('shop::layouts.header.nav-menu.navmenu')
+        {{-- @include('shop::layouts.header.nav-menu.navmenu') --}}
     </div>
 
     <div class="mt-10 search-responsive" id="search-responsive">

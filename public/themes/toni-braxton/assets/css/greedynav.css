@@ -1,0 +1,65 @@
+nav.greedy {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+nav.greedy button {
+	padding: 0;
+	color: inherit;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+}
+
+nav.greedy button.hidden {
+	overflow: hidden;
+	width: 0;
+	padding: 0;
+	transition: none;
+	border-right: .5rem solid #00665b;
+}
+
+nav.greedy ul.links {
+	display: flex;
+	overflow: hidden;
+	flex: 1;
+	list-style: none;
+}
+
+nav.greedy ul.links li + li {
+	padding-left: 1rem;
+}
+nav.greedy ul.links li {
+	flex: none;
+}
+
+nav.greedy ul.links li a {
+	text-decoration: none;
+	color: inherit;
+}
+
+nav.greedy ul.hidden-links {
+	position: absolute;
+	right: 0;
+	top: 100%;
+	list-style: none;
+	margin: 10px 0 0 0;
+	padding: 0.25rem 0;
+	background-color: white;
+	z-index: 999;
+	min-width: 18rem;
+	-webkit-box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+	-moz-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+}
+
+nav.greedy ul.hidden-links.hidden {
+	display: none;
+}
+
+nav.greedy ul.hidden-links li a {
+	color: black;
+	padding: 0.5rem 1rem;
+	display: block;
+}
