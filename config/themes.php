@@ -49,6 +49,14 @@ return [
             'name' => 'Pattie LaBelle',
             'parent' => 'default'
         ],
+
+        'toni-braxton' => [
+            'views_path' => 'resources/themes/toni-braxton/views',
+            'assets_path' => 'public/themes/toni-braxton/assets',
+            'image_path' => '/themes/thumbnails/toni-braxton.jpg',
+            'name' => 'Toni Braxton',
+            'parent' => 'default'
+        ],
     ],
 
     'admin-default' => 'buynoir-admin',

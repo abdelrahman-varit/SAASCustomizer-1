@@ -1,0 +1,21 @@
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {
+    .footer-copyright-inner {
+        flex-direction: row;
+    }
+    .footer-statics {
+        flex-direction: row;
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .footer-ct-content .row {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 1200px) {
+    
+}

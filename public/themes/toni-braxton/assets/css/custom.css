@@ -1,0 +1,155 @@
+:root {
+    --primary: #FC6700;
+    --selection: #FC670060;
+    --footerBG: #333333;
+    --copyrightBG: #1C1D21;
+    --bodyBG: #F6F6F6;
+    --bodyColor: #333333;
+}
+
+* {
+    font-family: 'Karla', sans-serif;
+}
+
+a {
+    -webkit-transition: .35s;
+    -moz-transition: .35s;
+    transition: .35s;
+}
+
+body {
+    letter-spacing: normal;
+    line-height: 1.5;
+    font-weight: 300;
+    color: var(--bodyColor);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: inherit;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.footer {
+    background-color: var(--footerBG);
+    padding-left: 0;
+    padding-right: 0;
+    color: white;
+}
+
+.footer a {
+    color: white;
+}
+
+.footer a:hover{
+    color: var(--primary);
+}
+
+.footer.footer-copyright {
+    background-color: var(--copyrightBG);
+}
+
+#scrollTop {
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+    background-color: var(--primary);
+    color: white;
+    display: block;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    line-height: 55px;
+    z-index: 9998;
+    cursor: pointer;
+}
+
+::selection {
+    background-color: var(--selection);
+    color: #ffffff;
+}
+
+.footer-ct-content ul[type="none"] li {
+    position: relative;
+    padding-left: 1.25rem;
+}
+
+.footer-ct-content ul[type="none"] a::before {
+    content: "\f068";
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+    position: absolute;
+    top: .25rem;
+    left: 0;
+    font-size: .75rem;
+}
+
+.footer-ct-content ul[type="none"] a:hover {
+    text-decoration: underline;
+}
+
+.footer-ct-content .row>* {
+    flex: 1;
+}
+
+.footer-ct-content .row {
+    flex-direction: column;
+}
+
+.footer-statics>* {
+    flex: 1;
+}
+
+.row {
+    place-content: flex-start !important;
+    align-items: flex-start;
+}
+
+.footer-copyright-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.footer-copyright-inner p {
+    margin: 0;
+}
+
+.footer-copyright-inner svg {
+    display: block;
+}
+
+.footer-statics {
+    gap: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    flex-direction: column;
+}
+
+.shipment-option h4 {
+    margin-top: 20px;
+    margin-bottom: 10px !important;
+}
+
+.payment-methods,
+.shipping-methods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.payment-methods .method-sticker,
+.shipping-methods .method-sticker {
+    padding: 3px 12px;
+    background-color: white;
+    color: var(--bodyColor);
+    cursor: default;
+}
