@@ -14,9 +14,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         @if (company()->getSuperConfigData('general.design.super.logo_image'))
-            <link rel="icon" sizes="16x16" href="{{ \Illuminate\Support\Facades\Storage::url(company()->getSuperConfigData('general.design.super.logo_image')) }}" />
+            <link rel="icon" href="{{ \Illuminate\Support\Facades\Storage::url(company()->getSuperConfigData('general.design.super.logo_image')) }}" />
         @else
-            <link rel="icon" sizes="16x16" href="{{ asset('vendor/webkul/ui/assets/images/favicon.ico') }}" />
+            <link rel="icon" href="{{ asset('vendor/webkul/ui/assets/images/favicon.png') }}" />
         @endif
 
 
