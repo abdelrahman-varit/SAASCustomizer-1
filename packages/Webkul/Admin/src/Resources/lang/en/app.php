@@ -1399,7 +1399,7 @@ return [
     'website'=>[
         'footer'=>[
             'title'=>'Footer',
-            'image-title'=>'Footer Background Image',
+            'image-title'=>'Footer Background Image (Size: 1150 X 400)',
         ]
     ]
 ];

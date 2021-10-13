@@ -7,7 +7,7 @@
 @section('content')
     <div class="content">
 
-        <form method="POST" action="{{ route('admin.theme.edit-store') }}" @submit.prevent="onSubmit" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.website.footer') }}" @submit.prevent="onSubmit" enctype="multipart/form-data">
             <div class="page-header">
                 <div class="page-title">
                     <h1>
@@ -76,14 +76,13 @@
                 
                              
    
-                    <div class="control-group">
+                            <div class="control-group">
                                 <label>{{ __('admin::app.website.footer.image-title') }}</label>
 
-                                <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="logo" :multiple="false" :images='"{{'' }}"'></image-wrapper>
+                                <image-wrapper :button-label="'{{ __('admin::app.catalog.products.add-image-btn-title') }}'" input-name="footer_image" :multiple="false" :images='"{{'/storage/'.$metaData->footer_image}}"'></image-wrapper>
                             </div>
                     
-                
-
+    
                     </div>
                     </accordian>
                 </div>
@@ -98,7 +97,7 @@
     <script>
         $(document).ready(function () {
             tinymce.init({
-                selector: 'textarea#home_page_content,textarea#footer_content',
+                selector: 'textarea#footer_left_content,textarea#footer_middle_content,textarea#subscription_bar_content',
                 height: 200,
                 width: "100%",
                 plugins: 'image imagetools media wordcount save fullscreen code table lists link hr',

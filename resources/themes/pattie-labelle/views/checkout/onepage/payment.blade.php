@@ -9,7 +9,11 @@
             <div class="control-group" :class="[errors.has('payment-form.payment[method]') ? 'has-error' : '']">
 
                 @foreach ($paymentMethods as $payment)
-
+                    @php
+                        if($payment['method']=="paypal_standard"){
+                            continue;
+                        }
+                    @endphp
                     {!! view_render_event('bagisto.shop.checkout.payment-method.before', ['payment' => $payment]) !!}
 
                     <div class="checkout-method-group mb-20 {{ $loop->first ? 'active': '' }}">
