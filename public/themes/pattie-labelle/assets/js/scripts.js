@@ -147,8 +147,5 @@ $(window).on('load', function () {
 			$("#search").click();
 		});
 	}
-
-	
-
     
 });
