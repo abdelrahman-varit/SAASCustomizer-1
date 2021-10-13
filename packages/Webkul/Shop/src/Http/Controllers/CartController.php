@@ -177,6 +177,10 @@ class CartController extends Controller
                     $images = $item->product->getTypeInstance()->getBaseImage($item);
                 }
             }
+
+    
+                $cart_list->base_grand_total = core()->currency($cart_list->base_grand_total);
+                $cart_list->base_sub_total = core()->currency($cart_list->base_sub_total);
            
             return response()->json([
                 'status'=>'success',
@@ -211,9 +215,12 @@ class CartController extends Controller
                     ]
                 ];
                 $result = Cart::updateItems($data);
+                $cart_data = Cart::getCart();
+                $cart_data->base_grand_total = core()->currency($cart_data->base_grand_total);
+                $cart_data->base_sub_total = core()->currency($cart_data->base_sub_total);
                 return response()->json([
                     'status'=>'success',
-                    'data'=>Cart::getCart()
+                    'data'=>$cart_data
                 ]);
             }else{
                 $result = Cart::updateItems(request()->all());

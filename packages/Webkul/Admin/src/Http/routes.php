@@ -808,10 +808,16 @@ Route::group(['middleware' => ['web']], function () {
                     'redirect' => 'admin.cms.index',
                 ])->name('admin.cms.mass-delete');
 
+                
                 // Route::post('/delete/{id}', 'Webkul\CMS\Http\Controllers\Admin\PageController@delete')->defaults('_config', [
                 //     'redirect' => 'admin.cms.index'
                 // ])->name('admin.cms.delete');
             });
+
+            Route::get('website/footer', 'Webkul\CMS\Http\Controllers\Admin\PageController@websiteFooter')->defaults('_config', [
+                'view' => 'admin::website.footer'
+            ])->name('admin.website.footer');
+
         });
     });
 });
