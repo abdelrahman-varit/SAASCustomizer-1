@@ -250,7 +250,7 @@ return [
     ], 
 
     [
-        'key'        => 'my-shop.meta-data',
+        'key'        => 'website.meta-data',
         'name'       => 'velocity::app.admin.layouts.meta-data',
         'route'      => 'velocity.admin.meta-data',
         'sort'       => 2,

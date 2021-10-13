@@ -818,6 +818,11 @@ Route::group(['middleware' => ['web']], function () {
                 'view' => 'admin::website.footer'
             ])->name('admin.website.footer');
 
+            Route::put('website/footer', 'Webkul\CMS\Http\Controllers\Admin\PageController@websiteFooterStore')->defaults('_config', [
+                'redirect' => 'admin.website.footer'
+            ])->name('admin.website.footerstore');
+
+
         });
     });
 });

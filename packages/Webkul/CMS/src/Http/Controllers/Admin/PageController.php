@@ -4,6 +4,9 @@ namespace Webkul\CMS\Http\Controllers\Admin;
 
 use Webkul\CMS\Http\Controllers\Controller;
 use Webkul\CMS\Repositories\CmsRepository;
+use Webkul\Core\Repositories\ChannelRepository;
+use Webkul\Velocity\Repositories\VelocityMetadataRepository;
+use Illuminate\Support\Facades\Storage;
 use Company;
 
  class PageController extends Controller
@@ -22,18 +25,26 @@ use Company;
      */
     protected $cmsRepository;
 
+
+    protected $channelRepository;
+
+    protected $velocityMetaDataRepository;
+
     /**
      * Create a new controller instance.
      *
      * @param  \Webkul\CMS\Repositories\CmsRepository  $cmsRepository
      * @return void
      */
-    public function __construct(CmsRepository $cmsRepository)
+    public function __construct(CmsRepository $cmsRepository, ChannelRepository $channelRepository, VelocityMetadataRepository $velocityMetadataRepository)
     {
         $this->middleware('admin');
 
         $this->cmsRepository = $cmsRepository;
         
+        $this->channelRepository = $channelRepository;
+
+        $this->velocityMetaDataRepository = $velocityMetadataRepository;
 
         $this->_config = request('_config');
     }
@@ -59,6 +70,58 @@ use Company;
 
         return view($this->_config['view'],compact('metaData'));
     }
+
+    public function websiteFooterStore()
+    {
+        $velocityHelper = app('Webkul\Velocity\Helpers\Helper');
+        $this->locale = request()->get('locale') ?: app()->getLocale();
+        $this->channel = request()->get('channel') ?: 'default';
+        $metaData = $velocityHelper->getVelocityMetaData($this->locale, $this->channel);
+        $company = Company::getCurrent();
+        $channel = $this->channelRepository->with(['locales', 'currencies'])->findOrFail($company->channel_id);
+        $this->validate(request(), [
+            'footer_image.*'            => 'mimes:jpeg,jpg,bmp,png',
+        ]);
+
+        $data = request()->all();
+ 
+        //$metaData->save();
+        $metaData->subscription_bar_content = request()->get('subscription_bar_content');
+        $metaData->footer_left_content = request()->get('footer_left_content');
+        $metaData->footer_middle_content = request()->get('footer_middle_content');
+        $this->uploadImages($data, $metaData);
+        
+        
+        return redirect()->route($this->_config['redirect']);
+    }
+
+
+    public function uploadImages($data, $metaData, $type = "footer_image")
+    {
+        if (isset($data[$type])) {
+            foreach ($data[$type] as $imageId => $image) {
+                $file = $type . '.' . $imageId;
+                $dir = 'website/footer/' . $metaData->id;
+
+                if (request()->hasFile($file)) {
+                    if ($metaData->{$type}) {
+                        Storage::delete($metaData->{$type});
+                    }
+                    request()->file($file)->store($dir);
+                     $metaData->{$type} = request()->file($file)->store($dir);
+                     $metaData->save();
+                }
+            }
+        } else {
+            if ($metaData->{$type}) {
+                Storage::delete($metaData->{$type});
+            }
+
+             $metaData->{$type} = null;
+             $metaData->save();
+        }
+    }
+
 
     /**
      * To create a new CMS page

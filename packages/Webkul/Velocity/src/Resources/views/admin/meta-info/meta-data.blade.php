@@ -322,52 +322,7 @@
                 </div>
             </accordian>
 
-            <accordian :title="'{{ __('velocity::app.admin.meta-data.footer') }}'" :active="false">
-                <div slot="header">{{ __('velocity::app.admin.meta-data.footer') }}</div>
-                <div slot="body">
-                    <div class="control-group">
-                        <label style="width:100%;">
-                            {{ __('velocity::app.admin.meta-data.subscription-content') }}
-                            <span class="locale">[{{ $metaData ? $metaData->channel : $channel }} - {{ $metaData ? $metaData->locale : $locale }}]</span>
-                        </label>
-
-                        <textarea
-                            class="control"
-                            id="subscription_bar_content"
-                            name="subscription_bar_content">
-                            {{ $metaData ? $metaData->subscription_bar_content : '' }}
-                        </textarea>
-                    </div>
-
-                    <div class="control-group">
-                        <label style="width:100%;">
-                            {{ __('velocity::app.admin.meta-data.footer-left-content') }}
-                            <span class="locale">[{{ $metaData ? $metaData->channel : $channel }} - {{ $metaData ? $metaData->locale : $locale }}]</span>
-                        </label>
-
-                        <textarea
-                            class="control"
-                            id="footer_left_content"
-                            name="footer_left_content">
-                            {{ $metaData ? $metaData->footer_left_content : '' }}
-                        </textarea>
-                    </div>
-
-                    <div class="control-group">
-                        <label style="width:100%;">
-                            {{ __('velocity::app.admin.meta-data.footer-middle-content') }}
-                            <span class="locale">[{{ $metaData ? $metaData->channel : $channel }} - {{ $metaData ? $metaData->locale : $locale }}]</span>
-                        </label>
-
-                        <textarea
-                            class="control"
-                            id="footer_middle_content"
-                            name="footer_middle_content">
-                            {{ $metaData ? $metaData->footer_middle_content : '' }}
-                        </textarea>
-                    </div>
-                </div>
-            </accordian>
+            
         </form>
     </div>
 @stop
