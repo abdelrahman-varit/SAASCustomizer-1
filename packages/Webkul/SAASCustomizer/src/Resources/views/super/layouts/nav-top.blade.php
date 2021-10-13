@@ -64,7 +64,7 @@
 
                             <ul>
                                 <li>
-                                    <a href="{{ route('saas.home.index') }}" target="_blank">{{ trans('saas::app.super-user.layouts.menu.view-front') }}</a>
+                                    <a href="{{ route('shop.home.index') }}" target="_blank">{{ trans('saas::app.super-user.layouts.menu.view-front') }}</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('super.agents.index') }}">{{ trans('saas::app.super-user.layouts.menu.account') }}</a>
