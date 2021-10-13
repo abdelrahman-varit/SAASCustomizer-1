@@ -27,7 +27,13 @@
             <li><a href="#"><i class="las la-exchange-alt"></i></a></li>
             <li><a href="#"><i class="las la-heart"></i></a></li>
             <li><a href="#"><i class="las la-user"></i></a></li>
-            <li><a href="#">Currency <i class="las la-angle-down"></i></a></li>
+            <li>
+                <span class="dropdown-toggle">Currency <i class="las la-angle-down"></i></span>
+                <ul class="dropdown-list">
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Bengali</a></li>
+                </ul>
+            </li>
             <li><a href="#">English <i class="las la-angle-down"></i></a></li>
             <li><a href="#"><i class="las la-search"></i></a></li>
         </ul>
