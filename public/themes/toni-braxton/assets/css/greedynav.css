@@ -39,12 +39,16 @@ nav.greedy ul.links li a {
 	color: inherit;
 }
 
+nav.greedy ul.links li a:hover {
+	color: var(--primary);
+}
+
 nav.greedy ul.hidden-links {
 	position: absolute;
 	right: 0;
 	top: 100%;
 	list-style: none;
-	margin: 10px 0 0 0;
+	margin: 20px 0 0 0;
 	padding: 0.25rem 0;
 	background-color: white;
 	z-index: 999;
@@ -62,4 +66,8 @@ nav.greedy ul.hidden-links li a {
 	color: black;
 	padding: 0.5rem 1rem;
 	display: block;
+}
+
+nav.greedy ul.hidden-links li a:hover {
+	color: var(--primary);
 }
