@@ -12,6 +12,9 @@
     </form> --}}
     <ul class="card-quick-icon">
         <li>
+            <a href="{{ route('shop.productOrCategory.index', $product->url_key) }}"><i class="las la-eye"></i></a>
+        </li>
+        <li>
             @if ($showWishlist)
                 @include('shop::products.wishlist')
             @endif

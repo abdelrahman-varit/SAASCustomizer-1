@@ -27,12 +27,21 @@ $(document).ready(function(){
     });
 
 
-    $(".featured-heading .ftitle").each(function(index, elem) {
-        let oldTitle = elem.innerHTML; // Hello My Shop
-        let newTitle1 = oldTitle.substr(0, oldTitle.indexOf(' ')); //Hello
-        let newTitle2 = oldTitle.substr(oldTitle.indexOf(' ')+1); // My Shop
-        elem.innerHTML = newTitle1 + "<span>" + newTitle2 + "</span>";
-    });
+    if($(".featured-heading .ftitle").length) {
+        $(".featured-heading .ftitle").each(function(index, elem) {
+            let oldTitle = elem.innerHTML; // Hello My Shop
+            let newTitle1 = oldTitle.substr(0, oldTitle.indexOf(' ')); //Hello
+            let newTitle2 = oldTitle.substr(oldTitle.indexOf(' ')+1); // My Shop
+            elem.innerHTML = newTitle1 + "<span>" + newTitle2 + "</span>";
+        });
+    }
+    
+
+    if($(".product-card").length) {
+        $(".product-card").each(function(index, elem) {
+            $(elem).find(".sticker.sale").prependTo($(elem));
+        });
+    }
 
 
 });
