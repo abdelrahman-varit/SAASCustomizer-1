@@ -2868,11 +2868,3 @@ section.product-detail div.layouter .form-container .details .bundle-options-wra
 .product-policy-container .rango-exchnage::before {
 	content: "\f362";
 }
-
-
-.mobile .swiper-wrapper {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-	column-gap: 30px;
-	row-gap: 50px;
-}
