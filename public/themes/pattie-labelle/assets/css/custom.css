@@ -669,6 +669,7 @@ nav.greedy button {
 .main-container-wrapper .product-card .product-image {
 	position: relative;
 	height: 250px;
+	overflow: hidden;
 	background: transparent;
 	padding: 1rem;
 	border: 1px solid var(--borderColor);
@@ -2866,4 +2867,12 @@ section.product-detail div.layouter .form-container .details .bundle-options-wra
 
 .product-policy-container .rango-exchnage::before {
 	content: "\f362";
+}
+
+
+.mobile .swiper-wrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	column-gap: 30px;
+	row-gap: 50px;
 }
