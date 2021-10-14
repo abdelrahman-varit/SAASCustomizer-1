@@ -69,7 +69,7 @@
                                 <input type="checkbox" id="checkbox2" name="agreement" v-validate="'required'">
                                 <label class="checkbox-view" for="checkbox2"></label>
                                 <span>{{ __('shop::app.customer.signup-form.agree') }}
-                                    <a href="">{{ __('shop::app.customer.signup-form.terms') }}</a> & <a href="">{{ __('shop::app.customer.signup-form.conditions') }}</a> {{ __('shop::app.customer.signup-form.using') }}.
+                                    <a href="/page/terms-conditions">{{ __('shop::app.customer.signup-form.terms') }}</a> & <a href="/page/terms-conditions">{{ __('shop::app.customer.signup-form.conditions') }}</a> {{ __('shop::app.customer.signup-form.using') }}.
                                 </span>
                             </span>
                             <span class="control-error" v-if="errors.has('agreement')">@{{ errors.first('agreement') }}</span>
@@ -80,7 +80,7 @@
                         <div class="control-group" :class="[errors.has('agreement') ? 'has-error' : '']">
                             <span class="checkbox">
                                 <input type="checkbox" id="checkbox2" name="agreement" v-validate="'required'" data-vv-as="&quot;{{ __('shop::app.customer.signup-form.agreement') }}&quot;">
-                                <label for="checkbox2" class="checkbox-view"></label> {{ __('shop::app.customer.signup-form.agree') }} <a href="">{{ __('shop::app.customer.signup-form.terms') }}</a> & <a href="">{{ __('shop::app.customer.signup-form.conditions') }}</a> {{ __('shop::app.customer.signup-form.using') }}.
+                                <label for="checkbox2" class="checkbox-view"></label> {{ __('shop::app.customer.signup-form.agree') }} <a href="/page/terms-conditions">{{ __('shop::app.customer.signup-form.terms') }}</a> & <a href="/page/terms-conditions">{{ __('shop::app.customer.signup-form.conditions') }}</a> {{ __('shop::app.customer.signup-form.using') }}.
                             </span>
                             <span class="control-error" v-if="errors.has('agreement')">@{{ errors.first('agreement') }}</span>
                         </div>
