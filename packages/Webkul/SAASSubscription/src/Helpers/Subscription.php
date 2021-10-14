@@ -698,7 +698,7 @@ class Subscription
                 'purchased'    => $purchased = $purchasedPlan->allowed_products,
                 'used'         => $used = $this->getUsedResources('products'),
                 'remaining'    => $remaining = $purchased - $used,
-                'allow'        => $purchasedPlan->allowed_products==0 || $remaining >= 0  ? true : true,
+                'allow'        => $remaining <= 0 && $purchasedPlan->allowed_products!=0 ? false : true,
                 'message'      => trans('saassubscription::app.admin.plans.product-left-notification', [
                                     'remaining' => $remaining,
                                     'purchased' => $purchased,
@@ -788,7 +788,8 @@ class Subscription
 
         if ($tableName == 'products' && request('type') == 'configurable') {
             $requestedProducts = count(array_permutation(request('super_attributes'))) + 1;
-
+            //force valid true for all
+            return true;
             if ($resources['remaining'] >= $requestedProducts) {
                 return true;                
             }
