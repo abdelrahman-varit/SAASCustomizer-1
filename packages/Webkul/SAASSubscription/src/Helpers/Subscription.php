@@ -698,7 +698,7 @@ class Subscription
                 'purchased'    => $purchased = $purchasedPlan->allowed_products,
                 'used'         => $used = $this->getUsedResources('products'),
                 'remaining'    => $remaining = $purchased - $used,
-                'allow'        => $remaining <= 0 && $purchasedPlan->allowed_products!=0 ? false : true,
+                'allow'        => $purchasedPlan->allowed_products==0 || $remaining >= 0  ? true : true,
                 'message'      => trans('saassubscription::app.admin.plans.product-left-notification', [
                                     'remaining' => $remaining,
                                     'purchased' => $purchased,
