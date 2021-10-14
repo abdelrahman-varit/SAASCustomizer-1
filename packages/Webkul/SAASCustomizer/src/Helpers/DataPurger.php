@@ -274,7 +274,7 @@ class DataPurger
             "status" => "1",
             "content_type" => "category",
             "en" => [
-                "page_link" => "/flash-deals",
+                "page_link" => "/page/flash-deals",
                 "link_target" => "0"
                 ]
             ];
@@ -288,7 +288,7 @@ class DataPurger
                 "status" => "1",
                 "content_type" => "category",
                 "en" => [
-                    "page_link" => "/blog",
+                    "page_link" => "/page/blog",
                     "link_target" => "0"
                     ]
                 ];
@@ -302,7 +302,7 @@ class DataPurger
                     "status" => "1",
                     "content_type" => "category",
                     "en" => [
-                        "page_link" => "/all-brands",
+                        "page_link" => "/page/all-brands",
                         "link_target" => "0"
                         ]
                     ];
@@ -317,7 +317,7 @@ class DataPurger
                     "status" => "1",
                     "content_type" => "category",
                     "en" => [
-                        "page_link" => "/shop-kids-girls",
+                        "page_link" => "/page/shop-kids-girls",
                         "link_target" => "0"
                         ]
                     ];
@@ -1867,6 +1867,117 @@ class DataPurger
         ]);
 
 
+        //header content page demo generate
+        // Flash Deals
+        DB::table('cms_pages')->insert([
+            [
+                'company_id' => $companyRepository->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]
+        ]);
+
+        $cmsRepository = DB::table('cms_pages')->where('company_id', $companyRepository->id)->orderBy('id', 'desc')->limit(1)->get()->first();
+
+        DB::table('cms_page_translations')->insert([
+            [
+                'locale' => $localeRepository->code,
+                'cms_page_id' => $cmsRepository->id,
+                'company_id' => $companyRepository->id,
+                'url_key' => 'flash-deals',
+                'html_content' => '<div class="static-container">
+                                   <div class="mb-5">Flash Deals</div>
+                                   </div>',
+                'page_title' => 'Flash Deals',
+                'meta_title' => 'Flash Deals',
+                'meta_description' => '',
+                'meta_keywords' => 'Flash Deals'
+            ]
+        ]);
+
+
+         // Blog
+         DB::table('cms_pages')->insert([
+            [
+                'company_id' => $companyRepository->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]
+        ]);
+
+        $cmsRepository = DB::table('cms_pages')->where('company_id', $companyRepository->id)->orderBy('id', 'desc')->limit(1)->get()->first();
+
+        DB::table('cms_page_translations')->insert([
+            [
+                'locale' => $localeRepository->code,
+                'cms_page_id' => $cmsRepository->id,
+                'company_id' => $companyRepository->id,
+                'url_key' => 'blog',
+                'html_content' => '<div class="static-container">
+                                   <div class="mb-5">Blog</div>
+                                   </div>',
+                'page_title' => 'Blog',
+                'meta_title' => 'Blog',
+                'meta_description' => '',
+                'meta_keywords' => 'Blog'
+            ]
+        ]);
+
+
+         // all-brands
+         DB::table('cms_pages')->insert([
+            [
+                'company_id' => $companyRepository->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]
+        ]);
+
+        $cmsRepository = DB::table('cms_pages')->where('company_id', $companyRepository->id)->orderBy('id', 'desc')->limit(1)->get()->first();
+
+        DB::table('cms_page_translations')->insert([
+            [
+                'locale' => $localeRepository->code,
+                'cms_page_id' => $cmsRepository->id,
+                'company_id' => $companyRepository->id,
+                'url_key' => 'all-brands',
+                'html_content' => '<div class="static-container">
+                                   <div class="mb-5">All Brands</div>
+                                   </div>',
+                'page_title' => 'All Brands',
+                'meta_title' => 'All Brands',
+                'meta_description' => '',
+                'meta_keywords' => 'All Brands'
+            ]
+        ]);
+
+
+                 // shop-kids-girls
+                 DB::table('cms_pages')->insert([
+                    [
+                        'company_id' => $companyRepository->id,
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now()
+                    ]
+                ]);
+        
+                $cmsRepository = DB::table('cms_pages')->where('company_id', $companyRepository->id)->orderBy('id', 'desc')->limit(1)->get()->first();
+        
+                DB::table('cms_page_translations')->insert([
+                    [
+                        'locale' => $localeRepository->code,
+                        'cms_page_id' => $cmsRepository->id,
+                        'company_id' => $companyRepository->id,
+                        'url_key' => 'shop-kids-girls',
+                        'html_content' => '<div class="static-container">
+                                           <div class="mb-5">Shop Kids Girls</div>
+                                           </div>',
+                        'page_title' => 'Shop Kids Girls',
+                        'meta_title' => 'Shop Kids Girls',
+                        'meta_description' => '',
+                        'meta_keywords' => 'Shop Kids Girls'
+                    ]
+                ]);
 
 
         Log::info("Info:- prepareCMSPagesData() created for company " . $companyRepository->domain . ".");
