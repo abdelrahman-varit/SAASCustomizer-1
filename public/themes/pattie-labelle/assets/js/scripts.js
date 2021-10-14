@@ -1,12 +1,5 @@
 $(function() {
-    $(".ftitle").text("Ready Title");
-});
-
-window.onload = function () {
-
-	$(".ftitle").text("Onload Title");
-	
-	$(window).scroll(function(){ 
+    $(window).scroll(function(){ 
         if ($(this).scrollTop() > 100) { 
             $('#scrollTop').fadeIn(); 
         } else { 
@@ -81,11 +74,6 @@ window.onload = function () {
 				}
 			}
 		});
-		// if ($(window).width() >= 992) {
-			
-		// } else {
-		// 	$(".swipeable").addClass("mobile");
-		// }
 	}
 	
 
@@ -110,11 +98,6 @@ window.onload = function () {
 				}
 			}
 		});
-		// if ($(window).width() >= 992) {
-			
-		// } else {
-		// 	$(".recently-viewed-products").addClass("mobile");
-		// }
 	}
 	
 
@@ -135,13 +118,7 @@ window.onload = function () {
 					slidesPerView: 4
 				}
 			}
-		});
-		// if ($(window).width() >= 992) {
-			
-		// } else {
-		// 	$(".upselling-products").addClass("mobile");
-		// }
-		
+		});		
 	}
 	
 
@@ -162,13 +139,7 @@ window.onload = function () {
 					slidesPerView: 4
 				},
 			}
-		});
-		// if ($(window).width() >= 992) {
-			
-		// } else {
-		// 	$(".related-products").addClass("mobile");
-		// }
-		
+		});		
 	}
 
 	if ($(".search-name").length) {
@@ -176,7 +147,4 @@ window.onload = function () {
 			$("#search").click();
 		});
 	}
- 
-};
-
- 
+});
