@@ -17,7 +17,7 @@ nav.greedy ul.hidden-links {
   background-color: white;
   z-index: 999;
   min-width: 18rem;
-  border-bottom: 5px solid #00acc2;
+  border-bottom: 5px solid var(--primaryColor);
   -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -30,7 +30,7 @@ nav.greedy ul.hidden-links a {
 }
 
 nav.greedy ul.hidden-links a:hover {
-  color: #00acc2;
+  color: var(--primaryColor);
   background-color: transparent;
 }
 
