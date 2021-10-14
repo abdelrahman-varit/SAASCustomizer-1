@@ -178,10 +178,11 @@ class CartController extends Controller
                 }
             }
 
-    
+            if(!empty($cart_list->base_grand_total)){
                 $cart_list->base_grand_total = core()->currency($cart_list->base_grand_total);
                 $cart_list->base_sub_total = core()->currency($cart_list->base_sub_total);
-           
+            }
+                          
             return response()->json([
                 'status'=>'success',
                 'data'=>$cart_list,

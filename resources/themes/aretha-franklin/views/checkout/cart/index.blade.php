@@ -261,8 +261,8 @@
                         if(response.data.status=="success"){
                             var cart = response.data.data;
                             document.getElementById('summary-item-qty').innerHTML =  parseInt(cart.items_qty);
-                            document.getElementById('summary-sub-total').innerHTML = "$" + parseFloat(cart.base_sub_total).toFixed(2);
-                            document.getElementById('grand-total-amount-detail').innerHTML = "$" + parseFloat(cart.base_grand_total).toFixed(2);
+                            document.getElementById('summary-sub-total').innerHTML = cart.base_sub_total;
+                            document.getElementById('grand-total-amount-detail').innerHTML = cart.base_grand_total;
                         }
                         loader.style.display = "none";
                     });
@@ -288,8 +288,8 @@
                         if(response.data.status=="success"){
                             var cart = response.data.data;
                             document.getElementById('summary-item-qty').innerHTML = parseInt(cart.items_qty);
-                            document.getElementById('summary-sub-total').innerHTML = "$" + parseFloat(cart.base_sub_total).toFixed(2);
-                            document.getElementById('grand-total-amount-detail').innerHTML = "$" + parseFloat(cart.base_grand_total).toFixed(2);
+                            document.getElementById('summary-sub-total').innerHTML =  cart.base_sub_total ;
+                            document.getElementById('grand-total-amount-detail').innerHTML =  cart.base_grand_total ;
                         }
                         loader.style.display = "none";
 
@@ -319,8 +319,8 @@
                         var cart = data.data;
                         if(cart){
                             document.getElementById('summary-item-qty').innerHTML = parseInt(cart.items_qty);
-                            document.getElementById('summary-sub-total').innerHTML = "$" + parseFloat(cart.base_sub_total).toFixed(2);
-                            document.getElementById('grand-total-amount-detail').innerHTML = "$" + parseFloat(cart.base_grand_total).toFixed(2);
+                            document.getElementById('summary-sub-total').innerHTML = cart.base_sub_total;
+                            document.getElementById('grand-total-amount-detail').innerHTML = cart.base_grand_total;
                             var curEl = currentElement.parentElement.parentElement.parentElement;
                             if(curEl){
                                 curEl.remove();

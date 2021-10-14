@@ -49,7 +49,7 @@ class DownloadableProductDataGrid extends DataGrid
                 if ($value->status == 'pending' || $value->status == 'expired' || $value->invoice_state !== 'paid') {
                     return $value->product_name;
                 } else {
-                    return $value->product_name . ' ' . '<a href="' . route('customer.downloadable_products.download', $value->id) . '" target="_blank">' . $value->name . '</a>';
+                    return $value->product_name . ' ' . '<a href="' . route('customer.downloadable_products.download', $value->id) . '" target="_blank">' . $value->product_name . '</a>';
                 }
             },
         ]);

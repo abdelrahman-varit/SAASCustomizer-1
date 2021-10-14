@@ -49,7 +49,7 @@
                         <div class="control-group">
                             <label for="plan">Payment Method</label>
                             <select class="control" id="payment_method" name="payment_method">
-                                <option value="paypal">Paypal</option>
+                                <!-- <option value="paypal">Paypal</option> -->
                                 <option value="stripe">Credit Card</option>
                             </select>
                         </div>
