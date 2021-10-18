@@ -2868,3 +2868,35 @@ section.product-detail div.layouter .form-container .details .bundle-options-wra
 .product-policy-container .rango-exchnage::before {
 	content: "\f362";
 }
+
+div.booking-information .book-slots .control-group-container .control-group:not(.quantity).date:after,
+div.booking-information .book-slots .control-group-container .form-group:not(.quantity).date:after {
+    top: 6px;
+}
+
+div.booking-information .book-slots .control-group-container .control-group:not(.quantity).date .cross-icon,
+div.booking-information .book-slots .control-group-container .form-group:not(.quantity).date .cross-icon {
+    top: 10px;
+    right: 40px;
+}
+
+div.booking-information .book-slots {
+    padding-top: 0;
+    margin-bottom: 15px;
+}
+
+div.booking-information {
+	margin-bottom: 0;
+}
+
+div.booking-information .booking-info-row .title {
+	color: inherit;
+}
+
+div.booking-information .booking-info-row .toggle {
+	color: var(--primaryColor) !important;
+}
+
+div.booking-information a {
+	color: var(--primaryColor);
+}
