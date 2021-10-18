@@ -7,6 +7,7 @@
     --bodyColor: #333333;
     --newsletterBG: #F6F6F6;
     --policyBG: #3D3D3D;
+    --headerBG: #F2F2F2;
     --borderColor: #EEEEEE;
 }
 
@@ -414,7 +415,7 @@ div.product-policy-container .card {
 
 .product-policy-wrapper .right {
     font-size: 1.25rem;
-    font-weight: 400;
+    font-weight: bold;
 }
 
 .product-policy-wrapper:hover .left {
@@ -431,6 +432,7 @@ div.product-policy-container .card {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     align-items: center;
+    font-weight: 400;
 }
 
 .bn-header-left {
@@ -706,8 +708,11 @@ nav.greedy {
     border-left-color: var(--borderColor);
 }
 
+.header-area:not(.fixed-top) {
+    background-color: var(--headerBG);
+}
 
-.header-area {
+.header-area.fixed-top {
     position: fixed;
     top: 0;
     left: 0;
@@ -718,8 +723,11 @@ nav.greedy {
     transition: .3s;
 }
 
-.header-area.active{
+.header-area.fixed-top.active{
     background-color: white;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .15);
 }
 
 .slick-slide img {
@@ -748,4 +756,19 @@ section.slider-block {
 .slick-next:before {
     font-size: 2rem;
     color: black;
+}
+
+section.product-detail div.layouter {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.pagination .page-item.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.pagination .page-item {
+    border-color: var(--borderColor);
+    border-width: 1px;
 }

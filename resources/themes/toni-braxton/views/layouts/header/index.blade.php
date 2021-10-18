@@ -7,7 +7,7 @@
     }
 ?>
 
-<div class="header-area">
+<div class="header-area @if(Request::is('/')) fixed-top @endif">
     <div class="main-container-wrapper">
         <div class="bn-header">
             <div class="bn-header-left">

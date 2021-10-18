@@ -150,7 +150,7 @@
 </head>
 
 
-<body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif style="scroll-behavior: smooth;">
+<body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif>
  
     <div class="se-pre-con">
         <div class="se-pre-con-inner">
