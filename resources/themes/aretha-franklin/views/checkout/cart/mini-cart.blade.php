@@ -157,6 +157,7 @@
     function removeCartItem(cartItemID, currentCart){
         var animated = document.getElementById('animated-loader');
         var cartCount = 0;
+        var currency = "{{core()->currencySymbol(core()->getCurrentCurrencyCode())}}";
         animated.style.display="block";
         var data = {
             _token : "{{csrf_token()}}",
@@ -167,7 +168,7 @@
                                     if(data.status=="success"){
                                         currentCart.parentElement.parentElement.remove();
                                         if(!data.data){
-                                            document.getElementById('bn-mini-cart-grandTotal').innerHTML = "$0.00";
+                                            document.getElementById('bn-mini-cart-grandTotal').innerHTML = "{{core()->currencySymbol(core()->getCurrentCurrencyCode())}}0.00";
                                             document.getElementById("lbl-cart-count").innerHTML = cartCount;
                                             document.getElementById("bn-mini-carts").innerHTML = `<div class="item">
                                                     <div class="item-details">
@@ -193,7 +194,7 @@
                                                                 </div> 
                                                                 <div class="item-details">
                                                                     <div class="item-name">${item.name}</div> 
-                                                                    <div class="item-price"><b>$ ${parseFloat(item.total).toFixed(2)}</b></div> 
+                                                                    <div class="item-price"><b>${currency+' ' + parseFloat(item.total).toFixed(2)}</b></div> 
                                                                     <div class="item-qty">Quantity - ${item.quantity}</div>
                                                                 </div>
                                                                 <div class="item-remove">
@@ -209,7 +210,7 @@
                                             }
                                             document.getElementById("bn-mini-carts").innerHTML = content;
                                             if(data.data.grand_total){
-                                                document.getElementById("bn-mini-cart-grandTotal").innerHTML = "$"+parseFloat(data.data.grand_total).toFixed(2);
+                                                document.getElementById("bn-mini-cart-grandTotal").innerHTML = currency+ parseFloat(data.data.grand_total).toFixed(2);
                                             }
                                         }else{
                                             document.getElementById("bn-mini-carts").innerHTML = `<div class="item">
@@ -217,7 +218,7 @@
                                                     <div class="item-name">No Product on Cart List</div>
                                                 </div>
                                             </div>`;
-                                            document.getElementById('bn-mini-cart-grandTotal').innerHTML = "$0.00";
+                                            document.getElementById('bn-mini-cart-grandTotal').innerHTML = "{{core()->currencySymbol(core()->getCurrentCurrencyCode())}}0.00";
                                             document.getElementById("lbl-cart-count").innerHTML = cartCount;
                                         }  
                                     }
