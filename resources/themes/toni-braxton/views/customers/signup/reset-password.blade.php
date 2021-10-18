@@ -19,7 +19,11 @@
 
         <div class="login-form">
 
-            <div class="login-text">{{ __('shop::app.customer.reset-password.title') }}</div>
+            <div class="login-text">
+                <i class="las la-unlock"></i>
+                <span>{{ __('shop::app.customer.reset-password.title') }}</span>
+            </div>
+            <p>Please set your new password.</p>
 
             <input type="hidden" name="token" value="{{ old('token') ?: $token }}">
 

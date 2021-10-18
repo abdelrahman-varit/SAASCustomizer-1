@@ -19,6 +19,7 @@
                     <i class="las la-user"></i>
                     <span>{{ __('shop::app.customer.login-form.title') }}</span>
                 </div>
+                <p>If you have an account, sign in with your email address.</p>
 
                 {!! view_render_event('bagisto.shop.customers.login_form_controls.before') !!}
 
