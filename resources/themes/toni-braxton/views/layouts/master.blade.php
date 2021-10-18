@@ -26,6 +26,7 @@
 
 
     <link rel="stylesheet" href="{{ asset('themes/toni-braxton/assets/css/greedynav.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/toni-braxton/assets/css/stellarnav.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('themes/toni-braxton/assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('themes/toni-braxton/assets/css/responsive.css') }}">
@@ -149,7 +150,7 @@
 </head>
 
 
-<body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif style="scroll-behavior: smooth;">
+<body @if (core()->getCurrentLocale()->direction == 'rtl') class="rtl" @endif>
  
     <div class="se-pre-con">
         <div class="se-pre-con-inner">
@@ -273,6 +274,7 @@
 
 
     <script src="{{ asset('themes/toni-braxton/assets/js/greedynav.js') }}"></script>
+    <script src="{{ asset('themes/toni-braxton/assets/js/stellarnav.min.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('themes/toni-braxton/assets/js/scripts.js') }}"></script>
 
