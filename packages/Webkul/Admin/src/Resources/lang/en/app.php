@@ -825,9 +825,9 @@ return [
 
         'themes' => [
             'title' => 'Themes',
-            'add-title' => 'Save Theme',
+            'add-title' => 'Add Theme',
             'edit-title' => 'Edit Theme',
-            'save-btn-title' => 'Save Theme ',
+            'save-btn-title' => 'Save Theme',
         ],
 
         'sliders' => [
