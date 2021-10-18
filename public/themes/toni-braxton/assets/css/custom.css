@@ -730,3 +730,22 @@ nav.greedy {
 section.slider-block {
     margin-bottom: 50px;
 }
+
+.slick-next {
+    right: 30px;
+}
+
+.slick-prev {
+    left: 30px;
+}
+
+.slick-prev,
+.slick-next {
+    z-index: 1;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 2rem;
+    color: black;
+}
