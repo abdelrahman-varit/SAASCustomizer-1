@@ -2037,9 +2037,9 @@ section.product-detail div.layouter .form-container .details .product-heading {
 section.product-detail .add-to-buttons {
 	gap: 15px;
 	display: grid !important;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	padding-top: 15px;
-	max-width: 400px;
+	max-width: 450px;
 }
 
 section.product-detail .add-to-buttons a {
