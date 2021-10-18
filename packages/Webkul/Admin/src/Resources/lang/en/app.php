@@ -824,8 +824,8 @@ return [
         ],
 
         'themes' => [
-            'title' => 'Template',
-            'add-title' => 'Save Template',
+            'title' => 'Themes',
+            'add-title' => 'Save Theme',
             'edit-title' => 'Edit Theme',
             'save-btn-title' => 'Save Theme ',
         ],
