@@ -44,4 +44,14 @@ $(document).ready(function(){
     }
 
 
+    if($(".stellarnav").length) {
+		$('.stellarnav').stellarNav({
+			theme: 'light',
+			breakpoint: 992,
+			menuLabel: false,
+			position: 'right'
+		});
+    }
+
+
 });

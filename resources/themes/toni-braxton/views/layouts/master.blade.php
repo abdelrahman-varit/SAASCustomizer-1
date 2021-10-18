@@ -26,6 +26,7 @@
 
 
     <link rel="stylesheet" href="{{ asset('themes/toni-braxton/assets/css/greedynav.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/toni-braxton/assets/css/stellarnav.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('themes/toni-braxton/assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('themes/toni-braxton/assets/css/responsive.css') }}">
@@ -273,6 +274,7 @@
 
 
     <script src="{{ asset('themes/toni-braxton/assets/js/greedynav.js') }}"></script>
+    <script src="{{ asset('themes/toni-braxton/assets/js/stellarnav.min.js') }}"></script>
 
     <script type="text/javascript" src="{{ asset('themes/toni-braxton/assets/js/scripts.js') }}"></script>
 

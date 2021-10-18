@@ -434,7 +434,9 @@ div.product-policy-container .card {
 }
 
 .bn-header-left {
-    
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .bn-header .nav {
@@ -660,4 +662,47 @@ button .las {
 div.main-container-wrapper .product-card .product-image img {
     height: auto;
     width: auto;
+}
+
+.btn-all {
+    color: black;
+    background: transparent;
+    padding: 0;
+    opacity: 1;
+}
+
+.stellarnav.light {
+    background-color: transparent;
+}
+
+.stellarnav.light:hover .btn-all {
+    opacity: 1;
+    color: var(--primary);
+}
+
+.stellarnav {
+    width: auto;
+}
+
+nav.greedy {
+    flex: 1;
+}
+
+
+.stellarnav ul ul {
+    top: 42px;
+    width: 15rem;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .16), 0 0 9px 0 rgba(0, 0, 0, .16);
+}
+
+.stellarnav.light ul ul li + li {
+    border-top: 1px solid var(--borderColor);
+}
+
+.stellarnav.light li a:hover {
+    color: var(--primary);
+}
+
+.stellarnav.light li li.has-sub > a::after {
+    border-left-color: var(--borderColor);
 }
