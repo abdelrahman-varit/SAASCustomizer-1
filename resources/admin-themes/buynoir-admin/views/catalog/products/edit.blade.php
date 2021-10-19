@@ -216,6 +216,33 @@
                 content_css: "{{ asset('admin-themes/buynoir-admin/assets/admin/assets/css/tinymce-fonts.css') }}",
                 font_formats: "Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Open Sans=Open Sans, sans-serif; Roboto=Roboto, sans-serif; Symbol=symbol; Tahoma=tahoma,arial,helvetica,sans-serif; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva; Webdings=webdings; Wingdings=wingdings,zapf dingbats; Roboto=Roboto, sans-serif; Open Sans=Open Sans, sans-serif; Lato=Lato, sans-serif; Montserrat=Montserrat, sans-serif; Source Sans Pro=Source Sans Pro, sans-serif; Oswald=Oswald, sans-serif; Poppins=Poppins, sans-serif; Noto Sans=Noto Sans, sans-serif; Raleway=Raleway, sans-serif; Ubuntu=Ubuntu, sans-serif; PT Sans=PT Sans, sans-serif; Nunito=Nunito, sans-serif; Playfair Display=Playfair Display, serif; Quicksand=Quicksand, sans-serif; PT Serif=PT Serif, serif;",
             });
+
+            
+            if($("select[name='booking[type]']")){
+                var booking_type=$("select[name='booking[type]']").val();
+                if(booking_type=="event"){
+                    var btn = $("div.ticket-list>button.btn-primary");
+                    if(btn){
+                        btn.trigger('click');
+                    }
+                }
+            }
+
+            
+
+            $("select[name='booking[type]']").on('click',function(){
+                var booking_type=$("select[name='booking[type]']").val();
+                if(booking_type=="event"){
+                    var btn = $(document).find("div.ticket-list>button.btn-primary");
+                    console.log('hello world',booking_type)
+                    btn.trigger('click');          
+                }
+            })
+
+        
+
         });
+
+
     </script>
 @endpush
