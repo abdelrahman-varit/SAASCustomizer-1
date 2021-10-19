@@ -10,6 +10,8 @@
     --headerBG: #F2F2F2;
     --borderColor: #EEEEEE;
     --errorColor: #FF0000;
+    --sidebarBG: #F2F2F2;
+    --sidebarActiveBG: #22252A;
 }
 
 * {
@@ -204,6 +206,14 @@ p {
 
 .main-container-wrapper .product-card .product-image {
     margin-bottom: 0;
+    max-width: unset;
+    max-height: unset;
+}
+
+.main-container-wrapper .product-card .product-image a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .product-card .product-information {
@@ -486,6 +496,7 @@ div.product-policy-container .card {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: .75rem;
 }
 
 .bn-header .nav > li > .dropdown-toggle > .la-angle-down,
@@ -515,6 +526,10 @@ div.product-policy-container .card {
     padding: 0.25rem 0;
 }
 
+.dropdown-list li + li {
+    border-top: 1px solid var(--bodyBG);
+}
+
 .dropdown-list .search-form {
     padding: .75rem 1rem;
     display: grid;
@@ -532,10 +547,6 @@ div.product-policy-container .card {
     line-height: 1.5;
     gap: 10px;
     align-items: center;
-}
-
-.dropdown-list li a:hover {
-    color: var(--primary);
 }
 
 .bn-header-right .dropdown-list{
@@ -700,10 +711,6 @@ nav.greedy {
 
 .stellarnav.light ul ul li + li {
     border-top: 1px solid var(--borderColor);
-}
-
-.stellarnav.light li a:hover {
-    color: var(--primary);
 }
 
 .stellarnav.light li li.has-sub > a::after {
@@ -990,4 +997,177 @@ a:link, a:hover, a:visited, a:focus, a:active {
     left: 0;
     top: 0;
     opacity: .95;
+}
+
+section.cart .title {
+    font-weight: bold;
+}
+
+section.cart .cart-content {
+    margin-top: 10px;
+}
+
+
+.account-content .menu-block .menubar {
+    font-weight: 400;
+    border: none;
+    color: inherit;
+    display: grid;
+    row-gap: 5px;
+}
+
+.account-content .menu-block .menubar li {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border: none;
+}
+
+.account-content .menu-block .menubar li a {
+    color: inherit;
+    background-color: var(--sidebarBG);
+    padding: .75rem 1rem .75rem 3.5rem;
+    -webkit-border-radius: 5rem;
+    -moz-border-radius: 5rem;
+    border-radius: 5rem;
+    position: relative;
+}
+
+.account-content .menu-block .menubar li.active a {
+    background-color: var(--sidebarActiveBG);
+    color: white;
+}
+
+.account-content .menu-block .menubar li a i {
+    background: var(--primary);
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 5rem 0 0 5rem;
+    font-size: 1rem;
+    padding-left: 5px;
+}
+
+
+.account-content {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    gap: 30px;
+}
+
+.account-content .account-layout {
+    width: 100%;
+    margin-left: 0;
+}
+
+.account-content .sidebar {
+    width: 30%;
+}
+
+.account-head .account-heading {
+    font-size: 1.5rem;
+    line-height: 1;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.la-people::before {
+	content: '\f007';
+}
+
+.la-contact_mail::before {
+	content: '\f3c5';
+}
+
+.la-rate_review::before {
+	content: '\f086';
+}
+
+.la-playlist_add_check::before {
+	content: '\f004';
+}
+
+.la-compare::before {
+	content: '\f362';
+}
+
+.la-shopping_cart::before {
+	content: '\f07a';
+}
+
+.la-cloud_download::before {
+	content: '\f381';
+}
+
+.account-content .menu-block .menu-block-title {
+    display: none;
+}
+
+.account-content::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    width: 100%;
+    display: block;
+    height: 100%;
+    background: white;
+    top: 0;
+    z-index: -1;
+}
+
+.account-head {
+    border-bottom: 1px solid var(--borderColor);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.account-head .account-action {
+    margin: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+.account-head .horizontal-rule {
+    display: none;
+}
+
+.account-table-content {
+    color: inherit;
+    margin-top: 0;
+    width: 100%;
+}
+
+.edit-form {
+    padding: 0;
+    border: none;
+    gap: 15px;
+}
+
+.edit-form .button-group {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+.modal-container .modal-header+.modal-body {
+	padding-top: 0;
+}
+
+.modal-container .modal-body .page-action {
+	margin-top: 5px;
+}
+
+.modal-container .modal-header h3 {
+    color: inherit;
 }
