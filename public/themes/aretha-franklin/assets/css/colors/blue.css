@@ -267,3 +267,7 @@ section.product-detail div.layouter .form-container .details .product-price {
 ul.slick-dots li.slick-active button:before {
     background-color: #0EA1E2;
 }
+
+.footer:not(.footer-copyright)::before {
+    background: #1B66E3;
+}

@@ -262,3 +262,7 @@ section.product-detail div.layouter .form-container .details .product-price {
 .newsletter-subscription .control-group button{
     background: #719230;
 }
+
+.footer:not(.footer-copyright)::before {
+    background: #97B659;
+}
