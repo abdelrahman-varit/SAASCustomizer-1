@@ -15,9 +15,9 @@
 
         {{ csrf_field() }}
 
-        <div class="login-form">
+        <div class="login-form layout-inline">
             <div class="login-text">
-                <i class="las la-user"></i>
+                <i class="lab la-wpforms"></i>
                 <span>{{ __('shop::app.customer.signup-form.title') }}</span>
             </div>
             <p>If you are new to our store, we glad to have you as member.</p>

@@ -12,11 +12,40 @@
     .advertisement-three-container {
         grid-template-columns: repeat(3, 1fr);
     }
+    .auth-content .login-form.layout-inline .control-group {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 15px;
+        align-items: center;
+    }    
+    .auth-content .login-form.layout-inline .control-group .control {
+        grid-column: span 2;
+    }    
+    .auth-content .login-form.layout-inline .control-group .control-error {
+        grid-column-start: 2;
+        grid-column-end: -1;
+    }    
+    .auth-content .login-form.layout-inline .checkbox {
+        grid-column: span 3;
+    }    
+    .auth-content .login-form.layout-inline .control-group .checkbox + .control-error {
+        grid-column-start: 1;
+    }
+    .auth-content-inner {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 2rem;
+    }
+    .auth-graphic {
+        display: flex;
+    }
 }
 
 @media (min-width: 992px) {
     .footer-ct-content .row {
         flex-direction: row;
+    }
+    .auth-content-inner {
+        padding: 5rem;
     }
 }
 
