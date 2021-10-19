@@ -1,7 +1,7 @@
 {!! view_render_event('bagisto.shop.products.add_to_cart.before', ['product' => $product]) !!}
 
 <button class="btn btn-bn" type="button" onclick="addTocartAjax()" {{ ! $product->isSaleable() ? 'disabled' : '' }}>
-<i class="las la-shopping-cart"></i> &nbsp; {{ ($product->type == 'booking') ?  __('shop::app.products.book-now') :  __('shop::app.products.add-to-cart') }}
+    <i class="las la-shopping-cart"></i> &nbsp; {{ ($product->type == 'booking') ?  __('shop::app.products.book-now') :  __('shop::app.products.add-to-cart') }}
 </button>
  
 
@@ -252,17 +252,18 @@
             var bundle_options = {};
             var allBundleOpt = document.querySelectorAll("[name^='bundle_options']");
             var bundleOptCount = allBundleOpt.length;
+            var subBundle=[];
             for(var i=0;i<bundleOptCount;i++){
                 var bundleName = allBundleOpt[i].name.split('[')[1].split(']')[0];
                 var bundleValue = allBundleOpt[i].value;
-                bundle_options[bundleName]=[bundleValue];
+                subBundle[i] = bundleValue;
             }
-          
+            bundle_options[bundleName] = subBundle;
             data = {
             '_token' : "{{csrf_token()}}",
             'is_buy_now' : "0",  
             'product_id' : "{{$product->product_id}}",
-            'quantity' : document.getElementsByName("quantity")[0].value,
+            'quantity' : document.getElementsByName("quantity")[1].value,
             'bundle_options':bundle_options,
             'is_ajax':"1"
             };
