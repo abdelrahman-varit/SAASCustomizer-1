@@ -24,7 +24,7 @@
                 <div class="bundle-summary">
                     <h3>{{ __('shop::app.products.your-customization') }}</h3>
 
-                    <quantity-changer></quantity-changer>
+                    <quantity-changer :total_price="formated_total_price"></quantity-changer>
 
                     <div class="control-group">
                         <label>{{ __('shop::app.products.total-amount') }}</label>
@@ -115,6 +115,7 @@
                         :control-name="'bundle_option_qty[' + option.id + ']'"
                         :validations="parseInt(selected_product) ? 'required|numeric|min_value:1' : ''"
                         :quantity="product_qty"
+                        :total_price="formated_total_price"
                         @onQtyUpdated="qtyUpdated($event)">
                     </quantity-changer>
                 </div>
@@ -228,6 +229,7 @@
                             return;
 
                         this.option.products[this.selected_product].qty = qty;
+                        
                     }
                 }
             });

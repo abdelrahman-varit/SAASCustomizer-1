@@ -166,7 +166,7 @@
                                
                                 
                                 <div class="others-information-row" style="display:none" >
-                                    <div class="other-info-title" >Subtotal :</div>
+                                    <div class="other-info-title" >Subtotal:</div>
                                     <div  class="other-info-value" id="subtotal-value" > 
                                         
                                     </div>
@@ -342,6 +342,11 @@
                     default: 1
                 },
 
+                total_price: {
+                    type: [Number, String],
+                    default: 0
+                },
+
                 validations: {
                     type: String,
                     default: 'required|numeric|min_value:1'
@@ -350,7 +355,8 @@
 
             data: function() {
                 return {
-                    qty: this.quantity
+                    qty: this.quantity,
+                    total_price:this.total_price
                 }
             },
 
@@ -368,21 +374,21 @@
                         this.qty = parseInt(this.qty) - 1;
 
                     this.$emit('onQtyUpdated', this.qty)
+                    
+                    
                     var product_type = "{{$product->type}}";
+                    var currency = "{{core()->currencySymbol(core()->getCurrentCurrencyCode())}}";
                     if(product_type=="simple"){
-                        var productPrice = document.getElementById('product-price').innerHTML ;
-                        productPrice = productPrice.substr(1,productPrice.length) ;
+                        var productPrice = document.getElementById('product-price').getAttribute('title')  ;
+                        //productPrice = productPrice.substr(1,productPrice.length) ;
                         var totalPrice = this.qty * productPrice; 
-                        document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                        document.getElementById('subtotal-value').innerHTML = currency+parseFloat(totalPrice).toFixed(2);
                     }
 
                     if(product_type=="bundle"){
                         var priceDiv = document.getElementsByClassName('bundle-price')[0];
-                        console.log(priceDiv);
-                        var productPrice = priceDiv.innerHTML.substr(1,priceDiv.innerHTML.length) ;
-                        productPrice = productPrice.substr(1,productPrice.length) ;
-                        var totalPrice = this.qty * productPrice; 
-                        document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                        var total_price = this.total_price*this.qty
+                        priceDiv.innerHTML = currency+' '+parseFloat(total_price).toFixed(2);
                     }
                      
                 },
@@ -391,22 +397,20 @@
                     this.qty = parseInt(this.qty) + 1;
 
                     this.$emit('onQtyUpdated', this.qty)
+   
                     var product_type = "{{$product->type}}";
+                    var currency = "{{core()->currencySymbol(core()->getCurrentCurrencyCode())}}";
                     if(product_type=="simple"){
-                        var productPrice = document.getElementById('product-price').innerHTML ;
-                        productPrice = productPrice.substr(1,productPrice.length) ;
+                        var productPrice = document.getElementById('product-price').getAttribute('title')  ;
+                        //productPrice = productPrice.substr(1,productPrice.length) ;
                         var totalPrice = this.qty * productPrice; 
-                        document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                        document.getElementById('subtotal-value').innerHTML = "{{core()->currencySymbol(core()->getCurrentCurrencyCode())}}"+parseFloat(totalPrice).toFixed(2);
                     }
 
                     if(product_type=="bundle"){
                         var priceDiv = document.getElementsByClassName('bundle-price')[0];
-                        console.log(priceDiv);
-                        var productPrice = priceDiv.innerHTML.substr(1,priceDiv.innerHTML.length) ;
-                        productPrice = productPrice.substr(1,productPrice.length) ;
-                        var totalPrice = this.qty * productPrice; 
-                        document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
-                    }
+                        var total_price = this.total_price*this.qty
+                        priceDiv.innerHTML = currency+' '+parseFloat(total_price).toFixed(2);              }
                      
                 }
             }
@@ -487,10 +491,10 @@
                 var product_type = "{{$product->type}}";
                 if(product_type=="simple"){
                     var productPriceDiv = document.getElementById('product-price') ;
-                    var productPrice = productPriceDiv.innerHTML ;
-                    productPrice = productPrice.substr(1,productPrice.length) ;
+                    var productPrice = productPriceDiv.getAttribute('title') ;
+                    //productPrice = productPrice.substr(1,productPrice.length) ;
                     var totalPrice = 1 * productPrice; 
-                    document.getElementById('subtotal-value').innerHTML = "$"+productPrice;
+                    document.getElementById('subtotal-value').innerHTML =  "{{core()->currencySymbol(core()->getCurrentCurrencyCode())}}"+parseFloat(productPrice).toFixed(2);
                 
                 }
                 

@@ -500,6 +500,15 @@ class Core
         return $this->formatPrice($this->convertPrice($amount), $this->getCurrentCurrency()->code);
     }
 
+    public function currencyPriceOnly($amount = 0)
+    {
+        if (is_null($amount)) {
+            $amount = 0;
+        }
+
+        return  $this->convertPrice($amount) ;
+    }
+
     /**
      * Return currency symbol from currency code
      *
