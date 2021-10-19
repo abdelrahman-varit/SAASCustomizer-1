@@ -4,17 +4,6 @@
  {{ __('shop::app.customer.forgot-password.page_title') }}
 @stop
 
-@push('css')
-    <style>
-        .button-group {
-            margin-bottom: 25px;
-        }
-        .primary-back-icon {
-            vertical-align: middle;
-        }
-    </style>
-@endpush
-
 @section('content-wrapper')
 
 
@@ -30,7 +19,11 @@
 
         <div class="login-form">
 
-            <div class="login-text">{{ __('shop::app.customer.forgot-password.title') }}</div>
+            <div class="login-text">
+                <i class="las la-lock"></i>
+                <span>{{ __('shop::app.customer.forgot-password.title') }}</span>
+            </div>
+            <p>We will send you and email to reset your password.</p>
 
             {!! view_render_event('bagisto.shop.customers.forget_password_form_controls.before') !!}
 
@@ -48,9 +41,9 @@
                 </button>
             </div>
 
-            <div class="control-group" style="text-align: center; margin-top: 25px; font-weight: bold">
+            <div class="control-group">
                 <a href="{{ route('customer.session.index') }}">
-                <i class="las la-arrow-left"></i>
+                    <i class="las la-arrow-left"></i>
                     {{ __('shop::app.customer.reset-password.back-link-title') }}
                 </a>
             </div>

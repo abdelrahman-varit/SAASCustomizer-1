@@ -854,7 +854,7 @@ a:link, a:hover, a:visited, a:focus, a:active {
 }
 
 .auth-content {
-    padding: 50px 0;
+    padding: 80px 0;
 }
 
 .auth-content .sign-up-text {
@@ -884,6 +884,8 @@ a:link, a:hover, a:visited, a:focus, a:active {
     text-align: center;
     border-bottom: 1px solid var(--borderColor);
     font-weight: bold;
+    position: relative;
+    padding-bottom: 5px;
 }
 
 .auth-content .login-form .login-text span::before {
@@ -896,4 +898,50 @@ a:link, a:hover, a:visited, a:focus, a:active {
     bottom: -1px;
     left: 50%;
     margin-left: -75px;
+}
+
+.auth-content .login-form .login-text i {
+    display: flex;
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rem;
+    background-color: var(--bodyColor);
+    opacity: .2;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border: 7px solid white;
+    border-style: double;
+}
+
+.auth-content .login-form .login-text + p {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.checkbox {
+    margin: 0;
+    font-weight: 400;
+}
+
+.checkbox a {
+    color: var(--primary);
+}
+
+.checkbox input:checked+.checkbox-view {
+    background-image: none !important;
+    background-color: var(--primary);
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+    color: white;
+    font-size: 12px;
+}
+
+.checkbox input:checked+.checkbox-view::before{
+    content: "\f00c";
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
