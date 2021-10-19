@@ -373,7 +373,7 @@
                         var productPrice = document.getElementById('product-price').innerHTML ;
                         productPrice = productPrice.substr(1,productPrice.length) ;
                         var totalPrice = this.qty * productPrice; 
-                        document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                        document.getElementById('subtotal-value').innerHTML = "{{core()->currencySymbol(core()->getCurrentCurrencyCode())}}"+totalPrice.toFixed(2);
                     }
 
                     if(product_type=="bundle"){
@@ -382,7 +382,7 @@
                         var productPrice = priceDiv.innerHTML.substr(1,priceDiv.innerHTML.length) ;
                         productPrice = productPrice.substr(1,productPrice.length) ;
                         var totalPrice = this.qty * productPrice; 
-                        document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                        document.getElementById('subtotal-value').innerHTML = "{{core()->currencySymbol(core()->getCurrentCurrencyCode())}}"+totalPrice.toFixed(2);
                     }
                      
                 },
@@ -396,7 +396,7 @@
                         var productPrice = document.getElementById('product-price').innerHTML ;
                         productPrice = productPrice.substr(1,productPrice.length) ;
                         var totalPrice = this.qty * productPrice; 
-                        document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                        document.getElementById('subtotal-value').innerHTML = "{{core()->currencySymbol(core()->getCurrentCurrencyCode())}}"+totalPrice.toFixed(2);
                     }
 
                     if(product_type=="bundle"){
@@ -405,7 +405,7 @@
                         var productPrice = priceDiv.innerHTML.substr(1,priceDiv.innerHTML.length) ;
                         productPrice = productPrice.substr(1,productPrice.length) ;
                         var totalPrice = this.qty * productPrice; 
-                        document.getElementById('subtotal-value').innerHTML = '$'+totalPrice.toFixed(2);
+                        document.getElementById('subtotal-value').innerHTML = "{{core()->currencySymbol(core()->getCurrentCurrencyCode())}}"+totalPrice.toFixed(2);
                     }
                      
                 }

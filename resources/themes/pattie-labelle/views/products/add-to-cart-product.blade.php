@@ -1,9 +1,10 @@
 {!! view_render_event('bagisto.shop.products.add_to_cart.before', ['product' => $product]) !!}
-
+@if($product->type=="bundle")
+@else
 <button class="btn btn-bn btn-primary btn-md" type="button" onclick="addTocartAjax()" {{ ! $product->isSaleable() ? 'disabled' : '' }}>
 <i class="las la-shopping-cart"></i> &nbsp; {{ ($product->type == 'booking') ?  __('shop::app.products.book-now') :  __('shop::app.products.add-to-cart') }}
 </button>
- 
+@endif
 
 <!-- <button type="submit" class="btn btn-lg btn-primary addtocart" {{ ! $product->isSaleable() ? 'disabled' : '' }}>
     {{ ($product->type == 'booking') ?  __('shop::app.products.book-now') :  __('shop::app.products.add-to-cart') }}
@@ -252,6 +253,7 @@
             var bundle_options = {};
             var allBundleOpt = document.querySelectorAll("[name^='bundle_options']");
             var bundleOptCount = allBundleOpt.length;
+            
             for(var i=0;i<bundleOptCount;i++){
                 var bundleName = allBundleOpt[i].name.split('[')[1].split(']')[0];
                 var bundleValue = allBundleOpt[i].value;
@@ -274,7 +276,7 @@
    
        
         animated.style.display="block";
-       
+        var currency = "{{core()->currencySymbol(core()->getCurrentCurrencyCode())}}";
         fetch("{{ route('cart.add', $product->product_id) }}", {
                                     method:'POST',
                                     body:JSON.stringify(data), 
@@ -296,7 +298,7 @@
                                                                 </div> 
                                                                 <div class="item-details">
                                                                     <div class="item-name">${item.name}</div> 
-                                                                    <div class="item-price"><b>$ ${parseFloat(item.total).toFixed(2)}</b></div> 
+                                                                    <div class="item-price"><b>${currency+' '+parseFloat(item.total).toFixed(2)}</b></div> 
                                                                     <div class="item-qty">Quantity - ${item.quantity}</div>
                                                                 </div>
                                                                 <div class="item-remove">
@@ -311,7 +313,7 @@
                                             }
                                             document.getElementById("bn-mini-carts").innerHTML = content; //ad to cart product
                                             if(data.data.grand_total){
-                                                document.getElementById("bn-mini-cart-grandTotal").innerHTML = "$"+parseFloat(data.data.grand_total).toFixed(2);
+                                                document.getElementById("bn-mini-cart-grandTotal").innerHTML = currency+parseFloat(data.data.grand_total).toFixed(2);
                                             }    
                                         }else{
                                             document.getElementById("bn-mini-carts").innerHTML = `<div class="item">
@@ -319,7 +321,7 @@
                                                     <div class="item-name">No Product on Cart List</div>
                                                 </div>
                                             </div>`;
-                                            document.getElementById('bn-mini-cart-grandTotal').innerHTML = "$0.00";
+                                            document.getElementById('bn-mini-cart-grandTotal').innerHTML = "{{core()->currencySymbol(core()->getCurrentCurrencyCode())}}"+"0.00";
                                             document.getElementById("lbl-cart-count").innerHTML = cartCount;
                                             
                                         }

@@ -196,7 +196,7 @@
                                             }
                                             document.getElementById("bn-mini-carts").innerHTML = content;
                                             if(data.data.grand_total){
-                                                document.getElementById("bn-mini-cart-grandTotal").innerHTML = "$"+parseFloat(data.data.grand_total).toFixed(2);
+                                                document.getElementById("bn-mini-cart-grandTotal").innerHTML =  data.data.grand_total ;
                                             }
                                         }else{
                                             document.getElementById("bn-mini-carts").innerHTML = `<div class="item">

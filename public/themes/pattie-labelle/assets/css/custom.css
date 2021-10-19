@@ -2041,7 +2041,7 @@ section.product-detail .add-to-buttons {
 	display: grid !important;
 	grid-template-columns: repeat(3, 1fr);
 	padding-top: 15px;
-	max-width: 450px;
+	max-width: 500px;
 }
 
 section.product-detail .add-to-buttons a {
