@@ -19,8 +19,8 @@
 
                 @if (! $addresses->isEmpty())
                     <span class="account-action">
-                    <a href="{{ route('customer.address.create') }}">{{ __('shop::app.customer.account.address.index.add') }}</a>
-                </span>
+                        <a href="{{ route('customer.address.create') }}" class="btn btn-primary">{{ __('shop::app.customer.account.address.index.add') }}</a>
+                    </span>
                 @else
                     <span></span>
                 @endif
@@ -78,14 +78,14 @@
 
                                     <div class="control-links mt-20">
                                     <span>
-                                        <a href="{{ route('customer.address.edit', $address->id) }}">
+                                        <a href="{{ route('customer.address.edit', $address->id) }}" class="btn btn-primary">
                                             {{ __('shop::app.customer.account.address.index.edit') }}
                                         </a>
                                     </span>
 
                                         <span>
                                         <a href="{{ route('address.delete', $address->id) }}"
-                                           onclick="deleteAddress('{{ __('shop::app.customer.account.address.index.confirm-delete') }}')">
+                                        onclick="deleteAddress('{{ __('shop::app.customer.account.address.index.confirm-delete') }}')" class="btn btn-black">
                                             {{ __('shop::app.customer.account.address.index.delete') }}
                                         </a>
                                     </span>
