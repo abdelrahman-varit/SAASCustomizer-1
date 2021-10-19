@@ -9,16 +9,17 @@
 <div class="main-container-wrapper">
 
     <div class="auth-content">
-        <div class="sign-up-text">
-            {{ __('shop::app.customer.login-text.no_account') }} - <a href="{{ route('customer.register.index') }}">{{ __('shop::app.customer.login-text.title') }}</a>
-        </div>
-
+        
         {!! view_render_event('bagisto.shop.customers.login.before') !!}
 
         <form method="POST" action="{{ route('customer.session.create') }}" @submit.prevent="onSubmit">
             {{ csrf_field() }}
             <div class="login-form">
-                <div class="login-text">{{ __('shop::app.customer.login-form.title') }}</div>
+                <div class="login-text">
+                    <i class="las la-user"></i>
+                    <span>{{ __('shop::app.customer.login-form.title') }}</span>
+                </div>
+                <p>If you have an account, sign in with your email address.</p>
 
                 {!! view_render_event('bagisto.shop.customers.login_form_controls.before') !!}
 
@@ -49,6 +50,11 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-lg">{{ __('shop::app.customer.login-form.button_title') }}</button>
+
+                <div class="sign-up-text">
+                    <span>{{ __('shop::app.customer.login-text.no_account') }} <a href="{{ route('customer.register.index') }}">{{ __('shop::app.customer.login-text.title') }}</a></span>
+                    <span>Or continue with</span>
+                </div>
             </div>
         </form>
 

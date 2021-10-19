@@ -5,7 +5,7 @@
 $header_contents = app('Webkul\Velocity\Repositories\ContentRepository')->getAllContents();
 
 ?>
-
+@include('shop::layouts.header.nav-menu.sidemenu')
 <nav class='greedy'>
     <ul class='links'>
         @foreach($header_contents as $header_content)

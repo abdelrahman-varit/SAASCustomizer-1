@@ -1,9 +1,11 @@
 $(document).ready(function(){ 
     $(window).scroll(function(){ 
         if ($(this).scrollTop() > 100) { 
-            $('#scrollTop').fadeIn(); 
+            $('#scrollTop').fadeIn();
+            $('.header-area').addClass("active");
         } else { 
-            $('#scrollTop').fadeOut(); 
+            $('#scrollTop').fadeOut();
+            $('.header-area').removeClass("active");
         } 
     }); 
     $('#scrollTop').click(function(){ 
@@ -41,6 +43,16 @@ $(document).ready(function(){
         $(".product-card").each(function(index, elem) {
             $(elem).find(".sticker.sale").prependTo($(elem));
         });
+    }
+
+
+    if($(".stellarnav").length) {
+		$('.stellarnav').stellarNav({
+			theme: 'light',
+			breakpoint: 992,
+			menuLabel: false,
+			position: 'right'
+		});
     }
 
 

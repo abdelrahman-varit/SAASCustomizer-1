@@ -9,18 +9,18 @@
 
 <div class="auth-content">
 
-    <div class="sign-up-text">
-        {{ __('shop::app.customer.signup-text.account_exists') }} - <a href="{{ route('customer.session.index') }}">{{ __('shop::app.customer.signup-text.title') }}</a>
-    </div>
-
     {!! view_render_event('bagisto.shop.customers.signup.before') !!}
 
     <form method="post" action="{{ route('customer.register.create') }}" @submit.prevent="onSubmit">
 
         {{ csrf_field() }}
 
-        <div class="login-form">
-            <div class="login-text">{{ __('shop::app.customer.signup-form.title') }}</div>
+        <div class="login-form layout-inline">
+            <div class="login-text">
+                <i class="lab la-wpforms"></i>
+                <span>{{ __('shop::app.customer.signup-form.title') }}</span>
+            </div>
+            <p>If you are new to our store, we glad to have you as member.</p>
 
             {!! view_render_event('bagisto.shop.customers.signup_form_controls.before') !!}
 
@@ -86,6 +86,10 @@
             <button class="btn btn-primary btn-lg" type="submit">
                 {{ __('shop::app.customer.signup-form.button_title') }}
             </button>
+
+            <div class="sign-up-text" style="justify-content: center">
+                <span>{{ __('shop::app.customer.signup-text.account_exists') }} <a href="{{ route('customer.session.index') }}">{{ __('shop::app.customer.signup-text.title') }}</a></span>
+            </div>
 
         </div>
     </form>
