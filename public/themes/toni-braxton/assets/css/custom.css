@@ -8,10 +8,14 @@
     --newsletterBG: #F6F6F6;
     --policyBG: #3D3D3D;
     --headerBG: #F2F2F2;
-    --borderColor: #EEEEEE;
+    --borderColor: #E8E8E8;
     --errorColor: #FF0000;
     --sidebarBG: #F2F2F2;
     --sidebarActiveBG: #22252A;
+    --tableHeaderBG: #22252A;
+    --tableOddBG: #F2F2F2;
+    --tableEvenBG: #FFFFFF;
+    --tableBorderColor: #DDDDDD;
 }
 
 * {
@@ -37,7 +41,7 @@ a {
 body {
     letter-spacing: normal;
     line-height: 1.5;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--bodyColor);
     background-color: var(--bodyBG);
 }
@@ -59,6 +63,7 @@ p {
     padding-right: 0;
     color: white;
     position: relative;
+    z-index: 1;
 }
 
 .footer a {
@@ -223,7 +228,7 @@ p {
 }
 .product-card .product-information .product-name {
     text-align: center;
-    font-weight: 400;
+    font-weight: bold;
     margin-bottom: 5px;
 }
 .product-card .product-information .product-price {
@@ -260,7 +265,7 @@ p {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-    font-weight: 400;
+    font-weight: bold;
 }
 
 .add-to-wishlist {
@@ -301,6 +306,7 @@ p {
 
 .control-group .control {
     margin: 0;
+    color: inherit;
     padding: .5rem .75rem;
     height: 40px;
     border-width: 1px;
@@ -310,6 +316,7 @@ p {
     font-size: .875rem;
     line-height: 1;
     width: 100%;
+    border-color: var(--borderColor);
 }
 
 .control-group {
@@ -444,7 +451,7 @@ div.product-policy-container .card {
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     align-items: center;
-    font-weight: 400;
+    font-weight: bold;
 }
 
 .bn-header-left {
@@ -584,7 +591,7 @@ div.product-policy-container .card {
 
 
 #bn-mini-carts .item .item-details .item-name {
-    font-weight: 400;
+    font-weight: bold;
 }
 
 #bn-mini-carts .item .item-details .item-price{
@@ -726,7 +733,7 @@ nav.greedy {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 10;
     -webkit-transition: .3s;
     -moz-transition: .3s;
     transition: .3s;
@@ -811,7 +818,7 @@ section.product-detail div.layouter {
 
 .control-group label {
     color: inherit;
-    font-weight: 400;
+    font-weight: bold;
 }
 
 a:link, a:hover, a:visited, a:focus, a:active {
@@ -831,7 +838,7 @@ a:link, a:hover, a:visited, a:focus, a:active {
 }
 
 .control-group .control-error {
-    font-weight: 400;
+    font-weight: bold;
     color: var(--errorColor);
 }
 
@@ -871,7 +878,7 @@ a:link, a:hover, a:visited, a:focus, a:active {
     width: 100%;
     font-size: 1rem;
     color: inherit;
-    font-weight: 400;
+    font-weight: bold;
     margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
@@ -931,7 +938,7 @@ a:link, a:hover, a:visited, a:focus, a:active {
 
 .checkbox {
     margin: 0;
-    font-weight: 400;
+    font-weight: bold;
 }
 
 .checkbox a {
@@ -1009,7 +1016,7 @@ section.cart .cart-content {
 
 
 .account-content .menu-block .menubar {
-    font-weight: 400;
+    font-weight: bold;
     border: none;
     color: inherit;
     display: grid;
@@ -1202,4 +1209,214 @@ section.cart .cart-content {
 .account-table-content .address-card .details {
     display: grid;
     height: 100%;
+}
+
+.account-items-list .grid-container {
+    margin-top: 0;
+    display: grid;
+    grid-gap: 15px;
+}
+
+.search-filter .control {
+    border-color: var(--borderColor);
+    border-width: 1px;
+    border-radius: 0;
+    height: 40px;
+    padding: .5rem .75rem;
+    font-size: .875rem;
+}
+
+.search-filter .control:focus{
+    border-color: var(--primary);
+}
+
+.search-filter .icon-wrapper {
+    border-width: 1px;
+    border-radius: 0;
+    border-color: var(--primary);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    background-color: var(--primary);
+    color: white;
+    font-size: 1.125rem;
+}
+
+.dropdown-list li label {
+    padding: 1rem 1rem .5rem 1rem;
+    font-size: 1.125rem;
+    font-weight: bold;
+    display: flex;
+}
+
+.grid-dropdown-header {
+	border-width: 1px;
+    border-radius: 0;
+    padding: .5rem .75rem;
+    height: 40px;
+    color: inherit;
+    font-size: .875rem;
+    border-color: var(--borderColor);
+}
+
+.dropdown-filters .active .grid-dropdown-header {
+	border-color: var(--primary);
+}
+
+.dropdown-filters .dropdown-container .d-flex {
+	flex-direction: column;
+	gap: 10px;
+}
+
+.dropdown-filters .dropdown-container .d-flex>* {
+	width: 100%;
+}
+
+.dropdown-list.dropdown-container .apply-filter {
+	background: var(--primary);
+	color: white;
+	border: 1px solid var(--primary);
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.account-table-content .control-group {
+    margin-bottom: 0;
+}
+
+.datagrid-filters {
+    margin-bottom: 0;
+}
+
+.filtered-tags {
+    margin-bottom: 0;
+}
+
+.search-icon {
+    background-image: none;
+    width: auto;
+    height: auto;
+    font-family: 'Line Awesome Free';
+    font-weight: 900;   
+}
+
+.search-icon::before{
+    content: "\f002";
+}
+
+.table table thead th {
+    background: var(--sidebarActiveBG);
+    color: white;
+}
+
+.table table thead tr {
+    height: auto !important;
+}
+
+.table table th:first-child,
+.table table td:first-child {
+    text-align: left;
+}
+
+.table table {
+    text-align: center;
+    font-weight: bold;
+}
+
+.badge {
+    font-size: .875rem;
+    border-radius: 0;
+}
+
+.table table tbody tr:nth-child(odd) {
+    background-color: var(--tableOddBG);
+}
+
+.table table tbody tr:nth-child(even) {
+    background-color: var(--tableEvenBG);
+}
+
+.table table th,
+.table table td {
+    border: 1px solid var(--tableBorderColor);
+}
+
+.table table tbody tr:last-child td {
+    border-bottom: 1px solid var(--tableBorderColor);
+}
+
+.table table tbody tr:last-child td p {
+    margin: 0;
+}
+
+.badge.badge-success {
+    background-color: var(--primary);
+}
+
+.tabs ul li.active a {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.sale-container .sale-section .section-content .row .title {
+    font-weight: bold;
+}
+
+.sale-container .sale-section .secton-title {
+    color: var(--primary);
+    border-bottom-color: var(--borderColor);
+    font-weight: bold;
+}
+
+.sale-container .sale-section .section-content .order-box-container .box .box-title {
+    color: var(--primary);
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+.sale-container .sale-section .section-content .order-box-container .box .box-content {
+    color: inherit;
+    padding-right: 0;
+}
+
+.sale-container .sale-section .section-content .order-box-container .box {
+    float: none;
+    width: 100%;
+}
+
+.sale-container .sale-section .section-content .order-box-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 30px;
+}
+
+.comparison-component {
+    padding-top: 0;
+    position: relative;
+}
+
+.comparison-component > h1 {
+    border-bottom: 1px solid var(--borderColor);
+    display: flex;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    line-height: 1.35;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.comparison-component > h1 + .btn {
+    padding: .25rem .75rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.compare-products td:first-child {
+    text-transform: uppercase;
 }
